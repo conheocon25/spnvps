@@ -17,7 +17,17 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			$mVideo = new \MVC\Mapper\Video();
+			$mMonk = new \MVC\Mapper\Monk();
+			$mVM = new \MVC\Mapper\VideoMonk();
+			$mAlbum = new \MVC\Mapper\Album();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mSponsor = new \MVC\Mapper\Sponsor();
+			$mPanelAds = new \MVC\Mapper\PanelAds();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -25,34 +35,38 @@
 			$Monks = $mMonk->findAll();
 			$VM = $mVM->find($IdVideoMonk);
 			$VMs = $mVM->findBy(array($IdMonk));
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();			
-			$Pagodas = $mPagoda->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();			
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$MonkSelected = $mMonk->find($IdMonk);			
 			$Video = $VM->getVideo();
 			$Video->setCount( $Video->getCount()+1 );
 			$mVideo->update($Video);
 			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
+			$request->setProperty("ActiveItem", 'LibraryVideo');
 			$request->setObject("VM", $VM);
 			$request->setObject("VMs", $VMs);
 			$request->setObject("MonkSelected", $MonkSelected);
-			$request->setObject("Monks", $Monks);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);			
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+									
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

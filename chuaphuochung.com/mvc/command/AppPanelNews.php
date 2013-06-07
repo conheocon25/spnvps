@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPanelNews extends Command{
+	class AppPanelNewsAll extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -32,8 +32,8 @@
 			$TaskAll = $mTask->findAll();
 			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelNewsAllAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
@@ -51,13 +51,13 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('LinkedAll', $LinkedAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject('PanelAdsAll', $PanelAdsAll);
-			$request->setObject('PanelNewsAll', $PanelNewsAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
+			$request->setObject('PanelNewsAllAll', $PanelNewsAllAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / PANEL / NEWS / ');
 			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("ActiveAdmin", 'PanelNews');
+			$request->setProperty("ActiveAdmin", 'PanelNewsAll');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

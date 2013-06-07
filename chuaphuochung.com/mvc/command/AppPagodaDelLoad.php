@@ -26,22 +26,22 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Pagoda = $mPagoda->find($IdPagoda);			
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
 			$Title = "Quản lý hệ thống > Các chùa > ".$Pagoda->getName()." > Xóa";
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Pagoda', $Pagoda);								
-			$request->setObject('CategoriesNews', $CategoriesNews);	
-			$request->setObject('CategoriesAsk', $CategoriesAsk);	
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);	
+			$request->setObject('CategoryAskAll', $CategoryAskAll);	
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
 		}
 	}
 ?>

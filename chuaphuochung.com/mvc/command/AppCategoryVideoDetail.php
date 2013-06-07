@@ -24,28 +24,28 @@
 			//-------------------------------------------------------------			
 			if (!isset($Page)) $Page=1;
 			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAllVideo = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$Category = $mCategoryVideo->find($IdCategory);
 			$VLs = $mVideoLibrary->findByPage(array($IdCategory, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
 			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
 			$request->setObject("Category", $Category);
 			$request->setObject("VLs", $VLs);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('PN', $PN);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Page", $Page);

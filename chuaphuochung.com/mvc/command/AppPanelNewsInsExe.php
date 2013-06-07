@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPanelNewsInsExe extends Command{
+	class AppPanelNewsAllInsExe extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -16,16 +16,16 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPanelNews = new \MVC\Mapper\PanelNews();
+			$mPanelNews = new \MVC\Mapper\PanelNewsAll();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$PanelNews = new \MVC\Domain\PanelNews(
+			$PanelNewsAll = new \MVC\Domain\PanelNewsAll(
 				null,
 				$IdNews
 			);
-			$mPanelNews->insert($PanelNews);
+			$mPanelNews->insert($PanelNewsAll);
 
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

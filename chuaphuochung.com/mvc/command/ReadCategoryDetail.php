@@ -22,12 +22,12 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Albums = $mAlbum->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			$Category = $mCategoryNews->find($IdCategory);
-			$CategoriesNews = $mCategoryNews->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
 			
 			$Category = $mCategoryNews->find($IdCategory);
 			$News = $mNews->find($IdNews);
@@ -43,13 +43,13 @@
 			}
 
 			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLsNext = $mClassLession->findByNext(null);
+			$CLNextAll = $mClassLession->findByNext(null);
 			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,19 +57,19 @@
 			$request->setProperty("Title", $Title);
 						
 			$request->setObject("Category", $Category);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Event", $Event);
-			$request->setObject("Pagodas", $Pagodas);
+			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Course", $Course);
 			$request->setObject("News", $News);
 			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLsNext", $CLsNext);
+			$request->setObject("CLNextAll", $CLNextAll);
 			$request->setProperty("ActiveItem", 'ReadCategory');
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

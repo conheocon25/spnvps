@@ -23,22 +23,22 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Categories = $mCategoryNews->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryAll = $mCategoryNews->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			$Title = "ĐĂNG NHẬP HỆ THỐNG";
-			$Pagodas = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			$CategoryBType = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("Categories", $Categories);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);			
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("CategoryAll", $CategoryAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);			
 			
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", "ĐÓNG QUẢN TRỊ ỨNG DỤNG");

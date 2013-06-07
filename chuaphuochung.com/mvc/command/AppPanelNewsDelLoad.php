@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPanelNewsDelLoad extends Command{
+	class AppPanelNewsAllDelLoad extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPanelNews = $request->getProperty('IdPanelNews');
+			$IdPanelNewsAll = $request->getProperty('IdPanelNewsAll');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -24,43 +24,43 @@
 			$mEvent = new \MVC\Mapper\Event();
 			$mMonk = new \MVC\Mapper\Monk();
 			$mCourse = new \MVC\Mapper\Course();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
+			$mPanelNews = new \MVC\Mapper\PanelNewsAll();
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mPanelAds = new \MVC\Mapper\PanelAds();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAllVideo = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
 			$Courses = $mCourse->findAll();
 						
-			$PanelNews = $mPanelNews->find($IdPanelNews);
+			$PanelNewsAll = $mPanelNews->find($IdPanelNewsAll);
 			
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);						
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);
-			$request->setObject('PanelNews', $PanelNews);
+			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ NEWS / '.$PanelNews->getId()." / XÓA");
+			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ NEWS / '.$PanelNewsAll->getId()." / XÓA");
 			$request->setProperty("ActiveItem", 'Home');
 						
 			return self::statuses('CMD_DEFAULT');

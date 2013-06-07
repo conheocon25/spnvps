@@ -30,25 +30,25 @@
 			//-------------------------------------------------------------							
 			$Monk = $mMonk->find($IdMonk);
 			$VM = $mVideoMonk->find($IdVideoMonk);
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			$Title = "Quản lý / Giảng sư / ".$Monk->getName()." / ".$VM->getVideo()->getName()." / Xóa";
-			$Pagodas = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Monk', $Monk);
 			$request->setObject('VM', $VM);
-			$request->setObject('CategoriesNews', $CategoriesNews);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
 		}
 	}
 ?>

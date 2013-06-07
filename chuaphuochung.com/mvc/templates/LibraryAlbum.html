@@ -5,20 +5,15 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div id="content">
-
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/picture.png" width="30" />
 							<span tal:content="Album/getName" />
 						</div>
-						
 						<div align="center" style="padding-top:5px;">
 							<embed 
 								type="application/x-shockwave-flash" 
@@ -32,17 +27,14 @@
 						</div>
 						
 						<div class="news-box-sub-title">Hình ảnh khác</div>
-
 						<ul class="news-box-list">
-							<li tal:repeat="Album Albums">
+							<li tal:repeat="Album AlbumAll">
 								<a tal:attributes="href Album/getURLView">
 									<span tal:content="Album/getName"/>
 								</a>
 							</li>
-						</ul>
-						
-						<div class="clear"></div>
-
+						</ul>						
+						<div class="clear" />
 					</div>
 				</div>
 				
