@@ -22,32 +22,32 @@
 			//-------------------------------------------------------------								
 			$Videos = $mVideo->findAll();
 			$Video = $Videos->current();			
-			$Albums = $mAlbum->findAll();			
-			$Categories = $mCategoryNews->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();			
+			$CategoryAll = $mCategoryNews->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			$Events1 = $mEvent->findTop(null);
 			$Event = $Events1->current();
 			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Videos", $Videos);
 			$request->setObject("Video", $Video);			
-			$request->setObject("Albums", $Albums);
-			$request->setObject("Categories", $Categories);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("AlbumAll", $AlbumAll);
+			$request->setObject("CategoryAll", $CategoryAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Event", $Event);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setProperty("ActiveItem", 'Contact');
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

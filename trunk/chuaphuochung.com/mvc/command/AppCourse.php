@@ -32,8 +32,8 @@
 			$TaskAll = $mTask->findAll();
 			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelNewsAllAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
@@ -51,7 +51,7 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('LinkedAll', $LinkedAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject('PanelAdsAll', $PanelAdsAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			

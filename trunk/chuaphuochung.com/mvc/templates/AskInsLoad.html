@@ -6,16 +6,13 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Captcha.js"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				<div id="content">					
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">
+				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/mail.png" width="30" />							
+							<img src="/data/images/mail.png" width="30" />
 							<span tal:content="Title" />
 						</div>
 						<div style="padding:10px;">
@@ -38,25 +35,25 @@
 														<div class="textbox" >
 															<input name="Author1" type="text" id="Author1" />
 														</div>
-														<div class="clear"></div>
+														<div class="clear" />
 													</div>
 													<div class="row">
 														<div for="Name" class="label">Chủ đề</div>
 														<div class="selectbox" >
 															<select id="IdCategory" name="IdCategory">
-																<option tal:repeat="Category CategoriesAsk" tal:attributes="value Category/getId">
+																<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId">
 																	<span tal:content="Category/getName" />
 																</option>
 															</select>
 														</div>
-														<div class="clear"></div>
+														<div class="clear" />
 													</div>
 													<div class="row">
 														<div for="Name" class="label-random">Câu hỏi</div>
 														<div class="textarea" >
 															<textarea name="Question" />
 														</div>
-														<div class="clear"></div>
+														<div class="clear" />
 													</div>
 													<div class="row">
 														<div for="Name" class="label">Mã bảo mật</div>																												
@@ -64,7 +61,7 @@
 																<img id ="PicCaptcha" style="padding-left:10px;" align="left" src="/data/captcha.jpg" height="38px" width="150px" />																
 																<img id ="refreshCaptcha" style="padding-left:-30px;cursor:pointer" align="left" src="/data/images/refresh.jpg" height="20px" />																
 															</div>
-														<div class="clear"></div>
+														<div class="clear" />
 													</div>
 													<div class="row">
 														<div for="Name" class="label">Nhập mã</div>
@@ -72,7 +69,7 @@
 															<input style="width:130px;" name="CodeCaptcha" type="text" id="CodeCaptcha"/>
 															<span style="color:red;" id="Mesenge" tal:content="MsgCaptcha" />
 														</div>
-														<div class="clear"></div>
+														<div class="clear" />
 													</div>
 													<div class="row">
 														<div class="button" >

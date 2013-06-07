@@ -21,13 +21,13 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Albums = $mAlbum->findAll();			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();			
+			$AlbumAll = $mAlbum->findAll();			
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();			
 			
 			if (!isset($IdAlbum)){
-				$Album = $Albums->current();
+				$Album = $AlbumAll->current();
 			}else{
 				$Album = $mAlbum->find($IdAlbum);
 			}
@@ -38,28 +38,32 @@
 			$DhammapadaToday = $mDhammapadaDetail->rand(null);
 			$DhammapadaAll = $mDhammapada->findAll();
 			$Dhammapada = $mDhammapada->find($IdDhammapada);
-			$CLsNext = $mClassLession->findByNext(null);
-			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
-			
+			$CLNextAll = $mClassLession->findByNext(null);
+						
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Album", $Album);
-			$request->setObject("Albums", $Albums);
+			$request->setObject("AlbumAll", $AlbumAll);
 			$request->setObject("Event", $Event);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("Course", $Course);
 			$request->setObject("DhammapadaToday", $DhammapadaToday);
 			$request->setObject("DhammapadaAll", $DhammapadaAll);
 			$request->setObject("Dhammapada", $Dhammapada);
-			$request->setObject("CLsNext", $CLsNext);
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setProperty("ActiveItem", 'LibraryAlbum');
+			$request->setObject("CLNextAll", $CLNextAll);			
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setProperty("ActiveItem", 'Library');
 			$request->setProperty("Title", $Dhammapada->getNameVi());
 			
 			return self::statuses('CMD_DEFAULT');

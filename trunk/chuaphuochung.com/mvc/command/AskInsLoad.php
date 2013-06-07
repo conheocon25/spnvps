@@ -18,16 +18,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			include("mvc/base/mapper/MapperDefault.php");	
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -36,45 +27,45 @@
 			$mCaptcha->createImage();
 			$Session->setCurrentCaptcha($mCaptcha->getSecurityCode());
 			
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			$Category = $mCategoryAsk->find($IdCategory);
 			if (!isset($Category)){
-				$Category = $CategoriesAsk->current();
+				$Category = $CategoryAskAll->current();
 			}
 						
-			$Asks = $mAsk->findBy3(null);
+			$AskAll = $mAsk->findBy3(null);
 			$Title = "Gửi câu hỏi/trả lời";
 			
 			$Events1 = $mEvent->findTop(null);
 			$Event = $Events1->current();
 			$DhammapadaToday = $mDhammapadaDetail->rand(null);
 			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject("Category", $Category);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("Event", $Event);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Asks', $Asks);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AskAll', $AskAll);
 			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setProperty("ActiveItem", 'Ask');
 			$request->setProperty("Title", $Title);
 			$request->setProperty("MsgCaptcha", $MsgCaptcha);
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

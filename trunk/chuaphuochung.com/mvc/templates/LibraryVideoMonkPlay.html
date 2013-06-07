@@ -5,14 +5,9 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				
-				
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">																
 				<div id="left-mini">
 					<div class="sidebar-box-mini">
 						<div class="box-title">
@@ -21,14 +16,14 @@
 						</div>
 						<div class="sidebar-box-content">
 							<ul>
-								<a tal:repeat="Category1 CategoriesVideo" tal:attributes="href Category1/getURLRead">
+								<a tal:repeat="Category1 CategoryVideoAll" tal:attributes="href Category1/getURLRead">
 									<li>
 										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getVLs/count" />)
 									</li>
 								</a>
 							</ul>
 						</div>
-						<div class="clear"></div>
+						<div class="clear" />
 					</div>
 				</div>
 				
@@ -60,7 +55,7 @@
 							<div class="view">
 								<span tal:content="VM/getVideo/getCountPrint"/> lượt xem
 							</div>
-							<div class="clear"></div>
+							<div class="clear" />
 						</div>
 						<div class="news-box-sub-title">Cùng giảng sư</div>
 						<div style="margin-left:24px;">
@@ -85,7 +80,7 @@
 						</div>
 						<div class="sidebar-box-content">
 							<ul>
-								<a tal:repeat="Monk1 Monks" tal:attributes="href Monk1/getURLRead">
+								<a tal:repeat="Monk1 MonkAll" tal:attributes="href Monk1/getURLRead">
 									<li>
 										<span tal:content="Monk1/getName" /> (<span tal:content="Monk1/getVMs/count" />)
 										<span tal:condition="Monk1/isVIP">

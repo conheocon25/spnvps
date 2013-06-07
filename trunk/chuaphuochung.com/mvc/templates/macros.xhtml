@@ -185,20 +185,20 @@
 				});
 				/*]]>*/
 			</script>
-			<div class="clear"></div>
+			<div class="clear" />
 		</div>
 	</div>
 	
 	<!-- COURSE BOX -->
 	<div metal:define-macro="CourseBox" id="emty" class="sidebar-box" tal:condition="Course">				
-		<div id="Course" class="box-title" tal:attributes="alt CLsNext/current/getDateStart" tal:condition="CLsNext/current">
+		<div id="Course" class="box-title" tal:attributes="alt CLNextAll/current/getDateStart" tal:condition="CLNextAll/current">
 			<img src="/data/images/event.png" width="30" />
 			<span>Sắp giảng dạy</span>
 		</div>
 		<div class="sidebar-box-content">
-			<div align="center" style="padding:10px;" tal:condition="CLsNext/current">												
-				<a tal:attributes="href CLsNext/current/getURLRead" style="color:#107DBF;">
-					<span tal:content="CLsNext/current/getName"/>
+			<div align="center" style="padding:10px;" tal:condition="CLNextAll/current">
+				<a tal:attributes="href CLNextAll/current/getURLRead" style="color:#107DBF;">
+					<span tal:content="CLNextAll/current/getName"/>
 				</a>
 			</div>
 			<div style="margin-left:10px;">
@@ -253,7 +253,7 @@
 					});
 					/*]]>*/
 				</script>
-				<div class="clear"></div>
+				<div class="clear" />
 			</div>
 		</div>
 
@@ -279,7 +279,7 @@
 				</tr></table>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 	
 	<div metal:define-macro="VideoBoxMini" id="phatam" class="sidebar-box-mini">
@@ -320,7 +320,7 @@
 				</tr></table>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 	
 	<div metal:define-macro="AskBoxMini" id="question" class="sidebar-box-mini">
@@ -336,7 +336,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 
 	<!-- CALENDAR BOX Ở CỘT 2 -->
@@ -359,7 +359,7 @@
 				</script>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 	
 	<div metal:define-macro="CallendarBoxMini" id="calendar" class="sidebar-box-mini">
@@ -381,7 +381,7 @@
 				</script>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 	
 	<!-- DATE TIME BOX -->
@@ -413,7 +413,7 @@
 				</tr></table>
 			</div>
 		</div>
-		<div class="clear"></div>
+		<div class="clear" />
 	</div>
 	
 		<!-- SPONSOR BOX MINI -->
@@ -598,7 +598,7 @@
 			<img src="/data/images/icon.png" width="30" />
 			<span>Những Tin Tức Mới Cập Nhật</span>
 		</div>
-		<div class="box-right" tal:repeat="TopNews PanelNews">
+		<div class="box-right" tal:repeat="TopNews PanelNewsAll">
 			<a tal:attributes="href TopNews/getNews/getURLRead | string:#; title TopNews/getNews/getTitle | string:Chưa có tiêu đề">
 				<img width="100%" height="124" tal:attributes="src TopNews/getNews/getImage | string:/data/images/exit_picture.jpg" />
 				<div tal:content="TopNews/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
@@ -615,7 +615,7 @@
 			<img src="/data/images/icon.png" width="30" />
 			<span>Những Video Mới Cập Nhật</span>
 		</div>
-		<div class="box-right" tal:repeat="Category PanelCategoriesVideo">
+		<div class="box-right" tal:repeat="Category PanelCategoryVideoAll">
 			<a tal:attributes="href Category/getCategoryVideo/getURLRead | string:#; title Category/getCategoryVideo/getName | string:Chưa có tiêu đề">
 				<img width="100%" height="124" tal:attributes="src Category/getCategoryVideo/getPicture | string:/data/images/exit_picture.jpg" />
 				<div tal:content="Category/getCategoryVideo/getName | string:Chưa có tiêu đề" class="box-right-title" />

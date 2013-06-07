@@ -33,34 +33,34 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAllVideo = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
 			$Courses = $mCourse->findAll();
 			$Linkeds = $mLinked->findAll();
-			$Tasks = $mTask->findAll();
-			$CategoriesTask = $mCategoryTask->findAll();
+			$TaskAll = $mTask->findAll();
+			$CategoryAllTask = $mCategoryTask->findAll();
 						
 			$Task = $mTask->find($IdTask);
 			
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('CategoriesTask', $CategoriesTask);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);						
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('CategoryAllTask', $CategoryAllTask);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);

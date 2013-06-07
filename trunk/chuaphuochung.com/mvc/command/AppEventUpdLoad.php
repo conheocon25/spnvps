@@ -27,24 +27,24 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Event = $mEvent->find($IdEvent);
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelAdsAllAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject( 'CategoriesNews', $CategoriesNews );
-			$request->setObject( 'CategoriesAsk', $CategoriesAsk );
+			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );
+			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
 			$request->setObject( 'Event', $Event );
-			$request->setObject('Pagodas', $Pagodas);			
+			$request->setObject('PagodaAll', $PagodaAll);			
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
-			$request->setObject("CategoriesBType", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
 		}
 	}
 ?>
