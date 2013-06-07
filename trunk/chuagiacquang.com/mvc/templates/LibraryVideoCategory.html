@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				
+				<div id="left-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/category.png" width="30" />
+							<span>Chuyên Đề</span>
+						</div>
+						<div class="sidebar-box-content">							
+							<ul>
+								<a tal:repeat="Category1 CategoriesVideo" tal:attributes="href Category1/getURLRead">
+									<li tal:attributes="class php:Category1->getId()==Category->getId()?'current-item':''">
+										<span tal:content="Category1/getName" />
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>				
+				<div id="mid-mini">
+					<div class="news-box-mini">
+						<div class="box-title">
+							<img src="/data/images/phatam.png" width="30" />
+							<span>Chuyên đề <small style="font-size:15px;" tal:content="Category/getName" /></span>
+						</div>
+						<div style="padding:10px;">							
+							<img width="100%" tal:attributes="src Category/getPicture"/>
+							<ul class="video-library">
+								<a tal:repeat="VM VMs" tal:attributes="href VM/getURLView">
+									<li>
+										<div class="demo">
+											<img tal:attributes="src VM/getVideo/getURLImage" width="150px" height="100px" />
+										</div>
+										<div class="info">
+											<div class="name" tal:content="VM/getVideo/getName" />
+											<div class="monk">
+												<a tal:attributes="href VM/getMonk/getURLRead">Giảng sư: 
+													<span tal:content="VM/getMonk/getName" />
+												</a>
+											</div>
+											<div class="view">
+												<span tal:content="VM/getVideo/getCountPrint" /> lượt xem
+											</div>
+										</div>
+										<div class="clear"></div>
+									</li>
+								</a>
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>				
+				<div id="right-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/monk.png" width="30" />
+							<span>Giảng Sư</span>
+						</div>
+						<div class="sidebar-box-content">
+							<ul>
+								<a tal:repeat="Monk Monks" tal:attributes="href Monk/getURLRead">
+									<li>
+										<span tal:content="Monk/getName" /> (<span tal:content="Monk/getVMs/count" />)
+										<span tal:condition="Monk/isVIP">
+											<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
+										</span>
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear" />
+					</div>					
+					<div metal:use-macro="macros.xhtml/CountBoxMini"/>
+				</div>				
+				<div class="clear"></div>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

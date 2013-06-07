@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/online.png" width="30" />
+							<span>GIAO LƯU TRỰC TUYẾN</span>
+						</div>
+						<div style="padding:10px; color:#980707; text-align:center; font-size:15px;">
+							<div>Quí vị có thể chat với nick Yahoo Messenger <b>tnhuethanh@yahoo.com</b> để gửi lại tin nhắn</div><br/>
+							<a href="ymsgr:sendIM?tnhuethanh@yahoo.com">
+							<img src="http://opi.yahoo.com/online?u=tnhuethanh@yahoo.com&m=g&t=2" border="0" alt="" /> </a>
+						</div>
+					</div>	
+					
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/contact.png" width="30" />
+							<span>Gửi tin nhắn Offline</span>
+						</div>
+						<div style="padding:10px;">
+							<div align="center" >
+								<table style="font-size:15px" align="left" border="0" cellpadding="0" cellspacing="5">
+									<tbody>
+										<tr align="center">						
+											<img src="/data/images/name_card.jpg" width="600" />						
+										</tr>
+										<tr>
+											<td align="center" colspan="2"><br/></td>
+										</tr>
+										<tr>
+											<td align="center" colspan="2">Hoặc bạn có thể liên hệ với chúng tôi bằng cách điền vào thông tin dưới đây, chúng tôi sẽ liên hệ với bạn trong thời gian sớm nhất.</td>															
+										</tr>
+										<tr>
+											<td align="center" colspan="2">
+												<form class="form-editor" id="FormContact" tal:attributes="action '/online/exe'" method="post">
+													<table border="0" cellpadding="0" cellspacing="10" style="width:100%;">
+														<tbody>
+															<tr>
+																<td align="right" width="100px">
+																	<div for="Title" class="form-editor-label">Họ và tên</div>
+																</td>											
+																<td align="left" >
+																	<input name="Name" type="text" id="name" class="form-editor-textbox" style="width:100%;"/>
+																</td>
+															</tr>
+															<tr>
+																<td align="right" >
+																	<div for="Title" class="form-editor-label">Địa chỉ mail</div>
+																</td>
+																
+																<td align="left" >
+																	<input name="Email" type="text" id="name" class="form-editor-textbox" style="width:100%;"/>
+																</td>
+															</tr>
+															<tr>
+																<td align="right">
+																	<div for="Title" class="form-editor-label">Chủ đề</div>
+																</td>
+																
+																<td align="left" >
+																	<input name="Subject" type="text" id="name" class="form-editor-textbox" style="width:100%;"/>
+																</td>
+															</tr>
+															<tr>
+																<td align="right">
+																	<div for="Title" class="form-editor-label">Nội dung</div>
+																</td>										
+																<td align="left" >
+																	<textarea name="Content" id="content" rows="8" style="width:100%;"/>
+																</td>
+															</tr>
+															<tr>
+																<td colspan="2" align="center" >
+																	<input class="form-editor-button" type="submit" name="cmdSend" value="Gửi Email" id="cmdSend" style="height: 22px; width: 100px;"/>
+																</td>														
+															</tr>
+														</tbody>
+													</table>
+												</form>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<div class="clear"/>
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>					
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">					
+					<div class="news-box">
+						<div class="box-title">							
+							<img src="/data/images/pagoda.png" width="30" />
+							<span tal:content="Title" />
+						</div>
+						<div style="padding:10px;">							
+							<div align="center" style="color:#055301; line-height:20px; margin-bottom:10px;">
+								<H3 tal:content="Class/getName" style="font-size:17px;" />
+								<p>Bắt đầu: <B tal:content="Class/getDateStartPrint" /> - Kết thúc: <B tal:content="Class/getDateEndPrint" /></p>
+								<p tal:content="structure Class/getDescription"/>
+							</div>
+							<p>Thông tin chi tiết về lịch học</p>
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th width="32">STT</th>
+										<th align="left">TÊN BÀI</th>
+										<th align="left" width="128">GIẢNG SƯ</th>
+										<th width="64">BẮT ĐẦU</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Lession Class/getLessions">
+										<td align="center" tal:content="repeat/Lession/number" />
+										<td class="text-hightlight"><a tal:attributes="href Lession/getURLRead"><div tal:content="Lession/getName"/></a></td>
+										<td tal:content="Lession/getMonk/getFullName" />
+										<td tal:content="Lession/getDateStartPrint" />										
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="clear" />
+						<div class="news-box-sub-title">Các lớp cùng khóa</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Class Course/getClasses">								
+								<a tal:attributes="href Class/getURLRead">
+									<span tal:content="Class/getName" />
+								</a>(Từ <span tal:content="Class/getDateStartPrint" /> đến  <span tal:content="Class/getDateEndPrint" />)
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>
+				<div class="clear"/>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

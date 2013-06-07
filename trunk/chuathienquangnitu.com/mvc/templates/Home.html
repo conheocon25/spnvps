@@ -1,0 +1,166 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+			
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">																									
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.gif" width="28"  />
+							<span>Tiêu điểm</span>							
+						</div>
+						<div align="center" style="padding:10px;">
+							<div class="picture-banner parent">
+								<a tal:attributes="href Course/getURLRead">
+									<img width="100%" tal:attributes="src Course/getImage" />
+									<div class="child" tal:content="Course/getName"/>
+								</a>
+							</div>
+							<div class="list-picture">
+								<div class="grid-left" tal:condition="CLs">
+									<h3 style="margin:10px;color:#004E02;">GIẢNG DẠY GẦN ĐÂY</h3>
+									<ul>
+										<li tal:repeat="CL CLs">
+											<a tal:attributes="href CL/getURLRead">
+												<span tal:content="CL/getName"/>
+												<small tal:content="CL/getDateStartPrint"/>
+											</a>
+										</li>
+									</ul>
+								</div>
+								<div class="grid-right parent" tal:condition="CLsNext/current">
+									<h3 style="margin:10px;color:#004E02;">SẮP GIẢNG DẠY</h3>
+									<a tal:attributes="href CLsNext/current/getURLRead" style="color:#004E02;">
+										<span tal:content="CLsNext/current/getName"/>
+									</a>
+									<div style="margin-top:-25px;">
+										<h3 style="margin-bottom:5px; color:#004E02; text-align:left; padding-left:15px; margin-top:30px;">
+											CÒN
+										</h3>
+										<div id="class2Countdown" style="margin-left:5px;" tal:attributes="alt CLsNext/current/getDateStart" />
+										<h3 style="position:absolute; right:15px; bottom:5px; color:#004E02;">
+											LÀ BẮT ĐẦU
+										</h3>
+									</div>
+									<script type="text/javascript">
+										/*<![CDATA[*/
+										$(function() {
+											var d1 = $("#class2Countdown").attr('alt');
+											var parts = d1.match(/(\d+)/g);											
+											var d2 = new Date(parts[0], parts[1]-1, parts[2]);
+											$('#class2Countdown').countdown({until: d2});
+										});
+										/*]]>*/
+									</script>									
+								</div>
+								<div class="clear"/>
+							</div>							
+							<div class="clear" />
+						</div>
+					</div>
+					<div class="news-box" tal:repeat="Category Categories">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="32"  />
+							<span tal:content="Category/getName" />
+						</div>
+						<div class="slider">
+							<div class="slider-wrap">
+								<ul>
+									<li tal:repeat="News Category/getNewsLimit">
+										<img tal:attributes="src News/getImage | string:/data/images/news.jpg" width="385" height="300" />
+										<a tal:attributes="href News/getURLRead">
+											<div tal:content="News/getTitle" />
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="top-list">
+							<div class="list-title">TIN MỚI CẬP NHẬT</div>
+							<ul>
+								<a tal:repeat="News Category/getNewsLimit" tal:attributes="href News/getURLRead">
+									<li tal:content="News/getTitle" />
+								</a>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span>Bài giảng mới nhất</span>
+						</div>
+						<div align="center" style="padding:10px;">
+							<ul class="list-video">
+								<li tal:repeat="VM VM24">
+									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
+										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="monk" tal:content="VM/getMonk/getName" />
+										<div class="name" tal:content="VM/getVideo/getName" />
+									</a>
+								</li>								
+							</ul>
+							<div class="clear" />
+						</div>
+					</div>					
+				</div>				
+				<div id="sidebar">					
+					<div metal:use-macro="macros.xhtml/ClockBox"/>
+					<div class="sidebar-box">
+						<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
+							<img src="/data/images/calendar.png" width="30" />
+							<span>Lịch Công Tác</span>
+						</div>
+						<div class="sidebar-box-content">
+							<div class="g4">
+								<div id="eventCalendarLocale" />
+							</div>
+							<script type="text/javascript">
+								/*<![CDATA[*/
+								$(document).ready(function() {
+									$("#eventCalendarLocale").eventCalendar({
+										eventsjson: '/mvc/templates/script/events.json.php',
+										eventsjson: '/task',
+										monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+											"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+										dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
+										dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
+										txt_noEvents: "Không có sự kiện nào xảy ra",
+										txt_SpecificEvents_prev: "",
+										txt_SpecificEvents_after: "sự kiện:",
+										txt_next: "Tới",
+										txt_prev: "Lui",
+										txt_NextEvents: "Sự kiện sắp xảy ra:",
+										txt_GoToEventUrl: "đi đến sự kiện"
+									});
+								});
+								/*]]>*/
+							</script>
+							<div class="clear"></div>
+						</div>
+					</div>
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+				</div>				
+				<div class="clear"></div>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

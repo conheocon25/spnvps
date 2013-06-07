@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">				
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/news.png" width="30" />
+							<span tal:content="Title"/>
+						</div>
+						<div tal:repeat="News NewsAll" >							
+							<div width="620px" >
+								<img align="left" class="news-img" tal:attributes="src News/getImage" />
+								<span align="left" style="text-align:justify;">
+									(<span tal:content="News/getDatePrint"/>) 
+									<div><a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/>	</div>
+									
+								</span>
+							</div>	
+							<div class="clear" />							
+						</div>
+					</div>										
+					<div class="page-list">								
+						<span tal:repeat="P PN/getPages">
+							<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+						</span>
+					</div>
+					<div class="clear" />
+				</div>				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

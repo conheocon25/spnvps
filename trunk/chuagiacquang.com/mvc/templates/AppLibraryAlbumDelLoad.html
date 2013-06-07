@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>		
+	</head>
+	<body>
+		<div id="wrapper">
+
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+						<div class="manager-main-content">
+							<form class="form-editor" id="FormAppNewsInsLoad" tal:attributes="action Album/getURLDelExe" method="post">
+								<table border="0" cellpadding="0" cellspacing="10">
+									<tbody>										
+										<tr>
+											<td colspan="2" align="center">
+												<a tal:attributes="href '/app/album'">Quản trị > Album > Xóa</a>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">
+												<p>Muốn xóa Album <B tal:content="Album/getName" /> ?</p>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="center">
+												<button class="form-editor-button" type="submit" name="submit" value="submit-value">Xóa</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+				
+				<div class="clear"></div>
+			</div>
+
+			<div metal:use-macro="macros.xhtml/Footer" />
+
+		</div>
+	</body>
+</html>

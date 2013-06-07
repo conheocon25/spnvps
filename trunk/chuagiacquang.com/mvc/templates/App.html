@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/manager.png" width="30" />
+							<span tal:content="Title"/>
+						</div>
+						<div align="center" style="margin-top:5px;">
+							<img src="/data/images/bg_manager.jpg" width="610px" />
+						</div>
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div class="sidebar-box">
+						<div class="box-title">							
+							<img src="/data/images/user.png" width="30" />							
+							<span><a href="/changepass/load">Admin</a></span>
+							<a href="/signout/load">&#8629; Thoát</a>
+						</div>
+						<div metal:use-macro="macros.xhtml/AdminMenu" />
+					</div>
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

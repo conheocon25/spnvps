@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyDbwT0Qqbtgy-lMddxbqbgT2vuThCQY8I8" type="text/javascript"></script>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
+		<script type="text/javascript">
+			$(function() {			
+				$("#map").googleMap().load();				
+			});
+		</script>
+	</head>	
+	<body onunload="GUnload()">
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/pagoda.png" width="30" />
+							<span>Thông tin liên lạc</span>
+						</div>
+						<div style="padding:10px;">
+							<img src="/data/images/name_card.jpg" width="600" />
+						</div>
+						<h3>
+							Quí Phật Tử có thể đặt câu hỏi trao đổi Phật Học <a href="/ask/1">Click vào tại đây</a>
+						</h3>
+						<h3>
+							Mọi thắc mắc có thể trao đổi trực tuyến <a href="/online">Click vào tại đây</a>
+						</h3>
+						<div class="clear" />
+					</div>
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/map.png" width="30" />
+							<span>HƯỚNG DẪN ĐƯỜNG ĐI</span>
+						</div>
+						<div style="padding:10px;">
+							<div id="map" style="width:600px; height:470px;"></div>
+							<form class="form-editor" action="directions.php" method="post">								
+								<div class="row">
+									<div for="Name" class="label">Chọn vị trí</div>
+									<div class="selectbox" >
+										<select name="cboTinhThanh" id="cboTinhThanh">
+											<option label="Vĩnh Long" value="Vĩnh Long">Vĩnh Long</option>
+											<option label="Hồ Chí Minh" value="Hồ Chí Minh">Hồ Chí Minh</option>
+											<option label="Hà Nội" value="Hà Nội">Hà Nội</option>													
+											<option label="Cần Thơ" value="Cần Thơ">Cần Thơ</option>
+											<option label="An Giang" value="An Giang">An Giang</option>
+											<option label="BR - Vũng Tàu" value="BR - Vũng Tàu">BR - Vũng Tàu</option>													
+											<option label="Bạc Liêu" value="Bạc Liêu">Bạc Liêu</option>													
+											<option label="Bến Tre" value="Bến Tre">Bến Tre</option>													
+											<option label="Bình Dương" value="Bình Dương">Bình Dương</option>
+											<option label="Bình Phước" value="Bình Phước">Bình Phước</option>
+											<option label="Cà Mau" value="Cà Mau">Cà Mau</option>													
+											<option label="Đồng Nai" value="Đồng Nai">Đồng Nai</option>
+											<option label="Đồng Tháp" value="Đồng Tháp">Đồng Tháp</option>
+											<option label="Kiên Giang" value="Kiên Giang">Kiên Giang</option>
+											<option label="Long An" value="Long An">Long An</option>													
+											<option label="Sóc Trăng" value="Sóc Trăng">Sóc Trăng</option>													
+											<option label="Tiền Giang" value="Tiền Giang">Tiền Giang</option>
+											<option label="Trà Vinh" value="Trà Vinh">Trà Vinh</option>
+										</select>
+									</div>
+									<div class="clear"></div>
+								</div>
+							</form>	
+							
+							<form class="form-editor" action="directions.php" method="post">
+								<input id="end" type="hidden" value="ap Dong Hoa, xa Di An, tinh Binh Duong, Viet Nam" />
+								<div class="row">
+									<div for="Name" class="label">Vị trí của bạn</div>
+									<div class="textbox" >
+										<input id="start" type="text" value="Vĩnh Long, Việt Nam" />
+									</div>
+									<div class="clear"></div>
+								</div>
+								<div class="row">
+									<div class="button" >
+										<button type="submit" id="getdirections" name="submit" value="submit-value">Tìm đường</button>
+									</div>
+								</div>
+							</form>
+							<div id="directions"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+				</div>				
+				<div class="clear"/>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft" />
+		</div>
+	</body>
+</html>

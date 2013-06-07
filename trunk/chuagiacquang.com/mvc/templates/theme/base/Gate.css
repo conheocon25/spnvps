@@ -1,0 +1,14 @@
+html {
+			background: url('/data/images/background_gate.jpg') no-repeat top left transparent;
+		}
+		
+		.type-interior {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			overflow: hide;
+			margin: 0 auto;
+		}
+		
+		img.Gate { margin-left: 10px; margin-top: 50px; }		
+		a div:hover { box-shadow: 0px 0pc 20px #FFFFFF; border-radius: 10px; }

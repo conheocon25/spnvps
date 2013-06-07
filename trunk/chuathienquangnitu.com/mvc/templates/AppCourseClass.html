@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/manager.png" width="30" />
+							<span tal:content="Title" />
+							<a tal:attributes="href '/app/course'">&#8629; Trở lại</a>
+						</div>						
+						<div style="padding:10px;">							
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN LỚP</th>
+										<th>BẮT ĐẦU</th>
+										<th>KẾT THÚC</th>
+										<th>BÀI</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Class Course/getClasses">
+										<td width="32" align="center">
+											<div tal:content="repeat/Class/number" />
+										</td>
+										<td class="text-hightlight">
+											<a tal:attributes="href Class/getURLUpdLoad">
+												<div tal:content="Class/getName" />
+											</a>
+										</td>
+										<td width="48" tal:content="Class/getDateStartPrint" />
+										<td width="48" tal:content="Class/getDateEndPrint" />
+										<td width="48">
+											<a tal:attributes="href Class/getURLView">
+												Xem (<span tal:content="Class/getLessions/count"/>)
+											</a>
+										</td>
+										<td class="text-hightlight" width="32" align="center">
+											<a tal:attributes="href Class/getURLDelLoad">
+												<div><img src="/data/images/remove.png" width="20" /></div>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="7" align="center">
+											<a tal:attributes="href Course/getURLLessionInsLoad">THÊM LỚP HỌC</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>							
+						</div>
+						<div class="clear" />
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div class="sidebar-box">
+						<div class="box-title">
+							<img src="/data/images/user.png" width="30" />
+							<span><a href="/app">Admin</a></span>
+							<a href="/signout/load">&#8629; Thoát</a>
+						</div>
+						<div class="manager-menu">
+							<ul>
+								<a tal:repeat="Course1 Courses" tal:attributes="href Course1/getURLLession">
+									<li tal:attributes="class php:Course1->getId()==Course->getId()?'menu-select':'normal'">
+										<span tal:content="Course1/getName" /> (<span tal:content="Course1/getClasses/count" />)
+									</li>
+								</a>												
+							</ul>
+						</div>
+						
+					</div>
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>
