@@ -6,11 +6,8 @@
 	</head>
 	<body>
 		<div id="wrapper">
-
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/icon.png" width="30" />
@@ -23,7 +20,7 @@
 								<div for="PanelNews" class="label">Chọn Tin Tức</div>
 								<div class="selectbox" >
 									<select name="IdCategoryVideo">
-										<option tal:repeat="CategoryVideo CategoriesVideo" tal:content="CategoryVideo/getName" tal:attributes="value CategoryVideo/getId"/>
+										<option tal:repeat="CategoryVideo CategoryVideoAll" tal:content="CategoryVideo/getName" tal:attributes="value CategoryVideo/getId"/>
 									</select>
 								</div>
 								<div class="clear" />

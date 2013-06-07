@@ -31,7 +31,7 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();			
+			$PanelAdsAll = $mPanelAds->findAll();			
 			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Xóa";
 			
 			//-------------------------------------------------------------
@@ -43,7 +43,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setObject('CategoryBTypeAll', $CategoryBType);
-			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setProperty('Title', $Title);
 		}
 	}

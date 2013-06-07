@@ -28,7 +28,7 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			$Title = "THÊM MỚI DANH MỤC TIN TỨC";
 			
 			//-------------------------------------------------------------
@@ -38,7 +38,7 @@
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('CategoryBTypeAll', $CategoryBType);
-			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 									

@@ -45,13 +45,13 @@
 			$Class = $mCourseClass->find($IdClass);			
 			
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);						
+			$request->setObject("PanelAdsAll", $PanelAdsAll);						
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);

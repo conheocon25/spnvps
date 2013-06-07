@@ -30,7 +30,7 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$Title = "Quản lý hệ thống > Các chùa > ".$Pagoda->getName()." > Xóa";
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -41,7 +41,7 @@
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 		}
 	}
 ?>

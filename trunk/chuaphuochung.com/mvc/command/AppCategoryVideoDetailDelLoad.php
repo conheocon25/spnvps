@@ -33,7 +33,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$VL = $mVideoLibrary->find($IdVideoLibrary);
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();			
+			$PanelAdsAll = $mPanelAds->findAll();			
 			$Title = "Quản lý / Danh mục / ".$VL->getCategory()->getName()." / ".$VL->getVideo()->getName()." / Xóa";
 			
 			//-------------------------------------------------------------
@@ -45,7 +45,7 @@
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('CategoryBTypeAll', $CategoryBType);
-			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setProperty('ActiveItem', 'Home');
 		}
 	}

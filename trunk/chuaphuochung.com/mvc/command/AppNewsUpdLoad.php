@@ -31,7 +31,7 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			$Title = "Quản lý / chuyên mục tin tức / ".$News->getCategory()->getName()." / cập nhật tin";
 			
 			//-------------------------------------------------------------
@@ -42,7 +42,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject( 'News', $News );
 			$request->setObject('CategoryBTypeAll', $CategoryBType);
-			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 		}
