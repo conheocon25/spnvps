@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+			
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="Course/getName"/>
+						</div>
+						<div align="center" style="padding:10px;">
+							<span tal:content="structure Course/getDescription"/>
+							<p>Các buổi học</p>
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th width="32">STT</th>
+										<th align="left">BUỔI HỌC</th>
+										<th width="64">BẮT ĐẦU</th>
+										<th width="64">KẾT THÚC</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Lession Course/getLessions">
+										<td align="center" tal:content="repeat/Lession/number" />
+										<td class="text-hightlight">
+											<a tal:attributes="href Lession/getURLRead">
+												<div tal:content="Lession/getName" />
+											</a>
+										</td>
+										<td tal:content="Lession/getDateStartPrint" />
+										<td tal:content="Lession/getDateEndPrint" />
+									</tr>
+								</tbody>
+							</table>							
+							<div class="clear" />
+						</div>
+						<div class="news-box-sub-title">Các buổi học khác</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Course Courses" >
+								<a tal:attributes="href Course/getURLRead" tal:content="Course/getName"/>
+								(từ <span tal:content="Course/getDateStartPrint" /> đến <span tal:content="Course/getDateEndPrint" />)
+							</li>
+						</ul>
+						<br/>
+					</div>
+				</div>				
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

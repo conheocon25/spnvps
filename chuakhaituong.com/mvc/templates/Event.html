@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">					
+					<div class="news-box" tal:condition="EventRead">					
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="EventRead/getTitle"/>
+						</div>						
+						<div style="padding:10px;">
+							<div style="font-size:15px; color:#980707; margin:10px;" tal:content="structure EventRead/getContent"/>
+							<div class="news-box-sub-title">Sự kiện sắp xảy ra</div>						
+							<ul class="news-box-list">
+								<li tal:repeat="Event EventsNear">									
+									<a tal:attributes="href Event/getURLRead">
+										<span tal:content="Event/getTitle" />
+									</a>
+									(<span tal:content="Event/getDatePrint" />)
+								</li>
+							</ul>
+							
+							<div class="news-box-sub-title">Sự kiện đã xảy ra</div>
+							<ul class="news-box-list">
+								<li tal:repeat="Event EventsFinish">									
+									<a tal:attributes="href Event/getURLRead">
+										<span tal:content="Event/getTitle" />
+									</a>
+									(<span tal:content="Event/getDatePrint" />)
+								</li>
+							</ul>
+						</div>
+						<div class="clear" />
+					</div>
+					<div class="news-box" tal:condition="not: EventRead">					
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span >SẮP CÓ SỰ KIỆN</span>
+						</div>						
+						
+						<div class="clear" />
+					</div>
+				</div>				
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>
