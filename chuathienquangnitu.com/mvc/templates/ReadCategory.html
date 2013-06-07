@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">				
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/news.png" width="30" />
+							<span tal:content="Title"/>
+						</div>
+						<ul style="list-style:none;margin-left:5px;margin-top:10px;margin-right:5px;">
+							<li tal:repeat="News NewsAll">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:10px;">
+									<tr>
+										<td width="120" align="center">
+											<img class="news-img" tal:attributes="src News/getImage" />
+										</td>
+										<td valign="top">
+											<div class="news-time">(<span tal:content="News/getDatePrint"/>)</div>
+											<div class="news-title">
+												<a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/>
+												<span tal:content="structure News/getContentReduce" />
+											</div>
+										</td>
+									</tr>
+								</table>
+							</li>
+						</ul>
+						
+						<div class="page-list">								
+							<span tal:repeat="P PN/getPages">
+								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+							</span>
+						</div>
+						<div class="clear" />
+					</div>
+				</div>				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

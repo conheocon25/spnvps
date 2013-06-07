@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/pagoda.png" width="30" />
+							<span tal:content="Title" />
+						</div>
+						<div class="news-content" tal:content="structure Lession/getDescription" />
+
+						<div class="news-box-sub-title">Các bài học khác</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Lession Class/getLessions">								
+								<a tal:attributes="href Lession/getURLRead">
+									<span tal:content="Lession/getName" />
+								</a>(Từ <span tal:content="Lession/getDateStartPrint" /> đến  <span tal:content="Lession/getDateEndPrint" />)
+							</li>
+						</ul>
+						
+						<div class="news-box-sub-title">Các lớp học cùng khóa</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Class Course/getClasses">
+								<a tal:attributes="href Class/getURLRead">
+									<span tal:content="Class/getName" />
+								</a>(Từ <span tal:content="Class/getDateStartPrint" /> đến  <span tal:content="Class/getDateEndPrint" />)
+							</li>
+						</ul>
+					</div>
+				</div>
+				
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AdsBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>
+				<div class="clear" />
+			</div>
+
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>	
+		</div>
+	</body>
+</html>

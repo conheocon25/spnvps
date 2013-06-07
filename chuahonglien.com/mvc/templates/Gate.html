@@ -1,0 +1,80 @@
+<!DOCTYPE html> 
+<html>
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>		
+		
+	<style type="text/css">	
+		html {
+			width: 100%;
+			height: 100%;
+			*background: url('/data/images/background_gate.jpg') no-repeat center center transparent;
+		}
+		
+		.type-interior {
+			height: 100%;
+			width: 100%;
+			position: absolute;
+			overflow: hide;
+			margin: 0 auto;
+		}
+		
+		img.Gate { margin-top: 70px; }		
+		a div:hover { box-shadow: 0px 0pc 20px #FFFFFF; border-radius: 10px; }
+	</style>
+		
+	<script >
+		$(document).ready(function () {
+			$("#jquery_jplayer_1").jPlayer({
+				ready: function () {
+					$(this).jPlayer("setMedia", {
+						mp3:"http://chuathienquang.123app.net/data/nhacthien.mp3"
+					}).jPlayer("play");
+				},
+				swfPath: "data",
+				supplied: "mp3",		
+				wmode: "window"
+			});
+			$('.jp-repeat').trigger('click');
+			$('.jp-volume-max').trigger('click');
+			$("#jp_container_1").hide();
+		});
+		
+	</script>
+	</head>
+<body  style="overflow:hide;">
+	<div data-role="page" class="type-interior" id="gate">		
+		<div align="center" style="width:100%;">
+			<a href="/home">
+				<img class="Gate" border="0" src="/data/images/logo.png" />
+				<div style="position:relative; margin-top:15px; color:white; text-shadow:2px 2px 5px #000000; height:30px; width:300px; padding:15px; z-index:99999;">
+					<h1>Vào Trang chủ</h1>
+				</div>
+			</a>
+			<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+			<div id="jp_container_1" class="jp-audio">
+				<div class="jp-type-single">
+					<div class="jp-gui jp-interface">
+						<ul class="jp-controls">
+							<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+						</ul>	
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+						<ul class="jp-toggles">
+							<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>						
+						</ul>
+					</div>				
+				</div>
+			</div>
+		</div>
+		<!--
+		<img class="cloud1" border="0" src="/data/images/cloud1.png" />
+		<img class="cloud2" border="0" src="/data/images/cloud2.png" height="80" />
+		<img class="cloud3" border="0" src="/data/images/cloud3.png" />
+		<img class="cloud4" border="0" src="/data/images/cloud4.png" />
+		<img class="bird" border="0" src="/data/images/bird.gif" />
+		-->
+	</div>	
+</body>
+</html>

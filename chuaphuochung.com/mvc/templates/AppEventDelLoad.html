@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" /> 
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-timepicker-addon.css" />
+		<span metal:use-macro="macros.xhtml/IncludeJS" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {
+				$('#Date').datetimepicker(
+					{ dateFormat: 'yy-mm-dd' }
+				);
+			});
+			/*]]>*/
+		</script>				
+	</head>	
+	<body>
+		<div id="wrapper">
+
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
+
+			<div id="main">				
+				
+
+						<div class="manager-main-content">
+							<form class="form-editor" id="FormAppEventDelLoad" tal:attributes="action Event/getURLDelExe" method="post">
+								<table border="0" cellpadding="0" cellspacing="10">
+									<tbody>										
+										<tr>
+											<td colspan="2" align="center">
+												<a tal:attributes="href '/app/event'">Quản trị > Sự kiện > Xóa</a>
+											</td>
+										</tr>
+										<tr>
+											<td colspan="2" align="right">
+												<p>Bạn muốn xóa <B tal:content="Event/getTitle"/> ? </p>
+											</td>
+										</tr>																				
+										<tr>
+											<td colspan="2" align="center">
+												<button class="form-editor-button" type="submit" name="submit" value="submit-value">Xóa</button>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</form>
+						</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

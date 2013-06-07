@@ -1,0 +1,663 @@
+<html lang="en" xml:lang="en">
+<body>
+	<!-- ĐỊNH NGHĨA THƯ VIỆN CSS JAVASCRIPT -->
+	<span metal:define-macro="IncludeCSS">
+		<title tal:content="string:Vĩnh Khánh" />
+		<BASE href="http://chuavinhkhanh.123app.net" />
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=9" />
+		<meta http-equiv="Pragma" content="no-cache" />
+		<meta http-equiv="Expires" content="-1" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta name="keywords" content="Chùa Vĩnh Khánh" />
+		<meta name="description" content="Website Chùa Vĩnh Khánh giới thiệu về một ngôi chùa ở Trà Ôn Vĩnh Long" />
+		<meta name="page-topic" content="Chùa Vĩnh Khánh" />
+		<meta name="Abstract" content="Website Chùa Vĩnh Khánh giới thiệu về một ngôi chùa ở Trà Ôn Vĩnh Long" />
+		<meta name="classification" content="Chùa Vĩnh Khánh, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình" />
+		<link rel="icon" type="image/ico" href="/data/images/app/favicon2.ico" />
+		
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/layout.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/signin.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/admin.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery.countdown.css" />
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css" />
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css" />
+				
+	</span>
+	<span metal:define-macro="IncludeJS">
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.countdown.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>
+				
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Home.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SigninLoad.js"/>		
+	</span>
+	
+	<!-- HEADER -->
+	<div metal:define-macro="Header" id="header">		
+		<div id="banner">			
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Vĩnh Khánh" height="300" width="1000">
+				<param name="movie" value="/data/images/banner.swf" />
+				<param name="quality" value="high" />
+				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
+			</object>
+		</div>
+
+		<div id="menu-top">
+			<ul class="top-nav">
+				<li tal:attributes="class php:ActiveItem=='Home'?'current':'?'"><a href="/home">Trang chủ</a></li>
+				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'current':'?'">
+					<a style="cursor:pointer;">Tin tức</a>
+					<ul class="sub-menu">
+						<li tal:repeat="Category CategoryNewsAll">
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
+						</li>
+					</ul>
+				</li>
+				<li tal:attributes="class php:ActiveItem=='Event'?'current':'?'" ><a href="/event">Sự kiện</a></li>
+				<li tal:attributes="class php:ActiveItem=='Course'?'current':'?'" ><a href="/course">Đào tạo</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo'?'current':'?'" >
+					<a style="cursor:pointer;">PHẬT ÂM</a>
+					<ul class="sub-menu">						
+						<li tal:repeat="Category CategoryBTypeAll">
+							<a tal:attributes="href Category/getURLView" tal:content="Category/getName" />
+						</li>
+					</ul>
+				</li>
+				<li tal:attributes="class php:ActiveItem=='Ask'?'current':'?'">
+					<a style="cursor:pointer;">Hỏi đáp</a>
+					<ul class="sub-menu">
+						<li>
+							<a tal:attributes="href '/ask/7/ins/load'">Đặt câu hỏi</a>
+						</li>
+						<li tal:repeat="Category CategoryAskAll">
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
+						</li>
+					</ul>
+				</li>
+				<li tal:attributes="class php:ActiveItem=='Library'?'current':'?'">
+					<a style="cursor:pointer;">Thư viện</a>
+					<ul class="sub-menu">
+						<li><a href="/library/album">Ảnh hoạt động</a></li>
+						<li><a href="/library/dhammapada">Kinh pháp cú</a></li>
+					</ul>
+				</li>				
+				<li tal:attributes="class php:ActiveItem=='Sponsor'?'current':'?'">					
+					<a style="cursor:pointer;">Sổ vàng</a>
+					<ul class="sub-menu">
+						<li tal:repeat="Sponsor SponsorAll">
+							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
+						</li>
+					</ul>
+				</li>
+				<li tal:attributes="class php:ActiveItem=='Linked'?'current':'?'">
+					<a href="/linked">Trang bạn</a>
+				</li>
+				<li id="last" tal:attributes="class php:ActiveItem=='Contact'?'current':'?'">
+					<a href="/contact">Liên hệ</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	
+	<!-- HEADER.ADMIN -->
+	<div metal:define-macro="HeaderAdmin" id="header">
+		<div id="banner">			
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Vĩnh Khánh" height="300" width="1000">
+				<param name="movie" value="/data/images/banner.swf" />
+				<param name="quality" value="high" />
+				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
+			</object>
+		</div>
+		<div id="menu-top">
+			<ul class="top-nav"><li><a href="/home">Trang chủ</a></li></ul>
+		</div>
+	</div>
+	
+	<!-- Clock BOX -->
+	<div metal:define-macro="ClockBox" class="ads-box">
+		<span style="background-color:#107DBF;display:block;width:50%;float:left;border-radius:10px;-moz-border-radius:10px;-o-border-radius:10px;-webkit-border-radius:10px;-ms-border-radius:10px;">
+		<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000"
+			codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=8,0,0,0"
+			width="100"
+			height="100"
+			align="middle">
+				<param name="allowScriptAccess" value="always"/>
+				<param name="movie" value="/data/images/clock.swf"/>
+				<param name="FlashVars" value=""/>
+				<param name="wmode" value="transparent"/>
+				<param name="menu" value="false"/>
+				<param name="quality" value="high"/>
+				<param name="bgcolor" value="transparent"/>
+				<embed src="/data/images/clock.swf" 
+					flashvars=""
+					wmode="transparent"
+					menu="false"
+					quality="high"
+					bgcolor="black"
+					width="100"
+					height="100"
+					align="middle"
+					allowscriptaccess="always"
+					type="application/x-shockwave-flash"
+					pluginspage="http://www.macromedia.com/go/getflashplayer"
+				/>
+		</object>
+		</span>
+		<span style="display:block;width:50%;float:right;color:#107DBF;">
+			<script type="text/javascript">				
+				getLunarDateString(09,11,2012,16,39,13);									
+			</script>
+		</span>
+		<div class="clear"/>
+	</div>
+	
+	<!-- EVENT BOX -->
+	<div metal:define-macro="EventBox" id="emty" class="sidebar-box" tal:condition="Event">
+		<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
+			<img src="/data/images/event.png" width="30" />
+			<span>Sự kiện</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding-top:10px;">
+				<a tal:attributes="href Event/getURLRead">
+					<img tal:attributes="src Event/getImage" width="90%" />					
+				</a>
+			</div>
+			<div align="center" style="padding:10px;">
+				<a tal:attributes="href Event/getURLRead" style="font-size:12px; color:#107DBF; line-height:30px;">
+					<h1 tal:content="Event/getTitle" />
+				</a>
+			</div>
+			<div style="margin-left:10px;">
+				<div id="defaultCountdown"></div>
+			</div>
+			<script type="text/javascript">
+				/*<![CDATA[*/
+				$(function() {
+					var d1 = $("#Event").attr('alt');
+					var parts = d1.match(/(\d+)/g);
+					// new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+					var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+					var austDay = new Date();
+					austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+					$('#defaultCountdown').countdown({until: d2});
+				});
+				/*]]>*/
+			</script>
+			<div class="clear"/>
+		</div>
+	</div>
+	
+	<!-- COURSE BOX -->
+	<div metal:define-macro="CourseBox" id="emty" class="sidebar-box" tal:condition="Course">				
+		<div id="Course" class="box-title" tal:attributes="alt CLsNext/current/getDateStart" tal:condition="CLsNext/current">
+			<img src="/data/images/event.png" width="30" />
+			<span>Sắp giảng dạy</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;" tal:condition="CLsNext/current">												
+				<a tal:attributes="href CLsNext/current/getURLRead" style="color:#107DBF;">
+					<span tal:content="CLsNext/current/getName"/>
+				</a>
+			</div>
+			<div style="margin-left:10px;">
+				<div id="defaultCountdown2" />
+			</div>
+			<script type="text/javascript">
+				/*<![CDATA[*/
+				$(function() {
+					var d1 = $("#Course").attr('alt');
+					var parts = d1.match(/(\d+)/g);
+					// new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+					var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+					var austDay = new Date();
+					austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+					$('#defaultCountdown2').countdown({until: d2});
+				});
+				/*]]>*/
+			</script>
+			<div class="clear"/>
+		</div>
+	</div>
+	
+		<!-- EVENT BOX MINI -->
+		<div metal:define-macro="EventBoxMini" id="emty" class="sidebar-box-mini">
+			<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
+				<img src="/data/images/event.png" width="30" />
+				<span>Sự kiện</span>
+			</div>
+			<div class="sidebar-box-content">
+				<div align="center">
+					<img src="/data/images/bg_event.gif" width="50px" />
+				</div>
+				<div align="center" style="height:30px; padding-top:10px; margin-bottom:10px;">
+					<a tal:attributes="href Event/getURLRead" style="font-size:15px; color:#107DBF">
+						<span tal:content="Event/getTitle" />
+					</a>
+				</div>
+				<div style="margin-left:-3px;">
+					<div id="defaultCountdown"></div>
+				</div>
+				<script type="text/javascript">
+					/*<![CDATA[*/
+					$(function() {
+						var d1 = $("#Event").attr('alt');
+						var parts = d1.match(/(\d+)/g);
+						// new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+						var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
+						var austDay = new Date();
+						austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
+						$('#defaultCountdown').countdown({until: d2});
+						$('#defaultCountdown1').countdown({until: d2});
+					});
+					/*]]>*/
+				</script>
+				<div class="clear"/>
+			</div>
+		</div>
+
+	<!-- PHATAM BOX Ở CỘT 2 -->
+	<div metal:define-macro="VideoBox" id="phatam" class="sidebar-box">
+		<div class="box-title">
+			<img src="/data/images/phatam.png" height="30" />
+			<span>PHẬT ÂM</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;">
+				<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+					<td width="50%" align="center">
+						<a href="/library/video" style="color:#107DBF;">
+							<img src="/data/images/phatam_logo.gif" width="128px" style="border:5px solid #107DBF;" />
+						</a>
+					</td>
+					<td width="50%" align="center">
+						<a href="/library/video" style="color:#107DBF; line-height:25px;">
+							<h2>Giới thiệu trang chia sẻ PHẬT ÂM lớn & phổ biến nhất</h2>
+						</a>
+					</td>
+				</tr></table>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+	<div metal:define-macro="VideoBoxMini" id="phatam" class="sidebar-box-mini">
+		<div class="box-title">
+			<img src="/data/images/phatam.png" height="30" />
+			<span>PHẬT ÂM</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;">
+				<a href="/library/video" style="color:#107DBF;">
+					<img src="/data/images/phatam_logo.gif" width="150px" />
+					<div>Trang chia sẻ PHẬT ÂM lớn & phổ biến nhất</div>
+				</a>
+			</div>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- QUESTION BOX Ở CỘT 2 -->
+	<div metal:define-macro="AskBox" id="question" class="sidebar-box">
+		<div class="box-title">
+			<img src="/data/images/question.png" height="30" />
+			<span>Hỏi đáp PHẬT HỌC</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;">
+				<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+					<td width="50%" align="center">
+						<a href="/ask/7">
+							<img src="/data/images/question_logo.jpg" width="120px" />
+						</a>
+					</td>
+					<td width="50%" align="center">
+						<a href="/ask/7" style="color:#107DBF;">
+							<h1>PHẬT HỌC</h1>
+						</a>
+					</td>
+				</tr></table>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+	<div metal:define-macro="AskBoxMini" id="question" class="sidebar-box-mini">
+		<div class="box-title">
+			<img src="/data/images/question.png" height="30" />
+			<span>Hỏi đáp PHẬT HỌC</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;">
+				<a href="/ask" style="color:#107DBF;">
+					<img src="/data/images/question_big.png" />
+					<div>Hỏi đáp PHẬT HỌC</div>
+				</a>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+	<!-- CALENDAR BOX Ở CỘT 2 -->
+	<div metal:define-macro="CallendarBox" id="calendar" class="sidebar-box">
+		<div class="box-title">
+			<img width="30" src="/data/images/calendar.png" />
+			<span>Lịch Dương <small>Âm</small></span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center">
+				<script type="text/javascript">				
+					function viewSelectedMonth() {
+						setOutputSize("small");
+						var s = printSelectedMonth();
+						document.open();
+						document.writeln(s);
+						document.close();
+					}
+					viewSelectedMonth();				
+				</script>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+	<div metal:define-macro="CallendarBoxMini" id="calendar" class="sidebar-box-mini">
+		<div class="box-title">
+			<img width="30" src="/data/images/calendar.png" />
+			<span>Lịch Âm Dương</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center">
+				<script type="text/javascript">				
+					function viewSelectedMonth() {
+						setOutputSize("");
+						var s = printSelectedMonth();
+						document.open();
+						document.writeln(s);
+						document.close();
+					}
+					viewSelectedMonth();				
+				</script>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+	<!-- DATE TIME BOX -->
+	<div metal:define-macro="DateTimeBox" id="date-time">
+		<script type="text/javascript">				
+			getLunarDateString(09,11,2012,16,39,13);									
+		</script>
+	</div>
+	
+	<!-- SPONSOR BOX -->
+	<div metal:define-macro="SponsorBox" id="emty2" class="sidebar-box">
+		<div class="box-title">
+			<img src="/data/images/sponsor.png" width="30" />
+			<span>Trợ duyên</span>
+		</div>
+		<div class="sidebar-box-content">
+			<div align="center" style="padding:10px;">
+				<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
+					<td width="50%" align="center">
+						<a href="/sponsor" style="color: #980707;">
+							<img src="/data/images/sponsor_logo.gif" width="150px" />
+						</a>
+					</td>
+					<td width="50%" align="center">
+						<a href="/sponsor" style="color:#107DBF; line-height:40px;">
+							<h1>Ủng Hộ Website</h1>
+						</a>
+					</td>
+				</tr></table>
+			</div>
+		</div>
+		<div class="clear"/>
+	</div>
+	
+		<!-- SPONSOR BOX MINI -->
+		<div metal:define-macro="SponsorBoxMini" id="count" class="sidebar-box-mini">
+			<div class="box-title">
+				<img src="/data/images/sponsor.png" width="30" />
+				<span>Trợ duyên</span>
+			</div>
+			<div class="sidebar-box-content">
+				<div align="center" style="padding:10px;">
+					<a href="/sponsor" style="color: #980707;">
+						<img src="/data/images/sponsor_logo.gif" width="100px" />
+						<div>Ủng Hộ Website</div>
+					</a>
+				</div>
+			</div>
+			<div class="clear" />
+		</div>
+	
+	<!-- DHAMMAPADA BOX Ở CỘT 2 -->
+	<div metal:define-macro="DhammapadaBox" id="count" class="sidebar-box">
+		<div class="box-title">
+			<img src="/data/images/history.png" width="30" />
+			<span>Kinh Pháp Cú <big>&#187;</big> <small tal:content="php: DhammapadaToday->getTypeName()" style="font-size:13px;" /></span>
+		</div>
+		<div class="sidebar-box-content" style="position:relative; height:350px;">
+			<img src="/data/images/bg_dhammapada.jpg" border="0" width="100%" height="100%" />
+			<div id="DhammapadaTodayVi" class="custom-font">
+				<p tal:content="DhammapadaToday/getContentVi"/>
+				<p tal:content="php:'Câu '.DhammapadaToday->getId()"/>
+			</div>
+			<div id="DhammapadaTodayEn" class="custom-font">
+				<p tal:content="DhammapadaToday/getContentEn"/>
+				<p tal:content="php:'Sentence '.DhammapadaToday->getId()"/>
+			</div>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- FOOTER Ở DƯỚI TRANG -->
+	<div metal:define-macro="Footer" id="footer">
+		<div id="bottom-menu">
+			<ul class="top-nav">
+				<li><a href="/home">Trang chủ</a></li>
+				<li><a href="/news">Tin tức</a></li>
+				<li><a href="/event">Sự kiện</a></li>
+				<li><a href="/course">Đào tạo</a></li>
+				<li><a href="/library/video/1">PHẬT ÂM</a></li>
+				<li><a href="/ask/2/ins/load">Hỏi đáp</a></li>												
+				<li><a href="/app/sponsor">Sổ Vàng Ủng Hộ</a></li>
+				<li><a href="/linked">Trang bạn</a></li>
+				<li><a href="/contact">Liên hệ</a></li>
+				<li id="last"><a href="/signin/load">Quản trị</a></li>
+			</ul>
+		</div>
+		<div id="copy-right">
+			<div>© 01/2013 Chùa Vĩnh Khánh</div>			
+			<div>Phát triển - <a target="_blank" href="http://w3.123app.net">SPN Co, Ltd & Nguyên Phong ICT</a></div>
+			<div>Ghi rõ nguồn <b><i>chuavinhkhanh.com</i>-<i>chuaquanamtraon.com</i></b> khi phát hành thông tin từ website này</div>
+		</div>
+		<div id="add-contact">
+			<div><b>Chùa Vĩnh Khánh</b> ấp Tân Thành, xã Lục Sĩ Thành, huyện Trà Ôn, tỉnh Vĩnh Long, Việt Nam</div>			
+			<div><b>Chùa Quan Âm</b> ấp Tích Lộc, xã Tích Thiện, huyện Trà Ôn, tỉnh Vĩnh Long, Việt Nam</div>			
+			<div><b>Email:</b> thichtanhbinh@gmail.com</div>
+			<div><b>Website:</b> <a href="chuavinhkhanh.com">http://chuavinhkhanh.com</a><a href="chuaquanamtraon.com">http://chuaquanamtraon.com</a></div>
+
+		</div>
+	</div>
+	
+	<!-- BOX ADMIN TITLE -->
+	<div metal:define-macro="BoxAdminTitle" class="box-title">		
+		<img src="/data/images/user.png" width="30" />
+		<span>Admin</span>
+		<a href="/signout/load">&#8629; Thoát</a>
+	</div>
+	
+	<!-- ADMIN MENU -->
+	<div metal:define-macro="AdminMenu" class="manager-menu">
+		<ul>
+			<a tal:attributes="href '/app/course'">
+				<li tal:attributes="class php:ActiveAdmin=='Course'?'menu-select':'?'">
+					<div class="left">ĐÀO TẠO</div>
+					<div class="right" tal:content="CourseAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/task'">
+				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
+					<div class="left">CÔNG VIỆC</div>
+					<div class="right" tal:content="TaskAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/news'">
+				<li tal:attributes="class php:ActiveAdmin=='News'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC TIN TỨC</div>
+					<div class="right" tal:content="CategoryNewsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/video'">
+				<li tal:attributes="class php:ActiveAdmin=='Video'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC VIDEO</div>
+					<div class="right" tal:content="CategoryVideoAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/ask'">
+				<li tal:attributes="class php:ActiveAdmin=='Ask'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC HỎI ĐÁP</div>
+					<div class="right" tal:content="CategoryAskAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/monk'">
+				<li tal:attributes="class php:ActiveAdmin=='Monk'?'menu-select':'?'">
+					<div class="left">DANH SÁCH GIẢNG SƯ</div>
+					<div class="right" tal:content="MonkAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/event'">
+				<li tal:attributes="class php:ActiveAdmin=='Event'?'menu-select':'?'">
+					<div class="left">DANH SÁCH SỰ KIỆN</div>
+					<div class="right" tal:content="EventAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/pagoda'">
+				<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'menu-select':'?'">
+					<div class="left">CHUYÊN ĐỀ</div>
+					<div class="right" tal:content="PagodaAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/album'">
+				<li tal:attributes="class php:ActiveAdmin=='Album'?'menu-select':'?'">
+					<div class="left">DANH SÁCH ALBUM</div>
+					<div class="right" tal:content="AlbumAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/linked'">
+				<li tal:attributes="class php:ActiveAdmin=='Linked'?'menu-select':'?'">
+					<div class="left">TRANG BẠN</div>
+					<div class="right" tal:content="LinkedAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/sponsor'">
+				<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'menu-select':'?'">
+					<div class="left">SỔ VÀNG ỦNG HỘ</div>
+					<div class="right" tal:content="SponsorAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/news'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'menu-select':'?'">
+					<div class="left">TIN NỔI BẬT</div>
+					<div class="right" tal:content="PanelNewsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/category/video'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'menu-select':'?'">
+					<div class="left">VIDEO NỔI BẬT</div>
+					<div class="right" tal:content="PanelCategoryVideoAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/ads'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'menu-select':'?'">
+					<div class="left">QUẢNG CÁO</div>
+					<div class="right" tal:content="PanelAdsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/config'">
+				<li tal:attributes="class php:ActiveAdmin=='Statistic'?'menu-select':'?'">
+					CẤU HÌNH
+				</li>
+			</a>
+		</ul>
+	</div>
+	
+	<!-- TEXT GO -->
+	<div metal:define-macro="TextGo" id="text-go">
+		<marquee>Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh điều trọn thành Phật Đạo.</marquee>
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- TOP NEWS BOX 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="BoxRight" class="sidebar-box" >
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Những Tin Tức Mới Cập Nhật</span>
+		</div>
+		<div class="box-right" tal:repeat="TopNews PanelNewsAll">
+			<a tal:attributes="href TopNews/getNews/getURLRead | string:#; title TopNews/getNews/getTitle | string:Chưa có tiêu đề">
+				<img width="100%" height="124" tal:attributes="src TopNews/getNews/getImage | string:/data/images/exit_picture.jpg" />
+				<div tal:content="TopNews/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
+			</a>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- TOP VIDEO BOX 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="TopVideoBox" class="sidebar-box" >
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Những Video Mới Cập Nhật</span>
+		</div>
+		<div class="box-right" tal:repeat="Category PanelCategoryVideoAll">
+			<a tal:attributes="href Category/getCategoryVideo/getURLRead | string:#; title Category/getCategoryVideo/getName | string:Chưa có tiêu đề">
+				<img width="100%" height="124" tal:attributes="src Category/getCategoryVideo/getPicture | string:/data/images/exit_picture.jpg" />
+				<div tal:content="Category/getCategoryVideo/getName | string:Chưa có tiêu đề" class="box-right-title" />
+			</a>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- FIXED LEFT 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="FixedLeft" class="fix-left">
+		<div class="text-frame">
+			<span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()" />
+		</div>
+		<a href="/contact">
+			<img src="/data/images/user_count.gif" border="0" height="50" />
+		</a>
+		<div style="font-size:13px;">
+			<B tal:content="php:@\MVC\Library\Statistic::getCountPrint()" />
+		</div>
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- ADS BOX 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="BoxAds" class="sidebar-box">
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Quảng cáo</span>
+		</div>
+		<div class="box-right" tal:repeat="Ads PanelAdsAll">
+			<a tal:attributes="href Ads/getNews/getURLRead | string:#; title Ads/getNews/getTitle | string:Chưa có tiêu đề">
+				<img width="100%" height="124" tal:attributes="src Ads/getNews/getImage | string:/data/images/exit_picture.jpg" />
+				<div tal:content="Ads/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
+			</a>
+		</div>
+		<div class="clear" />
+	</div>
+	
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+			
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">																									
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.gif" width="28"  />
+							<span>Tiêu điểm</span>							
+						</div>
+						<div align="center" style="padding:10px;">
+							<div class="picture-banner parent">
+								<a tal:attributes="href Course/getURLRead">
+									<img width="100%" tal:attributes="src Course/getImage" />
+									<div class="child" tal:content="Course/getName"/>
+								</a>
+							</div>	
+							<ul class="list-video">							
+								<li tal:repeat="VL VL8">
+									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
+										<img tal:attributes="src VL/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="name" tal:content="VL/getVideo/getName" />
+									</a>
+								</li>
+							</ul>
+							<div class="clear" />
+						</div>
+						
+					</div>
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.gif" width="28"  />
+							<span>Hoạt động</span>							
+						</div>
+						<div align="center" style="padding:10px;">
+																				
+							<ul class="list-video">							
+								<li tal:repeat="VL VMPhuocHung">
+									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
+										<img tal:attributes="src VL/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="name" tal:content="VL/getVideo/getName" />
+									</a>
+								</li>
+							</ul>							
+							<div class="clear" />
+						</div>
+						
+					</div>
+					<div class="news-box" tal:repeat="Category Categories">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="28"  />
+							<span tal:content="Category/getName" />
+						</div>
+						<div class="slider">
+							<div class="slider-wrap">
+								<ul>
+									<li tal:repeat="News Category/getNewsLimit">
+										<img tal:attributes="src News/getImage | string:/data/images/news.jpg" width="385" height="300" />
+										<a tal:attributes="href News/getURLRead">
+											<div tal:content="News/getTitle" />
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="top-list">
+							<div class="list-title">TIN MỚI CẬP NHẬT</div>
+							<ul>
+								<a tal:repeat="News Category/getNewsLimit" tal:attributes="href News/getURLRead">
+									<li tal:content="News/getTitle" />
+								</a>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="28" />
+							<span>Bài giảng mới nhất</span>
+						</div>
+						<div align="center" style="padding:10px;">
+							<ul class="list-video">
+								<li tal:repeat="VM VM24">
+									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
+										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="monk" tal:content="VM/getMonk/getName" />
+										<div class="name" tal:content="VM/getVideo/getName" />
+									</a>
+								</li>								
+							</ul>
+							<div class="clear" />
+						</div>
+					</div>	
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="28" />
+							<span>Chuyên đề mới nhất</span>
+						</div>
+						<div align="center" style="padding:10px;">
+							<ul class="list-video">
+								<li tal:repeat="VL VL24">
+									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
+										<img tal:attributes="src VL/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="monk" tal:content="VL/getCategory/getName" />
+										<div class="name" tal:content="VL/getVideo/getName" />
+									</a>
+								</li>
+							</ul>
+							<div class="clear" />
+						</div>
+					</div>
+				</div>				
+				<div id="sidebar">					
+					<div metal:use-macro="macros.xhtml/ClockBox"/>					
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
+				</div>				
+				<div class="clear"></div>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

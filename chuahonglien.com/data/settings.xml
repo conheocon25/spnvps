@@ -1,0 +1,480 @@
+<options>    
+	<control>
+		<!-- ============================================================================== -->
+		<!-- Các lệnh xử lí SYSTEM 															-->
+		<!-- ============================================================================== -->		
+		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Gate</forward></status></command>
+		<command name="Gate" type="public"><view>Gate</view></command>
+		<command name="Home" type="public"><view>Home</view></command>
+		<command name="Introduction" type="public"><view>Introduction</view></command>
+		<command name="Contact" type="public"><view>Contact</view></command>		
+		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
+		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
+		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
+		<command name="Sponsor" type="public"><view>Sponsor</view></command>
+		<command name="Event" type="public"><view>Event</view></command>
+		<command name="Pagoda" type="public"><view>Pagoda</view></command>
+		<command name="Ads" type="public"><view>Ads</view></command>
+		<command name="Linked" type="public"><view>Linked</view></command>
+		<command name="Task" type="public"><view>Task</view></command>
+		<command name="LiveTV" type="public"><view>LiveTV</view></command>
+		<command name="RefreshCaptcha" type="public">
+			<view>RefreshCaptcha</view>
+		</command>
+		
+		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
+		<command name="SigninExe" type="public">
+			<view>SigninExe</view>
+			<status value="CMD_OK"><forward>App</forward></status>
+			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
+		</command>
+		<command name="ChangePass"><view>ChangePass</view></command>
+		<command name="ChangePassExe">
+			<view>ChangePassExe</view>
+			<status value="CMD_OK"><forward>SigninLoad</forward></status>
+			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
+		</command>
+		<command name="SignoutLoad"><view>SignoutLoad</view></command>
+		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
+		<command name="Online" type="public"><view>Online</view></command>
+		<command name="OnlineExe" type="public">
+			<view>OnlineExe</view>
+			<status value="CMD_OK"><forward>Online</forward></status>
+			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
+		</command>
+		<command name="Ask" type="public"><view>Ask</view></command>
+		<command name="AskInsLoad" type="public"><view>AskInsLoad</view></command>
+		<command name="AskInsExe" type="public">
+			<view>AskInsExe</view>
+			<status value="CMD_OK"><forward>Ask</forward></status>
+			<status value="CMD_ERROR"><forward>AskInsLoad</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- COURSE			 																-->
+		<!-- ============================================================================== -->
+		<command name="Course" type="public"><view>Course</view></command>
+		<command name="CourseClass" type="public"><view>CourseClass</view></command>
+		<command name="CourseClassLession" type="public"><view>CourseClassLession</view></command>
+		
+		<!-- ============================================================================== -->
+		<!-- GLOBAL			 																-->
+		<!-- ============================================================================== -->
+		<command name="Library" type="public"><view>Library</view></command>
+		
+		<command name="LibraryDhammapada" type="public"><view>LibraryDhammapada</view></command>
+		<command name="LibraryDhammapadaDetail" type="public"><view>LibraryDhammapadaDetail</view></command>
+		
+		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>
+		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
+		<command name="LibraryVideoCategory" type="public"><view>LibraryVideoCategory</view></command>
+		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
+		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
+		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
+		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
+		<command name="LibraryVideoPagoda" type="public"><view>LibraryVideoPagoda</view></command>
+				
+		<command name="App"><view>App</view></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.LIBRARY.ALBUM																-->
+		<!-- ============================================================================== -->
+		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>
+		<command name="AppLibraryAlbumInsLoad"><view>AppLibraryAlbumInsLoad</view></command>
+		<command name="AppLibraryAlbumInsExe">
+			<view>AppLibraryAlbumInsExe</view>
+			<status value="CMD_OK"><forward>AppLibraryAlbum</forward></status>
+		</command>
+		
+		<command name="AppLibraryAlbumUpdLoad"><view>AppLibraryAlbumUpdLoad</view></command>
+		<command name="AppLibraryAlbumUpdExe">
+			<view>AppLibraryAlbumUpdExe</view>
+			<status value="CMD_OK"><forward>AppLibraryAlbum</forward></status>
+		</command>
+		
+		<command name="AppLibraryAlbumDelLoad"><view>AppLibraryAlbumDelLoad</view></command>
+		<command name="AppLibraryAlbumDelExe">
+			<view>AppLibraryAlbumDelExe</view>
+			<status value="CMD_OK"><forward>AppLibraryAlbum</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.LINKED																		-->
+		<!-- ============================================================================== -->
+		<command name="AppLinked"><view>AppLinked</view></command>
+		<command name="AppLinkedInsLoad"><view>AppLinkedInsLoad</view></command>
+		<command name="AppLinkedInsExe">
+			<view>AppLinkedInsExe</view>
+			<status value="CMD_OK"><forward>AppLinked</forward></status>
+		</command>
+		
+		<command name="AppLinkedUpdLoad"><view>AppLinkedUpdLoad</view></command>
+		<command name="AppLinkedUpdExe">
+			<view>AppLinkedUpdExe</view>
+			<status value="CMD_OK"><forward>AppLinked</forward></status>
+		</command>
+		
+		<command name="AppLinkedDelLoad"><view>AppLinkedDelLoad</view></command>
+		<command name="AppLinkedDelExe">
+			<view>AppLinkedDelExe</view>
+			<status value="CMD_OK"><forward>AppLinked</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.COURSE																		-->
+		<!-- ============================================================================== -->
+		<command name="AppCourse"><view>AppCourse</view></command>
+		<command name="AppCourseInsLoad"><view>AppCourseInsLoad</view></command>
+		<command name="AppCourseInsExe">
+			<view>AppCourseInsExe</view>
+			<status value="CMD_OK"><forward>AppCourse</forward></status>
+		</command>
+		
+		<command name="AppCourseUpdLoad"><view>AppCourseUpdLoad</view></command>
+		<command name="AppCourseUpdExe">
+			<view>AppCourseUpdExe</view>
+			<status value="CMD_OK"><forward>AppCourse</forward></status>
+		</command>
+		
+		<command name="AppCourseDelLoad"><view>AppCourseDelLoad</view></command>
+		<command name="AppCourseDelExe">
+			<view>AppCourseDelExe</view>
+			<status value="CMD_OK"><forward>AppCourse</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.COURSE.CLASS																-->
+		<!-- ============================================================================== -->
+		<command name="AppCourseClass"><view>AppCourseClass</view></command>
+		<command name="AppCourseClassInsLoad"><view>AppCourseClassInsLoad</view></command>
+		<command name="AppCourseClassInsExe">
+			<view>AppCourseClassInsExe</view>
+			<status value="CMD_OK"><forward>AppCourseClass</forward></status>
+		</command>
+		
+		<command name="AppCourseClassUpdLoad"><view>AppCourseClassUpdLoad</view></command>
+		<command name="AppCourseClassUpdExe">
+			<view>AppCourseClassUpdExe</view>
+			<status value="CMD_OK"><forward>AppCourseClass</forward></status>
+		</command>
+		
+		<command name="AppCourseClassDelLoad"><view>AppCourseClassDelLoad</view></command>
+		<command name="AppCourseClassDelExe">
+			<view>AppCourseClassDelExe</view>
+			<status value="CMD_OK"><forward>AppCourseClass</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CLASS.LESSION																-->
+		<!-- ============================================================================== -->
+		<command name="AppClassLession"><view>AppClassLession</view></command>
+		<command name="AppClassLessionInsLoad"><view>AppClassLessionInsLoad</view></command>
+		<command name="AppClassLessionInsExe">
+			<view>AppClassLessionInsExe</view>
+			<status value="CMD_OK"><forward>AppClassLession</forward></status>
+		</command>
+		
+		<command name="AppClassLessionUpdLoad"><view>AppClassLessionUpdLoad</view></command>
+		<command name="AppClassLessionUpdExe">
+			<view>AppClassLessionUpdExe</view>
+			<status value="CMD_OK"><forward>AppClassLession</forward></status>
+		</command>
+		
+		<command name="AppClassLessionDelLoad"><view>AppClassLessionDelLoad</view></command>
+		<command name="AppClassLessionDelExe">
+			<view>AppClassLessionDelExe</view>
+			<status value="CMD_OK"><forward>AppClassLession</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.EVENT																		-->
+		<!-- ============================================================================== -->
+		<command name="AppEvent"><view>AppEvent</view></command>
+		<command name="AppEventInsLoad"><view>AppEventInsLoad</view></command>
+		<command name="AppEventInsExe">
+			<view>AppEventInsExe</view>
+			<status value="CMD_OK"><forward>AppEvent</forward></status>
+		</command>
+		
+		<command name="AppEventUpdLoad"><view>AppEventUpdLoad</view></command>
+		<command name="AppEventUpdExe">
+			<view>AppEventUpdExe</view>
+			<status value="CMD_OK"><forward>AppEvent</forward></status>
+		</command>
+		
+		<command name="AppEventDelLoad"><view>AppEventDelLoad</view></command>
+		<command name="AppEventDelExe">
+			<view>AppEventDelExe</view>
+			<status value="CMD_OK"><forward>AppEvent</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.PAGODA																		-->
+		<!-- ============================================================================== -->
+		<command name="AppPagoda"><view>AppPagoda</view></command>
+		<command name="AppPagodaInsLoad"><view>AppPagodaInsLoad</view></command>
+		<command name="AppPagodaInsExe">
+			<view>AppPagodaInsExe</view>
+			<status value="CMD_OK"><forward>AppPagoda</forward></status>
+		</command>
+		
+		<command name="AppPagodaUpdLoad"><view>AppPagodaUpdLoad</view></command>
+		<command name="AppPagodaUpdExe">
+			<view>AppPagodaUpdExe</view>
+			<status value="CMD_OK"><forward>AppPagoda</forward></status>
+		</command>
+		
+		<command name="AppPagodaDelLoad"><view>AppPagodaDelLoad</view></command>
+		<command name="AppPagodaDelExe">
+			<view>AppPagodaDelExe</view>
+			<status value="CMD_OK"><forward>AppPagoda</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.PAGODA.VIDEO																-->
+		<!-- ============================================================================== -->
+		<command name="AppPagodaVideo"><view>AppPagodaVideo</view></command>
+		
+		<command name="AppPagodaVideoInsLoad"><view>AppPagodaVideoInsLoad</view></command>
+		<command name="AppPagodaVideoInsExe">
+			<view>AppPagodaVideoInsExe</view>
+			<status value="CMD_OK"><forward>AppPagodaVideo</forward></status>
+		</command>
+		
+		<command name="AppPagodaVideoUpdLoad"><view>AppPagodaVideoUpdLoad</view></command>
+		<command name="AppPagodaVideoUpdExe">
+			<view>AppPagodaVideoUpdExe</view>
+			<status value="CMD_OK"><forward>AppPagodaVideo</forward></status>
+		</command>
+		
+		<command name="AppPagodaVideoDelLoad"><view>AppPagodaVideoDelLoad</view></command>
+		<command name="AppPagodaVideoDelExe">
+			<view>AppPagodaVideoDelExe</view>
+			<status value="CMD_OK"><forward>AppPagodaVideo</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.MONK																		-->
+		<!-- ============================================================================== -->
+		<command name="AppMonk"><view>AppMonk</view></command>
+		<command name="AppMonkInsLoad"><view>AppMonkInsLoad</view></command>
+		<command name="AppMonkInsExe">
+			<view>AppMonkInsExe</view>
+			<status value="CMD_OK"><forward>AppMonk</forward></status>
+		</command>
+		
+		<command name="AppMonkUpdLoad"><view>AppMonkUpdLoad</view></command>
+		<command name="AppMonkUpdExe">
+			<view>AppMonkUpdExe</view>
+			<status value="CMD_OK"><forward>AppMonk</forward></status>
+		</command>
+		
+		<command name="AppMonkDelLoad"><view>AppMonkDelLoad</view></command>
+		<command name="AppMonkDelExe">
+			<view>AppMonkDelExe</view>
+			<status value="CMD_OK"><forward>AppMonk</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.MONK.VIDEO																	-->
+		<!-- ============================================================================== -->
+		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>
+						
+		<command name="AppMonkVideoInsLoad"><view>AppMonkVideoInsLoad</view></command>
+		<command name="AppMonkVideoInsExe">
+			<view>AppMonkVideoInsExe</view>
+			<status value="CMD_OK"><forward>AppMonkVideo</forward></status>
+		</command>
+		
+		<command name="AppMonkVideoUpdLoad"><view>AppMonkVideoUpdLoad</view></command>
+		<command name="AppMonkVideoUpdExe">
+			<view>AppMonkVideoUpdExe</view>
+			<status value="CMD_OK"><forward>AppMonkVideo</forward></status>
+		</command>
+		
+		<command name="AppMonkVideoDelLoad"><view>AppMonkVideoDelLoad</view></command>
+		<command name="AppMonkVideoDelExe">
+			<view>AppMonkVideoDelExe</view>
+			<status value="CMD_OK"><forward>AppMonkVideo</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.ASK																-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryAsk"><view>AppCategoryAsk</view></command>
+		<command name="AppCategoryAskInsLoad"><view>AppCategoryAskInsLoad</view></command>
+		<command name="AppCategoryAskInsExe">
+			<view>AppCategoryAskInsExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAsk</forward></status>
+		</command>
+		
+		<command name="AppCategoryAskUpdLoad"><view>AppCategoryAskUpdLoad</view></command>
+		<command name="AppCategoryAskUpdExe">
+			<view>AppCategoryAskUpdExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAsk</forward></status>
+		</command>
+		
+		<command name="AppCategoryAskDelLoad"><view>AppCategoryAskDelLoad</view></command>
+		<command name="AppCategoryAskDelExe">
+			<view>AppCategoryAskDelExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAsk</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.ASK.DETAIL														-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryAskDetail"><view>AppCategoryAskDetail</view></command>
+		
+		<command name="AppCategoryAskDetailInsLoad"><view>AppCategoryAskDetailInsLoad</view></command>
+		<command name="AppCategoryAskDetailInsExe">
+			<view>AppCategoryAskDetailInsExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAskDetail</forward></status>
+		</command>
+		
+		<command name="AppCategoryAskDetailUpdLoad"><view>AppCategoryAskDetailUpdLoad</view></command>
+		<command name="AppCategoryAskDetailUpdExe">
+			<view>AppCategoryAskDetailUpdExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAskDetail</forward></status>
+		</command>
+		
+		<command name="AppCategoryAskDetailDelLoad"><view>AppCategoryAskDetailDelLoad</view></command>
+		<command name="AppCategoryAskDetailDelExe">
+			<view>AppCategoryAskDetailDelExe</view>
+			<status value="CMD_OK"><forward>AppCategoryAskDetail</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.NEWS																-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryNews"><view>AppCategoryNews</view></command>
+		<command name="AppCategoryNewsInsLoad"><view>AppCategoryNewsInsLoad</view></command>
+		<command name="AppCategoryNewsInsExe">
+			<view>AppCategoryNewsInsExe</view>
+			<status value="CMD_OK"><forward>AppCategoryNews</forward></status>
+		</command>
+		
+		<command name="AppCategoryNewsUpdLoad"><view>AppCategoryNewsUpdLoad</view></command>
+		<command name="AppCategoryNewsUpdExe">
+			<view>AppCategoryNewsUpdExe</view>
+			<status value="CMD_OK"><forward>AppCategoryNews</forward></status>
+		</command>
+		
+		<command name="AppCategoryNewsDelLoad"><view>AppCategoryNewsDelLoad</view></command>
+		<command name="AppCategoryNewsDelExe">
+			<view>AppCategoryNewsDelExe</view>
+			<status value="CMD_OK"><forward>AppCategoryNews</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.VIDEO																-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryVideo"><view>AppCategoryVideo</view></command>
+		<command name="AppCategoryVideoInsLoad"><view>AppCategoryVideoInsLoad</view></command>
+		<command name="AppCategoryVideoInsExe">
+			<view>AppCategoryVideoInsExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideo</forward></status>
+		</command>
+		
+		<command name="AppCategoryVideoUpdLoad"><view>AppCategoryVideoUpdLoad</view></command>
+		<command name="AppCategoryVideoUpdExe">
+			<view>AppCategoryVideoUpdExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideo</forward></status>
+		</command>
+		
+		<command name="AppCategoryVideoDelLoad"><view>AppCategoryVideoDelLoad</view></command>
+		<command name="AppCategoryVideoDelExe">
+			<view>AppCategoryVideoDelExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideo</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.VIDEO.DETAIL														-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>
+		
+		<command name="AppCategoryVideoDetailInsLoad"><view>AppCategoryVideoDetailInsLoad</view></command>
+		<command name="AppCategoryVideoDetailInsExe">
+			<view>AppCategoryVideoDetailInsExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status>
+		</command>
+		
+		<command name="AppCategoryVideoDetailUpdLoad"><view>AppCategoryVideoDetailUpdLoad</view></command>
+		<command name="AppCategoryVideoDetailUpdExe">
+			<view>AppCategoryVideoDetailUpdExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status>
+		</command>
+		
+		<command name="AppCategoryVideoDetailDelLoad"><view>AppCategoryVideoDetailDelLoad</view></command>
+		<command name="AppCategoryVideoDetailDelExe">
+			<view>AppCategoryVideoDetailDelExe</view>
+			<status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.NEWS																		-->
+		<!-- ============================================================================== -->
+		<command name="AppNews"><view>AppNews</view></command>
+		<command name="AppNewsInsLoad"><view>AppNewsInsLoad</view></command>
+		<command name="AppNewsInsExe">
+			<view>AppNewsInsExe</view>
+			<status value="CMD_OK"><forward>AppNews</forward></status>
+		</command>
+		
+		<command name="AppNewsUpdLoad"><view>AppNewsUpdLoad</view></command>
+		<command name="AppNewsUpdExe">
+			<view>AppNewsUpdExe</view>
+			<status value="CMD_OK"><forward>AppNews</forward></status>
+		</command>
+		
+		<command name="AppNewsDelLoad"><view>AppNewsDelLoad</view></command>
+		<command name="AppNewsDelExe">
+			<view>AppNewsDelExe</view>
+			<status value="CMD_OK"><forward>AppNews</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.CONFIG																		-->
+		<!-- ============================================================================== -->
+		<command name="AppConfig"><view>AppConfig</view></command>
+		<command name="AppConfigInsLoad"><view>AppConfigInsLoad</view></command>
+		<command name="AppConfigInsExe">
+			<view>AppConfigInsExe</view>
+			<status value="CMD_OK"><forward>AppConfig</forward></status>
+		</command>
+		
+		<command name="AppConfigUpdLoad"><view>AppConfigUpdLoad</view></command>
+		<command name="AppConfigUpdExe">
+			<view>AppConfigUpdExe</view>
+			<status value="CMD_OK"><forward>AppConfig</forward></status>
+		</command>
+		
+		<command name="AppConfigDelLoad"><view>AppConfigDelLoad</view></command>
+		<command name="AppConfigDelExe">
+			<view>AppConfigDelExe</view>
+			<status value="CMD_OK"><forward>AppConfig</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.TASK																		-->
+		<!-- ============================================================================== -->
+		<command name="AppTask"><view>AppTask</view></command>
+		<command name="AppTaskInsLoad"><view>AppTaskInsLoad</view></command>
+		<command name="AppTaskInsExe">
+			<view>AppTaskInsExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
+		<command name="AppTaskUpdExe">
+			<view>AppTaskUpdExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command>
+		<command name="AppTaskDelExe">
+			<view>AppTaskDelExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+	</control>
+</options>

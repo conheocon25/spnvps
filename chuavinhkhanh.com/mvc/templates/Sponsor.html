@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>						
+	</head>	
+	<body>
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				
+				<div id="content">
+					<div class="history-box">
+						<div class="history-top">
+							<br/>
+							<h1 align="center">Trợ duyên</h1>
+						</div>
+						<div class="history-mid" style="font-size:11pt;">
+							<h2>DANH SÁCH CÁC NHÀ TRỢ DUYÊN</h2>
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<th align="center">STT</th>
+									<th align="center">Họ Tên</th>									
+								</thead>
+								<tbody>
+									<tr tal:repeat="SP SponsorAll">
+										<td tal:content="repeat/SP/index" />
+										<td align="left" tal:content="SP/getName" />
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="history-bot" />
+						<br/>
+					</div>
+				</div>
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/EventBox"/>					
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
+				</div>				
+				<div class="clear"/>
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft" />
+		</div>
+	</body>
+</html>

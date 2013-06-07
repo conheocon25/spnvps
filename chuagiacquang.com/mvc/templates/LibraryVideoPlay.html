@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				
+				<div id="left-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/category.png" width="30" />
+							<span>Chuyên Đề</span>
+						</div>
+						<div class="sidebar-box-content">
+							<ul>
+								<a tal:repeat="Category1 CategoriesVideo" tal:attributes="href Category1/getURLRead">
+									<li tal:attributes="class php:Category1->getId()==CategorySelected->getId()?'current-item':''">
+										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getVMs/count" />)
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>
+				</div>
+				
+				<div id="mid-mini">
+
+					<div class="news-box-mini">
+						<div class="box-title">
+							<img src="/data/images/phatam.png" width="30" />
+							<span>Phật âm</span> 
+						</div>
+
+						<div align="center" class="video-screen">
+							<iframe width="450" height="350" tal:attributes="src Video/getURL" frameborder="0"></iframe>
+							<script>
+								/*<![CDATA[*/
+								$("iframe").each(function(){
+									  var ifr_source = $(this).attr('src');
+									  var wmode = "?wmode=transparent";
+									  $(this).attr('src',ifr_source+wmode);
+								});
+								/*]]>*/
+							</script>
+						</div>
+						
+						<div class="video-info">
+							<div class="name" tal:content="VM/getVideo/getName" />
+							<div class="monk">Giảng sư: 
+								<a tal:attributes="href VM/getMonk/getURLRead">
+									<span tal:content="VM/getMonk/getPreName"/> - 
+									<span tal:content="VM/getMonk/getName"/>
+								</a>
+							</div>						
+							<div class="view">
+								<span tal:content="VM/getVideo/getCountPrint"/> lượt xem
+							</div>
+							<div class="clear"></div>
+						</div>
+						
+						<div class="news-box-sub-title">Cùng tác giả</div>
+						
+						<div style="margin-left:24px;">
+							<ul class="list-video">	
+								<li tal:repeat="VM MonkSelected/getVMs">
+									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
+										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="monk" tal:content="VM/getMonk/getName" />
+										<div class="name" tal:content="VM/getVideo/getName" />
+									</a>
+								</li>
+							</ul>
+							<div class="clear"></div>
+						</div>
+
+						<div class="news-box-sub-title">Cùng chuyên đề</div>
+						<div style="margin-left:24px;">
+							<ul class="list-video">	
+								<li tal:repeat="VM CategorySelected/getVMsLimit10">
+									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
+										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="monk" tal:content="VM/getMonk/getName" />
+										<div class="name" tal:content="VM/getVideo/getName" />
+									</a>
+								</li>
+							</ul>
+							<div class="clear"></div>
+						</div>
+					</div>
+				</div>
+				
+				<div id="right-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/monk.png" width="30" />
+							<span>Giảng Sư</span>
+						</div>
+						<div class="sidebar-box-content">
+							<ul>
+								<a tal:repeat="Monk1 Monks" tal:attributes="href Monk1/getURLRead">
+									<li tal:attributes="class php:Monk1->getId()==MonkSelected->getId()?'current-item':''">
+										<span tal:content="Monk1/getName" /> (<span tal:content="Monk1/getVMs/count" />)
+										<span tal:condition="Monk1/isVIP">
+											<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
+										</span>
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear"></div>
+					</div>					
+					<div metal:use-macro="macros.xhtml/CountBoxMini"/>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="content">
+				
+					<div tal:condition="News" class="news-box">
+						<div class="box-title">
+							<img src="/data/images/news.png" width="30" />
+							<span tal:content="Title"/>
+						</div>						
+						<div style="padding:10px; line-height:25px;">
+							Cập nhật: <span tal:content="News/getDatePrint"/>
+							<div tal:content="structure News/getContent"/>
+							<h4 align="right" tal:content="News/getAuthor"/>
+						</div>
+						<div class="news-box-sub-title">Các tin khác</div>
+						<ul class="news-box-list">
+							<li tal:repeat="News Category/getNews">
+								<a tal:attributes="href News/getURLRead">
+									<span tal:content="News/getTitle"/>
+								</a>
+								<span tal:content="News/getDatePrint" />
+							</li>
+						</ul>
+						<div class="clear" />
+					</div>
+				</div>				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+		</div>
+	</body>
+</html>

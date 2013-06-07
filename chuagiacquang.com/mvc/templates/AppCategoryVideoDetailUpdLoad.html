@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+			<div metal:use-macro="macros.xhtml/Header" />	
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="box-editor">
+					<div class="box-title">
+						<img src="/data/images/manager.png" width="30" />
+						<span tal:content="Title" />
+						<a tal:attributes="href VM/getCategory/getURLVideo">&#8629; Trở lại</a>
+					</div>
+					<div class="box-editor-left">
+						<form class="form-editor" id="FormAppCategoryVideoDetailUpdLoad" tal:attributes="action VM/getURLUpdExe1" method="post">
+							<div class="row">
+								<div for="Name" class="label">Tên</div>
+								<div class="textbox" >
+									<input id="Name" name="Name" type="text" tal:attributes="value VM/getVideo/getName" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="IdMonk" class="label">Giảng sư</div>
+								<div class="textbox">
+									<select id="IdMonk" name="IdMonk">
+										<option tal:repeat="Monk Monks" tal:attributes="value Monk/getId;selected php:Monk->getId()==VM->getIdMonk()?'selected':''">
+											<span tal:content="Monk/getName" />
+										</option>
+									</select>
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="URL" class="label">URL nhúng</div>
+								<div class="textbox" >
+									<input id="URL" name="URL" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getURL" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Note" class="label">Ghi chú</div>
+								<div class="textbox" >
+									<input id="Note" name="Note" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getNote" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Count" class="label">Lượt xem</div>
+								<div class="textbox" >
+									<input id="Count" name="Count" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getCount" />
+								</div>
+								<div class="clear" />
+							</div>							
+							<div class="row">
+								<div class="button" >
+									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="box-editor-right">
+						<div style="padding:10px;">
+							<div align="center" class="video-screen">
+								<iframe width="320" height="240" tal:attributes="src VM/getVideo/getURL" frameborder="0"></iframe>
+								<script>
+									/*<![CDATA[*/
+									$("iframe").each(function(){
+										  var ifr_source = $(this).attr('src');
+										  var wmode = "?wmode=transparent";
+										  $(this).attr('src',ifr_source+wmode);
+									});
+									/*]]>*/
+								</script>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

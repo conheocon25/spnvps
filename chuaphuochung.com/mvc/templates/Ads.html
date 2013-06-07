@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>		
+	</head>	
+	<body onunload="GUnload()">
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/map.png" width="30" />
+							<span>QUẢNG CÁO DOANH NGHIỆP</span>
+						</div>
+						<div style="padding:10px;">
+							<img src="/data/images/ads/NguyenPhongICT0.jpg" width="600px" />
+							<img src="/data/images/ads/NguyenPhongICT1.jpg" width="600px" />
+						</div>
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/ClockBox"/>					
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>					
+				</div>
+				
+				<div class="clear"></div>
+			</div>
+
+			<div metal:use-macro="macros.xhtml/Footer" />
+
+		</div>
+	</body>
+</html>

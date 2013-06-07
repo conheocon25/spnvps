@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">
+				<div id="content">
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/history.png" width="30" />
+							<span>Thư Viện <big>&#187;</big> Kinh Pháp Cú</span>							
+						</div>
+						<div style="padding:10px; line-height:35px; text-align:justify; text-indent:35px; font-family:'CustomFont'; font-size:22px; color:#004E02;">
+							<p><b>Dhammapada (Pháp cú)</b>: gồm <b>423 bài kệ</b> do Đức Phật thuyết được sắp theo các chủ đề trong <b>26 phẩm</b>, là tập kinh phổ biến nhất trong các nước theo đạo Phật Nam truyền vì tính cách cô đọng phần cốt tủy của giáo lý qua các bài kệ ngắn gọn làm nền tảng của nếp sống đạo, từ đó nhiều bộ kinh lớn được phát triển về sau.</p>							
+							<p>Bản dịch Anh ngữ của <b>Tỳ khưu Khantipalo</b>, và bản dịch Việt ngữ của <b>Hòa thượng Thích Minh Châu</b>.</p>
+						</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Dhammapada DhammapadaAll">
+								<a tal:attributes="href Dhammapada/getURLRead">
+									<span tal:content="Dhammapada/getNameVi"/> 
+									(<span tal:content="Dhammapada/getDetails/count"/> câu)
+								</a>
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/AskBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/FixedLeft" />
+		</div>
+	</body>
+</html>
