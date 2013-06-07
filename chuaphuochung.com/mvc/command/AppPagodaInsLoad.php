@@ -29,7 +29,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$Title = "Quản lý hệ thống > Các giảng sư > Thêm mới";
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -40,7 +40,7 @@
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 		}
 	}
 ?>

@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPanelNewsAllInsExe extends Command{
+	class AppPanelNewsInsExe extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------

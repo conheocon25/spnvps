@@ -28,13 +28,13 @@
 			$Title = "Quản trị / chùa / ".$Pagoda->getName();
 						
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);						
+			$request->setObject("PanelAdsAll", $PanelAdsAll);						
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Pagoda", $Pagoda);

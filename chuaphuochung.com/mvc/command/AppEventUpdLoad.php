@@ -32,7 +32,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,7 +44,7 @@
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 		}
 	}
 ?>

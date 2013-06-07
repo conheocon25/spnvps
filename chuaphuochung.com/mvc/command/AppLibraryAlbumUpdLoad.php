@@ -32,7 +32,7 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,7 +44,7 @@
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAllAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 		}
 	}
 ?>

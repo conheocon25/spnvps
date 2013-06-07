@@ -32,8 +32,8 @@
 			$TaskAll = $mTask->findAll();
 			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAllAll = $mPanelAds->findAll();
-			$PanelNewsAllAll = $mPanelNews->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$Title = "QUẢN LÝ";
@@ -53,8 +53,8 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('LinkedAll', $LinkedAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject('PanelAdsAll', $PanelAdsAllAll);
-			$request->setObject('PanelNewsAllAll', $PanelNewsAllAll);
+			$request->setObject('PanelAdsAll', $PanelAdsAll);
+			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 						
 			$request->setObject("Title", $Title);
