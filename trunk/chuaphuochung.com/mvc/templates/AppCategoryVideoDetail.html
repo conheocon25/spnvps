@@ -6,8 +6,9 @@
 	</head>	
 	<body>
 		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">				
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
+			<div id="main">
+				
 				<div id="content">
 					<div class="news-box">					
 						<div class="box-title">
@@ -24,7 +25,7 @@
 										<th align="left">THỜI GIAN</th>
 										<th>XÓA</th>
 									</tr>
-								</thead>	
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="VL VLs">
 										<td width="32" align="center">
@@ -35,7 +36,7 @@
 												<div tal:content="VL/getVideo/getName" />
 											</a>
 										</td>
-										<td tal:content="VL/getVideo/getTime" />
+										<td tal:content="VL/getVideo/getTimePrint" />
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href VL/getURLDelLoad">
 												<div><img src="/data/images/remove.png" width="20" /></div>
@@ -68,7 +69,7 @@
 						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Category1 CategoriesVideo" tal:attributes="href Category1/getURLVideo">
+								<a tal:repeat="Category1 CategoryVideoAll" tal:attributes="href Category1/getURLVideo">
 									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':''">										
 										<div class="left" tal:content="Category1/getNameReduce" />
 										<div class="right" tal:content="Category1/getVLs/count" />
@@ -78,9 +79,11 @@
 						</div>
 					</div>
 				</div>
-				<div class="clear" />
+				<div class="clear"/>
 			</div>
+
 			<div metal:use-macro="macros.xhtml/Footer" />
+
 		</div>
 	</body>
 </html>

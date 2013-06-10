@@ -11,6 +11,7 @@ interface VideoCollection extends \Iterator {function add( Object $Video );}
 interface VideoMonkCollection extends \Iterator {function add( Object $VideoMonk );}
 interface VideoLibraryCollection extends \Iterator {function add( Object $VideoLibrary );}
 interface VideoPagodaCollection extends \Iterator {function add( Object $VideoPagoda );}
+interface VideoSponsorCollection extends \Iterator {function add( Object $VideoSponsor );}
 interface AlbumCollection extends \Iterator {function add( Object $Album);}
 interface MonkCollection extends \Iterator {function add( Object $Monk);}
 interface EventCollection extends \Iterator {function add( Object $Event);}

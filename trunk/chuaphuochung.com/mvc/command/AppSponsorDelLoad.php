@@ -16,51 +16,48 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			
 			$mPagoda = new \MVC\Mapper\Pagoda();
 			$mAlbum = new \MVC\Mapper\Album();
 			$mEvent = new \MVC\Mapper\Event();
 			$mMonk = new \MVC\Mapper\Monk();
 			$mCourse = new \MVC\Mapper\Course();
-			$mLinked = new \MVC\Mapper\Linked();
-			$mSponsor = new \MVC\Mapper\SponsorPerson();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAllVideo = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();
-			$AlbumAll = $mAlbum->findAll();
+			$CategoriesBType = $mCategoryBType->findAll();
+			$CategoriesNews = $mCategoryNews->findAll();
+			$CategoriesVideo = $mCategoryVideo->findAll();
+			$CategoriesAsk = $mCategoryAsk->findAll();
+			
+			$Pagodas = $mPagoda->findAll();
+			$Albums = $mAlbum->findAll();
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
 			$Courses = $mCourse->findAll();
-			$Linkeds = $mLinked->findAll();
 						
 			$Sponsor = $mSponsor->find($IdSponsor);
-			
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$Sponsors = $mSponsor->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('AlbumAll', $AlbumAll);
+			//-------------------------------------------------------------						
+			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("CategoriesNews", $CategoriesNews);
+			$request->setObject("CategoriesVideo", $CategoriesVideo);
+			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('Albums', $Albums);
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);
-			$request->setObject('Linkeds', $Linkeds);
+			$request->setObject('Sponsors', $Sponsors);
 			$request->setObject('Sponsor', $Sponsor);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / TRANG VÀNG ỦNG HỘ / '.$Sponsor->getName()." / XÓA");

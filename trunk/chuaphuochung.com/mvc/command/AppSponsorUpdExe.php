@@ -13,25 +13,25 @@
 			//-------------------------------------------------------------
 			$IdSponsor = $request->getProperty('IdSponsor');
 			$Name = $request->getProperty('Name');
-			$Time = $request->getProperty('Time');
-			$Address = $request->getProperty('Address');
-			$Value = $request->getProperty('Value');
-			$Unit = $request->getProperty('Unit');
+			$TimeStart = $request->getProperty('TimeStart');
+			$TimeEnd = $request->getProperty('TimeEnd');
+			$Content = \stripslashes($request->getProperty('Content'));
+			$Type = $request->getProperty('Type');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mSponsor = new \MVC\Mapper\SponsorPerson();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
 			$Sponsor = $mSponsor->find($IdSponsor);
-			$Sponsor->setName($Name);
-			$Sponsor->setAddress($Address);
-			$Sponsor->setTime($Time);
-			$Sponsor->setValue($Value);
-			$Sponsor->setUnit($Unit);
+			$Sponsor->setName($Name);			
+			$Sponsor->setTimeStart($TimeStart);
+			$Sponsor->setTimeEnd($TimeEnd);
+			$Sponsor->setContent($Content);
+			$Sponsor->setType($Type);
 			$mSponsor->update($Sponsor);
 			
 			//-------------------------------------------------------------
