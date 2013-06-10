@@ -19,7 +19,12 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, btype=? where id=?", $tblMonk);
 		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, btype) values(?, ?, ?, ?, ?, ?, ?)", $tblMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);
-		$findByBTypeStmt = sprintf("select *  from %s where btype=?", $tblMonk);
+		$findByBTypeStmt = sprintf("
+			SELECT *  from %s M
+			WHERE btype=?
+			ORDER BY 
+			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
+		", $tblMonk, $tblVideo);
 		
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
