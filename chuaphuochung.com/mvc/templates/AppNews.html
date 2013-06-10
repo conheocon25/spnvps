@@ -75,7 +75,7 @@
 						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Category1 Categories" tal:attributes="href Category1/getURLView">
+								<a tal:repeat="Category1 CategoryAll" tal:attributes="href Category1/getURLView">
 									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">
 										<div class="left" tal:content="Category1/getName" />
 										<div class="right" tal:content="Category1/getNews/count" />

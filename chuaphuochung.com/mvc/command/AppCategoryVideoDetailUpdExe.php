@@ -40,6 +40,10 @@
 			$Video->setURL($URL);
 			$Video->setCount($Count);
 			
+			$URLNew = $Video->parseURLYoutube();
+			if ($URLNew != "")
+				$Video->setURL($URLNew);
+				
 			$mVideo->update($Video);			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

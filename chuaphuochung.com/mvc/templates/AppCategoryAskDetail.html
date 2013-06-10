@@ -73,7 +73,7 @@
 						</div>						
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Category1 CategoriesAsk1" tal:attributes="href Category1/getURLView">
+								<a tal:repeat="Category1 CategoryAskAll1" tal:attributes="href Category1/getURLView">
 									<li tal:attributes="class php: Category1->getId()==Category->getId()?'menu-select':''">
 										<div class="left" tal:content="Category1/getName" />
 										<div class="right" tal:content="Category1/getAsks/count" />

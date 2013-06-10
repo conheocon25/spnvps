@@ -16,22 +16,17 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-					
+			include("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategoryVideo->find($IdCategory);
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName()." / Xóa";
 			
@@ -39,11 +34,12 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('Category', $Category);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('CategoryBTypeAll', $CategoryBType);
-			$request->setObject('PanelAdsAll', $PanelAdsAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setProperty('Title', $Title);
 		}

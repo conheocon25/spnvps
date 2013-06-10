@@ -121,6 +121,46 @@
 		</command>
 		
 		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.PERSON																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorPerson"><view>AppSponsorPerson</view></command>
+		<command name="AppSponsorPersonInsLoad"><view>AppSponsorPersonInsLoad</view></command>
+		<command name="AppSponsorPersonInsExe">
+			<view>AppSponsorPersonInsExe</view>
+			<status value="CMD_OK"><forward>AppSponsorPerson</forward></status>
+		</command>		
+		<command name="AppSponsorPersonUpdLoad"><view>AppSponsorPersonUpdLoad</view></command>
+		<command name="AppSponsorPersonUpdExe">
+			<view>AppSponsorPersonUpdExe</view>
+			<status value="CMD_OK"><forward>AppSponsorPerson</forward></status>
+		</command>
+		<command name="AppSponsorPersonDelLoad"><view>AppSponsorPersonDelLoad</view></command>
+		<command name="AppSponsorPersonDelExe">
+			<view>AppSponsorPersonDelExe</view>
+			<status value="CMD_OK"><forward>AppSponsorPerson</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.VIDEO																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorVideo"><view>AppSponsorVideo</view></command>
+		<command name="AppSponsorVideoInsLoad"><view>AppSponsorVideoInsLoad</view></command>
+		<command name="AppSponsorVideoInsExe">
+			<view>AppSponsorVideoInsExe</view>
+			<status value="CMD_OK"><forward>AppSponsorVideo</forward></status>
+		</command>		
+		<command name="AppSponsorVideoUpdLoad"><view>AppSponsorVideoUpdLoad</view></command>
+		<command name="AppSponsorVideoUpdExe">
+			<view>AppSponsorVideoUpdExe</view>
+			<status value="CMD_OK"><forward>AppSponsorVideo</forward></status>
+		</command>
+		<command name="AppSponsorVideoDelLoad"><view>AppSponsorVideoDelLoad</view></command>
+		<command name="AppSponsorVideoDelExe">
+			<view>AppSponsorVideoDelExe</view>
+			<status value="CMD_OK"><forward>AppSponsorVideo</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.LINKED																		-->
 		<!-- ============================================================================== -->
 		<command name="AppLinked"><view>AppLinked</view></command>
