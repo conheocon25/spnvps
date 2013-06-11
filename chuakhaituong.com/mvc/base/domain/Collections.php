@@ -7,6 +7,8 @@ interface CategoryNewsCollection extends \Iterator {function add( Object $Catego
 interface CategoryVideoCollection extends \Iterator {function add( Object $CategoryVideo );}
 interface CategoryAskCollection extends \Iterator {function add( Object $CategoryAsk );}
 interface CategoryBTypeCollection extends \Iterator {function add( Object $CategoryBType );}
+interface PageCollection extends \Iterator {function add( Object $Page );}
+interface PageNavigationCollection extends \Iterator {function add( Object $PageNavigation );}
 interface NewsCollection extends \Iterator {function add( Object $News );}
 interface VideoCollection extends \Iterator {function add( Object $Video );}
 interface VideoMonkCollection extends \Iterator {function add( Object $VideoMonk );}

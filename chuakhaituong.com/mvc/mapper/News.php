@@ -15,15 +15,33 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type) values(?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
-		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 10", $tblNews);
-		$findByLimit1Stmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 6", $tblNews);
-		$findByLimit2Stmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 6", $tblNews);
+		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 5", $tblNews);
+		$findByLimit1Stmt = sprintf("select *  from %s ORDER BY type DESC, date DESC limit 6", $tblNews);
 		
-		$findByArrayStmt = sprintf(
-			"SELECT DISTINCT * 
-					FROM  `chuakhaituong_news` 					
-					ORDER BY TYPE DESC , DATE DESC 
-					"
+		$findByCategoryDateStmt = sprintf(
+			"select *  
+			from %s 
+			where id_category=? AND date<=?
+			ORDER BY type DESC, date DESC LIMIT 10"
+		, $tblNews);
+			
+		$findByCategoryPageStmt = sprintf(
+			"SELECT 
+				*
+			FROM 
+				%s 			
+			WHERE id_category=:id_category
+			ORDER BY date desc			
+			LIMIT :start,:max"
+		, $tblNews);
+		
+		$findByPageStmt = sprintf(
+			"SELECT 
+				*
+			FROM 
+				%s 			
+			ORDER BY date desc
+			LIMIT :start,:max"
 		, $tblNews);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -31,12 +49,13 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		$this->findByStmt = self::$PDO->prepare($findByStmt);		
+		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
 		$this->findByLimit1Stmt = self::$PDO->prepare($findByLimit1Stmt);
-		$this->findByLimit2Stmt = self::$PDO->prepare($findByLimit2Stmt);
-		
-		$this->findByArrayStmt = self::$PDO->prepare($findByArrayStmt);
+		$this->findByCategoryDateStmt = self::$PDO->prepare($findByCategoryDateStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
+		$this->findByCategoryPageStmt = self::$PDO->prepare($findByCategoryPageStmt);
+
     } 
     function getCollection( array $raw ) {
         return new NewsCollection( $raw, $this );
@@ -101,14 +120,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->findByStmt->execute( $values );
         return new NewsCollection( $this->findByStmt->fetchAll(), $this);
     }
-	
-	function findByArray( $values ){		
-		$findByArrayStmt = "SELECT DISTINCT * FROM  `chuakhaituong_news` WHERE id IN ".   $values[0] ." ORDER BY TYPE DESC , DATE DESC"	;
-		$this->findByArrayStmt = self::$PDO->prepare($findByArrayStmt);
-		$this->findByArrayStmt->execute(NULL);
-        return new NewsCollection( $this->findByArrayStmt->fetchAll(), $this);
-    }
-	
+		
 	function findByLimit( $values ){
         $this->findByLimitStmt->execute( $values );
         return new NewsCollection( $this->findByLimitStmt->fetchAll(), $this);
@@ -117,9 +129,23 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->findByLimit1Stmt->execute( $values );
         return new NewsCollection( $this->findByLimit1Stmt->fetchAll(), $this);
     }
-	function findByLimit2( $values ){
-        $this->findByLimit2Stmt->execute( $values );
-        return new NewsCollection( $this->findByLimit2Stmt->fetchAll(), $this);
+	function findByCategoryDate( $values ){
+        $this->findByCategoryDateStmt->execute( $values );
+        return new NewsCollection( $this->findByCategoryDateStmt->fetchAll(), $this);
+    }
+	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new NewsCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	function findByCategoryPage( $values ) {
+		$this->findByCategoryPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
+		$this->findByCategoryPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByCategoryPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByCategoryPageStmt->execute();
+        return new NewsCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
     }
 	
 }

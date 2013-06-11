@@ -38,7 +38,8 @@ RewriteRule ^event/([a-z0-9]+)$ 									?cmd=Event&IdEvent=$1 [L]
 
 RewriteRule ^news$ 													?cmd=ReadCategory [L]
 RewriteRule ^news/([a-z0-9]+)$ 										?cmd=ReadCategory&IdCategory=$1 [L]
-RewriteRule ^news/([a-z0-9]+)/([a-z0-9]+)$ 							?cmd=ReadCategory&IdCategory=$1&IdNews=$2 [L]
+RewriteRule ^news/([a-z0-9]+)/page/([a-z0-9]+)$ 					?cmd=ReadCategory&IdCategory=$1&Page=$2 [L]
+RewriteRule ^news/([a-z0-9]+)/([a-z0-9]+)$ 							?cmd=ReadCategoryDetail&IdCategory=$1&IdNews=$2 [L]
 
 RewriteRule ^pagoda$ 												?cmd=Pagoda [L]
 RewriteRule ^pagoda/([a-z0-9]+)$ 									?cmd=Pagoda&IdPagoda=$1 [L]

@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class ReadCategory extends Command {
+	class ReadCategoryDetail extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -12,8 +12,8 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdCategory = $request->getProperty('IdCategory');
-			$Page = $request->getProperty('Page');
-						
+			$IdNews = $request->getProperty('IdNews');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -35,54 +35,56 @@
 			$mPanelAds = new \MVC\Mapper\PanelAds();
 			$mPanelNews = new \MVC\Mapper\PanelNews();
 			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$Category = $mCategoryNews->find($IdCategory);
-			
-			$AlbumAll = $mAlbum->findAll();			
+			//-------------------------------------------------------------
+			$AlbumAll = $mAlbum->findAll();
 			$CategoriesAsk = $mCategoryAsk->findAll();
 			$Pagodas = $mPagoda->findAll();
-			$Sponsors = $mSponsor->findAll();			
+			$Sponsors = $mSponsor->findAll();
+			
+			$Category = $mCategoryNews->find($IdCategory);
 			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
-						
-			if (!isset($Page)) $Page = 1;
+			
+			$Category = $mCategoryNews->find($IdCategory);
+			$News = $mNews->find($IdNews);
 			
 			$Course = $mCourse->findByNear(null)->current();
 			$Event = $mEvent->findTop(null)->current();
 
-			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');
+			if(isset($News)) {
+				$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
+			}
+			else {
+				$Title = "";
+			}						
 			
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLRead());
-						
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();			
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
 			$PanelAdsAll = $mPanelAds->findAll();
-						
+			$CategoriesBType = $mCategoryBType->findAll();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);
-						
+			$request->setObject("Course", $Course);
 			$request->setObject("Category", $Category);
+			$request->setObject("Event", $Event);
+			$request->setProperty("ActiveItem", 'ReadCategory');
+			
 			$request->setObject("CategoriesNews", $CategoriesNews);
 			$request->setObject("CategoriesAsk", $CategoriesAsk);			
-			$request->setObject("Event", $Event);
-			$request->setObject("Sponsors", $Sponsors);
 			$request->setObject("Pagodas", $Pagodas);
-			$request->setObject("Course", $Course);
-			$request->setObject("NewsAll", $NewsAll);
-			$request->setObject("PN", $PN);			
-			$request->setProperty("ActiveItem", 'ReadCategory');
-			$request->setProperty("Page", $Page);			
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject("News", $News);
+			$request->setObject("Sponsors", $Sponsors);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoriesBType", $CategoriesBType);
-			
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
