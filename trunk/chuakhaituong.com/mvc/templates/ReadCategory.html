@@ -5,41 +5,43 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-				
+			<div id="main">					
+				<div id="content">				
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="News/getTitleReduce"/>
+							<img src="/data/images/news.png" width="30" />
+							<span tal:content="Title"/>
 						</div>
-						
-						<div style="padding:10px;">
-							<i>Tin tức được cập nhật vào: <span tal:content="News/getDatePrint"/></i><br/><br/>
-							<div tal:content="structure News/getContent"/>
-							<i><h4 align="right" tal:content="News/getAuthor" /></i>
-						</div>
-						
-						<div class="news-box-sub-title">Các tin khác</div>
-						<ul class="news-box-list">
-							<li tal:repeat="News Category/getNewsLimit">
-								<a tal:attributes="href News/getURLRead">
-									<span tal:content="News/getTitle"/>
-								</a>
-								<span tal:content="News/getDatePrint" />
+						<ul style="list-style:none;margin-left:5px;margin-top:10px;margin-right:5px;">
+							<li tal:repeat="News NewsAll">
+								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:10px;">
+									<tr>
+										<td width="120" align="center">
+											<img class="news-img" width="120" tal:attributes="src News/getImage" />
+										</td>
+										<td valign="top">
+											<div class="news-time">(<span tal:content="News/getDatePrint"/>)</div>
+											<div class="news-title">
+												<a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/>
+												<span tal:content="structure News/getContentReduce" />
+											</div>
+										</td>
+									</tr>
+								</table>
 							</li>
 						</ul>
-						<br/>
+						
+						<div class="page-list">								
+							<span tal:repeat="P PN/getPages">
+								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+							</span>
+						</div>
 						<div class="clear" />
-
 					</div>
 				</div>				
-				<div id="sidebar">										
+				<div id="sidebar">																				
 					<div metal:use-macro="macros.xhtml/EventBox"/>
 					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
 					<div metal:use-macro="macros.xhtml/NorthBox"/>
@@ -49,12 +51,13 @@
 					<div metal:use-macro="macros.xhtml/AskBox"/>
 					<div metal:use-macro="macros.xhtml/CountBox"/>					
 					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
 					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>					
-				</div>				
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/Footer" />			
 		</div>
 	</body>
 </html>
