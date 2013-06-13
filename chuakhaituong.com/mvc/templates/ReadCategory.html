@@ -25,13 +25,13 @@
 							</div>
 							<div class="clear" />
 						</div>
+						<div class="page-list">								
+							<span tal:repeat="P PN/getPages">
+								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+							</span>
+						</div>
+						<div class="clear" />
 					</div>
-					<div class="page-list">								
-						<span tal:repeat="P PN/getPages">
-							<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-						</span>
-					</div>
-					<div class="clear" />
 				</div>				
 				<div id="sidebar">																				
 					<div metal:use-macro="macros.xhtml/EventBox"/>
