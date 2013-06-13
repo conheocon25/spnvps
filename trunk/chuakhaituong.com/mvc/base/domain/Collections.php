@@ -3,6 +3,7 @@ namespace MVC\Domain;
 
 interface AppCollection extends \Iterator {function add( Object $App );}
 interface UserCollection extends \Iterator {function add( Object $user );}
+interface CategoryTaskCollection extends \Iterator {function add( Object $CategoryTask );}
 interface CategoryNewsCollection extends \Iterator {function add( Object $CategoryNews );}
 interface CategoryVideoCollection extends \Iterator {function add( Object $CategoryVideo );}
 interface CategoryAskCollection extends \Iterator {function add( Object $CategoryAsk );}
@@ -29,5 +30,5 @@ interface SponsorPersonCollection extends \Iterator {function add( Object $Spons
 interface PanelAdsCollection extends \Iterator {function add( Object $PanelAds);}
 interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews);}
 interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
-
+interface TaskCollection extends \Iterator {function add( Object $Task);}
 ?>

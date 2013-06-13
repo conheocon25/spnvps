@@ -63,6 +63,14 @@ RewriteRule ^course/([a-z0-9]+)/([a-z0-9]+)$ 						?cmd=CourseLession&IdCourse=$
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^app$ 													?cmd=App [L]
 
+RewriteRule ^app/task$ 												?cmd=AppTask [L]
+RewriteRule ^app/task/ins/load$ 									?cmd=AppTaskInsLoad [L]
+RewriteRule ^app/task/ins/exe$ 										?cmd=AppTaskInsExe [L]
+RewriteRule ^app/task/([a-z0-9]+)/upd/load$ 						?cmd=AppTaskUpdLoad&IdTask=$1 [L]
+RewriteRule ^app/task/([a-z0-9]+)/upd/exe$ 							?cmd=AppTaskUpdExe&IdTask=$1 [L]
+RewriteRule ^app/task/([a-z0-9]+)/del/load$ 						?cmd=AppTaskDelLoad&IdTask=$1 [L]
+RewriteRule ^app/task/([a-z0-9]+)/del/exe$ 							?cmd=AppTaskDelExe&IdTask=$1 [L]
+
 RewriteRule ^app/config$ 											?cmd=AppConfig [L]
 RewriteRule ^app/config/ins/load$ 									?cmd=AppConfigInsLoad [L]
 RewriteRule ^app/config/ins/exe$ 									?cmd=AppConfigInsExe [L]

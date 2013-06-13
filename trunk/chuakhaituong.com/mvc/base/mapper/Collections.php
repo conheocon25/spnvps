@@ -5,6 +5,7 @@ require_once( "mvc/base/mapper/Collection.php");
 
 class AppCollection extends Collection implements \MVC\Domain\AppCollection {function targetClass( ) {return "\MVC\Domain\App";}}
 class UserCollection extends Collection implements \MVC\Domain\UserCollection {function targetClass( ) {return "\MVC\Domain\User";}}
+class CategoryTaskCollection extends Collection implements \MVC\Domain\CategoryTaskCollection {function targetClass( ) {return "\MVC\Domain\CategoryTask";}}
 class CategoryNewsCollection extends Collection implements \MVC\Domain\CategoryNewsCollection {function targetClass( ) {return "\MVC\Domain\CategoryNews";}}
 class CategoryVideoCollection extends Collection implements \MVC\Domain\CategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\CategoryVideo";}}
 class CategoryAskCollection extends Collection implements \MVC\Domain\CategoryAskCollection {function targetClass( ) {return "\MVC\Domain\CategoryAsk";}}
@@ -30,5 +31,6 @@ class SponsorPersonCollection extends Collection implements \MVC\Domain\SponsorP
 class PanelAdsCollection extends Collection implements \MVC\Domain\PanelAdsCollection {function targetClass( ) {return "\MVC\Domain\PanelAds";}}
 class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCollection {function targetClass( ) {return "\MVC\Domain\PanelNews";}}
 class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
+class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\TaskVideo";}}
 
 ?>
