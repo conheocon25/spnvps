@@ -18,6 +18,7 @@ RewriteRule ^intro/2$ 												?cmd=Introduction2 [L]
 RewriteRule ^intro/3$ 												?cmd=Introduction3 [L]
 RewriteRule ^intro/4$ 												?cmd=Introduction4 [L]
 
+RewriteRule ^task$ 													?cmd=Task [L]
 RewriteRule ^contact$ 												?cmd=Contact [L]
 RewriteRule ^sponsor/([0-9]+)$ 										?cmd=Sponsor&IdSponsor=$1 [L]
 RewriteRule ^sponsor/([0-9]+)/video/([0-9]+)$ 						?cmd=SponsorDetail&IdSponsor=$1&IdVideoSponsor=$2 [L]

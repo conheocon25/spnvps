@@ -170,6 +170,42 @@
 					</div>
 				</div>				
 				<div id="sidebar">
+					<div class="sidebar-box">
+						<!--
+						<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
+						!-->
+						<div id="Event" class="box-title">
+							<img src="/data/images/calendar.png" width="30" />
+							<span>Lịch Công Tác</span>
+						</div>
+						<div class="sidebar-box-content">
+							<div class="g4">
+								<div id="eventCalendarLocale" />
+							</div>
+							<script type="text/javascript">
+								/*<![CDATA[*/
+								$(document).ready(function() {
+									$("#eventCalendarLocale").eventCalendar({
+										eventsjson: '/mvc/templates/script/events.json.php',
+										eventsjson: '/task',
+										monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+											"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+										dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
+										dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
+										txt_noEvents: "Không có sự kiện nào xảy ra",
+										txt_SpecificEvents_prev: "",
+										txt_SpecificEvents_after: "sự kiện:",
+										txt_next: "Tới",
+										txt_prev: "Lui",
+										txt_NextEvents: "Sự kiện sắp xảy ra:",
+										txt_GoToEventUrl: "đi đến sự kiện"
+									});
+								});
+								/*]]>*/
+							</script>
+							<div class="clear"></div>
+						</div>
+					</div>
 					<div metal:use-macro="macros.xhtml/EventBox"/>
 					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
 					<div metal:use-macro="macros.xhtml/NorthBox"/>

@@ -19,6 +19,8 @@
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
 		
+		<command name="Task" type="public"><view>Task</view></command>
+		
 		<command name="Sponsor" type="public"><view>Sponsor</view></command>
 		<command name="SponsorDetail" type="public"><view>SponsorDetail</view></command>
 		

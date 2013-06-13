@@ -25,6 +25,7 @@
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mNews = new \MVC\Mapper\News();
 			$mEvent = new \MVC\Mapper\Event();
+			$mTask = new \MVC\Mapper\Task();
 			$mAsk = new \MVC\Mapper\Ask();
 			$mPagoda = new \MVC\Mapper\Pagoda();
 			$mConfig = new \MVC\Mapper\Config();
@@ -56,7 +57,8 @@
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNews = $mPanelNews->findAll();
 			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
-												
+			$Tasks = $mTask->findAll();
+			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
 								
@@ -81,6 +83,7 @@
 			$request->setObject("Asks", $Asks);			
 			$request->setObject("Pagodas", $Pagodas);
 			$request->setObject("Sponsors", $Sponsors);
+			$request->setObject("Tasks", $Tasks);
 			$request->setObject("Course", $Course);
 									
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
