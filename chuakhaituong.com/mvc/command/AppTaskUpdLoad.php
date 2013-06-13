@@ -1,7 +1,7 @@
 <?php
 	namespace MVC\Command;	
-	class App extends Command {
-		function doExecute( \MVC\Controller\Request $request ) {
+	class AppTaskUpdLoad extends Command{
+		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
@@ -11,11 +11,12 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-									
+			$IdTask = $request->getProperty('IdTask');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------	
-			include("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------			
+			include("mvc/base/mapper/MapperDefault.php");	
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -28,38 +29,34 @@
 			$Albums = $mAlbum->findAll();
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
-			$Courses = $mCourse->findAll();
-			$Sponsors = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoryVideos = $mPanelCategoryVideo->findAll();
-			$Configs = $mConfig->findAll();
+			$Courses = $mCourse->findAll();			
 			$Tasks = $mTask->findAll();
+			$CategoriesTask = $mCategoryTask->findAll();
+			$Sponsors = $mSponsor->findAll();
 			
-			$Title = "QUẢN LÝ";
+			$Task = $mTask->find($IdTask);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------						
 			$request->setObject("CategoriesBType", $CategoriesBType);
 			$request->setObject("CategoriesNews", $CategoriesNews);
 			$request->setObject("CategoriesVideo", $CategoriesVideo);
 			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject('CategoriesTask', $CategoriesTask);
 			$request->setObject('Pagodas', $Pagodas);
 			$request->setObject('Albums', $Albums);
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
-			$request->setObject('Courses', $Courses);
-			$request->setObject('Sponsors', $Sponsors); 
-			$request->setObject('Configs', $Configs); 
-			$request->setObject('PanelAdsAll', $PanelAdsAll);
-			$request->setObject('PanelNews', $PanelNews);
-			$request->setObject('PanelCategoryVideos', $PanelCategoryVideos);
-			$request->setObject('Tasks', $Tasks);
+			$request->setObject('Courses', $Courses);			
+			$request->setObject('Sponsors', $Sponsors);
+			$request->setObject('Task', $Task);
 			
-			$request->setObject("Title", $Title);
+			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / '.$Task->getTitle()." / CẬP NHẬT" );
 			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("ActiveAdmin", 'Admin');
+			$request->setProperty("ActiveAdmin", 'Task');
+			
+			return self::statuses('CMD_DEFAULT');
 		}
 	}
 ?>

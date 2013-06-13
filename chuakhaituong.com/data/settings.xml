@@ -87,6 +87,28 @@
 		</command>
 		
 		<!-- ============================================================================== -->
+		<!-- APP.TASK																		-->
+		<!-- ============================================================================== -->
+		<command name="AppTask"><view>AppTask</view></command>
+		<command name="AppTaskInsLoad"><view>AppTaskInsLoad</view></command>
+		<command name="AppTaskInsExe">
+			<view>AppTaskInsExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
+		<command name="AppTaskUpdExe">
+			<view>AppTaskUpdExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command>
+		<command name="AppTaskDelExe">
+			<view>AppTaskDelExe</view>
+			<status value="CMD_OK"><forward>AppTask</forward></status>
+		</command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.COURSE																-->
 		<!-- ============================================================================== -->
 		<command name="AppCourse"><view>AppCourse</view></command>

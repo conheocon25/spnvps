@@ -16,13 +16,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH

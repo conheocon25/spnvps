@@ -3,6 +3,7 @@ namespace MVC\Domain;
 if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/App.php" );
 	require_once( "mvc/mapper/User.php" );
+	require_once( "mvc/mapper/CategoryTask.php" );
 	require_once( "mvc/mapper/CategoryNews.php" );
 	require_once( "mvc/mapper/CategoryVideo.php" );
 	require_once( "mvc/mapper/CategoryAsk.php" );
@@ -27,6 +28,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/PanelAds.php");
 	require_once( "mvc/mapper/PanelNews.php");
 	require_once( "mvc/mapper/PanelCategoryVideo.php");
+	require_once( "mvc/mapper/Task.php");
 }
 
 class HelperFactory {

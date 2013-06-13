@@ -16,10 +16,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
