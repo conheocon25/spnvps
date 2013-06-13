@@ -1156,3 +1156,13 @@
 		color: red;
 		font-size: 15px;
 	}
+	
+	.news-img { width: 120px; height: 90px; border: 3px solid #DDDDDD; margin: 0px 10px 5px 0px; border-radius: 10px; -moz-border-radius: 10px; -o-border-radius: 10px; -webkit-border-radius: 10px; -ms-border-radius: 10px; }
+	.news-time { color: #464646; font-size: 12px; }
+	.news-title a { color: #980707; font-size: 13px; font-weight: bold; display: block; margin-top: 5px; text-align: justify; }
+	.news-title span { font-size: 12px; text-align: justify; }
+	
+	.page-list { padding-top: 2px; padding-right: 10px; float: right; margin-bottom: 10px; }
+	.page-list a { margin-right: 10px; color: #464646; font-size: 13px; font-weight: bold; display: block; border: 1px solid #DDDDDD; width: 20px; height: 18px; padding-top: 1px; float: left; text-align: center; background-color: #FFFFFF; border-radius: 5px; -moz-border-radius: 5px; -o-border-radius: 5px; -webkit-border-radius: 5px; -ms-border-radius: 5px;  }
+	.page-list a:hover { background-color: #DDDDDD; text-decoration: none;  }
+	.page-list a.curent { color: #850000; background-color: #E29D29; }

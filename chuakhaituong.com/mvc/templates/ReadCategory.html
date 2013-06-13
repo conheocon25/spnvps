@@ -8,38 +8,30 @@
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
 			<div id="main">					
-				<div id="content">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/news.png" width="30" />
 							<span tal:content="Title"/>
 						</div>
-						<ul style="list-style:none;margin-left:5px;margin-top:10px;margin-right:5px;">
-							<li tal:repeat="News NewsAll">
-								<table border="0" cellpadding="0" cellspacing="0" width="100%" style="margin-bottom:10px;">
-									<tr>
-										<td width="120" align="center">
-											<img class="news-img" width="120" tal:attributes="src News/getImage" />
-										</td>
-										<td valign="top">
-											<div class="news-time">(<span tal:content="News/getDatePrint"/>)</div>
-											<div class="news-title">
-												<a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/>
-												<span tal:content="structure News/getContentReduce" />
-											</div>
-										</td>
-									</tr>
-								</table>
-							</li>
-						</ul>
-						
-						<div class="page-list">								
-							<span tal:repeat="P PN/getPages">
-								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-							</span>
+						<div tal:repeat="News NewsAll" style="padding:10px;" >							
+							<div width="620px" >
+								<img align="left" class="news-img" tal:attributes="src News/getImage" />
+								<span align="left" style="text-align:justify;">
+									<div class="news-title"><a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/></div>
+									(<span tal:content="News/getDatePrint"/>)
+								</span>
+							</div>
+							<div class="clear" />
 						</div>
-						<div class="clear" />
 					</div>
+					<div class="page-list">								
+						<span tal:repeat="P PN/getPages">
+							<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+						</span>
+					</div>
+					<div class="clear" />
 				</div>				
 				<div id="sidebar">																				
 					<div metal:use-macro="macros.xhtml/EventBox"/>
