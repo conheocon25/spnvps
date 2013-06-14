@@ -5,17 +5,14 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-			
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				<div id="content">																									
+		<div id="wrapper">			
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">
+				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.gif" width="28"  />
-							<span>Tiêu điểm</span>							
+							<span>Tiêu điểm</span>
 						</div>
 						<div align="center" style="padding:10px;">
 							<div class="picture-banner parent">
@@ -112,7 +109,7 @@
 						</div>
 					</div>					
 				</div>				
-				<div id="sidebar">					
+				<div id="sidebar">
 					<div metal:use-macro="macros.xhtml/ClockBox"/>
 					<div class="sidebar-box">
 						<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
