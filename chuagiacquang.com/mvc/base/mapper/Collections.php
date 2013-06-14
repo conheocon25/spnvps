@@ -24,4 +24,5 @@ class ClassLessionCollection extends Collection implements \MVC\Domain\ClassLess
 class ConfigCollection extends Collection implements \MVC\Domain\ConfigCollection {function targetClass( ) {return "\MVC\Domain\Config";}}
 class LinkedCollection extends Collection implements \MVC\Domain\LinkedCollection {function targetClass( ) {return "\MVC\Domain\Linked";}}
 class PageCollection extends Collection implements \MVC\Domain\PageCollection {function targetClass( ) {return "\MVC\Domain\Page";}}
+class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
 ?>

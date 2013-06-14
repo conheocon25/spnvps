@@ -12,11 +12,7 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Date').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 	</head>
@@ -32,7 +28,7 @@
 						<a tal:attributes="href '/app/task'">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
-						<form class="form-editor" tal:attributes="action '/app/task/ins/exe'" method="post">
+						<form class="form-editor" tal:attributes="action Category/getURLTaskInsExe" method="post">
 							<div class="row">
 								<div for="Type" class="label">Loại</div>
 								<div class="textbox" >

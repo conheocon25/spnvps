@@ -55,8 +55,7 @@ class CategoryNews extends Object{
 	function getURLDelExe(){return "/app/category/news/".$this->getId()."/del/exe";}
 	
 	function getURLNewsInsLoad(){return "/app/news/".$this->getId()."/ins/load";}
-	function getURLNewsInsExe(){return "/app/news/".$this->getId()."/ins/exe";}
-	
+	function getURLNewsInsExe(){return "/app/news/".$this->getId()."/ins/exe";}		
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

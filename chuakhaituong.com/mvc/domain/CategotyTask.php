@@ -45,7 +45,11 @@ class CategoryTask extends Object{
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-		
+	function getTasks(){
+		$mTask = new \MVC\Mapper\Task();
+		$Tasks = $mTask->findBy(array( $this->getId() ));
+		return $Tasks;
+	}
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
@@ -53,7 +57,7 @@ class CategoryTask extends Object{
 		return "/ask/".$this->getId();
 	}
 	function getURLView(){
-		return "/app/category/task/".$this->getId();
+		return "/app/task/".$this->getId();
 	}
 	
 	function getURLUpdLoad(){
@@ -63,12 +67,15 @@ class CategoryTask extends Object{
 		return "/app/category/task/".$this->getId()."/upd/exe";			
 	}
 	
-	function getURLDelLoad(){		
+	function getURLDelLoad(){
 		return "/app/category/task/".$this->getId()."/del/load";						
 	}
 	function getURLDelExe(){	
 		return "/app/category/task/".$this->getId()."/del/exe";
 	}
+	
+	function getURLTaskInsLoad(){return "/app/task/".$this->getId()."/ins/load";}
+	function getURLTaskInsExe(){return "/app/task/".$this->getId()."/ins/exe";}
 	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

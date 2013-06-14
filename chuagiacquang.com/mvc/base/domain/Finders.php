@@ -30,5 +30,5 @@ interface CourseClassFinder  extends Finder{}
 interface ClassLessionFinder  extends Finder{}
 interface ConfigFinder  extends Finder{}
 interface LinkedFinder  extends Finder{}
-
+interface TaskFinder  extends Finder{}
 ?>

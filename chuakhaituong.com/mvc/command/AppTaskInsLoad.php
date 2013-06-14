@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdCategory = $request->getProperty('IdCategory');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -32,6 +33,8 @@
 			$Courses = $mCourse->findAll();
 			$Sponsors = $mSponsor->findAll();
 			
+			$Category = $mCategoryTask->find($IdCategory);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -46,7 +49,9 @@
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);
 			$request->setObject('Sponsors', $Sponsors);
-						
+			
+			$request->setObject('Category', $Category);
+			
 			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / THÊM MỚI');
 			$request->setProperty("ActiveItem", 'Home');
 			

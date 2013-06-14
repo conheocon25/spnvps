@@ -21,6 +21,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/ClassLession.php");
 	require_once( "mvc/mapper/Config.php");
 	require_once( "mvc/mapper/Linked.php");
+	require_once( "mvc/mapper/Task.php");
 }
 
 class HelperFactory {
