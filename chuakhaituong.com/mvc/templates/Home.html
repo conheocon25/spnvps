@@ -92,7 +92,15 @@
 								
 								<div class="clear" />
 							</div>
-							<div class="list-title">VIDEO NỘI BỘ</div>
+						</div>
+					</div>
+					
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span>VIDEO NỘI BỘ</span>
+						</div>
+						<div align="center" style="padding:10px;">
 							<ul class="list-video">							
 								<li tal:repeat="VL VL8">
 									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
@@ -100,7 +108,7 @@
 										<div class="name" tal:content="VL/getVideo/getName" />
 									</a>
 								</li>
-							</ul>														
+							</ul>
 							<div class="clear" />
 						</div>
 					</div>
