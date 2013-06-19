@@ -13,12 +13,12 @@
 					<div class="box-title">
 						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
-						<a tal:attributes="href '/app/sponsor'">&#8629; Trở lại</a>
+						<a tal:attributes="href Sponsor/getURLSetting">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppSponsorDelLoad" tal:attributes="action Sponsor/getURLDelExe" method="post">
+						<form class="form-editor" tal:attributes="action Person/getURLDelExe" method="post">
 							<div class="row">
-								<H3>Bạn có chắc chắn muốn xóa ỦNG HỘ này không ?</H3>
+								<H3>Bạn có chắc chắn muốn xóa NHÀ ỦNG HỘ này không ?</H3>
 							</div>
 							<div class="row">
 								<div class="button" >

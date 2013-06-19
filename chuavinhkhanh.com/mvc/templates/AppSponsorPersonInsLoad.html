@@ -11,14 +11,10 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
 		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
 			$(function() {
-				$('#TimeStart').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-				$('#TimeEnd').datetimepicker(
+				$('#Time').datetimepicker(
 					{ dateFormat: 'yy-mm-dd' }
 				);
 			});
@@ -37,50 +33,52 @@
 						<a tal:attributes="href '/app/sponsor'">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
-						<form class="form-editor" tal:attributes="action Sponsor/getURLUpdExe" method="post">
+						<form class="form-editor" id="FormAppLinkedInsLoad" tal:attributes="action Sponsor/getURLPersonInsExe" method="post">
 							<div class="row">
 								<div for="Name" class="label">Tên</div>
 								<div class="textbox" >
-									<input id="Name" name="Name" type="text" tal:attributes="value Sponsor/getName" />
-								</div>
-								<div class="clear" />
-							</div>														
-							<div class="row">
-								<div for="TimeStart" class="label">Bắt đầu</div>
-								<div class="textbox" >
-									<input id="TimeStart" name="TimeStart" type="text" tal:attributes="value Sponsor/getTimeStart" />
-								</div>
-								<div class="clear" />
-							</div>
-							<div class="row">
-								<div for="TimeEnd" class="label">Kết thúc</div>
-								<div class="textbox" >
-									<input id="TimeEnd" name="TimeEnd" type="text" tal:attributes="value Sponsor/getTimeEnd" />
+									<input id="Name" name="Name" type="text" />
 								</div>
 								<div class="clear" />
 							</div>							
 							<div class="row">
-								<div class="label-random">Nội dung</div>
-								<div class="textarea">
-									<textarea class="ckeditor" name="Content" tal:content="Sponsor/getContent" />
+								<div for="Address" class="label">Địa chỉ</div>
+								<div class="textbox" >
+									<input id="Address" name="Address" type="text" />
 								</div>
 								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Type" class="label">Loại</div>
+								<div for="Time" class="label">Thời điểm</div>
 								<div class="textbox" >
-									<input id="Type" name="Type" type="text" tal:attributes="value Sponsor/getType" />
+									<input id="Time" name="Time" type="text" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Value" class="label">Giá trị</div>
+								<div class="textbox" >
+									<input id="Value" name="Value" type="text" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Unit" class="label">Đơn vị</div>
+								<div class="textbox">
+									<input id="Unit" name="Unit" type="text" />
 								</div>
 								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button">
-									<button type="submit" name="submit" value="submit-value">Lưu</button>
+									<button type="submit" name="submit" value="submit-value">Thêm mới</button>
 								</div>
 							</div>
 						</form>
 					</div>
-					<div class="box-editor-right" />					
+					<div class="box-editor-right">
+						
+					</div>
 				</div>
 				<div class="clear" />
 			</div>

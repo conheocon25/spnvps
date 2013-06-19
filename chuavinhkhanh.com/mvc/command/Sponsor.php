@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class Sponsor extends Command {
+	class Sponsor extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -16,75 +16,51 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mVideo = new \MVC\Mapper\Video();
-			$mAlbum = new \MVC\Mapper\Album();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mNews = new \MVC\Mapper\News();
 			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mPagoda = new \MVC\Mapper\Pagoda();			
 			$mCourse = new \MVC\Mapper\Course();
-			$mClassLession = new \MVC\Mapper\ClassLession();
-			$mConfig = new \MVC\Mapper\Config();
-			$mTask = new \MVC\Mapper\Task();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mSponsorPerson = new \MVC\Mapper\SponsorPerson();
+			$mNews = new \MVC\Mapper\News();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			$mPanelNews = new \MVC\Mapper\PanelNews();
 			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------											
-			$Title = "WEB SITE CHÙA VĨNH KHÁNH";
-			
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryVideo = $mCategoryVideo->findAll()->current();			
-			$AskAll = $mAsk->findByTop(array());
-			$PagodaAll = $mPagoda->findAll();
-			$TaskAll = $mTask->findAll();
+			//-------------------------------------------------------------			
+			$Sponsor = $mSponsor->find($IdSponsor);
 			$SponsorAll = $mSponsor->findAll();
-			
-			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLs = $mClassLession->findByRecent(null);
-			$CLsNext = $mClassLession->findByNext(null);
-			
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
-			$PanelAdsAll = $mPanelAds->findAll();
+			if (!isset($Sponsor)) $Sponsor = $SponsorAll->current();
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$PagodaAll = $mPagoda->findAll();
+			
+			$Event = $mEvent->findByNear(null)->current();
+			$Course = $mCourse->findByNear(null)->current();
+
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Sponsor');
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLs", $CLs);
-			$request->setObject("CLsNext", $CLsNext);
+			//-------------------------------------------------------------
 			$request->setObject("Event", $Event);
-			
-			$request->setObject("SponsorAll", $SponsorAll);			
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
-			$request->setObject("AskAll", $AskAll);
-			$request->setObject("PagodaAll", $PagodaAll);
-			$request->setObject("TaskAll", $TaskAll);
-			$request->setObject("Course", $Course);			
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);		
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("Sponsor", $Sponsor);
 			
+			$request->setProperty("ActiveItem", 'Sponsor');
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

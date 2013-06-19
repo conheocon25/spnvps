@@ -5,20 +5,15 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div id="content">
-
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/picture.png" width="30" />
 							<span tal:content="Album/getName" />
-						</div>
-						
+						</div>						
 						<div align="center" style="padding-top:5px;">
 							<embed 
 								type="application/x-shockwave-flash" 
@@ -29,32 +24,31 @@
 								pluginspage="http://www.macromedia.com/go/getflashplayer"
 								wmode="Opaque">
 							</embed>
-						</div>
-						
+						</div>						
 						<div class="news-box-sub-title">Hình ảnh khác</div>
-
 						<ul class="news-box-list">
-							<li tal:repeat="Album Albums">
+							<li tal:repeat="Album AlbumAll">
 								<a tal:attributes="href Album/getURLView">
 									<span tal:content="Album/getName"/>
 								</a>
 							</li>
-						</ul>
-						
+						</ul>						
 						<div class="clear"/>
-
 					</div>
-				</div>
-				
+				</div>				
 				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
-					<div metal:use-macro="macros.xhtml/EventBox"/>				
+					<div metal:use-macro="macros.xhtml/ClockBox"/>					
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
-					<div metal:use-macro="macros.xhtml/AskBox"/>					
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
 				</div>				
 				<div class="clear" />
 			</div>

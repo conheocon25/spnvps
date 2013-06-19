@@ -5,14 +5,10 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				<div id="content">
-					
+			<div id="main">								
+				<div id="content">					
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/pagoda.png" width="30" />
@@ -46,8 +42,7 @@
 									</tr>
 								</tbody>
 							</table>
-							<br/>
-							
+							<br/>							
 							<div class="news-box-sub-title">Các khóa học khác</div>
 							<ul class="news-box-list">
 								<li tal:repeat="Course CourseAll">
@@ -62,12 +57,17 @@
 					</div>
 				</div>				
 				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/ClockBox"/>					
 					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 				</div>
 				<div class="clear" />

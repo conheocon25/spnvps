@@ -6,12 +6,9 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Captcha.js"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div id="content">					
 					<div class="news-box">
 						<div class="box-title">
@@ -111,11 +108,17 @@
 					</div>
 				</div>
 				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+					<div metal:use-macro="macros.xhtml/ClockBox"/>					
 					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 				</div>
 				<div class="clear" />

@@ -16,31 +16,18 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mAlbum = new \MVC\Mapper\Album();
-			$mEvent = new \MVC\Mapper\Event();
-			$mNews = new \MVC\Mapper\News();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCourse = new \MVC\Mapper\Course();
-			$mConfig = new \MVC\Mapper\Config();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mClassLession = new \MVC\Mapper\ClassLession();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Albums = $mAlbum->findAll();			
+			$AlbumAll = $mAlbum->findAll();			
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();			
 			
 			if (!isset($IdAlbum)){
-				$Album = $Albums->current();
+				$Album = $AlbumAll->current();
 			}else{
 				$Album = $mAlbum->find($IdAlbum);
 			}
@@ -49,32 +36,30 @@
 			$Event = $mEvent->findTop(null)->current();
 			
 			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLsNext = $mClassLession->findByNext(null);
-			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAds = $mPanelAds->findAll();
+						
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
+			$PanelAdsAll = $mPanelAds->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Album", $Album);
-			$request->setObject("Albums", $Albums);
+			$request->setObject("AlbumAll", $AlbumAll);
 			$request->setObject("Event", $Event);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLsNext", $CLsNext);			
-			$request->setProperty("ActiveItem", 'LibraryAlbum');
-			$request->setObject("PanelNews", $PanelNews);
+			$request->setObject("DhammapadaToday", $DhammapadaToday);						
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("PanelAdsAll", $PanelAds);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			
+			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
