@@ -11,11 +11,11 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------		
-			$Name = $request->getProperty('Name');
-			$Address = $request->getProperty('Address');
-			$Time = $request->getProperty('Time');
-			$Value = $request->getProperty('Value');
-			$Unit = $request->getProperty('Unit');
+			$Name = $request->getProperty('Name');			
+			$TimeStart = $request->getProperty('TimeStart');
+			$TimeEnd = $request->getProperty('TimeEnd');
+			$Content = $request->getProperty('Content');
+			$Type = $request->getProperty('Type');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -25,13 +25,13 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
-			$Sponsor = new \MVC\Domain\SponsorPerson(
+			$Sponsor = new \MVC\Domain\Sponsor(
 				null,
 				$Name,
-				$Time,
-				$Address,
-				$Value,
-				$Unit
+				$TimeStart,
+				$TimeEnd,
+				$Content,
+				$Type
 			);
 			$mSponsor->insert($Sponsor);
 			

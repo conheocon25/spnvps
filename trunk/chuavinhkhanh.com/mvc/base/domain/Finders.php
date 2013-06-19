@@ -20,6 +20,7 @@ interface VideoFinder  extends Finder {}
 interface VideoMonkFinder  extends Finder {}
 interface VideoLibraryFinder  extends Finder {}
 interface VideoPagodaFinder  extends Finder {}
+interface VideoSponsorFinder  extends Finder {}
 interface AlbumFinder  extends Finder {}
 interface MonkFinder  extends Finder {}
 interface EventFinder  extends Finder {}

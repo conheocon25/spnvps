@@ -44,13 +44,11 @@
 			}
 			else {
 				$Title = "Câu hỏi";
-			}
-			
+			}			
 			$Course = $mCourse->findByNear(null)->current();
 			$Event = $mEvent->findTop(null)->current();
 
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLsNext = $mClassLession->findByNext(null);
+			$DhammapadaToday = $mDhammapadaDetail->rand(null);			
 			
 			$AskAll = $mAsk->findAll();
 			$SponsorAll = $mSponsor->findAll();
@@ -68,9 +66,7 @@
 			$request->setObject("Event", $Event);
 			$request->setObject("Category", $Category);
 			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLsNext", $CLsNext);
-			
+			$request->setObject("DhammapadaToday", $DhammapadaToday);					
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("AskAll", $AskAll);
@@ -80,8 +76,7 @@
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-						
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

@@ -14,32 +14,24 @@
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title"/>
-							<a href="/app">&#8629; Trở lại</a>
+							<a href="/app/sponsor">&#8629; Trở lại</a>
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
 								<tbody>
-									<tr class="content-rows" tal:repeat="Sponsor SponsorAll">
+									<tr class="content-rows" tal:repeat="Person Sponsor/getPersonAll">
 										<td width="32" align="center">
-											<div tal:content="repeat/Sponsor/number" />
+											<div tal:content="repeat/Person/number" />
 										</td>
 										<td class="text-hightlight">
-											<a tal:attributes="href Sponsor/getURLUpdLoad">
-												<div tal:content="Sponsor/getName" />
+											<a tal:attributes="href Person/getURLUpdLoad">
+												<div tal:content="Person/getName" />
 											</a>
 										</td>
-										<td>
-											<a tal:attributes="href Sponsor/getURLSetting">
-												Ủng hộ (<span tal:content="Sponsor/getPersonAll/count" />)
-											</a>
-										</td>
-										<td>
-											<a tal:attributes="href Sponsor/getURLVideo">
-												Video (<span tal:content="Sponsor/getVideoAll/count" />)
-											</a>
-										</td>
+										<td align="right" width="96" tal:content="Person/getValuePrint" />
+										<td align="left" width="48" tal:content="Person/getUnit" />
 										<td class="text-hightlight" width="32" align="center">
-											<a tal:attributes="href Sponsor/getURLDelLoad">
+											<a tal:attributes="href Person/getURLDelLoad">
 												<div><img src="/data/images/remove.png" width="20" /></div>
 											</a>
 										</td>
@@ -48,7 +40,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a href="/app/sponsor/ins/load">
+											<a tal:attributes="href Sponsor/getURLPersonInsLoad">
 												<div><img src="/data/images/add.png" width="20" /></div>
 											</a>
 										</td>
@@ -62,12 +54,17 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/changepass/load">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
+						<div class="box-title"><img src="/data/images/icon.png" width="30" /><span><a href="/changepass/load">Admin</a></span><a href="/signout/load">&#8629; Thoát</a></div>						
+						<div class="manager-menu">
+							<ul>								
+								<a tal:repeat="Sponsor1 SponsorAll" tal:attributes="href Sponsor1/getURLSetting">
+									<li tal:attributes="class php:Sponsor1->getId()==Sponsor->getId()?'menu-select':'?'">
+										<div class="left" tal:content="Sponsor1/getName"/>
+										<div class="right" tal:content="Sponsor1/getPersonAll/count" />
+									</li>
+								</a>
+							</ul>
 						</div>
-						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />

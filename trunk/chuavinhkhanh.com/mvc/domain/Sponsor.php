@@ -43,11 +43,18 @@ class Sponsor extends Object{
 		$SPAll = $mSP->findBy(array($this->getId()));
 		return $SPAll;
 	}
+	
+	function getVideoAll(){
+		$mVS = new \MVC\Mapper\VideoSponsor();
+		$VSAll = $mVS->findBy(array($this->getId()));
+		return $VSAll;
+	}
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "/sponsor/".$this->getId();}
 	function getURLSetting(){return "/app/sponsor/".$this->getId();}
+	function getURLVideo(){return "/app/sponsor/".$this->getId()."/video";}
 	function getURLUpdLoad(){return "/app/sponsor/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/sponsor/".$this->getId()."/upd/exe";}	
 	function getURLDelLoad(){return "/app/sponsor/".$this->getId()."/del/load";}
@@ -55,6 +62,9 @@ class Sponsor extends Object{
 	
 	function getURLPersonInsLoad(){return "/app/sponsor/".$this->getId()."/ins/load";}
 	function getURLPersonInsExe(){return "/app/sponsor/".$this->getId()."/ins/exe";}
+	
+	function getURLVideoInsLoad(){return "/app/sponsor/".$this->getId()."/video/ins/load";}
+	function getURLVideoInsExe(){return "/app/sponsor/".$this->getId()."/video/ins/exe";}
 			
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
