@@ -14,6 +14,7 @@ class VideoCollection extends Collection implements \MVC\Domain\VideoCollection 
 class VideoMonkCollection extends Collection implements \MVC\Domain\VideoMonkCollection {function targetClass( ) {return "\MVC\Domain\VideoMonk";}}
 class VideoLibraryCollection extends Collection implements \MVC\Domain\VideoLibraryCollection {function targetClass( ) {return "\MVC\Domain\VideoLibrary";}}
 class VideoPagodaCollection extends Collection implements \MVC\Domain\VideoPagodaCollection {function targetClass( ) {return "\MVC\Domain\VideoPagoda";}}
+class VideoSponsorCollection extends Collection implements \MVC\Domain\VideoSponsorCollection {function targetClass( ) {return "\MVC\Domain\VideoSponsor";}}
 class AlbumCollection extends Collection implements \MVC\Domain\AlbumCollection {function targetClass( ) {return "\MVC\Domain\Album";}}
 class MonkCollection extends Collection implements \MVC\Domain\MonkCollection {function targetClass( ) {return "\MVC\Domain\Monk";}}
 class EventCollection extends Collection implements \MVC\Domain\EventCollection {function targetClass( ) {return "\MVC\Domain\Event";}}
