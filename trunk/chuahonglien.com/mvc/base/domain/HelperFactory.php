@@ -6,6 +6,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/CategoryNews.php" );
 	require_once( "mvc/mapper/CategoryVideo.php" );
 	require_once( "mvc/mapper/CategoryAsk.php" );
+	require_once( "mvc/mapper/CategoryBType.php" );
 	require_once( "mvc/mapper/News.php" );
 	require_once( "mvc/mapper/Video.php" );
 	require_once( "mvc/mapper/VideoMonk.php" );
@@ -26,6 +27,11 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/Task.php");
 	require_once( "mvc/mapper/Dhammapada.php");
 	require_once( "mvc/mapper/DhammapadaDetail.php");
+	require_once( "mvc/mapper/Sponsor.php");
+	require_once( "mvc/mapper/SponsorPerson.php");
+	require_once( "mvc/mapper/PanelAds.php");
+	require_once( "mvc/mapper/PanelCategoryVideo.php");
+	require_once( "mvc/mapper/PanelNews.php");
 }
 
 class HelperFactory {

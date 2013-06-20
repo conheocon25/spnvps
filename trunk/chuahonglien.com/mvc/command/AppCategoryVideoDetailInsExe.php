@@ -28,7 +28,7 @@
 			//-------------------------------------------------------------
 			if (!isset($Name)||$Name=="")
 				return self::statuses('CMD_OK');
-				
+						
 			$Video = new \MVC\Domain\Video(
 				null,
 				$Name,
@@ -37,6 +37,7 @@
 				$Note,
 				$Count
 			);
+			$Video->setURL( $Video->parseURLYoutube() );
 			$mVideo->insert($Video);
 			$VL = new \MVC\Domain\VideoLibrary(
 				null,

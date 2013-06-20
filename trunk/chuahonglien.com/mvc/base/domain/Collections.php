@@ -6,6 +6,7 @@ interface UserCollection extends \Iterator {function add( Object $user );}
 interface CategoryNewsCollection extends \Iterator {function add( Object $CategoryNews );}
 interface CategoryVideoCollection extends \Iterator {function add( Object $CategoryVideo );}
 interface CategoryAskCollection extends \Iterator {function add( Object $CategoryAsk );}
+interface CategoryBTypeCollection extends \Iterator {function add( Object $CategoryBType );}
 interface NewsCollection extends \Iterator {function add( Object $News );}
 interface VideoCollection extends \Iterator {function add( Object $Video );}
 interface VideoMonkCollection extends \Iterator {function add( Object $VideoMonk );}
@@ -27,5 +28,9 @@ interface TaskCollection extends \Iterator {function add( Object $Task);}
 interface PageCollection extends \Iterator {function add( Object $Page);}
 interface DhammapadaCollection extends \Iterator {function add( Object $Dhammapada);}
 interface DhammapadaDetailCollection extends \Iterator {function add( Object $DhammapadaDetail);}
-
+interface SponsorCollection extends \Iterator {function add( Object $Sponsor);}
+interface SponsorPersonCollection extends \Iterator {function add( Object $SponsorPerson);}
+interface PanelAdsCollection extends \Iterator {function add( Object $PanelAds);}
+interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
+interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews);}
 ?>

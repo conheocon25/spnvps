@@ -1,19 +1,16 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>
 	<body>
 		<div id="wrapper">
-		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div class="signin-frame">
 					<form id="FormSignin" name="FormSignin" tal:attributes="action '/signin/exe'" method="post" autocomplete="off">
-						<h1 align="center">© 2012 Thiên Quang Ni Tự</h1>
+						<h1 align="center">© 2012 Chùa Hồng Liên</h1>
 						<div align="center">
 							<label id="SigninEmailLabel" class="signin-label">Email@example.com</label>
 							<input id="SigninEmail" name="Email" type="text" class="signin-textbox" />
@@ -30,9 +27,7 @@
 				</div>
 				<div class="enter"></div>
 			</div>
-
 			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

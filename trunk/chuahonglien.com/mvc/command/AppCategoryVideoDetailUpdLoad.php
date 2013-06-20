@@ -16,32 +16,32 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			$mMonk = new \MVC\Mapper\Monk();
-			$mVideoLibrary = new \MVC\Mapper\VideoLibrary();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			//-------------------------------------------------------------						
+			$mVideoLibrary = new \MVC\Mapper\VideoLibrary();			
+			include("mvc/base/mapper/MapperDefault.php");
 								
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$VL = $mVideoLibrary->find($IdVideoLibrary);
-			$Pagodas = $mPagoda->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Monks = $mMonk->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findAll();
 			$Title = "Quản lý / chuyên mục video / ".$VL->getVideo()->getName()." / Cập nhật";
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('VL', $VL);
-			$request->setObject('Monks', $Monks);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-			$request->setObject('CategoriesNews', $CategoriesNews);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', "Home");

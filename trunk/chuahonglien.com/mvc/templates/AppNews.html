@@ -7,7 +7,7 @@
 	<body>
 		<div id="wrapper">
 		
-			<div metal:use-macro="macros.xhtml/Header" />	
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 
 			<div id="main">				
 				
@@ -20,6 +20,14 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left" />
+										<th align="left">TIÊU ĐỀ</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="News NewsAll" >
 										<td width="32" align="center">
@@ -64,28 +72,22 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/user.png" width="30" />
-							<span>Admin</span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
-						
+						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Category1 Categories" tal:attributes="href Category1/getURLView">
+								<a tal:repeat="Category1 CategoryAll" tal:attributes="href Category1/getURLView">
 									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">
-										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getNews/count" />)
+										<div class="left" tal:content="Category1/getName" />
+										<div class="right" tal:content="Category1/getNews/count" />
 									</li>
 								</a>												
 							</ul>
 						</div>
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear" />
 			</div>
-
 			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

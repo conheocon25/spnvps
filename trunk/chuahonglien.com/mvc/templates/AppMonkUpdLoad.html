@@ -10,7 +10,7 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />	
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">				
 				
 				<div id="box-editor">
@@ -26,35 +26,46 @@
 								<div class="textbox" >
 									<input id="PreName" name="PreName" type="text" tal:attributes="value Monk/getPreName" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
 							</div>
 							<div class="row">
 								<div for="Type" class="label">Loại</div>
 								<div class="checkbox" >
 									<input id="Type" type="checkbox" name="Type" tal:attributes="checked Monk/getType" /> Đặc biệt
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
+							</div>
+							<div class="row">
+								<div for="BType" class="label">Tông phái</div>
+								<div class="textbox" >
+									<select name="BType">
+										<option tal:repeat="Category CategoryBTypeAll" tal:attributes="value Category/getId;selected php:Category->getId()==Monk->getBType()?true:false" >
+											<span tal:content="Category/getName"/>
+										</option>
+									</select>
+								</div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Tên</div>
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Monk/getName" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
 							</div>
 							<div class="row">
 								<div for="Pagoda" class="label">Chùa</div>
 								<div class="textbox" >
 									<input id="Pagoda" name="Pagoda" type="text" tal:attributes="value Monk/getPagoda" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
 							</div>
 							<div class="row">
 								<div for="Phone" class="label">Điện thoại</div>
 								<div class="textbox" >
 									<input id="Phone" name="Phone" type="text" tal:attributes="value Monk/getPhone" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
 							</div>
 							<div class="row">
 								<div for="Picture" class="label">Hình</div>

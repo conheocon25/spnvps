@@ -15,6 +15,7 @@ interface UserFinder  extends Finder {}
 interface CategoryNewsFinder  extends Finder {}
 interface CategoryVideoFinder  extends Finder {}
 interface CategoryAskFinder  extends Finder {}
+interface CategoryBTypeFinder  extends Finder {}
 interface NewsFinder  extends Finder {}
 interface VideoFinder  extends Finder {}
 interface VideoMonkFinder  extends Finder {}
@@ -35,5 +36,9 @@ interface CategoryTaskFinder  extends Finder{}
 interface TaskFinder  extends Finder{}
 interface DhammapadaFinder  extends Finder{}
 interface DhammapadaDetailFinder  extends Finder{}
-
+interface SponsorFinder  extends Finder{}
+interface SponsorPersonFinder  extends Finder{}
+interface PanelAdsFinder  extends Finder{}
+interface PanelCategoryVideoFinder  extends Finder{}
+interface PanelNewsFinder  extends Finder{}
 ?>

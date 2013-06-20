@@ -8,6 +8,7 @@ class UserCollection extends Collection implements \MVC\Domain\UserCollection {f
 class CategoryNewsCollection extends Collection implements \MVC\Domain\CategoryNewsCollection {function targetClass( ) {return "\MVC\Domain\CategoryNews";}}
 class CategoryVideoCollection extends Collection implements \MVC\Domain\CategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\CategoryVideo";}}
 class CategoryAskCollection extends Collection implements \MVC\Domain\CategoryAskCollection {function targetClass( ) {return "\MVC\Domain\CategoryAsk";}}
+class CategoryBTypeCollection extends Collection implements \MVC\Domain\CategoryBTypeCollection {function targetClass( ) {return "\MVC\Domain\CategoryBType";}}
 class NewsCollection extends Collection implements \MVC\Domain\NewsCollection {function targetClass( ) {return "\MVC\Domain\News";}}
 class VideoCollection extends Collection implements \MVC\Domain\VideoCollection {function targetClass( ) {return "\MVC\Domain\Video";}}
 class VideoMonkCollection extends Collection implements \MVC\Domain\VideoMonkCollection {function targetClass( ) {return "\MVC\Domain\VideoMonk";}}
@@ -29,5 +30,10 @@ class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {f
 class PageCollection extends Collection implements \MVC\Domain\PageCollection {function targetClass( ) {return "\MVC\Domain\Page";}}
 class DhammapadaCollection extends Collection implements \MVC\Domain\DhammapadaCollection {function targetClass( ) {return "\MVC\Domain\Dhammapada";}}
 class DhammapadaDetailCollection extends Collection implements \MVC\Domain\DhammapadaDetailCollection {function targetClass( ) {return "\MVC\Domain\DhammapadaDetail";}}
+class SponsorCollection extends Collection implements \MVC\Domain\SponsorCollection {function targetClass( ) {return "\MVC\Domain\Sponsor";}}
+class SponsorPersonCollection extends Collection implements \MVC\Domain\SponsorPersonCollection {function targetClass( ) {return "\MVC\Domain\SponsorPerson";}}
+class PanelAdsCollection extends Collection implements \MVC\Domain\PanelAdsCollection {function targetClass( ) {return "\MVC\Domain\PanelAds";}}
+class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
+class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCollection {function targetClass( ) {return "\MVC\Domain\PanelNews";}}
 
 ?>

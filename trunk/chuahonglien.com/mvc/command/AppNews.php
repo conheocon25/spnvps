@@ -17,22 +17,19 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mNews = new \MVC\Mapper\News();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Categories1 = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryAll1 = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			if (!isset($IdCategory)){
 				if (!isset($IdCurrentCategory)){
-					$Category = $Categories->current();
+					$Category = $CategoryAll->current();
 					$IdCategory = $Category->getId();
 				}
 				else {
@@ -48,14 +45,19 @@
 			$Title = "Quản lý / Chuyên mục Tin tức / ".$Category->getName();
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
 			
+			$CategoryBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("Categories", $Categories1);
+			//-------------------------------------------------------------
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);						
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAll", $CategoryAll1);
 			$request->setObject("Category", $Category);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('NewsAll', $NewsAll);
 			$request->setObject('PN', $PN);
 			$request->setProperty("Title", $Title);

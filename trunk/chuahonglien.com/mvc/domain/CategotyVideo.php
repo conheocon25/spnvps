@@ -9,16 +9,18 @@ class CategoryVideo extends Object{
 	private $Picture;
 	private $Order;
 	private $Type;
+	private $BType;
 		
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null){
+    function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null, $BType=Null){
         $this->Id = $Id;
 		$this->Name = $Name;
 		$this->Picture = $Picture;
 		$this->Order = $Order;
 		$this->Type = $Type;
+		$this->BType = $BType;
         parent::__construct( $Id );
     }
     function getId(){
@@ -35,6 +37,10 @@ class CategoryVideo extends Object{
 	function getName( ) {
         return $this->Name;
     }
+	function getNameReduce(){
+		$S = new \MVC\Library\String($this->Name);
+		return $S->reduce(40);
+	}
 	
 	function setPicture( $Picture ) {
         $this->Picture = $Picture;
@@ -64,7 +70,24 @@ class CategoryVideo extends Object{
 			return true;
         return false;
     }
+
+	function setBType( $BType ) {
+        $this->BType = $BType;
+        $this->markDirty();
+    } 
 	
+	function getBType( ) {
+        return $this->BType;
+    }
+	
+	function getBTypeName( ) {
+		$mBType = new \MVC\Mapper\CategoryBType();
+		$BType = $mBType->find($this->BType);
+		if (!isset($BType))
+			return "Chưa rõ";
+        return $BType->getName();
+    }
+
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -73,6 +96,13 @@ class CategoryVideo extends Object{
 		$VLs = $mVL->findBy( array($this->getId()) );
 		return $VLs;
 	}	
+	
+	function getVLTop(){
+		$mVL = new \MVC\Mapper\VideoLibrary();
+		$VLTop = $mVL->findByTop( array($this->getId()) );
+		return $VLTop;
+	}
+	
 	function getVMsLimit10(){
 		$mVM = new \MVC\Mapper\VideoMonk();
 		$VMs = $mVM->findByCategoryLimit10( array($this->getId()) );
@@ -83,7 +113,11 @@ class CategoryVideo extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLRead(){
-		return "/library/category/video/".$this->getId();
+		return "/library/video/".$this->getBType()."/category/".$this->getId();
+	}
+	
+	function getURLView(){
+		return "/app/news/".$this->getId();
 	}	
 	function getURLVideo(){
 		return "/app/category/video/".$this->getId();

@@ -6,15 +6,10 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
+			<div id="main">												
 				<div id="content">					
-					<div class="news-box">
-					
+					<div class="news-box">					
 						<div class="box-title">
 							<img src="/data/images/manager.png" width="30" />
 							<span tal:content="Title" />
@@ -22,8 +17,16 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">DANH MỤC</th>
+										<th align="left">TIN TỨC</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Category CategoriesNews">
+									<tr class="content-rows" tal:repeat="Category CategoryNewsAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/Category/number" />
 										</td>
@@ -32,7 +35,7 @@
 												<div tal:content="Category/getName" />
 											</a>
 										</td>
-										<td class="text-hightlight" align="center">
+										<td class="text-hightlight" align="left">
 											<a tal:attributes="href Category/getURLView">
 												<div>Xem tin (<span tal:content="Category/getNews/count"/>)</div>
 											</a>
@@ -55,17 +58,12 @@
 								</tfoot>
 							</table>
 						</div>
-						<div class="clear"></div>
+						<div class="clear" />
 					</div>
-				</div>
-				
+				</div>				
 				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/user.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+					<div class="sidebar-box">						
+						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>				

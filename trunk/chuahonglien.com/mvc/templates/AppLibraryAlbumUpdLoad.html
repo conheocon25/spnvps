@@ -23,7 +23,7 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />	
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">
 				
 				<div id="box-editor">
@@ -39,28 +39,28 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Album/getName" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Thời gian</div>
 								<div class="textbox" >
 									<input id="Time" name="Time" type="text" tal:attributes="value Album/getTime" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">URL</div>
 								<div class="textbox" >
 									<input id="URL" name="URL" type="text" tal:attributes="value Album/getURL" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Ghi chú</div>
 								<div class="textbox" >
 									<input id="Note" name="Note" type="text" tal:attributes="value Album/getNote" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -73,7 +73,7 @@
 						Right
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear" />
 			</div>
 
 			<div metal:use-macro="macros.xhtml/Footer" />
