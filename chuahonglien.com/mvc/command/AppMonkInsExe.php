@@ -41,7 +41,8 @@
 				$Pagoda,
 				$Phone,
 				$Note,
-				$Type
+				$Type,
+				''
 			);												
 			$mMonk->insert($dMonk);
 			

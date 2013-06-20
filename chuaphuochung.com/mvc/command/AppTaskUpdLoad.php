@@ -16,55 +16,18 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mAlbum = new \MVC\Mapper\Album();
-			$mEvent = new \MVC\Mapper\Event();
-			$mMonk = new \MVC\Mapper\Monk();
-			$mCourse = new \MVC\Mapper\Course();
-			$mLinked = new \MVC\Mapper\Linked();
-			$mCategoryTask = new \MVC\Mapper\CategoryTask();
-			$mTask = new \MVC\Mapper\Task();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAllVideo = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();
-			$AlbumAll = $mAlbum->findAll();
-			$Events = $mEvent->findAll();
-			$Monks = $mMonk->findAll();
-			$Courses = $mCourse->findAll();
-			$Linkeds = $mLinked->findAll();
-			$TaskAll = $mTask->findAll();
-			$CategoryAllTask = $mCategoryTask->findAll();
-						
+			//-------------------------------------------------------------									
+			$CategoryTaskAll = $mCategoryTask->findAll();						
 			$Task = $mTask->find($IdTask);
-			
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('CategoryAllTask', $CategoryAllTask);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('AlbumAll', $AlbumAll);
-			$request->setObject('Events', $Events);
-			$request->setObject('Monks', $Monks);
-			$request->setObject('Courses', $Courses);
-			$request->setObject('Linkeds', $Linkeds);
+			//-------------------------------------------------------------			
+			$request->setObject('CategoryTaskAll', $CategoryTaskAll);			
 			$request->setObject('Task', $Task);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / '.$Task->getTitle()." / CẬP NHẬT" );

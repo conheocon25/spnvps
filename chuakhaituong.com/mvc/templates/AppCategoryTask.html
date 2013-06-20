@@ -1,0 +1,73 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">
+					<div class="news-box">					
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="Title" />
+							<a href="/app">&#8629; Trở lại</a>
+						</div>						
+						<div style="padding:10px;">
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<tbody>
+									<tr class="content-rows" tal:repeat="Category CategoriesTask">
+										<td width="32" align="center">
+											<div tal:content="repeat/Category/number" />
+										</td>
+										<td class="text-hightlight">
+											<a tal:attributes="href Category/getURLUpdLoad">
+												<div tal:content="Category/getName" />
+											</a>
+										</td>
+										<td class="text-hightlight" align="center">
+											<a tal:attributes="href Category/getURLView">
+												<div>Công việc (<span tal:content="Category/getTasks/count"/>)</div>
+											</a>
+										</td>
+										<td class="text-hightlight" width="32" align="center">
+											<a tal:attributes="href Category/getURLDelLoad">
+												<div><img src="/data/images/remove.png" width="20" /></div>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4" align="center">
+											<a href="/app/category/task/ins/load">
+												Thêm mới danh mục
+											</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+						<div class="clear" />
+					</div>
+				</div>
+				
+				<div id="sidebar">										
+					<div class="sidebar-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span><a href="/app">Admin</a></span>
+							<a href="/signout/load">&#8629; Thoát</a>
+						</div>
+						<div metal:use-macro="macros.xhtml/AdminMenu" />
+					</div>
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

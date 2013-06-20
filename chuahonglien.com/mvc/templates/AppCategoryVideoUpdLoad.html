@@ -7,7 +7,7 @@
 	<body>
 		<div id="wrapper">
 
-			<div metal:use-macro="macros.xhtml/Header" />	
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 
 			<div id="main">				
 				
@@ -31,7 +31,18 @@
 								<div class="checkbox" >
 									<input id="Type" type="checkbox" name="Type" tal:attributes="checked Category/getType" />Đặc biệt
 								</div>
-								<div class="clear"></div>
+								<div class="clear"/>
+							</div>
+							<div class="row">
+								<div for="BType" class="label">Tông phái</div>
+								<div class="textbox" >
+									<select name="BType">
+										<option tal:repeat="Category1 CategoryBTypeAll" tal:attributes="value Category1/getId;selected php:Category1->getId()==Category->getBType()?true:false" >
+											<span tal:content="Category1/getName"/>
+										</option>
+									</select>
+								</div>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Picture" class="label">URL hình ảnh</div>
@@ -58,7 +69,7 @@
 						
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear"/>
 			</div>
 
 			<div metal:use-macro="macros.xhtml/Footer" />

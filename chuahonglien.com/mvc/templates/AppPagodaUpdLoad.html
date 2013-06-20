@@ -6,7 +6,7 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />		
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />		
 			<div id="main">				
 				
 				<div id="box-editor">
@@ -22,36 +22,25 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Pagoda/getName" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Name" class="label">Địa chỉ</div>
+								<div for="Name" class="label">Nội dung</div>
 								<div class="textbox" >
 									<input id="Address" name="Address" type="text" tal:attributes="value Pagoda/getAddress" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Name" class="label">Điện thoại</div>
+								<div for="Name" class="label">Mô tả</div>
 								<div class="textbox" >
 									<input id="Phone" name="Phone" type="text" tal:attributes="value Pagoda/getPhone" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Website</div>
-								<div class="textbox" >
-									<input id="Website" name="Website" type="text" tal:attributes="value Pagoda/getWebsite"  />
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="row">
-								<div for="Name" class="label">Trụ trì</div>
-								<div class="textbox" >
-									<input id="Master" name="Master" type="text" tal:attributes="value Pagoda/getMaster"  />
-								</div>
-								<div class="clear"></div>
-							</div>
+							<input id="Website" name="Website" type="hidden" tal:attributes="value Pagoda/getWebsite"  />
+							<input id="Master" name="Master" type="hidden" tal:attributes="value Pagoda/getMaster"  />
+							
 							<div class="row">
 								<div class="button" >
 									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
@@ -63,7 +52,7 @@
 						Right
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
 		</div>

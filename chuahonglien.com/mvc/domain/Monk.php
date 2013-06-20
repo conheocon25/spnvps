@@ -11,12 +11,12 @@ class Monk extends Object{
 	private $Phone;
 	private $Note;
 	private $Type;
-	private $Picture;
+	private $BType;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $Picture=Null){
+    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $BType=Null){
         $this->Id = $Id;
 		$this->PreName = $PreName;
 		$this->Name = $Name;
@@ -24,8 +24,7 @@ class Monk extends Object{
 		$this->Phone = $Phone;
 		$this->Note = $Note;
 		$this->Type = $Type;
-		$this->Picture = $Picture;
-		
+		$this->BType = $BType;
         parent::__construct( $Id );
     }
     function getId() {
@@ -50,7 +49,6 @@ class Monk extends Object{
 	function getName( ) {
         return $this->Name;
     }
-	
 	function getFullName( ) {
         return $this->PreName." ".$this->Name;
     }
@@ -92,13 +90,23 @@ class Monk extends Object{
         return false;
     }
 	
-	function setPicture( $Picture ) {
-        $this->Picture = $Picture;
+	function setBType( $BType ) {
+        $this->BType = $BType;
         $this->markDirty();
-    }   
-	function getPicture( ){
-        return $this->Picture;
+    } 
+	function getBType( ){		
+        return $this->BType;
     }
+	function getBTypeName( ){
+		$mBType = new \MVC\Mapper\CategoryBType();
+		$BType = $mBType->find($this->BType);
+		if (!isset($BType))
+			return "Chưa rõ";
+        return $BType->getName();
+    }
+	function getPicture(){
+		return "";	
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -113,7 +121,7 @@ class Monk extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
 	function getURLRead(){
-		return "/library/monk/video/".$this->getId();
+		return "/library/video/".$this->getBType()."/monk/".$this->getId();
 	}
 	function getURLView(){
 		return "/app/monk";

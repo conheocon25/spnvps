@@ -18,6 +18,7 @@
 			$Note = $request->getProperty('Note');
 			$Pagoda = $request->getProperty('Pagoda');
 			$Type = $request->getProperty('Type');
+			$BType = $request->getProperty('BType');
 			$Picture = $request->getProperty('Picture');
 			
 			//-------------------------------------------------------------
@@ -44,7 +45,8 @@
 			$dMonk->setPhone($Phone);
 			$dMonk->setPagoda($Pagoda);
 			$dMonk->setType($Type);
-			$dMonk->setPicture($Picture);
+			$dMonk->setBType($BType);
+			//$dMonk->setPicture($Picture);
 			
 			$mMonk->update($dMonk);
 			

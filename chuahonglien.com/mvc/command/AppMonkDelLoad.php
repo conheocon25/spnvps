@@ -16,27 +16,24 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mMonk = new \MVC\Mapper\Monk();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 								
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Monk = $mMonk->find($IdMonk);			
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			$Title = "Quản lý hệ thống > Các giảng sư > ".$Monk->getName()." > Xóa";			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Monk', $Monk);								
-			$request->setObject('CategoriesNews', $CategoriesNews);	
-			$request->setObject('CategoriesAsk', $CategoriesAsk);	
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);	
+			$request->setObject('CategoryAskAll', $CategoryAskAll);	
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 

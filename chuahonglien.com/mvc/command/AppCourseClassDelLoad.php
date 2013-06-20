@@ -26,15 +26,17 @@
 			$mMonk = new \MVC\Mapper\Monk();
 			$mCourse = new \MVC\Mapper\Course();
 			$mCourseClass = new \MVC\Mapper\CourseClass();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mPanelAds = new \MVC\Mapper\PanelAds();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAllVideo = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
 			$Courses = $mCourse->findAll();
@@ -42,14 +44,19 @@
 			$Course = $mCourse->find($IdCourse);
 			$CourseClass = $mCourseClass->find($IdClass);
 			
+			$CategoryBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
+			//-------------------------------------------------------------
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);						
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);

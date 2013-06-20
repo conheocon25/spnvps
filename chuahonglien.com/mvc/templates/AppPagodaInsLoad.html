@@ -6,13 +6,13 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />		
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />		
 			<div id="main">				
 				
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/manager.png" width="30" />
-						<span>Quản trị &#8594; Danh bạ Chùa &#8594; Thêm mới</span>
+						<span>Quản trị &#8594; Chuyên Đề &#8594; Thêm mới</span>
 						<a href="/app/pagoda">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
@@ -22,36 +22,25 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Name" class="label">Địa chỉ</div>
+								<div for="Name" class="label">Nội Dung:</div>
 								<div class="textbox" >
 									<input id="Address" name="Address" type="text" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Name" class="label">Điện thoại</div>
+								<div for="Name" class="label">Mô tả:</div>
 								<div class="textbox" >
 									<input id="Phone" name="Phone" type="text" />
 								</div>
-								<div class="clear"></div>
+								<div class="clear" />
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Website</div>
-								<div class="textbox" >
-									<input id="Website" name="Website" type="text" />
-								</div>
-								<div class="clear"></div>
-							</div>
-							<div class="row">
-								<div for="Name" class="label">Trụ trì</div>
-								<div class="textbox" >
-									<input id="Master" name="Master" type="text" />
-								</div>
-								<div class="clear"></div>
-							</div>
+							<input id="Website" value='' name="Website" type="hidden" />
+							<input id="Master" value='' name="Master" type="hidden" />
+								
 							<div class="row">
 								<div class="button" >
 									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
@@ -63,7 +52,7 @@
 						Right
 					</div>
 				</div>
-				<div class="clear"></div>
+				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
 		</div>

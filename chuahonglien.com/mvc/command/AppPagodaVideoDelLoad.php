@@ -22,27 +22,32 @@
 			
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mPanelAds = new \MVC\Mapper\PanelAds();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Pagoda = $mPagoda->find($IdPagoda);
-			$Pagodas = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$VP = $mVideoPagoda->find($IdVideoPagoda);
 			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / ".$VP->getVideo()->getName()." / Xóa";
 			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryBType = $mCategoryBType->findAll();
+			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Pagoda', $Pagoda);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('VP', $VP);
-			$request->setObject('CategoriesNews', $CategoriesNews);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-						
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBType);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}

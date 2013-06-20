@@ -7,7 +7,7 @@
 	<body>
 		<div id="wrapper">
 		
-			<div metal:use-macro="macros.xhtml/Header" />	
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 
 			<div id="main">				
 				
@@ -20,8 +20,16 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">THAM SỐ</th>
+										<th align="left">GIÁ TRỊ</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Config Configs">
+									<tr class="content-rows" tal:repeat="Config ConfigAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/Config/number" />
 										</td>
@@ -55,11 +63,7 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/user.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>

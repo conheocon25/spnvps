@@ -12,21 +12,14 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Date').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 	</head>
 	<body>
 		<div id="wrapper">
-
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
-				
+			<div id="main">								
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/manager.png" width="30" />
@@ -39,7 +32,7 @@
 								<div for="Type" class="label">Loại</div>
 								<div class="textbox" >
 									<select id="Type" name="Type">
-										<option tal:repeat="Category CategoriesTask" tal:attributes="value Category/getId;selected php:Category->getId()==Task->getType()?true:false">
+										<option tal:repeat="Category CategoryTaskAll" tal:attributes="value Category/getId;selected php:Category->getId()==Task->getType()?true:false">
 											<span tal:content="Category/getName" />
 										</option>
 									</select>
@@ -81,9 +74,7 @@
 							</div>
 						</form>
 					</div>
-					<div class="box-editor-right">
-						
-					</div>
+					<div class="box-editor-right"></div>
 				</div>
 				<div class="clear" />
 			</div>

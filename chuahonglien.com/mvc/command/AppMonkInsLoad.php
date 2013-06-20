@@ -15,26 +15,24 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			$Title = "Quản lý / giảng sư / Thêm mới";
-			$Pagodas = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
-			$request->setObject('CategoriesNews', $CategoriesNews);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
 		}
 	}
 ?>
