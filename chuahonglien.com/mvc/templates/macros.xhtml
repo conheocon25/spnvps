@@ -618,6 +618,40 @@
 	</div>
 	
 	<!-- ================================================================================== -->
+	<!-- TOP NEWS BOX 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="BoxRight" class="sidebar-box" >
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Những Tin Tức Mới Cập Nhật</span>
+		</div>
+		<div class="box-right" tal:repeat="TopNews PanelNewsAll">
+			<a tal:attributes="href TopNews/getNews/getURLRead | string:#; title TopNews/getNews/getTitle | string:Chưa có tiêu đề">
+				<img width="100%" height="124" tal:attributes="src TopNews/getNews/getImage | string:/data/images/exit_picture.jpg" />
+				<div tal:content="TopNews/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
+			</a>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- TOP VIDEO BOX 																		-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="TopVideoBox" class="sidebar-box" >
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Những Video Mới Cập Nhật</span>
+		</div>
+		<div class="box-right" tal:repeat="Category PanelCategoryVideoAll">
+			<a tal:attributes="href Category/getCategoryVideo/getURLRead | string:#; title Category/getCategoryVideo/getName | string:Chưa có tiêu đề">
+				<img width="100%" height="124" tal:attributes="src Category/getCategoryVideo/getPicture | string:/data/images/exit_picture.jpg" />
+				<div tal:content="Category/getCategoryVideo/getName | string:Chưa có tiêu đề" class="box-right-title" />
+			</a>
+		</div>
+		<div class="clear" />
+	</div>
+	
+	<!-- ================================================================================== -->
 	<!-- SOUTH BUDDHA																	-->
 	<!-- ================================================================================== -->
 	<div metal:define-macro="SouthBox" class="sidebar-box" >
