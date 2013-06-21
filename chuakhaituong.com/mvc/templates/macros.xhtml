@@ -35,17 +35,14 @@
 	
 	<!-- HEADER -->
 	<div metal:define-macro="Header" id="header">
-		<div id="logo">
-			<a href="/intro/1">
-				<img src="/data/images/logo.jpg" width="500px" height="165px" border="0" />
-			</a>
-		</div>
 		<div id="banner">
-			<a href="/intro/2">
-				<img src="/data/images/banner.jpg" width="500px" height="165px" border="0" />
-			</a>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Chùa Khải Tường" height="300" width="1000">
+				<param name="movie" value="/data/images/banner.swf" />
+				<param name="quality" value="high" />
+				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
+			</object>
 		</div>
-		<div class="clear" />
+
 		<div id="menu-top">
 			<ul class="top-nav">
 				<li tal:attributes="class php:ActiveItem=='Home'?'current':'?'"><a href="/home">Trang chủ</a></li>
