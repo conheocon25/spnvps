@@ -18,7 +18,7 @@
 		}
 		
 		#header {
-			height: 200px;
+			height: 335px;
 			*background: url("/data/images/banner.jpg") no-repeat top left transparent;
 		}
 		
@@ -29,9 +29,8 @@
 			}
 
 			#banner {
-				width: 500px;
-				height: 165px;
-				float: left;
+				width: 1000px;
+				height: 300px;
 			}
 			
 			#menu-top {
