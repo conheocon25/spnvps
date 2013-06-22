@@ -15,4 +15,6 @@
 	$mConfig = new \MVC\Mapper\Config();
 	$mTask = new \MVC\Mapper\Task();
 	$mCategoryTask = new \MVC\Mapper\CategoryTask();
+	$mCategoryPaid = new \MVC\Mapper\CategoryPaid();
+	$mPaid = new \MVC\Mapper\Paid();
 ?>

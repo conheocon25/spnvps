@@ -9,6 +9,7 @@ class CategoryTaskCollection extends Collection implements \MVC\Domain\CategoryT
 class CategoryNewsCollection extends Collection implements \MVC\Domain\CategoryNewsCollection {function targetClass( ) {return "\MVC\Domain\CategoryNews";}}
 class CategoryVideoCollection extends Collection implements \MVC\Domain\CategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\CategoryVideo";}}
 class CategoryAskCollection extends Collection implements \MVC\Domain\CategoryAskCollection {function targetClass( ) {return "\MVC\Domain\CategoryAsk";}}
+class CategoryPaidCollection extends Collection implements \MVC\Domain\CategoryPaidCollection {function targetClass( ) {return "\MVC\Domain\CategoryPaid";}}
 class CategoryBTypeCollection extends Collection implements \MVC\Domain\CategoryBTypeCollection {function targetClass( ) {return "\MVC\Domain\BType";}}
 class PageCollection extends Collection implements \MVC\Domain\PageCollection {function targetClass( ) {return "\MVC\Domain\Page";}}
 class NewsCollection extends Collection implements \MVC\Domain\NewsCollection {function targetClass( ) {return "\MVC\Domain\News";}}
@@ -31,6 +32,6 @@ class SponsorPersonCollection extends Collection implements \MVC\Domain\SponsorP
 class PanelAdsCollection extends Collection implements \MVC\Domain\PanelAdsCollection {function targetClass( ) {return "\MVC\Domain\PanelAds";}}
 class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCollection {function targetClass( ) {return "\MVC\Domain\PanelNews";}}
 class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
-class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\TaskVideo";}}
-
+class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
+class PaidCollection extends Collection implements \MVC\Domain\PaidCollection {function targetClass( ) {return "\MVC\Domain\Paid";}}
 ?>
