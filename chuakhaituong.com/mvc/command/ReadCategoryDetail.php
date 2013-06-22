@@ -60,8 +60,8 @@
 				$Title = "";
 			}						
 			
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$PanelNews = $mPanelNews->findAll();
+			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
 			
 			$PanelAdsAll = $mPanelAds->findAll();
 			$CategoriesBType = $mCategoryBType->findAll();
@@ -80,8 +80,8 @@
 			$request->setObject("Pagodas", $Pagodas);
 			$request->setObject("News", $News);
 			$request->setObject("Sponsors", $Sponsors);
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("PanelNews", $PanelNews);
+			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoriesBType", $CategoriesBType);
 						

@@ -64,6 +64,22 @@ RewriteRule ^course/([a-z0-9]+)/([a-z0-9]+)$ 						?cmd=CourseLession&IdCourse=$
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^app$ 													?cmd=App [L]
 
+RewriteRule ^app/category/paid$ 									?cmd=AppCategoryPaid [L]
+RewriteRule ^app/category/paid/ins/load$ 							?cmd=AppCategoryPaidInsLoad [L]
+RewriteRule ^app/category/paid/ins/exe$ 							?cmd=AppCategoryPaidInsExe [L]
+RewriteRule ^app/category/paid/([0-9]+)/upd/load$ 					?cmd=AppCategoryPaidUpdLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/paid/([0-9]+)/upd/exe$ 					?cmd=AppCategoryPaidUpdExe&IdCategory=$1 [L]
+RewriteRule ^app/category/paid/([0-9]+)/del/load$ 					?cmd=AppCategoryPaidDelLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/paid/([0-9]+)/del/exe$ 					?cmd=AppCategoryPaidDelExe&IdCategory=$1 [L]
+
+RewriteRule ^app/paid/([0-9]+)$ 									?cmd=AppPaid&IdCategory=$1 [L]
+RewriteRule ^app/paid/([0-9]+)/ins/load$ 							?cmd=AppPaidInsLoad&IdCategory=$1 [L]
+RewriteRule ^app/paid/([0-9]+)/ins/exe$ 							?cmd=AppPaidInsExe&IdCategory=$1 [L]
+RewriteRule ^app/paid/([0-9]+)/([0-9]+)/upd/load$ 					?cmd=AppPaidUpdLoad&IdCategory=$1&IdPaid=$2 [L]
+RewriteRule ^app/paid/([0-9]+)/([0-9]+)/upd/exe$ 					?cmd=AppPaidUpdExe&IdCategory=$1&IdPaid=$2 [L]
+RewriteRule ^app/paid/([0-9]+)/([0-9]+)/del/load$ 					?cmd=AppPaidDelLoad&IdCategory=$1&IdPaid=$2 [L]
+RewriteRule ^app/paid/([0-9]+)/([0-9]+)/del/exe$ 					?cmd=AppPaidDelExe&IdCategory=$1&IdPaid=$2 [L]
+
 RewriteRule ^app/category/task$ 									?cmd=AppCategoryTask [L]
 RewriteRule ^app/category/task/ins/load$ 							?cmd=AppCategoryTaskInsLoad [L]
 RewriteRule ^app/category/task/ins/exe$ 							?cmd=AppCategoryTaskInsExe [L]

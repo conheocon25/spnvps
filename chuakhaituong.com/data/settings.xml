@@ -71,6 +71,28 @@
 		<command name="AppLibraryAlbumDelExe"><view>AppLibraryAlbumDelExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>
 		
 		<!-- ============================================================================== -->
+		<!-- APP.CATEGORY.PAID																-->
+		<!-- ============================================================================== -->
+		<command name="AppCategoryPaid"><view>AppCategoryPaid</view></command>
+		<command name="AppCategoryPaidInsLoad"><view>AppCategoryPaidInsLoad</view></command>
+		<command name="AppCategoryPaidInsExe"><view>AppCategoryPaidInsExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>		
+		<command name="AppCategoryPaidUpdLoad"><view>AppCategoryPaidUpdLoad</view></command>
+		<command name="AppCategoryPaidUpdExe"><view>AppCategoryPaidUpdExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>		
+		<command name="AppCategoryPaidDelLoad"><view>AppCategoryPaidDelLoad</view></command>
+		<command name="AppCategoryPaidDelExe"><view>AppCategoryPaidDelExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.PAID																		-->
+		<!-- ============================================================================== -->
+		<command name="AppPaid"><view>AppPaid</view></command>
+		<command name="AppPaidInsLoad"><view>AppPaidInsLoad</view></command>
+		<command name="AppPaidInsExe"><view>AppPaidInsExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
+		<command name="AppPaidUpdLoad"><view>AppPaidUpdLoad</view></command>
+		<command name="AppPaidUpdExe"><view>AppPaidUpdExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
+		<command name="AppPaidDelLoad"><view>AppPaidDelLoad</view></command>
+		<command name="AppPaidDelExe"><view>AppPaidDelExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.TASK																-->
 		<!-- ============================================================================== -->
 		<command name="AppCategoryTask"><view>AppCategoryTask</view></command>
@@ -90,18 +112,7 @@
 		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
 		<command name="AppTaskUpdExe"><view>AppTaskUpdExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
 		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command><command name="AppTaskDelExe"><view>AppTaskDelExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.TASK.DETAIL																		-->
-		<!-- ============================================================================== -->
-		<command name="AppTaskDetail"><view>AppTaskDetail</view></command>
-		<command name="AppTaskDetailInsLoad"><view>AppTaskDetailInsLoad</view></command>
-		<command name="AppTaskDetailInsExe"><view>AppTaskDetailInsExe</view><status value="CMD_OK"><forward>AppTaskDetail</forward></status></command>		
-		<command name="AppTaskDetailUpdLoad"><view>AppTaskDetailUpdLoad</view></command>
-		<command name="AppTaskDetailUpdExe"><view>AppTaskDetailUpdExe</view><status value="CMD_OK"><forward>AppTaskDetail</forward></status></command>
-		<command name="AppTaskDetailDelLoad"><view>AppTaskDetailDelLoad</view></command>
-		<command name="AppTaskDetailDelExe"><view>AppTaskDetailExe</view><status value="CMD_OK"><forward>AppTaskDetail</forward></status></command>
-		
+						
 		<!-- ============================================================================== -->
 		<!-- APP.COURSE																-->
 		<!-- ============================================================================== -->

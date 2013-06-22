@@ -8,6 +8,7 @@ interface CategoryNewsCollection extends \Iterator {function add( Object $Catego
 interface CategoryVideoCollection extends \Iterator {function add( Object $CategoryVideo );}
 interface CategoryAskCollection extends \Iterator {function add( Object $CategoryAsk );}
 interface CategoryBTypeCollection extends \Iterator {function add( Object $CategoryBType );}
+interface CategoryPaidCollection extends \Iterator {function add( Object $CategoryPaid );}
 interface PageCollection extends \Iterator {function add( Object $Page );}
 interface PageNavigationCollection extends \Iterator {function add( Object $PageNavigation );}
 interface NewsCollection extends \Iterator {function add( Object $News );}
@@ -31,4 +32,5 @@ interface PanelAdsCollection extends \Iterator {function add( Object $PanelAds);
 interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews);}
 interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
 interface TaskCollection extends \Iterator {function add( Object $Task);}
+interface PaidCollection extends \Iterator {function add( Object $Paid);}
 ?>

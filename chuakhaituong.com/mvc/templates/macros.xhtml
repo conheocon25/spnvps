@@ -101,16 +101,13 @@
 	</div>
 	
 	<!-- HEADER -->
-	<div metal:define-macro="HeaderAdmin" id="header">
-		<div id="logo">
-			<a href="/intro/1">
-				<img src="/data/images/logo.jpg" width="500px" height="165px" border="0" />
-			</a>
-		</div>
+	<div metal:define-macro="HeaderAdmin" id="header">		
 		<div id="banner">
-			<a href="/intro/2">
-				<img src="/data/images/banner.jpg" width="500px" height="165px" border="0" />
-			</a>
+			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Chùa Khải Tường" height="300" width="1000">
+				<param name="movie" value="/data/images/banner.swf" />
+				<param name="quality" value="high" />
+				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
+			</object>
 		</div>
 		<div class="clear" />
 		<div id="menu-top">
@@ -502,12 +499,18 @@
 	<!-- ADMIN MENU -->
 	<div metal:define-macro="AdminMenu" class="manager-menu">
 		<ul>
+			<a tal:attributes="href '/app/category/paid'">
+				<li tal:attributes="class php:ActiveAdmin=='Paid'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC CHI</div>
+					<div class="right" tal:content="string:0" />
+				</li>
+			</a>
 			<a tal:attributes="href '/app/category/task'">
 				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC LỊCH LÀM VIỆC</div>
 					<div class="right" tal:content="Tasks/count" />
 				</li>
-			</a>			
+			</a>
 			<a tal:attributes="href '/app/category/news'">
 				<li tal:attributes="class php:ActiveAdmin=='News'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC TIN TỨC</div>
