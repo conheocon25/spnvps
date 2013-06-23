@@ -17,4 +17,5 @@
 	$mCategoryTask = new \MVC\Mapper\CategoryTask();
 	$mCategoryPaid = new \MVC\Mapper\CategoryPaid();
 	$mPaid = new \MVC\Mapper\Paid();
+	$mTracking = new \MVC\Mapper\Tracking();
 ?>

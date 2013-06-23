@@ -20,8 +20,11 @@ RewriteRule ^intro/4$ 												?cmd=Introduction4 [L]
 
 RewriteRule ^task$ 													?cmd=Task [L]
 RewriteRule ^contact$ 												?cmd=Contact [L]
-RewriteRule ^sponsor/([0-9]+)$ 										?cmd=Sponsor&IdSponsor=$1 [L]
-RewriteRule ^sponsor/([0-9]+)/video/([0-9]+)$ 						?cmd=SponsorDetail&IdSponsor=$1&IdVideoSponsor=$2 [L]
+
+RewriteRule ^sponsor$ 												?cmd=Sponsor [L]
+RewriteRule ^sponsor/([0-9]+)$ 										?cmd=SponsorDetail&IdSponsor=$1 [L]
+RewriteRule ^sponsor/([0-9]+)/video/([0-9]+)$ 						?cmd=SponsorDetailVideo&IdSponsor=$1&IdVideoSponsor=$2 [L]
+RewriteRule ^report/([0-9]+)$ 										?cmd=Report&IdTracking=$1 [L]
 
 RewriteRule ^library/video/([0-9]+)$								?cmd=LibraryVideo&IdBType=$1 [L]
 RewriteRule ^library/video/([0-9]+)/category/([0-9]+)$				?cmd=LibraryVideoCategory&IdBType=$1&IdCategory=$2 [L]

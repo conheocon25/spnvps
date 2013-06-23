@@ -34,4 +34,5 @@ class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCol
 class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
 class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
 class PaidCollection extends Collection implements \MVC\Domain\PaidCollection {function targetClass( ) {return "\MVC\Domain\Paid";}}
+class TrackingCollection extends Collection implements \MVC\Domain\TrackingCollection {function targetClass( ) {return "\MVC\Domain\Tracking";}}
 ?>

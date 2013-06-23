@@ -11,29 +11,17 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSponsor = $request->getProperty('IdSponsor');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mEvent = new \MVC\Mapper\Event();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();			
-			$mCourse = new \MVC\Mapper\Course();
-			$mNews = new \MVC\Mapper\News();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Sponsor = $mSponsor->find($IdSponsor);
+			//-------------------------------------------------------------						
 			$Sponsors = $mSponsor->findAll();
-			if (!isset($Sponsor)) $Sponsor = $Sponsors->current();
-			
+			$Trackings = $mTracking->findAll();
 			$Categories = $mCategoryNews->findAll();
 			$CategoriesBType = $mCategoryBType->findAll();
 			$CategoriesNews = $mCategoryNews->findAll();
@@ -51,17 +39,18 @@
 			//-------------------------------------------------------------
 			$request->setObject("Event", $Event);
 			$request->setObject("Sponsors", $Sponsors);
+			$request->setObject("Trackings", $Trackings);
 			$request->setObject("CategoriesBType", $CategoriesBType);
 			$request->setObject("CategoriesNews", $CategoriesNews);
 			$request->setObject("CategoriesAsk", $CategoriesAsk);
 			$request->setObject('Pagodas', $Pagodas);
 			$request->setObject("Course", $Course);
 			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
-			$request->setObject("Sponsor", $Sponsor);
+			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);			
 			
+			$request->setProperty("Title", 'HOẠT ĐỘNG QUYÊN GÓP TỪ THIỆN');
 			$request->setProperty("ActiveItem", 'Sponsor');
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
