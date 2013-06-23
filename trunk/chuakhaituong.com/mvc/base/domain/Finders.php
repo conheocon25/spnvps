@@ -39,4 +39,5 @@ interface PanelNewsFinder  extends Finder{}
 interface PanelCategoryVideoFinder  extends Finder{}
 interface TaskFinder  extends Finder{}
 interface PaidFinder  extends Finder{}
+interface TrackingFinder  extends Finder{}
 ?>

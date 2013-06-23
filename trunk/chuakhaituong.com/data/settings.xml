@@ -21,8 +21,10 @@
 		
 		<command name="Task" type="public"><view>Task</view></command>
 		
+		<command name="Report" type="public"><view>Report</view></command>		
 		<command name="Sponsor" type="public"><view>Sponsor</view></command>
 		<command name="SponsorDetail" type="public"><view>SponsorDetail</view></command>
+		<command name="SponsorDetailVideo" type="public"><view>SponsorDetailVideo</view></command>
 		
 		<command name="Event" type="public"><view>Event</view></command>
 		<command name="Pagoda" type="public"><view>Pagoda</view></command>

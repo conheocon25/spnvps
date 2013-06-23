@@ -33,4 +33,5 @@ interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews
 interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
 interface TaskCollection extends \Iterator {function add( Object $Task);}
 interface PaidCollection extends \Iterator {function add( Object $Paid);}
+interface TrackingCollection extends \Iterator {function add( Object $Tracking);}
 ?>

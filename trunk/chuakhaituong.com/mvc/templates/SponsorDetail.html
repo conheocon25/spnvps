@@ -3,16 +3,6 @@
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<style>
-			.sponsor-paper {
-				text-align: center;
-				background: url('/data/images/paper.jpg') no-repeat top left #A70101;
-				margin: 5px 10px;
-				padding: 20px 10px;
-				box-shadow: 0 0 3px #000000;
-				color: white;
-			}
-		</style>
 	</head>	
 	<body>
 		<div id="wrapper">
@@ -23,29 +13,11 @@
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="php:'ĐANG PHÁT ' . VideoSponsor->getVideo()->getName()" />
-						</div>					
+							<span>THƯ NGÕ</span>
+						</div>
 						<div style="padding:10px;">
-							<div align="center" class="video-screen">
-								<iframe width="450" height="350" tal:attributes="src VideoSponsor/getVideo/getURL" frameborder="0"></iframe>
-								<script>
-									/*<![CDATA[*/
-									$("iframe").each(function(){
-										  var ifr_source = $(this).attr('src');
-										  var wmode = "?wmode=transparent";
-										  $(this).attr('src',ifr_source+wmode);
-									});
-									/*]]>*/
-								</script>
-							</div>
-							<div class="video-info">
-								<div class="name" tal:content="VideoSponsor/getVideo/getName" />								
-								<div class="view">
-									<span tal:content="VideoSponsor/getVideo/getCountPrint"/> lượt xem
-								</div>
-								<div class="clear" />
-							</div>
-						</div>							
+							<p tal:content="structure Sponsor/getContent"/>
+						</div>
 					</div>
 					<div class="news-box">
 						<div class="box-title">
@@ -73,10 +45,10 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
 								<thead>
 									<th align="center" width="5%" >STT</th>
-									<th align="left" width="30%" >Họ Tên (Pháp Danh)</th>
+									<th align="left" width="30%" >Họ Tên (Pháp danh)</th>
 									<th align="left" width="20%" >Địa chỉ</th>
 									<th align="left" width="20%" >Ngày</th>
-									<th align="right" width="25%" >Trợ Duyên</th>									
+									<th align="right" width="25%" >Trợ Duyên</th>
 								</thead>
 								<tbody>
 									<tr tal:repeat="SP Sponsor/getPersonAll">
@@ -91,7 +63,7 @@
 						</div>
 					</div>
 				</div>
-				<div id="sidebar">
+				<div id="sidebar">					
 					<div metal:use-macro="macros.xhtml/EventBox"/>
 					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
 					<div metal:use-macro="macros.xhtml/NorthBox"/>

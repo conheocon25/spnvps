@@ -31,6 +31,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/PanelCategoryVideo.php");
 	require_once( "mvc/mapper/Task.php");
 	require_once( "mvc/mapper/Paid.php");
+	require_once( "mvc/mapper/Tracking.php");
 }
 
 class HelperFactory {

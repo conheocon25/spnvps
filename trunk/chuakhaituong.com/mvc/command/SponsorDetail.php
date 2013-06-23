@@ -2,7 +2,7 @@
 	namespace MVC\Command;	
 	class SponsorDetail extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");			
+			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
@@ -12,7 +12,6 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdSponsor = $request->getProperty('IdSponsor');
-			$IdVideoSponsor = $request->getProperty('IdVideoSponsor');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -27,14 +26,11 @@
 			$mSponsor = new \MVC\Mapper\Sponsor();
 			$mPanelNews = new \MVC\Mapper\PanelNews();
 			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mVideoSponsor = new \MVC\Mapper\VideoSponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Sponsor = $mSponsor->find($IdSponsor);
-			$VideoSponsor = $mVideoSponsor->find($IdVideoSponsor);
-			
 			$Sponsors = $mSponsor->findAll();
 			if (!isset($Sponsor)) $Sponsor = $Sponsors->current();
 			
@@ -54,7 +50,6 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Event", $Event);
-			$request->setObject("VideoSponsor", $VideoSponsor);
 			$request->setObject("Sponsors", $Sponsors);
 			$request->setObject("CategoriesBType", $CategoriesBType);
 			$request->setObject("CategoriesNews", $CategoriesNews);
