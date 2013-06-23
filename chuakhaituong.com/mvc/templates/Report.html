@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">										
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="php:'TỔNG KẾT CHI '.Tracking->getName()"/>
+						</div>
+						<div style="padding:10px;">
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<th align="center" width="5%" >STT</th>
+									<th align="left" width="20%" >Ngày</th>
+									<th align="left" width="20%" >Loại</th>
+									<th align="left" width="35%" >Diễn giải</th>
+									<th align="right" width="20%" >Số tiền</th>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Paid Tracking/getPaidAll">
+										<td align="center" tal:content="repeat/Paid/number" ></td>
+										<td tal:content="Paid/getDatePrint" ></td>
+										<td tal:content="Paid/getCategory/getName" ></td>
+										<td tal:content="Paid/getDescription" ></td>
+										<td align="right" tal:content="Paid/getValuePrint" ></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th align="right" colspan="4">TỔNG CỘNG</th>
+										<th align="right"><b tal:content="Tracking/getPaidAllValuePrint" /></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+				</div>
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
+					<div metal:use-macro="macros.xhtml/BoxRight"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>					
+				</div>				
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

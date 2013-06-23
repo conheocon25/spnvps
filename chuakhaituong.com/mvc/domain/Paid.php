@@ -26,16 +26,25 @@ class Paid extends Object{
 		
 	function setDate( $Date ){$this->Date = $Date;$this->markDirty();}   
 	function getDate( ) {return $this->Date;}
-	function getDatePrint( ){$D = new \MVC\Library\Date($this->Date);return $D->getDateTimeFormat();}
+	function getDatePrint( ){$D = new \MVC\Library\Date($this->Date);return $D->getDateFormat();}
 	
 	function setIdCategory( $IdCategory ){$this->IdCategory = $IdCategory;$this->markDirty();}   
 	function getIdCategory( ) {return $this->IdCategory;}
+	function getCategory( ) {
+		$mCategory = new \MVC\Mapper\CategoryPaid();
+		$Category = $mCategory->find($this->IdCategory);
+		return $Category;
+	}
 		
 	function setDescription( $Description ){$this->Description = $Description;$this->markDirty();}
 	function getDescription( ) {return $this->Description;}
 	
 	function setValue( $Value ){$this->Value = $Value;$this->markDirty();} 
 	function getValue( ) {return $this->Value;}
+	function getValuePrint( ) {
+		$N = new \MVC\Library\Number($this->Value);
+		return $N->formatCurrency();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
