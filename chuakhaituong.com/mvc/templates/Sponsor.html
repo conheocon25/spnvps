@@ -31,7 +31,7 @@
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" /><span tal:content="string:NHẬT KÍ THU CHI" />
 						</div>
-						<ul tal:repeat="Tracking Trackings">
+						<ul tal:repeat="Tracking Trackings" class="news-box-list">
 							<li><a tal:attributes="href Tracking/getURLView" tal:content="Tracking/getName" /></li>
 						</ul>
 					</div>
