@@ -5,10 +5,8 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
@@ -20,6 +18,13 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TIÊU ĐỀ</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="VP Pagoda/getVPs">
 										<td width="32" align="center">
@@ -40,9 +45,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Pagoda/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Pagoda/getURLVideoInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -50,23 +53,17 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
+				</div>				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Admin</span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
-						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">							
 							<ul>
-								<a tal:repeat="Pagoda1 Pagodas" tal:attributes="href Pagoda1/getURLViewVideo">
+								<a tal:repeat="Pagoda1 PagodaAll" tal:attributes="href Pagoda1/getURLViewVideo">
 									<li tal:attributes="class php:Pagoda->getId()==Pagoda1->getId()?'menu-select':''">
 										<span tal:content="Pagoda1/getName" /> (<span tal:content="Pagoda1/getVPs/count" />)
 									</li>
-								</a>																
+								</a>
 							</ul>
 						</div>
 					</div>

@@ -16,7 +16,7 @@
 						<a href="/app/monk">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action '/app/monk/ins/exe'" method="post">
+						<form class="form-editor" tal:attributes="action '/app/monk/ins/exe'" method="post">
 							<div class="row">
 								<div for="PreName" class="label">Chức sắc</div>
 								<div class="textbox" >
@@ -35,7 +35,7 @@
 								<div for="BType" class="label">Tông phái</div>
 								<div class="textbox" >
 									<select name="BType">
-										<option tal:repeat="Category CategoriesBType" tal:attributes="value Category/getId" >
+										<option tal:repeat="Category CategoryBTypeAll" tal:attributes="value Category/getId" >
 											<span tal:content="Category/getName"/>
 										</option>
 									</select>

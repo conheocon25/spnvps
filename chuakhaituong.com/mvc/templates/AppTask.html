@@ -18,6 +18,13 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">CÔNG VIỆC</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="Task Category/getTasks">
 										<td width="32" align="center">
@@ -39,7 +46,7 @@
 									<tr>
 										<td colspan="5" align="center">
 											<a tal:attributes="href Category/getURLTaskInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
+												Thêm mới
 											</a>
 										</td>
 									</tr>									
