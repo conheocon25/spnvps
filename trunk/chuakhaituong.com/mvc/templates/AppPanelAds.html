@@ -18,6 +18,13 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>										
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="Panel PanelAdsAll">
 										<td width="32" align="center">
@@ -36,9 +43,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a href="app/panel/ads/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a href="app/panel/ads/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -46,21 +51,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/changepass/load">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			
+			</div>			
 		</div>
 	</body>
 </html>

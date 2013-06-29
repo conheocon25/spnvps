@@ -20,43 +20,42 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();			
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
-			$Events = $mEvent->findAll();
-			$Monks = $mMonk->findAll();
-			$Courses = $mCourse->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
+			$CourseAll = $mCourse->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoryVideos = $mPanelCategoryVideo->findAll();
-			$Configs = $mConfig->findAll();
-			$Tasks = $mTask->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$ConfigAll = $mConfig->findAll();
+			$TaskAll = $mTask->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);			
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
-			$request->setObject('Events', $Events);
-			$request->setObject('Monks', $Monks);
-			$request->setObject('Courses', $Courses);
-			$request->setObject('Sponsors', $Sponsors); 
-			$request->setObject('Configs', $Configs); 
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('CourseAll', $CourseAll);
+			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('ConfigAll', $ConfigAll); 
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
-			$request->setObject('PanelNews', $PanelNews);
-			$request->setObject('PanelCategoryVideos', $PanelCategoryVideos);
-			$request->setObject('Tasks', $Tasks); 
+			$request->setObject('PanelNewsAll', $PanelNewsAll);
+			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
+			$request->setObject('TaskAll', $TaskAll); 
 			
-			$request->setProperty("Title", 'Quản Lý / Đào tạo / ');
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setProperty("Title", 'Quản Lý / Đào tạo / ');			
 			$request->setProperty("ActiveAdmin", 'Course');
 			
 			return self::statuses('CMD_DEFAULT');

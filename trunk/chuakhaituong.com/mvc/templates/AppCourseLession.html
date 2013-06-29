@@ -54,11 +54,7 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Course1 Courses" tal:attributes="href Course1/getURLLession">
@@ -72,8 +68,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			
+			</div>			
 		</div>
 	</body>
 </html>

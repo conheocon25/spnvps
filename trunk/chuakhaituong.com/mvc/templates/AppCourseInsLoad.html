@@ -15,22 +15,15 @@
 		<script type="text/javascript">
 			/*<![CDATA[*/
 			$(function() {
-				$('#DateStart').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-				$('#DateEnd').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
+				$('#DateStart').datetimepicker({ dateFormat: 'yy-mm-dd' });
+				$('#DateEnd').datetimepicker({ dateFormat: 'yy-mm-dd' });
 			});
 			/*]]>*/
-		</script>
-		
+		</script>		
 	</head>	
 	<body>
 		<div id="wrapper">
-
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
@@ -88,8 +81,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			
+			</div>			
 		</div>
 	</body>
 </html>

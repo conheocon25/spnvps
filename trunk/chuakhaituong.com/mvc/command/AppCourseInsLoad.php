@@ -29,32 +29,32 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
-			$Events = $mEvent->findAll();
-			$Monks = $mMonk->findAll();
-			$Sponsors = $mSponsor->findAll();
-			$Courses = $mCourse->findAll();			
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			$CourseAll = $mCourse->findAll();			
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
-			$request->setObject('Events', $Events);
-			$request->setObject('Monks', $Monks);
-			$request->setObject('Sponsors', $Sponsors);
-			$request->setObject('Courses', $Courses);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('CourseAll', $CourseAll);
 			
 			$request->setProperty("Title", 'Quản Lý / Đào tạo / Thêm mới');
 			$request->setProperty("ActiveItem", 'Home');

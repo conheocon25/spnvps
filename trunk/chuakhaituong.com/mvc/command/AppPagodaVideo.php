@@ -21,21 +21,21 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$Pagoda = $mPagoda->find($IdPagoda);
 			$Title = "Quản trị / chùa / ".$Pagoda->getName();
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Pagoda", $Pagoda);
-			$request->setObject("Pagodas", $Pagodas);
+			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 			

@@ -5,15 +5,12 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
-					<div class="news-box">
-					
+					<div class="news-box">					
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
@@ -21,8 +18,16 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>
+										<th align="left">CÂU HỎI</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Category CategoriesAsk1">
+									<tr class="content-rows" tal:repeat="Category CategoryAskAll1">
 										<td width="32" align="center">
 											<div tal:content="repeat/Category/number" />
 										</td>
@@ -31,7 +36,7 @@
 												<div tal:content="Category/getName" />
 											</a>
 										</td>
-										<td class="text-hightlight" align="center">
+										<td class="text-hightlight" align="left">
 											<a tal:attributes="href Category/getURLView">
 												<div>Câu hỏi (<span tal:content="Category/getAsks/count"/>)</div>
 											</a>
@@ -46,9 +51,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a href="/app/category/ask/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a href="/app/category/ask/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -56,24 +59,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
-						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />
 			</div>
-
-			
-
 		</div>
 	</body>
 </html>

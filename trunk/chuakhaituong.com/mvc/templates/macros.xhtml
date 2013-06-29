@@ -500,73 +500,73 @@
 			<a tal:attributes="href '/app/category/task'">
 				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC LỊCH LÀM VIỆC</div>
-					<div class="right" tal:content="Tasks/count" />
+					<div class="right" tal:content="TaskAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/category/news'">
 				<li tal:attributes="class php:ActiveAdmin=='News'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC TIN TỨC</div>
-					<div class="right" tal:content="CategoriesNews/count" />
+					<div class="right" tal:content="CategoryNewsAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/category/video'">
 				<li tal:attributes="class php:ActiveAdmin=='Video'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC VIDEO</div>
-					<div class="right" tal:content="CategoriesVideo/count" />
+					<div class="right" tal:content="CategoryVideoAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/category/ask'">
 				<li tal:attributes="class php:ActiveAdmin=='Ask'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC HỎI ĐÁP</div>
-					<div class="right" tal:content="CategoriesAsk/count" />
+					<div class="right" tal:content="CategoryAskAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/course'">
 				<li tal:attributes="class php:ActiveAdmin=='Course'?'menu-select':'?'">					
 					<div class="left">ĐÀO TẠO</div>
-					<div class="right" tal:content="Courses/count" />
+					<div class="right" tal:content="CourseAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/monk'">
 				<li tal:attributes="class php:ActiveAdmin=='Monk'?'menu-select':'?'">
 					<div class="left">DANH SÁCH GIẢNG SƯ</div>
-					<div class="right" tal:content="Monks/count" />
+					<div class="right" tal:content="MonkAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/event'">
 				<li tal:attributes="class php:ActiveAdmin=='Event'?'menu-select':'?'">
 					<div class="left">DANH SÁCH SỰ KIỆN</div>
-					<div class="right" tal:content="Events/count" />
+					<div class="right" tal:content="EventAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/pagoda'">
 				<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'menu-select':'?'">
 					<div class="left">DANH SÁCH CHÙA</div>
-					<div class="right" tal:content="Pagodas/count" />
+					<div class="right" tal:content="PagodaAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/album'">
 				<li tal:attributes="class php:ActiveAdmin=='Album'?'menu-select':'?'">
 					<div class="left">DANH SÁCH ALBUM</div>
-					<div class="right" tal:content="Albums/count" />
+					<div class="right" tal:content="AlbumAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/sponsor'">
 				<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'menu-select':'?'">
 					<div class="left">SỔ VÀNG CÔNG ĐỨC</div>
-					<div class="right" tal:content="Sponsors/count" />
+					<div class="right" tal:content="SponsorAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/panel/news'">
 				<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'menu-select':'?'">
 					<div class="left">TIN TỨC NỔI BẬT</div>
-					<div class="right" tal:content="PanelNews/count" />
+					<div class="right" tal:content="PanelNewsAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/panel/category/video'">
 				<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'menu-select':'?'">
 					<div class="left">VIDEO NỔI BẬT</div>
-					<div class="right" tal:content="PanelCategoryVideos/count" />
+					<div class="right" tal:content="PanelCategoryVideoAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/panel/ads'">
@@ -578,7 +578,7 @@
 			<a tal:attributes="href '/app/config'">
 				<li tal:attributes="class php:ActiveAdmin=='Statistic'?'menu-select':'?'">
 					<div class="left">CẤU HÌNH</div>
-					<div class="right" tal:content="Configs/count" />
+					<div class="right" tal:content="ConfigAll/count" />
 				</li>
 			</a>
 		</ul>
@@ -690,6 +690,7 @@
 			</a>
 		</div>
 	</div>
+	
 	<!-- CONTACT BOX MINI -->
 	<div metal:define-macro="ContactBoxMini" class="sidebar-box-mini">
 		<div class="sidebar-box-content" style="text-align:center; padding:5px 5px 1px 5px;">
@@ -700,5 +701,13 @@
 		<div class="clear" />
 	</div>
 	
+	<!-- ================================================================================== -->
+	<!-- CONTACT																			-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="AdminBoxTitle" class="box-title">
+		<img src="/data/images/icon.png" width="30" />
+		<span><a href="/app">Admin</a></span>
+		<a href="/signout/load">&#8629; Thoát</a>
+	</div>	
 </body>
 </html>

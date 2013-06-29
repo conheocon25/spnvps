@@ -27,7 +27,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="PanelCategoryVideo PanelCategoryVideos">
+									<tr class="content-rows" tal:repeat="PanelCategoryVideo PanelCategoryVideoAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/PanelCategoryVideo/number" />
 										</td>
@@ -65,11 +65,7 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/changepass/load">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>

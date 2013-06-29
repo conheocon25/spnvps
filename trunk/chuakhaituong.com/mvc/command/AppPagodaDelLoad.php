@@ -26,22 +26,22 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Pagoda = $mPagoda->find($IdPagoda);
-			$Pagodas = $mPagoda->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$Title = "Quản trị / ".$Pagoda->getName()." / Xóa";
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Pagoda', $Pagoda);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('CategoriesBType', $CategoriesBType);	
-			$request->setObject('CategoriesNews', $CategoriesNews);	
-			$request->setObject('CategoriesAsk', $CategoriesAsk);	
-			$request->setObject('Sponsors', $Sponsors);	
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);	
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);	
+			$request->setObject('CategoryAskAll', $CategoryAskAll);	
+			$request->setObject('SponsorAll', $SponsorAll);	
 			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');

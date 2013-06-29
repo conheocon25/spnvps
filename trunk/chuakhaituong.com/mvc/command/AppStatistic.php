@@ -20,24 +20,24 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
-			$Events = $mEvent->findAll();
-			$Monks = $mMonk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
-			$request->setObject('Events', $Events);
-			$request->setObject('Monks', $Monks);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / CẤU HÌNH / ');
 			$request->setProperty("ActiveItem", 'Home');
