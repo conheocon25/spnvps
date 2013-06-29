@@ -50,7 +50,7 @@
 				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'current':'?'">
 					<a style="cursor:pointer;">Tin tức</a>
 					<ul class="sub-menu">
-						<li tal:repeat="Category CategoriesNews">
+						<li tal:repeat="Category CategoryNewsAll">
 							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
 						</li>
 					</ul>
@@ -60,7 +60,7 @@
 				<li tal:attributes="class php:ActiveItem=='Ask'?'current':'?'">
 					<a style="cursor:pointer;">PHẬT ÂM</a>
 					<ul class="sub-menu">						
-						<li tal:repeat="Category CategoriesBType">
+						<li tal:repeat="Category CategoryBTypeAll">
 							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . '(' . Category->getVideoAllCountPrint() . ')'" />
 						</li>
 					</ul>
@@ -71,7 +71,7 @@
 						<li>
 							<a tal:attributes="href '/ask/2/ins/load'">Đặt câu hỏi</a>
 						</li>
-						<li tal:repeat="Category CategoriesAsk">
+						<li tal:repeat="Category CategoryAskAll">
 							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
 						</li>
 					</ul>
@@ -80,7 +80,7 @@
 				<li tal:attributes="class php:ActiveItem=='Pagoda'?'current':'?'" >
 					<a style="cursor:pointer;">Danh bạ Chùa</a>
 					<ul class="sub-menu">
-						<li tal:repeat="Pagoda Pagodas">
+						<li tal:repeat="Pagoda PagodaAll">
 							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
 						</li>
 					</ul>
@@ -88,7 +88,7 @@
 				<li tal:attributes="class php:ActiveItem=='Sponsor'?'current':'?'">					
 					<a href="/sponsor" style="cursor:pointer;">Sổ vàng</a>
 					<ul class="sub-menu">
-						<li tal:repeat="Sponsor Sponsors">
+						<li tal:repeat="Sponsor SponsorAll">
 							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
 						</li>
 					</ul>
@@ -101,15 +101,7 @@
 	</div>
 	
 	<!-- HEADER -->
-	<div metal:define-macro="HeaderAdmin" id="header">		
-		<div id="banner">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Chùa Khải Tường" height="300" width="1000">
-				<param name="movie" value="/data/images/banner.swf" />
-				<param name="quality" value="high" />
-				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
-			</object>
-		</div>
-		<div class="clear" />
+	<div metal:define-macro="HeaderAdmin">
 		<div id="menu-top">
 			<ul class="top-nav">
 				<li class="current"><a href="/home">Trang chủ</a></li>
@@ -600,7 +592,7 @@
 			<img src="/data/images/icon.png" width="30" />
 			<span>Những Tin Tức Mới Cập Nhật</span>
 		</div>
-		<div class="box-right" tal:repeat="TopNews PanelNews">
+		<div class="box-right" tal:repeat="TopNews PanelNewsAll">
 			<a tal:attributes="href TopNews/getNews/getURLRead | string:#; title TopNews/getNews/getTitle | string:Chưa có tiêu đề">
 				<img width="100%" height="124" tal:attributes="src TopNews/getNews/getImage | string:/data/images/exit_picture.jpg" />
 				<div tal:content="TopNews/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
@@ -612,12 +604,9 @@
 	<!-- ================================================================================== -->
 	<!-- TOP VIDEO BOX 																		-->
 	<!-- ================================================================================== -->
-	<div metal:define-macro="TopVideoBox" class="sidebar-box" >
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Những Video Nổi Bật</span>
-		</div>
-		<div class="box-right" tal:repeat="Category PanelCategoriesVideo">
+	<div metal:define-macro="TopVideoBox" class="sidebar-box" tal:repeat="Panel PanelCategoryVideoAll">
+		<div class="box-title"><img src="/data/images/icon.png" width="30" /><span tal:content="Panel/getName"/></div>
+		<div class="box-right" tal:repeat="Category Panel/getDetailAll">
 			<a tal:attributes="href Category/getCategoryVideo/getURLRead | string:#; title Category/getCategoryVideo/getName | string:Chưa có tiêu đề">
 				<img width="100%" height="124" tal:attributes="src Category/getCategoryVideo/getPicture | string:/data/images/exit_picture.jpg" />
 				<div tal:content="Category/getCategoryVideo/getName | string:Chưa có tiêu đề" class="box-right-title" />
@@ -625,24 +614,7 @@
 		</div>
 		<div class="clear" />
 	</div>
-			
-	<div metal:define-macro="BoxRightCategorys" class="sidebar-box">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Những Chuyen Muc Video</span>
-		</div>
-		<div class="BoxListNews" >
-			<ul>
-				<li class="subli" tal:repeat="Category CategorysArray">				
-					<a tal:attributes="href Category/getVLTop/current/getURLView | string:#; title Category/getVLTop/current/getVideo/getName | string:Chưa có tiêu đề">
-						<img tal:attributes="src Category/getVLTop/current/getVideo/getURLImage | string:/data/images/exit_picture.jpg" />								
-						<span tal:content="Category/getVLTop/current/getCategory/getName | string:Chưa có tiêu đề" class="BoxListNewsName" />						
-					</a>				
-				</li>
-			</ul>
-		</div>
-	</div>
-	
+		
 	<!-- ================================================================================== -->
 	<!-- ADS BOX 																		-->
 	<!-- ================================================================================== -->

@@ -37,7 +37,7 @@
 							<span tal:content="string:DANH SÁCH CÂU HỎI" />
 						</div>
 						<div style="padding:10px 10px 5px 10px;">
-							<div class="ask" align="justify" tal:repeat="Ask Asks">
+							<div class="ask" align="justify" tal:repeat="Ask AskAll">
 								<b><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></b>
 								<div style="text-indent:15px;">
 									<b><div tal:content="structure Ask/getQuestion" /></b>
@@ -77,7 +77,7 @@
 														<div for="IdCategory" class="label">Chủ đề</div>
 														<div class="selectbox" >
 															<select id="IdCategory" name="IdCategory">
-																<option tal:repeat="Category CategoriesAsk" tal:attributes="value Category/getId">
+																<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId">
 																	<span tal:content="Category/getName" />
 																</option>
 															</select>

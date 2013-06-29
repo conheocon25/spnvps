@@ -329,8 +329,18 @@
 		<command name="AppPanelCategoryVideo"><view>AppPanelCategoryVideo</view></command>
 		<command name="AppPanelCategoryVideoInsLoad"><view>AppPanelCategoryVideoInsLoad</view></command>
 		<command name="AppPanelCategoryVideoInsExe"><view>AppPanelCategoryVideoInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
+		<command name="AppPanelCategoryVideoUpdLoad"><view>AppPanelCategoryVideoUpdLoad</view></command>
+		<command name="AppPanelCategoryVideoUpdExe"><view>AppPanelCategoryVideoUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
 		<command name="AppPanelCategoryVideoDelLoad"><view>AppPanelCategoryVideoDelLoad</view></command>
 		<command name="AppPanelCategoryVideoDelExe"><view>AppPanelCategoryVideoDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
+		
+		<command name="AppPanelCategoryVideoDetail"><view>AppPanelCategoryVideoDetail</view></command>
+		<command name="AppPanelCategoryVideoDetailInsLoad"><view>AppPanelCategoryVideoDetailInsLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailInsExe"><view>AppPanelCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
+		<command name="AppPanelCategoryVideoDetailDelLoad"><view>AppPanelCategoryVideoDetailDelLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailDelExe"><view>AppPanelCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
+		<command name="AppPanelCategoryVideoDetailUpdLoad"><view>AppPanelCategoryVideoDetailUpdLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailUpdExe"><view>AppPanelCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
 		
 	</control>
 </options>

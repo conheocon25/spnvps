@@ -32,6 +32,7 @@ class SponsorPersonCollection extends Collection implements \MVC\Domain\SponsorP
 class PanelAdsCollection extends Collection implements \MVC\Domain\PanelAdsCollection {function targetClass( ) {return "\MVC\Domain\PanelAds";}}
 class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCollection {function targetClass( ) {return "\MVC\Domain\PanelNews";}}
 class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
+class PanelCategoryVideoDetailCollection extends Collection implements \MVC\Domain\PanelCategoryVideoDetailCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideoDetail";}}
 class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
 class PaidCollection extends Collection implements \MVC\Domain\PaidCollection {function targetClass( ) {return "\MVC\Domain\Paid";}}
 class TrackingCollection extends Collection implements \MVC\Domain\TrackingCollection {function targetClass( ) {return "\MVC\Domain\Tracking";}}

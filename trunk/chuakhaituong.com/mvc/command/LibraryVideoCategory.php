@@ -17,46 +17,36 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();			
-			$mMonk = new \MVC\Mapper\Monk();
-			$mVL = new \MVC\Mapper\VideoLibrary();
-			$mAlbum = new \MVC\Mapper\Album();						
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------												
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();
 			$Monks = $mMonk->findAll();
 			$CategoryBType = $mCategoryBType->find($IdBType);
 			$Category = $mCategoryVideo->find($IdCategory);
-			$Pagodas = $mPagoda->findAll();
-			$Sponsors = $mSponsor->findAll();
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$VLs = $mVL->findBy(array($IdCategory));
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoriesVideo", $CategoriesVideo);			
 			$request->setObject("CategoryBType", $CategoryBType);			
 			$request->setObject("Monks", $Monks);						
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Sponsors', $Sponsors);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
 			$request->setObject("VLs", $VLs);
 			$request->setObject("Category", $Category);			

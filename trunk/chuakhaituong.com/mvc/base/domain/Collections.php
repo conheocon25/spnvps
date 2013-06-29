@@ -31,6 +31,7 @@ interface SponsorPersonCollection extends \Iterator {function add( Object $Spons
 interface PanelAdsCollection extends \Iterator {function add( Object $PanelAds);}
 interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews);}
 interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
+interface PanelCategoryVideoDetailCollection extends \Iterator {function add( Object $PanelCategoryVideoDetail);}
 interface TaskCollection extends \Iterator {function add( Object $Task);}
 interface PaidCollection extends \Iterator {function add( Object $Paid);}
 interface TrackingCollection extends \Iterator {function add( Object $Tracking);}

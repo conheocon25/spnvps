@@ -37,6 +37,7 @@ interface SponsorPersonFinder  extends Finder{}
 interface PanelAdsFinder  extends Finder{}
 interface PanelNewsFinder  extends Finder{}
 interface PanelCategoryVideoFinder  extends Finder{}
+interface PanelCategoryVideoDetailFinder  extends Finder{}
 interface TaskFinder  extends Finder{}
 interface PaidFinder  extends Finder{}
 interface TrackingFinder  extends Finder{}
