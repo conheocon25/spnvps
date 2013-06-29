@@ -5,15 +5,12 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
-					<div class="news-box">
-					
+					<div class="news-box">					
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title"/>
@@ -44,9 +41,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Monk/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Monk/getURLVideoInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -60,7 +55,7 @@
 						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Monk1 Monks" tal:attributes="href Monk1/getURLVideo">
+								<a tal:repeat="Monk1 MonkAll" tal:attributes="href Monk1/getURLVideo">
 									<li tal:attributes="class php:Monk->getId()==Monk1->getId()?'menu-select':''">
 										<div class="left" tal:content="Monk1/getName" />
 										<div class="right" tal:content="Monk1/getVMs/count" />

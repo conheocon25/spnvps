@@ -35,7 +35,7 @@
 								<div for="BType" class="label">Tông phái</div>
 								<div class="textbox" >
 									<select name="BType">
-										<option tal:repeat="Category CategoriesBType" tal:attributes="value Category/getId;selected php:Category->getId()==Monk->getBType()?true:false" >
+										<option tal:repeat="Category CategoryBTypeAll" tal:attributes="value Category/getId;selected php:Category->getId()==Monk->getBType()?true:false" >
 											<span tal:content="Category/getName"/>
 										</option>
 									</select>

@@ -56,23 +56,12 @@ class CategoryTask extends Object{
 	function getURLRead(){
 		return "/ask/".$this->getId();
 	}
-	function getURLView(){
-		return "/app/task/".$this->getId();
-	}
+	function getURLView(){return "/app/task/".$this->getId();}	
+	function getURLUpdLoad(){return "/app/category/task/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/app/category/task/".$this->getId()."/upd/exe";}
 	
-	function getURLUpdLoad(){
-		return "/app/category/task/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){		
-		return "/app/category/task/".$this->getId()."/upd/exe";			
-	}
-	
-	function getURLDelLoad(){
-		return "/app/category/task/".$this->getId()."/del/load";						
-	}
-	function getURLDelExe(){	
-		return "/app/category/task/".$this->getId()."/del/exe";
-	}
+	function getURLDelLoad(){return "/app/category/task/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/app/category/task/".$this->getId()."/del/exe";}
 	
 	function getURLTaskInsLoad(){return "/app/task/".$this->getId()."/ins/load";}
 	function getURLTaskInsExe(){return "/app/task/".$this->getId()."/ins/exe";}
