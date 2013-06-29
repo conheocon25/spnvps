@@ -16,56 +16,41 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mVM = new \MVC\Mapper\VideoMonk();
-			$mVideo = new \MVC\Mapper\Video();			
-			$mAlbum = new \MVC\Mapper\Album();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mNews = new \MVC\Mapper\News();
-			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mConfig = new \MVC\Mapper\Config();
-			$mCourse = new \MVC\Mapper\Course();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryVideo = $mCategoryVideo->findAll()->current();
 									
-			$Asks = $mAsk->findByTop(array());
-			$Pagodas = $mPagoda->findAll();
+			$AskAll = $mAsk->findByTop(array());
+			$PagodaAll = $mPagoda->findAll();
 			$Courses = $mCourse->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
 			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoriesNews", $CategoriesNews);			
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
 			$request->setObject("Event", $Event);
 			$request->setObject("Course", $Course);
-			$request->setObject("Sponsors", $Sponsors);
+			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("Courses", $Courses);
-			$request->setObject("Asks", $Asks);
-			$request->setObject("Pagodas", $Pagodas);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject("AskAll", $AskAll);
+			$request->setObject("PagodaAll", $PagodaAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
 			$request->setProperty("ActiveItem", 'Course');
 			

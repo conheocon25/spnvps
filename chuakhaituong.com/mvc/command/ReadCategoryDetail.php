@@ -17,35 +17,18 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mVM = new \MVC\Mapper\VideoMonk();
-			$mVL = new \MVC\Mapper\VideoLibrary();
-			$mVideo = new \MVC\Mapper\Video();			
-			$mAlbum = new \MVC\Mapper\Album();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mNews = new \MVC\Mapper\News();
-			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mConfig = new \MVC\Mapper\Config();
-			$mCourse = new \MVC\Mapper\Course();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			include("mvc/base/mapper/MapperDefault.php");
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$AlbumAll = $mAlbum->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Category = $mCategoryNews->find($IdCategory);
-			$CategoriesNews = $mCategoryNews->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
 			
 			$Category = $mCategoryNews->find($IdCategory);
 			$News = $mNews->find($IdNews);
@@ -60,11 +43,11 @@
 				$Title = "";
 			}						
 			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -75,15 +58,15 @@
 			$request->setObject("Event", $Event);
 			$request->setProperty("ActiveItem", 'ReadCategory');
 			
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);			
-			$request->setObject("Pagodas", $Pagodas);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("News", $News);
-			$request->setObject("Sponsors", $Sponsors);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

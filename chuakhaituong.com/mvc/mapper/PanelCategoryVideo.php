@@ -11,8 +11,8 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
 		
 		$selectAllStmt = sprintf("select * from %s", $tblPanelCategoryVideo);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblPanelCategoryVideo);
-		$updateStmt = sprintf("update %s set id_category=? where id=?", $tblPanelCategoryVideo);
-		$insertStmt = sprintf("insert into %s (id_category) values(?)", $tblPanelCategoryVideo);
+		$updateStmt = sprintf("update %s set name=?, `order`=? where id=?", $tblPanelCategoryVideo);
+		$insertStmt = sprintf("insert into %s (name, `order`) values(?, ?)", $tblPanelCategoryVideo);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPanelCategoryVideo);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -29,7 +29,8 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\PanelCategoryVideo( 
 			$array['id'],
-			$array['id_category']
+			$array['name'],
+			$array['order']
 		);
         return $obj;
     }
@@ -40,7 +41,8 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getIdCategory()
+			$object->getName(),
+			$object->getOrder()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -49,7 +51,8 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getIdCategory(),
+			$object->getName(),
+			$object->getOrder(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -59,11 +62,7 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
         return $this->deleteStmt->execute( $values );
     }
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 }
 ?>

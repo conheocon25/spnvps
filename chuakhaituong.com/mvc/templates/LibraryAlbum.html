@@ -34,7 +34,7 @@
 						<div class="news-box-sub-title">Hình ảnh khác</div>
 
 						<ul class="news-box-list">
-							<li tal:repeat="Album Albums">
+							<li tal:repeat="Album AlbumAll">
 								<a tal:attributes="href Album/getURLView">
 									<span tal:content="Album/getName"/>
 								</a> (<span tal:content="Album/getTimePrint" />)

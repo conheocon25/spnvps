@@ -14,21 +14,11 @@
 			//-------------------------------------------------------------
 			$IdCategory = $request->getProperty('IdCategory');
 			$MsgCaptcha = $request->getProperty('MsgCaptcha');	
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mConfig = new \MVC\Mapper\Config();
-			$mCourse = new \MVC\Mapper\Course();
-			$mNews = new \MVC\Mapper\News();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -47,34 +37,34 @@
 			$request->setProperty("MsgCaptcha", $MsgCaptcha);
 						
 			$Category = $mCategoryAsk->find($IdCategory);
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Asks = $mAsk->findBy3(null);
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AskAll = $mAsk->findBy3(null);
 			$Title = "Gửi câu hỏi/trả lời";
 			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
 			
-			$Sponsors = $mSponsor->findAll();						
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$SponsorAll = $mSponsor->findAll();						
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject("Category", $Category);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesBType", $CategoriesBType);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("Event", $Event);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Asks', $Asks);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AskAll', $AskAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("Sponsors", $Sponsors);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
 			$request->setProperty("ActiveItem", 'Ask');
 			$request->setProperty("Title", $Title);
