@@ -5,11 +5,9 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
+			<div id="main">
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
@@ -45,9 +43,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Category/getURLNewsInsLoad">
-												Thêm mới tin tức
-											</a>
+											<a tal:attributes="href Category/getURLNewsInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -55,16 +51,10 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Admin</span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
-						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Category1 Categories" tal:attributes="href Category1/getURLView">
@@ -78,9 +68,6 @@
 				</div>
 				<div class="clear" />
 			</div>
-
-			
-
 		</div>
 	</body>
 </html>

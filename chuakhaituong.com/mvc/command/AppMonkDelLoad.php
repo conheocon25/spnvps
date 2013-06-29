@@ -27,22 +27,22 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Monk = $mMonk->find($IdMonk);			
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Title = "Quản trị / Giảng sư / ".$Monk->getName()." / Xóa";
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Monk', $Monk);
-			$request->setObject('CategoriesBType', $CategoriesBType);
-			$request->setObject('CategoriesNews', $CategoriesNews);	
-			$request->setObject('CategoriesAsk', $CategoriesAsk);	
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Sponsors', $Sponsors);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);	
+			$request->setObject('CategoryAskAll', $CategoryAskAll);	
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');

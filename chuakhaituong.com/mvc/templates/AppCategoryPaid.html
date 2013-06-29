@@ -61,21 +61,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>				
 				<div class="clear" />
-			</div>
-			
+			</div>			
 		</div>
 	</body>
 </html>

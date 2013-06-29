@@ -26,23 +26,23 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$Event = $mEvent->find($IdEvent);
-			$Sponsors = $mSponsor->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject( 'CategoriesBType', $CategoriesBType );
-			$request->setObject( 'CategoriesNews', $CategoriesNews );
-			$request->setObject( 'CategoriesAsk', $CategoriesAsk );
+			$request->setObject( 'CategoryBTypeAll', $CategoryBTypeAll );
+			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );
+			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
 			$request->setObject( 'Event', $Event );
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Sponsors', $Sponsors);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
