@@ -7,11 +7,12 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">								
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">					
 						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 							<a href="/app">&#8629; Trở lại</a>
 						</div>						
@@ -20,8 +21,8 @@
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th align="left">THỜI GIAN</th>
-										<th align="left">NGƯỜI GỬI</th>
+										<th align="left">NGÀY</th>
+										<th align="left">NGƯỜI HỎI</th>
 										<th align="left">TÌNH TRẠNG</th>
 										<th>XÓA</th>
 									</tr>
@@ -52,9 +53,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a tal:attributes="href Category/getURLAskInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Category/getURLAskInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -62,21 +61,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
+				</div>				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/user.png" width="30" />
-							<span>Admin</span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Category1 CategoryAskAll1" tal:attributes="href Category1/getURLView">
 									<li tal:attributes="class php: Category1->getId()==Category->getId()?'menu-select':''">
-										<div class="left" tal:content="Category1/getName" />
-										<div class="right" tal:content="Category1/getAsks/count" />
+										<span tal:content="Category1/getName"/> (<span tal:content="Category1/getAsks/count"/>)
 									</li>
 								</a>								
 							</ul>
@@ -85,9 +78,6 @@
 				</div>
 				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

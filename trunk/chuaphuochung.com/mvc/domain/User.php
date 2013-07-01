@@ -45,37 +45,17 @@ class User extends Object{
         return $this->Id;
     }
 		
-	function setEmail( $Email ) {
-        $this->Email = $Email;
-        $this->markDirty();
-    }
-	function getEmail(){
-		return $this->Email;
-	}
+	function setEmail( $Email ) {$this->Email = $Email;$this->markDirty();}
+	function getEmail(){return $this->Email;}
 	
-    function setPass( $Pass ) {
-        $this->Pass = $Pass;
-        $this->markDirty();
-    }
-    function getPass( ) {
-        return $this->Pass;
-    }
+    function setPass( $Pass ) {$this->Pass = $Pass;$this->markDirty();}
+    function getPass( ) {return $this->Pass;}
 	
-	function setPass2( $Pass2 ) {
-        $this->Pass2 = $Pass2;
-        $this->markDirty();
-    }
-    function getPass2( ) {
-        return $this->Pass2;
-    }
+	function setPass2( $Pass2 ) {$this->Pass2 = $Pass2;$this->markDirty();}
+    function getPass2( ) {return $this->Pass2;}
 	
-    function setGender( $Gender ) {
-        $this->Gender = $Gender;
-        $this->markDirty();
-    }	
-    function getGender( ) {
-        return $this->Gender;
-    }
+    function setGender( $Gender ) {$this->Gender = $Gender;$this->markDirty();}	
+    function getGender( ) {return $this->Gender;}
 	function getGenderPrint( ){
         if($this->Gender == 0) {
 			return "Nữ";
@@ -84,77 +64,29 @@ class User extends Object{
 		}
     }
 	
-	function setNote( $Note ) {
-        $this->Note = $Note;
-        $this->markDirty();
-    }
-	
-	function getNote( ) {
-        return $this->Note;
-    }
-	
-	function setApp( $App ){
-        $this->App = $App;
-        $this->markDirty();
-    }
-	
-	function getApp($IdApp=null){		
-		return $this->App;
-	}
-	
+	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}	
+	function getNote( ) {return $this->Note;}	
+	function setApp( $App ){$this->App = $App;$this->markDirty();}
+	function getApp($IdApp=null){return $this->App;}	
 	function getApps(){
 		if (!isset($this->Apps)){
 			$mUserApp = new \MVC\Mapper\UserApp();
 			$this->Apps = $mUserApp->findBy(array($this->Id));
 		}
 		return $this->Apps;
-	}
+	}		
+	function getNotSigned(){$mApp = new \MVC\Mapper\App();$Apps = $mApp->notSigned(array($this->Id));return $Apps;}
 		
-	function getNotSigned(){		
-		$mApp = new \MVC\Mapper\App();
-		$Apps = $mApp->notSigned(array($this->Id));
-		
-		return $Apps;
-	}
-		
-	function setDateCreate( $DateCreate){
-        $this->DateCreate = $DateCreate;
-        $this->markDirty();
-    }
+	function setDateCreate( $DateCreate){$this->DateCreate = $DateCreate;$this->markDirty();}	
+	function getDateCreate(){return $this->DateCreate;}	
+	function setDateUpdate( $DateUpdate){$this->DateUpdate = $DateUpdate;$this->markDirty();}	
+	function getDateUpdate(){return $this->DateUpdate;}	
+	function setDateActivity( $DateActivity){$this->DateActivity = $DateActivity;$this->markDirty();}
 	
-	function getDateCreate(){
-        return $this->DateCreate;
-    }
-	
-	function setDateUpdate( $DateUpdate){
-        $this->DateUpdate = $DateUpdate;
-        $this->markDirty();
-    }
-	
-	function getDateUpdate(){
-        return $this->DateUpdate;
-    }
-	
-	function setDateActivity( $DateActivity){
-        $this->DateActivity = $DateActivity;
-        $this->markDirty();
-    }
-	
-	function getDateActivity(){
-        return $this->DateActivity;
-    }
-	
-	function setType( $Type){
-        $this->Type = $Type;
-        $this->markDirty();
-    }
-	function getType(){
-        return $this->Type;
-    }
-	function getTypePrint(){
-		$Arr = array("", "Doanh nghiệp", "Đại lý", "", "Quản trị");
-        return $Arr[$this->Type];
-    }
+	function getDateActivity(){return $this->DateActivity;}	
+	function setType( $Type){$this->Type = $Type;$this->markDirty();}
+	function getType(){return $this->Type;}
+	function getTypePrint(){$Arr = array("", "Doanh nghiệp", "Đại lý", "", "Quản trị");return $Arr[$this->Type];}
 	
 	//Chứng thực quyền người dùng
 	function authorize($Command){
@@ -165,18 +97,9 @@ class User extends Object{
 	
 	//Lấy địa chỉ
 		
-	function getURLViewSystem(){		
-		return "/quan_tri/".$this->Id;
-	}
-	
-	function getURLViewVendor(){
-		return "/dai_ly";
-	}
-	
-	function getURLViewIndex(){
-		$Prefix = $this->getApp()->getAlias();
-		return $Prefix;
-	}
+	function getURLViewSystem(){return "/quan_tri/".$this->Id;}	
+	function getURLViewVendor(){return "/dai_ly";}	
+	function getURLViewIndex(){$Prefix = $this->getApp()->getAlias();return $Prefix;}
 	
 	function getURLDefault(){
 		$Prefix = $this->getApp()->getAlias();
@@ -191,13 +114,7 @@ class User extends Object{
         return $Arr[$this->Type];
 	}
 	
-    static function findAll() {
-        $finder = self::getFinder( __CLASS__ ); 
-        return $finder->findAll();
-    }
-    static function find( $Id ) {
-        $finder = self::getFinder( __CLASS__ ); 
-        return $finder->find( $Id );
-    }
+    static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
+    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 }
 ?>

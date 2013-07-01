@@ -10,8 +10,8 @@
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
 				
 				<div id="left-mini">
 					<div class="sidebar-box-mini">
@@ -34,39 +34,38 @@
 
 					<div class="news-box-mini">
 						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Phật âm</span>
+							<img src="/data/images/icon.png" width="30" />							
+							<span tal:content="php: 'PHẬT ÂM ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint() . ' Video)'" />
 						</div>
-						<div style="padding:10px;">
-							<div align="center" class="video-screen">
-								<iframe width="450" height="350" 
-									tal:attributes="src VM2s/current/getVideo/getURL"
-									frameborder="0"
-									wmode="Opaque"
-								/>
-								<script>
-									/*<![CDATA[*/
-									$("iframe").each(function(){
-										  var ifr_source = $(this).attr('src');
-										  var wmode = "?wmode=transparent";
-										  $(this).attr('src',ifr_source+wmode);
-									});
-									/*]]>*/
-								</script>
+						
+						<div align="center" class="video-screen">
+							<iframe width="450" height="350" 
+								tal:attributes="src VMUpdateTopAll/current/getVideo/getURL"
+								frameborder="0"
+								wmode="Opaque"
+							/>
+							<script>
+								/*<![CDATA[*/
+								$("iframe").each(function(){
+									  var ifr_source = $(this).attr('src');
+									  var wmode = "?wmode=transparent";
+									  $(this).attr('src',ifr_source+wmode);
+								});
+								/*]]>*/
+							</script>
+						</div>						
+						<div class="video-info">
+							<div class="name" tal:content="VMUpdateTopAll/current/getVideo/getName" />
+							<div class="monk">Giảng sư: 
+								<a tal:attributes="href VMUpdateTopAll/current/getMonk/getURLRead">
+									<span tal:content="VMUpdateTopAll/current/getMonk/getPreName"/> - 
+									<span tal:content="VMUpdateTopAll/current/getMonk/getName"/>
+								</a>
 							</div>						
-							<div class="video-info">
-								<div class="name" tal:content="VM2s/current/getVideo/getName" />
-								<div class="monk">Giảng sư: 
-									<a tal:attributes="href VM2s/current/getMonk/getURLRead">
-										<span tal:content="VM2s/current/getMonk/getPreName"/> - 
-										<span tal:content="VM2s/current/getMonk/getName"/>
-									</a>
-								</div>						
-								<div class="view">
-									<span tal:content="VM2s/current/getVideo/getCountPrint"/> lượt xem
-								</div>
-								<div class="clear" />
+							<div class="view">
+								<span tal:content="VMUpdateTopAll/current/getVideo/getCountPrint"/> lượt xem
 							</div>
+							<div class="clear" />
 						</div>
 					</div>
 
@@ -78,7 +77,7 @@
 
 						<div style="margin-left:24px; margin-top:15px;">
 							<ul class="list-video">	
-								<li tal:repeat="VM VM1s">
+								<li tal:repeat="VM VMUpdateTopAll">
 									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
 										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
 										<div class="monk" tal:content="VM/getMonk/getName" />
@@ -99,7 +98,7 @@
 
 						<div style="margin-left:24px; margin-top:15px;">
 							<ul class="list-video">	
-								<li tal:repeat="VM VM2s">
+								<li tal:repeat="VM VMViewTopAll">
 									<a tal:attributes="href VM/getURLView; title VM/getVideo/getName">
 										<img tal:attributes="src VM/getVideo/getURLImage" width="140px" height="110px" />
 										<div class="monk" tal:content="VM/getMonk/getName" />
@@ -129,14 +128,18 @@
 							</a>
 						</ul>
 						<div class="clear" />
-					</div>					
-					<div metal:use-macro="macros.xhtml/EventBoxMini"/>
+					</div>
+					<div metal:use-macro="macros.xhtml/CountBoxMini"/>					
 					<div metal:use-macro="macros.xhtml/SponsorBoxMini"/>
+					<div metal:use-macro="macros.xhtml/ContactBoxMini"/>
+					
 				</div>
+				
 				<div class="clear" />
 			</div>
+
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+
 		</div>
 	</body>
 </html>

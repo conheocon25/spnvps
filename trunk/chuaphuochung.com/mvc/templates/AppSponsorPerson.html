@@ -18,6 +18,15 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>
+										<th align="right">SỐ TIỀN</th>
+										<th align="left">ĐƠN VỊ</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="Person Sponsor/getPersonAll">
 										<td width="32" align="center">
@@ -40,9 +49,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a tal:attributes="href Sponsor/getURLPersonInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Sponsor/getURLPersonInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -54,7 +61,7 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title"><img src="/data/images/icon.png" width="30" /><span><a href="/changepass/load">Admin</a></span><a href="/signout/load">&#8629; Thoát</a></div>						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>								
 								<a tal:repeat="Sponsor1 SponsorAll" tal:attributes="href Sponsor1/getURLSetting">
@@ -69,7 +76,6 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
 		</div>
 	</body>
 </html>

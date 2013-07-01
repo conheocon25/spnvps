@@ -5,17 +5,14 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
-				
 					<div tal:condition="News" class="news-box">
 						<div class="box-title">
-							<img src="/data/images/news.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title"/>
 						</div>						
 						<div style="padding:10px; line-height:25px;">
@@ -37,20 +34,21 @@
 				</div>				
 				<div id="sidebar">										
 					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
-					<div metal:use-macro="macros.xhtml/CourseBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
 					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
 					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
 				</div>				
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+			<div metal:use-macro="macros.xhtml/Footer" />		
 		</div>
 	</body>
 </html>

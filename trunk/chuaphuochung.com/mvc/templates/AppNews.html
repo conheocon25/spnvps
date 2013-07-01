@@ -5,16 +5,14 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-		
+		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
-				
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 							<a href="/app/category/news">&#8629; Trở lại</a>
 						</div>						
@@ -23,13 +21,13 @@
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th align="left" />
+										<th />
 										<th align="left">TIÊU ĐỀ</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="News NewsAll" >
+									<tr class="content-rows" tal:repeat="News Category/getNews" >
 										<td width="32" align="center">
 											<div tal:content="repeat/News/number" />
 										</td>
@@ -38,9 +36,9 @@
 												<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
 											</span>
 										</td>
-										<td class="text-hightlight">											
+										<td class="text-hightlight">
 											<a tal:attributes="href News/getURLUpdLoad">
-												<div tal:content="News/getTitle" />
+												<div tal:content="News/getTitleReduce" />
 											</a>
 										</td>
 										<td width="32" align="center" class="text-hightlight">
@@ -53,32 +51,23 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Category/getURLNewsInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Category/getURLNewsInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
 						</div>
-						<div class="page-list">								
-							<span tal:repeat="P PN/getPages">
-								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-							</span>
-						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Category1 CategoryAll" tal:attributes="href Category1/getURLView">
+								<a tal:repeat="Category1 Categories" tal:attributes="href Category1/getURLView">
 									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">
-										<div class="left" tal:content="Category1/getName" />
-										<div class="right" tal:content="Category1/getNews/count" />
+										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getNews/count" />)
 									</li>
 								</a>												
 							</ul>
@@ -87,7 +76,6 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
 		</div>
 	</body>
 </html>

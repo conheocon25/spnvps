@@ -1,32 +1,29 @@
- <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyDPq_xfWH0GcHK9JVxIkSOHFvtm8_OqtJA" type="text/javascript"></script>				
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>		
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
-		
 		<script type="text/javascript">
-			$(function() {	
-				$("#map").googleMap().load();		
+			$(function() {			
+				$("#map").googleMap().load();				
 			});
 		</script>
 	</head>	
-	<body >
+	<body onunload="GUnload()">
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />
-			
-			 
 			<div id="main">				
-				<input id="pagodaCode" value = "1" type="hidden" />
-				<div id="content">					
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span>Thông tin liên lạc</span>
 						</div>
 						<div style="padding:10px;">
-							<img src="/data/images/namecard.jpg" width="600" />
+							<img src="/data/images/name_card.jpg" width="600" />
 						</div>
 						<h3>
 							Quí Phật Tử có thể đặt câu hỏi trao đổi Phật Học <a href="/ask/1">Click vào tại đây</a>
@@ -73,7 +70,7 @@
 							</form>	
 							
 							<form class="form-editor" action="directions.php" method="post">
-								<input id="end" type="hidden" value="xa Hoa Thanh, huyen Tam Binh, tinh Vinh Long, Viet Nam" />
+								<input id="end" type="hidden" value="Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam" />
 								<div class="row">
 									<div for="Name" class="label">Vị trí của bạn</div>
 									<div class="textbox" >
@@ -93,20 +90,24 @@
 				</div>
 				
 				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
-					<div metal:use-macro="macros.xhtml/EventBox"/>					
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
 					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 					
-				</div>				
-				<div class="clear"/>
+				</div>
+				
+				<div class="clear" />
 			</div>
+
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft" />
+
 		</div>
 	</body>
 </html>

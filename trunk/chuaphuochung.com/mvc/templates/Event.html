@@ -7,23 +7,19 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">					
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">					
-					<div class="news-box">					
-						<div tal:condition="EventRead" class="box-title">
-							<img src="/data/images/event.png" width="30" />
+					<div class="news-box" tal:condition="EventRead">					
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="EventRead/getTitle"/>
-						</div>
-						<div tal:condition="not:EventRead" class="box-title">
-							<img src="/data/images/event.png" width="30" />
-							<span>CÁC SỰ KIỆN</span>
-						</div>
-						<div style="padding:10px;">						
-							<div tal:condition="EventRead" tal:content="structure EventRead/getContent"/>
-							
-							<div class="news-box-sub-title">Sự kiện sắp xảy ra</div>
+						</div>						
+						<div style="padding:10px;">
+							<div style="font-size:15px; color:#980707; margin:10px;" tal:content="structure EventRead/getContent"/>
+							<div class="news-box-sub-title">Sự kiện sắp xảy ra</div>						
 							<ul class="news-box-list">
-								<li tal:repeat="Event EventsNear">
+								<li tal:repeat="Event EventsNear">									
 									<a tal:attributes="href Event/getURLRead">
 										<span tal:content="Event/getTitle" />
 									</a>
@@ -33,7 +29,7 @@
 							
 							<div class="news-box-sub-title">Sự kiện đã xảy ra</div>
 							<ul class="news-box-list">
-								<li tal:repeat="Event EventsFinish">
+								<li tal:repeat="Event EventsFinish">									
 									<a tal:attributes="href Event/getURLRead">
 										<span tal:content="Event/getTitle" />
 									</a>
@@ -43,21 +39,32 @@
 						</div>
 						<div class="clear" />
 					</div>
+					<div class="news-box" tal:condition="not: EventRead">					
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span >SẮP CÓ SỰ KIỆN</span>
+						</div>						
+						
+						<div class="clear" />
+					</div>
 				</div>				
-				<div id="sidebar">					
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
 					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
 				</div>				
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

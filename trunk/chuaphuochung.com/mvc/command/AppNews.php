@@ -12,24 +12,34 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdCategory = $request->getProperty('IdCategory');
-			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			include("mvc/base/mapper/MapperDefault.php");			
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryAll1 = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
+			$CourseAll = $mCourse->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			$PanelNews = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$ConfigAll = $mConfig->findAll();
+			
+			$Categories1 = $mCategoryNews->findAll();			
 			
 			if (!isset($IdCategory)){
 				if (!isset($IdCurrentCategory)){
-					$Category = $CategoryAll->current();
+					$Category = $Categories->current();
 					$IdCategory = $Category->getId();
 				}
 				else {
@@ -39,30 +49,32 @@
 			}else{
 				$Category = $mCategoryNews->find($IdCategory);
 			}
-			if (!isset($Page)) $Page=1;			
-			$Session->setCurrentCategoryNews($IdCategory);
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$Title = "Quản lý / Chuyên mục Tin tức / ".$Category->getName();
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
 			
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
+			$Session->setCurrentCategoryNews($IdCategory);			
+			$Title = "Quản lý / Tin tức / ".$Category->getName();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			//-------------------------------------------------------------						
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAll", $CategoryAll1);
-			$request->setObject("Category", $Category);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('NewsAll', $NewsAll);
-			$request->setObject('PN', $PN);
+			$request->setObject('AlbumAll', $AlbumAll);
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('CourseAll', $CourseAll);
+			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('ConfigAll', $ConfigAll); 
+			$request->setObject('PanelNews', $PanelNews);
+			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
+			
+			$request->setObject("Categories", $Categories1);
+			$request->setObject("Category", $Category);
+			
 			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

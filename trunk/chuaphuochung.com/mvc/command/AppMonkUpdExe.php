@@ -19,7 +19,6 @@
 			$Pagoda = $request->getProperty('Pagoda');
 			$Type = $request->getProperty('Type');
 			$BType = $request->getProperty('BType');
-			$Picture = $request->getProperty('Picture');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -46,7 +45,6 @@
 			$dMonk->setPagoda($Pagoda);
 			$dMonk->setType($Type);
 			$dMonk->setBType($BType);
-			//$dMonk->setPicture($Picture);
 			
 			$mMonk->update($dMonk);
 			

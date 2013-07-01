@@ -7,7 +7,8 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">								
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">					
 						<div class="box-title">
@@ -17,14 +18,6 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
-								<thead>
-									<tr>
-										<th>STT</th>										
-										<th align="left">TIÊU ĐỀ</th>
-										<th align="left">THỜI GIAN</th>
-										<th>XÓA</th>
-									</tr>
-								</thead>
 								<tbody>
 									<tr class="content-rows" tal:repeat="VM Monk/getVMs">
 										<td width="32" align="center">
@@ -35,7 +28,9 @@
 												<div tal:content="VM/getVideo/getName" />
 											</a>
 										</td>
-										<td tal:content="VM/getVideo/getTime" />
+										<td>
+											<div tal:content="VM/getVideo/getTimePrint" />
+										</td>
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href VM/getURLDelLoad">
 												<div><img src="/data/images/remove.png" width="20" /></div>
@@ -46,9 +41,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Monk/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Monk/getURLVideoInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -56,16 +49,16 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
+				</div>				
 				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+					<div class="sidebar-box">						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Monk1 Monks" tal:attributes="href Monk1/getURLVideo">
+								<a tal:repeat="Monk1 MonkAll" tal:attributes="href Monk1/getURLVideo">
 									<li tal:attributes="class php:Monk->getId()==Monk1->getId()?'menu-select':''">
-										<div class="left" tal:content="Monk1/getName"/> 
-										<div class="right" tal:content="Monk1/getVMs/count"/>
+										<div class="left" tal:content="Monk1/getName" />
+										<div class="right" tal:content="Monk1/getVMs/count" />
 									</li>
 								</a>
 							</ul>
@@ -73,8 +66,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

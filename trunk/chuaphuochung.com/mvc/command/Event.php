@@ -23,10 +23,12 @@
 			//-------------------------------------------------------------			
 			$EventsNear = $mEvent->findByNear(null);
 			$EventsFinish = $mEvent->findByFinish(null);
-			$CategoryAll = $mCategoryNews->findAll();
+			$Categories = $mCategoryNews->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Event = $EventsNear->current();
 			
@@ -36,16 +38,11 @@
 				$EventRead = $EventsNear->current();
 			}
 			
-			$Course = $mCourse->findByNear(null)->current();						
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLNextAll = $mClassLession->findByNext(null);
-			
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
+			//$Event = $mEvent->findTop(null)->current();
+			$Course = $mCourse->findByNear(null)->current();
 			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -53,19 +50,19 @@
 			$request->setObject("Event", $Event);
 			$request->setObject("EventRead", $EventRead);
 			$request->setObject("EventsNear", $EventsNear);
-			$request->setObject("EventsFinish", $EventsFinish);						
-			$request->setObject("CategoryAll", $CategoryAll);
+			$request->setObject("EventsFinish", $EventsFinish);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("Course", $Course);
-			$request->setObject("CLNextAll", $CLNextAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
+			
+			$request->setObject("Course", $Course);			
+			
 			$request->setProperty("ActiveItem", 'Event');
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

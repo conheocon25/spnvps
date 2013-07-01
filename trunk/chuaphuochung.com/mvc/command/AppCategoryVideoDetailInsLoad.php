@@ -15,31 +15,42 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------						
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			
+			$mMonk = new \MVC\Mapper\Monk();
+			$mVideoMonk = new \MVC\Mapper\VideoMonk();
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$PagodaAll = $mPagoda->findAll();
-			$Category = $mCategoryVideo->find($IdCategory);
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
+			//-------------------------------------------------------------									
 			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$MonkAll = $mMonk->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();			
+			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
+			
+			$Category = $mCategoryVideo->find($IdCategory);
+			$MonkAll = $mMonk->findAll();
+			
 			$Title = "Quản lý / chuyên mục video / ".$Category->getName()." / Thêm mới";
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------									
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			
 			$request->setObject('Category', $Category);
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject('CategoryAskAll', $CategoryAskAll);
-			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
-			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', "Home");

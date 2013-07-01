@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class Sponsor extends Command {
+	class Sponsor extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -15,60 +15,41 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------											
-			$Title = "WEB SITE CHÙA THIÊN QUANG";
-												
-			$AlbumAll = $mAlbum->findAll();
-			$CategoryAll = $mCategoryNews->findByAll(null);
+			//-------------------------------------------------------------						
+			$SponsorAll = $mSponsor->findAll();
+			$Trackings = $mTracking->findAll();
+			$Categories = $mCategoryNews->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryVideo = $mCategoryVideo->findAll()->current();			
-			$AskAll = $mAsk->findByTop(array());
+			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
-			$TaskAll = $mTask->findAll();
-			$SponsorPerson = $mSponsorPerson->findAll();
 			
+			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-						
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLAll = $mClassLession->findByRecent(null);
-			$CLNextAll = $mClassLession->findByNext(null);
-			
+
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);
-									
-			$request->setObject("AlbumAll", $AlbumAll);
-			$request->setObject("SponsorPerson", $SponsorPerson);
-			$request->setObject("CategoryAll", $CategoryAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
+			//-------------------------------------------------------------
 			$request->setObject("Event", $Event);
-			$request->setObject("AskAll", $AskAll);
-			$request->setObject("PagodaAll", $PagodaAll);
-			$request->setObject("TaskAll", $TaskAll);
-			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLAll", $CLAll);
-			$request->setObject("CLNextAll", $CLNextAll);
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setProperty("ActiveItem", 'Sponsor');
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("Trackings", $Trackings);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);			
+			
+			$request->setProperty("Title", 'HOẠT ĐỘNG QUYÊN GÓP TỪ THIỆN');
+			$request->setProperty("ActiveItem", 'Sponsor');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

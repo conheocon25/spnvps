@@ -16,7 +16,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
 		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 5", $tblNews);
-		$findByLimit1Stmt = sprintf("select *  from %s ORDER BY type DESC, date DESC limit 6", $tblNews);
+		$findByLimit1Stmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 6", $tblNews);
 		
 		$findByCategoryDateStmt = sprintf(
 			"select *  

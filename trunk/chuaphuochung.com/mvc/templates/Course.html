@@ -6,74 +6,72 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-		
+			
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
 				<div id="content">
-					
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/pagoda.png" width="30" />
-							<span tal:content="Title" />
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="Course/getName"/>
 						</div>
-						<div style="padding:10px;">
-							<div align="center" style="color:#004E02; line-height:20px; margin-bottom:10px;">
-								<H3 tal:content="Course/getName" style="font-size:17px;" />								
-								<p>Bắt đầu: <B tal:content="Course/getDateStartPrint" /> - Kết thúc: <B tal:content="Course/getDateEndPrint" /></p>
-								<span tal:content="structure Course/getDescription" />								
-							</div>
+						<div align="center" style="padding:10px;">
+							<span tal:content="structure Course/getDescription"/>
+							<p>Các buổi học</p>
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
 								<thead>
 									<tr>
 										<th width="32">STT</th>
-										<th align="left">LỚP HỌC</th>
+										<th align="left">BUỔI HỌC</th>
 										<th width="64">BẮT ĐẦU</th>
 										<th width="64">KẾT THÚC</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Class Course/getClasses">
-										<td align="center" tal:content="repeat/Class/number" />
+									<tr class="content-rows" tal:repeat="Lession Course/getLessions">
+										<td align="center" tal:content="repeat/Lession/number" />
 										<td class="text-hightlight">
-											<a tal:attributes="href Class/getURLRead">
-												<div tal:content="Class/getName" />
+											<a tal:attributes="href Lession/getURLRead">
+												<div tal:content="Lession/getName" />
 											</a>
-										</td>										
-										<td tal:content="Class/getDateStartPrint" />
-										<td tal:content="Class/getDateEndPrint" />
+										</td>
+										<td tal:content="Lession/getDateStartPrint" />
+										<td tal:content="Lession/getDateEndPrint" />
 									</tr>
 								</tbody>
-							</table>
-							<br/>
-							
-							<div class="news-box-sub-title">Các khóa học khác</div>
-							<ul class="news-box-list">
-								<li tal:repeat="Course Courses">
-									<a tal:attributes="href Course/getURLRead">
-										<span tal:content="Course/getName" />
-									</a>
-									( từ <span tal:content="Course/getDateStartPrint" /> đến <span tal:content="Course/getDateEndPrint" />)
-								</li>
-							</ul>
+							</table>							
+							<div class="clear" />
 						</div>
-						<div class="clear" />
+						<div class="news-box-sub-title">Các buổi học khác</div>
+						<ul class="news-box-list">
+							<li tal:repeat="Course Courses" >
+								<a tal:attributes="href Course/getURLRead" tal:content="Course/getName"/>
+								(từ <span tal:content="Course/getDateStartPrint" /> đến <span tal:content="Course/getDateEndPrint" />)
+							</li>
+						</ul>
+						<br/>
 					</div>
 				</div>				
 				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
 					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					
 				</div>
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

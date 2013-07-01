@@ -13,48 +13,39 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Date').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>				
 	</head>	
 	<body>
 		<div id="wrapper">
-
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
 			<div id="main">				
-				
-
-						<div class="manager-main-content">
-							<form class="form-editor" id="FormAppEventDelLoad" tal:attributes="action Event/getURLDelExe" method="post">
-								<table border="0" cellpadding="0" cellspacing="10">
-									<tbody>										
-										<tr>
-											<td colspan="2" align="center">
-												<a tal:attributes="href '/app/event'">Quản trị > Sự kiện > Xóa</a>
-											</td>
-										</tr>
-										<tr>
-											<td colspan="2" align="right">
-												<p>Bạn muốn xóa <B tal:content="Event/getTitle"/> ? </p>
-											</td>
-										</tr>																				
-										<tr>
-											<td colspan="2" align="center">
-												<button class="form-editor-button" type="submit" name="submit" value="submit-value">Xóa</button>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</form>
-						</div>
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="box-editor">
+					<div class="box-title">
+						<img src="/data/images/icon.png" width="30" />
+						<span tal:content="Title" />
+						<a href="/app/event">&#8629; Trở lại</a>
+					</div>
+					<div class="box-editor-left">
+						<form class="form-editor" tal:attributes="action Event/getURLDelExe" method="post">
+							<div class="row">
+								<h3>Bạn có thực sự muốn xóa Sự kiện hay không ? </h3>
+							</div>							
+							<div class="row">
+								<div class="button">
+									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="box-editor-right">
+						
+					</div>
+				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

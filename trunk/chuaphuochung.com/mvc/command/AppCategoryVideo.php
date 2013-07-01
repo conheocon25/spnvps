@@ -23,40 +23,39 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
 			$CourseAll = $mCourse->findAll();
-			$TaskAll = $mTask->findAll();
-			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$ConfigAll = $mConfig->findAll();
+			$TaskAll = $mTask->findAll();
 			
-			$Title = "Quản lý / Video /";						
+			$Title = "Quản lý / Video /";
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('TaskAll', $TaskAll);
-			$request->setObject('LinkedAll', $LinkedAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('ConfigAll', $ConfigAll); 
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-			
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setObject('TaskAll', $TaskAll);
+						
 			$request->setProperty("ActiveAdmin", 'Video');
 			$request->setProperty("Title", $Title);
 			

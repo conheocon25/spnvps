@@ -11,9 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty('IdBType');
 			$IdMonk = $request->getProperty('IdMonk');
-			$Page = $request->getProperty('Page');
+			$IdBType = $request->getProperty('IdBType');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -22,40 +21,38 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			if (!isset($Page)) $Page=1;
-						
-			$MonkAll = $mMonk->findAll();
+			//-------------------------------------------------------------												
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();			
+			$CategoriesVideo = $mCategoryVideo->findAll();			
+			$Monks = $mMonk->findAll();						
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryBType = $mCategoryBType->find($IdBType);
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
 			$Monk = $mMonk->find($IdMonk);
-			$VMAll = $mVideoMonk->findByPage(array($IdMonk, $Page, 10));
-			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());
-									
+			$VMs = $mVM->findBy(array($IdMonk));			
+			$CategoryBType = $mCategoryBType->find($IdBType);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject('PN', $PN);
-			$request->setProperty("ActiveItem", 'LibraryVideo');
-			$request->setProperty("Page", $Page );			
-			$request->setObject("Monk", $Monk);
-			$request->setObject("CategoryBType", $CategoryBType);
-			
-			$request->setObject("VMAll", $VMAll);
-			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
+			$request->setObject("CategoriesVideo", $CategoriesVideo);			
+			$request->setObject("CategoryBType", $CategoryBType);
+			$request->setObject("Monks", $Monks);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);	
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
+			$request->setObject("VMs", $VMs);			
+			$request->setObject("Monk", $Monk);
+			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

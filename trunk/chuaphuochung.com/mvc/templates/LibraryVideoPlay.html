@@ -10,12 +10,13 @@
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
 				
 				<div id="left-mini">
 					<div class="sidebar-box-mini">
 						<div class="box-title">
-							<img src="/data/images/category.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span>Chuyên Đề</span>
 						</div>
 						<div class="sidebar-box-content">
@@ -35,7 +36,7 @@
 
 					<div class="news-box-mini">
 						<div class="box-title">
-							<img src="/data/images/phatam.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span>Phật âm</span> 
 						</div>
 
@@ -100,7 +101,7 @@
 				<div id="right-mini">
 					<div class="sidebar-box-mini">
 						<div class="box-title">
-							<img src="/data/images/monk.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span>Giảng Sư</span>
 						</div>
 						<div class="sidebar-box-content">
@@ -118,11 +119,15 @@
 						<div class="clear" />
 					</div>					
 					<div metal:use-macro="macros.xhtml/CountBoxMini"/>
-				</div>				
+					<div metal:use-macro="macros.xhtml/SponsorBoxMini"/>
+					<div metal:use-macro="macros.xhtml/ContactBoxMini"/>
+				</div>
+				
 				<div class="clear" />
 			</div>
+
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+
 		</div>
 	</body>
 </html>

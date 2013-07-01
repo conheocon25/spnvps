@@ -6,38 +6,34 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-			<div id="header-frame">
-				<div metal:use-macro="macros.xhtml/Header" />
-				<div id="menu-frame">
-					<div id="menu-top">
-						<ul class="main-menu">
-							<li><a class="current" tal:attributes="href Pagoda/getURLVideo"><span tal:content="Title"/></a></li>
-						</ul>
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="box-editor">
+					<div class="box-title">
+						<img src="/data/images/icon.png" width="30" />
+						<span tal:content="Title" />
+						<a href="/app/pagoda">&#8629; Trở lại</a>
+					</div>
+					<div class="box-editor-left">
+						<form class="form-editor" tal:attributes="action Pagoda/getURLDelExe" method="post">
+							<div class="row">
+								<h3>Bạn có thực sự muốn xóa Chùa hay không ? </h3>
+							</div>							
+							<div class="row">
+								<div class="button">
+									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="box-editor-right">
+						
 					</div>
 				</div>
-			</div>			
-			<div id="content-frame">				
-				
-				<div id="content" align="center">
-					<table border="0" cellpadding="0" cellspacing="0">
-						<tbody>
-							<tr>
-								<td style="vertical-align:top">
-									<div class="clear-box" />
-									<div align="center">
-										<form tal:attributes="action Pagoda/getURLDelExe" method="post">
-											<p>Muốn xóa thông tin <b tal:content="Pagoda/getName"/> </p>
-											<button class="form-button" type="submit" name="submit" value="submit-value">Xóa</button>
-										</form>
-									</div>
-									<div class="clear-box" />
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div>			
-			<span metal:use-macro="macros.xhtml/Footer"/>			
+				<div class="clear" />
+			</div>
+			
 		</div>
 	</body>
 </html>
