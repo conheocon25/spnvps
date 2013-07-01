@@ -30,7 +30,7 @@
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
 			
-			$PanelNewsAll = $mPanelNewsAll->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
