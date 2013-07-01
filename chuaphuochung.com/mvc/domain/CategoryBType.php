@@ -5,33 +5,17 @@ require_once( "mvc/base/domain/DomainObject.php" );
 class CategoryBType extends Object{
 
     private $Id;
-	private $Name;	
+	private $Name;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null) {
-        $this->Id = $Id;
-		$this->Name = $Name;	
-        parent::__construct( $Id );
-    }
+    function __construct( $Id=null, $Name=null) {$this->Id = $Id;$this->Name = $Name;parent::__construct( $Id );}
+    function getId() {return $this->Id;}	
+	function getIdPrint(){return "c" . $this->getId();}	
 	
-    function getId() {
-        return $this->Id;
-    }
-	
-	function getIdPrint(){
-        return "c" . $this->getId();
-    }	
-	
-    function setName( $Name ) {
-        $this->Name = $Name;
-        $this->markDirty();
-    }
-   
-	function getName( ) {
-        return $this->Name;
-    }
+    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
+	function getName( ) {return $this->Name;}
 			
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -66,32 +50,18 @@ class CategoryBType extends Object{
 		}
 		return ($Value1 + $Value2);
 	}
-	
-	function getVideoAllCountPrint(){
-		$N = new \MVC\Library\Number( $this->getVideoAllCount() );
-		return $N->formatCurrency();
-	}
+	function getVideoAllCountPrint(){$N = new \MVC\Library\Number( $this->getVideoAllCount() );return $N->formatCurrency();}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLView(){
-		return "/library/video/".$this->getId();
-	}
+	function getURLView(){return "/library/video/".$this->getId();}
 	
-	function getURLUpdLoad(){
-		return "/app/category/btype/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){		
-		return "/app/category/btype/".$this->getId()."/upd/exe";			
-	}
+	function getURLUpdLoad(){return "/app/category/btype/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/app/category/btype/".$this->getId()."/upd/exe";}
 	
-	function getURLDelLoad(){		
-		return "/app/category/btype/".$this->getId()."/del/load";						
-	}
-	function getURLDelExe(){	
-		return "/app/category/btype/".$this->getId()."/del/exe";
-	}
+	function getURLDelLoad(){return "/app/category/btype/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/app/category/btype/".$this->getId()."/del/exe";}
 		
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

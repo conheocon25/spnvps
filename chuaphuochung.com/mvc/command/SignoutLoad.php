@@ -17,32 +17,36 @@
 			//-------------------------------------------------------------			
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mNews = new \MVC\Mapper\News();
+			$mEvent = new \MVC\Mapper\Event();
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mConfig = new \MVC\Mapper\Config();
+			$mCourse = new \MVC\Mapper\Course();
+			$mPanelNews = new \MVC\Mapper\PanelNews();
+			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$CategoryAll = $mCategoryNews->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Title = "ĐĂNG NHẬP HỆ THỐNG";
-			$PagodaAll = $mPagoda->findAll();
-			
-			$CategoryBType = $mCategoryBType->findAll();
+			$Title = "WEB SITE CHÙA GIÁC QUANG";												
+			$CategoriesAsk = $mCategoryAsk->findAll();
+			$Pagodas = $mPagoda->findAll();						
+			$CategoriesNews = $mCategoryNews->findAll();
+			$PanelNews = $mPanelNews->findAll();
+			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("CategoryAll", $CategoryAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);			
-			
+			$request->setProperty("Title", "ĐÓNG ỨNG DỤNG");			
 			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("Title", "ĐÓNG QUẢN TRỊ ỨNG DỤNG");
 			
+			$request->setObject("CategoriesNews", $CategoriesNews);
+			$request->setObject("CategoriesAsk", $CategoriesAsk);			
+			$request->setObject("Pagodas", $Pagodas);
+			$request->setObject("PanelNews", $PanelNews);
+			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
 		}
 	}
 ?>

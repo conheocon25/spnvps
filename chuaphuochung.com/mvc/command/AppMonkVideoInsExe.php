@@ -36,6 +36,8 @@
 				$Note,
 				$Count
 			);
+			$Video->setURL( $Video->parseURLYoutube() );
+			
 			$mVideo->insert($Video);
 			$VM = new \MVC\Domain\VideoMonk(
 				null,

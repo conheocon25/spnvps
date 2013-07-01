@@ -21,7 +21,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
-			$PanelNewsAll = new \MVC\Domain\PanelCategoryVideo(
+			$PanelNews = new \MVC\Domain\PanelCategoryVideo(
 				null,
 				$IdCategoryVideo
 			);

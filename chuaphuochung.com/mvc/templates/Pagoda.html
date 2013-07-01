@@ -10,30 +10,36 @@
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/pagoda.png" width="30" />
-							<span tal:content="php:'CHUYÊN ĐỀ '.Pagoda->getName()" />							
-						</div>						
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="php:'THÔNG TIN '.Pagoda->getName()" />
+							<a tal:attributes="href Pagoda/getWebsite" tal:content="Pagoda/getWebsite" />
+						</div>
+						
 						<div style="padding:10px;">
 							<ul class="pagoda-info">
 								<li>
-									<span class="label">Nội Dung: </span>
+									<span class="label">Địa chỉ: </span>
 									<span tal:content="Pagoda/getAddress"/>
 								</li>
 								<li>
-									<span class="label">Mô tả: </span>
+									<span class="label">Điện thoại: </span>
 									<span tal:content="Pagoda/getPhone"/>
-								</li>								
+								</li>
+								<li>
+									<span class="label">Trụ trì: </span>
+									<span tal:content="Pagoda/getMaster"/>
+								</li>
 							</ul>							
 							<div class="clear" />
 						</div>
 					</div>
 					<div tal:condition="VP" class="news-box">
 						<div class="box-title">
-							<img src="/data/images/pagoda.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="php:'ĐANG PHÁT '.VP->getVideo()->getName()" />
 						</div>						
 						<div style="padding:10px;">
@@ -53,8 +59,8 @@
 					</div>
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/pagoda.png" width="30" />
-							<span tal:content="php:'HÌNH ẢNH '.Pagoda->getName()" />
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="php:'HOẠT ĐỘNG '.Pagoda->getName()" />
 						</div>						
 						<div style="padding:10px;">																					
 							<ul class="list-video">
@@ -68,22 +74,24 @@
 							<div class="clear" />
 						</div>
 					</div>
-				</div>				
-				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
-					<div metal:use-macro="macros.xhtml/EventBox"/>					
+				</div>
+				
+				<div id="sidebar">										
+					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
 					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
 				</div>
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

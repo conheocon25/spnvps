@@ -11,56 +11,59 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$IdBType = $request->getProperty('IdBType');
 			$IdCategory = $request->getProperty('IdCategory');
 			$IdVideoLibrary = $request->getProperty('IdVideoLibrary');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mVideo = new \MVC\Mapper\Video();
-			$mMonk = new \MVC\Mapper\Monk();
-			$mVL = new \MVC\Mapper\VideoLibrary();
-			$mAlbum = new \MVC\Mapper\Album();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------												
-			$Monks = $mMonk->findAll();
 			$VL = $mVL->find($IdVideoLibrary);
 			$VLs = $mVL->findBy(array($IdCategory));
+			$Category = $mCategoryVideo->find($IdCategory);
+			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$Category = $mCategoryVideo->find($IdCategory);
+			$CategoriesVideo = $mCategoryVideo->findAll();			
+			$CategoryBType = $mCategoryBType->find($IdBType);			
+			$Monks = $mMonk->findAll();								
 			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 						
-			$CategorySelected = $mCategoryVideo->find($IdCategory);
+			$CategorySelected = $mCategoryVideo->find($IdCategory);			
 			$Video = $VL->getVideo();
 			$Video->setCount( $Video->getCount()+1 );
 			$mVideo->update($Video);
 			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("VL", $VL);
-			$request->setObject("VLs", $VLs);
-			$request->setObject("Monks", $Monks);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategorySelected", $CategorySelected);
+			$request->setObject("Monks", $Monks);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("PanelAdsAll", $PanelAds);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
+			$request->setObject("CategorySelected", $CategorySelected);
+			$request->setObject("CategoryBType", $CategoryBType);
+			
+			$request->setObject("VL", $VL);
+			$request->setObject("VLs", $VLs);
+			
+						
 			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');

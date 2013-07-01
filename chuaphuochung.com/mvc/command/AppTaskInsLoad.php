@@ -11,36 +11,47 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdCategory = $request->getProperty('IdCategory');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
-									
+			include("mvc/base/mapper/MapperDefault.php");	
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAllVideo = $mCategoryVideo->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryTaskAll = $mCategoryTask->findAll();
+			$CategoriesTask = $mCategoryTask->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$AlbumAll = $mAlbum->findAll();									
-			$PanelAdsAll = $mPanelAds->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
+			$CourseAll = $mCourse->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			
+			$Category = $mCategoryTask->find($IdCategory);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAllVideo", $CategoryAllVideo);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
+			$request->setObject("CategoriesTask", $CategoriesTask);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
-									
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('CourseAll', $CourseAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
+			$request->setObject('Category', $Category);
+			
 			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / THÊM MỚI');
 			$request->setProperty("ActiveItem", 'Home');
 			

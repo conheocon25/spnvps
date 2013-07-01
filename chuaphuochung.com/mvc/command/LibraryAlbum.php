@@ -21,47 +21,39 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$AlbumAll = $mAlbum->findAll();			
+			$AlbumAll = $mAlbum->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();			
-			
+			$PagodaAll = $mPagoda->findAll();
+									
 			if (!isset($IdAlbum)){
 				$Album = $AlbumAll->current();
 			}else{
 				$Album = $mAlbum->find($IdAlbum);
 			}
-			
+			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLNextAll = $mClassLession->findByNext(null);
 			
+			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Album", $Album);
-			$request->setObject("AlbumAll", $AlbumAll);
+			$request->setObject("Course", $Course);
 			$request->setObject("Event", $Event);
+			$request->setObject("AlbumAll", $AlbumAll);			
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLNextAll", $CLNextAll);						
+			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			
-			$request->setProperty("ActiveItem", 'Library');
+			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

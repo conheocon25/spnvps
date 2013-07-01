@@ -3,16 +3,52 @@
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Captcha.js"/>
+		<script>
+		/*<![CDATA[*/
+			$(document).ready(function() {				
+				$("#CaptchaSecurity").hide();
+			});			
+			function validateFormContactLoad() {
+					var OldCode = $("#CaptchaSecurity").val();
+					var KeydownCode = $("#CodeCaptcha").val();					
+					if ( OldCode == KeydownCode) {	
+						return true; 
+					} else {
+						$("#Mesenge").html("Mã Bảo vệ sai! Nhập lại!");
+						$("#CodeCaptcha").val("");
+						$("#CodeCaptcha").focus();
+						return false;
+					}
+			}
+		/*]]>*/
+		</script>
 	</head>	
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/mail.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
+							<span tal:content="string:DANH SÁCH CÂU HỎI" />
+						</div>
+						<div style="padding:10px 10px 5px 10px;">
+							<div class="ask" align="justify" tal:repeat="Ask AskAll">
+								<b><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></b>
+								<div style="text-indent:15px;">
+									<b><div tal:content="structure Ask/getQuestion" /></b>
+									<div><small>(<span tal:content="Ask/getTimePrint" />)</small></div>
+								</div>
+							</div>
+						</div>
+					</div>	
+					<div class="news-box">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 						</div>
 						<div style="padding:10px;">
@@ -29,16 +65,16 @@
 										</tr>
 										<tr>
 											<td align="center" colspan="2">
-												<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action Category/getURLAskInsExe1" method="post">
+												<form class="form-editor" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action Category/getURLAskInsExe1" method="post">
 													<div class="row">
-														<div for="Name" class="label">Họ & Tên</div>
+														<div for="Author1" class="label">Họ & Tên</div>
 														<div class="textbox" >
 															<input name="Author1" type="text" id="Author1" />
 														</div>
 														<div class="clear" />
 													</div>
 													<div class="row">
-														<div for="Name" class="label">Chủ đề</div>
+														<div for="IdCategory" class="label">Chủ đề</div>
 														<div class="selectbox" >
 															<select id="IdCategory" name="IdCategory">
 																<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId">
@@ -49,25 +85,27 @@
 														<div class="clear" />
 													</div>
 													<div class="row">
-														<div for="Name" class="label-random">Câu hỏi</div>
-														<div class="textarea" >
-															<textarea name="Question" />
+														<div for="Question" class="label">Câu hỏi</div>
+														<div class="textbox" >
+															<textarea name="Question" id="Question" cols="52" rows="2" />
 														</div>
 														<div class="clear" />
 													</div>
+													<input id="CaptchaSecurity" tal:attributes="value CaptchaSecurity" />
 													<div class="row">
 														<div for="Name" class="label">Mã bảo mật</div>																												
-															<div class="textbox" >
-																<img id ="PicCaptcha" style="padding-left:10px;" align="left" src="/data/captcha.jpg" height="38px" width="150px" />																
-																<img id ="refreshCaptcha" style="padding-left:-30px;cursor:pointer" align="left" src="/data/images/refresh.jpg" height="20px" />																
+															<div class="textbox" >																
+																<img style="padding-left:20px;" align="left" src="/data/captcha.jpg" height="36px" width="150px" />														
+																<br />
+																<span style="padding-left:-50px;color:red;padding-top:30px;" align="left" id="Mesenge" tal:content="MsgCaptcha" />
 															</div>
 														<div class="clear" />
 													</div>
 													<div class="row">
-														<div for="Name" class="label">Nhập mã</div>
-														<div align="left" class="textbox" >
-															<input style="width:130px;" name="CodeCaptcha" type="text" id="CodeCaptcha"/>
-															<span style="color:red;" id="Mesenge" tal:content="MsgCaptcha" />
+														<div for="CodeCaptcha" class="label">Nhập mã</div>
+														<div class="textbox" >
+															<input name="CodeCaptcha" type="text" id="CodeCaptcha" />
+															
 														</div>
 														<div class="clear" />
 													</div>
@@ -81,7 +119,7 @@
 										</tr>
 										<tr>
 											<td align="center" colspan="2" style="font-size:15px; color:#980707; line-height:20px;">
-												Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>huongnhu9@gmail.com</B>.
+												Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>nhuantamkhaituong@gmail.com</B>.
 											</td>
 										</tr>
 									</tbody>
@@ -90,35 +128,24 @@
 						</div>
 						<div class="clear" />
 					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/question.png" width="30" />
-							<span tal:content="Category/getName" />
-						</div>
-						<div style="padding:10px 10px 5px 10px;">
-							<div class="ask" align="justify" tal:repeat="Ask Category/getAsks">
-								<a tal:attributes="href Ask/getURLRead">
-									<span tal:content="repeat/Ask/number" />. Hỏi: <span tal:content="structure Ask/getQuestion" /> (<span tal:content="Ask/getAuthor1" />)
-								</a>
-								<div style="text-indent:15px;">
-									<div><small>(<span tal:content="Ask/getTimePrint" />)</small></div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
-				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>
+				<div id="sidebar">										
 					<div metal:use-macro="macros.xhtml/EventBox"/>
+					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
+					<div metal:use-macro="macros.xhtml/NorthBox"/>
+					<div metal:use-macro="macros.xhtml/SouthBox"/>
 					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/VideoBox"/>
+					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
+					<div metal:use-macro="macros.xhtml/AskBox"/>
+					<div metal:use-macro="macros.xhtml/CountBox"/>					
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>
+					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-				</div>
+					
+				</div>				
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

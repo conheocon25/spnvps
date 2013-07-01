@@ -2,13 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>		
 	</head>	
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
 			<div id="main">
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">					
 						<div class="box-title">
@@ -22,12 +22,12 @@
 									<tr>
 										<th>STT</th>										
 										<th align="left">TIÊU ĐỀ</th>
-										<th align="left">THỜI GIAN</th>
+										<th align="left">NGÀY</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="VL VLs">
+									<tr class="content-rows" tal:repeat="VL Category/getVLs">
 										<td width="32" align="center">
 											<div tal:content="repeat/VL/number" />
 										</td>
@@ -48,17 +48,12 @@
 									<tr>
 										<td colspan="4" align="center">
 											<a tal:attributes="href Category/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
+												Thêm mới
 											</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
-						</div>
-						<div class="page-list">								
-							<span tal:repeat="P PN/getPages">
-								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-							</span>
 						</div>
 						<div class="clear" />
 					</div>
@@ -66,12 +61,12 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Category1 CategoryVideoAll" tal:attributes="href Category1/getURLVideo">
-									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':''">										
-										<div class="left" tal:content="Category1/getNameReduce" />
+									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':''">
+										<div class="left" tal:content="Category1/getNameReduce1" />
 										<div class="right" tal:content="Category1/getVLs/count" />
 									</li>
 								</a>
@@ -79,11 +74,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

@@ -38,45 +38,35 @@
 				$AskAll = $mAsk->findBy1(array($IdCategory, $Ask->getId()));
 			else
 				$AskAll = null;
-				
-			if(isset($Category)) {
-				$Title = "Câu hỏi / ".$Category->getName();
-			}
-			else {
-				$Title = "Câu hỏi";
-			}
 			
+			$Title = "Câu hỏi / ".$Category->getName();
+			
+			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLNextAll = $mClassLession->findByNext(null);
 			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("Category", $Category);
 			$request->setObject("Ask", $Ask);
 			$request->setObject("AskAll", $AskAll);
 			$request->setObject("Event", $Event);
-			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLNextAll", $CLNextAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
 			$request->setProperty("ActiveItem", 'Ask');
 			$request->setProperty("Title", $Title);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

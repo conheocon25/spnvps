@@ -16,16 +16,16 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPanelNews = new \MVC\Mapper\PanelNewsAll();
+			$mPanelNews = new \MVC\Mapper\PanelNews();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$PanelNewsAll = new \MVC\Domain\PanelNewsAll(
+			$PanelNews = new \MVC\Domain\PanelNews(
 				null,
 				$IdNews
 			);
-			$mPanelNews->insert($PanelNewsAll);
+			$mPanelNews->insert($PanelNews);
 
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

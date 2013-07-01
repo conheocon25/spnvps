@@ -22,19 +22,15 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-									
+			$Category = $mCategoryNews->find($IdCategory);
+			
 			$AlbumAll = $mAlbum->findAll();			
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			
-			$Category = $mCategoryNews->find($IdCategory);
+			$SponsorAll = $mSponsor->findAll();			
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			
-			if (!isset($IdCategory)){
-				$Category = $CategoryNewsAll->current();
-			}else{
-				$Category = $mCategoryNews->find($IdCategory);
-			}
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+						
 			if (!isset($Page)) $Page = 1;
 			
 			$Course = $mCourse->findByNear(null)->current();
@@ -44,16 +40,11 @@
 			
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLRead());
-			
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLNextAll = $mClassLession->findByNext(null);
-			
+						
 			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -63,14 +54,13 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject("Event", $Event);
+			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Course", $Course);
 			$request->setObject("NewsAll", $NewsAll);
-			$request->setObject("PN", $PN);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
+			$request->setObject("PN", $PN);			
 			$request->setProperty("ActiveItem", 'ReadCategory');
-			$request->setProperty("Page", $Page);
-			$request->setObject("CLNextAll", $CLNextAll);
+			$request->setProperty("Page", $Page);			
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);

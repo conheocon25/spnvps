@@ -7,11 +7,12 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">								
-				<div id="content">
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div id="content">					
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title"/>
 							<a href="/app">&#8629; Trở lại</a>
 						</div>						
@@ -20,19 +21,15 @@
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th align="left">THỜI GIAN</th>
-										<th align="left">LOẠI</th>
-										<th align="left">MÔ TẢ</th>
+										<th align="left">CÔNG VIỆC</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Task TaskAll">
+									<tr class="content-rows" tal:repeat="Task Category/getTasks">
 										<td width="32" align="center">
 											<div tal:content="repeat/Task/number" />
-										</td>
-										<td width="128" align="left" tal:content="Task/getDatePrint" />
-										<td align="left" tal:content="Task/getTypeStr" />										
+										</td>																				
 										<td class="text-hightlight">
 											<a tal:attributes="href Task/getURLUpdLoad">
 												<div tal:content="Task/getTitle" />
@@ -48,8 +45,8 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a href="/app/task/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
+											<a tal:attributes="href Category/getURLTaskInsLoad">
+												Thêm mới
 											</a>
 										</td>
 									</tr>									
@@ -62,13 +59,21 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
-						<div metal:use-macro="macros.xhtml/AdminMenu" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
+						<div class="manager-menu">
+							<ul>
+								<a tal:repeat="Category1 CategoriesTask" tal:attributes="href Category1/getURLView">
+									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">
+										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getTasks/count" />)
+									</li>
+								</a>												
+							</ul>
+						</div>
 					</div>
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			
 		</div>
 	</body>
 </html>

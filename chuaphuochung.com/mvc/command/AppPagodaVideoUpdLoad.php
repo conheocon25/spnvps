@@ -20,10 +20,9 @@
 			$mVideoPagoda = new \MVC\Mapper\VideoPagoda();
 			$mVideo = new \MVC\Mapper\Video();
 			
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();			
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -33,10 +32,9 @@
 			$VP = $mVideoPagoda->find($IdVideoPagoda);
 			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / ".$VP->getVideo()->getName()." / Cập nhật";
 			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,10 +42,10 @@
 			$request->setObject('Pagoda', $Pagoda);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('VP', $VP);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+						
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}

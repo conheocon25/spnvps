@@ -1,7 +1,6 @@
 <?php
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
-use MVC\Library\Logger;
 
 class App extends Object{
 
@@ -51,7 +50,10 @@ class App extends Object{
 						
         parent::__construct( $Id );
     }
-		
+	function getLogger() {
+        return $this->Logger;
+    }
+	
 	function setId($Id) {
         $this->Id = $Id; 
     }

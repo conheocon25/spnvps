@@ -11,17 +11,17 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPanelNewsAll = $request->getProperty('IdPanelNewsAll');		
+			$IdPanelNews = $request->getProperty('IdPanelNews');		
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPanelNews = new \MVC\Mapper\PanelNewsAll();
+			$mPanelNews = new \MVC\Mapper\PanelNews();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
-			$mPanelNews->delete(array($IdPanelNewsAll));
+			$mPanelNews->delete(array($IdPanelNews));
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

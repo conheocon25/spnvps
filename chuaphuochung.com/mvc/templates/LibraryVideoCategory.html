@@ -10,8 +10,8 @@
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
 				
 				<div id="left-mini">
 					<div class="sidebar-box-mini">
@@ -20,7 +20,7 @@
 							<span>Chuyên Đề</span>
 						</div>							
 						<ul>
-							<a tal:repeat="Category1 CategoriesVideo" tal:attributes="href Category1/getURLRead">
+							<a tal:repeat="Category1 CategoryBType/getCategoryAll" tal:attributes="href Category1/getURLRead">
 								<li tal:attributes="class php:Category1->getId()==Category->getId()?'current-item':''">
 									<span tal:content="Category1/getName" /> (<span tal:content="Category1/getVLs/count" />)
 								</li>
@@ -54,11 +54,6 @@
 									</li>
 								</a>
 							</ul>
-							<div class="page-list">
-								<span tal:repeat="P PN/getPages">
-									<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-								</span>
-							</div>
 							<div class="clear" />
 						</div>
 					</div>
@@ -71,7 +66,7 @@
 						</div>
 						<div class="sidebar-box-content">
 							<ul>
-								<a tal:repeat="Monk Monks" tal:attributes="href Monk/getURLRead">
+								<a tal:repeat="Monk CategoryBType/getMonkAll" tal:attributes="href Monk/getURLRead">
 									<li>
 										<span tal:content="Monk/getName" /> (<span tal:content="Monk/getVMs/count" />)
 										<span tal:condition="Monk/isVIP">
@@ -82,13 +77,14 @@
 							</ul>
 						</div>
 						<div class="clear" />
-					</div>
+					</div>					
+					<div metal:use-macro="macros.xhtml/CountBoxMini"/>
 					<div metal:use-macro="macros.xhtml/SponsorBoxMini"/>
-				</div>
+					<div metal:use-macro="macros.xhtml/ContactBoxMini"/>
+				</div>				
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

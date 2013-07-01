@@ -14,65 +14,38 @@
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------			
 			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------											
-			$Title = "WEB SITE CHÙA THIÊN QUANG";
-						
-			$VM24 = $mVideoMonk->findByUpdateTop(array());
-			$VL24 = $mVideoLibrary->findByUpdateTop(array());
-			$VM8 = $mVideoMonk->findByTopLocal(array());
-									
-			$AlbumAll = $mAlbum->findAll();
-			$CategoryAll = $mCategoryNews->findByAll(null);
+			//-------------------------------------------------------------																			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryVideo = $mCategoryVideo->findAll()->current();			
-			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
-			$TaskAll = $mTask->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
+			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLAll = $mClassLession->findByRecent(null);
-			$CLNextAll = $mClassLession->findByNext(null);
 			
 			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);
-						
-			$request->setObject("VM24", $VM24);
-			$request->setObject("AlbumAll", $AlbumAll);
-			$request->setObject("CategoryAll", $CategoryAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
 			$request->setObject("Event", $Event);
-			$request->setObject("AskAll", $AskAll);
-			$request->setObject("PagodaAll", $PagodaAll);
-			$request->setObject("TaskAll", $TaskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLAll", $CLAll);
-			$request->setObject("CLNextAll", $CLNextAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setProperty("ActiveItem", 'Home');
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			
+			$request->setProperty("ActiveItem", 'Contact');
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

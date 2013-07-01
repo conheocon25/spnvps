@@ -15,36 +15,37 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
+			//-------------------------------------------------------------						
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mEvent = new \MVC\Mapper\Event();
 			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 								
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$Event = $mEvent->find($IdEvent);
+			//-------------------------------------------------------------			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
+			$Event = $mEvent->find($IdEvent);
+			$SponsorAll = $mSponsor->findAll();
 			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
+			$request->setObject( 'CategoryBTypeAll', $CategoryBTypeAll );
 			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );
 			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
 			$request->setObject( 'Event', $Event );
-			$request->setObject('PagodaAll', $PagodaAll);			
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
 		}
 	}
 ?>

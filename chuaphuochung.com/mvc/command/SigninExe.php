@@ -13,18 +13,17 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$Email = $request->getProperty('Email');
-			$Pass = $request->getProperty('Pass');			
-			
+			$Pass = $request->getProperty('Pass');
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mUser = new \MVC\Mapper\User();
 			$mApp = new \MVC\Mapper\App();			
-						
+									
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-		
 			if (!isset($Email)||!isset($Pass)){
 				$request->addFeedback("error");			
 				return self::statuses('CMD_OK');				

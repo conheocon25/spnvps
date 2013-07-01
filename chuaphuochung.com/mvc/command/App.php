@@ -2,7 +2,7 @@
 	namespace MVC\Command;	
 	class App extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");
+			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
@@ -14,7 +14,7 @@
 									
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------	
 			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
@@ -29,12 +29,12 @@
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
 			$CourseAll = $mCourse->findAll();
-			$TaskAll = $mTask->findAll();
-			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$ConfigAll = $mConfig->findAll();
+			$TaskAll = $mTask->findAll();
 			
 			$Title = "QUẢN LÝ";
 			
@@ -50,15 +50,14 @@
 			$request->setObject('EventAll', $EventAll);
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('TaskAll', $TaskAll);
-			$request->setObject('LinkedAll', $LinkedAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('ConfigAll', $ConfigAll); 
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-						
+			$request->setObject('TaskAll', $TaskAll);
+			
 			$request->setObject("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Admin');
 		}
 	}

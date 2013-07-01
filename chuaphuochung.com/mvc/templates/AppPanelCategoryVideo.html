@@ -7,7 +7,8 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">								
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
@@ -20,7 +21,8 @@
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th align="left">TIÊU ĐỀ</th>										
+										<th align="left">TÊN</th>
+										<th align="left">DANH MỤC</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
@@ -30,7 +32,14 @@
 											<div tal:content="repeat/PanelCategoryVideo/number" />
 										</td>
 										<td>
-											<div tal:content="PanelCategoryVideo/getCategoryVideo/getName" />
+											<a tal:attributes="href PanelCategoryVideo/getURLUpdLoad">
+												<div tal:content="PanelCategoryVideo/getName" />
+											</a>
+										</td>										
+										<td>
+											<a tal:attributes="href PanelCategoryVideo/getURLDetail">
+												Danh mục (<span tal:content="PanelCategoryVideo/getDetailAll/count" />)
+											</a>
 										</td>
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href PanelCategoryVideo/getURLDelLoad">
@@ -56,13 +65,12 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

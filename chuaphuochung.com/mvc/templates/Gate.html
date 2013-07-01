@@ -2,74 +2,62 @@
 <html>
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>		
-		
-	<style type="text/css">	
-		html, body {
-			width: 100%;
-			height: 100%;
-			background: none;
-			margin: 0;
-			padding: 0;
-			background: url("/data/images/bg_gate.jpg") no-repeat center center transparent;
-		}
-		
-		.type-interior {
-			height: 100%;
-			width: 100%;
-			position: absolute;
-			overflow: hide;
-			margin: 0 auto;
-		}
-		
-		#map { cursor:pointer; position:absolute; background:rgba(255, 255, 255, .5); left:50%; bottom:10%; padding:20px; width: 160px; margin-left: -80px; font-size:1.7em; font-weight:bold; color:#980707; border-radius:10px; box-shadow:0px 0px 5px #FFFFFF; z-index:99999; }
-		img { position:absolute; top:50%; left:50%; margin-top:-230px; margin-left:-400px; opacity:.50; width:800px; height:460px; }
-		a:hover #map { background:rgba(255, 255, 255, .9); }
-		a:hover img { opacity:.90; }
-	</style>
-		
-	<script >
-		$(document).ready(function () {
-			$("#jquery_jplayer_1").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", {
-						mp3:"http://chuavinhkhanh.123app.net/data/nhacthien.mp3"
-					}).jPlayer("play");
-				},
-				swfPath: "data",
-				supplied: "mp3",		
-				wmode: "window"
-			});
-			$('.jp-repeat').trigger('click');
-			$('.jp-volume-max').trigger('click');
-			$("#jp_container_1").hide();
-			$("#jquery_jplayer_1").hide();
-		});
-		
-	</script>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>	
+		<style type="text/css">	
+			html {
+				background: url('/data/images/background_gate.jpg') no-repeat top left transparent;
+			}
+			
+			.type-interior {
+				height: 100%;
+				width: 100%;
+				position: absolute;
+				overflow: hide;
+				margin: 0 auto;
+			}
+			
+			img.Gate { margin-left: 10px; margin-top: 150px; }
+			
+			a div:hover { box-shadow: 0px 0pc 20px #FFFFFF; border-radius: 10px; background:rgba(255, 255, 255, .3);}
+		</style>
 	</head>
-<body  style="overflow:hide;">
-	<div style="height:100%; vertical-align:middle; text-align:center;">
-		<a href="/home">
-			<div id="map">Vào Trang Chủ</div>
-			<img src="/data/images/gate.png" border="0" />
-		</a>
-	</div>
-	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-	<div id="jp_container_1" class="jp-audio">
-		<div class="jp-type-single">
-			<div class="jp-gui jp-interface">
-				<ul class="jp-controls">
-					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-				</ul>	
-				<div class="jp-current-time"></div>
-				<div class="jp-duration"></div>
-				<ul class="jp-toggles">
-					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>						
-				</ul>
-			</div>				
+	
+	<body  style="overflow:hide;">
+		<div data-role="page" class="type-interior" id="gate">
+			<div align="center" style="width:100%;">
+				<div class="move1" style="width:100%; background:rgba(0, 0, 0, .5); position:absolute; top:0px; font-size:20px; color:white; padding-top:20px; padding-bottom:20px; line-height:30px;"></div>
+				<a href="/home">
+					<img class="Gate move" border="0" height="320px" src="/data/images/gate.png" />
+					<img class="move" border="0" height="300px" src="/data/images/buddha.gif" />
+					<div align="center" style="margin-top:20px; color:white; text-shadow:2px 2px 5px #000000; height:25px; width:200px; padding:15px;">
+						<h1 id="move2">Vào Trang chủ</h1>
+					</div>
+				</a>
+				<div class="move2" style="width:100%; background:rgba(0, 0, 0, .5); position:absolute; bottom:0px; font-size:20px; color:white; padding-top:20px; padding-bottom:20px; line-height:30px;"></div>
+			</div>
 		</div>
-	</div>
-</body>
+		<script>
+			/*<![CDATA[*/
+			$(function() {
+				$('.move1').hide(); $('.move2').hide();
+				$('.move').hover(function(){
+					$('.move1').hide(); $('.move2').hide();
+					$('.move1').html('Mỗi giây mỗi phút không rời').slideDown(400);
+					$('.move2').html('Nhất tâm niệm phật đời đời yên vui!').slideDown(400);
+				}, function(){
+					$('.move1').slideUp(400);
+					$('.move2').slideUp(400);
+				});
+				
+				$('#move2').hover(function(){
+					$('.move1').hide(); $('.move2').hide();
+					$('.move1').html('Buổi sáng làm điều lành<br/>Buổi trưa làm điều lành').slideDown(400);
+					$('.move2').html('Buổi tối mộng điều lành<br/>Ta có một ngày vui').slideDown(400);
+				}, function(){
+					$('.move1').slideUp(400); $('.move2').slideUp(400);
+				});
+			});
+			/*]]>*/
+		</script>
+	</body>
 </html>

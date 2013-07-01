@@ -33,10 +33,10 @@
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			$ConfigAll = $mConfig->findAll();			
-			$SponsorAll = $mSponsor->findAll();
+			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
-			$LinkedAll = $mLinked->findAll();
+			
+			$SponsorList = $mSponsor->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -54,13 +54,12 @@
 			$request->setObject('ConfigAll', $ConfigAll); 
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
-			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);			
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
-			$request->setObject('LinkedAll', $LinkedAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG CÔNG ĐỨC / ');
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setObject('SponsorList', $SponsorList);
+			
+			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG CÔNG ĐỨC / ');			
 			$request->setProperty("ActiveAdmin", 'Sponsor');
 			
 			return self::statuses('CMD_DEFAULT');

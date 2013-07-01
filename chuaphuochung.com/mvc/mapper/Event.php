@@ -16,7 +16,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$deleteStmt = sprintf("delete from %s where id=?", $tblEvent);
 		$findTopStmt = sprintf("select *  from %s order by date desc limit 1", $tblEvent);
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblEvent);
-		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date desc", $tblEvent);
+		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date", $tblEvent);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

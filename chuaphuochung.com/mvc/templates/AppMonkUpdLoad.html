@@ -2,20 +2,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" />
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
-		
 	</head>	
 	<body>
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a href="/app/monk">&#8629; Trở lại</a>
 					</div>
@@ -26,14 +22,14 @@
 								<div class="textbox" >
 									<input id="PreName" name="PreName" type="text" tal:attributes="value Monk/getPreName" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Type" class="label">Loại</div>
 								<div class="checkbox" >
 									<input id="Type" type="checkbox" name="Type" tal:attributes="checked Monk/getType" /> Đặc biệt
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="BType" class="label">Tông phái</div>
@@ -51,33 +47,26 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Monk/getName" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Pagoda" class="label">Chùa</div>
 								<div class="textbox" >
 									<input id="Pagoda" name="Pagoda" type="text" tal:attributes="value Monk/getPagoda" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Phone" class="label">Điện thoại</div>
 								<div class="textbox" >
 									<input id="Phone" name="Phone" type="text" tal:attributes="value Monk/getPhone" />
 								</div>
-								<div class="clear"/>
-							</div>
-							<div class="row">
-								<div for="Picture" class="label">Hình</div>
-								<div class="textbox" >
-									<input id="Picture" name="Picture" type="text" tal:attributes="value Monk/getPicture" />
-								</div>
 								<div class="clear" />
 							</div>
 							<div class="row">
-								<div for="Note" class="label-random">Ghi chú</div>								
-								<div class="textarea">
-									<textarea class="ckeditor" name="Note" tal:content="Monk/getNote" />
+								<div for="Note" class="label">Ghi chú</div>
+								<div class="textbox" >
+									<input id="Note" name="Note" type="text" tal:attributes="value Monk/getNote" />
 								</div>
 								<div class="clear" />
 							</div>
@@ -94,7 +83,7 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			
 		</div>
 	</body>
 </html>

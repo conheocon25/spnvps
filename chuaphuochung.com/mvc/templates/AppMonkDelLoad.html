@@ -8,10 +8,10 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a href="/app/monk">&#8629; Trở lại</a>
 					</div>
@@ -31,9 +31,9 @@
 						
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			
 		</div>
 	</body>
 </html>

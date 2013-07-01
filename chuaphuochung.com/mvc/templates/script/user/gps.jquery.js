@@ -5,12 +5,12 @@
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'xa Hoa Thanh, huyen Tam Binh, tinh Vinh Long, Viet Nam',		
+		center: 'Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Phước Hưng ấp Thạnh Hiệp, xã Hòa Thành, huyện Tam Bình, tỉnh Vĩnh Long, Việt Nam',
+		tooltip: 'Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam',
 		image: 'false'
     };
 
@@ -24,7 +24,7 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.124157,106.046391);		
+		var center = new GLatLng(10.336209,105.916046);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
 		marker.openInfoWindowHtml('Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam');	
@@ -65,7 +65,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.124157,106.046391);
+                    center = new GLatLng(10.336209,105.916046);
 					
 					if (!point) { alert(center + " not found"); }
                     else {

@@ -25,6 +25,7 @@
 			$AlbumAll = $mAlbum->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			$Category = $mCategoryNews->find($IdCategory);
 			$CategoryNewsAll = $mCategoryNews->findAll();
@@ -40,10 +41,7 @@
 			}
 			else {
 				$Title = "";
-			}
-
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLNextAll = $mClassLession->findByNext(null);
+			}						
 			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
@@ -55,17 +53,16 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);
-						
-			$request->setObject("Category", $Category);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("Event", $Event);
-			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("News", $News);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLNextAll", $CLNextAll);
+			$request->setObject("Category", $Category);
+			$request->setObject("Event", $Event);
 			$request->setProperty("ActiveItem", 'ReadCategory');
+			
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("PagodaAll", $PagodaAll);
+			$request->setObject("News", $News);
+			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
