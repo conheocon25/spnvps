@@ -22,7 +22,7 @@
 							
 							<div align="justify" class="ask">
 								<b><span tal:content="Ask/getAuthor1" />:</b>
-								<div tal:content="Ask/getQuestion" />
+								<div tal:content="structure Ask/getQuestion" />
 								(<I tal:content="Ask/getTimePrint" />)
 							</div>
 							
@@ -36,7 +36,7 @@
 								<li tal:repeat="Ask AskAll">								
 									<a tal:attributes="href Ask/getURLRead">
 										<b>Hỏi:</b>
-										<span tal:content="Ask/getQuestionReduce"/>
+										<span tal:content="structure Ask/getQuestionReduce"/>
 									</a>
 									<span tal:content="Ask/getTimePrint" />
 								</li>
