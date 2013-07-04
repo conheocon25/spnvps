@@ -35,6 +35,7 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$Tracking = $mTracking->find($IdTracking);
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -51,6 +52,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);			
 			$request->setObject("Tracking", $Tracking);
+			$request->setObject("MonkAll", $MonkAll);
 			
 			$request->setProperty("Title", 'BÁO CÁO');
 			$request->setProperty("ActiveItem", 'Sponsor');

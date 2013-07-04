@@ -40,10 +40,10 @@
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$TaskAll = $mTask->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
-								
 												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -70,6 +70,7 @@
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
 
 			$request->setProperty("ActiveItem", 'Home');
 			

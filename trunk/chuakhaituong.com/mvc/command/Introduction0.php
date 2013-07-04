@@ -29,6 +29,7 @@
 			$Course = $mCourse->findByNear(null)->current();			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();	
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -42,6 +43,7 @@
 			$request->setObject("Course", $Course);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
 			$request->setProperty("ActiveItem", 'Introduction');
 						
 			return self::statuses('CMD_DEFAULT');

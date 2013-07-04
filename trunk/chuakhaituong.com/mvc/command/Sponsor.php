@@ -33,6 +33,7 @@
 
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -47,6 +48,7 @@
 			$request->setObject("Course", $Course);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);			
+			$request->setObject("MonkAll", $MonkAll);
 			
 			$request->setProperty("Title", 'HOẠT ĐỘNG QUYÊN GÓP TỪ THIỆN');
 			$request->setProperty("ActiveItem", 'Sponsor');

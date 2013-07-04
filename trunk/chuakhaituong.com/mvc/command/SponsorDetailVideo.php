@@ -23,7 +23,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Sponsor = $mSponsor->find($IdSponsor);
-			$VideoSponsor = $mVideoSponsor->find($IdVideoSponsor);
+			$VideoSponsor = $mVS->find($IdVideoSponsor);
 			
 			$SponsorAll = $mSponsor->findAll();
 			if (!isset($Sponsor)) $Sponsor = $SponsorAll->current();
@@ -37,8 +37,9 @@
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
 
-			$PanelNewsAll = $mPanelNewsAll->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -54,6 +55,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("Sponsor", $Sponsor);
+			$request->setObject("MonkAll", $MonkAll);
 			
 			$request->setProperty("ActiveItem", 'Sponsor');
 						
