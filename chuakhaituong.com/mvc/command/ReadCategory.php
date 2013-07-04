@@ -44,7 +44,8 @@
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$PanelAdsAll = $mPanelAds->findAll();
-						
+			$MonkAll = $mMonk->findVIP(null);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -65,6 +66,7 @@
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("MonkAll", $MonkAll);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

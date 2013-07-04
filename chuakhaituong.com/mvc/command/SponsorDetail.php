@@ -36,6 +36,7 @@
 
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -50,6 +51,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("Sponsor", $Sponsor);
+			$request->setObject("MonkAll", $MonkAll);
 			
 			$request->setProperty("ActiveItem", 'Sponsor');
 						
