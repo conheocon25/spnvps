@@ -21,6 +21,14 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		$findByTopLocalStmt = sprintf("select *  from %s VM limit 8", $tblVideoMonk, $tblVideo);
 		$findByTop10Stmt = sprintf("select *  from %s limit 10", $tblVideoMonk);
 		
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s VM
+			WHERE id_monk=:id_monk
+			ORDER BY (select time FROM %s V WHERE V.id=VM.id_video ) DESC 
+			LIMIT :start,:max", $tblVideoMonk, $tblVideo
+		);
+		
 		$findByUpdateTopStmt = sprintf("
 			select 
 				*  
@@ -61,6 +69,8 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 				
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);		
 		$this->findByTop10Stmt = self::$PDO->prepare($findByTop10Stmt);
+		
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
 		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
 		$this->findByUpdateTop1Stmt = self::$PDO->prepare($findByUpdateTop1Stmt);
@@ -139,5 +149,14 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
         $this->findByViewTopStmt->execute( $values );
         return new VideoMonkCollection( $this->findByViewTopStmt->fetchAll(), $this);
     }
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':id_monk', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new VideoMonkCollection( $this->findByPageStmt->fetchAll(), $this);
+    }
+	
 }
 ?>

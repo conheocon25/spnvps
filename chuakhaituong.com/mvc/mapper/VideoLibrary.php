@@ -19,6 +19,14 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$findByTopStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 1", $tblVideoLibrary, $tblVideo);
 		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
 		$findByTopLocalStmt = sprintf("select * from %s VM WHERE VM.id_category=1 order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s VM
+			WHERE id_category=:id_category
+			ORDER BY (select time FROM %s V WHERE V.id=VM.id_video ) DESC 
+			LIMIT :start,:max", $tblVideoLibrary, $tblVideo
+		);
+		
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -29,6 +37,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);
 		$this->findByTopStmt = self::$PDO->prepare($findByTopStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
         return new VideoLibraryCollection( $raw, $this );
@@ -96,5 +105,12 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         return new VideoLibraryCollection( $this->findByTopLocalStmt->fetchAll(), $this);
     }
 	
+	function findByPage( $values ) {
+		$this->findByPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new VideoLibraryCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

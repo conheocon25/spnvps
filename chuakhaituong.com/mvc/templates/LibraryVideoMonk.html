@@ -37,7 +37,7 @@
 						</div>
 						<div style="padding:10px;">
 							<ul class="video-library">
-								<a tal:repeat="VM VMs" tal:attributes="href VM/getURLView">
+								<a tal:repeat="VM VMAll" tal:attributes="href VM/getURLView">
 									<li>
 										<div class="demo">
 											<img tal:attributes="src VM/getVideo/getURLImage" width="150px" height="100px" />
@@ -53,8 +53,14 @@
 									</li>
 								</a>
 							</ul>
+							<div class="page-list">
+								<span tal:repeat="P PN/getPages">
+									<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+								</span>
+							</div>
 							<div class="clear" />
 						</div>
+						
 					</div>
 				</div>
 				
