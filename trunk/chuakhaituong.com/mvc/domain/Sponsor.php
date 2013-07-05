@@ -23,11 +23,11 @@ class Sponsor extends Object{
 	
 	function setTimeStart( $TimeStart ) {$this->TimeStart = $TimeStart;$this->markDirty();}
     function getTimeStart( ){return $this->TimeStart;}
-	function getTimeStartPrint( ){return $this->TimeStart;}
+	function getTimeStartPrint( ){$Time = \date("d/m/y", strtotime($this->TimeStart));return $Time;}
 	
 	function setTimeEnd( $TimeEnd ){$this->TimeEnd = $TimeEnd;$this->markDirty();}
     function getTimeEnd( ) {return $this->TimeEnd;}
-	function getTimeEndPrint( ){return $this->TimeEnd;}
+	function getTimeEndPrint( ){$Time = \date("d/m/y", strtotime($this->TimeEnd));return $Time;}
 		
 	function setContent( $Content ) {$this->Content = $Content;$this->markDirty();}
 	function getContent( ) {return $this->Content;}

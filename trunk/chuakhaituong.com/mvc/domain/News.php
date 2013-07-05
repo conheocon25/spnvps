@@ -64,7 +64,7 @@ class News extends Object{
 		return $first_img;
 	}
 	
-	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduce(120);}
+	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduceHTML(320);}
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------

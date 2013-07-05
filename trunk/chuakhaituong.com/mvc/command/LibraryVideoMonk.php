@@ -13,6 +13,7 @@
 			//-------------------------------------------------------------
 			$IdMonk = $request->getProperty('IdMonk');
 			$IdBType = $request->getProperty('IdBType');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -21,7 +22,9 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------												
+			//-------------------------------------------------------------
+			if (!isset($Page)) $Page=1;
+			
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
@@ -33,8 +36,10 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$Monk = $mMonk->find($IdMonk);
-			$VMs = $mVM->findBy(array($IdMonk));			
-			$CategoryBType = $mCategoryBType->find($IdBType);
+			$CategoryBType = $mCategoryBType->find($IdBType);										
+			
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -50,9 +55,12 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
-			$request->setObject("VMs", $VMs);			
 			$request->setObject("Monk", $Monk);
+			$request->setObject("PN", $PN);
+			$request->setObject("VMAll", $VMAll);
+			
 			$request->setProperty("ActiveItem", 'LibraryVideo');
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

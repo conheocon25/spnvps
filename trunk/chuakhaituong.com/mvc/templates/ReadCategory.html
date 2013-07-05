@@ -21,6 +21,7 @@
 								<span align="left" style="text-align:justify;">
 									<div class="news-title"><a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/></div>
 									(<span tal:content="News/getDatePrint"/>)
+									<span tal:content="structure News/getContentReduce"/>
 								</span>
 							</div>
 							<div class="clear" />

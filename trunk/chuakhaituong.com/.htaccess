@@ -28,8 +28,11 @@ RewriteRule ^report/([0-9]+)$ 										?cmd=Report&IdTracking=$1 [L]
 
 RewriteRule ^library/video/([0-9]+)$								?cmd=LibraryVideo&IdBType=$1 [L]
 RewriteRule ^library/video/([0-9]+)/category/([0-9]+)$				?cmd=LibraryVideoCategory&IdBType=$1&IdCategory=$2 [L]
+RewriteRule ^library/video/([0-9]+)/category/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoCategory&IdBType=$1&IdCategory=$2&Page=$3 [L]
 RewriteRule ^library/video/([0-9]+)/category/([0-9]+)/([0-9]+)$		?cmd=LibraryVideoCategoryPlay&IdBType=$1&IdCategory=$2&IdVideoLibrary=$3 [L]
+
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)$					?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2 [L]
+RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2&Page=$3 [L]
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/([0-9]+)$			?cmd=LibraryVideoMonkPlay&IdBType=$1&IdMonk=$2&IdVideoMonk=$3 [L]
 
 RewriteRule ^library/video/pagoda/([a-z0-9]+)$						?cmd=LibraryVideoPagoda&IdPagoda=$1 [L]

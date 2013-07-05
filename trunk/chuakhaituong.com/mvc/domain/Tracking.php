@@ -30,30 +30,75 @@ class Tracking extends Object{
 	//-------------------------------------------------------------------------------
 	
 	//-------------------------------------------------------------------------------
-	//KHOẢN THU
+	//TỔN ĐẦU KÌ
 	//-------------------------------------------------------------------------------
-	function getCollectAll($IdTerm){$mCollect = new \MVC\Mapper\CollectGeneral();$CollectAll = $mCollect->findByTracking1(array($IdTerm, $this->getDateStart(), $this->getDateEnd()));return $CollectAll;}
-	function getCollectAllValue($IdTerm){$CollectAll = $this->getCollectAll($IdTerm);$Value = 0;while ($CollectAll->valid()){$Collect = $CollectAll->current();$Value += $Collect->getValue();$CollectAll->next();}return $Value;}
-	function getCollectAllValuePrint($IdTerm){$N = new \MVC\Library\Number($this->getCollectAllValue($IdTerm));return $N->formatCurrency()." đ";}
-	
-	function getCollectAllSumValue(){
-				
-		$mCollect = new \MVC\Mapper\CollectGeneral();
-		$CollectAll = $mCollect->findByTracking(array($this->getDateStart(), $this->getDateEnd()));
-		
-		$Value = 0;
-		while ($CollectAll->valid()){
-			$Collect = $CollectAll->current();
-			$Value += $Collect->getValue();
-			$CollectAll->next();
+	function getOldValue(){
+		$DateStart = "2013-1-1";		
+		$DateEnd = \date("Y-m-d", strtotime("-1 day", strtotime($this->getDateEnd())));
+		$mPS = new \MVC\Mapper\SponsorPerson();		
+		$Value1 = 0;		
+		$PSAll = $mPS->trackBy1(array($DateStart, $DateEnd));
+		$PSAll->rewind();
+		while ($PSAll->valid()){
+			$Value1 += $PSAll->current()->getValue();
+			$PSAll->next();
 		}
 		
-		//thu bán hàng
-		$Value += $this->getSessionAllValue();
-		
+		$Value2 = 0;
+		$mPaid = new \MVC\Mapper\Paid();
+		$PaidAll = $mPaid->findByTracking(array($DateStart, $DateEnd));
+		while ($PaidAll->valid()){
+			$Value2 += $PaidAll->current()->getValue();
+			$PaidAll->next();
+		}
+				
+		return ( -$Value2 + $Value1);
+	}
+	function getOldValuePrint(){
+		$N = new \MVC\Library\Number( $this->getOldValue() );
+		return $N->formatCurrency();
+	}
+	//-------------------------------------------------------------------------------
+	//KHOẢN THU
+	//-------------------------------------------------------------------------------
+	function getSponsorPersionAll($IdSponsor){
+		$mPS = new \MVC\Mapper\SponsorPerson();
+		$PSAll = $mPS->trackBy(array($IdSponsor, $this->getDateStart(), $this->getDateEnd()));
+		return $PSAll;
+	}
+	
+	function getSponsorPersionAllValue($IdSponsor){		
+		$PSAll = $this->getSponsorPersionAll($IdSponsor);
+		$Value = 0;
+		$PSAll->rewind();
+		while ($PSAll->valid()){
+			$Value += $PSAll->current()->getValue();
+			$PSAll->next();
+		}
 		return $Value;
-	}	
-	function getCollectAllSumValuePrint(){ $N = new \MVC\Library\Number( $this->getCollectAllSumValue() ); return $N->formatCurrency()." đ";}
+	}
+	function getSponsorPersionAllValuePrint($IdSponsor){
+		$N = new \MVC\Library\Number($this->getSponsorPersionAllValue($IdSponsor));
+		return $N->formatCurrency()." đ";
+	}
+	
+	function getCollectAllValue(){
+		$mSponsor = new \MVC\Mapper\Sponsor();
+		$SponsorAll = $mSponsor->findAll();
+		$Value = 0;
+		$SponsorAll->rewind();
+		while ($SponsorAll->valid()){
+			$Sponsor = $SponsorAll->current();
+			$Temp = $this->getSponsorPersionAllValue($Sponsor->getId());
+			$Value += $Temp;
+			$SponsorAll->next();
+		}
+		return $Value;
+	}
+	function getCollectAllValuePrint(){
+		$N = new \MVC\Library\Number($this->getCollectAllValue());
+		return $N->formatCurrency()." đ";
+	}
 	
 	//-------------------------------------------------------------------------------
 	//KHOẢN CHI
@@ -76,11 +121,9 @@ class Tracking extends Object{
 	//---------------------------------------------------------------------------------------------
 	function getValue(){
 		$Value = 
-			$this->getCollectAllSumValue()
-			+ $this->getTrackingStoreValue() 
-			- $this->getOrderAllSumValue() 
-			- $this->getPaidAllSumValue()
-			- $this->getEstateRate();
+			$this->getOldValue()
+			+ $this->getCollectAllValue()						
+			- $this->getPaidAllValue();
 		return $Value;
 	}
 	
