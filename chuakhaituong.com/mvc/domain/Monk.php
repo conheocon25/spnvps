@@ -65,7 +65,7 @@ class Monk extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
 	function getURLRead(){return "/library/video/".$this->getBType()."/monk/".$this->getId();}
-	function getURLView(){return "/app/monk";}
+	function getURLView(){return "/app/monk";}	
 	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}
 	function getURLVideoInsLoad(){return "/app/monk/".$this->getId()."/video/ins/load";}
 	function getURLVideoInsExe(){return "/app/monk/".$this->getId()."/video/ins/exe";}
