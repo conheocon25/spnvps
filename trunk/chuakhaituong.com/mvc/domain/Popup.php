@@ -20,6 +20,7 @@ class Popup extends Object{
 	
 	function setEnable( $Enable ) {$this->Enable = $Enable;$this->markDirty();}
 	function getEnable( ) {return $this->Enable;}
+	function getEnablePrint( ) {return $this->Enable==1?'Bật':'Tắt';}
 	
 	function setURL( $URL ) {$this->URL = $URL;$this->markDirty();}
 	function getURL( ) {return $this->URL;}

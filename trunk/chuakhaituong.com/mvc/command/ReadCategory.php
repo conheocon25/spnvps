@@ -22,8 +22,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Category = $mCategoryNews->find($IdCategory);
-			
+			$Category = $mCategoryNews->find($IdCategory);			
 			$AlbumAll = $mAlbum->findAll();			
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
@@ -46,6 +45,8 @@
 			$PanelAdsAll = $mPanelAds->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
+			$Popup = $mPopup->findByName("news");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -58,15 +59,17 @@
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Course", $Course);
-			$request->setObject("NewsAll", $NewsAll);
-			$request->setObject("PN", $PN);			
-			$request->setProperty("ActiveItem", 'ReadCategory');
-			$request->setProperty("Page", $Page);			
+			$request->setObject("NewsAll", $NewsAll);				
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("Popup", $Popup);
+			
+			$request->setObject("PN", $PN);			
+			$request->setProperty("ActiveItem", 'ReadCategory');
+			$request->setProperty("Page", $Page);	
 			
 			return self::statuses('CMD_DEFAULT');
 		}
