@@ -44,6 +44,7 @@
 			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
+			$Popup = $mPopup->findByName("home");
 												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -55,7 +56,8 @@
 			$request->setObject("VM24", $VM24);
 			$request->setObject("VL24", $VL24);
 			$request->setObject("Course", $Course);			
-			$request->setObject("Event", $Event);			
+			$request->setObject("Event", $Event);
+			$request->setObject("Popup", $Popup);
 						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);

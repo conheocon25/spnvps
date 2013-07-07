@@ -36,4 +36,5 @@ class PanelCategoryVideoDetailCollection extends Collection implements \MVC\Doma
 class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
 class PaidCollection extends Collection implements \MVC\Domain\PaidCollection {function targetClass( ) {return "\MVC\Domain\Paid";}}
 class TrackingCollection extends Collection implements \MVC\Domain\TrackingCollection {function targetClass( ) {return "\MVC\Domain\Tracking";}}
+class PopupCollection extends Collection implements \MVC\Domain\PopupCollection {function targetClass( ) {return "\MVC\Domain\Popup";}}
 ?>

@@ -552,6 +552,12 @@
 					<div class="right" tal:content="PanelAdsAll/count" />
 				</li>
 			</a>
+			<a tal:attributes="href '/app/popup'">
+				<li tal:attributes="class php:ActiveAdmin=='Popup'?'menu-select':'?'">
+					<div class="left">QUẢNG CÁO POPUP</div>
+					<div class="right" tal:content="string:0" />
+				</li>
+			</a>
 			<a tal:attributes="href '/app/config'">
 				<li tal:attributes="class php:ActiveAdmin=='Statistic'?'menu-select':'?'">
 					<div class="left">CẤU HÌNH</div>
