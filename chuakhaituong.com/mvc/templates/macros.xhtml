@@ -708,6 +708,56 @@
 		<img src="/data/images/icon.png" width="30" />
 		<span><a href="/app">Admin</a></span>
 		<a href="/signout/load">&#8629; Thoát</a>
-	</div>	
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- POPUP																			-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="Popup">
+		<style>
+			.ads-popup {
+				bottom: 5px;
+				right: 20px;
+				display: block;
+				position: fixed;
+				background-color: #FAFAFA;
+				border: 2px solid #696969;
+				color: red;
+				z-index: 9999999999 !important;
+				padding: 0 !important;
+			}			
+			.ads-close {
+				display: block;
+				padding: 12px 5px;
+				color: white;
+				font-weight: bold;
+				border: 2px solid #FFFFFF;
+				position: absolute;
+				background: #0D3772;
+				top: -20px;
+				right: -20px;
+				cursor: pointer;
+				border-radius: 20px;
+			}
+		</style>
+		<script>
+			/*<![CDATA[*/
+			$(function() {$(".ads-close").click(function(){$(".ads-popup").hide(1000);});});
+			/*]]>*/
+		</script>
+		<div class="ads-popup" tal:condition="Popup/getEnable" >
+			<div class="ads-close">Đóng</div>
+			<embed width="300" height="250"	
+				allowscriptaccess="always"
+				wmode="transparent"
+				quality="high"
+				name="Advertisement"
+				id="Advertisement"
+				style="undefined"
+				tal:attributes="src Popup/getSource;flashvars php:'clickTAG=' . Popup->getURL()"
+				type="application/x-shockwave-flash"
+			/>
+		</div>
+	</div>
 </body>
 </html>
