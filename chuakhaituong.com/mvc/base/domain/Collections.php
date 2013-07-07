@@ -35,4 +35,5 @@ interface PanelCategoryVideoDetailCollection extends \Iterator {function add( Ob
 interface TaskCollection extends \Iterator {function add( Object $Task);}
 interface PaidCollection extends \Iterator {function add( Object $Paid);}
 interface TrackingCollection extends \Iterator {function add( Object $Tracking);}
+interface PopupCollection extends \Iterator {function add( Object $Popup);}
 ?>

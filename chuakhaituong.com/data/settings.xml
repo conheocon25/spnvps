@@ -342,5 +342,15 @@
 		<command name="AppPanelCategoryVideoDetailUpdLoad"><view>AppPanelCategoryVideoDetailUpdLoad</view></command>
 		<command name="AppPanelCategoryVideoDetailUpdExe"><view>AppPanelCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
 		
+		<!-- ============================================================================== -->
+		<!-- APP.POPUP																		-->
+		<!-- ============================================================================== -->
+		<command name="AppPopup"><view>AppPopup</view></command>
+		<command name="AppPopupInsLoad"><view>AppPopupInsLoad</view></command>
+		<command name="AppPopupInsExe"><view>AppPopupInsExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
+		<command name="AppPopupUpdLoad"><view>AppPopupUpdLoad</view></command>
+		<command name="AppPopupUpdExe"><view>AppPopupUpdExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
+		<command name="AppPopupDelLoad"><view>AppPopupDelLoad</view></command><command name="AppPopupDelExe"><view>AppPopupDelExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
+		
 	</control>
 </options>
