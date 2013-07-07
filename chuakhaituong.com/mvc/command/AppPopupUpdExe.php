@@ -30,14 +30,7 @@
 			$Popup->setURL($URL);			
 			$mPopup->update($Popup);
 			
-			if ($_FILES["file"]["error"] > 0){
-				echo "Return Code: " . $_FILES["file"]["error"] . "<br>";
-			}
-			else{
-				//echo "Upload: " . $_FILES["SWF"]["name"] . "<br>";
-				//echo "Type: " . $_FILES["SWF"]["type"] . "<br>";
-				//echo "Size: " . ($_FILES["SWF"]["size"] / 1024) . " kB<br>";
-				//echo "Temp file: " . $_FILES["SWF"]["tmp_name"] . "<br>";				
+			if ($_FILES["file"]["error"] <= 0){				
 				move_uploaded_file($_FILES["file"]["tmp_name"], $Popup->getSource() );
 			}
 			
