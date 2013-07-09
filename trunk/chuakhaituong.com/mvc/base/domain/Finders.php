@@ -34,6 +34,7 @@ interface CourseLessionFinder  extends Finder{}
 interface ConfigFinder  extends Finder{}
 interface SponsorFinder  extends Finder{}
 interface SponsorPersonFinder  extends Finder{}
+interface SponsorPaidFinder  extends Finder{}
 interface PanelAdsFinder  extends Finder{}
 interface PanelNewsFinder  extends Finder{}
 interface PanelCategoryVideoFinder  extends Finder{}

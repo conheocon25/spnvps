@@ -251,6 +251,14 @@ RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/upd/exe$ 			?cmd=AppSponsorVide
 RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/del/load$ 			?cmd=AppSponsorVideoDelLoad&IdSponsor=$1&IdVideo=$2 [L]
 RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/del/exe$ 			?cmd=AppSponsorVideoDelExe&IdSponsor=$1&IdVideo=$2 [L]
 
+RewriteRule ^app/sponsor/([0-9]+)/paid$ 							?cmd=AppSponsorPaid&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/ins/load$ 					?cmd=AppSponsorPaidInsLoad&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/ins/exe$ 					?cmd=AppSponsorPaidInsExe&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/upd/load$ 			?cmd=AppSponsorPaidUpdLoad&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/upd/exe$ 			?cmd=AppSponsorPaidUpdExe&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/del/load$ 			?cmd=AppSponsorPaidDelLoad&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/del/exe$ 			?cmd=AppSponsorPaidDelExe&IdSponsor=$1&IdPaid=$2 [L]
+
 RewriteRule ^app/panel/ads$ 										?cmd=AppPanelAds [L]
 RewriteRule ^app/panel/ads/ins/load$ 								?cmd=AppPanelAdsInsLoad [L]
 RewriteRule ^app/panel/ads/ins/exe$ 								?cmd=AppPanelAdsInsExe [L]
