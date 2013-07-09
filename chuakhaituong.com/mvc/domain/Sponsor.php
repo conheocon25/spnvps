@@ -38,6 +38,12 @@ class Sponsor extends Object{
 	//-------------------------------------------------------------------------------
 	//GET LIST
 	//-------------------------------------------------------------------------------
+	function getPaidAll(){
+		$mSP = new \MVC\Mapper\SponsorPaid();
+		$SPAll = $mSP->findBy(array($this->getId()));
+		return $SPAll;
+	}
+	
 	function getPersonAll(){
 		$mSP = new \MVC\Mapper\SponsorPerson();
 		$SPAll = $mSP->findBy(array($this->getId()));
@@ -55,10 +61,14 @@ class Sponsor extends Object{
 	function getURLView(){return "/sponsor/".$this->getId();}
 	function getURLSetting(){return "/app/sponsor/".$this->getId();}
 	function getURLVideo(){return "/app/sponsor/".$this->getId()."/video";}
+	function getURLPaid(){return "/app/sponsor/".$this->getId()."/paid";}
 	function getURLUpdLoad(){return "/app/sponsor/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/sponsor/".$this->getId()."/upd/exe";}	
 	function getURLDelLoad(){return "/app/sponsor/".$this->getId()."/del/load";}
 	function getURLDelExe(){return "/app/sponsor/".$this->getId()."/del/exe";}
+	
+	function getURLPaidInsLoad(){return "/app/sponsor/".$this->getId()."/paid/ins/load";}
+	function getURLPaidInsExe(){return "/app/sponsor/".$this->getId()."/paid/ins/exe";}
 	
 	function getURLPersonInsLoad(){return "/app/sponsor/".$this->getId()."/ins/load";}
 	function getURLPersonInsExe(){return "/app/sponsor/".$this->getId()."/ins/exe";}

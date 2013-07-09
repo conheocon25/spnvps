@@ -26,6 +26,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/Config.php");
 	require_once( "mvc/mapper/Sponsor.php");
 	require_once( "mvc/mapper/SponsorPerson.php");
+	require_once( "mvc/mapper/SponsorPaid.php");
 	require_once( "mvc/mapper/PanelAds.php");
 	require_once( "mvc/mapper/PanelNews.php");
 	require_once( "mvc/mapper/PanelCategoryVideo.php");

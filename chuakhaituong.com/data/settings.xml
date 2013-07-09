@@ -295,6 +295,17 @@
 		<command name="AppSponsorVideoDelExe"><view>AppSponsorVideoDelExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>
 		
 		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.PAID																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorPaid"><view>AppSponsorPaid</view></command>
+		<command name="AppSponsorPaidInsLoad"><view>AppSponsorPaidInsLoad</view></command>
+		<command name="AppSponsorPaidInsExe"><view>AppSponsorPaidInsExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		<command name="AppSponsorPaidUpdLoad"><view>AppSponsorPaidUpdLoad</view></command>
+		<command name="AppSponsorPaidUpdExe"><view>AppSponsorPaidUpdExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		<command name="AppSponsorPaidDelLoad"><view>AppSponsorPaidDelLoad</view></command>
+		<command name="AppSponsorPaidDelExe"><view>AppSponsorPaidDelExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
