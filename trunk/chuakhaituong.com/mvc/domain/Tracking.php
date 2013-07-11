@@ -56,7 +56,7 @@ class Tracking extends Object{
 	}
 	function getOldValuePrint(){
 		$N = new \MVC\Library\Number( $this->getOldValue() );
-		return $N->formatCurrency();
+		return $N->formatCurrency()." đ";
 	}
 	//-------------------------------------------------------------------------------
 	//KHOẢN THU
@@ -103,14 +103,44 @@ class Tracking extends Object{
 	//-------------------------------------------------------------------------------
 	//KHOẢN CHI
 	//-------------------------------------------------------------------------------
-	function getPaidAll(){
-		$mPaid = new \MVC\Mapper\Paid();
-		$PaidAll = $mPaid->findByTracking(array($this->getDateStart(), $this->getDateEnd()));
-		return $PaidAll;
+	function getSponsorPaidAll($IdSponsor){
+		$mSP = new \MVC\Mapper\SponsorPaid();
+		$SPAll = $mSP->trackBy(array($IdSponsor, $this->getDateStart(), $this->getDateEnd()));
+		return $SPAll;
 	}
-	function getPaidAllValue(){$PaidAll = $this->getPaidAll();$Value = 0;while ($PaidAll->valid()){$Paid = $PaidAll->current();$Value += $Paid->getValue();$PaidAll->next();}return $Value;}
-	function getPaidAllValuePrint(){$N = new \MVC\Library\Number($this->getPaidAllValue());return $N->formatCurrency()." đ";}
-	function getPaidAllValueStrPrint(){$N = new \MVC\Library\Number($this->getPaidAllValue());return $N->readDigit()."đồng";}
+	
+	function getSponsorPaidAllValue($IdSponsor){
+		$SPAll = $this->getSponsorPaidAll($IdSponsor);
+		$Value = 0;
+		$SPAll->rewind();
+		while ($SPAll->valid()){
+			$Value += $SPAll->current()->getValue();
+			$SPAll->next();
+		}
+		return $Value;
+	}
+	function getSponsorPaidAllValuePrint($IdSponsor){
+		$N = new \MVC\Library\Number($this->getSponsorPaidAllValue($IdSponsor));
+		return $N->formatCurrency()." đ";
+	}
+	
+	function getPaidAllValue(){
+		$mSponsor = new \MVC\Mapper\Sponsor();
+		$SponsorAll = $mSponsor->findAll();
+		$Value = 0;
+		$SponsorAll->rewind();
+		while ($SponsorAll->valid()){
+			$Sponsor = $SponsorAll->current();
+			$Temp = $this->getSponsorPaidAllValue($Sponsor->getId());
+			$Value += $Temp;
+			$SponsorAll->next();
+		}
+		return $Value;
+	}
+	function getPaidAllValuePrint(){
+		$N = new \MVC\Library\Number($this->getPaidAllValue());
+		return $N->formatCurrency()." đ";
+	}
 	
 	//--------------------------------------------------------------------------------	
 	//NHẬP HÀNG
