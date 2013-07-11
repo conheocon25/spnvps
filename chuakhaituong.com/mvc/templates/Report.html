@@ -47,6 +47,29 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
 								<thead>
 									<th align="center" width="5%" >STT</th>
+									<th align="left" width="75%" >CHƯƠNG TRÌNH</th>
+									<th align="right" width="20%" >SỐ TIỀN</th>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Sponsor SponsorAll">
+										<td align="center" tal:content="repeat/Sponsor/number" ></td>																				
+										<td tal:content="Sponsor/getName" ></td>
+										<td align="right" tal:content="php: Tracking->getSponsorPaidAllValuePrint( Sponsor->getId() )" ></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th align="right" colspan="2">TỔNG CHI</th>
+										<th align="right"><b tal:content="Tracking/getPaidAllValuePrint" /></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+						<!--
+						<div style="padding:10px;">
+							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+								<thead>
+									<th align="center" width="5%" >STT</th>
 									<th align="left" width="20%" >Ngày</th>
 									<th align="left" width="20%" >Loại</th>
 									<th align="left" width="35%" >Diễn giải</th>
@@ -69,6 +92,7 @@
 								</tfoot>
 							</table>
 						</div>
+						!-->
 					</div>
 					<div class="news-box">
 						<div class="box-title">
