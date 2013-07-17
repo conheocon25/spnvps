@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" />
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-timepicker-addon.css" />
+		
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {
+				$('#DateStart').datetimepicker(
+					{ dateFormat: 'yy-mm-dd' }
+				);
+				$('#DateEnd').datetimepicker(
+					{ dateFormat: 'yy-mm-dd' }
+				);
+			});
+			/*]]>*/
+		</script>
+		
+	</head>	
+	<body>
+		<div id="wrapper">
+
+			<div metal:use-macro="macros.xhtml/Header" />	
+
+			<div id="main">				
+				
+				<div id="box-editor">
+					<div class="box-title">
+						<img src="/data/images/manager.png" width="30" />
+						<span tal:content="Title" />
+						<a tal:attributes="href Course/getURLLession">&#8629; Trở lại</a>
+					</div>
+					<div class="box-editor-left">
+						<form class="form-editor" id="FormAppCourseLessionInsLoad" tal:attributes="action Course/getURLLessionInsExe" method="post">
+							<div class="row">
+								<div for="Name" class="label">Tên</div>
+								<div class="textbox" >
+									<input id="Name" name="Name" type="text" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="IdMonk" class="label">Giảng Sư</div>
+								<div class="textbox" >
+									<select name="IdMonk">
+										<option tal:repeat="Monk Monks" tal:attributes="value Monk/getId" >
+											<span tal:content="Monk/getName"/>
+										</option>
+									</select>
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="DateStart" class="label">Bắt đầu</div>
+								<div class="textbox" >
+									<input id="DateStart" name="DateStart" type="text" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="DateEnd" class="label">Kết thúc</div>
+								<div class="textbox" >
+									<input id="DateEnd" name="DateEnd" type="text" />
+								</div>
+								<div class="clear" />
+							</div>							
+							<div class="row">
+								<div class="label-random">Nội dung</div>
+								<div class="textarea">
+									<textarea class="ckeditor" name="Description" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Order" class="label">Thứ tự</div>
+								<div class="textbox" >
+									<input id="Order" name="Order" type="text" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div class="button" >
+									<button type="submit" name="submit" value="submit-value">Thêm</button>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="box-editor-right">
+						
+					</div>
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>
