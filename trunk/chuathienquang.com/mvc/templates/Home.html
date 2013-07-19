@@ -22,15 +22,30 @@
 								</a>
 							</div>
 							<div class="list-picture">
-								<div class="grid-left" tal:condition="CLs">
-									<h3 style="margin:10px;color:#004E02;">GIẢNG DẠY GẦN ĐÂY</h3>
+								<div class="grid-box" tal:condition="CLs">
 									<ul>
 										<li tal:repeat="CL CLs">
-											<a tal:attributes="href CL/getURLRead">
-												<span tal:content="CL/getName"/>
-												<small tal:content="CL/getDateStartPrint"/>
+											<a tal:attributes="href CL/getURLRead; title CL/getName">
+												<img class="grid-img" width="100%" height="100%" src="/data/images/tmp/pic1.jpg"/>
+												<div class="grid-icon">
+													<img width="32px" src="/data/images/news2.png"/>
+												</div>
+											</a>
+											
+										</li>
+										<div class="clear"/>
+									</ul>
+									
+									<ul>
+										<li tal:repeat="CL CLs">
+											<a tal:attributes="href CL/getURLRead; title CL/getName">
+												<img class="grid-img" width="100%" height="100%" src="/data/images/tmp/pic2.jpg"/>
+												<div class="grid-icon">
+													<img width="32px" src="/data/images/camera.png"/>
+												</div>
 											</a>
 										</li>
+										<div class="clear"/>
 									</ul>
 								</div>
 								<div class="grid-right parent" tal:condition="CLsNext/current">
