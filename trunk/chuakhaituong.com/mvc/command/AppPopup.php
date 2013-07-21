@@ -61,7 +61,7 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty("ActiveAdmin", 'Task');
+			$request->setProperty("ActiveAdmin", 'Popup');
 			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');
