@@ -30,6 +30,7 @@
 		
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Home.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/SigninLoad.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/js-image-slider.js"/>
 		
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>
@@ -757,6 +758,26 @@
 				tal:attributes="src Popup/getSource;flashvars php:'clickTAG=' . Popup->getURL()"
 				type="application/x-shockwave-flash"
 			/>
+		</div>
+	</div>
+	
+	<!-- ================================================================================== -->
+	<!-- SLIDE BOX																			-->
+	<!-- ================================================================================== -->
+	<div metal:define-macro="SlideBox" class="sidebar-box" >
+		<div class="box-title">
+			<img src="/data/images/icon.png" width="30" />
+			<span>Tin tức</span>
+		</div>
+		<div id="sliderFrame">
+			<div id="slider">
+				<a href="#"><img src="/data/images/tmp/pic1.jpg" width="335px"/></a>
+				<a href="#"><img src="/data/images/tmp/pic2.jpg" width="335px"/></a>
+				<a href="#"><img src="/data/images/tmp/pic3.jpg" width="335px"/></a>
+				<a href="#"><img src="/data/images/tmp/pic1.jpg" width="335px"/></a>
+				<a href="#"><img src="/data/images/tmp/pic2.jpg" width="335px"/></a>
+				<a href="#"><img src="/data/images/tmp/pic3.jpg" width="335px"/></a>
+			</div>
 		</div>
 	</div>
 </body>
