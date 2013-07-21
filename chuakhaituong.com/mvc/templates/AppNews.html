@@ -71,8 +71,9 @@
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Category1 CategoryNewsAll" tal:attributes="href Category1/getURLView">
-									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">
-										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getNews/count" />)
+									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">										
+										<div class="left" tal:content="Category1/getName" />
+										<div class="right" tal:content="Category1/getNews/count" />
 									</li>
 								</a>												
 							</ul>

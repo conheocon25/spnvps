@@ -17,8 +17,8 @@
 							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 							<a tal:attributes="href '/app/course'">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">							
+						</div>
+						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
 								<tbody>
 									<tr class="content-rows" tal:repeat="Lession Course/getLessions">
@@ -57,9 +57,10 @@
 						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
-								<a tal:repeat="Course1 Courses" tal:attributes="href Course1/getURLLession">
+								<a tal:repeat="Course1 CourseAll" tal:attributes="href Course1/getURLLession">
 									<li tal:attributes="class php:Course1->getId()==Course->getId()?'menu-select':'normal'">
-										<span tal:content="Course1/getName" /> (<span tal:content="Course1/getLessions/count" />)
+										<div class="left" tal:content="Course1/getName" /> 
+										<div class="right" tal:content="Course1/getLessions/count" />
 									</li>
 								</a>												
 							</ul>
