@@ -1377,3 +1377,102 @@
 		border-radius: 10px;
 		padding: 3px;
 	}
+	
+	.slide-in-right {
+		width: 335px;
+		margin-bottom: 15px;
+		background-color: white;
+		overflow: hidden;
+	}
+	
+	.slide-in-right ul {
+		list-style: none;
+		width: 2010px;
+		position: relative;
+		z-index: 0;
+		
+		animation: slideRight 30s;
+		animation-iteration-count: infinite;
+		animation-timing-function: ease-out;
+		
+		-webkit-animation: slideRight 30s;
+		-webkit-animation-iteration-count: infinite;
+		-webkit-animation-timing-function: ease-out;
+		
+		-moz-animation: slideRight 30s;
+		-moz-animation-iteration-count: infinite;
+		-moz-animation-timing-function: ease-out;
+	}
+	
+	.slide-in-right ul li {
+		float: left;
+	}
+	
+		@keyframes slideRight {
+			10% {
+				margin-left: 0px;
+			}
+			13%, 30% {
+				margin-left: -335px;
+			}
+			33%, 50% {
+				margin-left: -670px;
+			}
+			53%, 70% {
+				margin-left: -1005px;
+			}
+			73%, 90% {
+				margin-left: -1340px;
+			}
+			93%, 98% {
+				margin-left: -1675px;
+			}
+		}
+		
+		@-moz-keyframes slideRight {
+			10% {
+				margin-left: 0px;
+			}
+			13%, 30% {
+				margin-left: -335px;
+			}
+			33%, 50% {
+				margin-left: -670px;
+			}
+			53%, 70% {
+				margin-left: -1005px;
+			}
+			73%, 90% {
+				margin-left: -1340px;
+			}
+			93%, 98% {
+				margin-left: -1675px;
+			}
+		}
+		
+		@-webkit-keyframes slideRight {
+			10% {
+				margin-left: 0px;
+			}
+			13%, 30% {
+				margin-left: -335px;
+			}
+			33%, 50% {
+				margin-left: -670px;
+			}
+			53%, 70% {
+				margin-left: -1005px;
+			}
+			73%, 90% {
+				margin-left: -1340px;
+			}
+			93%, 98% {
+				margin-left: -1675px;
+			}
+		}
+	
+	.slide-in-right ul:hover {
+		animation-play-state: paused;
+		-webkit-animation-play-state: paused;
+		-moz-animation-play-state: paused;
+	}
