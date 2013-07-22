@@ -11,15 +11,17 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, `order` DESC", $tblCategory);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCategory);
-		$updateStmt = sprintf("update %s set name=?, picture=?, `order`=?, type=? where id=?", $tblCategory);
-		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type) values(?, ?, ?, ?)", $tblCategory);
-		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
+		$updateStmt = sprintf("update %s set name=?, picture=?, `order`=?, type=?, btype=? where id=?", $tblCategory);
+		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type, btype) values(?, ?, ?, ?, ?)", $tblCategory);
+		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
+		$findByBTypeStmt = sprintf("select * from %s where btype=?", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
 		
     } 
     function getCollection( array $raw ) {
@@ -32,7 +34,8 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$array['name'],
 			$array['picture'],
 			$array['order'],
-			$array['type']
+			$array['type'],
+			$array['btype']
 		);
         return $obj;
     }
@@ -46,7 +49,8 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$object->getName(),
 			$object->getPicture(),
 			$object->getOrder(),
-			$object->getType()
+			$object->getType(),
+			$object->getBType()
 		);
 		
         $this->insertStmt->execute( $values );
@@ -60,11 +64,17 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$object->getPicture(),
 			$object->getOrder(),
 			$object->getType(),
+			$object->getBType(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
 
+	function findByBType( $values ){		
+		$this->findByBTypeStmt->execute($values);
+        return new CategoryVideoCollection( $this->findByBTypeStmt->fetchAll(), $this);
+    }
+	
 	protected function doDelete(array $values) {
         return $this->deleteStmt->execute( $values );
     }

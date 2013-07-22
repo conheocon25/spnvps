@@ -6,11 +6,9 @@
 	</head>
 	<body>
 		<div id="wrapper">
-
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
-				
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/icon.png" width="30" />
@@ -20,7 +18,7 @@
 					<div class="box-editor-left">
 						<form class="form-editor" id="FormAppPanelCategoryVideoDelLoad" tal:attributes="action PanelCategoryVideo/getURLDelExe" method="post">
 							<div class="row">
-								<H3>Bạn có chắc chắn muốn xóa PANEL NEWS này không ?</H3>
+								<H3>Bạn có chắc chắn muốn xóa <span tal:content="PanelCategoryVideo/getName"/> này không ?</H3>
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -34,8 +32,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

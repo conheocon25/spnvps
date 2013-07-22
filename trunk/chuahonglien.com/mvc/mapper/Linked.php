@@ -9,7 +9,7 @@ class Linked extends Mapper implements \MVC\Domain\LinkedFinder {
 				
 		$tblLinked = "chuahonglien_linked";
 		
-		$selectAllStmt = sprintf("select * from %s", $tblLinked);
+		$selectAllStmt = sprintf("select * from %s ORDER BY name", $tblLinked);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblLinked);
 		$updateStmt = sprintf("update %s set name=?, url=? where id=?", $tblLinked);
 		$insertStmt = sprintf("insert into %s ( name, url) values(?, ?)", $tblLinked);

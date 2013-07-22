@@ -2,7 +2,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" /> 
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-timepicker-addon.css" />
+		
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
+			/*]]>*/
+		</script>
 	</head>	
 	<body>
 		<div id="wrapper">
@@ -10,7 +22,7 @@
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/icon.png" width="30" />
@@ -34,6 +46,13 @@
 								<div class="clear" />
 							</div>
 							<div class="row">
+								<div for="Date" class="label">Ngày cập nhật</div>
+								<div class="textbox" >
+									<input id="Date" name="Date" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getTime" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
 								<div for="Note" class="label">Ghi chú</div>
 								<div class="textbox" >
 									<input id="Note" name="Note" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getNote" />
@@ -46,7 +65,7 @@
 									<input id="Count" name="Count" type="text" class="form-textbox" tal:attributes="value VM/getVideo/getCount" />
 								</div>
 								<div class="clear" />
-							</div>
+							</div>							
 							<div class="row">
 								<div class="button" >
 									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
@@ -62,7 +81,7 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			
 		</div>
 	</body>
 </html>

@@ -49,9 +49,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a tal:attributes="href Sponsor/getURLPersonInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Sponsor/getURLPersonInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -63,7 +61,7 @@
 				
 				<div id="sidebar">										
 					<div class="sidebar-box">
-						<div class="box-title"><img src="/data/images/icon.png" width="30" /><span><a href="/changepass/load">Admin</a></span><a href="/signout/load">&#8629; Thoát</a></div>						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>								
 								<a tal:repeat="Sponsor1 SponsorAll" tal:attributes="href Sponsor1/getURLSetting">
@@ -78,7 +76,6 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
 		</div>
 	</body>
 </html>

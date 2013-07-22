@@ -10,14 +10,9 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
-				
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Time').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 	</head>	
@@ -25,7 +20,7 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
 						<img src="/data/images/icon.png" width="30" />
@@ -40,18 +35,18 @@
 									<input id="Name" name="Name" type="text" tal:attributes="value VL/getVideo/getName" />
 								</div>
 								<div class="clear" />
-							</div>
-							<div class="row">
-								<div for="Time" class="label">Thời gian</div>
-								<div class="textbox" >
-									<input id="Time" name="Time" type="text" class="form-textbox" tal:attributes="value VL/getVideo/getTime" />
-								</div>
-								<div class="clear" />
-							</div>
+							</div>							
 							<div class="row">
 								<div for="URL" class="label">URL nhúng</div>
 								<div class="textbox" >
 									<input id="URL" name="URL" type="text" class="form-textbox" tal:attributes="value VL/getVideo/getURL" />
+								</div>
+								<div class="clear" />
+							</div>
+							<div class="row">
+								<div for="Date" class="label">Ngày cập nhật</div>
+								<div class="textbox" >
+									<input id="Date" name="Date" type="text" class="form-textbox" tal:attributes="value VL/getVideo/getTime" />
 								</div>
 								<div class="clear" />
 							</div>
@@ -92,8 +87,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>
