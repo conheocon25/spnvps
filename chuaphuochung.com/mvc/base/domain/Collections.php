@@ -28,6 +28,7 @@ interface CourseLessionCollection extends \Iterator {function add( Object $Cours
 interface ConfigCollection extends \Iterator {function add( Object $Config);}
 interface SponsorCollection extends \Iterator {function add( Object $Sponsor);}
 interface SponsorPersonCollection extends \Iterator {function add( Object $SponsorPerson);}
+interface SponsorPaidCollection extends \Iterator {function add( Object $SponsorPaid);}
 interface PanelAdsCollection extends \Iterator {function add( Object $PanelAds);}
 interface PanelNewsCollection extends \Iterator {function add( Object $PanelNews);}
 interface PanelCategoryVideoCollection extends \Iterator {function add( Object $PanelCategoryVideo);}
@@ -35,4 +36,5 @@ interface PanelCategoryVideoDetailCollection extends \Iterator {function add( Ob
 interface TaskCollection extends \Iterator {function add( Object $Task);}
 interface PaidCollection extends \Iterator {function add( Object $Paid);}
 interface TrackingCollection extends \Iterator {function add( Object $Tracking);}
+interface PopupCollection extends \Iterator {function add( Object $Popup);}
 ?>

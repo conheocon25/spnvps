@@ -61,7 +61,8 @@
 							<ul>
 								<a tal:repeat="Pagoda1 PagodaAll" tal:attributes="href Pagoda1/getURLViewVideo">
 									<li tal:attributes="class php:Pagoda->getId()==Pagoda1->getId()?'menu-select':''">
-										<span tal:content="Pagoda1/getName" /> (<span tal:content="Pagoda1/getVPs/count" />)
+										<div class="left" tal:content="Pagoda1/getName" />
+										<div class="right" tal:content="Pagoda1/getVPs/count" />
 									</li>
 								</a>
 							</ul>

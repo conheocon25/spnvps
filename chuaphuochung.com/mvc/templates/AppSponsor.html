@@ -23,6 +23,7 @@
 										<th>STT</th>
 										<th align="left">TÊN</th>
 										<th align="left">ỦNG HỘ</th>
+										<th align="left">KHOẢN CHI</th>
 										<th align="left">VIDEO</th>
 										<th>XÓA</th>
 									</tr>
@@ -43,6 +44,11 @@
 											</a>
 										</td>
 										<td>
+											<a tal:attributes="href Sponsor/getURLPaid">
+												Khoản chi (<span tal:content="Sponsor/getPaidAll/count" />)
+											</a>
+										</td>
+										<td>
 											<a tal:attributes="href Sponsor/getURLVideo">
 												Video (<span tal:content="Sponsor/getVideoAll/count" />)
 											</a>
@@ -56,9 +62,9 @@
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="5" align="center">
+										<td colspan="6" align="center">
 											<a href="/app/sponsor/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
+												<div>Thêm mới</div>
 											</a>
 										</td>
 									</tr>

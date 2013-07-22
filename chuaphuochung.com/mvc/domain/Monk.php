@@ -12,11 +12,12 @@ class Monk extends Object{
 	private $Note;
 	private $Type;
 	private $BType;
+	private $URLPic;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $BType=Null){$this->Id = $Id;$this->PreName = $PreName;$this->Name = $Name;$this->Pagoda = $Pagoda;$this->Phone = $Phone;$this->Note = $Note;$this->Type = $Type;$this->BType = $BType;parent::__construct( $Id );}
+    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $BType=Null, $URLPic=Null){$this->Id = $Id;$this->PreName = $PreName;$this->Name = $Name;$this->Pagoda = $Pagoda;$this->Phone = $Phone;$this->Note = $Note;$this->Type = $Type;$this->BType = $BType; $this->URLPic = $URLPic; parent::__construct( $Id );}
     function getId() {return $this->Id;}	
 	function getIdPrint(){return "l" . $this->getId();}	
 	
@@ -48,6 +49,8 @@ class Monk extends Object{
 			return "Chưa rõ";
         return $BType->getName();
     }
+	function setURLPic( $URLPic ) {$this->URLPic = $URLPic;$this->markDirty();} 
+	function getURLPic( ){return $this->URLPic;}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -62,7 +65,7 @@ class Monk extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
 	function getURLRead(){return "/library/video/".$this->getBType()."/monk/".$this->getId();}
-	function getURLView(){return "/app/monk";}
+	function getURLView(){return "/app/monk";}	
 	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}
 	function getURLVideoInsLoad(){return "/app/monk/".$this->getId()."/video/ins/load";}
 	function getURLVideoInsExe(){return "/app/monk/".$this->getId()."/video/ins/exe";}

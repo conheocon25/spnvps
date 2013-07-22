@@ -3,7 +3,7 @@
 	<!-- ĐỊNH NGHĨA THƯ VIỆN CSS JAVASCRIPT -->	
 	<span metal:define-macro="IncludeCSS">
 		<title tal:content="string:Chùa Phước Hưng" />
-		<BASE href="http://chuaphuochung.123app.net" />
+		<BASE href="http://chuaphuochung.com" />
 
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
@@ -108,7 +108,7 @@
 	<div metal:define-macro="HeaderAdmin">
 		<div id="menu-top">
 			<ul class="top-nav">
-				<li class="current"><a href="/home">Trang chủ</a></li>
+				<li class="current"><a href="/home">Về trang chủ</a></li>
 			</ul>
 		</div>
 	</div>
@@ -548,6 +548,12 @@
 				<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'menu-select':'?'">
 					<div class="left">QUẢNG CÁO</div>
 					<div class="right" tal:content="PanelAdsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/popup'">
+				<li tal:attributes="class php:ActiveAdmin=='Popup'?'menu-select':'?'">
+					<div class="left">QUẢNG CÁO POPUP</div>
+					<div class="right" tal:content="string:0" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/config'">

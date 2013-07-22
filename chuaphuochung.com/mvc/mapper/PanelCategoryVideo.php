@@ -9,7 +9,7 @@ class PanelCategoryVideo extends Mapper implements \MVC\Domain\PanelCategoryVide
 				
 		$tblPanelCategoryVideo = "chuaphuochung_panel_category_video";
 		
-		$selectAllStmt = sprintf("select * from %s", $tblPanelCategoryVideo);
+		$selectAllStmt = sprintf("select * from %s order by `order`", $tblPanelCategoryVideo);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblPanelCategoryVideo);
 		$updateStmt = sprintf("update %s set name=?, `order`=? where id=?", $tblPanelCategoryVideo);
 		$insertStmt = sprintf("insert into %s (name, `order`) values(?, ?)", $tblPanelCategoryVideo);

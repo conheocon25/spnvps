@@ -29,6 +29,7 @@ class CourseLessionCollection extends Collection implements \MVC\Domain\CourseLe
 class ConfigCollection extends Collection implements \MVC\Domain\ConfigCollection {function targetClass( ) {return "\MVC\Domain\Config";}}
 class SponsorCollection extends Collection implements \MVC\Domain\SponsorCollection {function targetClass( ) {return "\MVC\Domain\Sponsor";}}
 class SponsorPersonCollection extends Collection implements \MVC\Domain\SponsorPersonCollection {function targetClass( ) {return "\MVC\Domain\SponsorPerson";}}
+class SponsorPaidCollection extends Collection implements \MVC\Domain\SponsorPaidCollection {function targetClass( ) {return "\MVC\Domain\SponsorPaid";}}
 class PanelAdsCollection extends Collection implements \MVC\Domain\PanelAdsCollection {function targetClass( ) {return "\MVC\Domain\PanelAds";}}
 class PanelNewsCollection extends Collection implements \MVC\Domain\PanelNewsCollection {function targetClass( ) {return "\MVC\Domain\PanelNews";}}
 class PanelCategoryVideoCollection extends Collection implements \MVC\Domain\PanelCategoryVideoCollection {function targetClass( ) {return "\MVC\Domain\PanelCategoryVideo";}}
@@ -36,4 +37,5 @@ class PanelCategoryVideoDetailCollection extends Collection implements \MVC\Doma
 class TaskCollection extends Collection implements \MVC\Domain\TaskCollection {function targetClass( ) {return "\MVC\Domain\Task";}}
 class PaidCollection extends Collection implements \MVC\Domain\PaidCollection {function targetClass( ) {return "\MVC\Domain\Paid";}}
 class TrackingCollection extends Collection implements \MVC\Domain\TrackingCollection {function targetClass( ) {return "\MVC\Domain\Tracking";}}
+class PopupCollection extends Collection implements \MVC\Domain\PopupCollection {function targetClass( ) {return "\MVC\Domain\Popup";}}
 ?>
