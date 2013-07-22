@@ -16,9 +16,9 @@
 						
 			$Name = $request->getProperty('Name');
 			$URL = $request->getProperty('URL');
-			$Time = $request->getProperty('Time');
 			$Note = $request->getProperty('Note');
 			$Count = $request->getProperty('Count');
+			$Date = $request->getProperty('Date');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -35,15 +35,16 @@
 			$VL = $mVideoLibrary->find($IdVideoLibrary);			
 			$Video = $VL->getVideo();						
 			$Video->setName($Name);
-			$Video->setTime($Time);
 			$Video->setNote($Note);
+			$Video->setTime($Date);
 			$Video->setURL($URL);
-			$Video->setCount($Count);
 			
 			$URLNew = $Video->parseURLYoutube();
 			if ($URLNew != "")
 				$Video->setURL($URLNew);
-				
+			
+			$Video->setCount($Count);
+			
 			$mVideo->update($Video);			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

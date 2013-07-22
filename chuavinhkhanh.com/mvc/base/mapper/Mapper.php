@@ -11,20 +11,17 @@ date_default_timezone_set('Asia/Ho_Chi_Minh');
 //Default Value: E_ALL & ~E_NOTICE
 //Development Value: E_ALL | E_STRICT
 //Production Value: E_ALL & ~E_DEPRECATED
-error_reporting ('E_ALL | E_STRICT');
+//error_reporting ('E_ALL & ~E_DEPRECATED');
 
 abstract class Mapper implements \MVC\Domain\Finder {
     protected static $PDO;
     function __construct() { 
         if ( ! isset(self::$PDO) ) { 
-            
-			$Encrypt = new Encrypted();	
-			$ReadFileKey = $Encrypt->readFromFile($Encrypt->SizeFileConfig());
-			
-			$dsn = $Encrypt->decryptData($ReadFileKey[0]);			
-			$dbname = $Encrypt->decryptData($ReadFileKey[1]);			
-			$user = $Encrypt->decryptData($ReadFileKey[2]);	
-			$pass = $Encrypt->decryptData($ReadFileKey[3]);	
+            						
+			$dsn = "mysql:host=localhost;";
+			$dbname = "dbname=vinhkhan_db";			
+			$user = "vinhkhan_userdb";
+			$pass = "admin068198";
 			
             if ( is_null( $dsn ) ) {
                 throw new \MVC\Base\AppException( "No DSN" );

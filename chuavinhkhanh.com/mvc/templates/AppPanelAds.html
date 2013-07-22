@@ -7,7 +7,8 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">				
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
@@ -19,8 +20,8 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
 								<thead>
 									<tr>
-										<th>STT</th>																														
-										<th align="left">TIÊU ĐỀ</th>										
+										<th>STT</th>
+										<th align="left">TÊN</th>										
 										<th>XÓA</th>
 									</tr>
 								</thead>
@@ -42,9 +43,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a href="app/panel/ads/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a href="app/panel/ads/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -52,17 +51,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

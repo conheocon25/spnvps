@@ -17,6 +17,8 @@
 			$Note = $request->getProperty('Note');
 			$Pagoda = $request->getProperty('Pagoda');
 			$Type = $request->getProperty('Type');
+			$BType = $request->getProperty('BType');
+			$URLPic = $request->getProperty('URLPic');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -42,8 +44,9 @@
 				$Phone,
 				$Note,
 				$Type,
-				''
-			);												
+				$BType,
+				$URLPic
+			);
 			$mMonk->insert($dMonk);
 			
 			//-------------------------------------------------------------

@@ -6,14 +6,12 @@
 	</head>	
 	<body>
 		<div id="wrapper">
-
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-
-			<div id="main">				
-				
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a href="/app/category/video">&#8629; Trở lại</a>
 					</div>
@@ -31,7 +29,7 @@
 								<div class="checkbox" >
 									<input id="Type" type="checkbox" name="Type" tal:attributes="checked Category/getType" />Đặc biệt
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="BType" class="label">Tông phái</div>
@@ -69,11 +67,8 @@
 						
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

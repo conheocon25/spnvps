@@ -38,14 +38,17 @@ class SponsorPerson extends Object{
 	
 	function setTime( $Time ) {$this->Time = $Time;$this->markDirty();}
     function getTime( ) {return $this->Time;}
-	function getTimePrint( ) {return $this->Time;}
+	function getTimePrint( ) {
+		$Date = \date("d/m/Y", strtotime($this->getTime()));
+		return $Date;
+	}
 	
 	function setAddress( $Address ) {$this->Address = $Address;$this->markDirty();}
     function getAddress( ) {return $this->Address;}
 		
 	function setValue( $Value ) {$this->Value = $Value;$this->markDirty();}
 	function getValue( ) {return $this->Value;}
-	function getValuePrint( ) { $num = new Number($this->Value);return $num->formatCurrency();}
+	function getValuePrint( ) { $num = new Number($this->Value);return $num->formatCurrency()." ".$this->getUnit();}
 	
 	function getUnit( ){return $this->Unit;}
 	function setUnit( $Unit ) {$this->Unit = $Unit;$this->markDirty();}

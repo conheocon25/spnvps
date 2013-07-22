@@ -13,11 +13,7 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Date').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>				
 	</head>	
@@ -27,10 +23,10 @@
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title"/>
 						<a href="/app/event">&#8629; Trở lại</a>
 					</div>
@@ -41,21 +37,21 @@
 								<div class="textbox" >
 									<input id="Title" name="Title" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Thời gian</div>
 								<div class="textbox" >
 									<input id="Date" name="Date" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="label-random">Nội dung</div>
 								<div class="textarea" >
 									<textarea class="ckeditor" name="Content" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -69,8 +65,7 @@
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

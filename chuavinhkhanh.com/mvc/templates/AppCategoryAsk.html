@@ -7,11 +7,12 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">								
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">					
 						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 							<a href="/app">&#8629; Trở lại</a>
 						</div>						
@@ -19,8 +20,8 @@
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
 								<thead>
 									<tr>
-										<th>STT</th>										
-										<th align="left">DANH MỤC</th>
+										<th>STT</th>
+										<th align="left">TÊN</th>
 										<th align="left">CÂU HỎI</th>
 										<th>XÓA</th>
 									</tr>
@@ -50,29 +51,23 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a href="/app/category/ask/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a href="/app/category/ask/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
 						</div>
-						<div class="clear"/>
+						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />						
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

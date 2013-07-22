@@ -14,12 +14,24 @@
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mAlbum = new \MVC\Mapper\Album();
+			$mEvent = new \MVC\Mapper\Event();
+			$mMonk = new \MVC\Mapper\Monk();
+			$mCourse = new \MVC\Mapper\Course();
+			$mSponsor = new \MVC\Mapper\Sponsor();
+			$mNews = new \MVC\Mapper\News();
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
@@ -28,11 +40,13 @@
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
 			$CourseAll = $mCourse->findAll();		
-			$News = $mNews->findAll();		
+			$News = $mNews->findAll();
+			$SponsorAll = $mSponsor->findAll();		
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
@@ -42,6 +56,7 @@
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('News', $News);
+			$request->setObject('SponsorAll', $SponsorAll);
 						
 			$request->setProperty("Title", 'QUẢN LÝ / PANEL / NEWS / THÊM MỚI');
 			$request->setProperty("ActiveItem", 'Home');

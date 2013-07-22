@@ -14,26 +14,34 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			$mMonk = new \MVC\Mapper\Monk();
+			$mCategoryNewsAll = new \MVC\Mapper\CategoryNews();
+			$mCategoryAskAll = new \MVC\Mapper\CategoryAsk();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Monk = $mMonk->find($IdMonk);
 			$Title = "Quản lý / giảng sư / ".$Monk->getName()." / Cập nhật";
+			$CategoryNewsAll = $mCategoryNewsAll->findAll();
+			$CategoryAskAll = $mCategoryAskAll->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject('Monk', $Monk);
-			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}

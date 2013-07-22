@@ -5,9 +5,10 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">		
+		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">								
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
@@ -20,9 +21,9 @@
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th />
-										<th>TIÊU ĐỀ</th>
-										<th>LOẠI</th>
+										<th></th>
+										<th align="left">TÊN</th>
+										<th align="left">VIDEO</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
@@ -38,10 +39,10 @@
 										</td>
 										<td class="text-hightlight">
 											<a tal:attributes="href Category/getURLUpdLoad">
-												<div tal:content="Category/getName" />
+												<div tal:content="Category/getNameReduce" />
 											</a>
 										</td>
-										<td class="text-hightlight" align="center">
+										<td class="text-hightlight" align="left">
 											<a tal:attributes="href Category/getURLVideo">
 												<div>
 													<span tal:content="Category/getBTypeName" />
@@ -59,7 +60,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a href="/app/category/video/ins/load">Thêm mới Video</a>
+											<a href="/app/category/video/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -67,19 +68,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />	
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

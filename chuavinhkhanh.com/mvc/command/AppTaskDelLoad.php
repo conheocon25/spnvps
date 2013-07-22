@@ -21,6 +21,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
@@ -28,14 +29,15 @@
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
-			$CourseAll = $mCourse->findAll();
-			$LinkedAll = $mLinked->findAll();
-						
-			$Task = $mTask->find($IdTask);
+			$CourseAll = $mCourse->findAll();			
+			$SponsorAll = $mSponsor->findAll();
+			$TaskAll = $mTask->findAll();
 			
+			$Task = $mTask->find($IdTask);			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
@@ -43,8 +45,10 @@
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
 			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('LinkedAll', $LinkedAll);
+			$request->setObject('CourseAll', $CourseAll);			
+			$request->setObject('TaskAll', $TaskAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
 			$request->setObject('Task', $Task);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / '.$Task->getTitle()." / XÓA");

@@ -16,8 +16,9 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$insertStmt = sprintf("insert into %s ( id_video, id_category)  values(?, ?)", $tblVideoLibrary);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoLibrary);
 		$findByStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoLibrary, $tblVideo);
-		$findByLocalTopStmt = sprintf("select *  from %s VM WHERE id_category=17 order by (select time from %s V where V.id=VM.id_video ) DESC limit 8", $tblVideoLibrary, $tblVideo);
-		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 12", $tblVideoLibrary, $tblVideo);
+		$findByTopStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 1", $tblVideoLibrary, $tblVideo);
+		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
+		$findByTopLocalStmt = sprintf("select * from %s VM WHERE VM.id_category=1 order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
 		$findByPageStmt = sprintf("
 			SELECT *  
 			FROM %s VM
@@ -26,6 +27,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 			LIMIT :start,:max", $tblVideoLibrary, $tblVideo
 		);
 		
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -33,7 +35,8 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
-		$this->findByLocalTopStmt = self::$PDO->prepare($findByLocalTopStmt);
+		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);
+		$this->findByTopStmt = self::$PDO->prepare($findByTopStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
@@ -86,14 +89,22 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         $this->findByStmt->execute( $values );
         return new VideoLibraryCollection( $this->findByStmt->fetchAll(), $this);
     }
+	
+	function findByTop( $values ){
+        $this->findByTopStmt->execute( $values );
+        return new VideoLibraryCollection( $this->findByTopStmt->fetchAll(), $this);
+    }
+	
 	function findByUpdateTop( $values ){
         $this->findByUpdateTopStmt->execute( $values );
         return new VideoLibraryCollection( $this->findByUpdateTopStmt->fetchAll(), $this);
     }
-	function findByLocalTop( $values ){
-        $this->findByLocalTopStmt->execute( $values );
-        return new VideoLibraryCollection( $this->findByLocalTopStmt->fetchAll(), $this);
+	
+	function findByTopLocal( $values ){
+        $this->findByTopLocalStmt->execute( $values );
+        return new VideoLibraryCollection( $this->findByTopLocalStmt->fetchAll(), $this);
     }
+	
 	function findByPage( $values ) {
 		$this->findByPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
@@ -101,6 +112,5 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->findByPageStmt->execute();
         return new VideoLibraryCollection( $this->findByPageStmt->fetchAll(), $this );
     }
-	
 }
 ?>

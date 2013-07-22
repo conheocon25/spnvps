@@ -8,10 +8,10 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
 			<div id="main">
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a href="/app/category/ask">&#8629; Trở lại</a>
 					</div>
@@ -22,14 +22,14 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Category/getName" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Thứ tự</div>
 								<div class="textbox" >
 									<input id="Order" name="Order" type="text" tal:attributes="value Category/getOrder" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -42,11 +42,8 @@
 						
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

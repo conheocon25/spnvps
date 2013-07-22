@@ -24,10 +24,10 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a tal:attributes="href Ask/getCategory/getURLView">&#8629; Trở lại</a>
 					</div>
@@ -38,14 +38,14 @@
 								<div class="textarea">
 									<textarea class="ckeditor" id="Question" name="Question" tal:content="Ask/getQuestion" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Người hỏi</div>
 								<div class="textbox" >
 									<input id="Author1" name="Author1" type="text" tal:attributes="value Ask/getAuthor1" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Time" class="label">Thời gian</div>
@@ -81,7 +81,7 @@
 				</div>
 				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			
 		</div>
 	</body>
 </html>

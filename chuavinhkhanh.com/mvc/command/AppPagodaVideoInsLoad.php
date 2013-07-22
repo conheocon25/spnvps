@@ -14,8 +14,11 @@
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------									
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();						
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mPagoda = new \MVC\Mapper\Pagoda();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -23,6 +26,7 @@
 			$Pagoda = $mPagoda->find($IdPagoda);			
 			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / Thêm mới Video";
 			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
@@ -30,7 +34,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject('Pagoda', $Pagoda);			
+			$request->setObject('Pagoda', $Pagoda);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);			

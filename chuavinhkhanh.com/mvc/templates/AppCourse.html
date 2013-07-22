@@ -7,11 +7,12 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">								
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
+							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title" />
 							<a href="/app">&#8629; Trở lại</a>
 						</div>						
@@ -21,9 +22,9 @@
 									<tr>
 										<th>STT</th>
 										<th align="left">TÊN</th>
-										<th>BẮT ĐẦU</th>
-										<th>KẾT THÚC</th>
-										<th>LỚP</th>
+										<th align="left">BẮT ĐẦU</th>
+										<th align="left">KẾT THÚC</th>
+										<th align="left">BÀI HỌC</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
@@ -39,9 +40,9 @@
 										</td>
 										<td width="48" tal:content="Course/getDateStartPrint" />
 										<td width="48" tal:content="Course/getDateEndPrint" />
-										<td class="text-hightlight" width="80" align="center">
+										<td class="text-hightlight" width="80" align="left">
 											<a tal:attributes="href Course/getURLLession">
-												Xem (<span tal:content="Course/getClasses/count"/>)
+												Bài học (<span tal:content="Course/getLessions/count"/>)
 											</a>
 										</td>
 										<td class="text-hightlight" width="32" align="center">
@@ -54,11 +55,7 @@
 								<tfoot>
 									<tr>
 										<td colspan="7" align="center">
-											<a href="/app/course/ins/load">
-												<div>
-													Thêm khóa học
-												</div>
-											</a>
+											<a href="/app/course/ins/load">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
@@ -66,17 +63,15 @@
 						</div>
 						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
+				</div>				
+				<div id="sidebar">
 					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
 				<div class="clear" />
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			</div>			
 		</div>
 	</body>
 </html>

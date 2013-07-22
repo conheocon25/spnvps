@@ -29,27 +29,27 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			
 			$Sponsor = $mSponsor->find($IdSponsor);
 			$VS = $mVS->find($IdVideo);
 			$Title = "Quản lý / SỔ VÀNG CÔNG ĐỨC / ".$Sponsor->getName()." / ".$VS->getVideo()->getName()." / Xóa";
-			$Pagodas = $mPagoda->findAll();
-			$Sponsors = $mSponsor->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject('CategoriesBType', $CategoriesBType);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('Sponsor', $Sponsor);
 			$request->setObject('VS', $VS);
 						
-			$request->setObject('CategoriesNews', $CategoriesNews);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Sponsors', $Sponsors);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
+			$request->setObject('CategoryAskAll', $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
 			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');

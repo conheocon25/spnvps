@@ -7,10 +7,10 @@
 	<body>
 		<div id="wrapper">		
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">								
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
-					<div class="news-box">
-					
+					<div class="news-box">					
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span tal:content="Title"/>
@@ -18,16 +18,8 @@
 						</div>						
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
-								<thead>
-									<tr>
-										<th>STT</th>																														
-										<th align="left">TIÊU ĐỀ</th>
-										<th align="left">THỜI GIAN</th>
-										<th>XÓA</th>
-									</tr>
-								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="VM Monk/getVMs">
+									<tr class="content-rows" tal:repeat="VM VMAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/VM/number" />
 										</td>
@@ -36,7 +28,9 @@
 												<div tal:content="VM/getVideo/getName" />
 											</a>
 										</td>
-										<td tal:content="VM/getVideo/getTime" />
+										<td>
+											<div tal:content="VM/getVideo/getTimePrint" />
+										</td>
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href VM/getURLDelLoad">
 												<div><img src="/data/images/remove.png" width="20" /></div>
@@ -47,20 +41,23 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Monk/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a tal:attributes="href Monk/getURLVideoInsLoad">Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
 						</div>
-						<div class="clear"/>
+						<div class="page-list">
+							<span tal:repeat="P PN/getPages">
+								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+							</span>
+						</div>
+						<div class="clear" />
 					</div>
 				</div>				
 				<div id="sidebar">										
 					<div class="sidebar-box">						
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
 						<div class="manager-menu">
 							<ul>
 								<a tal:repeat="Monk1 MonkAll" tal:attributes="href Monk1/getURLVideo">
@@ -73,9 +70,8 @@
 						</div>
 					</div>
 				</div>
-				<div class="clear"/>
-			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+				<div class="clear" />
+			</div>			
 		</div>
 	</body>
 </html>

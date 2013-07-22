@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
 			$Page = $request->getProperty('Page');
+			$IdCategory = $request->getProperty('IdCategory');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -21,37 +21,24 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			if (!isset($Page)) $Page=1;
-			
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			
+			//-------------------------------------------------------------						
+			$CategoryVideoAll = $mCategoryVideo->findAll();						
 			$Category = $mCategoryVideo->find($IdCategory);
-			$VLs = $mVideoLibrary->findByPage(array($IdCategory, $Page, 10));			
+			if (!isset($Page)) $Page = 1;
+			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
-			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
 			
+			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------						
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
 			$request->setObject("Category", $Category);
-			$request->setObject("VLs", $VLs);
-			$request->setObject('PN', $PN);
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setObject("VLAll", $VLAll);
+			$request->setObject("PN", $PN);
+			
 			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
-			
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

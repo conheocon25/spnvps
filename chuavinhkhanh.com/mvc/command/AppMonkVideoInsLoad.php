@@ -16,26 +16,40 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			
+			$mMonk = new \MVC\Mapper\Monk();
+			$mVideo = new \MVC\Mapper\Video();						
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$Monk = $mMonk->find($IdMonk);
+			//-------------------------------------------------------------			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();			
-			$Title = "Quản lý / Giảng sư / ".$Monk->getName()." / Thêm mới Video";
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+						
+			$Monk = $mMonk->find($IdMonk);
 			$PagodaAll = $mPagoda->findAll();
-			
+			$SponsorAll = $mSponsor->findAll();
+			$Title = "Quản lý / Giảng sư / ".$Monk->getName()." / Thêm mới Video";
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject('Monk', $Monk);			
+			//-------------------------------------------------------------									
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryVideoAll', $CategoryVideoAll);
+			
+			$request->setObject('Monk', $Monk);
 			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 			

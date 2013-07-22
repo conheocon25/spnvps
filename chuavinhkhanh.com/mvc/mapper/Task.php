@@ -14,7 +14,7 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 		$updateStmt = sprintf("update %s set type=?, date=?, title=?, description=?, url=? where id=?", $tblTask);
 		$insertStmt = sprintf("insert into %s ( type, date, title, description, url) values(?, ?, ?, ?, ?)", $tblTask);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTask);
-		$findTopStmt = sprintf("select *  from %s order by date desc limit 1", $tblTask);
+		$findByStmt = sprintf("select *  from %s where type=? order by date", $tblTask);
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblTask);
 		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date desc", $tblTask);
 				
@@ -23,7 +23,7 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		$this->findTopStmt = self::$PDO->prepare($findTopStmt);
+		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByFinishStmt = self::$PDO->prepare($findByFinishStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 	}
@@ -72,29 +72,13 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 		);
         $this->updateStmt->execute( $values );
     }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
-	function findTop( $values ){
-        $this->findTopStmt->execute( $values );
-        return new TaskCollection( $this->findTopStmt->fetchAll(), $this);
-    }
-	function findByNear( $values ){
-        $this->findByNearStmt->execute( $values );
-        return new TaskCollection( $this->findByNearStmt->fetchAll(), $this);
-    }
-	function findByFinish( $values ){
-        $this->findByFinishStmt->execute( $values );
-        return new TaskCollection( $this->findByFinishStmt->fetchAll(), $this);
-    }
+	function findBy( $values ){$this->findByStmt->execute( $values );return new TaskCollection( $this->findByStmt->fetchAll(), $this);}
+	function findByNear( $values ){$this->findByNearStmt->execute( $values );return new TaskCollection( $this->findByNearStmt->fetchAll(), $this);}
+	function findByFinish( $values ){$this->findByFinishStmt->execute( $values );return new TaskCollection( $this->findByFinishStmt->fetchAll(), $this);}
 }
 ?>

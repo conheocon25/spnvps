@@ -11,36 +11,15 @@ class CategoryAsk extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null , $Order=Null) {
-        $this->Id = $Id;
-		$this->Name = $Name;
-		$this->Order = $Order;
-        parent::__construct( $Id );
-    }
-    function getId() {
-        return $this->Id;
-    }	
-	function getIdPrint(){
-        return "c" . $this->getId();
-    }	
+    function __construct( $Id=null, $Name=null , $Order=Null) {$this->Id = $Id;$this->Name = $Name;$this->Order = $Order;parent::__construct( $Id );}
+    function getId() {return $this->Id;}	
+	function getIdPrint(){return "c" . $this->getId();}	
 	
-    function setName( $Name ) {
-        $this->Name = $Name;
-        $this->markDirty();
-    }
-   
-	function getName( ) {
-        return $this->Name;
-    }
+    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
+	function getName( ) {return $this->Name;}
 	
-	function setOrder( $Order ) {
-        $this->Order = $Order;
-        $this->markDirty();
-    }
-   
-	function getOrder( ) {
-        return $this->Order;
-    }
+	function setOrder( $Order ) {$this->Order = $Order;$this->markDirty();}
+	function getOrder( ) {return $this->Order;}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -60,40 +39,20 @@ class CategoryAsk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){
-		return "/ask/".$this->getId();
-	}
-	function getURLView(){
-		return "/app/category/ask/".$this->getId();
-	}
+	function getURLRead(){return "/ask/".$this->getId();}
+	function getURLView(){return "/app/category/ask/".$this->getId();}
 	
-	function getURLUpdLoad(){
-		return "/app/category/ask/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){		
-		return "/app/category/ask/".$this->getId()."/upd/exe";			
-	}
+	function getURLUpdLoad(){return "/app/category/ask/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/app/category/ask/".$this->getId()."/upd/exe";}
 	
-	function getURLDelLoad(){		
-		return "/app/category/ask/".$this->getId()."/del/load";						
-	}
-	function getURLDelExe(){	
-		return "/app/category/ask/".$this->getId()."/del/exe";
-	}
+	function getURLDelLoad(){return "/app/category/ask/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/app/category/ask/".$this->getId()."/del/exe";}
 	
-	function getURLAskInsLoad(){
-		return "/app/category/ask/".$this->getId()."/ins/load";
-	}
-	function getURLAskInsExe(){
-		return "/app/category/ask/".$this->getId()."/ins/exe";
-	}
+	function getURLAskInsLoad(){return "/app/category/ask/".$this->getId()."/ins/load";}
+	function getURLAskInsExe(){return "/app/category/ask/".$this->getId()."/ins/exe";}
 	
-	function getURLAskInsLoad1(){
-		return "/ask/".$this->getId()."/ins/load";
-	}
-	function getURLAskInsExe1(){
-		return "/ask/".$this->getId()."/ins/exe";
-	}
+	function getURLAskInsLoad1(){return "/ask/".$this->getId()."/ins/load";}
+	function getURLAskInsExe1(){return "/ask/".$this->getId()."/ins/exe";}
 	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

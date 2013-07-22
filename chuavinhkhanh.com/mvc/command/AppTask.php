@@ -11,10 +11,11 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdCategory = $request->getProperty('IdCategory');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------												
 			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
@@ -24,17 +25,20 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoriesTask = $mCategoryTask->findAll();			
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
 			$CourseAll = $mCourse->findAll();
-			$TaskAll = $mTask->findAll();
-			$LinkedAll = $mLinked->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelNews = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$ConfigAll = $mConfig->findAll();
+			$TaskAll = $mTask->findAll();
+			
+			$Category = $mCategoryTask->find($IdCategory);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -42,20 +46,23 @@
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject('CategoriesTask', $CategoriesTask);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('TaskAll', $TaskAll);
-			$request->setObject('LinkedAll', $LinkedAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('ConfigAll', $ConfigAll); 			
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
-			$request->setObject('PanelNewsAll', $PanelNewsAll);
-			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
+			$request->setObject('PanelNews', $PanelNews);
+			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);			
+			$request->setObject('TaskAll', $TaskAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / ');
+			$request->setObject('Category', $Category);
+			
+			$request->setProperty("Title", 'QUẢN LÝ / LỊCH LÀM VIỆC / '.$Category->getName() );
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Task');
 			
