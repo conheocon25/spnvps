@@ -13,11 +13,7 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Time').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Time').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 	</head>	
@@ -25,11 +21,11 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
-						<span>Quản trị &#8594; Album &#8594; Cập nhật</span>
+						<img src="/data/images/icon.png" width="30" />
+						<span tal:content="Title"/>
 						<a href="/app/album">&#8629; Trở lại</a>
 					</div>
 					<div class="box-editor-left">
@@ -70,14 +66,11 @@
 						</form>
 					</div>
 					<div class="box-editor-right">
-						Right
+						
 					</div>
 				</div>
 				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

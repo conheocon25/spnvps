@@ -15,16 +15,34 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			ORDER BY 
 			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
 		", $tblMonk, $tblVideo);
+		
+		$findVIPStmt = sprintf("
+			SELECT * FROM %s M
+			WHERE type=1
+			ORDER BY 
+			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
+		", $tblMonk, $tblVideo);
+		
 		$selectStmt = sprintf("select * from %s where id=?", $tblMonk);
-		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, picture=? where id=?", $tblMonk);
-		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, picture) values(?, ?, ?, ?, ?, ?, ?)", $tblMonk);
+		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, btype=?, url_pic=? where id=?", $tblMonk);
+		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, btype, url_pic) values(?, ?, ?, ?, ?, ?, ?, ?)", $tblMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);
+		$findByBTypeStmt = sprintf("
+			SELECT *  from %s M
+			WHERE btype=?
+			ORDER BY 
+			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
+		", $tblMonk, $tblVideo);
+		
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		
+		$this->findVIPStmt = self::$PDO->prepare($findVIPStmt);
+		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
 		
     } 
     function getCollection( array $raw ) {
@@ -40,7 +58,8 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			$array['phone'],
 			$array['note'],
 			$array['type'],
-			$array['picture']
+			$array['btype'],
+			$array['url_pic']
 		);
         return $obj;
     }
@@ -57,7 +76,8 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			$object->getPhone(),
 			$object->getNote(),
 			$object->getType(),
-			$object->getPicture(),
+			$object->getBType(),
+			$object->getURLPic()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -72,7 +92,8 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			$object->getPhone(),
 			$object->getNote(),
 			$object->getType(),
-			$object->getPicture(),
+			$object->getBType(),
+			$object->getURLPic(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -89,5 +110,13 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
         return $this->selectAllStmt;
     }
 	
+	function findByBType( $values ){
+        $this->findByBTypeStmt->execute( $values );
+        return new EventCollection( $this->findByBTypeStmt->fetchAll(), $this);
+    }
+	function findVIP( $values ){
+        $this->findVIPStmt->execute( $values );
+        return new EventCollection( $this->findVIPStmt->fetchAll(), $this);
+    }
 }
 ?>

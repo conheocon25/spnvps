@@ -11,23 +11,17 @@ class Statistic{
     function __construct( ){
                 
     }
-    static function getCount(){
-		$CountPage = ("data/hit_counter.txt");
-		$Hits = \file($CountPage);
-		$Hits[0] ++;
-		$fp = \fopen($CountPage , "w");
-		\fputs($fp , "$Hits[0]");
-		\fclose($fp);
-		return $Hits[0];
+    static function getCount(){		
+		$mConfig = new \MVC\Mapper\Config();
+		$Config = $mConfig->findByName('GUEST_VISIT');
+		return $Config->getValue();
 	}
 	static function getCountPrint(){
-		$CountPage = ("data/hit_counter.txt");
-		$Hits = \file($CountPage);
-		$Hits[0] ++;
-		$fp = \fopen($CountPage , "w");
-		\fputs($fp , "$Hits[0]");
-		\fclose($fp);				
-		$N = new Number($Hits[0]);		
+		$mConfig = new \MVC\Mapper\Config();
+		$Config = $mConfig->findByName('GUEST_VISIT');
+		$Config->setValue( $Config->getValue()+1 );
+		$mConfig->update($Config);
+		$N = new Number( $Config->getValue() );
 		return $N->formatCurrency();
 	}
 	

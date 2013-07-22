@@ -10,23 +10,11 @@ class PanelNews extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdNews=null){
-        $this->Id = $Id;
-		$this->IdNews = $IdNews;
-		
-        parent::__construct( $Id );
-    }
-    function getId() {
-        return $this->Id;
-    }
+    function __construct( $Id=null, $IdNews=null){$this->Id = $Id;$this->IdNews = $IdNews;parent::__construct( $Id );}
+    function getId() {return $this->Id;}
 	
-    function setIdNews( $IdNews ) {
-        $this->IdNews = $IdNews;
-        $this->markDirty();
-    }   
-	function getIdNews( ) {
-        return $this->IdNews;
-    }
+    function setIdNews( $IdNews ) {$this->IdNews = $IdNews;$this->markDirty();}   
+	function getIdNews( ) {return $this->IdNews;}
 
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -40,15 +28,9 @@ class PanelNews extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){
-		return "/news/".$this->getIdNews()."/".$this->getId();
-	}
-	function getURLDelLoad(){		
-		return "/app/panel/news/".$this->getId()."/del/load";
-	}	
-	function getURLDelExe(){		
-		return "/app/panel/news/".$this->getId()."/del/exe";
-	}
+	function getURLRead(){return "/news/".$this->getIdNews()."/".$this->getId();}
+	function getURLDelLoad(){return "/app/panel/news/".$this->getId()."/del/load";}	
+	function getURLDelExe(){return "/app/panel/news/".$this->getId()."/del/exe";}
 			
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

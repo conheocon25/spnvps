@@ -23,7 +23,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Configs = $mConfig->findAll();
+			$ConfigAll = $mConfig->findAll();
 						
 			$Config = $mConfig->find($IdConfig);
 			$Config->setParam($Param);

@@ -11,7 +11,9 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$Page = $request->getProperty('Page');
 			$IdMonk = $request->getProperty('IdMonk');
+			$IdBType = $request->getProperty('IdBType');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -20,30 +22,25 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Monk = $mMonk->find( $IdMonk );
-			$Monks = $mMonk->findAll( );
-			$PagodaAll = $mPagoda->findAll();
+			//-------------------------------------------------------------									
+			$Monk = $mMonk->find( $IdMonk );			
+			$MonkAll = $mMonk->findAll();
+						
+			if (!isset($Page)) $Page=1;
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLVideo());
 			
 			$Title = "Quản trị / Giảng sư / ".$Monk->getName();
-			$CategoryBType = $mCategoryBType->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("CategoryBTypeAll", $CategoryBType);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);						
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			//-------------------------------------------------------------															
 			$request->setObject("Monk", $Monk);
-			$request->setObject("Monks", $Monks);
-			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("VMAll", $VMAll);
+			$request->setObject("PN", $PN);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", "Home");
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

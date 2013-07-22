@@ -14,7 +14,7 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
 		$updateStmt = sprintf("update %s set param=?, value=? where id=?", $tblConfig);
 		$insertStmt = sprintf("insert into %s ( param, value) values(?, ?)", $tblConfig);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblConfig);		
-		$findByNameStmt = sprintf("select *  from %s where param=?", $tblConfig);
+		$findByNameStmt = sprintf("select * from %s where param=?", $tblConfig);
 									
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -70,7 +70,7 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
-	
+			
 	function findByName( $Param ){
         $this->findByNameStmt->execute( array( $Param ) );
         $array = $this->findByNameStmt->fetch( ); 
@@ -81,5 +81,6 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
         $object->markClean();
         return $object; 
     }
+	
 }
 ?>

@@ -60,7 +60,6 @@ class Video extends Mapper implements \MVC\Domain\VideoFinder {
 			$object->getNote(),
 			$object->getCount(),
 			$object->getTime(),
-			//date('Y-m-d H:i:s a', time()),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );

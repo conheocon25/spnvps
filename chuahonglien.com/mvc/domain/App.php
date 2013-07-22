@@ -1,7 +1,6 @@
 <?php
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
-use MVC\Library\Logger;
 
 class App extends Object{
 
@@ -48,8 +47,7 @@ class App extends Object{
 		$this->DateActivity = $DateActivity;
 		$this->Type = $Type;
 		$this->PageView = $PageView;
-				
-		$this->Logger = new Logger("data/log/".$Prefix."log.txt" , Logger::DEBUG );
+						
         parent::__construct( $Id );
     }
 	function getLogger() {

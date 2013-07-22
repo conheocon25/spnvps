@@ -15,8 +15,18 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");	
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
 			
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mAlbum = new \MVC\Mapper\Album();
+			$mEvent = new \MVC\Mapper\Event();
+			$mMonk = new \MVC\Mapper\Monk();
+			$mCourse = new \MVC\Mapper\Course();
+			$mSponsor = new \MVC\Mapper\Sponsor();
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
@@ -24,7 +34,6 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryTaskAll = $mCategoryTask->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
@@ -39,7 +48,6 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);

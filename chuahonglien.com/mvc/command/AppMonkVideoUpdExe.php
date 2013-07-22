@@ -17,6 +17,7 @@
 			$URL = $request->getProperty('URL');
 			$Note = $request->getProperty('Note');
 			$Count = $request->getProperty('Count');
+			$Date = $request->getProperty('Date');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -39,7 +40,12 @@
 			$Video->setNote($Note);
 			$Video->setURL($URL);
 			$Video->setCount($Count);
+			$Video->setTime($Date);
 			
+			$URLNew = $Video->parseURLYoutube();
+			if ($URLNew != "")
+				$Video->setURL($URLNew);
+				
 			$mVideo->update($Video);			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
