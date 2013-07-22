@@ -30,7 +30,7 @@
 			$request->setObject('PanelAll', $PanelAll);
 			$request->setObject('Panel', $Panel);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / CATEGORY / VIDEO / ');
+			$request->setProperty("Title", 'QUẢN LÝ / PANEL / DANH MỤC VIDEO / ');
 									
 			return self::statuses('CMD_DEFAULT');
 		}

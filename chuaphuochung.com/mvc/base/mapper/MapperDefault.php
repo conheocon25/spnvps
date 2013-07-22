@@ -3,6 +3,8 @@
 	$mCategoryNews = new \MVC\Mapper\CategoryNews();
 	$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
 	$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+	$mCategoryPaid = new \MVC\Mapper\CategoryPaid();
+	$mCategoryTask = new \MVC\Mapper\CategoryTask();
 	$mPagoda = new \MVC\Mapper\Pagoda();
 	$mAlbum = new \MVC\Mapper\Album();
 	$mEvent = new \MVC\Mapper\Event();
@@ -15,10 +17,7 @@
 	$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
 	$mConfig = new \MVC\Mapper\Config();
 	$mTask = new \MVC\Mapper\Task();
-	$mNews = new \MVC\Mapper\News();
-	$mCategoryTask = new \MVC\Mapper\CategoryTask();
-	$mCategoryPaid = new \MVC\Mapper\CategoryPaid();
-	$mPaid = new \MVC\Mapper\Paid();
+	$mNews = new \MVC\Mapper\News();		
 	$mTracking = new \MVC\Mapper\Tracking();
 	$mVideo = new \MVC\Mapper\Video();
 	$mVM = new \MVC\Mapper\VideoMonk();

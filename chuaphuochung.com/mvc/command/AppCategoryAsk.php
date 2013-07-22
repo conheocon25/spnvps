@@ -23,7 +23,9 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryTaskAll = $mCategoryTask->findAll();
+			$CategoryPaidAll = $mCategoryPaid->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
@@ -35,8 +37,8 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
-			
-			$CategoryAskAll1 = $mCategoryAsk->findAll();						
+			$PopupAll = $mPopup->findAll();
+						
 			$Title = "Quản lý / Hỏi đáp /";
 			
 			//-------------------------------------------------------------
@@ -45,7 +47,9 @@
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
+			$request->setObject("CategoryPaidAll", $CategoryPaidAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
@@ -56,9 +60,9 @@
 			$request->setObject('PanelAdsAll', $PanelAdsAll);
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-			$request->setObject('TaskAll', $TaskAll);			
-			$request->setObject("CategoryAskAll1", $CategoryAskAll1);
-						
+			$request->setObject('TaskAll', $TaskAll);
+			$request->setObject('PopupAll', $PopupAll);			
+									
 			$request->setProperty("ActiveAdmin", 'Ask');
 			$request->setProperty("Title", $Title);
 			

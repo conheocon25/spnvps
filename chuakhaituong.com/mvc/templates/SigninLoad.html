@@ -5,10 +5,8 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div class="clear" />
@@ -29,11 +27,8 @@
 						<div align="center" id="SigninError">Vui lòng nhập đầy đủ tài khoản và mật khẩu</div>
 					</form>
 				</div>
-				<div class="enter"></div>
-			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
+				<div class="enter" />
+			</div>			
 		</div>
 	</body>
 </html>
