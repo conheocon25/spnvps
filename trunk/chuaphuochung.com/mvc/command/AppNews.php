@@ -11,6 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$Page = $request->getProperty('Page');
 			$IdCategory = $request->getProperty('IdCategory');
 			
 			//-------------------------------------------------------------
@@ -20,61 +21,25 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();			
-			$PagodaAll = $mPagoda->findAll();
-			$AlbumAll = $mAlbum->findAll();
-			$EventAll = $mEvent->findAll();
-			$MonkAll = $mMonk->findAll();
-			$CourseAll = $mCourse->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			$ConfigAll = $mConfig->findAll();
+			//-------------------------------------------------------------									
+			$Category = $mCategoryNews->find($IdCategory);
+			$CategoryNewsAll = $mCategoryNews->findAll();						
+			if (!isset($Page)) $Page=1;
 			
-			$Categories1 = $mCategoryNews->findAll();			
-			
-			if (!isset($IdCategory)){
-				if (!isset($IdCurrentCategory)){
-					$Category = $Categories->current();
-					$IdCategory = $Category->getId();
-				}
-				else {
-					$Category = $mCategoryNews->find($IdCurrentCategory);
-					$IdCategory = $IdCurrentCategory;
-				}
-			}else{
-				$Category = $mCategoryNews->find($IdCategory);
-			}
-			
-			$Session->setCurrentCategoryNews($IdCategory);			
 			$Title = "Quản lý / Tin tức / ".$Category->getName();
+			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
+			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);			
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('AlbumAll', $AlbumAll);
-			$request->setObject('EventAll', $EventAll);
-			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('SponsorAll', $SponsorAll); 
-			$request->setObject('ConfigAll', $ConfigAll); 
-			$request->setObject('PanelNews', $PanelNews);
-			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-			
-			$request->setObject("Categories", $Categories1);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
 			$request->setObject("Category", $Category);
+			$request->setObject("PN", $PN);
+			$request->setObject("NewsAll", $NewsAll);
 			
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setProperty('Page', $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

@@ -9,12 +9,12 @@ class PanelCategoryVideoDetail extends Mapper implements \MVC\Domain\PanelCatego
 				
 		$tblPanelCategoryVideoDetail = "chuaphuochung_panel_category_video_detail";
 		
-		$selectAllStmt = sprintf("select * from %s", $tblPanelCategoryVideoDetail);
+		$selectAllStmt = sprintf("select * from %s order by `order`", $tblPanelCategoryVideoDetail);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblPanelCategoryVideoDetail);
 		$updateStmt = sprintf("update %s set id_category=?, id_category_video=?, `order`=? where id=?", $tblPanelCategoryVideoDetail);
 		$insertStmt = sprintf("insert into %s (id_category, id_category_video, `order`) values(?, ?, ?)", $tblPanelCategoryVideoDetail);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPanelCategoryVideoDetail);
-		$findByStmt = sprintf("select *  from %s where id_category=?", $tblPanelCategoryVideoDetail);
+		$findByStmt = sprintf("select *  from %s where id_category=? order by `order`", $tblPanelCategoryVideoDetail);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

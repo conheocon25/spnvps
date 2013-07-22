@@ -245,6 +245,14 @@ RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/upd/exe$ 			?cmd=AppSponsorVide
 RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/del/load$ 			?cmd=AppSponsorVideoDelLoad&IdSponsor=$1&IdVideo=$2 [L]
 RewriteRule ^app/sponsor/([0-9]+)/video/([0-9]+)/del/exe$ 			?cmd=AppSponsorVideoDelExe&IdSponsor=$1&IdVideo=$2 [L]
 
+RewriteRule ^app/sponsor/([0-9]+)/paid$ 							?cmd=AppSponsorPaid&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/ins/load$ 					?cmd=AppSponsorPaidInsLoad&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/ins/exe$ 					?cmd=AppSponsorPaidInsExe&IdSponsor=$1 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/upd/load$ 			?cmd=AppSponsorPaidUpdLoad&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/upd/exe$ 			?cmd=AppSponsorPaidUpdExe&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/del/load$ 			?cmd=AppSponsorPaidDelLoad&IdSponsor=$1&IdPaid=$2 [L]
+RewriteRule ^app/sponsor/([0-9]+)/paid/([0-9]+)/del/exe$ 			?cmd=AppSponsorPaidDelExe&IdSponsor=$1&IdPaid=$2 [L]
+
 RewriteRule ^app/panel/ads$ 										?cmd=AppPanelAds [L]
 RewriteRule ^app/panel/ads/ins/load$ 								?cmd=AppPanelAdsInsLoad [L]
 RewriteRule ^app/panel/ads/ins/exe$ 								?cmd=AppPanelAdsInsExe [L]
@@ -272,3 +280,11 @@ RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppPanel
 RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/upd/exe$ 	?cmd=AppPanelCategoryVideoDetailUpdExe&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
 RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppPanelCategoryVideoDetailDelLoad&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
 RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/del/exe$ 	?cmd=AppPanelCategoryVideoDetailDelExe&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
+
+RewriteRule ^app/popup$ 											?cmd=AppPopup [L]
+RewriteRule ^app/popup/ins/load$ 									?cmd=AppPopupInsLoad [L]
+RewriteRule ^app/popup/ins/exe$ 									?cmd=AppPopupInsExe [L]
+RewriteRule ^app/popup/([0-9]+)/upd/load$ 							?cmd=AppPopupUpdLoad&IdPopup=$1 [L]
+RewriteRule ^app/popup/([0-9]+)/upd/exe$ 							?cmd=AppPopupUpdExe&IdPopup=$1 [L]
+RewriteRule ^app/popup/([0-9]+)/del/load$ 							?cmd=AppPopupDelLoad&IdPopup=$1 [L]
+RewriteRule ^app/popup/([0-9]+)/del/exe$ 							?cmd=AppPopupDelExe&IdPopup=$1 [L]

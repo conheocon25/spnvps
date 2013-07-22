@@ -19,7 +19,7 @@
 						<div style="padding:10px;">
 							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
 								<tbody>
-									<tr class="content-rows" tal:repeat="VM Monk/getVMs">
+									<tr class="content-rows" tal:repeat="VM VMAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/VM/number" />
 										</td>
@@ -46,6 +46,11 @@
 									</tr>
 								</tfoot>
 							</table>
+						</div>
+						<div class="page-list">
+							<span tal:repeat="P PN/getPages">
+								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+							</span>
 						</div>
 						<div class="clear" />
 					</div>

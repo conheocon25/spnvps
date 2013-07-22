@@ -24,5 +24,7 @@
 	$mVM = new \MVC\Mapper\VideoMonk();
 	$mVL = new \MVC\Mapper\VideoLibrary();
 	$mVP = new \MVC\Mapper\VideoPagoda();
+	$mVS = new \MVC\Mapper\VideoSponsor();
 	$mAsk = new \MVC\Mapper\Ask();
+	$mPopup = new \MVC\Mapper\Popup();
 ?>

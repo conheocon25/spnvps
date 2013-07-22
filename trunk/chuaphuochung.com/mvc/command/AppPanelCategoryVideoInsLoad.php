@@ -55,8 +55,7 @@
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject('CategoryVideoAll', $CategoryVideoAll);
-						
+									
 			$request->setProperty("Title", 'QUẢN LÝ / PANEL / CATEGORY / VIDEO / THÊM MỚI');
 			$request->setProperty("ActiveItem", 'Home');
 			
