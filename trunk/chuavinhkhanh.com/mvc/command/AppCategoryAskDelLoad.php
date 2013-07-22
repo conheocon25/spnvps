@@ -15,26 +15,20 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
-					
+			//-------------------------------------------------------------						
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();			
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$Category = $mCategoryAsk->find($IdCategory);
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();			
+			$Category = $mCategoryAsk->find($IdCategory);						
 			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Xóa";
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('Category', $Category);
-			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
-			$request->setObject('CategoryAskAll', $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setProperty('ActiveItem', 'Home');
+			
 			$request->setProperty('Title', $Title);
 		}
 	}

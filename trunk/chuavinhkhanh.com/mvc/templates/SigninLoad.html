@@ -5,17 +5,16 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div class="clear" />
 				<div class="signin-frame">
 					<form id="FormSignin" name="FormSignin" tal:attributes="action '/signin/exe'" method="post" autocomplete="off">
-						<h1 align="center">© 01-2013 Chùa Vĩnh Khánh</h1>
+						<h1 align="center">© 2012 Chùa Vĩnh Khánh</h1>
 						<div align="center">
-							<label id="SigninEmailLabel" class="signin-label">Email@example.com</label>
+							<label id="SigninEmailLabel" class="signin-label">email@example.com</label>
 							<input id="SigninEmail" name="Email" type="text" class="signin-textbox" />
 						</div>
 						<div align="center">
@@ -28,11 +27,8 @@
 						<div align="center" id="SigninError">Vui lòng nhập đầy đủ tài khoản và mật khẩu</div>
 					</form>
 				</div>
-				<div class="enter"></div>
-			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
+				<div class="enter" />
+			</div>			
 		</div>
 	</body>
 </html>

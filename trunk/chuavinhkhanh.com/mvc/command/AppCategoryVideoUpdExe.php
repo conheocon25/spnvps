@@ -17,7 +17,6 @@
 			$Order = $request->getProperty('Order');
 			$Type = $request->getProperty('Type');
 			$BType = $request->getProperty('BType');
-						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			

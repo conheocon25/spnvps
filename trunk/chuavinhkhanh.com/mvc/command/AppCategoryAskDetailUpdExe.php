@@ -16,7 +16,7 @@
 			$Question = $request->getProperty('Question');
 			$Time = $request->getProperty('Time');
 			$Author1 = $request->getProperty('Author1');
-			$Answer = \stripslashes($request->getProperty('Answer'));
+			$Answer = $request->getProperty('Answer');
 			$Author2 = $request->getProperty('Author2');
 						
 			//-------------------------------------------------------------

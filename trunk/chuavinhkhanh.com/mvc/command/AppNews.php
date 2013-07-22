@@ -11,53 +11,35 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
 			$Page = $request->getProperty('Page');
+			$IdCategory = $request->getProperty('IdCategory');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			include("mvc/base/mapper/MapperDefault.php");			
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Categories1 = $mCategoryNews->findAll();
-			$PagodaAll = $mPagoda->findAll();
+			//-------------------------------------------------------------									
+			$Category = $mCategoryNews->find($IdCategory);
+			$CategoryNewsAll = $mCategoryNews->findAll();						
+			if (!isset($Page)) $Page=1;
 			
-			if (!isset($IdCategory)){
-				if (!isset($IdCurrentCategory)){
-					$Category = $Categories->current();
-					$IdCategory = $Category->getId();
-				}
-				else {
-					$Category = $mCategoryNews->find($IdCurrentCategory);
-					$IdCategory = $IdCurrentCategory;
-				}
-			}else{
-				$Category = $mCategoryNews->find($IdCategory);
-			}
-			if (!isset($Page)) $Page=1;			
-			$Session->setCurrentCategoryNews($IdCategory);
+			$Title = "Quản lý / Tin tức / ".$Category->getName();
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$Title = "Quản lý / Chuyên mục Tin tức / ".$Category->getName();
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("Categories", $Categories1);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
 			$request->setObject("Category", $Category);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('NewsAll', $NewsAll);
-			$request->setObject('PN', $PN);
+			$request->setObject("PN", $PN);
+			$request->setObject("NewsAll", $NewsAll);
+			
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("Page", $Page);
+			$request->setProperty('Page', $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

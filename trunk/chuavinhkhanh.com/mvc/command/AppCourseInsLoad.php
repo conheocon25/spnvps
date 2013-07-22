@@ -15,31 +15,46 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();			
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mAlbum = new \MVC\Mapper\Album();
+			$mEvent = new \MVC\Mapper\Event();
+			$mMonk = new \MVC\Mapper\Monk();
+			$mSponsor = new \MVC\Mapper\Sponsor();
+			$mCourse = new \MVC\Mapper\Course();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
+			
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
 			$MonkAll = $mMonk->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$CourseAll = $mCourse->findAll();			
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
 			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);			
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('CourseAll', $CourseAll);
 			
 			$request->setProperty("Title", 'Quản Lý / Đào tạo / Thêm mới');
 			$request->setProperty("ActiveItem", 'Home');

@@ -6,59 +6,61 @@
 		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Gate</forward></status></command>
 		<command name="Gate" type="public"><view>Gate</view></command>
 		<command name="Home" type="public"><view>Home</view></command>
+		
 		<command name="Introduction" type="public"><view>Introduction</view></command>
-		<command name="Contact" type="public"><view>Contact</view></command>		
+		<command name="Introduction0" type="public"><view>Introduction0</view></command>
+		<command name="Introduction1" type="public"><view>Introduction1</view></command>
+		<command name="Introduction2" type="public"><view>Introduction2</view></command>
+		<command name="Introduction3" type="public"><view>Introduction3</view></command>
+		<command name="Introduction4" type="public"><view>Introduction4</view></command>
+		
+		<command name="Contact" type="public"><view>Contact</view></command>
 		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
+		
+		<command name="Task" type="public"><view>Task</view></command>
+		
+		<command name="Report" type="public"><view>Report</view></command>		
 		<command name="Sponsor" type="public"><view>Sponsor</view></command>
 		<command name="SponsorDetail" type="public"><view>SponsorDetail</view></command>
+		<command name="SponsorDetailVideo" type="public"><view>SponsorDetailVideo</view></command>
+		
 		<command name="Event" type="public"><view>Event</view></command>
 		<command name="Pagoda" type="public"><view>Pagoda</view></command>
 		<command name="Ads" type="public"><view>Ads</view></command>
-		<command name="Linked" type="public"><view>Linked</view></command>
-		<command name="Task" type="public"><view>Task</view></command>		
-		<command name="LiveTV" type="public"><view>LiveTV</view></command>
-		<command name="RefreshCaptcha" type="public"><view>RefreshCaptcha</view></command>
-		
+				
 		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
-		<command name="SigninExe" type="public"><view>SigninExe</view><status value="CMD_OK"><forward>App</forward></status><status value="CMD_NO_AUTHOR"><forward>Home</forward></status></command>
-		<command name="ChangePass"><view>ChangePass</view></command>
-		<command name="ChangePassExe"><view>ChangePassExe</view><status value="CMD_OK"><forward>SigninLoad</forward></status><status value="CMD_NO_AUTHOR"><forward>Home</forward></status></command>
+		<command name="SigninExe" type="public">
+			<view>SigninExe</view>
+			<status value="CMD_OK"><forward>App</forward></status>
+			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
+		</command>
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
 		<command name="Online" type="public"><view>Online</view></command>
 		<command name="OnlineExe" type="public"><view>OnlineExe</view><status value="CMD_OK"><forward>Online</forward></status><status value="CMD_NO_AUTHOR"><forward>Home</forward></status></command>
 		<command name="Ask" type="public"><view>Ask</view></command>
 		<command name="AskInsLoad" type="public"><view>AskInsLoad</view></command>
-		<command name="AskInsExe" type="public"><view>AskInsExe</view><status value="CMD_OK"><forward>Ask</forward></status><status value="CMD_ERROR"><forward>AskInsLoad</forward></status></command>
+		<command name="AskInsExe" type="public"><view>AskInsExe</view><status value="CMD_OK"><forward>Ask</forward></status></command>
 		
-		<!-- ============================================================================== -->
-		<!-- COURSE			 																-->
-		<!-- ============================================================================== -->
 		<command name="Course" type="public"><view>Course</view></command>
-		<command name="CourseClass" type="public"><view>CourseClass</view></command>
-		<command name="CourseClassLession" type="public"><view>CourseClassLession</view></command>
+		<command name="CourseLession" type="public"><view>CourseLession</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->
 		<command name="Library" type="public"><view>Library</view></command>
-		
-		<command name="LibraryDhammapada" type="public"><view>LibraryDhammapada</view></command>
-		<command name="LibraryDhammapadaDetail" type="public"><view>LibraryDhammapadaDetail</view></command>
-		
 		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>
 		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
 		<command name="LibraryVideoCategory" type="public"><view>LibraryVideoCategory</view></command>
 		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
 		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
 		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
-		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
 		<command name="LibraryVideoPagoda" type="public"><view>LibraryVideoPagoda</view></command>
-				
+
 		<command name="App"><view>App</view></command>
-		
+						
 		<!-- ============================================================================== -->
 		<!-- APP.LIBRARY.ALBUM																-->
 		<!-- ============================================================================== -->
@@ -71,51 +73,50 @@
 		<command name="AppLibraryAlbumDelExe"><view>AppLibraryAlbumDelExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.SPONSOR																	-->
+		<!-- APP.CATEGORY.PAID																-->
 		<!-- ============================================================================== -->
-		<command name="AppSponsor"><view>AppSponsor</view></command>
-		<command name="AppSponsorInsLoad"><view>AppSponsorInsLoad</view></command>
-		<command name="AppSponsorInsExe"><view>AppSponsorInsExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>		
-		<command name="AppSponsorUpdLoad"><view>AppSponsorUpdLoad</view></command>
-		<command name="AppSponsorUpdExe"><view>AppSponsorUpdExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>		
-		<command name="AppSponsorDelLoad"><view>AppSponsorDelLoad</view></command>
-		<command name="AppSponsorDelExe"><view>AppSponsorDelExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>
+		<command name="AppCategoryPaid"><view>AppCategoryPaid</view></command>
+		<command name="AppCategoryPaidInsLoad"><view>AppCategoryPaidInsLoad</view></command>
+		<command name="AppCategoryPaidInsExe"><view>AppCategoryPaidInsExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>		
+		<command name="AppCategoryPaidUpdLoad"><view>AppCategoryPaidUpdLoad</view></command>
+		<command name="AppCategoryPaidUpdExe"><view>AppCategoryPaidUpdExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>		
+		<command name="AppCategoryPaidDelLoad"><view>AppCategoryPaidDelLoad</view></command>
+		<command name="AppCategoryPaidDelExe"><view>AppCategoryPaidDelExe</view><status value="CMD_OK"><forward>AppCategoryPaid</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.SPONSOR.PERSON																-->
+		<!-- APP.PAID																		-->
 		<!-- ============================================================================== -->
-		<command name="AppSponsorPerson"><view>AppSponsorPerson</view></command>
-		<command name="AppSponsorPersonInsLoad"><view>AppSponsorPersonInsLoad</view></command>
-		<command name="AppSponsorPersonInsExe"><view>AppSponsorPersonInsExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>		
-		<command name="AppSponsorPersonUpdLoad"><view>AppSponsorPersonUpdLoad</view></command>
-		<command name="AppSponsorPersonUpdExe"><view>AppSponsorPersonUpdExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>
-		<command name="AppSponsorPersonDelLoad"><view>AppSponsorPersonDelLoad</view></command>
-		<command name="AppSponsorPersonDelExe"><view>AppSponsorPersonDelExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>
+		<command name="AppPaid"><view>AppPaid</view></command>
+		<command name="AppPaidInsLoad"><view>AppPaidInsLoad</view></command>
+		<command name="AppPaidInsExe"><view>AppPaidInsExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
+		<command name="AppPaidUpdLoad"><view>AppPaidUpdLoad</view></command>
+		<command name="AppPaidUpdExe"><view>AppPaidUpdExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
+		<command name="AppPaidDelLoad"><view>AppPaidDelLoad</view></command>
+		<command name="AppPaidDelExe"><view>AppPaidDelExe</view><status value="CMD_OK"><forward>AppPaid</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.SPONSOR.VIDEO																-->
+		<!-- APP.CATEGORY.TASK																-->
 		<!-- ============================================================================== -->
-		<command name="AppSponsorVideo"><view>AppSponsorVideo</view></command>
-		<command name="AppSponsorVideoInsLoad"><view>AppSponsorVideoInsLoad</view></command>
-		<command name="AppSponsorVideoInsExe"><view>AppSponsorVideoInsExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>		
-		<command name="AppSponsorVideoUpdLoad"><view>AppSponsorVideoUpdLoad</view></command>
-		<command name="AppSponsorVideoUpdExe"><view>AppSponsorVideoUpdExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>
-		<command name="AppSponsorVideoDelLoad"><view>AppSponsorVideoDelLoad</view></command>
-		<command name="AppSponsorVideoDelExe"><view>AppSponsorVideoDelExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>
+		<command name="AppCategoryTask"><view>AppCategoryTask</view></command>
+		<command name="AppCategoryTaskInsLoad"><view>AppCategoryTaskInsLoad</view></command>
+		<command name="AppCategoryTaskInsExe"><view>AppCategoryTaskInsExe</view><status value="CMD_OK"><forward>AppCategoryTask</forward></status></command>		
+		<command name="AppCategoryTaskUpdLoad"><view>AppCategoryTaskUpdLoad</view></command>
+		<command name="AppCategoryTaskUpdExe"><view>AppCategoryTaskUpdExe</view><status value="CMD_OK"><forward>AppCategoryTask</forward></status></command>		
+		<command name="AppCategoryTaskDelLoad"><view>AppCategoryTaskDelLoad</view></command>
+		<command name="AppCategoryTaskDelExe"><view>AppCategoryTaskDelExe</view><status value="CMD_OK"><forward>AppCategoryTask</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.LINKED																		-->
+		<!-- APP.TASK																		-->
 		<!-- ============================================================================== -->
-		<command name="AppLinked"><view>AppLinked</view></command>
-		<command name="AppLinkedInsLoad"><view>AppLinkedInsLoad</view></command>
-		<command name="AppLinkedInsExe"><view>AppLinkedInsExe</view><status value="CMD_OK"><forward>AppLinked</forward></status></command>
-		<command name="AppLinkedUpdLoad"><view>AppLinkedUpdLoad</view></command>
-		<command name="AppLinkedUpdExe"><view>AppLinkedUpdExe</view><status value="CMD_OK"><forward>AppLinked</forward></status></command>		
-		<command name="AppLinkedDelLoad"><view>AppLinkedDelLoad</view></command>
-		<command name="AppLinkedDelExe"><view>AppLinkedDelExe</view><status value="CMD_OK"><forward>AppLinked</forward></status></command>
-		
+		<command name="AppTask"><view>AppTask</view></command>
+		<command name="AppTaskInsLoad"><view>AppTaskInsLoad</view></command>
+		<command name="AppTaskInsExe"><view>AppTaskInsExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
+		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
+		<command name="AppTaskUpdExe"><view>AppTaskUpdExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
+		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command><command name="AppTaskDelExe"><view>AppTaskDelExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>
+						
 		<!-- ============================================================================== -->
-		<!-- APP.COURSE																		-->
+		<!-- APP.COURSE																-->
 		<!-- ============================================================================== -->
 		<command name="AppCourse"><view>AppCourse</view></command>
 		<command name="AppCourseInsLoad"><view>AppCourseInsLoad</view></command>
@@ -126,33 +127,22 @@
 		<command name="AppCourseDelExe"><view>AppCourseDelExe</view><status value="CMD_OK"><forward>AppCourse</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.COURSE.CLASS																-->
+		<!-- APP.COURSE.LESSION																-->
 		<!-- ============================================================================== -->
-		<command name="AppCourseClass"><view>AppCourseClass</view></command>
-		<command name="AppCourseClassInsLoad"><view>AppCourseClassInsLoad</view></command>
-		<command name="AppCourseClassInsExe"><view>AppCourseClassInsExe</view><status value="CMD_OK"><forward>AppCourseClass</forward></status></command>		
-		<command name="AppCourseClassUpdLoad"><view>AppCourseClassUpdLoad</view></command>
-		<command name="AppCourseClassUpdExe"><view>AppCourseClassUpdExe</view><status value="CMD_OK"><forward>AppCourseClass</forward></status></command>		
-		<command name="AppCourseClassDelLoad"><view>AppCourseClassDelLoad</view></command>
-		<command name="AppCourseClassDelExe"><view>AppCourseClassDelExe</view><status value="CMD_OK"><forward>AppCourseClass</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.CLASS.LESSION																-->
-		<!-- ============================================================================== -->
-		<command name="AppClassLession"><view>AppClassLession</view></command>
-		<command name="AppClassLessionInsLoad"><view>AppClassLessionInsLoad</view></command>
-		<command name="AppClassLessionInsExe"><view>AppClassLessionInsExe</view><status value="CMD_OK"><forward>AppClassLession</forward></status></command>
-		<command name="AppClassLessionUpdLoad"><view>AppClassLessionUpdLoad</view></command>
-		<command name="AppClassLessionUpdExe"><view>AppClassLessionUpdExe</view><status value="CMD_OK"><forward>AppClassLession</forward></status></command>		
-		<command name="AppClassLessionDelLoad"><view>AppClassLessionDelLoad</view></command>
-		<command name="AppClassLessionDelExe"><view>AppClassLessionDelExe</view><status value="CMD_OK"><forward>AppClassLession</forward></status></command>
+		<command name="AppCourseLession"><view>AppCourseLession</view></command>
+		<command name="AppCourseLessionInsLoad"><view>AppCourseLessionInsLoad</view></command>
+		<command name="AppCourseLessionInsExe"><view>AppCourseLessionInsExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
+		<command name="AppCourseLessionUpdLoad"><view>AppCourseLessionUpdLoad</view></command>
+		<command name="AppCourseLessionUpdExe"><view>AppCourseLessionUpdExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
+		<command name="AppCourseLessionDelLoad"><view>AppCourseLessionDelLoad</view></command>
+		<command name="AppCourseLessionDelExe"><view>AppCourseLessionDelExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.EVENT																		-->
 		<!-- ============================================================================== -->
 		<command name="AppEvent"><view>AppEvent</view></command>
 		<command name="AppEventInsLoad"><view>AppEventInsLoad</view></command>
-		<command name="AppEventInsExe"><view>AppEventInsExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
+		<command name="AppEventInsExe"><view>AppEventInsExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>		
 		<command name="AppEventUpdLoad"><view>AppEventUpdLoad</view></command>
 		<command name="AppEventUpdExe"><view>AppEventUpdExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>		
 		<command name="AppEventDelLoad"><view>AppEventDelLoad</view></command>
@@ -163,7 +153,7 @@
 		<!-- ============================================================================== -->
 		<command name="AppPagoda"><view>AppPagoda</view></command>
 		<command name="AppPagodaInsLoad"><view>AppPagodaInsLoad</view></command>
-		<command name="AppPagodaInsExe"><view>AppPagodaInsExe</view><status value="CMD_OK"><forward>AppPagoda</forward></status></command>
+		<command name="AppPagodaInsExe"><view>AppPagodaInsExe</view><status value="CMD_OK"><forward>AppPagoda</forward></status></command>		
 		<command name="AppPagodaUpdLoad"><view>AppPagodaUpdLoad</view></command>
 		<command name="AppPagodaUpdExe"><view>AppPagodaUpdExe</view><status value="CMD_OK"><forward>AppPagoda</forward></status></command>		
 		<command name="AppPagodaDelLoad"><view>AppPagodaDelLoad</view></command>
@@ -185,7 +175,7 @@
 		<!-- ============================================================================== -->
 		<command name="AppMonk"><view>AppMonk</view></command>
 		<command name="AppMonkInsLoad"><view>AppMonkInsLoad</view></command>
-		<command name="AppMonkInsExe"><view>AppMonkInsExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>		
+		<command name="AppMonkInsExe"><view>AppMonkInsExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
 		<command name="AppMonkUpdLoad"><view>AppMonkUpdLoad</view></command>
 		<command name="AppMonkUpdExe"><view>AppMonkUpdExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>		
 		<command name="AppMonkDelLoad"><view>AppMonkDelLoad</view></command>
@@ -249,11 +239,14 @@
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.VIDEO.DETAIL														-->
 		<!-- ============================================================================== -->
-		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>		
+		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>
+		
 		<command name="AppCategoryVideoDetailInsLoad"><view>AppCategoryVideoDetailInsLoad</view></command>
-		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>		
+		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		
 		<command name="AppCategoryVideoDetailUpdLoad"><view>AppCategoryVideoDetailUpdLoad</view></command>
-		<command name="AppCategoryVideoDetailUpdExe"><view>AppCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>		
+		<command name="AppCategoryVideoDetailUpdExe"><view>AppCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		
 		<command name="AppCategoryVideoDetailDelLoad"><view>AppCategoryVideoDetailDelLoad</view></command>
 		<command name="AppCategoryVideoDetailDelExe"><view>AppCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
 		
@@ -269,6 +262,50 @@
 		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
 		
 		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR																	-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsor"><view>AppSponsor</view></command>
+		<command name="AppSponsorInsLoad"><view>AppSponsorInsLoad</view></command>
+		<command name="AppSponsorInsExe"><view>AppSponsorInsExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>		
+		<command name="AppSponsorUpdLoad"><view>AppSponsorUpdLoad</view></command>
+		<command name="AppSponsorUpdExe"><view>AppSponsorUpdExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>		
+		<command name="AppSponsorDelLoad"><view>AppSponsorDelLoad</view></command>
+		<command name="AppSponsorDelExe"><view>AppSponsorDelExe</view><status value="CMD_OK"><forward>AppSponsor</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.PERSON																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorPerson"><view>AppSponsorPerson</view></command>
+		<command name="AppSponsorPersonInsLoad"><view>AppSponsorPersonInsLoad</view></command>
+		<command name="AppSponsorPersonInsExe"><view>AppSponsorPersonInsExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>		
+		<command name="AppSponsorPersonUpdLoad"><view>AppSponsorPersonUpdLoad</view></command>
+		<command name="AppSponsorPersonUpdExe"><view>AppSponsorPersonUpdExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>
+		<command name="AppSponsorPersonDelLoad"><view>AppSponsorPersonDelLoad</view></command>
+		<command name="AppSponsorPersonDelExe"><view>AppSponsorPersonDelExe</view><status value="CMD_OK"><forward>AppSponsorPerson</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.VIDEO																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorVideo"><view>AppSponsorVideo</view></command>
+		<command name="AppSponsorVideoInsLoad"><view>AppSponsorVideoInsLoad</view></command>
+		<command name="AppSponsorVideoInsExe"><view>AppSponsorVideoInsExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>		
+		<command name="AppSponsorVideoUpdLoad"><view>AppSponsorVideoUpdLoad</view></command>
+		<command name="AppSponsorVideoUpdExe"><view>AppSponsorVideoUpdExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>
+		<command name="AppSponsorVideoDelLoad"><view>AppSponsorVideoDelLoad</view></command>
+		<command name="AppSponsorVideoDelExe"><view>AppSponsorVideoDelExe</view><status value="CMD_OK"><forward>AppSponsorVideo</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.SPONSOR.PAID																-->
+		<!-- ============================================================================== -->
+		<command name="AppSponsorPaid"><view>AppSponsorPaid</view></command>
+		<command name="AppSponsorPaidInsLoad"><view>AppSponsorPaidInsLoad</view></command>
+		<command name="AppSponsorPaidInsExe"><view>AppSponsorPaidInsExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		<command name="AppSponsorPaidUpdLoad"><view>AppSponsorPaidUpdLoad</view></command>
+		<command name="AppSponsorPaidUpdExe"><view>AppSponsorPaidUpdExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		<command name="AppSponsorPaidDelLoad"><view>AppSponsorPaidDelLoad</view></command>
+		<command name="AppSponsorPaidDelExe"><view>AppSponsorPaidDelExe</view><status value="CMD_OK"><forward>AppSponsorPaid</forward></status></command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
@@ -280,18 +317,16 @@
 		<command name="AppConfigDelExe"><view>AppConfigDelExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.TASK																		-->
+		<!-- APP.PANEL ADS																	-->
 		<!-- ============================================================================== -->
-		<command name="AppTask"><view>AppTask</view></command>
-		<command name="AppTaskInsLoad"><view>AppTaskInsLoad</view></command>
-		<command name="AppTaskInsExe"><view>AppTaskInsExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
-		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
-		<command name="AppTaskUpdExe"><view>AppTaskUpdExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
-		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command>
-		<command name="AppTaskDelExe"><view>AppTaskDelExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>
+		<command name="AppPanelAds"><view>AppPanelAds</view></command>
+		<command name="AppPanelAdsInsLoad"><view>AppPanelAdsInsLoad</view></command>
+		<command name="AppPanelAdsInsExe"><view>AppPanelAdsInsExe</view><status value="CMD_OK"><forward>AppPanelAds</forward></status></command>
+		<command name="AppPanelAdsDelLoad"><view>AppPanelAdsDelLoad</view></command>
+		<command name="AppPanelAdsDelExe"><view>AppPanelAdsDelExe</view><status value="CMD_OK"><forward>AppPanelAds</forward></status></command>
 		
 		<!-- ============================================================================== -->
-		<!-- APP.PANEL NEWS																		-->
+		<!-- APP.PANEL NEWS																	-->
 		<!-- ============================================================================== -->
 		<command name="AppPanelNews"><view>AppPanelNews</view></command>
 		<command name="AppPanelNewsInsLoad"><view>AppPanelNewsInsLoad</view></command>
@@ -305,17 +340,28 @@
 		<command name="AppPanelCategoryVideo"><view>AppPanelCategoryVideo</view></command>
 		<command name="AppPanelCategoryVideoInsLoad"><view>AppPanelCategoryVideoInsLoad</view></command>
 		<command name="AppPanelCategoryVideoInsExe"><view>AppPanelCategoryVideoInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
+		<command name="AppPanelCategoryVideoUpdLoad"><view>AppPanelCategoryVideoUpdLoad</view></command>
+		<command name="AppPanelCategoryVideoUpdExe"><view>AppPanelCategoryVideoUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
 		<command name="AppPanelCategoryVideoDelLoad"><view>AppPanelCategoryVideoDelLoad</view></command>
 		<command name="AppPanelCategoryVideoDelExe"><view>AppPanelCategoryVideoDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
 		
+		<command name="AppPanelCategoryVideoDetail"><view>AppPanelCategoryVideoDetail</view></command>
+		<command name="AppPanelCategoryVideoDetailInsLoad"><view>AppPanelCategoryVideoDetailInsLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailInsExe"><view>AppPanelCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
+		<command name="AppPanelCategoryVideoDetailDelLoad"><view>AppPanelCategoryVideoDetailDelLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailDelExe"><view>AppPanelCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
+		<command name="AppPanelCategoryVideoDetailUpdLoad"><view>AppPanelCategoryVideoDetailUpdLoad</view></command>
+		<command name="AppPanelCategoryVideoDetailUpdExe"><view>AppPanelCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
+		
 		<!-- ============================================================================== -->
-		<!-- APP.PANEL ADS																	-->
+		<!-- APP.POPUP																		-->
 		<!-- ============================================================================== -->
-		<command name="AppPanelAds"><view>AppPanelAds</view></command>
-		<command name="AppPanelAdsInsLoad"><view>AppPanelAdsInsLoad</view></command>
-		<command name="AppPanelAdsInsExe"><view>AppPanelAdsInsExe</view><status value="CMD_OK"><forward>AppPanelAds</forward></status></command>
-		<command name="AppPanelAdsDelLoad"><view>AppPanelAdsDelLoad</view></command>
-		<command name="AppPanelAdsDelExe"><view>AppPanelAdsDelExe</view><status value="CMD_OK"><forward>AppPanelAds</forward></status></command>
+		<command name="AppPopup"><view>AppPopup</view></command>
+		<command name="AppPopupInsLoad"><view>AppPopupInsLoad</view></command>
+		<command name="AppPopupInsExe"><view>AppPopupInsExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
+		<command name="AppPopupUpdLoad"><view>AppPopupUpdLoad</view></command>
+		<command name="AppPopupUpdExe"><view>AppPopupUpdExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
+		<command name="AppPopupDelLoad"><view>AppPopupDelLoad</view></command><command name="AppPopupDelExe"><view>AppPopupDelExe</view><status value="CMD_OK"><forward>AppPopup</forward></status></command>
 		
 	</control>
 </options>

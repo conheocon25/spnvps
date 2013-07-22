@@ -13,9 +13,7 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Time').datetimepicker({ dateFormat: 'yy-mm-dd' });
-			});
+			$(function() {$('#Time').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 	</head>	
@@ -23,10 +21,10 @@
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
 			<div id="main">
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title"/>
 						<a href="/app/album">&#8629; Trở lại</a>
 					</div>
@@ -37,28 +35,28 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" tal:attributes="value Album/getName" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Thời gian</div>
 								<div class="textbox" >
 									<input id="Time" name="Time" type="text" tal:attributes="value Album/getTime" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">URL</div>
 								<div class="textbox" >
 									<input id="URL" name="URL" type="text" tal:attributes="value Album/getURL" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Ghi chú</div>
 								<div class="textbox" >
 									<input id="Note" name="Note" type="text" tal:attributes="value Album/getNote" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -71,11 +69,8 @@
 						
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

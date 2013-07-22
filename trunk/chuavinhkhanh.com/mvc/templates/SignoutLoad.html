@@ -5,17 +5,20 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
+		<div id="wrapper">
+		
+			<div metal:use-macro="macros.xhtml/Header" />	
+
 			<div id="main">				
-				<div class="signin-frame">					
-					<form id="FormSignin" name="FormSignin" tal:attributes="action '/signout/exe'" method="post" >
-						<div align="center">
-							<H3>Bạn có chắc là thoát khỏi Quyền Quản trị không?</H3>							
-						</div>
-						<div align="center">
-							<input id="SigninSubmit" type="submit" name="submit" value="Đăng Xuất" class="signin-button" />
-						</div>
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div class="clear" />
+				<div class="signin-frame">
+					<h1 tal:content="Title"/>
+					<form tal:attributes="action '/signout/exe'" method="post" class="ui-body ui-body-a ui-corner-all">
+						Bạn chắc chắn thoát khỏi ứng dụng ?
+						<fieldset>
+							<button type="submit" data-theme="b" name="submit" value="submit-value">Đăng Xuất</button>
+						</fieldset>
 					</form>
 				</div>
 				<div class="enter"></div>

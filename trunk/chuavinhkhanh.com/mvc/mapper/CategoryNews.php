@@ -13,15 +13,13 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCategory);
 		$updateStmt = sprintf("update %s set name=?, `order`=? where id=?", $tblCategory);
 		$insertStmt = sprintf("insert into %s ( name, `order`) values(?, ?)", $tblCategory);
-		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
-		$findByAllStmt = sprintf("select * from %s where id>=10 ORDER BY `order`", $tblCategory);
+		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		$this->findByAllStmt = self::$PDO->prepare($findByAllStmt);
 		
     } 
     function getCollection( array $raw ) {
@@ -63,14 +61,13 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
 	protected function doDelete(array $values) {
         return $this->deleteStmt->execute( $values );
     }
-		
-	function findByAll( $values ){
-        $this->findByAllStmt->execute( $values );
-        return new CategoryNewsCollection( $this->findByAllStmt->fetchAll(), $this);
+
+    function selectStmt() {
+        return $this->selectStmt;
     }
-	
-    function selectStmt() {return $this->selectStmt;}
-    function selectAllStmt() {return $this->selectAllStmt;}
+    function selectAllStmt() {
+        return $this->selectAllStmt;
+    }
 	
 }
 ?>

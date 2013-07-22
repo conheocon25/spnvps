@@ -15,6 +15,8 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
 		$insertStmt = sprintf("insert into %s ( idsponsor, name, time, address, value, unit) values(?, ?, ?, ?, ?, ?)", $tblSponsorPerson);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblSponsorPerson);
 		$findByStmt = sprintf("select *  from %s where idsponsor=?", $tblSponsorPerson);
+		$trackByStmt = sprintf("select *  from %s where idsponsor=? and date(time)>=? and date(time)<=?", $tblSponsorPerson);
+		$trackBy1Stmt = sprintf("select *  from %s where date(time)>=? and date(time)<=?", $tblSponsorPerson);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -22,7 +24,8 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
-		
+		$this->trackByStmt = self::$PDO->prepare($trackByStmt);
+		$this->trackBy1Stmt = self::$PDO->prepare($trackBy1Stmt);
     } 
     function getCollection( array $raw ) {return new SponsorPersonCollection( $raw, $this );}
 
@@ -73,6 +76,14 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
         return new SponsorPersonCollection( $this->findByStmt->fetchAll(), $this);
+    }
+	function trackBy( $values ){
+        $this->trackByStmt->execute( $values );
+        return new SponsorPersonCollection( $this->trackByStmt->fetchAll(), $this);
+    }
+	function trackBy1( $values ){
+        $this->trackBy1Stmt->execute( $values );
+        return new SponsorPersonCollection( $this->trackBy1Stmt->fetchAll(), $this);
     }
 }
 ?>

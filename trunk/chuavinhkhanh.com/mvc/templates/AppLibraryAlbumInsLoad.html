@@ -8,10 +8,11 @@
 	<body>
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">								
+			<div id="main">
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="box-editor">
 					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
+						<img src="/data/images/icon.png" width="30" />
 						<span tal:content="Title" />
 						<a href="/app/album">&#8629; Trở lại</a>
 					</div>
@@ -22,28 +23,28 @@
 								<div class="textbox" >
 									<input id="Name" name="Name" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Thời gian</div>
 								<div class="textbox" >
 									<input id="Time" name="Time" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">URL</div>
 								<div class="textbox" >
 									<input id="URL" name="URL" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div for="Name" class="label">Ghi chú</div>
 								<div class="textbox" >
 									<input id="Note" name="Note" type="text" />
 								</div>
-								<div class="clear"/>
+								<div class="clear" />
 							</div>
 							<div class="row">
 								<div class="button" >
@@ -56,11 +57,8 @@
 						
 					</div>
 				</div>
-				<div class="clear"/>
+				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
 		</div>
 	</body>
 </html>

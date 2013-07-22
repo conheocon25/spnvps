@@ -16,8 +16,14 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");			
+			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mVideoPagoda = new \MVC\Mapper\VideoPagoda();
+			$mVideo = new \MVC\Mapper\Video();
+			
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -27,6 +33,7 @@
 			$VP = $mVideoPagoda->find($IdVideoPagoda);
 			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / ".$VP->getVideo()->getName()." / Xóa";
 			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			
@@ -36,6 +43,7 @@
 			$request->setObject('Pagoda', $Pagoda);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('VP', $VP);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 						
