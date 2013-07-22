@@ -24,6 +24,7 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$CategoryPaidAll = $mCategoryPaid->findAll();			
 			$CategoryTaskAll = $mCategoryTask->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
@@ -47,6 +48,7 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryPaidAll", $CategoryPaidAll);
 			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);

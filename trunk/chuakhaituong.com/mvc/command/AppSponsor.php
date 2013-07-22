@@ -24,6 +24,8 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$CategoryTaskAll = $mCategoryTask->findAll();
+			$CategoryPaidAll = $mCategoryPaid->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$AlbumAll = $mAlbum->findAll();
 			$EventAll = $mEvent->findAll();
@@ -35,8 +37,7 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
-			
-			$SponsorList = $mSponsor->findAll();
+			$PopupAll = $mPopup->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -45,6 +46,8 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
+			$request->setObject("CategoryPaidAll", $CategoryPaidAll);			
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AlbumAll', $AlbumAll);
 			$request->setObject('EventAll', $EventAll);
@@ -56,8 +59,7 @@
 			$request->setObject('PanelNewsAll', $PanelNewsAll);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
-			
-			$request->setObject('SponsorList', $SponsorList);
+			$request->setObject('PopupAll', $PopupAll);
 			
 			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG CÔNG ĐỨC / ');			
 			$request->setProperty("ActiveAdmin", 'Sponsor');

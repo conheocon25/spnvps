@@ -472,7 +472,7 @@
 			<a tal:attributes="href '/app/category/paid'">
 				<li tal:attributes="class php:ActiveAdmin=='Paid'?'menu-select':'?'">
 					<div class="left">CHUYÊN MỤC CHI</div>
-					<div class="right" tal:content="string:0" />
+					<div class="right" tal:content="CategoryPaidAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/category/task'">
@@ -556,7 +556,7 @@
 			<a tal:attributes="href '/app/popup'">
 				<li tal:attributes="class php:ActiveAdmin=='Popup'?'menu-select':'?'">
 					<div class="left">QUẢNG CÁO POPUP</div>
-					<div class="right" tal:content="string:0" />
+					<div class="right" tal:content="PopupAll/count" />
 				</li>
 			</a>
 			<a tal:attributes="href '/app/config'">

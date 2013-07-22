@@ -59,7 +59,7 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('PanelCategoryVideo', $PanelCategoryVideo);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ CATEGORY / VIDEO / '.$PanelCategoryVideo->getId()." / XÓA");
+			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ DANH MỤC VIDEO / '.$PanelCategoryVideo->getId()." / XÓA");
 			$request->setProperty("ActiveItem", 'Home');
 						
 			return self::statuses('CMD_DEFAULT');

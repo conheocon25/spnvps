@@ -28,7 +28,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('Detail', $Detail);			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ CATEGORY / VIDEO / ... / XÓA');
+			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ DANH MỤC VIDEO / ... / XÓA');
 									
 			return self::statuses('CMD_DEFAULT');
 		}
