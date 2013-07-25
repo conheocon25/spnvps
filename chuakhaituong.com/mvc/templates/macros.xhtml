@@ -3,7 +3,7 @@
 	<!-- ĐỊNH NGHĨA THƯ VIỆN CSS JAVASCRIPT -->
 	<span metal:define-macro="IncludeCSS">
 		<title tal:content="string:Chùa Khải Tường" />
-		<BASE href="http://chuakhaituong.com" />
+		<BASE href="http://chuakhaituong.123app.net" />
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=9" />
 		<meta http-equiv="Pragma" content="no-cache" />
@@ -20,7 +20,7 @@
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css" />
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css" />
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" />		
-		
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.css" media="screen"/>
 	</span>
 	<span metal:define-macro="IncludeJS">
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
@@ -34,6 +34,8 @@
 		
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
 	</span>
 	
 	<!-- HEADER -->
@@ -770,15 +772,27 @@
 			<img src="/data/images/icon.png" width="30" />
 			<span>Trang Video Phật Âm</span>
 		</div>
-		<div id="sliderFrame">
-			<div id="slider">				
-				<a href="/library/video/1">
-					<img width="335px" src="/data/images/bac_tong.jpg" />
-				</a>
-				<a href="/library/video/2">
-					<img width="335px" src="/data/images/nam_tong.jpg" />
-				</a>
+		<div id="myCarousel" class="carousel slide">
+			<ol class="carousel-indicators">
+				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+				<li data-target="#myCarousel" data-slide-to="1"></li>
+			</ol>
+			<!-- Carousel items -->
+			<div class="carousel-inner">
+				<div class="active item">
+					<a href="/library/video/1">
+						<img width="335px" src="/data/images/bac_tong.jpg" />
+					</a>
+				</div>
+				<div class="item">
+					<a href="/library/video/2">
+						<img width="335px" src="/data/images/nam_tong.jpg" />
+					</a>
+				</div>
 			</div>
+			<!-- Carousel nav -->
+			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>		
 </body>

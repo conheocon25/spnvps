@@ -1339,8 +1339,7 @@
 	}
 
 	/* each bullet */
-	div.navBulletsWrapper div 
-	{
+	div.navBulletsWrapper div {
 		width:11px; height:11px;
 		background:transparent url(bullet.png) no-repeat 0 0;
 		float:left;overflow:hidden;vertical-align:middle;cursor:pointer;
@@ -1352,8 +1351,7 @@
 
 
 	/* --------- Others ------- */
-	#slider 
-	{
+	#slider {
 		transform: translate3d(0,0,0);
 		-ms-transform:translate3d(0,0,0);
 		-moz-transform:translate3d(0,0,0);
