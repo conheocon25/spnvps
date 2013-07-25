@@ -16,6 +16,12 @@
 					  js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";
 					  fjs.parentNode.insertBefore(js, fjs);
 				}(document, 'script', 'facebook-jssdk'));
+				
+				$(document).ready(function() {
+					$('.carousel').carousel({
+						interval: 5000
+					})
+				});
 			/*]]>*/
 		</script>
 
@@ -24,7 +30,7 @@
 			<div id="main">				
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div metal:use-macro="macros.xhtml/TextGo"/>
-				<div id="content">																									
+				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
@@ -236,7 +242,7 @@
 					<div metal:use-macro="macros.xhtml/SponsorBox"/>
 					<div metal:use-macro="macros.xhtml/BoxAds"/>
 					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>					
+					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 				</div>				
 				<div class="clear" />
 			</div>
