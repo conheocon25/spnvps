@@ -11,8 +11,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, date DESC", $tblNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblNews);
-		$updateStmt = sprintf("update %s set id_category=?, author=?, date=?, content=?, title=?, type=? where id=?", $tblNews);
-		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type) values(?, ?, ?, ?, ?, ?)", $tblNews);
+		$updateStmt = sprintf("update %s set id_category=?, author=?, date=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
+		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
 		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 5", $tblNews);
@@ -69,7 +69,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$array['date'],
 			$array['content'],
 			$array['title'],
-			$array['type']
+			$array['type'],
+			$array['key']
 		);
         return $obj;
     }
@@ -85,7 +86,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$object->getDate(),
 			$object->getContent(),
 			$object->getTitle(),
-			$object->getType()
+			$object->getType(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -100,6 +102,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$object->getContent(),
 			$object->getTitle(),
 			$object->getType(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );

@@ -47,10 +47,12 @@ class Video extends Object{
         return "";
     }
 	
-	function getIdURL( ){list($http, $sym, $addr1, $addr2, $addr3) = explode("/", $this->URL);return $addr3;}	
+	function getIdURL( ){list($http, $sym, $addr1, $addr2, $addr3) = explode("/", $this->URL);return $addr3;}
 	function getNote( ) {return $this->Note;}
 	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
-	function getURLImage(){return "http://img.youtube.com/vi/".$this->getIdURL()."/2.jpg";}
+	function getURLImage(){				
+		return "http://img.youtube.com/vi/".$this->getIdURL()."/2.jpg";
+	}
 		
 	function setCount( $Count ) {$this->Count = $Count;$this->markDirty();}
 	function getCount( ) {return $this->Count;}

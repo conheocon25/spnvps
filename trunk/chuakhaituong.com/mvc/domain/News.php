@@ -11,11 +11,12 @@ class News extends Object{
 	private $Content;
 	private $Title;
 	private $Type;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdCategory=null , $Author=Null, $Date=Null, $Content=null, $Title=null, $Type=null){
+    function __construct( $Id=null, $IdCategory=null , $Author=Null, $Date=Null, $Content=null, $Title=null, $Type=null, $Key=null){
         $this->Id = $Id;
 		$this->IdCategory = $IdCategory;
 		$this->Author = $Author;
@@ -23,6 +24,7 @@ class News extends Object{
 		$this->Content = $Content;
 		$this->Title = $Title;
 		$this->Type = $Type;
+		$this->Key = $Key;
 		
         parent::__construct( $Id );
     }
@@ -63,6 +65,9 @@ class News extends Object{
 		}
 		return $first_img;
 	}
+	
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}   
+	function getKey( ) {return $this->Key;}
 	
 	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduceHTML(320);}
 	//-------------------------------------------------------------------------------

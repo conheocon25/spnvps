@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
+			$Key1 = $request->getProperty('Key1');
 			$Page = $request->getProperty('Page');
 						
 			//-------------------------------------------------------------
@@ -22,7 +22,9 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Category = $mCategoryNews->find($IdCategory);			
+			$Category = $mCategoryNews->findByKey($Key1);
+			$IdCategory = $Category->getId();
+			
 			$AlbumAll = $mAlbum->findAll();			
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
