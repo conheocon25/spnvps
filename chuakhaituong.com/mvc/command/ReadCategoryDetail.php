@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
-			$IdNews = $request->getProperty('IdNews');
+			$Key1 = $request->getProperty('Key1');
+			$Key2 = $request->getProperty('Key2');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -27,28 +27,21 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Category = $mCategoryNews->find($IdCategory);
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			
-			$Category = $mCategoryNews->find($IdCategory);
-			$News = $mNews->find($IdNews);
+			$Category = $mCategoryNews->findByKey($Key1);
+			$CategoryNewsAll = $mCategoryNews->findAll();						
+			$News = $mNews->findByKey($Key2);
 			
 			$Course = $mCourse->findByNear(null)->current();
 			$Event = $mEvent->findTop(null)->current();
-
-			if(isset($News)) {
-				$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
-			}
-			else {
-				$Title = "";
-			}						
-			
+					
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$PanelAdsAll = $mPanelAds->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$MonkAll = $mMonk->findVIP(null);
+			
+			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');			
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
