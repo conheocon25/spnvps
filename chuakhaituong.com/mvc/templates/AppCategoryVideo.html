@@ -17,11 +17,11 @@
 							<a href="/app">&#8629; Trở lại</a>
 						</div>
 						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+							<table class="table table-striped">
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th></th>
+										<th />
 										<th align="left">TÊN</th>
 										<th align="left">VIDEO</th>
 										<th>XÓA</th>
@@ -52,23 +52,26 @@
 										</td>
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href Category/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
+												<span class="icon-remove" />
 											</a>
 										</td>
 									</tr>
 								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="5" align="center">
-											<a href="/app/category/video/ins/load">Thêm mới</a>
-										</td>
-									</tr>
+								<tfoot>																		
+									<td colspan="5" align="center">
+										<a class="btn" href="/app/category/video/ins/load">
+											<span class="icon-plus" /> Thêm mới
+										</a>
+										<a class="btn" href="/app/video/update/all">
+											<span class="icon-edit" /> Cập nhật video
+										</a>
+									</td>									
 								</tfoot>
 							</table>
 						</div>
 						<div class="clear" />
 					</div>
-				</div>				
+				</div>
 				<div id="sidebar">
 					<div class="sidebar-box">
 						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />	

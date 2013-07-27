@@ -4,32 +4,32 @@ RewriteEngine on
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^home$ 													?cmd=Home [L]
+RewriteRule ^trang-chu$ 											?cmd=Home [L]
 RewriteRule ^signin/load$ 											?cmd=SigninLoad [L]
 RewriteRule ^signin/exe$ 											?cmd=SigninExe [L]
 RewriteRule ^signout/load$ 											?cmd=SignoutLoad [L]
 RewriteRule ^signout/exe$ 											?cmd=SignoutExe [L]
 
 RewriteRule ^gate$ 													?cmd=Gate [L]
-RewriteRule ^intro$ 												?cmd=Introduction [L]
-RewriteRule ^intro/0$ 												?cmd=Introduction0 [L]
-RewriteRule ^intro/1$ 												?cmd=Introduction1 [L]
-RewriteRule ^intro/2$ 												?cmd=Introduction2 [L]
-RewriteRule ^intro/3$ 												?cmd=Introduction3 [L]
-RewriteRule ^intro/4$ 												?cmd=Introduction4 [L]
+RewriteRule ^gioi-thieu$ 											?cmd=Introduction [L]
+RewriteRule ^gioi-thieu/0$ 											?cmd=Introduction0 [L]
+RewriteRule ^gioi-thieu/1$ 											?cmd=Introduction1 [L]
+RewriteRule ^gioi-thieu/2$ 											?cmd=Introduction2 [L]
+RewriteRule ^gioi-thieu/3$ 											?cmd=Introduction3 [L]
+RewriteRule ^gioi-thieu/4$ 											?cmd=Introduction4 [L]
 
 RewriteRule ^task$ 													?cmd=Task [L]
-RewriteRule ^contact$ 												?cmd=Contact [L]
+RewriteRule ^lien-he$ 												?cmd=Contact [L]
 
 RewriteRule ^sponsor$ 												?cmd=Sponsor [L]
 RewriteRule ^sponsor/([0-9]+)$ 										?cmd=SponsorDetail&IdSponsor=$1 [L]
 RewriteRule ^sponsor/([0-9]+)/video/([0-9]+)$ 						?cmd=SponsorDetailVideo&IdSponsor=$1&IdVideoSponsor=$2 [L]
 RewriteRule ^report/([0-9]+)$ 										?cmd=Report&IdTracking=$1 [L]
 
-RewriteRule ^library/video/([0-9]+)$								?cmd=LibraryVideo&IdBType=$1 [L]
-RewriteRule ^library/video/([0-9]+)/category/([0-9]+)$				?cmd=LibraryVideoCategory&IdBType=$1&IdCategory=$2 [L]
-RewriteRule ^library/video/([0-9]+)/category/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoCategory&IdBType=$1&IdCategory=$2&Page=$3 [L]
-RewriteRule ^library/video/([0-9]+)/category/([0-9]+)/([0-9]+)$		?cmd=LibraryVideoCategoryPlay&IdBType=$1&IdCategory=$2&IdVideoLibrary=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)$											?cmd=LibraryVideo&KBType=$1 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)$					?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2&Page=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/([0-9]+)$			?cmd=LibraryVideoCategoryPlay&KBType=$1&IdCategory=$2&IdVideoLibrary=$3 [L]
 
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)$					?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2 [L]
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2&Page=$3 [L]
@@ -187,6 +187,8 @@ RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVid
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/exe$ 		?cmd=AppCategoryVideoDetailUpdExe&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppCategoryVideoDetailDelLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/exe$ 		?cmd=AppCategoryVideoDetailDelExe&IdCategory=$1&IdVideoLibrary=$2 [L]
+
+RewriteRule ^app/video/update/all$ 								?cmd=AppVideoUpdateAll [L]
 
 RewriteRule ^app/category/ask$ 										?cmd=AppCategoryAsk [L]
 RewriteRule ^app/category/ask/ins/load$ 							?cmd=AppCategoryAskInsLoad [L]

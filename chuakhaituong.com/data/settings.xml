@@ -236,6 +236,8 @@
 		<command name="AppCategoryVideoDelLoad"><view>AppCategoryVideoDelLoad</view></command>
 		<command name="AppCategoryVideoDelExe"><view>AppCategoryVideoDelExe</view><status value="CMD_OK"><forward>AppCategoryVideo</forward></status></command>
 		
+		<command name="AppVideoUpdateAll"><view>AppVideoUpdateAll</view><status value="CMD_OK"><forward>AppCategoryVideo</forward></status></command>
+		
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.VIDEO.DETAIL														-->
 		<!-- ============================================================================== -->
