@@ -11,23 +11,21 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, `order` DESC", $tblCategory);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCategory);
-		$updateStmt = sprintf("update %s set name=?, picture=?, `order`=?, type=?, btype=? where id=?", $tblCategory);
-		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type, btype) values(?, ?, ?, ?, ?)", $tblCategory);
+		$updateStmt = sprintf("update %s set name=?, picture=?, `order`=?, type=?, btype=?, `key`=? where id=?", $tblCategory);
+		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type, btype, `key`) values(?, ?, ?, ?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
 		$findByBTypeStmt = sprintf("select * from %s where btype=?", $tblCategory);
-				
+		$findByKeyStmt = sprintf("select * from %s where `key`=?", $tblCategory);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
-		
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
     } 
-    function getCollection( array $raw ) {
-        return new CategoryVideoCollection( $raw, $this );
-    }
-
+    function getCollection( array $raw ) {return new CategoryVideoCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\CategoryVideo( 
 			$array['id'],
@@ -35,7 +33,8 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$array['picture'],
 			$array['order'],
 			$array['type'],
-			$array['btype']
+			$array['btype'],
+			$array['key']
 		);
         return $obj;
     }
@@ -50,7 +49,8 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$object->getPicture(),
 			$object->getOrder(),
 			$object->getType(),
-			$object->getBType()
+			$object->getBType(),
+			$object->getKey()
 		);
 		
         $this->insertStmt->execute( $values );
@@ -65,25 +65,29 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 			$object->getOrder(),
 			$object->getType(),
 			$object->getBType(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
+		
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}	
 
-	function findByBType( $values ){		
+	function findByBType( $values ){
 		$this->findByBTypeStmt->execute($values);
         return new CategoryVideoCollection( $this->findByBTypeStmt->fetchAll(), $this);
     }
 	
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
     }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }	
 }
 ?>

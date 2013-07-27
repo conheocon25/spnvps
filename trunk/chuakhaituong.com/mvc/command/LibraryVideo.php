@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty("IdBType");
+			$KBType = $request->getProperty("KBType");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -20,12 +20,14 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------												
+			//-------------------------------------------------------------
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdBType = $CategoryBType->getId();
+			
 			$Monks = $mMonk->findAll();			
 			$VMUpdateTopAll = $mVM->findByUpdateTop(array($IdBType));
 			$VMViewTopAll = $mVM->findByViewTop(array($IdBType));
-						
-			$CategoryBType = $mCategoryBType->find($IdBType);
+									
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();

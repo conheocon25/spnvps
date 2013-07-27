@@ -12,8 +12,8 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$Page = $request->getProperty('Page');
-			$IdBType = $request->getProperty('IdBType');
-			$IdCategory = $request->getProperty('IdCategory');
+			$KBType = $request->getProperty('KBType');
+			$KCategory = $request->getProperty('KCategory');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -22,14 +22,17 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------												
+			//-------------------------------------------------------------
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$Category = $mCategoryVideo->findByKey($KCategory);
+			$IdCategoryBType = $CategoryBType->getId();
+			$IdCategory = $Category->getId();
+			
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$MonkAll = $mMonk->findAll();
-			$CategoryBType = $mCategoryBType->find($IdBType);
-			$Category = $mCategoryVideo->find($IdCategory);
+			$MonkAll = $mMonk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();

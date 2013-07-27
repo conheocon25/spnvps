@@ -10,17 +10,19 @@ class CategoryVideo extends Object{
 	private $Order;
 	private $Type;
 	private $BType;
-		
+	private $Key;
+	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null, $BType=Null){
+    function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null, $BType=Null, $Key=Null){
         $this->Id = $Id;
 		$this->Name = $Name;
 		$this->Picture = $Picture;
 		$this->Order = $Order;
 		$this->Type = $Type;
 		$this->BType = $BType;
+		$this->Key = $Key;
         parent::__construct( $Id );
     }
     function getId(){return $this->Id;}	
@@ -44,7 +46,14 @@ class CategoryVideo extends Object{
 	function setBType( $BType ) {$this->BType = $BType;$this->markDirty();}   
 	function getBType( ) {return $this->BType;}
 	function getBTypeName( ) {$mBType = new \MVC\Mapper\CategoryBType();$BType = $mBType->find($this->BType);if (!isset($BType))return "Chưa rõ";return $BType->getName();}
+	function getBTypeKey( ) {$mBType = new \MVC\Mapper\CategoryBType();$BType = $mBType->find($this->BType);if (!isset($BType))return "Chưa rõ";return $BType->getKey();}
 	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
+	function getKey( ) {return $this->Key;}
+	function reKey( ) {
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -69,7 +78,7 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/library/video/".$this->getBType()."/category/".$this->getId();}
+	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/danh-muc/".$this->getKey();}
 	
 	function getURLView(){return "/app/news/".$this->getId();}	
 	function getURLVideo(){return "/app/category/video/".$this->getId();}
