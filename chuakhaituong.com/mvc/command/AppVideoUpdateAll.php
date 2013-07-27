@@ -23,11 +23,20 @@
 			$CategoryAll = $mCategoryVideo->findAll();
 			while($CategoryAll->valid()){
 				$Category = $CategoryAll->current();
-				$Category->reKey();
+				$Category->reKey();				
 				$mCategoryVideo->update($Category);
+				
+				$VLAll =  $Category->getVLs();
+				while ($VLAll->valid()){
+					$Video = $VLAll->current()->getVideo();
+					$Video->reKey();
+					$mVideo->update($Video);					
+					$VLAll->next();
+				}
+								
 				$CategoryAll->next();
-			}
-						
+			}					
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
