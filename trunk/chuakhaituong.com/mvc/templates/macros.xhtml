@@ -816,17 +816,14 @@
 			/*]]>*/
 		</script>
 		<div class="ads-popup" tal:condition="Popup/getEnable" >
-			<div class="ads-close">Đóng</div>
-			<embed width="300" height="250"	
-				allowscriptaccess="always"
-				wmode="transparent"
-				quality="high"
-				name="Advertisement"
-				id="Advertisement"
-				style="undefined"
-				tal:attributes="src Popup/getSource;flashvars php:'clickTAG=' . Popup->getURL()"
-				type="application/x-shockwave-flash"
-			/>
+			<div class="ads-close">Đóng</div>			
+			<a tal:attributes="href Popup/getURL" target="blank">
+				<object height="250" width="300">
+					<param name="movie" tal:attributes="value Popup/getSource" />
+					<embed tal:attributes="src Popup/getSource" height="250" width="300" />
+				</object>
+			  <i style="display:block; height: 250px; width: 300px;  position: relative; z-index: 9; margin-top: -250px;"></i>
+			</a>
 		</div>
 	</div>
 	

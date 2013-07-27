@@ -199,7 +199,7 @@
 						<div class="row">
 							<div tal:repeat="VL VL24" class="col-lg-3">
 								<a tal:attributes="href VL/getURLView" class="thumbnail">
-									<img
+									<img tal:condition="VL/getVideo/getURL"
 										tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
 										class="tooltipvideo"
 										data-placement="top"
@@ -213,10 +213,7 @@
 					</div>
 				</div>				
 				<div id="sidebar">
-					<div class="sidebar-box">
-						<!--
-						<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
-						!-->
+					<div class="sidebar-box">						
 						<div id="Event" class="box-title">
 							<img src="/data/images/calendar.png" width="30" />
 							<span>Lịch Công Tác</span>
@@ -257,8 +254,7 @@
 					<div metal:use-macro="macros.xhtml/BoxMonk"/>
 					<div metal:use-macro="macros.xhtml/AskBox"/>
 					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<!--<div metal:use-macro="macros.xhtml/BoxAds"/>-->
+					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
 					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 				</div>				
