@@ -581,6 +581,18 @@
 			<img src="/data/images/icon.png" width="30" />
 			<span>Những Tin Tức Mới Cập Nhật</span>
 		</div>
+		<ul>
+			<li tal:repeat="TopNews PanelNewsAll">
+				<a tal:attributes="href TopNews/getNews/getURLRead | string:#; title TopNews/getNews/getTitle | string:Chưa có tiêu đề">
+					<img width="100%" tal:attributes="src TopNews/getNews/getImage | string:/data/images/exit_picture.jpg" />
+					<div>
+						<p tal:content="TopNews/getNews/getTitle | string:Chưa có tiêu đề"/>
+					</div>
+				</a>
+			</li>
+		</ul>
+		
+		<!--
 		<div id="myCarousel1" class="carousel slide">
 			<ol class="carousel-indicators">
 				<li data-target="#myCarousel1" data-slide-to="0" class="active"></li>
@@ -596,7 +608,6 @@
 				<li data-target="#myCarousel1" data-slide-to="10"></li>
 				<li data-target="#myCarousel1" data-slide-to="11"></li>
 			</ol>
-			<!-- Carousel items -->
 			<div class="carousel-inner">
 				<div class="active item">
 					<img width="100%" src="/data/images/tmp/pic1.jpg"/>
@@ -610,10 +621,10 @@
 					</a>
 				</div>
 			</div>
-			<!-- Carousel nav -->
 			<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
 			<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
 		</div>
+		-->
 	</div>
 	
 	<!-- ================================================================================== -->

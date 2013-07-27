@@ -119,21 +119,20 @@
 							<img src="/data/images/icon.png" width="30" />
 							<span>VIDEO NỘI BỘ</span>
 						</div>
-						<ul class="thumbnails">
-							<li tal:repeat="VL VL8" class="span2">
-								<div class="thumbnail">
-									<a tal:attributes="href VL/getURLView">
-										<img
-											tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
-											class="tooltipvideo"
-											data-placement="top"
-											data-toggle="tooltip"
-											style="width:160px; height:120px;"
-										/>
-									</a>
-								</div>
-							</li>
-						</ul>
+						<div class="row">
+							<div tal:repeat="VL VL8" class="col-lg-3">
+								<a tal:attributes="href VL/getURLView" class="thumbnail">
+									<img
+										tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
+										class="tooltipvideo"
+										data-placement="top"
+										data-toggle="tooltip"
+										data-src="holder.js/100%x180"
+										style="width:160px; height:120px;"
+									/>
+								</a>
+							</div>
+						</div>
 					</div>
 
 					<div class="news-box" tal:repeat="Category CategoryNewsAll">
@@ -142,16 +141,25 @@
 							<span tal:content="Category/getName"/>
 						</div>
 						<div class="slider">							
-							<div class="slider-wrap">
-								<ul>
-									<li tal:repeat="News Category/getNewsLimit1">
-										<img tal:attributes="src News/getImage" width="385" height="300" />
-										<a tal:attributes="href News/getURLRead">
-											<div tal:content="News/getTitleReduce" />
+							<div id="myCarousel" class="carousel slide">
+								<div class="carousel-inner">
+									<div class="active item">
+										<a href="/library/video/1">
+											<img width="335px" src="/data/images/bac_tong.jpg" />
 										</a>
-									</li>
-								</ul>
-							</div>							
+									</div>
+									<div tal:repeat="News Category/getNewsLimit1" class="item">
+										<a tal:attributes="href News/getURLRead">
+											<img tal:attributes="src News/getImage" style="height:250px; width:100%;"/>
+											<div class="carousel-caption">
+												<p tal:content="News/getTitleReduce" />
+											</div>
+										</a>
+									</div>
+								</div>
+								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+								<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+							</div>						
 						</div>
 						<div class="top-list">
 							<div class="list-title">TIN MỚI CẬP NHẬT</div>							
@@ -168,42 +176,40 @@
 							<img src="/data/images/icon.png" width="30" />
 							<span>Bài giảng mới nhất</span>
 						</div>
-						<ul class="thumbnails">
-							<li tal:repeat="VM VM24" class="span2">
-								<div class="thumbnail">
-									<a tal:attributes="href VM/getURLView">
-										<img
-											tal:attributes="src VM/getVideo/getURLImage; data-original-title VM/getVideo/getName"
-											class="tooltipvideo"
-											data-placement="top"
-											data-toggle="tooltip"
-											style="width:160px; height:120px;"
-										/>
-									</a>
-								</div>
-							</li>
-						</ul>
+						<div class="row">
+							<div tal:repeat="VM VM24" class="col-lg-3">
+								<a tal:attributes="href VM/getURLView" class="thumbnail">
+									<img
+										tal:attributes="src VM/getVideo/getURLImage; data-original-title VM/getVideo/getName"
+										class="tooltipvideo"
+										data-placement="top"
+										data-toggle="tooltip"
+										data-src="holder.js/100%x180"
+										style="width:160px; height:120px;"
+									/>
+								</a>
+							</div>
+						</div>
 					</div>
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
 							<span>Chuyên đề mới nhất</span>
 						</div>
-						<ul class="thumbnails">
-							<li tal:repeat="VL VL24" class="span2">
-								<div class="thumbnail">
-									<a tal:attributes="href VL/getURLView">
-										<img
-											tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
-											class="tooltipvideo"
-											data-placement="top"
-											data-toggle="tooltip"
-											style="width:160px; height:120px;"
-										/>
-									</a>
-								</div>
-							</li>
-						</ul>
+						<div class="row">
+							<div tal:repeat="VL VL24" class="col-lg-3">
+								<a tal:attributes="href VL/getURLView" class="thumbnail">
+									<img
+										tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
+										class="tooltipvideo"
+										data-placement="top"
+										data-toggle="tooltip"
+										data-src="holder.js/100%x180"
+										style="width:160px; height:120px;"
+									/>
+								</a>
+							</div>
+						</div>
 					</div>
 				</div>				
 				<div id="sidebar">
@@ -252,7 +258,7 @@
 					<div metal:use-macro="macros.xhtml/AskBox"/>
 					<div metal:use-macro="macros.xhtml/CountBox"/>					
 					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/BoxAds"/>
+					<!--<div metal:use-macro="macros.xhtml/BoxAds"/>-->
 					<div metal:use-macro="macros.xhtml/ContactBox"/>
 					<div metal:use-macro="macros.xhtml/CallendarBox"/>
 				</div>				
