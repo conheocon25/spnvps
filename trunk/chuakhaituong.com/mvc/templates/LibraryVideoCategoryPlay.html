@@ -20,7 +20,7 @@
 						<div class="sidebar-box-content">
 							<ul>
 								<a tal:repeat="Category1 CategoryBType/getCategoryAll" tal:attributes="href Category1/getURLRead">
-									<li tal:attributes="class php:Category1->getId()==CategorySelected->getId()?'current-item':''">
+									<li tal:attributes="class php:Category1->getId()==Category->getId()?'current-item':''">
 										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getVLs/count" />)
 									</li>
 								</a>
@@ -39,7 +39,7 @@
 						</div>
 
 						<div align="center" class="video-screen">
-							<iframe width="450" height="350" tal:attributes="src VL/getVideo/getURL" frameborder="0"></iframe>
+							<iframe width="450" height="350" tal:attributes="src Video/getURL" frameborder="0"></iframe>
 							<script>
 								/*<![CDATA[*/
 								$("iframe").each(function(){
@@ -51,19 +51,16 @@
 							</script>
 						</div>						
 						<div class="video-info">
-							<div class="name" tal:content="VL/getVideo/getName" />
-							<div class="monk">Chuyên đề: 
-								<span tal:content="VL/getCategory/getName"/>
-							</div>						
+							<div class="name" tal:content="Video/getName" />							
 							<div class="view">
-								<span tal:content="VL/getVideo/getCountPrint"/> lượt xem
+								<span tal:content="Video/getCountPrint"/> lượt xem
 							</div>
 							<div class="clear" />
 						</div>
 						<div class="news-box-sub-title">Cùng chuyên đề</div>
 						<div style="margin-left:24px;">
 							<ul class="list-video">
-								<li tal:repeat="VL CategorySelected/getVLs">
+								<li tal:repeat="VL Category/getVLs">
 									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
 										<img tal:attributes="src VL/getVideo/getURLImage" width="140px" height="110px" />
 										<div class="name" tal:content="VL/getVideo/getName" />

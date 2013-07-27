@@ -29,7 +29,7 @@ RewriteRule ^report/([0-9]+)$ 										?cmd=Report&IdTracking=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)$											?cmd=LibraryVideo&KBType=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)$					?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2&Page=$3 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/([0-9]+)$			?cmd=LibraryVideoCategoryPlay&KBType=$1&IdCategory=$2&IdVideoLibrary=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoCategoryPlay&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
 
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)$					?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2 [L]
 RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2&Page=$3 [L]
