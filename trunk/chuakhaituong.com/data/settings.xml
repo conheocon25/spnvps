@@ -260,6 +260,7 @@
 		<command name="AppNewsUpdExe"><view>AppNewsUpdExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
 		<command name="AppNewsDelLoad"><view>AppNewsDelLoad</view></command>
 		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
+		<command name="AppNewsUpdateAll"><view>AppNewsUpdateAll</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.SPONSOR																	-->

@@ -66,7 +66,11 @@ class News extends Object{
 		return $first_img;
 	}
 	
-	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}   
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Title." ".$this->getId());
+		$this->Key = $Str->converturl();
+	}
 	function getKey( ) {return $this->Key;}
 	
 	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduceHTML(320);}
@@ -77,7 +81,7 @@ class News extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/news/".$this->getIdCategory()."/".$this->getId();}
+	function getURLRead(){return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
 	function getURLUpdLoad(){return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/exe";}
 	
