@@ -1,12 +1,9 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/boxright.css"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
-	<body>
-		<div id="fb-root" />
 		<script type="text/javascript">
 			/*<![CDATA[*/
 				(function(d, s, id) {
@@ -26,242 +23,232 @@
 				});
 			/*]]>*/
 		</script>
+	</head>
 
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">				
+	<body>
+		<div id="fb-root"/>
+		<div metal:use-macro="macros.xhtml/Popup" />
+		<div class="container">
+			<div metal:use-macro="macros.xhtml/Header"/>
+			<div class="main row">
 				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div metal:use-macro="macros.xhtml/TextGo"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Tiêu điểm</span>							
-						</div>
-						<div align="center" style="padding:10px;">
-							<div class="picture-banner parent" tal:condition="Course">
-								<a tal:attributes="href Course/getURLRead">
-									<img width="100%" tal:attributes="src Course/getImage"/>
-									<div class="child" tal:content="php: 'CLICK XEM ' . Course->getName()"/>
-								</a>
-							</div>
-							<div class="picture-banner parent" tal:condition="not: Course">
-								<a>
-									<img width="100%" tal:attributes="src string:/data/images/temp.jpg"/>									
-								</a>
-							</div>
-							<div class="list-picture" tal:condition="Course">																
-								<div class="grid-left parent" tal:condition="Course/getLessionNear">
-									<a tal:attributes="href Course/getLessionNear/getURLRead">
-										<img width="280" height="86" tal:attributes="src Course/getLessionNear/getImage" />
-									</a>									
-									<div style="margin-top:-25px;">
-										<h3 style="margin-bottom:5px; color:#FF0000; text-align:left; padding-left:15px; margin-top:30px;">
-											LỚP ĐÃ
-										</h3>
-										<div id="class1Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNear/getDateEnd" />
-										<h3 style="position:absolute; right:15px; bottom:5px; color:#FF0000;">
-											KẾT THÚC
-										</h3>
+				<div class="content span8">
+					<div class="wraper">						
+						
+						<div class="box">
+							<div class="b-title">Tiêu điểm</div>
+							<div class="b-content">
+								<div class="picture-banner parent" tal:condition="Course">
+									<a tal:attributes="href Course/getURLRead">
+										<img width="100%" tal:attributes="src Course/getImage"/>
+										<div class="child" tal:content="php: 'CLICK XEM ' . Course->getName()"/>
+									</a>
+								</div>
+								<div class="picture-banner parent" tal:condition="not: Course">
+									<a>
+										<img width="100%" tal:attributes="src string:/data/images/temp.jpg"/>									
+									</a>
+								</div>
+								<div class="list-picture" tal:condition="Course">																
+									<div class="grid-left parent" tal:condition="Course/getLessionNear">
+										<a tal:attributes="href Course/getLessionNear/getURLRead">
+											<img width="280" height="86" tal:attributes="src Course/getLessionNear/getImage" />
+										</a>									
+										<div style="margin-top:-25px;">
+											<h3 style="margin-bottom:5px; color:#FF0000; text-align:left; padding-left:15px; margin-top:30px;">
+												LỚP ĐÃ
+											</h3>
+											<div id="class1Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNear/getDateEnd" />
+											<h3 style="position:absolute; right:15px; bottom:5px; color:#FF0000;">
+												KẾT THÚC
+											</h3>
+										</div>
+										<script type="text/javascript">
+											/*<![CDATA[*/
+											$(function() {
+												var d1 = $("#class1Countdown").attr('alt');
+												var parts = d1.match(/(\d+)/g);										
+												var d2 = new Date(parts[0], parts[1]-1, parts[2]); 										
+												$('#class1Countdown').countdown({until: d2});											
+											});
+											/*]]>*/
+										</script>
+										<div class="child" tal:content="Course/getLessionNear/getName" />
 									</div>
-									<script type="text/javascript">
-										/*<![CDATA[*/
-										$(function() {
-											var d1 = $("#class1Countdown").attr('alt');
-											var parts = d1.match(/(\d+)/g);										
-											var d2 = new Date(parts[0], parts[1]-1, parts[2]); 										
-											$('#class1Countdown').countdown({until: d2});											
-										});
-										/*]]>*/
-									</script>
-									<div class="child" tal:content="Course/getLessionNear/getName" />
-								</div>
-								<div class="grid-left parent" tal:condition="not:Course/getLessionNear">									
-									<span >
-										<img width="280" height="86" tal:attributes="src string:/data/images/temp.jpg" />
-									</span>
-								</div>
-								<div class="grid-right parent" tal:condition="Course/getLessionNext">									
-									<a tal:attributes="href Course/getLessionNext/getURLRead">
-										<img width="280" height="86" tal:attributes="src Course/getLessionNext/getImage" />
-									</a>									
-									<div style="margin-top:-25px;" tal:condition="Course/getLessionNext">
-										<span tal:condition="Course/getLessionNext">
-											<h3 style="margin-bottom:5px; color:#0000FF; text-align:left; padding-left:15px; margin-top:30px;">
-												CÒN
-											</h3>
-											<div id="class2Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNext/getDateStart" />
-											<h3 style="position:absolute; right:15px; bottom:5px; color:#0000FF;">
-												LỚP BẮT ĐẦU
-											</h3>
+									<div class="grid-left parent" tal:condition="not:Course/getLessionNear">									
+										<span >
+											<img width="280" height="86" tal:attributes="src string:/data/images/temp.jpg" />
 										</span>
 									</div>
-									<script type="text/javascript">
-										/*<![CDATA[*/
-										$(function() {
-											var d1 = $("#class2Countdown").attr('alt');											
-											var parts = d1.match(/(\d+)/g);											
-											var d2 = new Date(parts[0], parts[1]-1, parts[2]);
-											$('#class2Countdown').countdown({until: d2});
-										});
-										/*]]>*/
-									</script>
-									<div  class="child" tal:content="Course/getLessionNext/getName"/>
-								</div>
-								
-								<div class="clear" />
-							</div>
-						</div>
-					</div>
-					
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>VIDEO NỘI BỘ</span>
-						</div>
-						<div class="row">
-							<div tal:repeat="VL VL8" class="col-lg-3">
-								<a tal:attributes="href VL/getURLView" class="thumbnail">
-									<img
-										tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
-										class="tooltipvideo"
-										data-placement="top"
-										data-toggle="tooltip"
-										data-src="holder.js/100%x180"
-										style="width:160px; height:120px;"
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="news-box" tal:repeat="Category CategoryNewsAll">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Category/getName"/>
-						</div>
-						<div class="slider">							
-							<div id="myCarousel" class="carousel slide">
-								<div class="carousel-inner">
-									<div class="active item">
-										<a href="/library/video/1">
-											<img width="335px" src="/data/images/bac_tong.jpg" />
-										</a>
+									<div class="grid-right parent" tal:condition="Course/getLessionNext">									
+										<a tal:attributes="href Course/getLessionNext/getURLRead">
+											<img width="280" height="86" tal:attributes="src Course/getLessionNext/getImage" />
+										</a>									
+										<div style="margin-top:-25px;" tal:condition="Course/getLessionNext">
+											<span tal:condition="Course/getLessionNext">
+												<h3 style="margin-bottom:5px; color:#0000FF; text-align:left; padding-left:15px; margin-top:30px;">
+													CÒN
+												</h3>
+												<div id="class2Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNext/getDateStart" />
+												<h3 style="position:absolute; right:15px; bottom:5px; color:#0000FF;">
+													LỚP BẮT ĐẦU
+												</h3>
+											</span>
+										</div>
+										<script type="text/javascript">
+											/*<![CDATA[*/
+											$(function() {
+												var d1 = $("#class2Countdown").attr('alt');											
+												var parts = d1.match(/(\d+)/g);											
+												var d2 = new Date(parts[0], parts[1]-1, parts[2]);
+												$('#class2Countdown').countdown({until: d2});
+											});
+											/*]]>*/
+										</script>
+										<div  class="child" tal:content="Course/getLessionNext/getName"/>
 									</div>
-									<div tal:repeat="News Category/getNewsLimit1" class="item">
-										<a tal:attributes="href News/getURLRead">
-											<img tal:attributes="src News/getImage" style="height:250px; width:100%;"/>
-											<div class="carousel-caption">
-												<p tal:content="News/getTitleReduce" />
+								</div>
+							</div>
+						</div>
+
+						<div tal:repeat="Category CategoryNewsAll" class="box">
+							<div tal:content="Category/getName" class="b-title"/>
+							<div class="b-content">
+								<div class="row">
+									<div class="b-left span4">
+										<div id="myCarousel" class="carousel slide">
+											<div class="carousel-inner">
+												<div class="active item">
+													<a href="/library/video/1">
+														<img width="335px" src="/data/images/bac_tong.jpg" />
+													</a>
+												</div>
+												<div tal:repeat="News Category/getNewsLimit1" class="item">
+													<a tal:attributes="href News/getURLRead">
+														<img tal:attributes="src News/getImage" style="height:250px; width:100%;"/>
+														<div class="carousel-caption">
+															<p tal:content="News/getTitleReduce" />
+														</div>
+													</a>
+												</div>
+											</div>
+											<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+											<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+										</div>
+									</div>
+									<div class="b-right span4">
+										<ul class="nav nav-list">
+											<li class="nav-header">TIN MỚI CẬP NHẬT</li>
+											<li tal:repeat="News Category/getNewsLimit1">
+												<a tal:attributes="href News/getURLRead" tal:content="News/getTitleReduce"/>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div class="box">
+							<div class="b-title">VIDEO NỘI BỘ</div>
+							<div class="b-content">
+								<ul class="thumbnails">
+									<li tal:repeat="VL VL8" class="i-grid span2">
+										<a tal:attributes="href VL/getURLView">
+											<div class="thumbnail">
+												<img tal:attributes="src VL/getVideo/getURLImage" width="100%" height="100%"/>
+												<p tal:content="VL/getVideo/getName"/>
 											</div>
 										</a>
-									</div>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+						
+						<div class="box">
+							<div class="b-title">Bài giảng mới nhất</div>
+							<div class="b-content">
+								<ul class="thumbnails">
+									<li tal:repeat="VM VM24" class="i-grid span2">
+										<a tal:attributes="href VM/getURLView">
+											<div class="thumbnail">
+												<img tal:attributes="src VM/getVideo/getURLImage" width="100%" height="100%"/>
+												<p tal:content="VM/getVideo/getName"/>
+											</div>
+										</a>
+									</li>
+									
+								</ul>
+							</div>
+						</div>
+						
+						<div class="box">
+							<div class="b-title">Chuyên đề mới nhất</div>
+							<div class="b-content">
+								<ul class="thumbnails">
+									<li tal:repeat="VL VL24" class="i-grid span2">
+										<a tal:attributes="href VL/getURLView">
+											<div class="thumbnail">
+												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage" width="100%" height="100%"/>
+												<p tal:content="VL/getVideo/getName"/>
+											</div>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="sidebar span5">
+					<div class="wraper">
+						<div class="box">
+							<div class="b-title">Lịch Công Tác</div>
+							<div class="b-content">
+								<div class="g4">
+									<div id="eventCalendarLocale" />
 								</div>
-								<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-								<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
-							</div>						
-						</div>
-						<div class="top-list">
-							<div class="list-title">TIN MỚI CẬP NHẬT</div>							
-							<ul>
-								<a tal:repeat="News Category/getNewsLimit1" tal:attributes="href News/getURLRead">
-									<li tal:content="News/getTitleReduce" />
-								</a>
-							</ul>							
-						</div>
-						<div class="clear" />
-					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Bài giảng mới nhất</span>
-						</div>
-						<div class="row">
-							<div tal:repeat="VM VM24" class="col-lg-3">
-								<a tal:attributes="href VM/getURLView" class="thumbnail">
-									<img
-										tal:attributes="src VM/getVideo/getURLImage; data-original-title VM/getVideo/getName"
-										class="tooltipvideo"
-										data-placement="top"
-										data-toggle="tooltip"
-										data-src="holder.js/100%x180"
-										style="width:160px; height:120px;"
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Chuyên đề mới nhất</span>
-						</div>
-						<div class="row">
-							<div tal:repeat="VL VL24" class="col-lg-3">
-								<a tal:attributes="href VL/getURLView" class="thumbnail">
-									<img tal:condition="VL/getVideo/getURL"
-										tal:attributes="src VL/getVideo/getURLImage; data-original-title VL/getVideo/getName"
-										class="tooltipvideo"
-										data-placement="top"
-										data-toggle="tooltip"
-										data-src="holder.js/100%x180"
-										style="width:160px; height:120px;"
-									/>
-								</a>
-							</div>
-						</div>
-					</div>
-				</div>				
-				<div id="sidebar">
-					<div class="sidebar-box">						
-						<div id="Event" class="box-title">
-							<img src="/data/images/calendar.png" width="30" />
-							<span>Lịch Công Tác</span>
-						</div>
-						<div class="sidebar-box-content">
-							<div class="g4">
-								<div id="eventCalendarLocale" />
-							</div>
-							<script type="text/javascript">
-								/*<![CDATA[*/
-								$(document).ready(function() {
-									$("#eventCalendarLocale").eventCalendar({
-										eventsjson: '/mvc/templates/script/events.json.php',
-										eventsjson: '/task',
-										monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-											"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
-										dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
-										dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
-										txt_noEvents: "Không có sự kiện nào xảy ra",
-										txt_SpecificEvents_prev: "",
-										txt_SpecificEvents_after: "sự kiện:",
-										txt_next: "Tới",
-										txt_prev: "Lui",
-										txt_NextEvents: "Sự kiện sắp xảy ra:",
-										txt_GoToEventUrl: "đi đến sự kiện"
+								<script type="text/javascript">
+									/*<![CDATA[*/
+									$(document).ready(function() {
+										$("#eventCalendarLocale").eventCalendar({
+											eventsjson: '/mvc/templates/script/events.json.php',
+											eventsjson: '/task',
+											monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+												"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+											dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
+											dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
+											txt_noEvents: "Không có sự kiện nào xảy ra",
+											txt_SpecificEvents_prev: "",
+											txt_SpecificEvents_after: "sự kiện:",
+											txt_next: "Tới",
+											txt_prev: "Lui",
+											txt_NextEvents: "Sự kiện sắp xảy ra:",
+											txt_GoToEventUrl: "đi đến sự kiện"
+										});
 									});
-								});
-								/*]]>*/
-							</script>
-							<div class="clear"></div>
+									/*]]>*/
+								</script>
+							</div>
 						</div>
+						
+						<div metal:use-macro="macros.xhtml/EventBox"/>
+						<div metal:use-macro="macros.xhtml/CourseBox"/>
+						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
+						<div metal:use-macro="macros.xhtml/PictureBox"/>
+						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
+						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
+						<div metal:use-macro="macros.xhtml/AskBox"/>
+						<div metal:use-macro="macros.xhtml/CountBox"/>
+						<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+						<div metal:use-macro="macros.xhtml/ContactBox"/>
+						<div metal:use-macro="macros.xhtml/CallendarBox"/>
 					</div>
-					<div metal:use-macro="macros.xhtml/SlideBox1"/>
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-					<div metal:use-macro="macros.xhtml/BoxMonk"/>
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>					
-					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-				</div>				
-				<div class="clear" />
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/Popup" />
+			<div metal:use-macro="macros.xhtml/Footer"/>
 		</div>
 	</body>
 </html>
