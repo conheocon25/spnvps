@@ -13,12 +13,13 @@ class Monk extends Object{
 	private $Type;
 	private $BType;
 	private $URLPic;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $BType=Null, $URLPic=Null){$this->Id = $Id;$this->PreName = $PreName;$this->Name = $Name;$this->Pagoda = $Pagoda;$this->Phone = $Phone;$this->Note = $Note;$this->Type = $Type;$this->BType = $BType; $this->URLPic = $URLPic; parent::__construct( $Id );}
-    function getId() {return $this->Id;}	
+    function __construct( $Id=null, $PreName=null, $Name=null , $Pagoda=Null, $Phone=Null, $Note=Null, $Type=Null, $BType=Null, $URLPic=Null, $Key=Null){$this->Id = $Id;$this->PreName = $PreName;$this->Name = $Name;$this->Pagoda = $Pagoda;$this->Phone = $Phone;$this->Note = $Note;$this->Type = $Type;$this->BType = $BType; $this->URLPic = $URLPic; $this->Key = $Key; parent::__construct( $Id );}
+    function getId() {return $this->Id;}
 	function getIdPrint(){return "l" . $this->getId();}	
 	
 	function setPreName( $PreName ) {$this->PreName = $PreName;$this->markDirty();}   
@@ -49,8 +50,23 @@ class Monk extends Object{
 			return "Chưa rõ";
         return $BType->getName();
     }
+	function getBTypeKey( ){
+		$mBType = new \MVC\Mapper\CategoryBType();
+		$BType = $mBType->find($this->BType);
+		if (!isset($BType))
+			return "Chưa rõ";
+        return $BType->getKey();
+    }
+	
 	function setURLPic( $URLPic ) {$this->URLPic = $URLPic;$this->markDirty();} 
 	function getURLPic( ){return $this->URLPic;}
+	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();} 
+	function getKey( ){return $this->Key;}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Name." ".$this->getId());
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -64,7 +80,7 @@ class Monk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLRead(){return "/library/video/".$this->getBType()."/monk/".$this->getId();}
+	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/giang-su/".$this->getKey();}
 	function getURLView(){return "/app/monk";}	
 	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}
 	function getURLVideoInsLoad(){return "/app/monk/".$this->getId()."/video/ins/load";}

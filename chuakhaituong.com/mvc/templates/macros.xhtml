@@ -110,6 +110,22 @@
 		</div>
 	</div>
 	
+
+	<!-- HEADER -->	
+	<div metal:define-macro="HeaderAdmin">
+		<div id="menu-top">
+			<ul class="top-nav">
+				<li class="current"><a href="/trang-chu">Về trang chủ</a></li>
+			</ul>
+		</div>
+	</div>
+	
+	<div metal:define-macro="AdminBoxTitle" class="box-title">
+		<img src="/data/images/icon.png" width="30" />
+		<span><a href="/app">Admin</a></span>
+		<a href="/signout/load">&#8629; Thoát</a>
+	</div>
+	
 	<!-- ======================================================================== -->
 	<!-- PHẬT ÂM NAM TÔNG - BẮC TÔNG											  -->
 	<!-- ======================================================================== -->
@@ -472,15 +488,15 @@
 	<div metal:define-macro="Footer" class="footer">
 		<div class="menu">
 			<ul class="top-nav clearfix">
-				<li><a href="/home">Trang chủ</a></li>								
-				<li><a href="/news">Tin tức</a></li>
-				<li><a href="/course">Đào tạo</a></li>
-				<li><a href="/event">Sự kiện</a></li>				
-				<li><a href="/library/video">PHẬT ÂM</a></li>
-				<li><a href="/ask/2/ins/load">Hỏi đáp</a></li>				
-				<li><a href="/library/album">Ảnh hoạt động</a></li>
-				<li><a href="/pagoda">Danh bạ</a></li>				
-				<li><a href="/contact">Liên hệ</a></li>
+				<li><a href="/trang-chu">Trang chủ</a></li>								
+				<li><a href="/tin-tuc">Tin tức</a></li>
+				<li><a href="/dao-tao">Đào tạo</a></li>
+				<li><a href="/su-kien">Sự kiện</a></li>				
+				<li><a href="/phat-am">PHẬT ÂM</a></li>
+				<li><a href="/hoi-dap/2/ins/load">Hỏi đáp</a></li>				
+				<li><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
+				<li><a href="/chua-ban">Danh bạ</a></li>				
+				<li><a href="/lien-he">Liên hệ</a></li>
 				<li id="last"><a href="/signin/load">Quản trị</a></li>
 			</ul>
 		</div>
@@ -505,10 +521,109 @@
 	</div>
 	
 	
+	<div metal:define-macro="AdminMenu" class="manager-menu">
+		<ul>
+			<a tal:attributes="href '/app/category/paid'">
+				<li tal:attributes="class php:ActiveAdmin=='Paid'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC CHI</div>
+					<div class="right" tal:content="CategoryPaidAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/task'">
+				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC LỊCH LÀM VIỆC</div>
+					<div class="right" tal:content="TaskAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/news'">
+				<li tal:attributes="class php:ActiveAdmin=='News'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC TIN TỨC</div>
+					<div class="right" tal:content="CategoryNewsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/video'">
+				<li tal:attributes="class php:ActiveAdmin=='Video'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC VIDEO</div>
+					<div class="right" tal:content="CategoryVideoAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/category/ask'">
+				<li tal:attributes="class php:ActiveAdmin=='Ask'?'menu-select':'?'">
+					<div class="left">CHUYÊN MỤC HỎI ĐÁP</div>
+					<div class="right" tal:content="CategoryAskAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/course'">
+				<li tal:attributes="class php:ActiveAdmin=='Course'?'menu-select':'?'">					
+					<div class="left">ĐÀO TẠO</div>
+					<div class="right" tal:content="CourseAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/monk'">
+				<li tal:attributes="class php:ActiveAdmin=='Monk'?'menu-select':'?'">
+					<div class="left">DANH SÁCH GIẢNG SƯ</div>
+					<div class="right" tal:content="MonkAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/event'">
+				<li tal:attributes="class php:ActiveAdmin=='Event'?'menu-select':'?'">
+					<div class="left">DANH SÁCH SỰ KIỆN</div>
+					<div class="right" tal:content="EventAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/pagoda'">
+				<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'menu-select':'?'">
+					<div class="left">DANH SÁCH CHÙA</div>
+					<div class="right" tal:content="PagodaAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/album'">
+				<li tal:attributes="class php:ActiveAdmin=='Album'?'menu-select':'?'">
+					<div class="left">DANH SÁCH ALBUM</div>
+					<div class="right" tal:content="AlbumAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/sponsor'">
+				<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'menu-select':'?'">
+					<div class="left">SỔ VÀNG CÔNG ĐỨC</div>
+					<div class="right" tal:content="SponsorAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/news'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'menu-select':'?'">
+					<div class="left">TIN TỨC NỔI BẬT</div>
+					<div class="right" tal:content="PanelNewsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/category/video'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'menu-select':'?'">
+					<div class="left">VIDEO NỔI BẬT</div>
+					<div class="right" tal:content="PanelCategoryVideoAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/panel/ads'">
+				<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'menu-select':'?'">
+					<div class="left">QUẢNG CÁO</div>
+					<div class="right" tal:content="PanelAdsAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/popup'">
+				<li tal:attributes="class php:ActiveAdmin=='Popup'?'menu-select':'?'">
+					<div class="left">QUẢNG CÁO POPUP</div>
+					<div class="right" tal:content="PopupAll/count" />
+				</li>
+			</a>
+			<a tal:attributes="href '/app/config'">
+				<li tal:attributes="class php:ActiveAdmin=='Statistic'?'menu-select':'?'">
+					<div class="left">CẤU HÌNH</div>
+					<div class="right" tal:content="ConfigAll/count" />
+				</li>
+			</a>
+		</ul>
+	</div>
 	
 	<!-- ĐỊNH NGHĨA THƯ VIỆN CSS JAVASCRIPT 
-	
-	
+		
 
 	<div metal:define-macro="Header" id="header">
 		<div id="banner">
@@ -901,11 +1016,6 @@
 		<span><a href="/app">Admin</a></span>
 		<a href="/signout/load">&#8629; Thoát</a>
 	</div>
-	
-	
-	
-	
-	
 	
 	-->
 </body>
