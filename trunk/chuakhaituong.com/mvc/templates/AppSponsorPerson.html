@@ -6,77 +6,59 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title"/>
-							<a href="/app/sponsor">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
-								<thead>
-									<tr>
-										<th>STT</th>
-										<th align="left">TÊN</th>
-										<th align="right">SỐ TIỀN</th>
-										<th align="left">ĐƠN VỊ</th>
-										<th>XÓA</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="content-rows" tal:repeat="Person Sponsor/getPersonAll">
-										<td width="32" align="center">
-											<div tal:content="repeat/Person/number" />
-										</td>
-										<td class="text-hightlight">
-											<a tal:attributes="href Person/getURLUpdLoad">
-												<div tal:content="Person/getName" />
-											</a>
-										</td>
-										<td align="right" width="96" tal:content="Person/getValuePrint" />
-										<td align="left" width="48" tal:content="Person/getUnit" />
-										<td class="text-hightlight" width="32" align="center">
-											<a tal:attributes="href Person/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
-											</a>
-										</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="5" align="center">
-											<a tal:attributes="href Sponsor/getURLPersonInsLoad">Thêm mới</a>
-										</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-						<div class="clear" />
-					</div>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span9">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th align="left">TÊN</th>
+								<th align="right">SỐ TIỀN</th>
+								<th align="left">ĐƠN VỊ</th>
+								<th>XÓA</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr tal:repeat="Person Sponsor/getPersonAll">
+								<td>
+									<div tal:content="repeat/Person/number" />
+								</td>
+								<td class="text-hightlight">
+									<a tal:attributes="href Person/getURLUpdLoad">
+										<div tal:content="Person/getName" />
+									</a>
+								</td>
+								<td align="right" width="96" tal:content="Person/getValuePrint" />
+								<td align="left" width="48" tal:content="Person/getUnit" />
+								<td class="text-hightlight" width="32" align="center">
+									<a tal:attributes="href Person/getURLDelLoad">
+										<span class="icon-remove"/>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="5" align="center">
+									<a class="btn" tal:attributes="href Sponsor/getURLPersonInsLoad"><span class="icon-plus"/> Thêm mới</a>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
 				</div>
-				
-				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
-						<div class="manager-menu">
-							<ul>								
-								<a tal:repeat="Sponsor1 SponsorAll" tal:attributes="href Sponsor1/getURLSetting">
-									<li tal:attributes="class php:Sponsor1->getId()==Sponsor->getId()?'menu-select':'?'">
-										<div class="left" tal:content="Sponsor1/getName"/>
-										<div class="right" tal:content="Sponsor1/getPersonAll/count" />
-									</li>
-								</a>
-							</ul>
-						</div>
-					</div>
+				<div class="span3">
+					<ul class="nav nav-pills nav-stacked">															
+						<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'disabled':'active'">
+							<a tal:attributes="href Sponsor1/getURLSetting">
+								<span tal:content="Sponsor1/getName" />
+							</a>
+						</li>
+					</ul>
 				</div>
-				<div class="clear" />
 			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

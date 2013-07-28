@@ -6,86 +6,64 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title" />
-							<a href="/app/category/news">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table class="table table-striped">
-								<thead>
-									<tr>
-										<th>STT</th>
-										<th />
-										<th align="left">TIÊU ĐỀ</th>
-										<th>XÓA</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr class="content-rows" tal:repeat="News NewsAll" >
-										<td width="32" align="center">
-											<div tal:content="repeat/News/number" />
-										</td>
-										<td width="32" align="center">
-											<span tal:condition="News/isVIP">
-												<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
-											</span>
-										</td>
-										<td class="text-hightlight">
-											<a tal:attributes="href News/getURLUpdLoad">
-												<div tal:content="News/getTitleReduce" />
-											</a>
-										</td>
-										<td width="32" align="center" class="text-hightlight">
-											<a tal:attributes="href News/getURLDelLoad">
-												<span class="icon-remove" />
-											</a>
-										</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="4" align="center">
-											<a class="btn" tal:attributes="href Category/getURLNewsInsLoad">
-												<span class="icon-plus" /> Thêm mới
-											</a>
-										</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>						
-						<div class="pagination pagination-centered">
-							<ul>
-								<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
-									<a tal:attributes="href P/getURL" tal:content="P/getName"/>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>				
-				<div id="sidebar">
-					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
-						<div class="manager-menu">
-							<ul>
-								<a tal:repeat="Category1 CategoryNewsAll" tal:attributes="href Category1/getURLView">
-									<li tal:attributes="class php:Category->getId()==Category1->getId()?'menu-select':'normal'">										
-										<div class="left" tal:content="Category1/getName" />
-										<div class="right" tal:content="Category1/getNews/count" />
-									</li>
-								</a>												
-							</ul>
-						</div>
-					</div>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span9">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th />
+								<th align="left">TIÊU ĐỀ</th>
+								<th>XÓA</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr tal:repeat="News NewsAll" >
+								<td><div tal:content="repeat/News/number" /></td>
+								<td>
+									<span tal:condition="News/isVIP">
+										<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
+									</span>
+								</td>
+								<td>
+									<a tal:attributes="href News/getURLUpdLoad">
+										<div tal:content="News/getTitleReduce" />
+									</a>
+								</td>
+								<td>
+									<a tal:attributes="href News/getURLDelLoad"><span class="icon-remove" /></a>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="4" align="center">
+									<a class="btn" tal:attributes="href Category/getURLNewsInsLoad">
+										<span class="icon-plus" /> Thêm mới
+									</a>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					<ul class="pagination pagination-large" >
+						<li tal:repeat="P PN/getPages" tal:attributes="class php:P->getId()==Page?'disabled':'active'">
+							<a tal:attributes="href P/getURL" tal:content="P/getName" />
+						</li>
+					</ul>
 				</div>
-				<div class="clear" />
+				<div class="span3">
+					<ul class="nav nav-pills nav-stacked">
+						<li tal:repeat="Category1 CategoryNewsAll" tal:attributes="class php:Category->getId()==Category1->getId()?'disabled':'active'">
+							<a tal:attributes="href Category1/getURLView">
+								<span tal:content="Category1/getName" />
+							</a>
+						</li>
+					</ul>
+				</div>
 			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>
