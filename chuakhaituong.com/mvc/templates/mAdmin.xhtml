@@ -2,58 +2,60 @@
 <body>
 	<!-- HEADER -->
 	<div metal:define-macro="Header">
-		<div class="row-fluid"><h1 class="span12" tal:content="Title"/></div>
+		<div class="row-fluid">			
+			<h1 class="span12" tal:content="Title"/>
+		</div>
 	</div>
 	
 	<div metal:define-macro="Menu">
 		<ul class="nav nav-pills nav-stacked">
-			<li tal:attributes="class php:ActiveAdmin=='Paid'?'active':'?'">
-				<a tal:attributes="href '/app/category/paid'">CHUYÊN MỤC CHI</a>
+			<li tal:attributes="class php:ActiveAdmin=='Paid'?'disabled':'active'">
+				<a tal:attributes="href '/app/category/paid'">CHUYÊN MỤC CHI <span class="badge pull-right" tal:content="CategoryPaidAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Task'?'active':'?'">
-				<a tal:attributes="href '/app/category/task'">CHUYÊN MỤC LỊCH LÀM VIỆC</a>
+			<li tal:attributes="class php:ActiveAdmin=='Task'?'disabled':'active'">
+				<a tal:attributes="href '/app/category/task'">CHUYÊN MỤC LỊCH LÀM VIỆC <span class="badge pull-right" tal:content="CategoryTaskAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'?'">
-				<a tal:attributes="href '/app/category/news'">CHUYÊN MỤC TIN TỨC</a>
+			<li tal:attributes="class php:ActiveAdmin=='News'?'disable':'active'">
+				<a tal:attributes="href '/app/category/news'">CHUYÊN MỤC TIN TỨC <span class="badge pull-right" tal:content="CategoryNewsAll/count"/></a>
 			</li>				
-			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'?'">
-				<a tal:attributes="href '/app/category/video'">CHUYÊN MỤC VIDEO</a>
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'disabled':'active'">
+				<a tal:attributes="href '/app/category/video'">CHUYÊN MỤC VIDEO <span class="badge pull-right" tal:content="CategoryVideoAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Ask'?'active':'?'">
-				<a tal:attributes="href '/app/category/ask'">CHUYÊN MỤC HỎI ĐÁP</a>
+			<li tal:attributes="class php:ActiveAdmin=='Ask'?'disabled':'active'">
+				<a tal:attributes="href '/app/category/ask'">CHUYÊN MỤC HỎI ĐÁP <span class="badge pull-right" tal:content="CategoryAskAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'?'">					
-				<a tal:attributes="href '/app/course'">ĐÀO TẠO</a>
+			<li tal:attributes="class php:ActiveAdmin=='Course'?'disabled':'active'">					
+				<a tal:attributes="href '/app/course'">ĐÀO TẠO <span class="badge pull-right" tal:content="CourseAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'?'">
-				<a tal:attributes="href '/app/monk'">DANH SÁCH GIẢNG SƯ</a>
+			<li tal:attributes="class php:ActiveAdmin=='Monk'?'disabled':'active'">
+				<a tal:attributes="href '/app/monk'">DANH SÁCH GIẢNG SƯ <span class="badge pull-right" tal:content="MonkAll/count"/></a>
 			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Event'?'active':'?'">
-				<a tal:attributes="href '/app/event'">DANH SÁCH SỰ KIỆN</a>
+			<li tal:attributes="class php:ActiveAdmin=='Event'?'disabled':'active'">
+				<a tal:attributes="href '/app/event'">DANH SÁCH SỰ KIỆN <span class="badge pull-right" tal:content="EventAll/count"/></a>
 			</li>					
-			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'active':'?'">
-				<a tal:attributes="href '/app/pagoda'">DANH SÁCH CHÙA</a>
+			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'disabled':'active'">
+				<a tal:attributes="href '/app/pagoda'">DANH SÁCH CHÙA <span class="badge pull-right" tal:content="PagodaAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'?'">
-				<a tal:attributes="href '/app/album'">DANH SÁCH ALBUM</a>
+			<li tal:attributes="class php:ActiveAdmin=='Album'?'disabled':'active'">
+				<a tal:attributes="href '/app/album'">DANH SÁCH ALBUM <span class="badge pull-right" tal:content="AlbumAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'active':'?'">
-				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG CÔNG ĐỨC</a>
+			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'disabled':'active'">
+				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG CÔNG ĐỨC <span class="badge pull-right" tal:content="SponsorAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'active':'?'">
-				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT</a>
+			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'disabled':'active'">
+				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT <span class="badge pull-right" tal:content="PanelNewsAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'active':'?'">
-				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT</a>
+			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'disabled':'active'">
+				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT <span class="badge pull-right" tal:content="PanelCategoryVideoAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'active':'?'">
-				<a tal:attributes="href '/app/panel/ads'">QUẢNG CÁO</a>
+			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'disabled':'active'">
+				<a tal:attributes="href '/app/panel/ads'">QUẢNG CÁO <span class="badge pull-right" tal:content="PanelAdsAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Popup'?'active':'?'">
-				<a tal:attributes="href '/app/popup'">QUẢNG CÁO POPUP</a>
+			<li tal:attributes="class php:ActiveAdmin=='Popup'?'disabled':'active'">
+				<a tal:attributes="href '/app/popup'">QUẢNG CÁO POPUP <span class="badge pull-right" tal:content="PopupAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'?'">
-				<a tal:attributes="href '/app/config'">CẤU HÌNH</a>
+			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'disabled':'active'">
+				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge pull-right" tal:content="ConfigAll/count"/></a>
 			</li>
 		</ul>
 	</div>

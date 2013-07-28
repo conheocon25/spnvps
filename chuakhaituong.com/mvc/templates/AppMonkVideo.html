@@ -6,73 +6,56 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">					
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title"/>
-							<a href="/app/monk">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
-								<tbody>
-									<tr class="content-rows" tal:repeat="VM VMAll">
-										<td width="32" align="center">
-											<div tal:content="repeat/VM/number" />
-										</td>
-										<td class="text-hightlight">
-											<a tal:attributes="href VM/getURLUpdLoad">
-												<div tal:content="VM/getVideo/getName" />
-											</a>
-										</td>
-										<td>
-											<div tal:content="VM/getVideo/getTimePrint" />
-										</td>
-										<td class="text-hightlight" width="32" align="center">
-											<a tal:attributes="href VM/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
-											</a>
-										</td>
-									</tr>
-								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="4" align="center">
-											<a tal:attributes="href Monk/getURLVideoInsLoad">Thêm mới</a>
-										</td>
-									</tr>
-								</tfoot>
-							</table>
-						</div>
-						<div class="page-list">
-							<span tal:repeat="P PN/getPages">
-								<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-							</span>
-						</div>
-						<div class="clear" />
-					</div>
-				</div>				
-				<div id="sidebar">										
-					<div class="sidebar-box">						
-						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
-						<div class="manager-menu">
-							<ul>
-								<a tal:repeat="Monk1 MonkAll" tal:attributes="href Monk1/getURLVideo">
-									<li tal:attributes="class php:Monk->getId()==Monk1->getId()?'menu-select':''">
-										<div class="left" tal:content="Monk1/getName" />
-										<div class="right" tal:content="Monk1/getVMs/count" />
-									</li>
-								</a>
-							</ul>
-						</div>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span9">
+					<table class="table table-striped">
+						<tbody>
+							<tr class="content-rows" tal:repeat="VM VMAll">
+								<td width="32" align="center">
+									<div tal:content="repeat/VM/number" />
+								</td>
+								<td class="text-hightlight">
+									<a tal:attributes="href VM/getURLUpdLoad">
+										<div tal:content="VM/getVideo/getName" />
+									</a>
+								</td>
+								<td>
+									<div tal:content="VM/getVideo/getTimePrint" />
+								</td>
+								<td>
+									<a tal:attributes="href VM/getURLDelLoad">
+										<span class="icon-remove"/>
+									</a>
+								</td>
+							</tr>
+						</tbody>
+						<tfoot>
+							<tr>
+								<td colspan="4" align="center">
+									<a class="btn" tal:attributes="href Monk/getURLVideoInsLoad"><span class="icon-plus"/>Thêm mới</a>
+								</td>
+							</tr>
+						</tfoot>
+					</table>
+					<div class="page-list">
+						<span tal:repeat="P PN/getPages">
+							<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
+						</span>
 					</div>
 				</div>
-				<div class="clear" />
-			</div>			
-		</div>
+				<div class="span3">
+					<ul class="nav nav-pills nav-stacked">															
+						<li tal:repeat="Monk1 MonkAll" tal:attributes="class php:Monk->getId()==Monk1->getId()?'disabled':'active'">
+							<a tal:attributes="href Monk1/getURLVideo">
+								<span tal:content="Monk1/getName" />
+							</a>	
+						</li>					
+					</ul>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>
