@@ -1,0 +1,65 @@
+<html lang="en" xml:lang="en">
+<body>
+	<!-- HEADER -->
+	<div metal:define-macro="Header">
+		<div class="row-fluid"><h1 class="span12" tal:content="Title"/></div>
+	</div>
+	
+	<div metal:define-macro="Menu">
+		<ul class="nav nav-pills nav-stacked">
+			<li tal:attributes="class php:ActiveAdmin=='Paid'?'active':'?'">
+				<a tal:attributes="href '/app/category/paid'">CHUYÊN MỤC CHI</a>
+			</li>
+			<li tal:attributes="class php:ActiveAdmin=='Task'?'active':'?'">
+				<a tal:attributes="href '/app/category/task'">CHUYÊN MỤC LỊCH LÀM VIỆC</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'?'">
+				<a tal:attributes="href '/app/category/news'">CHUYÊN MỤC TIN TỨC</a>
+			</li>				
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'?'">
+				<a tal:attributes="href '/app/category/video'">CHUYÊN MỤC VIDEO</a>
+			</li>
+			<li tal:attributes="class php:ActiveAdmin=='Ask'?'active':'?'">
+				<a tal:attributes="href '/app/category/ask'">CHUYÊN MỤC HỎI ĐÁP</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'?'">					
+				<a tal:attributes="href '/app/course'">ĐÀO TẠO</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'?'">
+				<a tal:attributes="href '/app/monk'">DANH SÁCH GIẢNG SƯ</a>
+			</li>			
+			<li tal:attributes="class php:ActiveAdmin=='Event'?'active':'?'">
+				<a tal:attributes="href '/app/event'">DANH SÁCH SỰ KIỆN</a>
+			</li>					
+			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'active':'?'">
+				<a tal:attributes="href '/app/pagoda'">DANH SÁCH CHÙA</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'?'">
+				<a tal:attributes="href '/app/album'">DANH SÁCH ALBUM</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'active':'?'">
+				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG CÔNG ĐỨC</a>
+			</li>
+			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'active':'?'">
+				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'active':'?'">
+				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'active':'?'">
+				<a tal:attributes="href '/app/panel/ads'">QUẢNG CÁO</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Popup'?'active':'?'">
+				<a tal:attributes="href '/app/popup'">QUẢNG CÁO POPUP</a>
+			</li>						
+			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'?'">
+				<a tal:attributes="href '/app/config'">CẤU HÌNH</a>
+			</li>
+		</ul>
+	</div>
+
+	<div metal:define-macro="Footer">
+		<div class="row-fluid">Copyright 2012 SPN</div>
+	</div>	
+</body>
+</html>

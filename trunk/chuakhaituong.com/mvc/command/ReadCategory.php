@@ -23,17 +23,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			$Category = $mCategoryNews->findByKey($Key1);
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			if (!isset($Category)) $Category = $CategoryNewsAll->current();
 			$IdCategory = $Category->getId();
 			
 			$AlbumAll = $mAlbum->findAll();			
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();			
-			$CategoryNewsAll = $mCategoryNews->findAll();
+			$SponsorAll = $mSponsor->findAll();						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 						
-			if (!isset($Page)) $Page = 1;
-			
+			if (!isset($Page)) $Page = 1;			
 			$Course = $mCourse->findByNear(null)->current();
 			$Event = $mEvent->findTop(null)->current();
 

@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdMonk = $request->getProperty('IdMonk');
-			$IdBType = $request->getProperty('IdBType');
+			$KBType = $request->getProperty('KBType');
+			$KMonk = $request->getProperty('KMonk');			
 			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
@@ -25,6 +25,11 @@
 			//-------------------------------------------------------------
 			if (!isset($Page)) $Page=1;
 			
+			$Monk = $mMonk->findByKey($KMonk);
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdMonk = $Monk->getId();
+			$IdCategoryBType = $CategoryBType->getId();
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
@@ -34,9 +39,6 @@
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$Monk = $mMonk->find($IdMonk);
-			$CategoryBType = $mCategoryBType->find($IdBType);										
 			
 			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());

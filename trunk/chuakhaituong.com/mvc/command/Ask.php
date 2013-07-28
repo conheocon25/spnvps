@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
-			$IdAsk = $request->getProperty('IdAsk');
+			$KCategory = $request->getProperty('KCategory');
+			$KAsk = $request->getProperty('KAsk');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -24,13 +24,14 @@
 			//-------------------------------------------------------------
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Category = $mCategoryAsk->find($IdCategory);
 			
-			if (!isset($IdAsk)){
+			$Category = $mCategoryAsk->findByKey($KCategory);
+			
+			if (!isset($KAsk)){
 				$AskAll = $mAsk->findBy2(array($IdCategory));
 				$Ask = $AskAll->current();
 			}else{
-				$Ask = $mAsk->find($IdAsk);
+				$Ask = $mAsk->findByKey($KAsk);
 			}			
 			$PagodaAll = $mPagoda->findAll();
 			

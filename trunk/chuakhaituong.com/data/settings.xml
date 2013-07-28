@@ -180,6 +180,7 @@
 		<command name="AppMonkUpdExe"><view>AppMonkUpdExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>		
 		<command name="AppMonkDelLoad"><view>AppMonkDelLoad</view></command>
 		<command name="AppMonkDelExe"><view>AppMonkDelExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
+		<command name="AppMonkUpdateAll"><view>AppMonkUpdateAll</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.MONK.VIDEO																	-->
@@ -202,6 +203,8 @@
 		<command name="AppCategoryAskUpdExe"><view>AppCategoryAskUpdExe</view><status value="CMD_OK"><forward>AppCategoryAsk</forward></status></command>		
 		<command name="AppCategoryAskDelLoad"><view>AppCategoryAskDelLoad</view></command>
 		<command name="AppCategoryAskDelExe"><view>AppCategoryAskDelExe</view><status value="CMD_OK"><forward>AppCategoryAsk</forward></status></command>
+
+		<command name="AppCategoryAskUpdateAll"><view>AppCategoryAskUpdateAll</view><status value="CMD_OK"><forward>AppCategoryAsk</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.ASK.DETAIL														-->

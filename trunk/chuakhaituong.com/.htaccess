@@ -31,9 +31,9 @@ RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)$					?cmd=LibraryVideo
 RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2&Page=$3 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoCategoryPlay&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
 
-RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)$					?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2 [L]
-RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/page/([0-9]+)$	?cmd=LibraryVideoMonk&IdBType=$1&IdMonk=$2&Page=$3 [L]
-RewriteRule ^library/video/([0-9]+)/monk/([0-9]+)/([0-9]+)$			?cmd=LibraryVideoMonkPlay&IdBType=$1&IdMonk=$2&IdVideoMonk=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)$					?cmd=LibraryVideoMonk&KBType=$1&KMonk=$2 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoMonk&KBType=$1&KMonk=$2&Page=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoMonkPlay&KBType=$1&KMonk=$2&KVideo=$3 [L]
 
 RewriteRule ^library/video/pagoda/([a-z0-9]+)$						?cmd=LibraryVideoPagoda&IdPagoda=$1 [L]
 
@@ -54,11 +54,11 @@ RewriteRule ^pagoda/([a-z0-9]+)/video/([a-z0-9]+)$ 					?cmd=Pagoda&IdPagoda=$1&
 
 RewriteRule ^online$ 												?cmd=Online [L]
 RewriteRule ^online/exe$ 											?cmd=OnlineExe [L]
-RewriteRule ^ask$ 													?cmd=Ask [L]
-RewriteRule ^ask/([a-z0-9]+)$ 										?cmd=Ask&IdCategory=$1 [L]
-RewriteRule ^ask/([a-z0-9]+)/([a-z0-9]+)$ 							?cmd=Ask&IdCategory=$1&IdAsk=$2 [L]
-RewriteRule ^ask/([a-z0-9]+)/ins/load$ 								?cmd=AskInsLoad&IdCategory=$1 [L]
-RewriteRule ^ask/([a-z0-9]+)/ins/exe$ 								?cmd=AskInsExe&IdCategory=$1 [L]
+RewriteRule ^hoi-dap$ 												?cmd=Ask [L]
+RewriteRule ^hoi-dap/([a-z0-9_-]+)$ 								?cmd=Ask&KCategory=$1 [L]
+RewriteRule ^hoi-dap/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=Ask&KCategory=$1&KAsk=$2 [L]
+RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi$ 					?cmd=AskInsLoad&KCategory=$1 [L]
+RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi/exe$ 				?cmd=AskInsExe&KCategory=$1 [L]
 
 RewriteRule ^ads$ 													?cmd=Ads [L]
 RewriteRule ^course$ 												?cmd=Course [L]
@@ -110,15 +110,6 @@ RewriteRule ^app/config/([a-z0-9]+)/upd/exe$ 						?cmd=AppConfigUpdExe&IdConfig
 RewriteRule ^app/config/([a-z0-9]+)/del/load$ 						?cmd=AppConfigDelLoad&IdConfig=$1 [L]
 RewriteRule ^app/config/([a-z0-9]+)/del/exe$ 						?cmd=AppConfigDelExe&IdConfig=$1 [L]
 
-RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/page/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/ins/load$ 					?cmd=AppMonkVideoInsLoad&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/ins/exe$ 					?cmd=AppMonkVideoInsExe&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/load$ 		?cmd=AppMonkVideoUpdLoad&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/exe$ 			?cmd=AppMonkVideoUpdExe&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/load$ 		?cmd=AppMonkVideoDelLoad&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/exe$ 			?cmd=AppMonkVideoDelExe&IdMonk=$1&IdVideoMonk=$2 [L]
-
 RewriteRule ^app/course$ 											?cmd=AppCourse [L]
 RewriteRule ^app/course/ins/load$ 									?cmd=AppCourseInsLoad [L]
 RewriteRule ^app/course/ins/exe$ 									?cmd=AppCourseInsExe [L]
@@ -135,7 +126,6 @@ RewriteRule ^app/course/([0-9]+)/([0-9]+)/upd/exe$ 			?cmd=AppCourseLessionUpdEx
 RewriteRule ^app/course/([0-9]+)/([0-9]+)/del/load$ 		?cmd=AppCourseLessionDelLoad&IdCourse=$1&IdLession=$2 [L]
 RewriteRule ^app/course/([0-9]+)/([0-9]+)/del/exe$ 			?cmd=AppCourseLessionDelExe&IdCourse=$1&IdLession=$2 [L]
 
-
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
 RewriteRule ^app/album/ins/load$ 								?cmd=AppLibraryAlbumInsLoad [L]
 RewriteRule ^app/album/ins/exe$ 								?cmd=AppLibraryAlbumInsExe [L]
@@ -151,6 +141,16 @@ RewriteRule ^app/monk/([0-9]+)/upd/load$ 						?cmd=AppMonkUpdLoad&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/upd/exe$ 						?cmd=AppMonkUpdExe&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/del/load$ 						?cmd=AppMonkDelLoad&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/del/exe$ 						?cmd=AppMonkDelExe&IdMonk=$1 [L]
+RewriteRule ^app/monk/update/all$ 								?cmd=AppMonkUpdateAll [L]
+
+RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]
+RewriteRule ^app/monk/([0-9]+)/video/page/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
+RewriteRule ^app/monk/([0-9]+)/video/ins/load$ 					?cmd=AppMonkVideoInsLoad&IdMonk=$1 [L]
+RewriteRule ^app/monk/([0-9]+)/video/ins/exe$ 					?cmd=AppMonkVideoInsExe&IdMonk=$1 [L]
+RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/load$ 		?cmd=AppMonkVideoUpdLoad&IdMonk=$1&IdVideoMonk=$2 [L]
+RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/exe$ 			?cmd=AppMonkVideoUpdExe&IdMonk=$1&IdVideoMonk=$2 [L]
+RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/load$ 		?cmd=AppMonkVideoDelLoad&IdMonk=$1&IdVideoMonk=$2 [L]
+RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/exe$ 			?cmd=AppMonkVideoDelExe&IdMonk=$1&IdVideoMonk=$2 [L]
 
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
 RewriteRule ^app/category/news/ins/load$ 						?cmd=AppCategoryNewsInsLoad [L]
@@ -191,6 +191,7 @@ RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/exe$ 		?cmd=AppCategoryVid
 RewriteRule ^app/video/update/all$ 								?cmd=AppVideoUpdateAll [L]
 
 RewriteRule ^app/category/ask$ 										?cmd=AppCategoryAsk [L]
+RewriteRule ^app/category/ask/update/all$ 							?cmd=AppCategoryAskUpdateAll [L]
 RewriteRule ^app/category/ask/ins/load$ 							?cmd=AppCategoryAskInsLoad [L]
 RewriteRule ^app/category/ask/ins/exe$ 								?cmd=AppCategoryAskInsExe [L]
 RewriteRule ^app/category/ask/([a-z0-9]+)/upd/load$ 				?cmd=AppCategoryAskUpdLoad&IdCategory=$1 [L]
