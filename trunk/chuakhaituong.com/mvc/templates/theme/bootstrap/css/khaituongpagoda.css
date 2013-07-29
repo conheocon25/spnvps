@@ -252,19 +252,23 @@
 	
 	.top-pic-banner {
 		position: relative;
+		
 	}
-	
 	.top-pic-banner .p-b-title {
 		background-color: rgba(0, 0, 0, .5);
 		position: absolute;
-		bottom: 0;
-		left: 0;
+		bottom: 5px;
+		left: 5px;
+		right: 5px;
 		color: white;
 		font-size: 14px;
-		width: 100%;
 		padding: 5px 0;
 		text-align: center;
 	}
 	.p-b-title:hover, .top-pic-banner:hover .p-b-title { background-color: rgba(0, 0, 0, .7); }
 	
 	a { text-decoration: none; }
+	
+	.left-slide img { height: 300px !important; }
+	
+	.left-news-list { text-align: justify; }

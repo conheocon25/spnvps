@@ -43,7 +43,7 @@
 							<div class="b-content">
 								<div class="top-pic-banner" tal:condition="Course">
 									<a tal:attributes="href Course/getURLRead">
-										<img width="100%" tal:attributes="src Course/getImage"/>
+										<img tal:attributes="src Course/getImage" class="img-polaroid"/>
 										<div class="p-b-title" tal:content="Course/getName"/>
 									</a>
 								</div>
@@ -118,11 +118,11 @@
 							<div class="b-content">
 								<div class="row">
 									<div class="b-left span4">
-										<div class="carousel slide">
+										<div class="carousel slide left-slide img-polaroid">
 											<div class="carousel-inner">
 												<div class="active item">
 													<a href="/library/video/1">
-														<img width="335px" src="/data/images/bac_tong.jpg" />
+														<img width="335px" src="/data/images/bac_tong.jpg"/>
 													</a>
 												</div>
 												<div tal:repeat="News Category/getNewsLimit1" class="item">
@@ -137,7 +137,7 @@
 										</div>
 									</div>
 									<div class="b-right span4">
-										<ul class="nav nav-list">
+										<ul class="nav nav-list left-news-list">
 											<li class="nav-header">TIN MỚI CẬP NHẬT</li>
 											<li tal:repeat="News Category/getNewsLimit1">
 												<a tal:attributes="href News/getURLRead" tal:content="News/getTitleReduce"/>
