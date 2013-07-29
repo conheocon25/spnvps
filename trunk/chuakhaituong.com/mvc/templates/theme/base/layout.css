@@ -237,10 +237,6 @@
 						-webkit-animation: slide 30s;
 						-webkit-animation-iteration-count: infinite;
 						-webkit-animation-timing-function: ease-out;
-						
-						-moz-animation: slide 30s;
-						-moz-animation-iteration-count: infinite;
-						-moz-animation-timing-function: ease-out;
 					}
 					
 					.slider-wrap ul li {
