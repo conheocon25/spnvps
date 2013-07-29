@@ -1,6 +1,5 @@
 <html lang="en" xml:lang="en">
 <body>
-	
 	<!-- ======================================================================== -->
 	<!-- META TAG INCLUDE														  -->
 	<!-- ======================================================================== -->
@@ -109,9 +108,10 @@
 			</ul>
 		</div>
 	</div>
-	
 
-	<!-- HEADER -->	
+	<!-- ======================================================================== -->
+	<!-- HEADER ADMIN															  -->
+	<!-- ======================================================================== -->
 	<div metal:define-macro="HeaderAdmin">
 		<div id="menu-top">
 			<ul class="top-nav">
@@ -120,6 +120,9 @@
 		</div>
 	</div>
 	
+	<!-- ======================================================================== -->
+	<!-- ADMIN BOX TITLE														  -->
+	<!-- ======================================================================== -->
 	<div metal:define-macro="AdminBoxTitle" class="box-title">
 		<img src="/data/images/icon.png" width="30" />
 		<span><a href="/app">Admin</a></span>
@@ -132,10 +135,10 @@
 	<div metal:define-macro="BuddhaSlide" class="box">
 		<div class="b-title">Trang Video Phật Âm</div>
 		<div class="b-content">
-			<div id="myCarousel" class="carousel slide">
+			<div id="myCarousel2" class="carousel slide">
 				<ol class="carousel-indicators">
-					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel2" data-slide-to="1"></li>
 				</ol>
 				<div class="carousel-inner">
 					<div class="active item">
@@ -149,8 +152,8 @@
 						</a>
 					</div>
 				</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+				<a class="carousel-control left" href="#myCarousel2" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#myCarousel2" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
 	</div>
@@ -220,7 +223,7 @@
 	<div metal:define-macro="TopMonkBox" class="box">
 		<div class="b-title">GIẢNG SƯ NỔI BẬT</div>
 		<div class="b-content">
-			<div id="myCarousel" class="carousel slide">
+			<div id="myCarousel3" class="carousel slide">
 				<div class="carousel-inner">
 					<div class="active item">
 						<a href="/library/video/1">
@@ -236,8 +239,8 @@
 						</a>
 					</div>
 				</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+				<a class="carousel-control left" href="#myCarousel3" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#myCarousel3" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
 	</div>
@@ -441,11 +444,13 @@
 	<div metal:define-macro="Popup">
 		<style>
 			.ads-popup {
-				bottom: 5px;
-				right: 20px;
+				height: 300px;
+				width: 400px;
+				bottom: 3px;
+				right: 3px;
 				display: block;
 				position: fixed;
-				background-color: #FAFAFA;
+				background-color: rgba(0, 0, 0, .9);
 				border: 2px solid #696969;
 				color: red;
 				z-index: 9999999999 !important;
@@ -453,16 +458,18 @@
 			}			
 			.ads-close {
 				display: block;
-				padding: 12px 5px;
+				padding: 5px 13px;
 				color: white;
 				font-weight: bold;
-				border: 2px solid #FFFFFF;
 				position: absolute;
-				background: #0D3772;
-				top: -20px;
-				right: -20px;
+				background-color: rgba(255, 255, 255, .2);
+				top: 0;
+				right: 0;
 				cursor: pointer;
-				border-radius: 20px;
+				z-index: 100;
+				border-bottom-left-radius: 20px;
+				border-left: 2px solid #696969;
+				border-bottom: 2px solid #696969;
 			}
 		</style>
 		<script>
@@ -471,13 +478,14 @@
 			/*]]>*/
 		</script>
 		<div class="ads-popup" tal:condition="Popup/getEnable" >
-			<div class="ads-close">Đóng</div>			
+			<div class="ads-close">X</div>
+			<object height="100%" width="100%">
+				<param name="movie" tal:attributes="value Popup/getSource" />
+				<param name="wmode" value="transparent"/>
+				<embed wmode="transparent" tal:attributes="src Popup/getSource" height="100%" width="100%" />
+			</object>
 			<a tal:attributes="href Popup/getURL" target="blank">
-				<object height="250" width="300">
-					<param name="movie" tal:attributes="value Popup/getSource" />
-					<embed tal:attributes="src Popup/getSource" height="250" width="300" />
-				</object>
-			  <i style="display:block; height: 250px; width: 300px;  position: relative; z-index: 9; margin-top: -250px;"></i>
+				<div style="height:100%; width:100%; position:absolute; z-index:9; top:0; left:0;"></div>
 			</a>
 		</div>
 	</div>
@@ -520,7 +528,9 @@
 		</div>
 	</div>
 	
-	
+	<!-- ======================================================================== -->
+	<!-- ADMIN MENU																  -->
+	<!-- ======================================================================== -->
 	<div metal:define-macro="AdminMenu" class="manager-menu">
 		<ul>
 			<a tal:attributes="href '/app/category/paid'">
@@ -621,402 +631,5 @@
 			</a>
 		</ul>
 	</div>
-	
-	<!-- ĐỊNH NGHĨA THƯ VIỆN CSS JAVASCRIPT 
-		
-
-	<div metal:define-macro="Header" id="header">
-		<div id="banner">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Chùa Khải Tường" height="300" width="1000">
-				<param name="movie" value="/data/images/banner.swf" />
-				<param name="quality" value="high" />
-				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
-			</object>
-		</div>
-
-		<div id="menu-top">
-			<ul class="top-nav">
-				<li tal:attributes="class php:ActiveItem=='Home'?'active':'?'"><a href="/trang-chu">Trang chủ</a></li>
-				<li tal:attributes="class php:ActiveItem=='Introduction'?'active':'?'" ><a href="/gioi-thieu">Giới thiệu</a></li>
-				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'active':'?'">
-					<a style="cursor:pointer;">Tin tức</a>
-					<ul class="sub-menu">
-						<li tal:repeat="Category CategoryNewsAll">
-							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
-						</li>
-					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='Course'?'active':'?'" ><a href="/course">Đào tạo</a></li>
-				<li tal:attributes="class php:ActiveItem=='Event'?'active':'?'" ><a href="/event">Sự kiện</a></li>
-				<li tal:attributes="class php:ActiveItem=='Ask'?'active':'?'">
-					<a style="cursor:pointer;">PHẬT ÂM</a>
-					<ul class="sub-menu">						
-						<li tal:repeat="Category CategoryBTypeAll">
-							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . '(' . Category->getVideoAllCountPrint() . ')'" />
-						</li>
-					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='Ask'?'active':'?'">
-					<a style="cursor:pointer;">Hỏi đáp</a>
-					<ul class="sub-menu">
-						<li>
-							<a tal:attributes="href '/ask/2/ins/load'">Đặt câu hỏi</a>
-						</li>
-						<li tal:repeat="Category CategoryAskAll">
-							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
-						</li>
-					</ul>
-				</li>	
-				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/library/album">Ảnh hoạt động</a></li>
-				<li tal:attributes="class php:ActiveItem=='Pagoda'?'active':'?'" >
-					<a style="cursor:pointer;">Danh bạ Chùa</a>
-					<ul class="sub-menu">
-						<li tal:repeat="Pagoda PagodaAll">
-							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
-						</li>
-					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active':'?'">					
-					<a href="/sponsor" style="cursor:pointer;">Sổ vàng</a>
-					<ul class="sub-menu">
-						<li tal:repeat="Sponsor SponsorAll">
-							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
-						</li>
-					</ul>
-				</li>
-				<li id="last" tal:attributes="class php:ActiveItem=='Contact'?'active':'?'">
-					<a href="/lien-he">Liên hệ</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-
-	<div metal:define-macro="HeaderAdmin">
-		<div id="menu-top">
-			<ul class="top-nav">
-				<li class="active"><a href="/home">Trang chủ</a></li>
-			</ul>
-		</div>
-	</div>
-	
-	
-	
-	
-	
-	<div metal:define-macro="EventBoxMini" id="emty" class="sidebar-box-mini">
-		<div id="Event" class="box-title" tal:attributes="alt Event/getDate">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Sự kiện sắp xảy ra</span>
-		</div>
-		<div class="sidebar-box-content">
-			<div align="center" style="height:30px; padding-top:10px; margin-bottom:30px;">
-				<a tal:attributes="href Event/getURLRead" style="font-size:15px; color:#980707; line-height:30px;">
-					<h3 tal:content="Event/getTitle" />
-				</a>
-			</div>
-			<div style="margin-left:-3px;">
-				<div id="defaultCountdown"></div>
-			</div>
-			<script type="text/javascript">
-				/*<![CDATA[*/
-				$(function() {
-					var d1 = $("#Event").attr('alt');
-					var parts = d1.match(/(\d+)/g);
-					// new Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
-					var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
-					var austDay = new Date();
-					austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-					$('#defaultCountdown').countdown({until: d2});
-					$('#defaultCountdown1').countdown({until: d2});
-				});
-				/*]]>*/
-			</script>
-			<div class="clear" />
-		</div>
-	</div>
-	
-	
-	
-		
-	
-	
-	
-	<div metal:define-macro="AskBoxMini" id="question" class="sidebar-box-mini">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Hỏi đáp PHẬT HỌC</span>
-		</div>
-		<div class="sidebar-box-content">
-			<div align="center" style="padding:10px;">
-				<a href="/ask" style="color: #980707;">
-					<img src="/data/images/question_logo.png" />
-					<div>Hỏi đáp PHẬT HỌC</div>
-				</a>
-			</div>
-		</div>
-		<div class="clear" />
-	</div>
-
-	
-	
-	
-	<div metal:define-macro="CallendarBoxMini" id="calendar" class="sidebar-box-mini">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Lịch Âm Dương</span>
-		</div>
-		<div class="sidebar-box-content">
-			<div align="center">
-				<script type="text/javascript">				
-					function viewSelectedMonth() {
-						setOutputSize("");
-						var s = printSelectedMonth();
-						document.open();
-						document.writeln(s);
-						document.close();
-					}
-					viewSelectedMonth();				
-				</script>
-			</div>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	<div metal:define-macro="SponsorBoxMini" id="count" class="sidebar-box-mini">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Trợ duyên</span>
-		</div>
-		<div class="sidebar-box-content">
-			<div align="center" style="padding:10px;">
-				<a href="/sponsor/1" style="color: #980707;">
-					<img src="/data/images/sponsor_logo.gif" width="120px" />
-					<h3>Sổ vàng công đức</h3>
-				</a>
-			</div>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	
-		
-	
-	<div metal:define-macro="CountBoxMini" id="count" class="sidebar-box-mini">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Thống kê</span>
-		</div>
-		<div class="sidebar-box-content">
-			<div style="padding:10px; line-height:25px; font-size:12px">
-				<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-					<td width="55%" align="left">
-						<div style="color:#980707; font-size:13px;">
-							<span><b>Online: </b></span>
-							<span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()" />
-							<br/>
-							<span><b>Truy cập: </b></span>
-							<span tal:content="php:@\MVC\Library\Statistic::getCountPrint()" />
-							<span> lượt</span>
-						</div>
-					</td>
-					<td width="45%" align="left">
-						<a href="online" style="color: #980707;">
-							<img src="/data/images/online_logo.png" width="80px" />
-							<div>G.lưu trực tuyến</div>
-						</a>
-					</td>
-				</tr></table>
-			</div>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	
-	
-	
-	<div metal:define-macro="AdminMenu" class="manager-menu">
-		<ul>
-			<a tal:attributes="href '/app/category/paid'">
-				<li tal:attributes="class php:ActiveAdmin=='Paid'?'menu-select':'?'">
-					<div class="left">CHUYÊN MỤC CHI</div>
-					<div class="right" tal:content="CategoryPaidAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/category/task'">
-				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
-					<div class="left">CHUYÊN MỤC LỊCH LÀM VIỆC</div>
-					<div class="right" tal:content="TaskAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/category/news'">
-				<li tal:attributes="class php:ActiveAdmin=='News'?'menu-select':'?'">
-					<div class="left">CHUYÊN MỤC TIN TỨC</div>
-					<div class="right" tal:content="CategoryNewsAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/category/video'">
-				<li tal:attributes="class php:ActiveAdmin=='Video'?'menu-select':'?'">
-					<div class="left">CHUYÊN MỤC VIDEO</div>
-					<div class="right" tal:content="CategoryVideoAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/category/ask'">
-				<li tal:attributes="class php:ActiveAdmin=='Ask'?'menu-select':'?'">
-					<div class="left">CHUYÊN MỤC HỎI ĐÁP</div>
-					<div class="right" tal:content="CategoryAskAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/course'">
-				<li tal:attributes="class php:ActiveAdmin=='Course'?'menu-select':'?'">					
-					<div class="left">ĐÀO TẠO</div>
-					<div class="right" tal:content="CourseAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/monk'">
-				<li tal:attributes="class php:ActiveAdmin=='Monk'?'menu-select':'?'">
-					<div class="left">DANH SÁCH GIẢNG SƯ</div>
-					<div class="right" tal:content="MonkAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/event'">
-				<li tal:attributes="class php:ActiveAdmin=='Event'?'menu-select':'?'">
-					<div class="left">DANH SÁCH SỰ KIỆN</div>
-					<div class="right" tal:content="EventAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/pagoda'">
-				<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'menu-select':'?'">
-					<div class="left">DANH SÁCH CHÙA</div>
-					<div class="right" tal:content="PagodaAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/album'">
-				<li tal:attributes="class php:ActiveAdmin=='Album'?'menu-select':'?'">
-					<div class="left">DANH SÁCH ALBUM</div>
-					<div class="right" tal:content="AlbumAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/sponsor'">
-				<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'menu-select':'?'">
-					<div class="left">SỔ VÀNG CÔNG ĐỨC</div>
-					<div class="right" tal:content="SponsorAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/panel/news'">
-				<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'menu-select':'?'">
-					<div class="left">TIN TỨC NỔI BẬT</div>
-					<div class="right" tal:content="PanelNewsAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/panel/category/video'">
-				<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'menu-select':'?'">
-					<div class="left">VIDEO NỔI BẬT</div>
-					<div class="right" tal:content="PanelCategoryVideoAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/panel/ads'">
-				<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'menu-select':'?'">
-					<div class="left">QUẢNG CÁO</div>
-					<div class="right" tal:content="PanelAdsAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/popup'">
-				<li tal:attributes="class php:ActiveAdmin=='Popup'?'menu-select':'?'">
-					<div class="left">QUẢNG CÁO POPUP</div>
-					<div class="right" tal:content="PopupAll/count" />
-				</li>
-			</a>
-			<a tal:attributes="href '/app/config'">
-				<li tal:attributes="class php:ActiveAdmin=='Statistic'?'menu-select':'?'">
-					<div class="left">CẤU HÌNH</div>
-					<div class="right" tal:content="ConfigAll/count" />
-				</li>
-			</a>
-		</ul>
-	</div>
-
-
-	
-		
-	
-	<div metal:define-macro="BoxAds" class="sidebar-box">
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Quảng cáo</span>
-		</div>
-		<div class="box-right-2" tal:repeat="Ads PanelAdsAll">
-			<a tal:attributes="href Ads/getNews/getURLRead | string:#; title Ads/getNews/getTitle | string:Chưa có tiêu đề">
-				<img width="100%" height="288" tal:attributes="src Ads/getNews/getImage | string:/data/images/exit_picture.jpg" />
-				<div tal:content="Ads/getNews/getTitle | string:Chưa có tiêu đề" class="box-right-title" />
-			</a>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	
-	
-	
-	<div metal:define-macro="SouthBox" class="sidebar-box" >
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Phật Giáo Nam Tông</span>
-		</div>
-		<div style="text-align:center; padding:5px 5px 1px 5px;">
-			<a href="/library/video/2">
-				<img width="100%" height="250" src="/data/images/nam_tong.jpg" />
-			</a>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	<div metal:define-macro="NorthBox" class="sidebar-box" >
-		<div class="box-title">
-			<img src="/data/images/icon.png" width="30" />
-			<span>Phật Giáo Bắc Tông</span>
-		</div>
-		<div style="text-align:center; padding:5px 5px 1px 5px;">
-			<a href="/library/video/1">
-				<img width="100%" height="250" src="/data/images/bac_tong.jpg" />
-			</a>
-		</div>
-		<div class="clear" />
-	</div>
-	
-	
-	
-	
-	
-	<div metal:define-macro="ContactBoxMini" class="sidebar-box-mini">
-		<div class="sidebar-box-content" style="text-align:center; padding:5px 5px 1px 5px;">
-			<a href="/contact">
-				<img width="100%" src="/data/images/contact.jpg" />
-			</a>
-		</div>		
-		<div class="clear" />
-	</div>
-	
-	
-	<div metal:define-macro="AdminBoxTitle" class="box-title">
-		<img src="/data/images/icon.png" width="30" />
-		<span><a href="/app">Admin</a></span>
-		<a href="/signout/load">&#8629; Thoát</a>
-	</div>
-	
-	-->
 </body>
 </html>
