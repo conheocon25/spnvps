@@ -133,7 +133,9 @@
 	<!-- PHẬT ÂM NAM TÔNG - BẮC TÔNG											  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="BuddhaSlide" class="box">
-		<div class="b-title">Trang Video Phật Âm</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Trang Video Phật Âm</div>
+		</div>
 		<div class="b-content">
 			<div id="myCarousel2" class="carousel slide">
 				<ol class="carousel-indicators">
@@ -162,7 +164,9 @@
 	<!-- ẢNH HOẠT ĐỘNG															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="PictureBox" class="box">
-		<div class="b-title">Ảnh Hoạt Động</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Ảnh Hoạt Động</div>
+		</div>
 		<div class="b-content">
 			<a href="/library/album">
 				<img width="100%" src="/data/images/top_img.jpg" />
@@ -174,7 +178,9 @@
 	<!-- TIN TỨC MỚI CẬP NHẬT													  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="TopNewsBox" class="box">
-		<div class="b-title">Trang Video Phật Âm</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Trang Video Phật Âm</div>
+		</div>
 		<div class="b-content">
 			<div id="myCarousel" class="carousel slide">
 				<div class="carousel-inner">
@@ -202,7 +208,9 @@
 	<!-- VIDEO MỚI CẬP NHẬT														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="TopVideoBox" tal:repeat="Panel PanelCategoryVideoAll" class="box">
-		<div class="b-title" tal:content="Panel/getName"/>
+		<div class="b-title">
+			<div tal:content="Panel/getName" class="b-t-icon-content" />
+		</div>
 		<div class="b-content">
 			<ul class="thumbnails">
 				<li tal:repeat="Category Panel/getDetailAll" class="i-grid span2">
@@ -221,7 +229,9 @@
 	<!-- GIẢNG SƯ NỔI BẬT														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="TopMonkBox" class="box">
-		<div class="b-title">GIẢNG SƯ NỔI BẬT</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">GIẢNG SƯ NỔI BẬT</div>
+		</div>
 		<div class="b-content">
 			<div id="myCarousel3" class="carousel slide">
 				<div class="carousel-inner">
@@ -249,7 +259,9 @@
 	<!-- HỎI - ĐÁP PHẬT HỌC														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="AskBox" class="box">
-		<div class="b-title">Hỏi & Đáp PHẬT HỌC</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Hỏi & Đáp PHẬT HỌC</div>
+		</div>
 		<div class="b-content">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
 				<td width="50%" align="center">
@@ -271,7 +283,9 @@
 	<!-- THỐNG KÊ TRUY CẬP - ONLINE - FACEBOOK									  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="CountBox" class="box">
-		<div class="b-title">Trực tuyến</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Trực tuyến</div>
+		</div>
 		<div class="b-content">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr>
@@ -303,7 +317,9 @@
 	<!-- TRỢ DUYÊN - ỦNG HỘ														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="SponsorBox" class="box">
-		<div class="b-title">Trợ Duyên</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Trợ Duyên</div>
+		</div>
 		<div class="b-content">
 			<table border="0" cellpadding="0" cellspacing="0" width="100%">
 				<tr>
@@ -326,7 +342,9 @@
 	<!-- LIÊN HỆ																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="ContactBox" class="box">
-		<div class="b-title">Liên Hệ</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Liên Hệ</div>
+		</div>
 		<div class="b-content">
 			<a href="/contact">
 				<img width="100%" src="/data/images/contact.jpg" />
@@ -338,7 +356,9 @@
 	<!-- LỊCH																	  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="CallendarBox" class="box">
-		<div class="b-title">Lịch Dương <small>Âm</small></div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
+		</div>
 		<div id="calendar" class="b-content">
 			<script type="text/javascript">				
 				function viewSelectedMonth() {
@@ -373,7 +393,9 @@
 	<!-- SỰ KIỆN																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="EventBox" class="box" tal:condition="Event">
-		<div class="b-title">Sự kiện sắp xảy ra</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Sự kiện sắp xảy ra</div>
+		</div>
 		<div class="b-content">
 			<div align="center" style="padding-top:10px;">
 				<a tal:attributes="href Event/getURLRead">
@@ -408,7 +430,9 @@
 	<!-- KHÓA HỌC SẮP KHAI GIẢNG												  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="CourseBox" class="box" tal:condition="Course/getLessionNext">
-		<div class="b-title">Sắp khai giảng</div>
+		<div class="b-title">
+			<div class="b-t-icon-content">Sắp khai giảng</div>
+		</div>
 		<div class="b-content">
 			<div align="center" style="padding-top:10px;">
 				<a tal:attributes="href Course/getLessionNext/getURLRead">

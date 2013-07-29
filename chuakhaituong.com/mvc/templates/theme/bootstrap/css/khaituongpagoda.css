@@ -84,11 +84,20 @@
 	}
 	
 		.box .b-title {
-			height: 35px;
 			background: url("/data/images/bg/title.jpg") repeat-x top left transparent;
 			border-top-left-radius: 7px;
 			border-top-right-radius: 7px;
 		}
+		
+			.b-title .b-t-icon-content {
+				display: table-cell;
+				height: 35px;
+				background: url("/data/images/bg/title_icon.png") no-repeat 5px 1px transparent;
+				padding-left: 40px;
+				vertical-align: middle;
+				text-transform: uppercase;
+				color: white;
+			}
 		
 		.box .b-content {
 			padding: 5px;
@@ -240,3 +249,22 @@
 		0% { margin-left: 100%; }
 		100% { margin-left: -100%; }
 	}
+	
+	.top-pic-banner {
+		position: relative;
+	}
+	
+	.top-pic-banner .p-b-title {
+		background-color: rgba(0, 0, 0, .5);
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		color: white;
+		font-size: 14px;
+		width: 100%;
+		padding: 5px 0;
+		text-align: center;
+	}
+	.p-b-title:hover, .top-pic-banner:hover .p-b-title { background-color: rgba(0, 0, 0, .7); }
+	
+	a { text-decoration: none; }
