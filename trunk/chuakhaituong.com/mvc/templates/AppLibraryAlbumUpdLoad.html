@@ -19,59 +19,45 @@
 		</script>
 	</head>	
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/icon.png" width="30" />
-						<span tal:content="Title"/>
-						<a href="/app/album">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action Album/getURLUpdExe" method="post">
-							<div class="row">
-								<div for="Name" class="label">Tên</div>
-								<div class="textbox" >
-									<input id="Name" name="Name" type="text" tal:attributes="value Album/getName" />
-								</div>
-								<div class="clear" />
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12">
+					<form class="form-horizontal" tal:attributes="action Album/getURLUpdExe" method="post">
+						<legend />
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input type="text" id="Name" name="Name" tal:attributes="value Album/getName" />
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Thời gian</div>
-								<div class="textbox" >
-									<input id="Time" name="Time" type="text" tal:attributes="value Album/getTime" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Time">Thời gian</label>
+							<div class="controls">
+								<input type="text" id="Time" name="Time" tal:attributes="value Album/getTime" />
 							</div>
-							<div class="row">
-								<div for="Name" class="label">URL</div>
-								<div class="textbox" >
-									<input id="URL" name="URL" type="text" tal:attributes="value Album/getURL" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="URL">URL</label>
+							<div class="controls">
+								<input type="text" id="URL" name="URL" tal:attributes="value Album/getURL" />
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Ghi chú</div>
-								<div class="textbox" >
-									<input id="Note" name="Note" type="text" tal:attributes="value Album/getNote" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Note">Ghi chú</label>
+							<div class="controls">
+								<input type="text" id="Note" name="Note" tal:attributes="value Album/getNote" />
 							</div>
-							<div class="row">
-								<div class="button" >
-									<button type="submit" name="submit" value="submit-value">Lưu</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
-				</div>
-				<div class="clear" />
+						</div>						
+					</form>
+				</div>				
 			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

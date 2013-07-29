@@ -6,6 +6,29 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12">
+					<form class="form-horizontal" tal:attributes="action '/app/album/ins/exe'" method="post">
+						<legend />
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input type="text" id="Name" name="Name" />
+							</div>
+						</div>											
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Thêm mới</button>
+							</div>
+						</div>						
+					</form>
+				</div>				
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
 			<div id="main">
