@@ -144,7 +144,7 @@ RewriteRule ^app/monk/([0-9]+)/del/exe$ 						?cmd=AppMonkDelExe&IdMonk=$1 [L]
 RewriteRule ^app/monk/update/all$ 								?cmd=AppMonkUpdateAll [L]
 
 RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/page/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
+RewriteRule ^app/monk/([0-9]+)/video/trang/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
 RewriteRule ^app/monk/([0-9]+)/video/ins/load$ 					?cmd=AppMonkVideoInsLoad&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/video/ins/exe$ 					?cmd=AppMonkVideoInsExe&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/load$ 		?cmd=AppMonkVideoUpdLoad&IdMonk=$1&IdVideoMonk=$2 [L]
@@ -180,7 +180,7 @@ RewriteRule ^app/category/video/([0-9]+)/del/load$ 				?cmd=AppCategoryVideoDelL
 RewriteRule ^app/category/video/([0-9]+)/del/exe$ 				?cmd=AppCategoryVideoDelExe&IdCategory=$1 [L]
 
 RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/page/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
+RewriteRule ^app/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/load$ 				?cmd=AppCategoryVideoDetailInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/exe$ 				?cmd=AppCategoryVideoDetailInsExe&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVideoDetailUpdLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
