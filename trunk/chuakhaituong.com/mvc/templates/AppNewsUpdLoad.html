@@ -15,72 +15,57 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 			/*<![CDATA[*/
-			$(function() {
-				$('#Date').datetimepicker(
-					{ dateFormat: 'yy-mm-dd' }
-				);
-			});
+			$(function() {$('#Date').datetimepicker({ dateFormat: 'yy-mm-dd' });});
 			/*]]>*/
 		</script>
 		
 	</head>	
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/icon.png" width="30" />
-						<span tal:content="Title" />
-						<a tal:attributes="href News/getCategory/getURLView">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-horizontal" tal:attributes="action News/getURLUpdExe" method="post">
-							<legend />
-							<div class="control-group">
-								<label class="control-label" for="Title">Tiêu đề</label>
-								<div class="controls">
-									<input type="text" id="Title" name="Title" placeholder="Name" tal:attributes="value News/getTitle" />
-								</div>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12">
+					<form class="form-horizontal" tal:attributes="action News/getURLUpdExe" method="post">
+						<legend />
+						<div class="control-group">
+							<label class="control-label" for="Title">Tiêu đề</label>
+							<div class="controls">
+								<input type="text" id="Title" name="Title" placeholder="Name" tal:attributes="value News/getTitle" />
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="Type">Loại tin</label>
-								<div class="controls">									
-									 <input type="checkbox" id="Type" name="Type" />
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Type">Loại tin</label>
+							<div class="controls">									
+								 <input type="checkbox" id="Type" name="Type" />
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="Date">Thời gian</label>
-								<div class="controls">
-									<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate" />
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Date">Thời gian</label>
+							<div class="controls">
+								<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate" />
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="Author">Tác giả</label>
-								<div class="controls">
-									<input type="text" id="Author" name="Author" placeholder="Tác giả" tal:attributes="value News/getAuthor" />
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Author">Tác giả</label>
+							<div class="controls">
+								<input type="text" id="Author" name="Author" placeholder="Tác giả" tal:attributes="value News/getAuthor" />
 							</div>
-							<div class="control-group">
-								<label class="control-label" for="Author">Nội dung</label>
-								<div class="controls">
-									<textarea id="Content" class="ckeditor" name="Content" placeholder="Nội dung" tal:content="News/getContent" />
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Author">Nội dung</label>
+							<div class="controls">
+								<textarea id="Content" class="ckeditor" name="Content" placeholder="Nội dung" tal:content="News/getContent" />
 							</div>
-							<div class="control-group">
-								<div class="controls">
-									<button type="submit" class="btn" value="submit-value">Cập nhật</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
-				</div>
-				<div class="clear" />
+						</div>
+					</form>
+				</div>				
 			</div>
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

@@ -23,71 +23,41 @@
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
 				<div class="span12">
-					<form class="form-horizontal" tal:attributes="action '/app/album/ins/exe'" method="post">
+					<form class="form-horizontal" tal:attributes="action Event/getURLUpdExe" method="post">
 						<legend />
 						<div class="control-group">
-							<label class="control-label" for="Name">Tên</label>
+							<label class="control-label" for="Title">Tiêu đề</label>
 							<div class="controls">
-								<input type="text" id="Name" name="Name" />
+								<input id="Title" name="Title" type="text" tal:attributes="value Event/getTitle" />
 							</div>
-						</div>											
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Date">Thời gian</label>
+							<div class="controls">
+								<input id="Date" name="Date" type="text" tal:attributes="value Event/getDate" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Content">Nội dung</label>
+							<div class="controls">
+								<textarea class="ckeditor" name="Content" tal:content="Event/getContent" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Content">Nội dung</label>
+							<div class="controls">
+								<textarea class="ckeditor" name="Content" tal:content="Event/getContent" />
+							</div>
+						</div>						
 						<div class="control-group">
 							<div class="controls">
-								<button type="submit" class="btn" value="submit-value">Thêm mới</button>
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
 							</div>
 						</div>						
 					</form>
 				</div>				
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
-	
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/icon.png" width="30" />
-						<span tal:content="Title"/>
-						<a href="/app/event">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action Event/getURLUpdExe" method="post">
-							<div class="row">
-								<div for="Name" class="label">Tiêu đề</div>
-								<div class="textbox" >
-									<input id="Title" name="Title" type="text" tal:attributes="value Event/getTitle" />
-								</div>
-								<div class="clear" />
-							</div>
-							<div class="row">
-								<div for="Name" class="label">Thời gian</div>
-								<div class="textbox" >
-									<input id="Date" name="Date" type="text" tal:attributes="value Event/getDate" />
-								</div>
-								<div class="clear" />
-							</div>
-							<div class="row">
-								<div class="label-random">Nội dung</div>
-								<div class="textarea" >
-									<textarea class="ckeditor" name="Content" tal:content="Event/getContent" />
-								</div>
-								<div class="clear" />
-							</div>
-							<div class="row">
-								<div class="button" >
-									<button type="submit" name="submit" value="submit-value">Lưu</button>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
-				</div>
-				<div class="clear" />
-			</div>			
 		</div>
 	</body>
 </html>
