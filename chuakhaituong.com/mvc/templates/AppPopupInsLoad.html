@@ -6,59 +6,45 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/icon.png" width="30" />
-						<span tal:content="Title" />
-						<a href="/app/popup">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" tal:attributes="action '/app/popup/ins/exe'" method="post" enctype="multipart/form-data">
-							<div class="row">
-								<div for="Command" class="label">Lệnh</div>
-								<div class="textbox" >
-									<input id="Command" name="Command" type="text" />
-								</div>
-								<div class="clear" />
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12">
+					<form class="form-horizontal" tal:attributes="action '/app/popup/ins/exe'" method="post" enctype="multipart/form-data">
+						<legend />
+						<div class="control-group">
+							<label class="control-label" for="Command">Lệnh</label>
+							<div class="controls">
+								<input type="text" id="Command" name="Command" />
 							</div>
-							<div class="row">
-								<div for="Enable" class="label">Bật</div>
-								<div class="textbox" >									
-									<input id="Enable" name="Enable" type="checkbox" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Enable">Bật</label>
+							<div class="controls">
+								<input type="checkbox" id="Enable" name="Enable" />
 							</div>
-							<div class="row">
-								<div for="URL" class="label">URL</div>
-								<div class="textbox" >
-									<input id="URL" name="URL" type="text" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="URL">URL</label>
+							<div class="controls">
+								<input id="URL" name="URL" type="text" />
 							</div>
-							<div class="row">
-								<div for="file" class="label">Tải SWF</div>
-								<div class="textbox" >
-									<input type="file" name="file" id="file" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="file">Tải SWF</label>
+							<div class="controls">
+								<input type="file" name="file" id="file" />
 							</div>
-							<div class="row">
-								<div class="button" >
-									<button type="submit" name="submit" value="submit-value">Thêm Mới</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value"><span class="icon-plus"/>Thêm mới</button>
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
+						</div>
+					</form>
 				</div>
-				<div class="clear" />
-			</div>			
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

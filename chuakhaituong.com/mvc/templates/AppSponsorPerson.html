@@ -52,7 +52,7 @@
 					<ul class="nav nav-pills nav-stacked">															
 						<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'disabled':'active'">
 							<a tal:attributes="href Sponsor1/getURLSetting">
-								<span tal:content="Sponsor1/getName" />
+								<span tal:content="Sponsor1/getName" /> <span class="badge pull-right" tal:content="Sponsor1/getPersonAll/count"/>
 							</a>
 						</li>
 					</ul>
