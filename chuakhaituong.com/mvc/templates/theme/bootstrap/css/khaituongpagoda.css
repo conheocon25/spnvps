@@ -226,7 +226,7 @@
 		animation-iteration-count: infinite;
 		animation-timing-function: ease-out;
 		
-		-webkit-animation: slide 100s;
+		-webkit-animation: marqueeText 100s;
 		-webkit-animation-iteration-count: infinite;
 		-webkit-animation-timing-function: ease-out;
 	}
