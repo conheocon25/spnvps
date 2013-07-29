@@ -27,7 +27,7 @@
 
 	<body>
 		<div id="fb-root"/>
-		<div metal:use-macro="macros.xhtml/Popup" />
+		<!--<div metal:use-macro="macros.xhtml/Popup" />-->
 		<div class="container">
 			<div metal:use-macro="macros.xhtml/Header"/>
 			<div class="main row">
@@ -37,19 +37,17 @@
 					<div class="wraper">						
 						
 						<div class="box">
-							<div class="b-title">Tiêu điểm</div>
+							<div class="b-title">
+								<div class="b-t-icon-content">Tiêu điểm</div>
+							</div>
 							<div class="b-content">
-								<div class="picture-banner parent" tal:condition="Course">
+								<div class="top-pic-banner" tal:condition="Course">
 									<a tal:attributes="href Course/getURLRead">
 										<img width="100%" tal:attributes="src Course/getImage"/>
-										<div class="child" tal:content="php: 'CLICK XEM ' . Course->getName()"/>
+										<div class="p-b-title" tal:content="Course/getName"/>
 									</a>
 								</div>
-								<div class="picture-banner parent" tal:condition="not: Course">
-									<a>
-										<img width="100%" tal:attributes="src string:/data/images/temp.jpg"/>									
-									</a>
-								</div>
+								<!--
 								<div class="list-picture" tal:condition="Course">																
 									<div class="grid-left parent" tal:condition="Course/getLessionNear">
 										<a tal:attributes="href Course/getLessionNear/getURLRead">
@@ -109,11 +107,14 @@
 										<div  class="child" tal:content="Course/getLessionNext/getName"/>
 									</div>
 								</div>
+								-->
 							</div>
 						</div>
 
 						<div tal:repeat="Category CategoryNewsAll" class="box">
-							<div tal:content="Category/getName" class="b-title"/>
+							<div class="b-title">
+								<div tal:content="Category/getName" class="b-t-icon-content"/>
+							</div>
 							<div class="b-content">
 								<div class="row">
 									<div class="b-left span4">
@@ -148,7 +149,9 @@
 						</div>
 						
 						<div class="box">
-							<div class="b-title">VIDEO NỘI BỘ</div>
+							<div class="b-title">
+								<div class="b-t-icon-content">VIDEO NỘI BỘ</div>
+							</div>
 							<div class="b-content">
 								<ul class="thumbnails">
 									<li tal:repeat="VL VL8" class="i-grid span2">
@@ -165,7 +168,9 @@
 						</div>
 						
 						<div class="box">
-							<div class="b-title">Bài giảng mới nhất</div>
+							<div class="b-title">
+								<div class="b-t-icon-content">Bài giảng mới nhất</div>
+							</div>
 							<div class="b-content">
 								<ul class="thumbnails">
 									<li tal:repeat="VM VM24" class="i-grid span2">
@@ -182,7 +187,9 @@
 						</div>
 						
 						<div class="box">
-							<div class="b-title">Chuyên đề mới nhất</div>
+							<div class="b-title">
+								<div class="b-t-icon-content">Chuyên đề mới nhất</div>
+							</div>
 							<div class="b-content">
 								<ul class="thumbnails">
 									<li tal:repeat="VL VL24" class="i-grid span2">
@@ -202,7 +209,9 @@
 				<div class="sidebar span5">
 					<div class="wraper">
 						<div class="box">
-							<div class="b-title">Lịch Công Tác</div>
+							<div class="b-title">
+								<div class="b-t-icon-content">Lịch Công Tác</div>
+							</div>
 							<div class="b-content">
 								<div class="g4">
 									<div id="eventCalendarLocale" />
