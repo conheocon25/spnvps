@@ -34,10 +34,12 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Course = $mCourse->find($IdCourse);
-			$Title = "QUẢN LÝ";
+			$Title = $Course->getName();
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("ĐÀO TẠO", "/app/course")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -54,7 +56,8 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Course', $Course);
 			
-			$request->setProperty("Title", 'Quản Lý / Đào tạo / '.$Course->getName()." / ");
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Course');
 			

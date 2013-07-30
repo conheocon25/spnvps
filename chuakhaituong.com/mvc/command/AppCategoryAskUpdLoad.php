@@ -32,11 +32,12 @@
 			$Category = $mCategoryAsk->find($IdCategory);
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Cập nhật";
-			$Title = "QUẢN LÝ";
+						
+			$Title = $Category->getName()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

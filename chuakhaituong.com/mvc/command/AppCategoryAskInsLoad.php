@@ -27,15 +27,16 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			
-			$Title = "Quản lý / Chuyên mục hỏi đáp / Thêm mới";
-			$Title = "QUẢN LÝ";
-			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);
+						
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------

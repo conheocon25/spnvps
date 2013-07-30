@@ -34,11 +34,13 @@
 			
 			$Ask = $mAsk->find($IdAsk);
 			$PagodaAll = $mPagoda->findAll();						
-			$SponsorAll = $mSponsor->findAll();
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Ask->getCategory()->getName()." / Câu hỏi / Cập nhật";
-			$Title = "QUẢN LÝ";
+			$SponsorAll = $mSponsor->findAll();			
+			$Title = "...CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask"),
+				array($Ask->getCategory()->getName(), $Ask->getCategory()->getURLView())				
 			);
 
 			//-------------------------------------------------------------
