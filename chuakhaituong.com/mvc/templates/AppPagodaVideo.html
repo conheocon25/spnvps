@@ -30,7 +30,7 @@
 								</td>
 								<td width="32" align="center">
 									<a tal:attributes="href VP/getURLDelLoad">
-										<div><img src="/data/images/remove.png" width="20" /></div>
+										<span class="icon-remove"/>
 									</a>
 								</td>
 							</tr>
@@ -48,7 +48,7 @@
 					<ul class="nav nav-pills nav-stacked">															
 						<li tal:repeat="Pagoda1 PagodaAll" tal:attributes="class php:Pagoda->getId()==Pagoda1->getId()?'disabled':'active'">
 							<a tal:attributes="href Pagoda1/getURLViewVideo">
-								<span tal:content="Pagoda1/getName" />
+								<span tal:content="Pagoda1/getName" /> <span class="badge badge-info pull-right" tal:content="Pagoda1/getVPs/count"/>
 							</a>	
 						</li>					
 					</ul>

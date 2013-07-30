@@ -30,15 +30,20 @@
 			$Title = "Quản lý / giảng sư / Thêm mới";
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH GIẢNG SƯ", "/app/monk")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
+			$request->setObject('Navigation', $Navigation);
+			
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);

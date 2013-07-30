@@ -32,9 +32,12 @@
 			$Category = $mCategoryNews->find($IdCategory);
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH SỰ KIỆN", "/app/event")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,6 +47,7 @@
 			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
 			
 			$request->setProperty('Title', $Title);
+			$request->setObject( 'Navigation', $Navigation );
 			$request->setObject( 'Category', $Category );
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);

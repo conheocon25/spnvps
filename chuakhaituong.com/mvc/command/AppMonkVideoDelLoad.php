@@ -34,13 +34,16 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			
 			$Monk = $mMonk->find($IdMonk);
-			$VM = $mVideoMonk->find($IdVideoMonk);
-			$Title = "Quản lý / Giảng sư / ".$Monk->getName()." / ".$VM->getVideo()->getName()." / Xóa";
+			$VM = $mVideoMonk->find($IdVideoMonk);			
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = $VM->getVideo()->getName()." XÓA";			
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH GIẢNG SƯ", "/app/monk"),
+				array($Monk->getName(), $Monk->getURLVideo())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -53,7 +56,7 @@
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}
