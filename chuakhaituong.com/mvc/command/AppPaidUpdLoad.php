@@ -36,10 +36,14 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Paid = $mPaid->find($IdPaid);
-			$Title = "QUẢN LÝ";
+			$Title = $Paid->getDatePrint()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH MỤC CHI", "/app/category/paid"),
+				array($Paid->getCategory()->getName(), $Paid->getCategory()->getURLView())
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -56,8 +60,8 @@
 			$request->setObject('CourseAll', $CourseAll);			
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Paid', $Paid);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / KHOẢN CHI / '.$Paid->getDate()." / CẬP NHẬT" );
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title );
 						
 			return self::statuses('CMD_DEFAULT');
 		}

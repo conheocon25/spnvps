@@ -22,11 +22,12 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																
 			$Category = $mCategoryTask->find($IdCategory);
-						
-			$Title = "Quản lý / chuyên mục lịch làm việc / ".$Category->getName()." / xóa";	
-			$Title = "QUẢN LÝ";
+									
+			$Title = $Category->getName()." XÓA";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("LỊCH LÀM VIỆC", "/app/category/task")
 			);
 			
 			//-------------------------------------------------------------
