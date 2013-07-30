@@ -21,12 +21,12 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																
-			$Category = $mCategoryPaid->find($IdCategory);
-						
-			$Title = "Quản lý / khoản chi / ".$Category->getName()." / xóa";	
-			$Title = "QUẢN LÝ";
+			$Category = $mCategoryPaid->find($IdCategory);			
+			$Title = $Category->getName()." XÓA";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH MỤC CHI", "/app/category/paid"),
 			);
 			
 			//-------------------------------------------------------------

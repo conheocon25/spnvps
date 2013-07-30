@@ -40,10 +40,12 @@
 			$TaskAll = $mTask->findAll();
 						
 			$Category = $mCategoryPaid->find($IdCategory);
-			$Title = "QUẢN LÝ";
+			$Title = $Category->getName();
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH MỤC CHI", "/app/category/paid")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -66,8 +68,8 @@
 			$request->setObject('TaskAll', $TaskAll);
 			
 			$request->setObject('Category', $Category);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / KHOẢN CHI / '.$Category->getName() );			
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

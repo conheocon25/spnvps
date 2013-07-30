@@ -23,10 +23,11 @@
 			//-------------------------------------------------------------																
 			$Category = $mCategoryTask->find($IdCategory);
 			
-			$Title = "Quản lý / chuyên mục lịch làm việc / ".$Category->getName()." / Cập nhật";	
-			$Title = "QUẢN LÝ";
+			$Title = $Category->getName()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("LỊCH LÀM VIỆC", "/app/category/task")
 			);
 			
 			//-------------------------------------------------------------

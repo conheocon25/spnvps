@@ -32,10 +32,16 @@ class Task extends Object{
 	function getDatePrint( ){$D = new \MVC\Library\Date($this->Date);return $D->getDateTimeFormat();}
 	
 	function setType( $Type ){$this->Type = $Type;$this->markDirty();}   
-	function getType( ) {return $this->Type;}function getTypeStr( ) {
+	function getType( ) {return $this->Type;}
+	function getTypeStr( ) {
 		$mCategoryTask = new \MVC\Mapper\CategoryTask();
 		$Category = $mCategoryTask->find( $this->getType() );
         return $Category->getName();
+    }
+	function getTypeObj( ) {
+		$mCategoryTask = new \MVC\Mapper\CategoryTask();
+		$Category = $mCategoryTask->find( $this->getType() );
+        return $Category;
     }
 	
 	function setTitle( $Title ){$this->Title = $Title;$this->markDirty();}   
