@@ -26,11 +26,14 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$Pagoda = $mPagoda->find($IdPagoda);
-			$Title = "Quản trị / chùa / ".$Pagoda->getName();
-			$Title = "QUẢN LÝ";
+			
+			$Title = $Pagoda->getName();
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);			
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH CHÙA", "/app/pagoda")				
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -39,6 +42,8 @@
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Pagoda", $Pagoda);
 			$request->setObject("PagodaAll", $PagodaAll);
+			
+			$request->setObject("Navigation", $Navigation);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 			

@@ -34,10 +34,14 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = $Album->getName()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH ALBUM", "/app/album")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -47,6 +51,7 @@
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);	
+			$request->setObject('Navigation', $Navigation);	
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}

@@ -24,16 +24,18 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Monk = $mMonk->find($IdMonk);
-			$Title = "Quản lý / giảng sư / ".$Monk->getName()." / Cập nhật";
+			$Monk = $mMonk->find($IdMonk);			
 			$CategoryNewsAll = $mCategoryNewsAll->findAll();
 			$CategoryAskAll = $mCategoryAskAll->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = $Monk->getName()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("DANH SÁCH GIẢNG SƯ", "/app/monk")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -45,6 +47,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}
