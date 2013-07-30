@@ -39,9 +39,10 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
-			$Title = "QUẢN LÝ";
+			$Title = "DANH SÁCH ALBUM";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
 			);
 			
 			//-------------------------------------------------------------
@@ -66,7 +67,8 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty('Title', 'Quản trị / Album / ');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setProperty("ActiveAdmin", 'Album');
 			

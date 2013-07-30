@@ -38,10 +38,13 @@
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = "CẤU HÌNH";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -64,7 +67,8 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / CẤU HÌNH / ');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Statistic');
 			

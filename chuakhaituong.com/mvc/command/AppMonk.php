@@ -39,10 +39,10 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
-			$Title = "QUẢN LÝ / GIẢNG SƯ /";
-			$Title = "QUẢN LÝ";
+			$Title = "DANH SÁCH GIẢNG SƯ";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
 			);
 			
 			//-------------------------------------------------------------
@@ -66,7 +66,7 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("ActiveAdmin", 'Monk');
 			$request->setProperty("Title", $Title);
 			
