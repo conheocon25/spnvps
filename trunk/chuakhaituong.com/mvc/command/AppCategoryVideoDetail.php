@@ -28,10 +28,11 @@
 			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
 			
-			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
-			$Title = "QUẢN LÝ";
+			$Title = $Category->getName();			
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC VIDEO", "/app/category/video")				
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

@@ -39,10 +39,12 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$VL = $mVideoLibrary->find($IdVideoLibrary);
-			$Title = "Quản lý / chuyên mục video / ".$VL->getCategory()->getName()." / ".$VL->getVideo()->getName()." / Cập nhật";
-			$Title = "QUẢN LÝ";
+			$Title = $VL->getVideo()->getName()." CẬP NHẬT";			
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC VIDEO", "/app/category/video"),
+				array($VL->getCategory()->getName(), $VL->getCategory()->getURLView())
 			);
 			
 			//-------------------------------------------------------------
@@ -57,6 +59,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', "Home");
 		}

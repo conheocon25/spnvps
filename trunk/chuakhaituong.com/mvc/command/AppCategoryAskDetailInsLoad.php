@@ -35,11 +35,14 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Category = $mCategoryAsk->find($IdCategory);
 			
-			$Title = "Quản lý / Chuyên mục Hỏi Đáp / ".$Category->getName()."/ Thêm mới";
-			$Title = "QUẢN LÝ";
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask"),
+				array($Category->getName(), $Category->getURLView())
 			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

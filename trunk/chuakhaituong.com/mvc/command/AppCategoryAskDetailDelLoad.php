@@ -35,11 +35,14 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Ask = $mAsk->find($IdAsk);
 			
-			$Title = "QUẢN LÝ";
+			$Title = "...XÓA";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask"),
+				array($Ask->getCategory()->getName(), $Ask->getCategory()->getURLView())				
 			);
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Ask->getCategory()->getName()." / Xóa câu hỏi";
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

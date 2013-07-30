@@ -80,7 +80,7 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/danh-muc/".$this->getKey();}
 	
-	function getURLView(){return "/app/news/".$this->getId();}	
+	function getURLView(){return "/app/category/video/".$this->getId();}	
 	function getURLVideo(){return "/app/category/video/".$this->getId();}
 	function getURLVideoInsLoad(){return "/app/category/video/".$this->getId()."/ins/load";}
 	function getURLVideoInsExe(){return "/app/category/video/".$this->getId()."/ins/exe";}
