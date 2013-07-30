@@ -22,15 +22,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																
 			$Popup = $mPopup->find($IdPopup);			
-			$Title = "Quản lý / quảng cáo popup / ".$Popup->getCommand()." / Cập nhật";
-			$Title = "QUẢN LÝ";
+			$Title = $Popup->getCommand()." CẬP NHẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("QUẢNG CÁO POPUP", "/app/popup")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('Popup', $Popup);
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			
 		}

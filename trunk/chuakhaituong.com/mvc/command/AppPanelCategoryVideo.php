@@ -38,10 +38,12 @@
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
-			$Title = "QUẢN LÝ";
+			
+			$Title = "VIDEO NỔI BẬT";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);	
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -63,8 +65,8 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll); 
 			$request->setObject('PopupAll', $PopupAll); 
-			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / DANH MỤC VIDEO / ');			
+			$request->setObject('Navigation', $Navigation); 
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveAdmin", 'PanelCategoryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
