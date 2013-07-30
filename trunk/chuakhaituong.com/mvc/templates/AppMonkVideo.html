@@ -39,10 +39,12 @@
 							</tr>
 						</tfoot>
 					</table>
-					<div class="page-list">
-						<span tal:repeat="P PN/getPages">
-							<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-						</span>
+					<div class="pagination">
+						<ul>							
+							<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+								<a tal:attributes="href P/getURL" tal:content="P/getName" />
+							</li>
+						</ul>
 					</div>
 				</div>
 				<div class="span3">

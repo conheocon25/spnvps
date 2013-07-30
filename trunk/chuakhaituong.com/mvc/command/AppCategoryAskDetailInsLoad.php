@@ -36,6 +36,10 @@
 			$Category = $mCategoryAsk->find($IdCategory);
 			
 			$Title = "Quản lý / Chuyên mục Hỏi Đáp / ".$Category->getName()."/ Thêm mới";
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -43,10 +47,9 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject('SponsorAll', $SponsorAll);			
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

@@ -40,6 +40,10 @@
 			
 			$VL = $mVideoLibrary->find($IdVideoLibrary);
 			$Title = "Quản lý / chuyên mục video / ".$VL->getCategory()->getName()." / ".$VL->getVideo()->getName()." / Cập nhật";
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

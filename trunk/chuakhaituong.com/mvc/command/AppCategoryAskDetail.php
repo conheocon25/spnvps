@@ -27,6 +27,11 @@
 			$Category = $mCategoryAsk->find($IdCategory);
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
+			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." /";
 			
 			//-------------------------------------------------------------
@@ -39,7 +44,7 @@
 			$request->setObject("Category", $Category);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 			

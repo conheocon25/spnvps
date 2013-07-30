@@ -34,6 +34,10 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Title = "Quản lý hệ thống > Danh Mục Tin > ".$Category->getName()." > Xóa";	
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,7 +48,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setProperty('Title', $Title);
 		}

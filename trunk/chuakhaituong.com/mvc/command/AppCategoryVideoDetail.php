@@ -29,6 +29,10 @@
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
 			
 			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -36,7 +40,7 @@
 			$request->setObject("Category", $Category);
 			$request->setObject("VLAll", $VLAll);
 			$request->setObject("PN", $PN);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
 			

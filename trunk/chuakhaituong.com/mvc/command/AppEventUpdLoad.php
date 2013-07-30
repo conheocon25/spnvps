@@ -33,6 +33,10 @@
 			$Event = $mEvent->find($IdEvent);
 			$SponsorAll = $mSponsor->findAll();
 			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

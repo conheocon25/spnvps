@@ -27,7 +27,10 @@
 			$PagodaAll = $mPagoda->findAll();
 			$Pagoda = $mPagoda->find($IdPagoda);
 			$Title = "Quản trị / chùa / ".$Pagoda->getName();
-						
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

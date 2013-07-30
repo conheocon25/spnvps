@@ -30,6 +30,10 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$Title = "QUẢN TRỊ / ALBUM / THÊM MỚI";
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

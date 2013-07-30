@@ -47,11 +47,13 @@
 							</tr>
 						</tfoot>
 					</table>
-					<ul class="pagination pagination-large" >
-						<li tal:repeat="P PN/getPages" tal:attributes="class php:P->getId()==Page?'disabled':'active'">
-							<a tal:attributes="href P/getURL" tal:content="P/getName" />
-						</li>
-					</ul>
+					<div class="pagination">
+						<ul>							
+							<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+								<a tal:attributes="href P/getURL" tal:content="P/getName" />
+							</li>
+						</ul>
+					</div>
 				</div>
 				<div class="span3">
 					<ul class="nav nav-pills nav-stacked">

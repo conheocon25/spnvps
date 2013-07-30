@@ -47,7 +47,10 @@
 			
 			$Course = $mCourse->find($IdCourse);
 			$CourseLession = $mCourseLession->find($IdLession);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

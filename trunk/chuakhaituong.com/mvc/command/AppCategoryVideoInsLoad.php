@@ -31,7 +31,10 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Title = "Quản lý / Chuyên mục Video / Thêm mới";
-								
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);					
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------

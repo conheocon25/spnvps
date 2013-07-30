@@ -23,7 +23,10 @@
 			//-------------------------------------------------------------									
 			$Panel = $mPanelCategoryVideo->find($IdPanelCategoryVideo);
 			$CategoryVideoAll = $mCategoryVideo->findAll();
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
