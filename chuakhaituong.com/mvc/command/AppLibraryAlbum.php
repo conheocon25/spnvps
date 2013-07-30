@@ -39,6 +39,11 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

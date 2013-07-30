@@ -40,7 +40,10 @@
 			$TaskAll = $mTask->findAll();
 						
 			$Category = $mCategoryPaid->find($IdCategory);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

@@ -40,7 +40,10 @@
 			$PopupAll = $mPopup->findAll();
 			
 			$Title = "Quản trị / Chùa /";
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

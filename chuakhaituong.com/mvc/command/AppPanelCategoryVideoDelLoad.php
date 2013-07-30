@@ -43,7 +43,10 @@
 			$CourseAll = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();			
 			$PanelCategoryVideo = $mPanelCategoryVideo->find($IdPanelCategoryVideo);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

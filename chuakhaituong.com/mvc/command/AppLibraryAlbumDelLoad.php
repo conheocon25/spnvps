@@ -35,7 +35,10 @@
 			$Album = $mAlbum->find($IdAlbum);
 			$Title = "QUẢN LÝ / ALBUM / ".$Album->getName()." / XÓA";			
 			$PagodaAll = $mPagoda->findAll();
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			

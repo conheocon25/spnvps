@@ -35,6 +35,10 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Ask = $mAsk->find($IdAsk);
 			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Ask->getCategory()->getName()." / Xóa câu hỏi";
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -45,7 +49,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Ask', $Ask);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

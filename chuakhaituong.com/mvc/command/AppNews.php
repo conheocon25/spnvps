@@ -29,7 +29,10 @@
 			$Title = "Quản lý / Tin tức / ".$Category->getName();
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

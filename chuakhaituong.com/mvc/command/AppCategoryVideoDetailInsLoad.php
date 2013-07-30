@@ -39,7 +39,10 @@
 			$MonkAll = $mMonk->findAll();
 			
 			$Title = "Quản lý / chuyên mục video / ".$Category->getName()." / Thêm mới";
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									

@@ -22,6 +22,11 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategoryAsk->find($IdCategory);						
+			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Xóa";
 			
 			//-------------------------------------------------------------

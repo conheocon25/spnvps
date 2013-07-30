@@ -24,12 +24,16 @@
 			$Category = $mCategoryPaid->find($IdCategory);
 						
 			$Title = "Quản lý / khoản chi / ".$Category->getName()." / xóa";	
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('ActiveItem', 'Home');
 			$request->setProperty('Title', $Title);
 		}

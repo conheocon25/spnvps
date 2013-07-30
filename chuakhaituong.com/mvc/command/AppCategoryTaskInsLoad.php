@@ -20,13 +20,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Title = "Quản lý / chuyên mục lịch làm việc / thêm mới";	
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
-									
 		}
 	}
 ?>

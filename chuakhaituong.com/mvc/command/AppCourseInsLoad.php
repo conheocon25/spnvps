@@ -40,7 +40,10 @@
 			$MonkAll = $mMonk->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$CourseAll = $mCourse->findAll();			
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------

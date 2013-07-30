@@ -46,7 +46,10 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Config = $mConfig->find($IdConfig);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

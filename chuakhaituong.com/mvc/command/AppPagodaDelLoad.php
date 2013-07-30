@@ -32,7 +32,10 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$Title = "Quản trị / ".$Pagoda->getName()." / Xóa";
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

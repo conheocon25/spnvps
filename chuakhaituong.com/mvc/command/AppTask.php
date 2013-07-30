@@ -39,7 +39,10 @@
 			$TaskAll = $mTask->findAll();
 			
 			$Category = $mCategoryTask->find($IdCategory);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

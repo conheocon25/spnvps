@@ -20,13 +20,17 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Title = "Quản lý / khoản chi / thêm mới";	
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
-									
+			$request->setObject('Navigation', $Navigation);								
 		}
 	}
 ?>

@@ -47,7 +47,10 @@
 			
 			$Sponsor = $mSponsor->find($IdSponsor);
 			$Person = $mPerson->find($IdPerson);
-			
+			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
