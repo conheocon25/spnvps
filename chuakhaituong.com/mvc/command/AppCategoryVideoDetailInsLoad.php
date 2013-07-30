@@ -43,7 +43,7 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("CHUYÊN MỤC VIDEO", "/app/category/video"),
-				array($Category->getName(), $Category->getURLView())
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

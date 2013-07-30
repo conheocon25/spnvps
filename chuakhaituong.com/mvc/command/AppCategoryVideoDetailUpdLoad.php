@@ -39,12 +39,12 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$VL = $mVideoLibrary->find($IdVideoLibrary);
-			$Title = $VL->getVideo()->getName()." CẬP NHẬT";			
+			$Title = mb_strtoupper($VL->getVideo()->getName()." CẬP NHẬT", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("CHUYÊN MỤC VIDEO", "/app/category/video"),
-				array($VL->getCategory()->getName(), $VL->getCategory()->getURLView())
+				array(mb_strtoupper($VL->getCategory()->getName(), 'UTF8'), $VL->getCategory()->getURLView())
 			);
 			
 			//-------------------------------------------------------------

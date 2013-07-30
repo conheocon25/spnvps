@@ -30,10 +30,11 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "THÊM MỚI DANH MỤC TIN TỨC";
-			$Title = "QUẢN LÝ";
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC TIN TỨC", "/app/category/news")
 			);
 			
 			//-------------------------------------------------------------

@@ -32,11 +32,12 @@
 			$Category = $mCategoryNews->find($IdCategory);
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			
-			$Title = "Quản lý hệ thống > Danh Mục Tin > ".$Category->getName()." > Xóa";	
-			$Title = "QUẢN LÝ";
+						
+			$Title = mb_strtoupper($Category->getName()." XÓA", 'UTF8');
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC TIN TỨC", "/app/category/news")
 			);
 			
 			//-------------------------------------------------------------

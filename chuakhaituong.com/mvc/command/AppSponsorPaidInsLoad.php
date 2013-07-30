@@ -42,9 +42,12 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Sponsor = $mSponsor->find($IdSponsor);
-			$Title = "QUẢN LÝ";
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("SỔ VÀNG CÔNG ĐỨC", "/app/sponsor"),
+				array(mb_strtoupper($Sponsor->getName(), 'UTF8'), $Sponsor->getURLPaid())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -60,8 +63,8 @@
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Sponsor', $Sponsor);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / ỦNG HỘ / '.$Sponsor->getName().' / THÊM MỚI');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');

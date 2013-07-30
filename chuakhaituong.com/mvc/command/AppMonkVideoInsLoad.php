@@ -43,7 +43,7 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("DANH SÁCH GIẢNG SƯ", "/app/monk"),
-				array($Monk->getName(), $Monk->getURLVideo())
+				array(mb_strtoupper($Monk->getName(), 'UTF8'), $Monk->getURLVideo())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

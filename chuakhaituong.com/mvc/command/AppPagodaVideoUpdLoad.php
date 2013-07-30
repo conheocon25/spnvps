@@ -30,18 +30,17 @@
 			$Pagoda = $mPagoda->find($IdPagoda);
 			$PagodaAll = $mPagoda->findAll();
 			$VP = $mVideoPagoda->find($IdVideoPagoda);
-			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / ".$VP->getVideo()->getName()." / Cập nhật";
-			
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			
-			$Title = $VP->getVideo()->getName()." CẬP NHẬT";
+			$Title = mb_strtoupper($VP->getVideo()->getName()." CẬP NHẬT", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("DANH SÁCH CHÙA", "/app/pagoda"),
-				array($Pagoda->getName(), $Pagoda->getURLViewVideo())
+				array(mb_strtoupper($Pagoda->getName(),'UTF8'), $Pagoda->getURLViewVideo())
 			);
 			
 			//-------------------------------------------------------------

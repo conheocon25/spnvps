@@ -28,7 +28,7 @@
 			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
 			
-			$Title = $Category->getName();			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

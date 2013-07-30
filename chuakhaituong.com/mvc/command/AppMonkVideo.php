@@ -30,7 +30,7 @@
 			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLVideo());
 						
-			$Title = $Monk->getName();
+			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

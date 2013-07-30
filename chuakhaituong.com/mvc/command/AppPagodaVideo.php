@@ -27,7 +27,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$Pagoda = $mPagoda->find($IdPagoda);
 			
-			$Title = $Pagoda->getName();
+			$Title = mb_strtoupper($Pagoda->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

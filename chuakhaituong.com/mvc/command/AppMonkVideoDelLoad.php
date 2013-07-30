@@ -38,12 +38,12 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = $VM->getVideo()->getName()." XÓA";			
+			$Title = mb_strtoupper($VM->getVideo()->getName()." XÓA", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("DANH SÁCH GIẢNG SƯ", "/app/monk"),
-				array($Monk->getName(), $Monk->getURLVideo())
+				array(mb_strtoupper($Monk->getName(), 'UTF8'), $Monk->getURLVideo())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

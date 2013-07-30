@@ -38,11 +38,11 @@
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
-			
-			$Title = "Quản lý / Tin tức /";
-			$Title = "QUẢN LÝ";
+						
+			$Title = "CHUYÊN MỤC TIN TỨC";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
 			);
 			
 			//-------------------------------------------------------------

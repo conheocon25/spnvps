@@ -25,18 +25,21 @@
 			//-------------------------------------------------------------									
 			$Sponsor = $mSponsor->find($IdSponsor);
 			$Paid = $mPaid->find($IdPaid);
-			$Title = "QUẢN LÝ";
+			$Title = mb_strtoupper($Paid->getTimePrint(),'UTF8');
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("SỔ VÀNG CÔNG ĐỨC", "/app/sponsor"),
+				array(mb_strtoupper($Sponsor->getName(), 'UTF8'), $Sponsor->getURLPaid())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('Paid', $Paid);						
-			$request->setObject('Sponsor', $Sponsor);			
-			$request->setProperty("Title", 'QUẢN LÝ / ỦNG HỘ / '.$Sponsor->getName()." / ".$Paid->getTimePrint()." / XÓA");
-			
-						
+			$request->setObject('Sponsor', $Sponsor);
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
+									
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

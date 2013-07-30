@@ -25,13 +25,15 @@
 			$Category = $mCategoryNews->find($IdCategory);
 			$CategoryNewsAll = $mCategoryNews->findAll();						
 			if (!isset($Page)) $Page=1;
-			
-			$Title = "Quản lý / Tin tức / ".$Category->getName();
+									
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
-			$Title = "QUẢN LÝ";
+			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHUYÊN MỤC TIN TỨC", "/app/category/news")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -41,6 +43,7 @@
 			$request->setObject("PN", $PN);
 			$request->setObject("NewsAll", $NewsAll);
 			
+			$request->setObject("Navigation", $Navigation);
 			$request->setProperty("Title", $Title);
 			$request->setProperty('Page', $Page);
 			
