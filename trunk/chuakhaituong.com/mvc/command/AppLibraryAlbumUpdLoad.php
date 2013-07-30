@@ -35,7 +35,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = $Album->getName()." CẬP NHẬT";
+			$Title = mb_strtoupper($Album->getName()." CẬP NHẬT", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

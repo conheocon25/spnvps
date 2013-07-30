@@ -40,9 +40,11 @@
 			$MonkAll = $mMonk->findAll();
 			$CourseAll = $mCourse->findAll();		
 			$SponsorAll = $mSponsor->findAll();		
-			$Title = "QUẢN LÝ";
+			$Title = " THÊM MỚI";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("SỔ VÀNG CÔNG ĐỨC", "/app/sponsor")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,8 +59,8 @@
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG ỦNG HỘ / THÊM MỚI');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');

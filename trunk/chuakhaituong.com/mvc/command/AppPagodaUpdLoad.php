@@ -24,15 +24,14 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Pagoda = $mPagoda->find($IdPagoda);
-			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / Cập nhật";
-			
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = $Pagoda->getName()." CẬP NHẬT";
+			$Title = mb_strtoupper($Pagoda->getName()." CẬP NHẬT", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

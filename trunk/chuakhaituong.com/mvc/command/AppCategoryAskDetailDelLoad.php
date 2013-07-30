@@ -35,12 +35,12 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Ask = $mAsk->find($IdAsk);
 			
-			$Title = "...XÓA";
+			$Title = "...XÓA";			
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask"),
-				array($Ask->getCategory()->getName(), $Ask->getCategory()->getURLView())				
+				array(mb_strtoupper($Ask->getCategory()->getName(), 'UTF8'), $Ask->getCategory()->getURLView())				
 			);
 			
 			//-------------------------------------------------------------

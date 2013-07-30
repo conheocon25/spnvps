@@ -33,7 +33,7 @@
 			$Event = $mEvent->find($IdEvent);
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = $Event->getTitle()." CẬP NHẬT";
+			$Title = mb_strtoupper($Event->getTitle()." CẬP NHẬT", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -34,7 +34,7 @@
 			
 			$Album = $mAlbum->find($IdAlbum);			
 			$PagodaAll = $mPagoda->findAll();
-			$Title = $Album->getName()." XÓA";
+			$Title = mb_strtoupper($Album->getName()." XÓA", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

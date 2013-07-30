@@ -36,7 +36,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = $Event->getTitle()." XÓA";
+			$Title = mb_strtoupper($Event->getTitle()." XÓA", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

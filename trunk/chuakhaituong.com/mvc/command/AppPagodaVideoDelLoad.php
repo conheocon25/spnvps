@@ -36,12 +36,12 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Title = $VP->getVideo()->getName()." XÓA";
+			$Title = mb_strtoupper($VP->getVideo()->getName()." XÓA", 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("DANH SÁCH CHÙA", "/app/pagoda"),
-				array($Pagoda->getName(), $Pagoda->getURLViewVideo())
+				array(mb_strtoupper($Pagoda->getName(), 'UTF8'), $Pagoda->getURLViewVideo())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

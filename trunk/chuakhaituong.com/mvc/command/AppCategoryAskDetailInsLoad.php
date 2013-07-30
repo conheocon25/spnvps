@@ -40,7 +40,7 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask"),
-				array($Category->getName(), $Category->getURLView())
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
 			);
 			
 			//-------------------------------------------------------------
