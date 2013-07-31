@@ -241,12 +241,12 @@
 	
 	@keyframes marqueeText {
 		0% { margin-left: 100%; }
-		100% { margin-left: -100%; }
+		100% { margin-left: -1000px; }
 	}
 	
 	@-webkit-keyframes marqueeText {
 		0% { margin-left: 100%; }
-		100% { margin-left: -100%; }
+		100% { margin-left: -1000px; }
 	}
 	
 	.top-pic-banner {
