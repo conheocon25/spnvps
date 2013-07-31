@@ -281,3 +281,8 @@
 		display: table-cell;
 		vertical-align: middle;
 	}
+	
+	.th-right li {
+		width: 170px !important;
+		height: 170px !important;
+	}
