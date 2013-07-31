@@ -31,8 +31,14 @@
 		<div class="container">
 			<div metal:use-macro="macros.xhtml/Header"/>
 			<div class="main row">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div metal:use-macro="macros.xhtml/TextGo"/>
+				<div class="top-bar row">
+					<div class="date-time span6">
+						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+					</div>
+					<div class="carousel-text span7">
+						<div metal:use-macro="macros.xhtml/TextGo"/>
+					</div>
+				</div>
 				<div class="content span8">
 					<div class="wraper">						
 						

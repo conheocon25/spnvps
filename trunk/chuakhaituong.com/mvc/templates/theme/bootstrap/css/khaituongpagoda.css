@@ -221,14 +221,13 @@
 	}
 	
 	.marquee {
-		background-color: rgba(0, 0, 0, .1);
 		width: 100%;
 		overflow: hidden;
 	}
 	
 	.marquee p {
 		display: block;
-		width: 100%;
+		width: 1000px;
 		margin-left: 100%;
 		
 		animation: marqueeText 100s;
@@ -272,3 +271,13 @@
 	.left-slide img { height: 300px !important; }
 	
 	.left-news-list { text-align: justify; }
+	
+	.top-bar {
+		margin-top: 10px;
+	}
+	
+	.carousel-text, .date-time {
+		margin-left: 0px !important;
+		display: table-cell;
+		vertical-align: middle;
+	}
