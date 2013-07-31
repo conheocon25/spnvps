@@ -34,8 +34,8 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 						
 			if (!isset($Page)) $Page = 1;			
-			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
+			$Course = $mCourse->findByNear(null)->current();			
+			$Event = $mEvent->findByNear(null)->current();
 
 			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');
 			
@@ -45,8 +45,7 @@
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$PanelAdsAll = $mPanelAds->findAll();
-			$MonkAll = $mMonk->findVIP(null);
-			
+			$MonkAll = $mMonk->findVIP(null);			
 			$Popup = $mPopup->findByName("news");
 			
 			//-------------------------------------------------------------
