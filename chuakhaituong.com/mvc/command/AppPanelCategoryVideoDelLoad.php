@@ -43,9 +43,12 @@
 			$CourseAll = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();			
 			$PanelCategoryVideo = $mPanelCategoryVideo->find($IdPanelCategoryVideo);
-			$Title = "QUẢN LÝ";
+			
+			$Title = mb_strtoupper($PanelCategoryVideo->getName(), 'UTF8');
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("VIDEO NỔI BẬT", "/app/panel/category/video")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -62,7 +65,8 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('PanelCategoryVideo', $PanelCategoryVideo);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ DANH MỤC VIDEO / '.$PanelCategoryVideo->getId()." / XÓA");
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 						
 			return self::statuses('CMD_DEFAULT');

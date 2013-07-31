@@ -34,12 +34,12 @@
 			$TaskAll = $mTask->findAll();
 			
 			$Paid = $mPaid->find($IdPaid);			
-			$Title = $Paid->getDatePrint()." XÓA";
+			$Title = $Paid->getDatePrint();
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("DANH MỤC CHI", "/app/category/paid"),
-				array($Paid->getCategory()->getName(), $Paid->getCategory()->getURLView())
+				array(mb_strtoupper($Paid->getCategory()->getName(), 'UTF8'), $Paid->getCategory()->getURLView())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

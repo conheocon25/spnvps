@@ -42,7 +42,7 @@
 			$CourseAll = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$Course = $mCourse->find($IdCourse);
-			$Title = $Course->getName()." XÓA";
+			$Title = mb_strtoupper($Course->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -13,10 +13,10 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>										
+								<th width="30px">STT</th>										
 								<th align="left">TIÊU ĐỀ</th>
 								<th align="left">NGÀY</th>
-								<th>XÓA</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -31,9 +31,7 @@
 								</td>
 								<td tal:content="VL/getVideo/getTimePrint" />
 								<td>
-									<a tal:attributes="href VL/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
+									<a tal:attributes="href VL/getURLDelLoad"><span class="icon-remove"/></a>
 								</td>
 							</tr>
 						</tbody>
@@ -59,7 +57,7 @@
 					<ul class="nav nav-pills nav-stacked">															
 						<li tal:repeat="Category1 CategoryVideoAll" tal:attributes="class php:Category->getId()==Category1->getId()?'disabled':'active'">
 							<a tal:attributes="href Category1/getURLVideo">
-								<span tal:content="Category1/getName" /> <span class="badge pull-right" tal:content="Category1/getVLs/count"/> 
+								<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLs/count"/> 
 							</a>	
 						</li>					
 					</ul>

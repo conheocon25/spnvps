@@ -36,7 +36,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$VL = $mVideoLibrary->find($IdVideoLibrary);			
-			$Title = mb_strtoupper($VL->getVideo()->getName()." XÓA", 'UTF8');
+			$Title = mb_strtoupper($VL->getVideo()->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

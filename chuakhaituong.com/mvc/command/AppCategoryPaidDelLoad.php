@@ -22,7 +22,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																
 			$Category = $mCategoryPaid->find($IdCategory);			
-			$Title = $Category->getName()." XÓA";
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

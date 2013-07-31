@@ -35,7 +35,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Task = $mTask->find($IdTask);
-			$Title = $Task->getTitle()." CẬP NHẬT";
+			$Title = $Task->getTitle();
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -13,15 +13,15 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th align="left">THAM SỐ</th>
-								<th align="left">GIÁ TRỊ</th>
-								<th>XÓA</th>
+								<th width="30px">STT</th>
+								<th>THAM SỐ</th>
+								<th>GIÁ TRỊ</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr tal:repeat="Config ConfigAll">
-								<td width="32" align="center">
+								<td>
 									<div tal:content="repeat/Config/number" />
 								</td>
 								<td>
@@ -29,12 +29,8 @@
 										<div tal:content="Config/getParam" />
 									</a>
 								</td>
-								<td align="left" tal:content="Config/getValue" />
-								<td>
-									<a tal:attributes="href Config/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
-								</td>
+								<td tal:content="Config/getValue" />
+								<td><a tal:attributes="href Config/getURLDelLoad"><span class="icon-remove"/></a></td>
 							</tr>
 						</tbody>
 						<tfoot>

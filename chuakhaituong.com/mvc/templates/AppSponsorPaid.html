@@ -13,12 +13,12 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th align="left">THỜI GIAN</th>
-								<th align="left">GHI CHÚ</th>
-								<th align="right">SỐ TIỀN</th>
-								<th align="left">ĐƠN VỊ</th>
-								<th>XÓA</th>
+								<th width="30px">STT</th>
+								<th width="120px" align="left">THỜI GIAN</th>
+								<th>GHI CHÚ</th>
+								<th width="120px">SỐ TIỀN</th>
+								<th width="50px">ĐƠN VỊ</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -26,7 +26,7 @@
 								<td width="32" align="center">
 									<div tal:content="repeat/Paid/number" />
 								</td>
-								<td class="text-hightlight" width="96">
+								<td>
 									<a tal:attributes="href Paid/getURLUpdLoad">
 										<div tal:content="Paid/getTimePrint" />
 									</a>
@@ -34,12 +34,10 @@
 								<td>
 									<span tal:content="Paid/getNote" />
 								</td>
-								<td align="right" width="96" tal:content="Paid/getValuePrint" />
-								<td align="left" width="48" tal:content="Paid/getUnit" />
+								<td tal:content="Paid/getValuePrint" />
+								<td tal:content="Paid/getUnit" />
 								<td>
-									<a tal:attributes="href Paid/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
+									<a tal:attributes="href Paid/getURLDelLoad"><span class="icon-remove"/></a>
 								</td>
 							</tr>
 						</tbody>

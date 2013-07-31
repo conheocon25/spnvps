@@ -36,7 +36,7 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$Title = mb_strtoupper($VP->getVideo()->getName()." XÓA", 'UTF8');
+			$Title = mb_strtoupper($VP->getVideo()->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
