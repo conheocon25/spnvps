@@ -38,7 +38,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = mb_strtoupper($VS->getVideo()->getName(), 'UTF8');			
+			$Title = mb_strtoupper($VS->getVideo()->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -13,24 +13,16 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th align="left">TÊN</th>																			
-								<th>XÓA</th>
+								<th width="30px">STT</th>
+								<th>TIÊU ĐỀ</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr tal:repeat="Panel PanelNewsAll">
-								<td>
-									<div tal:content="repeat/Panel/number" />
-								</td>
-								<td>
-									<div tal:condition="Panel/getNews" tal:content="Panel/getNews/getTitle" />
-								</td>
-								<td>
-									<a tal:attributes="href Panel/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
-								</td>
+								<td><div tal:content="repeat/Panel/number" /></td>
+								<td><div tal:condition="Panel/getNews" tal:content="Panel/getNews/getTitle" /></td>
+								<td><a tal:attributes="href Panel/getURLDelLoad"><span class="icon-remove"/></a></td>
 							</tr>
 						</tbody>
 						<tfoot>

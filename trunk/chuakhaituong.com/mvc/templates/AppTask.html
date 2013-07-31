@@ -13,9 +13,9 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
+								<th width="30px">STT</th>
 								<th align="left">CÔNG VIỆC</th>
-								<th>XÓA</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -29,9 +29,7 @@
 									</a>
 								</td>
 								<td>
-									<a tal:attributes="href Task/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
+									<a tal:attributes="href Task/getURLDelLoad"><span class="icon-remove"/></a>
 								</td>
 							</tr>
 						</tbody>
@@ -50,7 +48,7 @@
 					<ul class="nav nav-pills nav-stacked">															
 						<li tal:repeat="Category1 CategoriesTask" tal:attributes="class php:Category->getId()==Category1->getId()?'disabled':'active'">
 							<a tal:attributes="href Category1/getURLView">
-								<span tal:content="Category1/getName" />
+								<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getTasks/count"/>
 							</a>	
 						</li>					
 					</ul>

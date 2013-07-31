@@ -39,7 +39,7 @@
 			$TaskAll = $mTask->findAll();
 			
 			$Category = $mCategoryTask->find($IdCategory);
-			$Title = $Category->getName();
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -47,7 +47,7 @@
 			
 			$Course = $mCourse->find($IdCourse);
 			$CourseLession = $mCourseLession->find($IdLession);
-			$Title = $CourseLession->getName()." XÓA";
+			$Title = mb_strtoupper($CourseLession->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

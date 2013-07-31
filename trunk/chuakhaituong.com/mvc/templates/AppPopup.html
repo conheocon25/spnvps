@@ -13,18 +13,16 @@
 					<table class="table table-striped" >
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th align="left">LỆNH</th>
-								<th align="left">TÌNH TRẠNG</th>
-								<th align="left">LIÊN KẾT</th>
-								<th>XÓA</th>
+								<th width="30px">STT</th>
+								<th>LỆNH</th>
+								<th>TÌNH TRẠNG</th>
+								<th>LIÊN KẾT</th>
+								<th  width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr tal:repeat="Popup PopupAll">
-								<td width="32" align="center">
-									<div tal:content="repeat/Popup/number" />
-								</td>
+								<td><div tal:content="repeat/Popup/number" /></td>
 								<td>
 									<a tal:attributes="href Popup/getURLUpdLoad">
 										<div tal:content="Popup/getCommand" />
@@ -36,11 +34,7 @@
 								<td>
 									<span tal:content="Popup/getURL"/>
 								</td>
-								<td>
-									<a tal:attributes="href Popup/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
-								</td>
+								<td><a tal:attributes="href Popup/getURLDelLoad"><span class="icon-remove"/></a></td>
 							</tr>
 						</tbody>
 						<tfoot>

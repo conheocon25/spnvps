@@ -45,7 +45,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Sponsor = $mSponsor->find($IdSponsor);
 			$Person = $mSP->find($IdPerson);
-			$Title = mb_strtoupper($Person->getName(),'UTF8')." CẬP NHẬT";
+			$Title = mb_strtoupper($Person->getName(),'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

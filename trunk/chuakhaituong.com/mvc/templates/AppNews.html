@@ -13,10 +13,10 @@
 					<table class="table table-striped">
 						<thead>
 							<tr>
-								<th>STT</th>
+								<th width="30px">STT</th>
 								<th />
 								<th align="left">TIÊU ĐỀ</th>
-								<th>XÓA</th>
+								<th width="30px">XÓA</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -59,7 +59,7 @@
 					<ul class="nav nav-pills nav-stacked">
 						<li tal:repeat="Category1 CategoryNewsAll" tal:attributes="class php:Category->getId()==Category1->getId()?'disabled':'active'">
 							<a tal:attributes="href Category1/getURLView">
-								<span tal:content="Category1/getName" /> <span class="badge pull-right" tal:content="Category1/getNews/count"/> 
+								<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getNews/count"/> 
 							</a>
 						</li>
 					</ul>

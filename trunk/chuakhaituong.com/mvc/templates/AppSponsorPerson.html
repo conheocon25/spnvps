@@ -25,17 +25,15 @@
 								<td>
 									<div tal:content="repeat/Person/number" />
 								</td>
-								<td class="text-hightlight">
+								<td>
 									<a tal:attributes="href Person/getURLUpdLoad">
 										<div tal:content="Person/getName" />
 									</a>
 								</td>
-								<td align="right" width="96" tal:content="Person/getValuePrint" />
+								<td align="right" width="120px" tal:content="Person/getValuePrint" />
 								<td align="left" width="48" tal:content="Person/getUnit" />
 								<td class="text-hightlight" width="32" align="center">
-									<a tal:attributes="href Person/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
+									<a tal:attributes="href Person/getURLDelLoad"><span class="icon-remove"/></a>
 								</td>
 							</tr>
 						</tbody>
@@ -52,7 +50,7 @@
 					<ul class="nav nav-pills nav-stacked">															
 						<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'disabled':'active'">
 							<a tal:attributes="href Sponsor1/getURLSetting">
-								<span tal:content="Sponsor1/getName" /> <span class="badge pull-right" tal:content="Sponsor1/getPersonAll/count"/>
+								<span tal:content="Sponsor1/getName" /> <span class="badge badge-info pull-right" tal:content="Sponsor1/getPersonAll/count"/>
 							</a>
 						</li>
 					</ul>

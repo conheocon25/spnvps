@@ -11,9 +11,18 @@
 			<div class="row-fluid">
 				<div class="span9">
 					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th align="left">TÊN</th>
+								<th align="left">BẮT ĐẦU</th>
+								<th align="left">KẾT THÚC</th>								
+								<th>XÓA</th>
+							</tr>
+						</thead>
 						<tbody>
 							<tr class="content-rows" tal:repeat="Lession Course/getLessions">
-								<td>
+								<td width="30px">
 									<div tal:content="repeat/Lession/number" />
 								</td>
 								<td>
@@ -23,10 +32,8 @@
 								</td>
 								<td width="48" tal:content="Lession/getDateStartPrint" />
 								<td width="48" tal:content="Lession/getDateEndPrint" />										
-								<td>
-									<a tal:attributes="href Lession/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
+								<td width="30px">
+									<a tal:attributes="href Lession/getURLDelLoad"><span class="icon-remove"/></a>
 								</td>
 							</tr>
 						</tbody>
@@ -43,7 +50,7 @@
 					<ul class="nav nav-pills nav-stacked">
 						<li tal:repeat="Course1 CourseAll" tal:attributes="class php:Course->getId()==Course1->getId()?'disabled':'active'">
 							<a tal:attributes="href Course1/getURLLession">
-								<span tal:content="Course1/getName" />
+								<span tal:content="Course1/getName" /> <span class="badge badge-info pull-right" tal:content="Course1/getLessions/count"/>
 							</a>
 						</li>
 					</ul>

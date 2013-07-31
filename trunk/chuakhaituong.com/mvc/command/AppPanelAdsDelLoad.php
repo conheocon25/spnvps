@@ -42,9 +42,12 @@
 			$CourseAll = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();			
 			$Panel = $mPanelAds->find($IdPanelAds);
-			$Title = "QUẢN LÝ";
+			
+			$Title = mb_strtoupper($Panel->getNews()->getTitle(), 'UTF8');
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("QUẢNG CÁO", "/app/panel/ads")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -60,8 +63,8 @@
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('PanelAds', $Panel);
 			$request->setObject('SponsorAll', $SponsorAll);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL/ QUẢNG CÁO / '.$Panel->getId()." / XÓA");
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 						
 			return self::statuses('CMD_DEFAULT');

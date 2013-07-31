@@ -35,7 +35,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			$Ask = $mAsk->find($IdAsk);
 			
-			$Title = "...XÓA";			
+			$Title = "...XÓA";
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

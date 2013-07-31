@@ -34,7 +34,7 @@
 			$TaskAll = $mTask->findAll();
 			
 			$Task = $mTask->find($IdTask);			
-			$Title = $Task->getTitle()." XÓA";
+			$Title = $Task->getTitle();
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),

@@ -31,7 +31,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = mb_strtoupper($Pagoda->getName()." CẬP NHẬT", 'UTF8');
+			$Title = mb_strtoupper($Pagoda->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
