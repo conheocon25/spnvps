@@ -15,9 +15,8 @@
 				}(document, 'script', 'facebook-jssdk'));
 						
 				$(document).ready(function() {
-					$('.carousel').carousel({
-						interval: 5000
-					});					
+					$('.left-slide').carousel({interval: 5000});
+					$('#myCarousel2').carousel({interval: 5000});
 					$('.tooltipvideo').tooltip();
 				});
 			/*]]>*/
@@ -127,7 +126,7 @@
 											<div class="carousel-inner">
 												<div class="active item">
 													<a href="/library/video/1">
-														<img width="335px" src="/data/images/bac_tong.jpg"/>
+														<img width="335px" src="/data/images/tmp/pic3.jpg"/>
 													</a>
 												</div>
 												<div tal:repeat="News Category/getNewsLimit1" class="item">
