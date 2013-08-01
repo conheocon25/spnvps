@@ -31,8 +31,10 @@
 				null,
 				$Date,
 				$Content,
-				$Title				
+				$Title,
+				""
 			);
+			$Event->reKey();
 			$mEvent->insert($Event);
 			
 			//-------------------------------------------------------------

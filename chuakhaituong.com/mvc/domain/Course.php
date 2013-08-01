@@ -10,11 +10,12 @@ class Course extends Object{
 	private $DateEnd;
 	private $Description;
 	private $Order;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null){$this->Id = $Id;$this->Name = $Name;$this->DateStart = $DateStart;$this->DateEnd = $DateEnd;$this->Description = $Description;$this->Order = $Order;parent::__construct( $Id );}
+    function __construct( $Id=null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->DateStart = $DateStart;$this->DateEnd = $DateEnd;$this->Description = $Description;$this->Order = $Order; $this->Key = $Key;parent::__construct( $Id );}
     function getId() {return $this->Id;}	
 	function getIdPrint(){return "e" . $this->getId();}	
 		
@@ -47,6 +48,13 @@ class Course extends Object{
 	
 	function setOrder( $Order ){$this->Order = $Order;$this->markDirty();}
 	function getOrder( ) {return $this->Order;}
+	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ) {
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs

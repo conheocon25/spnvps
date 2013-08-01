@@ -1,18 +1,16 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 
     function __construct() {
         parent::__construct();
-				
 		$tblAlbum = "chuakhaituong_album";
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY time DESC", $tblAlbum);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblAlbum);
-		$updateStmt = sprintf("update %s set name=?, url=?, note=?, time=? where id=?", $tblAlbum);
-		$insertStmt = sprintf("insert into %s ( name, url, note) values(?, ?, ?)", $tblAlbum);
+		$updateStmt = sprintf("update %s set name=?, url=?, note=?, time=?, `key`=? where id=?", $tblAlbum);
+		$insertStmt = sprintf("insert into %s ( name, url, note, `key`) values(?, ?, ?, ?)", $tblAlbum);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblAlbum);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -32,20 +30,20 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 			$array['name'],
 			$array['time'],
 			$array['url'],
-			$array['note'] 
+			$array['note'],
+			$array['key'] 
 		);
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "Album";
-    }
+    protected function targetClass(){return "Album";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
 			$object->getURL(),
-			$object->getNote()
+			$object->getNote(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -58,21 +56,13 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 			$object->getURL(),
 			$object->getNote(),
 			$object->getTime(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
-
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt(){
-        return $this->selectAllStmt;
-    }
-	
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt(){return $this->selectAllStmt;}
 }
 ?>

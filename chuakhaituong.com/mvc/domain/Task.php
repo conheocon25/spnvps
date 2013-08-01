@@ -10,17 +10,19 @@ class Task extends Object{
 	private $Title;
 	private $Description;
 	private $URL;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Date=Null, $Type=null, $Title=null, $Description=null, $URL=null){
+    function __construct( $Id=null, $Date=Null, $Type=null, $Title=null, $Description=null, $URL=null, $Key=null){
         $this->Id = $Id;
 		$this->Date = $Date;
 		$this->Type = $Type;
 		$this->Title = $Title;
 		$this->Description = $Description;
 		$this->URL = $URL;
+		$this->Key = $Key;
 		
         parent::__construct( $Id );
     }
@@ -52,6 +54,13 @@ class Task extends Object{
 	
 	function setURL( $URL ){$this->URL = $URL;$this->markDirty();}   
 	function getURL( ) {return $this->URL;}
+	
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Title);
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
