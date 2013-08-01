@@ -28,8 +28,10 @@
 			$Category = new \MVC\Domain\CategoryAsk(
 				null,
 				$Name,
-				$Order
-			);												
+				$Order,
+				""
+			);
+			$Category->reKey();
 			$mCategoryAsk->insert($Category);
 			
 			//-------------------------------------------------------------

@@ -1,9 +1,7 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
-
     function __construct() {
         parent::__construct();
 				
@@ -11,8 +9,8 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY date_start DESC", $tblCourseLession);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCourseLession);
-		$updateStmt = sprintf("update %s set id_course=?, id_monk=?, name=?, date_start=?, date_end=?, description=?, `order`=? where id=?", $tblCourseLession);
-		$insertStmt = sprintf("insert into %s ( id_course, id_monk, name, date_start, date_end, description, `order`) values(?, ?, ?, ?, ?, ?, ?)", $tblCourseLession);
+		$updateStmt = sprintf("update %s set id_course=?, id_monk=?, name=?, date_start=?, date_end=?, description=?, `order`=?, `key`=? where id=?", $tblCourseLession);
+		$insertStmt = sprintf("insert into %s ( id_course, id_monk, name, date_start, date_end, description, `order`, `key`) values(?, ?, ?, ?, ?, ?, ?, ?)", $tblCourseLession);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCourseLession);
 		$findByCourseStmt = sprintf("select *  from %s where id_course=? ORDER BY date_start DESC", $tblCourseLession);
 		$findByMonkStmt = sprintf("select *  from %s where id_monk=? ORDER BY date_start DESC", $tblCourseLession);
@@ -27,13 +25,10 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 		$this->findByCourseStmt = self::$PDO->prepare($findByCourseStmt);
 		$this->findByMonkStmt = self::$PDO->prepare($findByMonkStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
-		$this->findByNextStmt = self::$PDO->prepare($findByNextStmt);
-		
+		$this->findByNextStmt = self::$PDO->prepare($findByNextStmt);		
 	}
 	
-    function getCollection( array $raw ){
-        return new CourseLessionCollection( $raw, $this );
-    }
+    function getCollection( array $raw ){return new CourseLessionCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\CourseLession( 
@@ -44,14 +39,13 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 			$array['date_start'],
 			$array['date_end'],
 			$array['description'],
-			$array['order']
+			$array['order'],
+			$array['key']
 		);
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "CourseLession";
-    }
+    protected function targetClass(){return "CourseLession";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array(
@@ -61,7 +55,8 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 			$object->getDateStart(),
 			$object->getDateEnd(),
 			$object->getDescription(),
-			$object->getOrder()
+			$object->getOrder(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -77,21 +72,16 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 			$object->getDateEnd(),
 			$object->getDescription(),
 			$object->getOrder(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
 	function findByCourse( $values ){
         $this->findByCourseStmt->execute( $values );

@@ -10,8 +10,8 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 				
 		$selectAllStmt = sprintf("SELECT * FROM %s", $tblPagoda);
 		$selectStmt = sprintf("select * from %s where id=?", $tblPagoda);
-		$updateStmt = sprintf("update %s set name=?, address=?, phone=?, website=?, master=? where id=?", $tblPagoda);
-		$insertStmt = sprintf("insert into %s (name, address, phone,  website, master) values(?, ?, ?, ?, ?)", $tblPagoda);
+		$updateStmt = sprintf("update %s set name=?, address=?, phone=?, website=?, master=?, `key`=? where id=?", $tblPagoda);
+		$insertStmt = sprintf("insert into %s (name, address, phone,  website, master, `key`) values(?, ?, ?, ?, ?, ?)", $tblPagoda);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPagoda);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -21,9 +21,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		
     } 
-    function getCollection( array $raw ) {
-        return new PagodaCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Pagoda( 
@@ -32,7 +30,8 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 			$array['address'],
 			$array['phone'],
 			$array['website'],
-			$array['master']
+			$array['master'],
+			$array['key']
 		);
         return $obj;
     }
@@ -47,7 +46,8 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 			$object->getAddress(),
 			$object->getPhone(),
 			$object->getWebsite(),
-			$object->getMaster()
+			$object->getMaster(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -61,21 +61,16 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 			$object->getPhone(),
 			$object->getWebsite(),
 			$object->getMaster(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
 }
 ?>

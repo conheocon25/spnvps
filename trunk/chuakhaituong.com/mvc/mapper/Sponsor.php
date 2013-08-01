@@ -1,9 +1,7 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
-
     function __construct() {
         parent::__construct();
 				
@@ -11,8 +9,8 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY time_start DESC", $tblSponsor);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblSponsor);
-		$updateStmt = sprintf("update %s set name=?, time_start=?, time_end=?, content=?, type=? where id=?", $tblSponsor);
-		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, type) values(?, ?, ?, ?, ?)", $tblSponsor);
+		$updateStmt = sprintf("update %s set name=?, time_start=?, time_end=?, content=?, type=?, `key`=? where id=?", $tblSponsor);
+		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, type, `key`) values(?, ?, ?, ?, ?, ?)", $tblSponsor);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblSponsor);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -22,9 +20,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		
     } 
-    function getCollection( array $raw ) {
-        return new SponsorCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new SponsorCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Sponsor(
@@ -33,14 +29,13 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$array['time_start'],
 			$array['time_end'],
 			$array['content'],
-			$array['type']
+			$array['type'],
+			$array['key']
 		);
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "Sponsor";
-    }
+    protected function targetClass() {return "Sponsor";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array(
@@ -48,7 +43,8 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$object->getTimeStart(),
 			$object->getTimeEnd(),
 			$object->getContent(),
-			$object->getType()
+			$object->getType(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -62,21 +58,15 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$object->getTimeEnd(),
 			$object->getContent(),
 			$object->getType(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt(){
-        return $this->selectAllStmt;
-    }
-	
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt(){return $this->selectAllStmt;}	
 }
 ?>

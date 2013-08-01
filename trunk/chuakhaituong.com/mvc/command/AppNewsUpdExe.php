@@ -40,7 +40,7 @@
 			$News->setDate($Date);
 			$News->setTitle($Title);
 			$News->setType($Type);
-			$News->setKey($Str->converturl());
+			$News->reKey();
 			$mNews->update($News);
 			
 			//-------------------------------------------------------------

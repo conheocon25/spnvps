@@ -67,11 +67,12 @@ class News extends Object{
 	}
 	
 	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
 	function reKey( ){
 		$Str = new \MVC\Library\String($this->Title." ".$this->getId());
 		$this->Key = $Str->converturl();
 	}
-	function getKey( ) {return $this->Key;}
+	
 	
 	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduceHTML(320);}
 	//-------------------------------------------------------------------------------

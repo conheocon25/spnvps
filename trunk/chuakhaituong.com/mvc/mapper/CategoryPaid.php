@@ -2,7 +2,6 @@
 namespace MVC\Mapper;
 require_once( "mvc/base/Mapper.php" );
 class CategoryPaid extends Mapper implements \MVC\Domain\CategoryPaidFinder {
-
     function __construct() {
         parent::__construct();
 				
@@ -10,8 +9,8 @@ class CategoryPaid extends Mapper implements \MVC\Domain\CategoryPaidFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY name", $tblCategory);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCategory);
-		$updateStmt = sprintf("update %s set name=?, `order`=? where id=?", $tblCategory);
-		$insertStmt = sprintf("insert into %s ( name, `order` ) values(?, ?)", $tblCategory);
+		$updateStmt = sprintf("update %s set name=?, `order`=?, `key`=? where id=?", $tblCategory);
+		$insertStmt = sprintf("insert into %s ( name, `order`, `key`) values(?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -26,7 +25,8 @@ class CategoryPaid extends Mapper implements \MVC\Domain\CategoryPaidFinder {
         $obj = new \MVC\Domain\CategoryPaid( 
 			$array['id'],
 			$array['name'],
-			$array['order']
+			$array['order'],
+			$array['key']
 		);
         return $obj;
     }
@@ -35,7 +35,8 @@ class CategoryPaid extends Mapper implements \MVC\Domain\CategoryPaidFinder {
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
-			$object->getOrder()
+			$object->getOrder(),
+			$object->getKey()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -46,6 +47,7 @@ class CategoryPaid extends Mapper implements \MVC\Domain\CategoryPaidFinder {
         $values = array( 
 			$object->getName(),
 			$object->getOrder(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );

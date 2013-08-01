@@ -11,8 +11,8 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY date", $tblTask);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblTask);
-		$updateStmt = sprintf("update %s set type=?, date=?, title=?, description=?, url=? where id=?", $tblTask);
-		$insertStmt = sprintf("insert into %s ( type, date, title, description, url) values(?, ?, ?, ?, ?)", $tblTask);
+		$updateStmt = sprintf("update %s set type=?, date=?, title=?, description=?, url=?, `key`=? where id=?", $tblTask);
+		$insertStmt = sprintf("insert into %s ( type, date, title, description, url, `key`) values(?, ?, ?, ?, ?, ?)", $tblTask);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblTask);
 		$findByStmt = sprintf("select *  from %s where type=? order by date", $tblTask);
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblTask);
@@ -28,9 +28,7 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 	}
 	
-    function getCollection( array $raw ){
-        return new TaskCollection( $raw, $this );
-    }
+    function getCollection( array $raw ){return new TaskCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Task( 
@@ -39,14 +37,13 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 			$array['type'],
 			$array['title'],
 			$array['description'],
-			$array['url']
+			$array['url'],
+			$array['key']
 		);
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "Task";
-    }
+    protected function targetClass(){return "Task";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array(
@@ -54,7 +51,8 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 			$object->getDate(),			
 			$object->getTitle(),
 			$object->getDescription(),
-			$object->getURL()
+			$object->getURL(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -68,6 +66,7 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 			$object->getTitle(),
 			$object->getDescription(),
 			$object->getURL(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
