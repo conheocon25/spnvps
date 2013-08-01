@@ -347,33 +347,22 @@
 			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
 		</div>
 		<div id="calendar" class="b-content">
-			<script type="text/javascript">				
-				function viewSelectedMonth() {
-					setOutputSize("small");
-					var s = printSelectedMonth();
-					document.open();
-					document.writeln(s);
-					document.close();
-				}
-				viewSelectedMonth();				
-			</script>
+			<script type="text/javascript">function viewSelectedMonth(){setOutputSize("small");var s = printSelectedMonth();document.open();document.writeln(s);document.close();}viewSelectedMonth();</script>
 		</div>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- THANH TIÊU ĐỀ LỊCH DƯƠNG - ÂM											  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="DateTimeBox" id="date-time">
-		<script type="text/javascript">				
-			getLunarDateString(09,11,2012,16,39,13);									
-		</script>
-	</div>
+	<div metal:define-macro="DateTimeBox" id="date-time"><script type="text/javascript">getLunarDateString(09,11,2012,16,39,13);</script></div>
 	
 	<!-- ======================================================================== -->
-	<!-- CÂU CHÚC CHẠY NGANG													  -->
+	<!-- MARQUEE TEXT															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="TextGo" class="marquee">
-		<p>Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh đều trọn thành Phật Đạo.</p>
+		<marquee behavior="scroll" direction="left" scrollamount="1">
+			Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh đều trọn thành Phật Đạo.
+		</marquee>
 	</div>
 	
 	<!-- ======================================================================== -->
@@ -397,19 +386,7 @@
 			<div style="margin-left:10px;">
 				<div id="defaultCountdown"></div>
 			</div>
-			<script type="text/javascript">
-				/*<![CDATA[*/
-				$(function() {
-					var d1 = $("#Event").attr('alt');
-					var parts = d1.match(/(\d+)/g);					
-					var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
-					var austDay = new Date();
-					austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-					$('#defaultCountdown').countdown({until: d2});
-					$('#defaultCountdown1').countdown({until: d2});
-				});
-				/*]]>*/
-			</script>
+			<script type="text/javascript">/*<![CDATA[*/$(function(){var d1 = $("#Event").attr('alt');var parts = d1.match(/(\d+)/g);var d2 = new Date(parts[0], parts[1]-1, parts[2]);var austDay = new Date();austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);$('#defaultCountdown').countdown({until: d2});$('#defaultCountdown1').countdown({until: d2});});/*]]>*/</script>
 		</div>
 	</div>
 	
@@ -434,18 +411,7 @@
 			<div style="margin-left:10px;">
 				<div id="CourseCountdown" />
 			</div>
-			<script type="text/javascript">
-				/*<![CDATA[*/
-				$(function() {
-					var d1 = $("#CourseBox").attr('alt');
-					var parts = d1.match(/(\d+)/g);					
-					var d2 = new Date(parts[0], parts[1]-1, parts[2]); // months are 0-based
-					var austDay = new Date();
-					austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);
-					$('#CourseCountdown').countdown({until: d2});
-				});
-				/*]]>*/
-			</script>
+			<script type="text/javascript">/*<![CDATA[*/$(function(){var d1 = $("#CourseBox").attr('alt');var parts = d1.match(/(\d+)/g);var d2 = new Date(parts[0], parts[1]-1, parts[2]);var austDay = new Date();austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);$('#CourseCountdown').countdown({until: d2});});/*]]>*/</script>
 		</div>
 	</div>
 	
