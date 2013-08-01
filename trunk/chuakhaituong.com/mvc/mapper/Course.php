@@ -16,6 +16,7 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
 		$findTopStmt = sprintf("select *  from %s order by date_end desc limit 1", $tblCourse);
 		$findByYearStmt = sprintf("select *  from %s where year(date_end)=? order by date_end desc", $tblCourse);
 		$findByNearStmt = sprintf("select *  from %s where date_end >= NOW( ) AND date_start <= NOW( )", $tblCourse);
+		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCourse);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -25,7 +26,7 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
 		$this->findTopStmt = self::$PDO->prepare($findTopStmt);
 		$this->findByYearStmt = self::$PDO->prepare($findByYearStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
-		
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);		
 	}
 	
     function getCollection( array $raw ){
@@ -94,5 +95,14 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
         return new CourseCollection( $this->findByNearStmt->fetchAll(), $this);
     }
 	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
+    }
 }
 ?>

@@ -79,7 +79,8 @@ class Course extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/course/".$this->getId();}
+	function getURLRead(){return "/dao-tao/".$this->getKey();}
+	
 	function getURLUpdLoad(){return "/app/course/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/course/".$this->getId()."/upd/exe";}
 	

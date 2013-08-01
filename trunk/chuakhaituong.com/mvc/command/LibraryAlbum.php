@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdAlbum = $request->getProperty('IdAlbum');
+			$KAlbum = $request->getProperty('KAlbum');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -27,10 +27,10 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 									
-			if (!isset($IdAlbum)){
+			if (!isset($KAlbum)){
 				$Album = $AlbumAll->current();
 			}else{
-				$Album = $mAlbum->find($IdAlbum);
+				$Album = $mAlbum->findByKey($KAlbum);
 			}
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();

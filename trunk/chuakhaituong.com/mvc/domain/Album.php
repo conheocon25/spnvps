@@ -41,7 +41,7 @@ class Album extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLView(){return "/library/album/".$this->getId();}
+	function getURLView(){return "thu-vien-anh/".$this->getKey();}
 	
 	function getURLUpdLoad(){return "/app/album/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/album/".$this->getId()."/upd/exe";}

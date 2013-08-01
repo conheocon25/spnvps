@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCourse = $request->getProperty('IdCourse');
+			$KCourse = $request->getProperty('KCourse');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -32,7 +32,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findByKey($KCourse);
 			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();

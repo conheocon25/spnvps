@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPagoda = $request->getProperty('IdPagoda');
-			$IdVideoPagoda = $request->getProperty('IdVideoPagoda');
+			$KPagoda = $request->getProperty('KPagoda');
+			$KVideoPagoda = $request->getProperty('KVideoPagoda');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -27,8 +27,9 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$Pagoda = $mPagoda->find($IdPagoda);
-			$VP = $mVP->find($IdVideoPagoda);
+			
+			$Pagoda = $mPagoda->findByKey($KPagoda);			
+			$Video = $mVideo->findByKey($KVideoPagoda);
 			
 			$Event = $mEvent->findByNear(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
@@ -41,13 +42,15 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
+			$request->setObject("Pagoda", $Pagoda);
+			$request->setObject("Video", $Video);
+			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Event", $Event);
 			$request->setObject("PagodaAll", $PagodaAll);
-			$request->setObject("Pagoda", $Pagoda);
-			$request->setObject("VP", $VP);
+			
 			$request->setObject("Course", $Course);
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);

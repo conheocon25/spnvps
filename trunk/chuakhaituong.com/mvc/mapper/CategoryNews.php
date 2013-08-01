@@ -13,8 +13,7 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
 		$selectStmt = sprintf("select *  from %s where id=?", $tblCategory);
 		$updateStmt = sprintf("update %s set name=?, `order`=?, `key`=? where id=?", $tblCategory);
 		$insertStmt = sprintf("insert into %s ( name, `order`, `key`) values(?, ?, ?)", $tblCategory);
-		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
-		
+		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);

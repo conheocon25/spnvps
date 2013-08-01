@@ -52,7 +52,8 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLRead(){return "/pagoda/".$this->getId();}
+	function getURLRead(){return "/chua-ban/".$this->getKey();}
+	
 	function getURLViewVideo(){return "/app/pagoda/".$this->getId()."/video";}	
 	function getURLVideoInsLoad(){return "/app/pagoda/".$this->getId()."/video/ins/load";}
 	function getURLVideoInsExe(){return "/app/pagoda/".$this->getId()."/video/ins/exe";}
