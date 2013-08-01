@@ -1,68 +1,126 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
+		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
 		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
-	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
+		<script type="text/javascript">
+			/*<![CDATA[*/
+				(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return; js = d.createElement(s);js.id = id;js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
+						
+				$(document).ready(function() {
+					$('.left-slide').carousel({interval: 5000});
+					$('#myCarousel2').carousel({interval: 5000});
+					$('.tooltipvideo').tooltip();
+				});
+			/*]]>*/
+		</script>
+	</head>
 
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">					
-					<div tal:condition="Ask" class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title" />
-							<a tal:attributes="href Category/getURLAskInsLoad1">Gửi câu hỏi</a>
-						</div>
-						<div style="padding:10px;">
-							
-							<div align="justify" class="ask">
-								<b><span tal:content="Ask/getAuthor1" />:</b>
-								<div tal:content="structure Ask/getQuestion" />
-								(<I tal:content="Ask/getTimePrint" />)
-							</div>
-							
-							<div align="justify" class="ask">
-								<b><span tal:content="Ask/getAuthor2" />:</b>
-								<div tal:content="structure Ask/getAnswer" />
-							</div>
-							<br />
-							<div class="news-box-sub-title">Cùng chủ đề</div>
-							<ul class="news-box-list">
-								<li tal:repeat="Ask AskAll">								
-									<a tal:attributes="href Ask/getURLRead">
-										<b>Hỏi:</b>
-										<span tal:content="structure Ask/getQuestionReduce"/>
-									</a>
-									<span tal:content="Ask/getTimePrint" />
-								</li>
-							</ul>
-							<div class="clear" />
-						</div>
+	<body>
+		<div id="fb-root"/>
+		<div class="container">
+			<div metal:use-macro="macros.xhtml/Header"/>
+			<div class="main row">
+				<div class="top-bar row">
+					<div class="date-time span6">
+						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+					</div>
+					<div class="carousel-text span7">
+						<div metal:use-macro="macros.xhtml/TextGo"/>
 					</div>
 				</div>
-				
-				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/BoxMonk"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-				</div>				
-				<div class="clear" />
+				<div class="content span8">
+					<div class="wraper">						
+						
+						<div class="box">
+							<div class="b-title">
+								<div tal:content="Title" class="b-t-icon-content"/>
+							</div>
+							<div class="b-content">
+								<a tal:attributes="href Category/getURLAskInsLoad1">Gửi câu hỏi</a>
+								<div align="justify" class="ask">
+									<b><span tal:content="Ask/getAuthor1" />:</b>
+									<div tal:content="structure Ask/getQuestion" />
+									(<I tal:content="Ask/getTimePrint" />)
+								</div>
+								
+								<div align="justify" class="ask">
+									<b><span tal:content="Ask/getAuthor2" />:</b>
+									<div tal:content="structure Ask/getAnswer" />
+								</div>
+							</div>
+						</div>
+						
+						<div class="box">
+							<div class="b-title">
+								<div class="b-t-icon-content">Cùng chủ đề</div>
+							</div>
+							<div class="b-content">
+								<ul class="news-box-list">
+									<li tal:repeat="Ask AskAll">								
+										<a tal:attributes="href Ask/getURLRead">
+											<b>Hỏi:</b>
+											<span tal:content="structure Ask/getQuestionReduce"/>
+										</a>
+										<span tal:content="Ask/getTimePrint" />
+									</li>
+								</ul>
+							</div>
+						</div>
+
+					</div>
+				</div>
+				<div class="sidebar span5">
+					<div class="wraper">
+						<div class="box">
+							<div class="b-title">
+								<div class="b-t-icon-content">Lịch Công Tác</div>
+							</div>
+							<div class="b-content">
+								<div class="g4">
+									<div id="eventCalendarLocale" />
+								</div>
+								<script type="text/javascript">
+									/*<![CDATA[*/
+									$(document).ready(function() {
+										$("#eventCalendarLocale").eventCalendar({
+											eventsjson: '/mvc/templates/script/events.json.php',
+											eventsjson: '/task',
+											monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
+												"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
+											dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
+											dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
+											txt_noEvents: "Không có sự kiện nào xảy ra",
+											txt_SpecificEvents_prev: "",
+											txt_SpecificEvents_after: "sự kiện:",
+											txt_next: "Tới",
+											txt_prev: "Lui",
+											txt_NextEvents: "Sự kiện sắp xảy ra:",
+											txt_GoToEventUrl: "đi đến sự kiện"
+										});
+									});
+									/*]]>*/
+								</script>
+							</div>
+						</div>						
+						<div metal:use-macro="macros.xhtml/EventBox"/>
+						<div metal:use-macro="macros.xhtml/CourseBox"/>
+						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
+						<div metal:use-macro="macros.xhtml/PictureBox"/>
+						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
+						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
+						<div metal:use-macro="macros.xhtml/AskBox"/>
+						<div metal:use-macro="macros.xhtml/CountBox"/>
+						<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+						<div metal:use-macro="macros.xhtml/ContactBox"/>
+						<div metal:use-macro="macros.xhtml/CallendarBox"/>
+					</div>
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="macros.xhtml/Footer"/>
+			<div metal:use-macro="macros.xhtml/FacebookLike"/>
 		</div>
 	</body>
 </html>
