@@ -225,30 +225,6 @@
 		margin-right: 5px;
 	}
 	
-	.marquee p {
-		display: block;
-		width: 1000px;
-		margin-left: 100%;
-		
-		animation: marqueeText 100s;
-		animation-iteration-count: infinite;
-		animation-timing-function: ease-out;
-		
-		-webkit-animation: marqueeText 100s;
-		-webkit-animation-iteration-count: infinite;
-		-webkit-animation-timing-function: ease-out;
-	}
-	
-	@keyframes marqueeText {
-		0% { margin-left: 100%; }
-		100% { margin-left: -1000px; }
-	}
-	
-	@-webkit-keyframes marqueeText {
-		0% { margin-left: 100%; }
-		100% { margin-left: -1000px; }
-	}
-	
 	.top-pic-banner {
 		position: relative;
 		
