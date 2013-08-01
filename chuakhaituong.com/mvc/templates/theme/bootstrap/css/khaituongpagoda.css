@@ -290,3 +290,37 @@
 		width: 170px !important;
 		height: 170px !important;
 	}
+	
+	.history-box {
+			width: 620px;
+			margin-left: -3px;
+			margin-bottom: 15px;
+			font-size: 14px;
+			color: #980707;
+			line-height: 20px;
+			text-shadow: 0px 0px 3px #FFFFFF;
+		}
+		
+			.history-top {
+				height: 70px;
+				background: url("/data/images/history_top.jpg") no-repeat top left transparent;
+				padding-top: 80px;
+				padding-left: 45px;
+				padding-right: 45px;
+				line-height: 30px;
+				text-align: center;
+			}
+			
+			.history-mid {
+				text-indent: 20px;
+				background: url("/data/images/history_mid.jpg") repeat-y top left transparent;
+				padding-left: 45px;
+				padding-right: 45px;
+			}
+			
+			.history-bot {
+				height: 130px;
+				background: url("/data/images/history_bot.jpg") no-repeat top left transparent;
+				padding-right: 45px;
+				padding-top: 20px;
+			}
