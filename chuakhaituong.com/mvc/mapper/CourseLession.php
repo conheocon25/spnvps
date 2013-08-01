@@ -16,7 +16,8 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 		$findByMonkStmt = sprintf("select *  from %s where id_monk=? ORDER BY date_start DESC", $tblCourseLession);
 		$findByNearStmt = sprintf("select *  from %s where id_course=? AND date_start <= NOW( ) ORDER BY date_start DESC", $tblCourseLession);
 		$findByNextStmt = sprintf("select *  from %s where id_course=? AND date_start > NOW( ) ORDER BY date_start", $tblCourseLession);
-				
+		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCourseLession);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -26,6 +27,7 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
 		$this->findByMonkStmt = self::$PDO->prepare($findByMonkStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 		$this->findByNextStmt = self::$PDO->prepare($findByNextStmt);		
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);		
 	}
 	
     function getCollection( array $raw ){return new CourseLessionCollection( $raw, $this );}
@@ -99,6 +101,14 @@ class CourseLession extends Mapper implements \MVC\Domain\CourseLessionFinder {
         $this->findByNextStmt->execute( $values );
         return new CourseLessionCollection( $this->findByNextStmt->fetchAll(), $this);
     }
-	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
+    }
 }
 ?>

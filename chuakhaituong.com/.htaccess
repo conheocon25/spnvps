@@ -5,6 +5,7 @@ RewriteEngine on
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^trang-chu$ 											?cmd=Home [L]
+
 RewriteRule ^signin/load$ 											?cmd=SigninLoad [L]
 RewriteRule ^signin/exe$ 											?cmd=SigninExe [L]
 RewriteRule ^signout/load$ 											?cmd=SignoutLoad [L]
@@ -37,33 +38,30 @@ RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=Li
 
 RewriteRule ^library/video/pagoda/([a-z0-9]+)$						?cmd=LibraryVideoPagoda&IdPagoda=$1 [L]
 
-RewriteRule ^library/album$											?cmd=LibraryAlbum [L]
-RewriteRule ^library/album/([a-z0-9]+)$								?cmd=LibraryAlbum&IdAlbum=$1 [L]
+RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
+RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]
 
-RewriteRule ^event$ 												?cmd=Event [L]
-RewriteRule ^event/([a-z0-9]+)$ 									?cmd=Event&IdEvent=$1 [L]
+RewriteRule ^su-kien$ 												?cmd=Event [L]
+RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=Event&KEvent=$1 [L]
 
 RewriteRule ^tin-tuc$ 												?cmd=ReadCategory [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 			?cmd=ReadCategory&Key1=$1&Page=$2 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
-RewriteRule ^pagoda$ 												?cmd=Pagoda [L]
-RewriteRule ^pagoda/([a-z0-9]+)$ 									?cmd=Pagoda&IdPagoda=$1 [L]
-RewriteRule ^pagoda/([a-z0-9]+)/video/([a-z0-9]+)$ 					?cmd=Pagoda&IdPagoda=$1&IdVideoPagoda=$2 [L]
+RewriteRule ^chua-ban$ 												?cmd=Pagoda [L]
+RewriteRule ^chua-ban/([a-z0-9_-]+)$ 								?cmd=Pagoda&KPagoda=$1 [L]
+RewriteRule ^chua-ban/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=Pagoda&KPagoda=$1&KVideoPagoda=$2 [L]
 
-RewriteRule ^online$ 												?cmd=Online [L]
-RewriteRule ^online/exe$ 											?cmd=OnlineExe [L]
 RewriteRule ^hoi-dap$ 												?cmd=Ask [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)$ 								?cmd=Ask&KCategory=$1 [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=Ask&KCategory=$1&KAsk=$2 [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi$ 					?cmd=AskInsLoad&KCategory=$1 [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi/exe$ 				?cmd=AskInsExe&KCategory=$1 [L]
 
-RewriteRule ^ads$ 													?cmd=Ads [L]
-RewriteRule ^course$ 												?cmd=Course [L]
-RewriteRule ^course/([a-z0-9]+)$ 									?cmd=Course&IdCourse=$1 [L]
-RewriteRule ^course/([a-z0-9]+)/([a-z0-9]+)$ 						?cmd=CourseLession&IdCourse=$1&IdLession=$2 [L]
+RewriteRule ^dao-tao$ 												?cmd=Course [L]
+RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=Course&KCourse=$1 [L]
+RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCourse=$1&KLession=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # APP

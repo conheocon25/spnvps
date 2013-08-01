@@ -11,8 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCourse = $request->getProperty('IdCourse');
-			$IdLession = $request->getProperty('IdLession');
+			$KCourse = $request->getProperty('KCourse');
+			$KLession = $request->getProperty('KLession');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -31,10 +31,12 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 												
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
+			$Event = $mEvent->findByNear(null)->current();			
 			$Courses = $mCourse->findAll();
-			$Lession = $mCourseLession->find($IdLession);
+			
+			$Course = $mCourse->findByKey($KCourse);
+			$Lession = $mCourseLession->findByKey($KLession);
+			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);

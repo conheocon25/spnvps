@@ -23,7 +23,7 @@ class CourseLession extends Object{
 	
 	function setIdCourse( $IdCourse ){$this->IdCourse = $IdCourse;$this->markDirty();}   
 	function getIdCourse( ) {return $this->IdCourse;}
-	function getCourse( ) {$mCourse = new \MVC\Mapper\Course();$Course = $mCourse->find($this->IdCourse);return $this->Course;}
+	function getCourse( ) {$mCourse = new \MVC\Mapper\Course();$Course = $mCourse->find($this->IdCourse);return $Course;}
 	
 	function setIdMonk( $IdMonk ){$this->IdMonk = $IdMonk;$this->markDirty();}   
 	function getIdMonk( ) {return $this->IdMonk;}
@@ -73,7 +73,7 @@ class CourseLession extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "course/".$this->getIdCourse()."/".$this->getId();}
+	function getURLRead(){return "/dao-tao/".$this->getCourse()->getKey()."/".$this->getKey();}
 	
 	function getURLUpdLoad(){return "/app/course/".$this->getIdCourse()."/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/course/".$this->getIdCourse()."/".$this->getId()."/upd/exe";}
