@@ -35,12 +35,12 @@
 	.footer {
 		border-top: 1px solid #DDDDDD;
 		margin-top: 10px;
-		padding: 10px 0;
+		padding: 5px 0;
 	}
 	
 	.copyright {
 		margin-right: 20px;
-		padding: 20px;
+		padding: 5px;
 	}
 	
 	.menu {
@@ -50,8 +50,15 @@
 		border: 1px solid #E3E3E3;
 		border-radius: 5px;
 	}
+	.menu .nav-header {
+		border-bottom: 1px solid #DDDDDD;
+		margin-bottom: 5px;
+	}
 	.menu li a {
-		border-top: 1px solid #FFFFFF;
+		border-left: 1px solid #FFFFFF;
+		border-right: 1px solid #FFFFFF;
+		border-bottom: 1px solid #FFFFFF;
+		border-radius: 0 0 10px 10px;
 	}
 	.menu li a span {
 		cursor: pointer !important;
@@ -60,5 +67,5 @@
 	
 	.content {
 		padding-right: 10px;
-		min-height: 450px !important;
+		min-height: 520px !important;
 	}
