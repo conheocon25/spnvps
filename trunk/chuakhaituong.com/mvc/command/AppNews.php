@@ -25,9 +25,10 @@
 			$Category = $mCategoryNews->find($IdCategory);
 			$CategoryNewsAll = $mCategoryNews->findAll();						
 			if (!isset($Page)) $Page=1;
-									
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
+			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), $Config->getValue(), $Category->getURLView());
 			
 			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(

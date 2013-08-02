@@ -15,6 +15,7 @@ class Popup extends Mapper implements \MVC\Domain\PopupFinder {
 		$insertStmt = sprintf("insert into %s ( command, enable, url) values(?, ?, ?)", $tblPopup);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPopup);
 		$findByNameStmt = sprintf("select * from %s where command=?", $tblPopup);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPopup);
 									
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -22,6 +23,7 @@ class Popup extends Mapper implements \MVC\Domain\PopupFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByNameStmt = self::$PDO->prepare($findByNameStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     }
 	
     function getCollection( array $raw ) {return new PopupCollection( $raw, $this );}
@@ -74,6 +76,11 @@ class Popup extends Mapper implements \MVC\Domain\PopupFinder {
         $object->markClean();
         return $object; 
     }
-	
+	function findByPage( $values ) {
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new MonkCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

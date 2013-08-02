@@ -17,6 +17,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$findTopStmt = sprintf("select *  from %s order by date desc limit 1", $tblEvent);
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblEvent);
 		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date", $tblEvent);
+		$findByPageStmt = sprintf("SELECT * FROM  %s order by date LIMIT :start,:max", $tblEvent);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -26,6 +27,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$this->findTopStmt = self::$PDO->prepare($findTopStmt);
 		$this->findByFinishStmt = self::$PDO->prepare($findByFinishStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 	}
 	
     function getCollection( array $raw ){
@@ -85,6 +87,12 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 	function findByFinish( $values ){
         $this->findByFinishStmt->execute( $values );
         return new EventCollection( $this->findByFinishStmt->fetchAll(), $this);
+    }
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new EventCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

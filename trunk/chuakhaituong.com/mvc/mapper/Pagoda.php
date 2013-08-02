@@ -14,6 +14,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
 		$insertStmt = sprintf("insert into %s (name, address, phone,  website, master, `key`) values(?, ?, ?, ?, ?, ?)", $tblPagoda);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPagoda);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblPagoda);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -21,6 +22,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
 
@@ -37,9 +39,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "Pagoda";
-    }
+    protected function targetClass() {return "Pagoda";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 			
@@ -81,6 +81,12 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder {
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
         return $object;		
+    }
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

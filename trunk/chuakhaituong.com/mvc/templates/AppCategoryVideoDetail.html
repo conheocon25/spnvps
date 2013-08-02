@@ -16,7 +16,7 @@
 								<li class="nav-header">DANH MỤC</li>
 								<li tal:repeat="Category1 CategoryVideoAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
 									<a tal:attributes="href Category1/getURLVideo">
-										<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLs/count"/> 
+										<span tal:content="Category1/getNameReduce1" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLs/count"/> 
 									</a>
 								</li>
 							</ul>

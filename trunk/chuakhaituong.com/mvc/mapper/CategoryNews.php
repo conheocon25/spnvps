@@ -15,6 +15,7 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
 		$insertStmt = sprintf("insert into %s ( name, `order`, `key`) values(?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCategory);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -22,6 +23,7 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
     } 
     function getCollection( array $raw ) {
@@ -75,6 +77,11 @@ class CategoryNews extends Mapper implements \MVC\Domain\CategoryNewsFinder {
         $object = $this->doCreateObject( $array );
         return $object;		
     }
-	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new CategoryNewsCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

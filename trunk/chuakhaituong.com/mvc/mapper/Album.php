@@ -13,6 +13,7 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
 		$insertStmt = sprintf("insert into %s ( name, url, note, `key`) values(?, ?, ?, ?)", $tblAlbum);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblAlbum);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblAlbum);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblAlbum);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -20,6 +21,7 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
         return new AlbumCollection( $raw, $this );
@@ -74,6 +76,12 @@ class Album extends Mapper implements \MVC\Domain\AlbumFinder {
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
         return $object;		
+    }
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new AlbumCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

@@ -16,7 +16,8 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
 		$findByBTypeStmt = sprintf("select * from %s where btype=?", $tblCategory);
 		$findByKeyStmt = sprintf("select * from %s where `key`=?", $tblCategory);
-		
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblCategory);
+				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -24,6 +25,7 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);		
     } 
     function getCollection( array $raw ) {return new CategoryVideoCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
@@ -88,6 +90,13 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
         return $object;		
+    }
+	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new CategoryVideoCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

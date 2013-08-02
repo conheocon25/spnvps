@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -44,6 +45,12 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app")
 			);
+			
+			if (!isset($Page)) $Page=1;			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$EventAll1 = $mEvent->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($EventAll->count(), $Config->getValue(), "/app/event" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -65,7 +72,11 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
+			
+			$request->setObject('EventAll1', $EventAll1);
+			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveAdmin", 'Event');
 			

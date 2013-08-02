@@ -35,22 +35,20 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			ORDER BY 
 			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
 		", $tblMonk, $tblVideo);
-		
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC LIMIT :start,:max", $tblMonk);		
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
-		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		
+		$this->deleteStmt = self::$PDO->prepare($deleteStmt);		
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 		$this->findVIPStmt = self::$PDO->prepare($findVIPStmt);
 		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
     } 
-    function getCollection( array $raw ) {
-        return new MonkCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new MonkCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Monk( 
@@ -129,5 +127,11 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
         return $object;		
     }
 	
+	function findByPage( $values ) {
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new MonkCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>
