@@ -39,24 +39,28 @@
 								<div tal:content="Title" class="b-t-icon-content"/>
 							</div>
 							<div class="b-content">
-								<div tal:repeat="News NewsAll" style="padding:10px;" >							
-									<div width="620px" >
-										<img align="left" class="news-img" tal:attributes="src News/getImage" />
-										<span align="left" style="text-align:justify;">
-											<div class="news-title"><a tal:attributes="href News/getURLRead" tal:content="News/getTitle"/></div>
-											(<span tal:content="News/getDatePrint"/>)
-											<span tal:content="structure News/getContentReduce"/>
-											<a href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank">
-												Chia sẻ
-											</a>
-										</span>
+								
+								<div tal:repeat="News NewsAll" class="media">
+									<a tal:attributes="href News/getURLRead" class="pull-left">
+										<img tal:attributes="src News/getImage" width="150px" class="media-object img-polaroid"/>
+									</a>
+									<div class="media-body">
+										<a tal:attributes="href News/getURLRead">
+											<h4 tal:content="News/getTitle" class="media-heading"/>
+											<p tal:content="structure News/getContentReduce"/>
+											<p>(<span tal:content="News/getDatePrint"/>)</p>
+										</a>
+										<a href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank">
+											<p>Chia sẻ</p>
+										</a>
 									</div>
-									<div class="clear" />
 								</div>
-								<div class="page-list">								
-									<span tal:repeat="P PN/getPages">
-										<a tal:attributes="href P/getURL;class php:Page==P->getId()?'curent':'?'" tal:content="P/getName" />
-									</span>
+								<div class="pagination">
+									<ul>
+										<li tal:repeat="P PN/getPages">
+											<a tal:attributes="href P/getURL" tal:content="P/getName" />
+										</li>
+									</ul>
 								</div>
 							</div>
 						</div>
