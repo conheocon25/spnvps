@@ -42,7 +42,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH SÁCH GIẢNG SƯ", "/app/monk"),
+				array("GIẢNG SƯ", "/app/monk"),
 				array(mb_strtoupper($Monk->getName(), 'UTF8'), $Monk->getURLVideo())
 			);
 			//-------------------------------------------------------------

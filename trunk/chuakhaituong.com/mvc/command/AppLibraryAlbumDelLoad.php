@@ -38,7 +38,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH SÁCH ALBUM", "/app/album")
+				array("HÌNH ẢNH", "/app/album")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

@@ -2,11 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" /> 
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-timepicker-addon.css" />
 		
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
@@ -26,9 +26,10 @@
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span12">
-					<form class="form-horizontal" tal:attributes="action '/app/sponsor/ins/exe'" method="post">
-						<legend />
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action '/app/sponsor/ins/exe'" method="post">						
 						<div class="control-group">
 							<label class="control-label" for="Name">Tên</label>
 							<div class="controls">
