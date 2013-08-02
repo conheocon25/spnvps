@@ -27,8 +27,9 @@
 			$MonkAll = $mMonk->findAll();
 						
 			if (!isset($Page)) $Page=1;
-			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
-			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLVideo());
+			$Config = $mConfig->findByName("ROW_PER_PAGE");	
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), $Config->getValue(), $Monk->getURLVideo());
 						
 			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
 			$Navigation = array(

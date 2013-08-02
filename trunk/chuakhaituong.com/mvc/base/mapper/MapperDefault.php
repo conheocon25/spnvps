@@ -10,6 +10,8 @@
 	$mCourse = new \MVC\Mapper\Course();
 	$mCourseLession = new \MVC\Mapper\CourseLession();
 	$mSponsor = new \MVC\Mapper\Sponsor();
+	$mSponsorPerson = new \MVC\Mapper\SponsorPerson();
+	$mSponsorPaid = new \MVC\Mapper\SponsorPaid();
 	$mPanelAds = new \MVC\Mapper\PanelAds();
 	$mPanelNews = new \MVC\Mapper\PanelNews();
 	$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();

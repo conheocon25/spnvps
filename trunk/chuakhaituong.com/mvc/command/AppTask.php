@@ -47,6 +47,11 @@
 				array("LỊCH LÀM VIỆC", "/app/category/task")
 			);
 			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$TaskAll = $mTask->findByPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getTasks()->count(), $Config->getValue(), $Category->getURLView() );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -69,8 +74,10 @@
 			
 			$request->setObject('Category', $Category);
 			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
+			$request->setObject('TaskAll', $TaskAll);
 			$request->setProperty("Title", $Title );
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'Task');
 			
 			return self::statuses('CMD_DEFAULT');

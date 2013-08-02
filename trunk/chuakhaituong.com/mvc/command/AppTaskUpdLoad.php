@@ -35,7 +35,7 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Task = $mTask->find($IdTask);
-			$Title = $Task->getTitle();
+			$Title = mb_strtoupper($Task->getTitle(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
