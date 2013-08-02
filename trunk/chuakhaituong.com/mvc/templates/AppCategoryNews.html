@@ -1,67 +1,72 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span9">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th align="left">TÊN</th>
-								<th align="left">TIN TỨC</th>
-								<th>XÓA</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr class="content-rows" tal:repeat="Category CategoryNewsAll">
-								<td width="32" align="center">
-									<div tal:content="repeat/Category/number" />
-								</td>
-								<td class="text-hightlight">
-									<a tal:attributes="href Category/getURLUpdLoad">
-										<div tal:content="Category/getName" />
-									</a>
-								</td>
-								<td class="text-hightlight" align="left">
-									<a tal:attributes="href Category/getURLView">
-										<div>Số tin (<span tal:content="Category/getNews/count"/>)</div>
-									</a>
-								</td>
-								<td class="text-hightlight" width="32" align="center">
-									<a tal:attributes="href Category/getURLDelLoad">
-										<span class="icon-remove" />
-									</a>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="2" align="center">
-									<a class="btn" href="/app/category/news/ins/load">
-										<span class="icon-plus" /> Thêm mới
-									</a>
-								</td>
-								<td colspan="2" align="center">
-									<a class="btn" href="/app/news/update/all">
-										<span class="icon-edit" /> Cập nhật tin
-									</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-				<div class="span3">
-					<span metal:use-macro="mAdmin.xhtml/Menu"/>
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>
+										<th align="left">TIN TỨC</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Category CategoryNewsAll">
+										<td width="32" align="center">
+											<div tal:content="repeat/Category/number" />
+										</td>
+										<td class="text-hightlight">
+											<a tal:attributes="href Category/getURLUpdLoad">
+												<div tal:content="Category/getName" />
+											</a>
+										</td>
+										<td class="text-hightlight" align="left">
+											<a tal:attributes="href Category/getURLView">
+												<div>Số tin (<span tal:content="Category/getNews/count"/>)</div>
+											</a>
+										</td>
+										<td class="text-hightlight" width="32" align="center">
+											<a tal:attributes="href Category/getURLDelLoad">
+												<span class="icon-remove" />
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="2" align="center">
+											<a class="btn" href="/app/category/news/ins/load">
+												<span class="icon-plus" /> Thêm mới
+											</a>
+										</td>
+										<td colspan="2" align="center">
+											<a class="btn" href="/app/news/update/all">
+												<span class="icon-edit" /> Cập nhật tin
+											</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
+		</div>		
 	</body>
 </html>

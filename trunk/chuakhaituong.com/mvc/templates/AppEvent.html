@@ -1,53 +1,58 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span9">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th align="left">TIÊU ĐỀ</th>
-								<th align="left">NGÀY</th>
-								<th>XÓA</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr tal:repeat="Event EventAll">
-								<td width="32" align="center">
-									<div tal:content="repeat/Event/number" />
-								</td>
-								<td>
-									<a tal:attributes="href Event/getURLUpdLoad">
-										<div tal:content="Event/getTitle" />
-									</a>
-								</td>
-								<td width="120px" tal:content="Event/getDatePrint" />
-								<td width="32" align="center">
-									<a tal:attributes="href Event/getURLDelLoad">
-										<span class="icon-remove"/>
-									</a>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="4" align="center">
-									<a class="btn" href="/app/event/ins/load"><span class="icon-plus"/> Thêm mới</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-				<div class="span3">
-					<span metal:use-macro="mAdmin.xhtml/Menu"/>
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TIÊU ĐỀ</th>
+										<th align="left">NGÀY</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Event EventAll">
+										<td width="32" align="center">
+											<div tal:content="repeat/Event/number" />
+										</td>
+										<td>
+											<a tal:attributes="href Event/getURLUpdLoad">
+												<div tal:content="Event/getTitle" />
+											</a>
+										</td>
+										<td width="120px" tal:content="Event/getDatePrint" />
+										<td width="32" align="center">
+											<a tal:attributes="href Event/getURLDelLoad">
+												<span class="icon-remove"/>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4" align="center">
+											<a class="btn" href="/app/event/ins/load"><span class="icon-plus"/> Thêm mới</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>

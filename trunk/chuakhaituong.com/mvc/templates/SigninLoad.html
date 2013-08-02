@@ -1,36 +1,38 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>		
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span12">
-					<form class="form-horizontal" tal:attributes="action '/signin/exe'" method="post">
-						<legend />
-						<div class="control-group">
-							<label class="control-label" for="SigninEmailLabel">Email</label>
-							<div class="controls">
-								<input type="text" id="SigninEmail" name="Email" />
+				<div class="span12 main">
+					<div class="signin-inner">
+						<form class="form-horizontal" tal:attributes="action '/signin/exe'" method="post">
+							<legend>Đăng nhập hệ thống</legend>
+							<div class="control-group">
+								<label class="control-label" for="SigninEmailLabel">Email</label>
+								<div class="controls">
+									<input type="text" id="SigninEmail" name="Email" />
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="SigninPassLabel">Mật khẩu</label>
-							<div class="controls">
-								<input type="Password" id="SigninPass" name="Pass" />
-							</div>
-						</div>																								
-						<div class="control-group">
-							<div class="controls">
-								<button type="submit" class="btn" value="submit-value">Đăng nhập</button>
-							</div>
-						</div>						
-					</form>
-				</div>				
+							<div class="control-group">
+								<label class="control-label" for="SigninPassLabel">Mật khẩu</label>
+								<div class="controls">
+									<input type="Password" id="SigninPass" name="Pass" />
+								</div>
+							</div>																								
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn" value="submit-value">Đăng nhập</button>
+								</div>
+							</div>						
+						</form>
+					</div>
+				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>		

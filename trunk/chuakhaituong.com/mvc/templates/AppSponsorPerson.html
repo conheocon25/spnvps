@@ -1,62 +1,70 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span9">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th align="left">TÊN</th>
-								<th align="right">SỐ TIỀN</th>
-								<th align="left">ĐƠN VỊ</th>
-								<th>XÓA</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr tal:repeat="Person Sponsor/getPersonAll">
-								<td>
-									<div tal:content="repeat/Person/number" />
-								</td>
-								<td>
-									<a tal:attributes="href Person/getURLUpdLoad">
-										<div tal:content="Person/getName" />
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>
+								<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'active':'disabled'">
+									<a tal:attributes="href Sponsor1/getURLSetting">
+										<span tal:content="Sponsor1/getName" /> <span class="badge badge-info pull-right" tal:content="Sponsor1/getPersonAll/count"/>
 									</a>
-								</td>
-								<td align="right" width="120px" tal:content="Person/getValuePrint" />
-								<td align="left" width="48" tal:content="Person/getUnit" />
-								<td class="text-hightlight" width="32" align="center">
-									<a tal:attributes="href Person/getURLDelLoad"><span class="icon-remove"/></a>
-								</td>
-							</tr>
-						</tbody>
-						<tfoot>
-							<tr>
-								<td colspan="5" align="center">
-									<a class="btn" tal:attributes="href Sponsor/getURLPersonInsLoad"><span class="icon-plus"/> Thêm mới</a>
-								</td>
-							</tr>
-						</tfoot>
-					</table>
-				</div>
-				<div class="span3">
-					<ul class="nav nav-pills nav-stacked">															
-						<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'disabled':'active'">
-							<a tal:attributes="href Sponsor1/getURLSetting">
-								<span tal:content="Sponsor1/getName" /> <span class="badge badge-info pull-right" tal:content="Sponsor1/getPersonAll/count"/>
-							</a>
-						</li>
-					</ul>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>
+										<th align="right">SỐ TIỀN</th>
+										<th align="left">ĐƠN VỊ</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Person Sponsor/getPersonAll">
+										<td>
+											<div tal:content="repeat/Person/number" />
+										</td>
+										<td>
+											<a tal:attributes="href Person/getURLUpdLoad">
+												<div tal:content="Person/getName" />
+											</a>
+										</td>
+										<td align="right" width="120px" tal:content="Person/getValuePrint" />
+										<td align="left" width="48" tal:content="Person/getUnit" />
+										<td class="text-hightlight" width="32" align="center">
+											<a tal:attributes="href Person/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="5" align="center">
+											<a class="btn" tal:attributes="href Sponsor/getURLPersonInsLoad"><span class="icon-plus"/> Thêm mới</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
 				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
+		</div>		
 	</body>
 </html>

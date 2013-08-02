@@ -1,38 +1,41 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span12">
-					<form class="form-horizontal" tal:attributes="action Category/getURLUpdExe" method="post">
-						<legend />
-						<div class="control-group">
-							<label class="control-label" for="Name">Tên</label>
-							<div class="controls">
-								<input id="Name" name="Name" type="text" tal:attributes="value Category/getName" />
+				<div class="row-fluid">
+					<div class="span12 main">
+						<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+						<form class="form-horizontal" tal:attributes="action Category/getURLUpdExe" method="post">
+							<legend />
+							<div class="control-group">
+								<label class="control-label" for="Name">Tên</label>
+								<div class="controls">
+									<input id="Name" name="Name" type="text" tal:attributes="value Category/getName" />
+								</div>
 							</div>
-						</div>
-						<div class="control-group">
-							<label class="control-label" for="Order">Thứ tự</label>
-							<div class="controls">
-								<input id="Order" name="Order" type="text" tal:attributes="value Category/getOrder" />
-							</div>
-						</div>														
-						<div class="control-group">
-							<div class="controls">
-								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
-							</div>
-						</div>						
-					</form>
-				</div>				
+							<div class="control-group">
+								<label class="control-label" for="Order">Thứ tự</label>
+								<div class="controls">
+									<input id="Order" name="Order" type="text" tal:attributes="value Category/getOrder" />
+								</div>
+							</div>														
+							<div class="control-group">
+								<div class="controls">
+									<button type="submit" class="btn" value="submit-value">Cập nhật</button>
+								</div>
+							</div>						
+						</form>
+					</div>
+				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
+		</div>		
 	</body>
 </html>
