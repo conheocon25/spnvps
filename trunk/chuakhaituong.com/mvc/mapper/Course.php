@@ -17,6 +17,7 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
 		$findByYearStmt = sprintf("select *  from %s where year(date_end)=? order by date_end desc", $tblCourse);
 		$findByNearStmt = sprintf("select *  from %s where date_end >= NOW( ) AND date_start <= NOW( )", $tblCourse);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCourse);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblCourse);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -27,6 +28,7 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
 		$this->findByYearStmt = self::$PDO->prepare($findByYearStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);		
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 	}
 	
     function getCollection( array $raw ){
@@ -103,6 +105,13 @@ class Course extends Mapper implements \MVC\Domain\CourseFinder{
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
         return $object;		
+    }
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new CourseCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

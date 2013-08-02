@@ -26,7 +26,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Config ConfigAll">
+									<tr tal:repeat="Config ConfigAll1">
 										<td>
 											<div tal:content="repeat/Config/number" />
 										</td>
@@ -47,6 +47,13 @@
 									</tr>									
 								</tfoot>
 							</table>
+							<div class="pagination">
+								<ul>							
+									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+										<a tal:attributes="href P/getURL" tal:content="P/getName" />
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>

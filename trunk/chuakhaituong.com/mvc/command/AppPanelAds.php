@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
@@ -44,6 +45,11 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app")
 			);
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$PanelAdsAll1 = $mPanelAds->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($PanelAdsAll->count(), $Config->getValue(), "/app/panel/ads" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -65,10 +71,12 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll); 
 			$request->setObject('PopupAll', $PopupAll); 
-			$request->setObject('Navigation', $Navigation); 
 			
+			$request->setObject('PanelAdsAll1', $PanelAdsAll1);
+			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setProperty("Page", 'Page');
 			$request->setProperty("ActiveAdmin", 'PanelAds');
 			
 			return self::statuses('CMD_DEFAULT');
