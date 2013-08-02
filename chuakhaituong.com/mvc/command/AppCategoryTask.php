@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -45,6 +46,11 @@
 				array("QUẢN LÝ", "/app")
 			);
 			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$CategoryAll = $mCategoryTask->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($CategoryTaskAll->count(), $Config->getValue(), "/app/category/task" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -66,7 +72,11 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
+			
+			$request->setObject('CategoryAll', $CategoryAll);
+			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'Task');
 			$request->setProperty("Title", $Title);
 			

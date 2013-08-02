@@ -12,6 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdCategory = $request->getProperty('IdCategory');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

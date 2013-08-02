@@ -12,6 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdSponsor = $request->getProperty('IdSponsor');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

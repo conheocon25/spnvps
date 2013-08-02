@@ -27,7 +27,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Popup PopupAll">
+									<tr tal:repeat="Popup PopupAll1">
 										<td><div tal:content="repeat/Popup/number" /></td>
 										<td>
 											<a tal:attributes="href Popup/getURLUpdLoad">
@@ -51,6 +51,13 @@
 									</tr>
 								</tfoot>
 							</table>
+							<div class="pagination">
+								<ul>							
+									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+										<a tal:attributes="href P/getURL" tal:content="P/getName" />
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>

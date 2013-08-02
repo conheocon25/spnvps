@@ -25,7 +25,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Panel PanelNewsAll">
+									<tr tal:repeat="Panel PanelNewsAll1">
 										<td><div tal:content="repeat/Panel/number" /></td>
 										<td><div tal:condition="Panel/getNews" tal:content="Panel/getNews/getTitle" /></td>
 										<td><a tal:attributes="href Panel/getURLDelLoad"><span class="icon-remove"/></a></td>
@@ -39,6 +39,13 @@
 									</tr>
 								</tfoot>
 							</table>
+							<div class="pagination">
+								<ul>							
+									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+										<a tal:attributes="href P/getURL" tal:content="P/getName" />
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>
