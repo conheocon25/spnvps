@@ -63,7 +63,7 @@
 								</tfoot>
 							</table>
 							<div class="pagination">
-								<ul>							
+								<ul>
 									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
 										<a tal:attributes="href P/getURL" tal:content="P/getName" />
 									</li>

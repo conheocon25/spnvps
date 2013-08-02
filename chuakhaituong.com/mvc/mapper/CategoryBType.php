@@ -15,6 +15,7 @@ class CategoryBType extends Mapper implements \MVC\Domain\CategoryBTypeFinder {
 		$insertStmt = sprintf("insert into %s ( name, key ) values(?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblCategory);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -22,7 +23,7 @@ class CategoryBType extends Mapper implements \MVC\Domain\CategoryBTypeFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
-		
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
         return new CategoryBTypeCollection( $raw, $this );
@@ -73,6 +74,11 @@ class CategoryBType extends Mapper implements \MVC\Domain\CategoryBTypeFinder {
         $object = $this->doCreateObject( $array );
         return $object;		
     }
-	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new CategoryBTypeCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

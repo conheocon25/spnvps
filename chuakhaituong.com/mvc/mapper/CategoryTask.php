@@ -14,12 +14,14 @@ class CategoryTask extends Mapper implements \MVC\Domain\CategoryTaskFinder {
 		$updateStmt = sprintf("update %s set name=?, `order`=?, `key`=? where id=?", $tblCategory);
 		$insertStmt = sprintf("insert into %s ( name, `order`, `key`) values(?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
     } 
     function getCollection( array $raw ) {return new CategoryTaskCollection( $raw, $this );}
@@ -61,5 +63,11 @@ class CategoryTask extends Mapper implements \MVC\Domain\CategoryTaskFinder {
     function selectStmt() {return $this->selectStmt;}
     function selectAllStmt() {return $this->selectAllStmt;}
 	
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new CategoryTaskCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

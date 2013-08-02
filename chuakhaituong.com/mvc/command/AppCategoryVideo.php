@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
@@ -38,7 +39,12 @@
 			$ConfigAll = $mConfig->findAll();
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
-						
+			
+			if (!isset($Page)) $Page=1;			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$CategoryAll = $mCategoryVideo->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($CategoryVideoAll->count(), $Config->getValue(), "/app/category/video" );
+				
 			$Title = "VIDEO";			
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
@@ -66,9 +72,12 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
+			$request->setObject("CategoryAll", $CategoryAll);
 			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
 			$request->setProperty("ActiveAdmin", 'Video');
 			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

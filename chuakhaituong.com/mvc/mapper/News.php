@@ -36,14 +36,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			LIMIT :start,:max"
 		, $tblNews);
 		
-		$findByPageStmt = sprintf(
-			"SELECT 
-				*
-			FROM 
-				%s 			
-			ORDER BY date desc
-			LIMIT :start,:max"
-		, $tblNews);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY date desc LIMIT :start,:max" , $tblNews);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);

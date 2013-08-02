@@ -25,7 +25,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Album AlbumAll">
+									<tr tal:repeat="Album AlbumAll1">
 										<td width="32" align="center">
 											<div tal:content="repeat/Album/number" />
 										</td>
@@ -49,6 +49,13 @@
 									</tr>
 								</tfoot>
 							</table>
+							<div class="pagination">
+								<ul>							
+									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+										<a tal:attributes="href P/getURL" tal:content="P/getName" />
+									</li>
+								</ul>
+							</div>
 						</div>
 					</div>
 				</div>

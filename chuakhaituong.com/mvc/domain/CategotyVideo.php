@@ -29,9 +29,9 @@ class CategoryVideo extends Object{
 	function getIdPrint(){return "c" . $this->getId();}	
 	
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
-	function getName( ) {return $this->Name;}
-	function getNameReduce(){$S = new \MVC\Library\String($this->Name);return $S->reduce(55);}
-	function getNameReduce1(){$S = new \MVC\Library\String($this->Name);return $S->reduce(40);}
+	function getName( ) {if (!isset($this->Name)||$this->Name=="")return "Chưa có chủ đề"; return $this->Name;}
+	function getNameReduce1(){$S = new \MVC\Library\String($this->Name);return $S->reduce(38);}
+	function getNameReduce2(){$S = new \MVC\Library\String($this->Name);return $S->reduce(80);}
 	
 	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}   
 	function getPicture( ) {return $this->Picture;}

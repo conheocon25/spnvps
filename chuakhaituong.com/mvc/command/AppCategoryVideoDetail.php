@@ -25,8 +25,9 @@
 			$CategoryVideoAll = $mCategoryVideo->findAll();						
 			$Category = $mCategoryVideo->find($IdCategory);
 			if (!isset($Page)) $Page = 1;
-			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
-			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VLAll = $mVL->findByPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), $Config->getValue(), $Category->getURLVideo());
 			
 			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
