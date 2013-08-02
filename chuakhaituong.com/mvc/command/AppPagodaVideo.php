@@ -35,6 +35,11 @@
 				array("CHÙA BẠN", "/app/pagoda")				
 			);
 			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VPAll = $mVP->findByPage(array($IdPagoda, $Page, $Config->getValue()));
+			$PN = new \MVC\Domain\PageNavigation($Pagoda->getVPs()->count(), $Config->getValue(), $Pagoda->getURLViewVideo());
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -45,8 +50,11 @@
 			$request->setObject("PagodaAll", $PagodaAll);
 			
 			$request->setObject("Navigation", $Navigation);
+			$request->setObject("VPAll", $VPAll);
+			$request->setObject("PN", $PN);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

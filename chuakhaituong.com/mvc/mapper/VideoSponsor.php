@@ -15,6 +15,12 @@ class VideoSponsor extends Mapper implements \MVC\Domain\VideoSponsorFinder {
 		$insertStmt = sprintf("insert into %s ( id_video, id_sponsor) values(?, ?)", $tblVideoSponsor);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoSponsor);
 		$findByStmt = sprintf("select *  from %s where id_sponsor=?", $tblVideoSponsor);
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s 
+			WHERE id_sponsor=:id_sponsor
+			LIMIT :start,:max", $tblVideoSponsor
+		);
 								
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -22,7 +28,7 @@ class VideoSponsor extends Mapper implements \MVC\Domain\VideoSponsorFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
-		
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {
         return new VideoSponsorCollection( $raw, $this );
@@ -74,6 +80,14 @@ class VideoSponsor extends Mapper implements \MVC\Domain\VideoSponsorFinder {
         $this->findByStmt->execute( $values );
         return new VideoSponsorCollection( $this->findByStmt->fetchAll(), $this);
     }
-		
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':id_sponsor', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new VideoSponsorCollection( $this->findByPageStmt->fetchAll(), $this);
+    }
+	
 }
 ?>

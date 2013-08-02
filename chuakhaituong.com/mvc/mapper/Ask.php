@@ -110,7 +110,7 @@ class Ask extends Mapper implements \MVC\Domain\AskFinder{
 		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
-        return new AskCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
+        return new AskCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

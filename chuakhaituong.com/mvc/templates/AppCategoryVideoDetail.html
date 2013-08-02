@@ -25,7 +25,7 @@
 					<div class="span9">
 						<div class="content">
 							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
-							<table class="table table-striped">
+							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
 										<th width="30px">STT</th>										
@@ -60,13 +60,7 @@
 									</tr>
 								</tfoot>
 							</table>					
-							<div class="pagination">
-								<ul>							
-									<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
-										<a tal:attributes="href P/getURL" tal:content="P/getName" />
-									</li>
-								</ul>
-							</div>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
 					</div>
 				</div>

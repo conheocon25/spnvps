@@ -41,6 +41,12 @@
 				array("QUẢN LÝ", "/app"),
 				array("ĐÀO TẠO", "/app/course")
 			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");	
+			$LessionAll = $mCourseLession->findByPage(array($IdCourse, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Course->getLessions()->count(), $Config->getValue(), $Course->getURLLession());
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -58,8 +64,10 @@
 			$request->setObject('Course', $Course);
 			
 			$request->setObject('Navigation', $Navigation);
+			$request->setObject('LessionAll', $LessionAll);
+			$request->setObject('PN', $PN);
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'Course');
 			
 			return self::statuses('CMD_DEFAULT');

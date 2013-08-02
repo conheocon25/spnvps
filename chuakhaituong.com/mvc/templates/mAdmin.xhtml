@@ -24,7 +24,7 @@
 			<div class="navbar-inner">
 				<a class="brand" href="/app">Chuakhaituong.com</a>
 				<p class="navbar-text pull-right">
-					<a class="navbar-link" href="/signout/load">Administrator</a>
+					<a class="navbar-link" href="/signout/load"><span tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
 				</p>
 			</div>
 		</div>
@@ -44,7 +44,17 @@
 		</div>
 	</div>
 	
-	
+	<!-- ======================================================================== -->
+	<!-- LOCATION BAR															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="PageBar" class="pagination">
+		<ul>
+			<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+				<a tal:attributes="href P/getURL" tal:content="P/getName" />
+			</li>
+		</ul>
+	</div>
+							
 	<div metal:define-macro="Menu" class="menu">
 		<ul class="nav nav-list">
 			<li class="nav-header">DANH MỤC</li>

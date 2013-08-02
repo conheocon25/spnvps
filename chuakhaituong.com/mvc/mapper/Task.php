@@ -17,13 +17,21 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 		$findByStmt = sprintf("select *  from %s where type=? order by date", $tblTask);
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblTask);
 		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date desc", $tblTask);
-				
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s 
+			WHERE type=:type
+			ORDER BY `date` DESC
+			LIMIT :start,:max", $tblTask
+		);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		$this->findByFinishStmt = self::$PDO->prepare($findByFinishStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 	}
@@ -79,5 +87,13 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
 	function findBy( $values ){$this->findByStmt->execute( $values );return new TaskCollection( $this->findByStmt->fetchAll(), $this);}
 	function findByNear( $values ){$this->findByNearStmt->execute( $values );return new TaskCollection( $this->findByNearStmt->fetchAll(), $this);}
 	function findByFinish( $values ){$this->findByFinishStmt->execute( $values );return new TaskCollection( $this->findByFinishStmt->fetchAll(), $this);}
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':type', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new TaskCollection( $this->findByPageStmt->fetchAll(), $this);
+    }	
 }
 ?>

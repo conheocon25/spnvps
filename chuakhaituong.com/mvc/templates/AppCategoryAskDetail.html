@@ -14,7 +14,7 @@
 						<div class="menu">
 							<ul class="nav nav-list">
 								<li class="nav-header">DANH MỤC</li>
-								<li tal:repeat="Category1 CategoryAskAll1" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
+								<li tal:repeat="Category1 CategoryAskAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
 									<a tal:attributes="href Category1/getURLView">
 										<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getAsks/count"/> 
 									</a>
@@ -25,7 +25,7 @@
 					<div class="span9">
 						<div class="content">
 							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
-							<table class="table table-striped">
+							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
 										<th>STT</th>
@@ -36,8 +36,8 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr tal:repeat="Ask Category/getAsks">
-										<td width="32" align="center">
+									<tr tal:repeat="Ask AskAll">
+										<td width="32">
 											<div tal:content="repeat/Ask/number" />
 										</td>
 										<td>
@@ -66,6 +66,7 @@
 									</tr>
 								</tfoot>
 							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
 					</div>
 				</div>
