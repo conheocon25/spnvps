@@ -1,7 +1,39 @@
 <html lang="en" xml:lang="en">
 <body>
-	<!-- HEADER -->
+	<!-- ======================================================================== -->
+	<!-- CASCADING STYLE SHEETS INCLUDE											  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="IncludeCSS">	
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.min.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/madmin.css"/>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- JAVASCRIPT INCLUDE														  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="IncludeJS">
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.min.js"/>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- HEADER																	  -->
+	<!-- ======================================================================== -->
 	<div metal:define-macro="Header">
+		<div class="navbar navbar-inverse">
+			<div class="navbar-inner">
+				<a class="brand" href="/app">Chuakhaituong.com</a>
+				<p class="navbar-text pull-right">
+					<a class="navbar-link" href="/signout/load">Administrator</a>
+				</p>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- LOCATION BAR															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="LocationBar">
 		<div class="row-fluid">			
 			<ul class="span12 breadcrumb">
 				<li tal:repeat="Item Navigation">
@@ -10,62 +42,70 @@
 				<li class="active" tal:content="Title"/>
 			</ul>
 		</div>
-	</div>	
-	<div metal:define-macro="Menu">
-		<ul class="nav nav-pills nav-stacked">
-			<li tal:attributes="class php:ActiveAdmin=='Paid'?'disabled':'active'">
+	</div>
+	
+	
+	<div metal:define-macro="Menu" class="menu">
+		<ul class="nav nav-list">
+			<li class="nav-header">DANH MỤC</li>
+			<li tal:attributes="class php:ActiveAdmin=='Paid'?'active':'disable'">
 				<a tal:attributes="href '/app/category/paid'">CHUYÊN MỤC CHI <span class="badge badge-info pull-right" tal:content="CategoryPaidAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Task'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Task'?'active':'disable'">
 				<a tal:attributes="href '/app/category/task'">CHUYÊN MỤC LỊCH LÀM VIỆC <span class="badge badge-info pull-right" tal:content="CategoryTaskAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='News'?'disable':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'">
 				<a tal:attributes="href '/app/category/news'">CHUYÊN MỤC TIN TỨC <span class="badge badge-info pull-right" tal:content="CategoryNewsAll/count"/></a>
 			</li>				
-			<li tal:attributes="class php:ActiveAdmin=='Video'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'">
 				<a tal:attributes="href '/app/category/video'">CHUYÊN MỤC VIDEO <span class="badge badge-info pull-right" tal:content="CategoryVideoAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Ask'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Ask'?'active':'disable'">
 				<a tal:attributes="href '/app/category/ask'">CHUYÊN MỤC HỎI ĐÁP <span class="badge badge-info pull-right" tal:content="CategoryAskAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Course'?'disabled':'active'">					
+			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'disable'">					
 				<a tal:attributes="href '/app/course'">ĐÀO TẠO <span class="badge badge-info pull-right" tal:content="CourseAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Monk'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'disable'">
 				<a tal:attributes="href '/app/monk'">DANH SÁCH GIẢNG SƯ <span class="badge badge-info pull-right" tal:content="MonkAll/count"/></a>
 			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Event'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Event'?'active':'disable'">
 				<a tal:attributes="href '/app/event'">DANH SÁCH SỰ KIỆN <span class="badge badge-info pull-right" tal:content="EventAll/count"/></a>
 			</li>					
-			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'active':'disable'">
 				<a tal:attributes="href '/app/pagoda'">DANH SÁCH CHÙA <span class="badge badge-info pull-right" tal:content="PagodaAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Album'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'">
 				<a tal:attributes="href '/app/album'">DANH SÁCH ALBUM <span class="badge badge-info pull-right" tal:content="AlbumAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'active':'disable'">
 				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG CÔNG ĐỨC <span class="badge badge-info pull-right" tal:content="SponsorAll/count"/></a>
 			</li>
-			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'active':'disable'">
 				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelNewsAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'active':'disable'">
 				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelCategoryVideoAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'active':'disable'">
 				<a tal:attributes="href '/app/panel/ads'">QUẢNG CÁO <span class="badge badge-info pull-right" tal:content="PanelAdsAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Popup'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Popup'?'active':'disable'">
 				<a tal:attributes="href '/app/popup'">QUẢNG CÁO POPUP <span class="badge badge-info pull-right" tal:content="PopupAll/count"/></a>
 			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'disabled':'active'">
+			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'">
 				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a>
 			</li>
 		</ul>
 	</div>
-
+	
+	<!-- ======================================================================== -->
+	<!-- FOOTER																	  -->
+	<!-- ======================================================================== -->
 	<div metal:define-macro="Footer">
-		<div class="row-fluid">Copyright 2012 SPN</div>
+		<div class="row-fluid footer">
+			<span class="label pull-right copyright">&#169; 2012 SPN</span>
+		</div>
 	</div>	
 </body>
 </html>

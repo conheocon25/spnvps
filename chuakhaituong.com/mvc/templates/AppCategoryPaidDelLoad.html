@@ -1,22 +1,25 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
 		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
 		<div class="container-fluid">
 			<span metal:use-macro="mAdmin.xhtml/Header"/>
 			<div class="row-fluid">
-				<div class="span12">
-					<form class="form-actions" tal:attributes="action Category/getURLDelExe" method="post">
-						<p>Bạn có chắc chắn muốn xóa ?</p>
-						<button type="submit" class="btn" value="submit-value"><span class="icon-remove"/>Xóa</button>
-					</form>
+				<div class="row-fluid">
+					<div class="span12 main">
+						<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+						<form class="form-actions" tal:attributes="action Category/getURLDelExe" method="post">
+							<p>Bạn có chắc chắn muốn xóa ?</p>
+							<button type="submit" class="btn" value="submit-value"><span class="icon-remove"/>Xóa</button>
+						</form>
+					</div>
 				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
+		</div>		
 	</body>
 </html>
