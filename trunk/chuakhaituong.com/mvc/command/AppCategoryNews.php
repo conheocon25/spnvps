@@ -39,7 +39,7 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 						
-			$Title = "CHUYÊN MỤC TIN TỨC";
+			$Title = "TIN TỨC";
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app")

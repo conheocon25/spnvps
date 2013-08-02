@@ -39,7 +39,7 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("LỊCH LÀM VIỆC", "/app/category/task"),
-				array($Category->getName(), $Category->getURLView())
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

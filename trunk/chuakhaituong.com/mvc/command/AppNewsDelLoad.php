@@ -39,7 +39,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("CHUYÊN MỤC TIN TỨC", "/app/category/news"),
+				array("TIN TỨC", "/app/category/news"),
 				array(mb_strtoupper($News->getCategory()->getName(),'UTF8') , $News->getCategory()->getURLView())
 			);
 			

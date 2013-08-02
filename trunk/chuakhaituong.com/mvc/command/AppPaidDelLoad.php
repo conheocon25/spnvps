@@ -38,7 +38,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH MỤC CHI", "/app/category/paid"),
+				array("KHOẢN CHI", "/app/category/paid"),
 				array(mb_strtoupper($Paid->getCategory()->getName(), 'UTF8'), $Paid->getCategory()->getURLView())
 			);
 			//-------------------------------------------------------------
