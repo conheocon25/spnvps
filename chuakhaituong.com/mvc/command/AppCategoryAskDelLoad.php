@@ -27,7 +27,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("CHUYÊN MỤC HỎI ĐÁP", "/app/category/ask")
+				array("HỎI ĐÁP", "/app/category/ask")
 			);
 			
 			//-------------------------------------------------------------

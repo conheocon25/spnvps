@@ -36,7 +36,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH SÁCH CHÙA", "/app/pagoda")
+				array("CHÙA BẠN", "/app/pagoda")
 			);
 			
 			//-------------------------------------------------------------

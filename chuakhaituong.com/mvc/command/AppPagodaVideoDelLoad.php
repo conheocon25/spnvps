@@ -40,7 +40,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH SÁCH CHÙA", "/app/pagoda"),
+				array("CHÙA BẠN", "/app/pagoda"),
 				array(mb_strtoupper($Pagoda->getName(), 'UTF8'), $Pagoda->getURLViewVideo())
 			);
 			//-------------------------------------------------------------

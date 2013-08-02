@@ -38,7 +38,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("CHUYÊN MỤC VIDEO", "/app/category/video")
+				array("VIDEO", "/app/category/video")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
