@@ -26,7 +26,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("DANH MỤC CHI", "/app/category/paid"),
+				array("KHOẢN CHI", "/app/category/paid"),
 			);
 			
 			//-------------------------------------------------------------

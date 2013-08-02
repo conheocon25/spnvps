@@ -40,7 +40,7 @@
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
 				array("LỊCH LÀM VIỆC", "/app/category/task"),
-				array($Task->getTypeObj()->getName(), $Task->getTypeObj()->getURLView())
+				array(mb_strtoupper($Task->getTypeObj()->getName(), 'UTF8'), $Task->getTypeObj()->getURLView())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

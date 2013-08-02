@@ -37,7 +37,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("CHUYÊN MỤC TIN TỨC", "/app/category/news")
+				array("TIN TỨC", "/app/category/news")
 			);
 			
 			//-------------------------------------------------------------
