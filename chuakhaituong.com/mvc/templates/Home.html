@@ -46,6 +46,21 @@
 									</a>
 								</div>
 								<!--
+								<iframe width="560" height="315" src="//www.youtube.com/embed/sgRmFIWAeRA?list=PLCC97EF2EF9AA2638" frameborder="0" ></iframe>
+								!-->
+								<script type='text/javascript' src='http://player.longtailvideo.com/jwplayer.js'></script>
+								<div id='mediaspace'>This text will be replaced</div>
+
+								<script type='text/javascript'>
+								  jwplayer('mediaspace').setup({
+									'flashplayer': 'http://player.longtailvideo.com/player.swf',
+									'file': 'http://www.youtube.com/watch?v=V0dB7BN0Uvc',
+									'controlbar': 'bottom',
+									'width': '470',
+									'height': '320'
+								  });
+								</script>
+								<!--
 								<div class="list-picture" tal:condition="Course">																
 									<div class="grid-left parent" tal:condition="Course/getLessionNear">
 										<a tal:attributes="href Course/getLessionNear/getURLRead">
