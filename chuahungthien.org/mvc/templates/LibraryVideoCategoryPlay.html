@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
+		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div id="wrapper">		
+			<div metal:use-macro="macros.xhtml/Header" />
+			<div id="main">				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+				<div metal:use-macro="macros.xhtml/TextGo"/>
+				
+				<div id="left-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span>Chuyên Đề</span>
+						</div>
+						<div class="sidebar-box-content">
+							<ul>
+								<a tal:repeat="Category1 CategoryBType/getCategoryAll" tal:attributes="href Category1/getURLRead">
+									<li tal:attributes="class php:Category1->getId()==Category->getId()?'current-item':''">
+										<span tal:content="Category1/getName" /> (<span tal:content="Category1/getVLs/count" />)
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear" />
+					</div>
+				</div>
+				
+				<div id="mid-mini">
+
+					<div class="news-box-mini">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span>Phật âm</span> 
+						</div>
+
+						<div align="center" class="video-screen">
+							<iframe width="450" height="350" tal:attributes="src Video/getURL" frameborder="0"></iframe>
+							<script>
+								/*<![CDATA[*/
+								$("iframe").each(function(){
+									  var ifr_source = $(this).attr('src');
+									  var wmode = "?wmode=transparent";
+									  $(this).attr('src',ifr_source+wmode);
+								});
+								/*]]>*/
+							</script>
+						</div>						
+						<div class="video-info">
+							<div class="name" tal:content="Video/getName" />							
+							<div class="view">
+								<span tal:content="Video/getCountPrint"/> lượt xem
+							</div>
+							<div class="clear" />
+						</div>
+						<div class="news-box-sub-title">Cùng chuyên đề</div>
+						<div style="margin-left:24px;">
+							<ul class="list-video">
+								<li tal:repeat="VL Category/getVLs">
+									<a tal:attributes="href VL/getURLView; title VL/getVideo/getName">
+										<img tal:attributes="src VL/getVideo/getURLImage" width="140px" height="110px" />
+										<div class="name" tal:content="VL/getVideo/getName" />
+									</a>
+								</li>
+							</ul>
+							<div class="clear" />
+						</div>
+					</div>
+				</div>
+				
+				<div id="right-mini">
+					<div class="sidebar-box-mini">
+						<div class="box-title">
+							<img src="/data/images/icon.png" width="30" />
+							<span>Giảng Sư</span>
+						</div>
+						<div class="sidebar-box-content">
+							<ul>
+								<a tal:repeat="Monk1 CategoryBType/getMonkAll" tal:attributes="href Monk1/getURLRead">
+									<li>
+										<span tal:content="Monk1/getName" /> (<span tal:content="Monk1/getVMs/count" />)
+										<span tal:condition="Monk1/isVIP">
+											<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
+										</span>
+									</li>
+								</a>
+							</ul>
+						</div>
+						<div class="clear" />
+					</div>					
+					<div metal:use-macro="macros.xhtml/CountBoxMini"/>
+					<div metal:use-macro="macros.xhtml/SponsorBoxMini"/>
+					<div metal:use-macro="macros.xhtml/ContactBoxMini"/>
+				</div>
+				<div class="clear" />
+			</div>
+			<div metal:use-macro="macros.xhtml/Footer" />
+		</div>
+	</body>
+</html>

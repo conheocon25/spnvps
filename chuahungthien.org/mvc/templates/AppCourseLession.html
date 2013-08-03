@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>
+								<li tal:repeat="Course1 CourseAll" tal:attributes="class php:Course->getId()==Course1->getId()?'active':'disabled'">
+									<a tal:attributes="href Course1/getURLLession">
+										<span tal:content="Course1/getName" /> <span class="badge badge-info pull-right" tal:content="Course1/getLessions/count"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">TÊN</th>
+										<th align="left">BẮT ĐẦU</th>
+										<th align="left">KẾT THÚC</th>								
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Lession LessionAll">
+										<td width="30px">
+											<div tal:content="repeat/Lession/number" />
+										</td>
+										<td>
+											<a tal:attributes="href Lession/getURLUpdLoad">
+												<div tal:content="Lession/getName" />
+											</a>
+										</td>
+										<td width="48" tal:content="Lession/getDateStartPrint" />
+										<td width="48" tal:content="Lession/getDateEndPrint" />										
+										<td width="30px">
+											<a tal:attributes="href Lession/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="7" align="center">
+											<a class="btn" tal:attributes="href Course/getURLLessionInsLoad"><span class="icon-plus"/> Thêm mới</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>

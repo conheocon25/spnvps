@@ -1,0 +1,75 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-1.8.11.custom.css" />
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery-ui-timepicker-addon.css" />
+		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-1.8.11.custom.min.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-addon.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.ui.datepicker-vi.js" />
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-ui-timepicker-vi.js" />
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
+		<script type="text/javascript">
+			/*<![CDATA[*/
+			$(function() {
+				$('#DateStart').datetimepicker({ dateFormat: 'yy-mm-dd' });
+				$('#DateEnd').datetimepicker({ dateFormat: 'yy-mm-dd' });
+			});
+			/*]]>*/
+		</script>		
+	</head>	
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Course/getURLUpdExe" method="post">
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input type="text" id="Name" name="Name" tal:attributes="value Course/getName" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="DateStart">Bắt đầu</label>
+							<div class="controls">
+								<input type="text" id="DateStart" name="DateStart" tal:attributes="value Course/getDateStart" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="DateEnd">Kết thúc</label>
+							<div class="controls">
+								<input type="text" id="DateEnd" name="DateEnd" tal:attributes="value Course/getDateEnd" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Content">Nội dung</label>
+							<div class="controls">
+								<textarea class="ckeditor" name="Description" tal:content="Course/getDescription" />
+							</div>
+						</div>
+						
+						<div class="control-group">
+							<label class="control-label" for="Order">Thứ tự</label>
+							<div class="controls">
+								<input type="text" id="Order" name="Order" tal:attributes="value Course/getOrder" />
+							</div>
+						</div>														
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
+							</div>
+						</div>						
+					</form>
+				</div>				
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	</body>
+</html>
