@@ -14,14 +14,16 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
 		$updateStmt = sprintf("update %s set param=?, value=? where id=?", $tblConfig);
 		$insertStmt = sprintf("insert into %s ( param, value) values(?, ?)", $tblConfig);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblConfig);		
-		$findByNameStmt = sprintf("select *  from %s where param=?", $tblConfig);
-									
+		$findByNameStmt = sprintf("select * from %s where param=?", $tblConfig);
+		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblConfig);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByNameStmt = self::$PDO->prepare($findByNameStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     }
 	
     function getCollection( array $raw ) {
@@ -70,7 +72,7 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
     function selectAllStmt() {
         return $this->selectAllStmt;
     }
-	
+			
 	function findByName( $Param ){
         $this->findByNameStmt->execute( array( $Param ) );
         $array = $this->findByNameStmt->fetch( ); 
@@ -80,6 +82,12 @@ class Config extends Mapper implements \MVC\Domain\ConfigFinder {
         $object = $this->createObject( $array );
         $object->markClean();
         return $object; 
+    }
+	function findByPage( $values ) {		
+		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new ConfigCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 }
 ?>

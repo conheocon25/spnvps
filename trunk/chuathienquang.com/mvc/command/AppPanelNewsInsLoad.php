@@ -14,44 +14,57 @@
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			
 			$mPagoda = new \MVC\Mapper\Pagoda();
 			$mAlbum = new \MVC\Mapper\Album();
 			$mEvent = new \MVC\Mapper\Event();
 			$mMonk = new \MVC\Mapper\Monk();
 			$mCourse = new \MVC\Mapper\Course();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			$mNews = new \MVC\Mapper\News();
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			$Albums = $mAlbum->findAll();
-			$Events = $mEvent->findAll();
-			$Monks = $mMonk->findAll();
-			$Courses = $mCourse->findAll();		
-			$News = $mNews->findAll();		
-			
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$AlbumAll = $mAlbum->findAll();
+			$EventAll = $mEvent->findAll();
+			$MonkAll = $mMonk->findAll();
+			$CourseAll = $mCourse->findAll();		
+			$News = $mNews->findAll();
+			$SponsorAll = $mSponsor->findAll();		
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC NỔI BẬT", "/app/panel/news")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Albums', $Albums);
-			$request->setObject('Events', $Events);
-			$request->setObject('Monks', $Monks);
-			$request->setObject('Courses', $Courses);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('AlbumAll', $AlbumAll);
+			$request->setObject('EventAll', $EventAll);
+			$request->setObject('MonkAll', $MonkAll);
+			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('News', $News);
-						
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / NEWS / THÊM MỚI');
+			$request->setObject('SponsorAll', $SponsorAll);
+			
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');

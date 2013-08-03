@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
@@ -39,7 +40,16 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 						
-			$Title = "Quản lý / Hỏi đáp /";
+			$Title = "HỎI ĐÁP";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$CategoryAll = $mCategoryAsk->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($CategoryAskAll->count(), $Config->getValue(), "/app/category/ask" );
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -62,8 +72,12 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);			
-									
+			
+			$request->setObject('CategoryAll', $CategoryAll);
+			$request->setObject('PN', $PN);
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("ActiveAdmin", 'Ask');
+			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');

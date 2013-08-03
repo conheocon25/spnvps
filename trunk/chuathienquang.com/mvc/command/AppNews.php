@@ -11,56 +11,42 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
 			$Page = $request->getProperty('Page');
+			$IdCategory = $request->getProperty('IdCategory');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mNews = new \MVC\Mapper\News();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");			
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Categories1 = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
+			//-------------------------------------------------------------									
+			$Category = $mCategoryNews->find($IdCategory);
+			$CategoryNewsAll = $mCategoryNews->findAll();						
+			if (!isset($Page)) $Page=1;
 			
-			if (!isset($IdCategory)){
-				if (!isset($IdCurrentCategory)){
-					$Category = $Categories->current();
-					$IdCategory = $Category->getId();
-				}
-				else {
-					$Category = $mCategoryNews->find($IdCurrentCategory);
-					$IdCategory = $IdCurrentCategory;
-				}
-			}else{
-				$Category = $mCategoryNews->find($IdCategory);
-			}
-			if (!isset($Page)) $Page=1;			
-			$Session->setCurrentCategoryNews($IdCategory);
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$Title = "Quản lý / Chuyên mục Tin tức / ".$Category->getName();
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLView());
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), $Config->getValue(), $Category->getURLView());
 			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC", "/app/category/news")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("Categories", $Categories1);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
 			$request->setObject("Category", $Category);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('NewsAll', $NewsAll);
-			$request->setObject('PN', $PN);
+			$request->setObject("PN", $PN);
+			$request->setObject("NewsAll", $NewsAll);
+			
+			$request->setObject("Navigation", $Navigation);
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("Page", $Page);
+			$request->setProperty('Page', $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -39,6 +40,17 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
+			$Title = "SỰ KIỆN";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
+			if (!isset($Page)) $Page=1;			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$EventAll1 = $mEvent->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($EventAll->count(), $Config->getValue(), "/app/event" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -61,7 +73,11 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty("Title", 'Quản Lý / Sự kiện / ');
+			$request->setObject('EventAll1', $EventAll1);
+			$request->setObject('PN', $PN);
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Page", $Page);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveAdmin", 'Event');
 			
 			return self::statuses('CMD_DEFAULT');

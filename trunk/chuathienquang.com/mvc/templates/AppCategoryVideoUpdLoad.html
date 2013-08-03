@@ -1,68 +1,61 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
-						<span tal:content="Title" />
-						<a href="/app/category/video">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action Category/getURLUpdExe" method="post">
-							<div class="row">
-								<div for="Name" class="label">Tên</div>
-								<div class="textbox" >
-									<input id="Name" name="Name" type="text" tal:attributes="value Category/getName" />
-								</div>
-								<div class="clear" />
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Category/getURLUpdExe" method="post">
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input id="Name" name="Name" type="text" tal:attributes="value Category/getName" />
 							</div>
-							<div class="row">
-								<div for="Type" class="label">Loại</div>
-								<div class="checkbox" >
-									<input id="Type" type="checkbox" name="Type" tal:attributes="checked Category/getType" />Đặc biệt
-								</div>
-								<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Type">Loại</label>
+							<div class="controls">
+								<input id="Type" type="checkbox" name="Type" tal:attributes="checked Category/getType" />Đặc biệt
 							</div>
-							<div class="row">
-								<div for="Picture" class="label">URL hình ảnh</div>
-								<div class="textbox" >
-									<input id="Picture" name="Picture" type="text" tal:attributes="value Category/getPicture" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="BType">Tông phái</label>
+							<div class="controls">
+								<select name="BType">
+									<option tal:repeat="Category1 CategoryBTypeAll" tal:attributes="value Category1/getId;selected php:Category1->getId()==Category->getBType()?true:false" >
+										<span tal:content="Category1/getName"/>
+									</option>
+								</select>
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Thứ tự</div>
-								<div class="textbox" >
-									<input id="Order" name="Order" type="text" tal:attributes="value Category/getOrder" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Picture">URL hình ảnh</label>
+							<div class="controls">
+								<input id="Picture" name="Picture" type="text" tal:attributes="value Category/getPicture" />
 							</div>
-							<div class="row">
-								<div class="button" >
-									<button type="submit" name="submit" value="submit-value">Cập Nhật</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Order">Thứ tự</label>
+							<div class="controls">
+								<input id="Order" name="Order" type="text" tal:attributes="value Category/getOrder" />
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
-				</div>
-				<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
+							</div>
+						</div>						
+					</form>
+				</div>				
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

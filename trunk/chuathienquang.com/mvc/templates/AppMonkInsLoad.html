@@ -1,77 +1,79 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/Header" />
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/manager.png" width="30" />
-						<span tal:content="Title" />
-						<a href="/app/monk">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action '/app/monk/ins/exe'" method="post">
-							<div class="row">
-								<div for="PreName" class="label">Chức sắc</div>
-								<div class="textbox" >
-									<input id="PreName" name="PreName" type="text" />
-								</div>
-								<div class="clear"></div>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action '/app/monk/ins/exe'" method="post">						
+						<div class="control-group">
+							<label class="control-label" for="PreName">Chức sắc</label>
+							<div class="controls">
+								<input id="PreName" name="PreName" type="text" />
 							</div>
-							<div class="row">
-								<div for="Type" class="label">Loại</div>
-								<div class="checkbox" >
-									<input id="Type" type="checkbox" name="Type" /> Đặc biệt
-								</div>
-								<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Type">Loại</label>
+							<div class="controls">
+								<input id="Type" type="checkbox" name="Type" /> Đặc biệt
 							</div>
-							<div class="row">
-								<div for="Name" class="label">Tên</div>
-								<div class="textbox" >
-									<input id="Name" name="Name" type="text" />
-								</div>
-								<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="BType">Tông phái</label>
+							<div class="controls">
+								<select name="BType">
+									<option tal:repeat="Category CategoryBTypeAll" tal:attributes="value Category/getId" >
+										<span tal:content="Category/getName"/>
+									</option>
+								</select>
 							</div>
-							<div class="row">
-								<div for="Pagoda" class="label">Chùa</div>
-								<div class="textbox" >
-									<input id="Pagoda" name="Pagoda" type="text" />
-								</div>
-								<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input id="Name" name="Name" type="text" />
 							</div>
-							<div class="row">
-								<div for="Phone" class="label">Điện thoại</div>
-								<div class="textbox" >
-									<input id="Phone" name="Phone" type="text" />
-								</div>
-								<div class="clear"></div>
+						</div>														
+						<div class="control-group">
+							<label class="control-label" for="Pagoda">Chùa</label>
+							<div class="controls">
+								<input id="Pagoda" name="Pagoda" type="text" />
 							</div>
-							<div class="row">
-								<div for="Note" class="label">Ghi chú</div>
-								<div class="textbox" >
-									<input id="Note" name="Note" type="text" />
-								</div>
-								<div class="clear"></div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Phone">Điện thoại</label>
+							<div class="controls">
+								<input id="Phone" name="Phone" type="text" />
 							</div>
-							<div class="row">
-								<div class="button" >
-									<button type="submit" name="submit" value="submit-value">Thêm mới</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Note">Ghi chú</label>
+							<div class="controls">
+								<input id="Note" name="Note" type="text" />
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="URLPic">URL Hình ảnh</label>
+							<div class="controls">
+								<input id="URLPic" name="URLPic" type="text" />
+							</div>
+						</div>														
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Thêm mới</button>
+							</div>
+						</div>						
+					</form>
 				</div>
-				<div class="clear"></div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

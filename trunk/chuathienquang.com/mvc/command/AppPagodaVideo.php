@@ -12,32 +12,49 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdPagoda = $request->getProperty('IdPagoda');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$Pagoda = $mPagoda->find($IdPagoda);
-			$Title = "Quản trị / chùa / ".$Pagoda->getName();
-						
+			
+			$Title = mb_strtoupper($Pagoda->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHÙA BẠN", "/app/pagoda")				
+			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VPAll = $mVP->findByPage(array($IdPagoda, $Page, $Config->getValue()));
+			$PN = new \MVC\Domain\PageNavigation($Pagoda->getVPs()->count(), $Config->getValue(), $Pagoda->getURLViewVideo());
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("Pagoda", $Pagoda);
-			$request->setObject("Pagodas", $Pagodas);
+			$request->setObject("PagodaAll", $PagodaAll);
+			
+			$request->setObject("Navigation", $Navigation);
+			$request->setObject("VPAll", $VPAll);
+			$request->setObject("PN", $PN);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

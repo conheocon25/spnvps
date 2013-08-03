@@ -12,17 +12,18 @@ class CourseLession extends Object{
 	private $DateEnd;
 	private $Description;
 	private $Order;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdCourse=Null, $IdMonk=Null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null){$this->Id = $Id;$this->IdCourse = $IdCourse;$this->IdMonk = $IdMonk;$this->Name = $Name;$this->DateStart = $DateStart;$this->DateEnd = $DateEnd;$this->Description = $Description;$this->Order = $Order;parent::__construct( $Id );}
+    function __construct( $Id=null, $IdCourse=Null, $IdMonk=Null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null, $Key=null){$this->Id = $Id;$this->IdCourse = $IdCourse;$this->IdMonk = $IdMonk;$this->Name = $Name;$this->DateStart = $DateStart;$this->DateEnd = $DateEnd;$this->Description = $Description;$this->Order = $Order; $this->Key = $Key; parent::__construct( $Id );}
     function getId() {return $this->Id;}
 	function getIdPrint(){return "e" . $this->getId();}	
 	
 	function setIdCourse( $IdCourse ){$this->IdCourse = $IdCourse;$this->markDirty();}   
 	function getIdCourse( ) {return $this->IdCourse;}
-	function getCourse( ) {$mCourse = new \MVC\Mapper\Course();$Course = $mCourse->find($this->IdCourse);return $this->Course;}
+	function getCourse( ) {$mCourse = new \MVC\Mapper\Course();$Course = $mCourse->find($this->IdCourse);return $Course;}
 	
 	function setIdMonk( $IdMonk ){$this->IdMonk = $IdMonk;$this->markDirty();}   
 	function getIdMonk( ) {return $this->IdMonk;}
@@ -57,6 +58,13 @@ class CourseLession extends Object{
 	
 	function setOrder( $Order ){$this->Order = $Order;$this->markDirty();}
 	function getOrder( ) {return $this->Order;}
+
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ) {
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -65,7 +73,7 @@ class CourseLession extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "course/".$this->getIdCourse()."/".$this->getId();}
+	function getURLRead(){return "/dao-tao/".$this->getCourse()->getKey()."/".$this->getKey();}
 	
 	function getURLUpdLoad(){return "/app/course/".$this->getIdCourse()."/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/course/".$this->getIdCourse()."/".$this->getId()."/upd/exe";}

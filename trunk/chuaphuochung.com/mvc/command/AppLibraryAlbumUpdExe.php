@@ -33,7 +33,8 @@
 			$Album->setURL($URL);
 			$Album->setNote($Note);
 			$Album->setTime($Time);
-						
+			$Album->reKey();
+			
 			$mAlbum->update($Album);
 			
 			//-------------------------------------------------------------

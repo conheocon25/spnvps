@@ -34,6 +34,7 @@
 			$Task->setTitle($Title);
 			$Task->setDescription($Description);
 			$Task->setURL($URL);
+			$Task->reKey();
 			$mTask->update($Task);
 			
 			//-------------------------------------------------------------

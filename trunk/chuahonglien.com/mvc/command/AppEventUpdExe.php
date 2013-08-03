@@ -32,7 +32,7 @@
 			$Event->setContent($Content);
 			$Event->setTitle($Title);
 			$Event->setDate($Date);
-									
+			$Event->reKey();
 			$mEvent->update($Event);
 			
 			//-------------------------------------------------------------

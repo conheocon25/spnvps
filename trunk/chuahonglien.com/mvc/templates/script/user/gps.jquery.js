@@ -1,15 +1,16 @@
 (function($) { 
 	var map ;
+	
     $.GoogleMapObjectDefaults = {        
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'Chua Hong Lien, Tan Thuan Tay, thanh pho Cao Lanh, tinh Dong Thap, Viet Nam',		
+		center: 'Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Hồng Liên, ấp Tân Hậu, xã Tân Thuận Tây, thành phố Cao Lãnh, tỉnh Đồng Tháp',
+		tooltip: 'Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam',
 		image: 'false'
     };
 
@@ -23,10 +24,10 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.455922,105.585635);		
+		var center = new GLatLng(10.336209,105.916046);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Vĩnh Khánh,xã Lục Sỹ Thành, Trà Ôn, Vĩnh Long, Việt Nam');	
+		marker.openInfoWindowHtml('Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam');	
 	}
 	
     $.extend(GoogleMapObject.prototype, {
@@ -53,7 +54,7 @@
 				var width = this.Settings.imagewidth;
 				var height = this.Settings.imageheight;
                 map = this._map;
-		
+				
 				if (this.Settings.tooltip != 'false') {
 					var customtooltip = true;
 					var tooltipinfo = this.Settings.tooltip;
@@ -63,7 +64,9 @@
 					var imageurl = this.Settings.image;
 				}		
                 this._geocoder.getLatLng(center, function(point) {
-                    center = new GLatLng(10.455922,105.585635);
+				
+                    center = new GLatLng(10.336209,105.916046);
+					
 					if (!point) { alert(center + " not found"); }
                     else {
                         //set center on the map
@@ -98,14 +101,14 @@
                 var from = $(obj.Settings.start).val();
                 var to = $(obj.Settings.end).val();
 				map.clearOverlays();
-				$('#' + outputto).html('');
-				var gdir = new GDirections(map, document.getElementById(outputto));
+				$('#directions' ).html('');
+				var gdir = new GDirections(map, document.getElementById('directions'));
 				gdir.load("from: " + from + " to: " + to);
-				showMaker();
+				showMaker();				
             });	
 			
 			$('#cboTinhThanh').change(function(e) {
-                e.preventDefault();
+                 e.preventDefault();
 				var from; 
 				$("select#cboTinhThanh option:selected").each(function () {
 						from = $(this).text();
@@ -116,7 +119,7 @@
 				$('#directions' ).html('');
 				var gdir = new GDirections(map, document.getElementById('directions'));
 				gdir.load("from: " + from + " to: " + to);		
-				showMaker();
+				showMaker();		
             }).change();	
 			
             return this;

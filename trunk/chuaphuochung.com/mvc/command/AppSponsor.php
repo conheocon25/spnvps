@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -39,6 +40,17 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
+			$Title = "SỔ VÀNG CÔNG ĐỨC";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$SponsorAll1 = $mSponsor->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($SponsorAll->count(), $Config->getValue(), "/app/sponsor" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -61,7 +73,11 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG CÔNG ĐỨC / ');			
+			$request->setObject('SponsorAll1', $SponsorAll1);
+			$request->setObject('PN', $PN);
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'Sponsor');
 			
 			return self::statuses('CMD_DEFAULT');

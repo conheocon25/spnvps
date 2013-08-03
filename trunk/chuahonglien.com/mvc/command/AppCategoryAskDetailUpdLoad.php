@@ -34,8 +34,14 @@
 			
 			$Ask = $mAsk->find($IdAsk);
 			$PagodaAll = $mPagoda->findAll();						
-			$SponsorAll = $mSponsor->findAll();
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Ask->getCategory()->getName()." / Câu hỏi / Cập nhật";
+			$SponsorAll = $mSponsor->findAll();			
+			$Title = "...CẬP NHẬT";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("HỎI ĐÁP", "/app/category/ask"),
+				array(mb_strtoupper($Ask->getCategory()->getName(),'UTF8') , $Ask->getCategory()->getURLView())
+			);
 
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,10 +50,9 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject('SponsorAll', $SponsorAll);			
 			$request->setObject('Ask', $Ask);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

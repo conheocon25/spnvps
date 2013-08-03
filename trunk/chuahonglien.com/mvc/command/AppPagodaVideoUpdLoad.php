@@ -30,11 +30,18 @@
 			$Pagoda = $mPagoda->find($IdPagoda);
 			$PagodaAll = $mPagoda->findAll();
 			$VP = $mVideoPagoda->find($IdVideoPagoda);
-			$Title = "Quản lý / chùa / ".$Pagoda->getName()." / ".$VP->getVideo()->getName()." / Cập nhật";
-			
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
+			
+			$Title = mb_strtoupper($VP->getVideo()->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CHÙA BẠN", "/app/pagoda"),
+				array(mb_strtoupper($Pagoda->getName(),'UTF8'), $Pagoda->getURLViewVideo())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -45,7 +52,7 @@
 			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
-						
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 		}

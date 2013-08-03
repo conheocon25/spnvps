@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -39,6 +40,17 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
+			$Title = "CẤU HÌNH";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
+			if (!isset($Page)) $Page=1;			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$ConfigAll1 = $mConfig->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($ConfigAll->count(), $Config->getValue(), "/app/config" );
+					
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -61,7 +73,11 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / CẤU HÌNH / ');
+			$request->setObject('ConfigAll1', $ConfigAll1);
+			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Statistic');
 			

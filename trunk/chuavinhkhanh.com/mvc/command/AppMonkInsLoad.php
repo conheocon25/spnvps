@@ -31,11 +31,19 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("GIẢNG SƯ", "/app/monk")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
+			$request->setObject('Navigation', $Navigation);
+			
 			$request->setObject('CategoryNewsAll', $CategoryNewsAll);
 			$request->setObject('CategoryAskAll', $CategoryAskAll);
 			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);

@@ -15,29 +15,26 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-					
+			//-------------------------------------------------------------						
+			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();			
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$Category = $mCategoryAsk->find($IdCategory);
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();			
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Xóa";
+			$Category = $mCategoryAsk->find($IdCategory);						
+			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("HỎI ĐÁP", "/app/category/ask")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('Category', $Category);
-			$request->setObject('CategoriesNews', $CategoriesNews);
-			$request->setObject('CategoriesAsk', $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setProperty('ActiveItem', 'Home');
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 		}
 	}

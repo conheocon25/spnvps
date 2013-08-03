@@ -41,6 +41,13 @@
 			$CourseAll = $mCourse->findAll();			
 			$SponsorAll = $mSponsor->findAll();
 			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CẤU HÌNH", "/app/config")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -54,8 +61,8 @@
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-						
-			$request->setProperty("Title", 'QUẢN LÝ / CẤU HÌNH / THÊM MỚI');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Statistic');
 			

@@ -17,6 +17,12 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
 		$findByStmt = sprintf("select *  from %s where idsponsor=?", $tblSponsorPerson);
 		$trackByStmt = sprintf("select *  from %s where idsponsor=? and date(time)>=? and date(time)<=?", $tblSponsorPerson);
 		$trackBy1Stmt = sprintf("select *  from %s where date(time)>=? and date(time)<=?", $tblSponsorPerson);
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s 
+			WHERE idsponsor=:idsponsor
+			LIMIT :start,:max", $tblSponsorPerson
+		);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -26,6 +32,7 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->trackByStmt = self::$PDO->prepare($trackByStmt);
 		$this->trackBy1Stmt = self::$PDO->prepare($trackBy1Stmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     } 
     function getCollection( array $raw ) {return new SponsorPersonCollection( $raw, $this );}
 
@@ -84,6 +91,14 @@ class SponsorPerson extends Mapper implements \MVC\Domain\SponsorPersonFinder{
 	function trackBy1( $values ){
         $this->trackBy1Stmt->execute( $values );
         return new SponsorPersonCollection( $this->trackBy1Stmt->fetchAll(), $this);
+    }
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':idsponsor', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new SponsorPersonCollection( $this->findByPageStmt->fetchAll(), $this);
     }
 }
 ?>

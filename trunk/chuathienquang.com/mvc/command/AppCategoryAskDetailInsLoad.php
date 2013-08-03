@@ -16,28 +16,43 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mAsk = new \MVC\Mapper\Ask();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			
+			$mAsk = new \MVC\Mapper\Ask();
 			$mPagoda = new \MVC\Mapper\Pagoda();
-								
+			$mSponsor = new \MVC\Mapper\Sponsor();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$Category = $mCategoryAsk->find($IdCategory);
 			
-			$Title = "Quản lý / Chuyên mục Hỏi Đáp / ".$Category->getName()."/ Thêm mới";
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("HỎI ĐÁP", "/app/category/ask"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);			
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

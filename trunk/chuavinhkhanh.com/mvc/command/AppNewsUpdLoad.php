@@ -34,7 +34,14 @@
 			$News = $mNews->find($IdNews);			
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "Quản lý / chuyên mục tin tức / ".$News->getCategory()->getName()." / cập nhật tin";
+			
+			$Title = mb_strtoupper($News->getTitle(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC", "/app/category/news"),
+				array(mb_strtoupper($News->getCategory()->getName(),'UTF8') , $News->getCategory()->getURLView())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,11 +51,12 @@
 			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
 			
 			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject('SponsorAll', $SponsorAll);			
 			$request->setObject( 'News', $News );
+			
+			$request->setObject( 'Navigation', $Navigation );
 			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("Title", $Title);
+			$request->setProperty("Title", $Title);			
 		}
 	}
 ?>

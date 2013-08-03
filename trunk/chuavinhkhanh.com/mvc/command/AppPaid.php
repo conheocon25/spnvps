@@ -12,6 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdCategory = $request->getProperty('IdCategory');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -40,6 +41,17 @@
 			$TaskAll = $mTask->findAll();
 						
 			$Category = $mCategoryPaid->find($IdCategory);
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("KHOẢN CHI", "/app/category/paid")
+			);
+						
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$PaidAll = $mPaid->findByPage(array($IdCategory, $Page, $Config->getValue()));
+			$PN = new \MVC\Domain\PageNavigation($Category->getPaidAll()->count(), $Config->getValue(), $Category->getURLView());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -63,8 +75,11 @@
 			$request->setObject('TaskAll', $TaskAll);
 			
 			$request->setObject('Category', $Category);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / KHOẢN CHI / '.$Category->getName() );			
+			$request->setObject('PaidAll', $PaidAll);
+			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

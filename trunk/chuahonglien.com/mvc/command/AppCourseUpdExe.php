@@ -32,6 +32,7 @@
 			$Course->setDateEnd( $DateEnd );
 			$Course->setDescription( $Description );
 			$Course->setOrder( $Order );
+			$Course->reKey();
 			
 			$mCourse->update($Course);
 			

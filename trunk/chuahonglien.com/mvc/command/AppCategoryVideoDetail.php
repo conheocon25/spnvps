@@ -25,10 +25,16 @@
 			$CategoryVideoAll = $mCategoryVideo->findAll();						
 			$Category = $mCategoryVideo->find($IdCategory);
 			if (!isset($Page)) $Page = 1;
-			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
-			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VLAll = $mVL->findByPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), $Config->getValue(), $Category->getURLVideo());
 			
-			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("VIDEO", "/app/category/video")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -36,7 +42,7 @@
 			$request->setObject("Category", $Category);
 			$request->setObject("VLAll", $VLAll);
 			$request->setObject("PN", $PN);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
 			

@@ -32,6 +32,7 @@
 			$Sponsor->setTimeEnd($TimeEnd);
 			$Sponsor->setContent($Content);
 			$Sponsor->setType($Type);
+			$Sponsor->reKey();
 			$mSponsor->update($Sponsor);
 			
 			//-------------------------------------------------------------

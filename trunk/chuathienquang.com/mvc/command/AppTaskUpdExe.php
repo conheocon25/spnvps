@@ -26,7 +26,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$Tasks = $mTask->findAll();
+			$TaskAll = $mTask->findAll();
 
 			$Task = $mTask->find($IdTask);
 			$Task->setType($Type);
@@ -34,6 +34,7 @@
 			$Task->setTitle($Title);
 			$Task->setDescription($Description);
 			$Task->setURL($URL);
+			$Task->reKey();
 			$mTask->update($Task);
 			
 			//-------------------------------------------------------------

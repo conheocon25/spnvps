@@ -35,6 +35,7 @@
 			$Lession->setDateEnd($DateEnd);
 			$Lession->setDescription($Description);
 			$Lession->setOrder($Order);
+			$Lession->reKey();
 			
 			$mCourseLession->update($Lession);
 			//-------------------------------------------------------------

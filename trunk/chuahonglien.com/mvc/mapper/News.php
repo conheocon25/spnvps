@@ -11,10 +11,11 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, date DESC", $tblNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblNews);
-		$updateStmt = sprintf("update %s set id_category=?, author=?, date=?, content=?, title=?, type=? where id=?", $tblNews);
-		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type) values(?, ?, ?, ?, ?, ?)", $tblNews);
+		$updateStmt = sprintf("update %s set id_category=?, author=?, date=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
+		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
+		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblNews);
 		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 5", $tblNews);
 		$findByLimit1Stmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 6", $tblNews);
 		
@@ -35,14 +36,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			LIMIT :start,:max"
 		, $tblNews);
 		
-		$findByPageStmt = sprintf(
-			"SELECT 
-				*
-			FROM 
-				%s 			
-			ORDER BY date desc
-			LIMIT :start,:max"
-		, $tblNews);
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY date desc LIMIT :start,:max" , $tblNews);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -50,6 +44,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
 		$this->findByLimit1Stmt = self::$PDO->prepare($findByLimit1Stmt);
 		$this->findByCategoryDateStmt = self::$PDO->prepare($findByCategoryDateStmt);
@@ -69,7 +64,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$array['date'],
 			$array['content'],
 			$array['title'],
-			$array['type']
+			$array['type'],
+			$array['key']
 		);
         return $obj;
     }
@@ -85,7 +81,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$object->getDate(),
 			$object->getContent(),
 			$object->getTitle(),
-			$object->getType()
+			$object->getType(),
+			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -100,6 +97,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			$object->getContent(),
 			$object->getTitle(),
 			$object->getType(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -147,6 +145,14 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByCategoryPageStmt->execute();
         return new NewsCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
     }
-	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
+    }
 }
 ?>

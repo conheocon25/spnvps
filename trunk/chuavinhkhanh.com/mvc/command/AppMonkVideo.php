@@ -27,10 +27,16 @@
 			$MonkAll = $mMonk->findAll();
 						
 			if (!isset($Page)) $Page=1;
-			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
-			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLVideo());
-			
-			$Title = "Quản trị / Giảng sư / ".$Monk->getName();
+			$Config = $mConfig->findByName("ROW_PER_PAGE");	
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), $Config->getValue(), $Monk->getURLVideo());
+						
+			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("GIẢNG SƯ", "/app/monk")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------															
@@ -38,7 +44,8 @@
 			$request->setObject("MonkAll", $MonkAll);
 			$request->setObject("VMAll", $VMAll);
 			$request->setObject("PN", $PN);
-			$request->setProperty("Page", $Page);
+			$request->setObject("Navigation", $Navigation);
+			$request->setProperty("Page", $Page);			
 			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');

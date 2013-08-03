@@ -1,40 +1,53 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />
-
-			<div id="main">				
-				
-				<div id="content">
-					<div class="news-box">
-					
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title"/>
-							<a href="/app/monk">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>
+								<li tal:repeat="Monk1 MonkAll" tal:attributes="class php:Monk->getId()==Monk1->getId()?'active':'disabled'">
+									<a tal:attributes="href Monk1/getURLVideo">
+										<span tal:content="Monk1/getName" /> <span class="badge badge-info pull-right" tal:content="Monk1/getVMs/count"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th width="30px">STT</th>
+										<th align="left">TIÊU ĐỀ</th>
+										<th width="80px" align="left">THỜI GIAN</th>
+										<th width="30px">XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="VM Monk/getVMs">
-										<td width="32" align="center">
-											<div tal:content="repeat/VM/number" />
-										</td>
+									<tr class="content-rows" tal:repeat="VM VMAll">
+										<td align="center"><div tal:content="repeat/VM/number" /></td>
 										<td class="text-hightlight">
 											<a tal:attributes="href VM/getURLUpdLoad">
 												<div tal:content="VM/getVideo/getName" />
 											</a>
 										</td>
-										<td tal:content="VM/getVideo/getTime" />
-										<td class="text-hightlight" width="32" align="center">
+										<td>
+											<div tal:content="VM/getVideo/getTimePrint" />
+										</td>
+										<td>
 											<a tal:attributes="href VM/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
+												<span class="icon-remove"/>
 											</a>
 										</td>
 									</tr>
@@ -42,39 +55,17 @@
 								<tfoot>
 									<tr>
 										<td colspan="4" align="center">
-											<a tal:attributes="href Monk/getURLVideoInsLoad">
-												<div><img src="/data/images/add.png" width="20" /></div>
-											</a>
+											<a class="btn" tal:attributes="href Monk/getURLVideoInsLoad"><span class="icon-plus"/>Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
-						</div>
-						<div class="clear"></div>
-					</div>
-				</div>
-				
-				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Admin</span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>						
-						<div class="manager-menu">
-							<ul>
-								<a tal:repeat="Monk1 Monks" tal:attributes="href Monk1/getURLVideo">
-									<li tal:attributes="class php:Monk->getId()==Monk1->getId()?'menu-select':''">
-										<span tal:content="Monk1/getName"/> (<span tal:content="Monk1/getVMs/count"/>)
-									</li>
-								</a>
-							</ul>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
 					</div>
 				</div>
-				<div class="clear"></div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

@@ -40,8 +40,10 @@
 				null,
 				$Content,
 				$Title,
-				$Type
+				$Type,
+				""
 			);
+			$News->reKey();
 			$mNews->insert($News);
 			
 			//-------------------------------------------------------------

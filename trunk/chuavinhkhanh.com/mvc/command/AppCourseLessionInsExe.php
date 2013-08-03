@@ -1,13 +1,13 @@
 <?php
-	namespace MVC\Command;	
+	namespace MVC\Command;
 	class AppCourseLessionInsExe extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
-			//-------------------------------------------------------------						
+			//-------------------------------------------------------------
 			$Session = \MVC\Base\SessionRegistry::instance();
-									
+
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
@@ -36,13 +36,13 @@
 				$DateEnd,
 				$Description,
 				$Order
-			);									
+			);
+			$Lession->reKey();
 			$mCourseLession->insert($Lession);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-						
+			//-------------------------------------------------------------			
 			return self::statuses('CMD_OK');
 		}
 	}

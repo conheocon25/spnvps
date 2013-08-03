@@ -25,10 +25,9 @@
 			$Category = $mCategoryAsk->find($IdCategory);			
 			$Category->setName($Name);
 			$Category->setOrder($Order);
-			
+			$Category->reKey();
 			$mCategoryAsk->update($Category);
-			
-														
+																	
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			

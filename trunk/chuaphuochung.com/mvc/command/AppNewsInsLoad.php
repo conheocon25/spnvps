@@ -28,16 +28,25 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			
-			$Title = "THÊM MỚI TIN TỨC";			
+						
 			$Category = $mCategoryNews->find($IdCategory);
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
+			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC", "/app/category/news"),
+				array(mb_strtoupper($Category->getName(),'UTF8') , $Category->getURLView())
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty('Title', $Title);
+			$request->setObject( 'Navigation', $Navigation );
+			
 			$request->setObject( 'CategoryBTypeAll', $CategoryBTypeAll );
 			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );
 			$request->setObject( 'CategoryAskAll', $CategoryAskAll );

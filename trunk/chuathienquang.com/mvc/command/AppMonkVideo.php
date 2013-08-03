@@ -11,37 +11,43 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$Page = $request->getProperty('Page');
 			$IdMonk = $request->getProperty('IdMonk');
+			$IdBType = $request->getProperty('IdBType');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mMonk = new \MVC\Mapper\Monk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Monk = $mMonk->find( $IdMonk );
-			$Monks = $mMonk->findAll( );
-			$Pagodas = $mPagoda->findAll();
-			
-			$Title = "Quản trị / Giảng sư / ".$Monk->getName();
+			//-------------------------------------------------------------									
+			$Monk = $mMonk->find( $IdMonk );			
+			$MonkAll = $mMonk->findAll();
+						
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");	
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), $Config->getValue(), $Monk->getURLVideo());
+						
+			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("GIẢNG SƯ", "/app/monk")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
+			//-------------------------------------------------------------															
 			$request->setObject("Monk", $Monk);
-			$request->setObject("Monks", $Monks);
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("VMAll", $VMAll);
+			$request->setObject("PN", $PN);
+			$request->setObject("Navigation", $Navigation);
+			$request->setProperty("Page", $Page);			
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveItem", "Home");
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

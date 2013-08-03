@@ -35,8 +35,12 @@
 				null,
 				$URL,
 				$Note,
-				$Count
+				$Count,
+				""
 			);
+			$Video->setURL( $Video->parseURLYoutube() );
+			$Video->reKey();
+			
 			$mVideo->insert($Video);
 			$VL = new \MVC\Domain\VideoLibrary(
 				null,
@@ -44,7 +48,7 @@
 				$IdCategory
 			);
 			$mVideoLibrary->insert($VL);
-						
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------

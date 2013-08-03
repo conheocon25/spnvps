@@ -9,11 +9,12 @@ class Pagoda extends Object{
 	private $Phone;
 	private $Website;
 	private $Master;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null , $Address=Null, $Phone=Null, $Website=Null, $Master=Null) {$this->Id = $Id;$this->Name = $Name;$this->Address = $Address;$this->Phone = $Phone;$this->Website = $Website;$this->Master = $Master;parent::__construct( $Id );}
+    function __construct( $Id=null, $Name=null , $Address=Null, $Phone=Null, $Website=Null, $Master=Null, $Key=Null) {$this->Id = $Id;$this->Name = $Name;$this->Address = $Address;$this->Phone = $Phone;$this->Website = $Website;$this->Master = $Master; $this->Key = $Key; parent::__construct( $Id );}
     function getId() {return $this->Id;}	
 	function getIdPrint(){return "p" . $this->getId();}	
 			
@@ -32,6 +33,13 @@ class Pagoda extends Object{
 	function setMaster( $Master ) {$this->Master = $Master;$this->markDirty();}   
 	function getMaster( ){return $this->Master;}
 	
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -44,7 +52,8 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLRead(){return "/pagoda/".$this->getId();}
+	function getURLRead(){return "/chua-ban/".$this->getKey();}
+	
 	function getURLViewVideo(){return "/app/pagoda/".$this->getId()."/video";}	
 	function getURLVideoInsLoad(){return "/app/pagoda/".$this->getId()."/video/ins/load";}
 	function getURLVideoInsExe(){return "/app/pagoda/".$this->getId()."/video/ins/exe";}

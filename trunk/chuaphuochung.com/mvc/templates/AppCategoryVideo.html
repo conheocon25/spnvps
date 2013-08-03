@@ -1,48 +1,45 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title" />
-							<a href="/app">&#8629; Trở lại</a>
-						</div>
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
 										<th>STT</th>
-										<th></th>
-										<th align="left">TÊN</th>
-										<th align="left">VIDEO</th>
+										<th />
+										<th>DANH MỤC</th>
+										<th>VIDEO</th>
 										<th>XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Category CategoryVideoAll">
+									<tr class="content-rows" tal:repeat="Category CategoryAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/Category/number" />
 										</td>
 										<td width="32" align="center">
-											<span tal:condition="Category/isVIP">
-												<img src="/data/images/vip.gif" border="0" width="25" />
-											</span>
+											<span tal:condition="Category/isVIP" class="icon-star"/>												
 										</td>
-										<td class="text-hightlight">
+										<td>
 											<a tal:attributes="href Category/getURLUpdLoad">
-												<div tal:content="Category/getNameReduce" />
+												<div tal:content="Category/getNameReduce2" />
 											</a>
 										</td>
-										<td class="text-hightlight" align="left">
+										<td>
 											<a tal:attributes="href Category/getURLVideo">
 												<div>
 													<span tal:content="Category/getBTypeName" />
@@ -50,33 +47,30 @@
 												</div>
 											</a>
 										</td>
-										<td class="text-hightlight" width="32" align="center">
+										<td width="32">
 											<a tal:attributes="href Category/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
+												<span class="icon-remove" />
 											</a>
 										</td>
 									</tr>
 								</tbody>
-								<tfoot>
-									<tr>
-										<td colspan="5" align="center">
-											<a href="/app/category/video/ins/load">Thêm mới</a>
-										</td>
-									</tr>
+								<tfoot>																		
+									<td colspan="5" align="center">
+										<a class="btn" href="/app/category/video/ins/load">
+											<span class="icon-plus" /> Thêm mới
+										</a>
+										<a class="btn" href="/app/video/update/all">
+											<span class="icon-edit" /> Cập nhật video
+										</a>
+									</td>									
 								</tfoot>
 							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
-						<div class="clear" />
-					</div>
-				</div>				
-				<div id="sidebar">
-					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />	
-						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>
-				<div class="clear" />
 			</div>
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

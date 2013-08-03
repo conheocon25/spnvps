@@ -28,8 +28,10 @@
 			$Category = new \MVC\Domain\CategoryPaid(
 				null,
 				$Name,
-				$Order
-			);												
+				$Order,
+				""
+			);
+			$Category->reKey();
 			$mCategoryPaid->insert($Category);
 			
 			//-------------------------------------------------------------

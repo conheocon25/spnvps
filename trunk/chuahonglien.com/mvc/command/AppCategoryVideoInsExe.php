@@ -34,8 +34,10 @@
 				$Picture,
 				$Order,
 				1,
-				$BType
-			);												
+				$BType,
+				""
+			);
+			$Category->reKey();
 			$mCategoryVideo->insert($Category);
 			
 			//-------------------------------------------------------------

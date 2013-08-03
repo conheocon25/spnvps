@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------		
-			$IdCategoryVideo = $request->getProperty('IdCategoryVideo');
+			$Name = $request->getProperty('Name');
+			$Order = $request->getProperty('Order');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -23,7 +24,8 @@
 			//-------------------------------------------------------------
 			$PanelCategoryVideo = new \MVC\Domain\PanelCategoryVideo(
 				null,
-				$IdCategoryVideo
+				$Name,
+				$Order
 			);
 			$mPanelCategoryVideo->insert($PanelCategoryVideo);
 

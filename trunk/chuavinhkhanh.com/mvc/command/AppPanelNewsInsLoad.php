@@ -42,7 +42,12 @@
 			$CourseAll = $mCourse->findAll();		
 			$News = $mNews->findAll();
 			$SponsorAll = $mSponsor->findAll();		
-			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC NỔI BẬT", "/app/panel/news")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -57,8 +62,9 @@
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('News', $News);
 			$request->setObject('SponsorAll', $SponsorAll);
-						
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / NEWS / THÊM MỚI');
+			
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');

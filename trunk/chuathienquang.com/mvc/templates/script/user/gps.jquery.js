@@ -1,15 +1,16 @@
 (function($) { 
 	var map ;
+	
     $.GoogleMapObjectDefaults = {        
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'ap Dong Hoa, xa Di An, tinh Binh Duong, Viet Nam',		
+		center: 'Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Thiên Quang Ni Tự , ấp Đông Hòa, xã Dĩ An, tỉnh Bình Dương, Việt Nam',
+		tooltip: 'Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam',
 		image: 'false'
     };
 
@@ -21,7 +22,14 @@
         this.ElementId = elementId;
         this.Settings = $.extend({}, $.GoogleMapObjectDefaults, options || '');
     }
-
+	
+	function showMaker() {					
+		var center = new GLatLng(10.336209,105.916046);		
+		var marker = new GMarker(center, {draggable: false}); 
+		map.addOverlay(marker);		
+		marker.openInfoWindowHtml('Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam');	
+	}
+	
     $.extend(GoogleMapObject.prototype, {
         init: function() {
             if (!this._inited) {
@@ -30,8 +38,8 @@
                     this._map.addControl(new GSmallMapControl());
                     this._geocoder = new GClientGeocoder();
 					//this._map.setMapType(G_SATELLITE_MAP);
-					//this._map.setMapType(G_NORMAL_MAP);
-					this._map.setMapType(G_HYBRID_MAP);										
+					this._map.setMapType(G_NORMAL_MAP);
+					//this._map.setMapType(G_HYBRID_MAP);										
 					this._map.enableScrollWheelZoom();										
 					this._map.setUIToDefault();											
                 }		
@@ -46,7 +54,7 @@
 				var width = this.Settings.imagewidth;
 				var height = this.Settings.imageheight;
                 map = this._map;
-		
+				
 				if (this.Settings.tooltip != 'false') {
 					var customtooltip = true;
 					var tooltipinfo = this.Settings.tooltip;
@@ -56,20 +64,23 @@
 					var imageurl = this.Settings.image;
 				}		
                 this._geocoder.getLatLng(center, function(point) {
-                    if (!point) { alert(center + " not found"); }
+				
+                    center = new GLatLng(10.336209,105.916046);
+					
+					if (!point) { alert(center + " not found"); }
                     else {
                         //set center on the map
-                        map.setCenter(point, zoom);
+                        map.setCenter(center, zoom);
 			
 						if (customimage == true) {
 							//add the marker
 							var customiconsize = new GSize(width, height);
 							var customicon = new GIcon(G_DEFAULT_ICON, imageurl);
 							customicon.iconSize = customiconsize;
-							var marker = new GMarker(point, { icon: customicon });
+							var marker = new GMarker(center, { icon: customicon });
 							map.addOverlay(marker);
 						} else {
-							var marker = new GMarker(point);
+							var marker = new GMarker(center);
 							map.addOverlay(marker);
 						}
 						
@@ -90,13 +101,14 @@
                 var from = $(obj.Settings.start).val();
                 var to = $(obj.Settings.end).val();
 				map.clearOverlays();
-				$('#' + outputto).html('');
-				var gdir = new GDirections(map, document.getElementById(outputto));
-				gdir.load("from: " + from + " to: " + to);		
+				$('#directions' ).html('');
+				var gdir = new GDirections(map, document.getElementById('directions'));
+				gdir.load("from: " + from + " to: " + to);
+				showMaker();				
             });	
 			
 			$('#cboTinhThanh').change(function(e) {
-                e.preventDefault();
+                 e.preventDefault();
 				var from; 
 				$("select#cboTinhThanh option:selected").each(function () {
 						from = $(this).text();
@@ -107,6 +119,7 @@
 				$('#directions' ).html('');
 				var gdir = new GDirections(map, document.getElementById('directions'));
 				gdir.load("from: " + from + " to: " + to);		
+				showMaker();		
             }).change();	
 			
             return this;

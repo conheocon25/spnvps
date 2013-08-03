@@ -36,9 +36,12 @@
 				null,
 				$URL,
 				$Note,
-				$Count
+				$Count,
+				""
 			);
+			$Video->reKey();
 			$mVideo->insert($Video);
+			
 			$VP = new \MVC\Domain\VideoPagoda(
 				null,
 				$Video->getId(),

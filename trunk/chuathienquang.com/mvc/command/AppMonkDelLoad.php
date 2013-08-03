@@ -17,26 +17,39 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mMonk = new \MVC\Mapper\Monk();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mPagoda = new \MVC\Mapper\Pagoda();
-								
+			$mSponsor = new \MVC\Mapper\Sponsor();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Monk = $mMonk->find($IdMonk);			
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			
-			$Title = "Quản lý hệ thống > Các giảng sư > ".$Monk->getName()." > Xóa";			
+			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("GIẢNG SƯ", "/app/monk")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject('Monk', $Monk);								
-			$request->setObject('CategoriesNews', $CategoriesNews);	
-			$request->setObject('CategoriesAsk', $CategoriesAsk);	
-			$request->setObject('Pagodas', $Pagodas);
+			$request->setObject('Monk', $Monk);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
+			$request->setObject('CategoryNewsAll', $CategoryNewsAll);	
+			$request->setObject('CategoryAskAll', $CategoryAskAll);	
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', 'Home');
 

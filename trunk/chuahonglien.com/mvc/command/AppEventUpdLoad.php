@@ -32,7 +32,13 @@
 			$PagodaAll = $mPagoda->findAll();
 			$Event = $mEvent->find($IdEvent);
 			$SponsorAll = $mSponsor->findAll();
-			$Title = "Quản lý / Sự kiện / ".$Event->getTitle()." /";
+			
+			$Title = mb_strtoupper($Event->getTitle(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("SỰ KIỆN", "/app/event")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -43,7 +49,7 @@
 			$request->setObject( 'Event', $Event );
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
-			
+			$request->setObject( 'Navigation', $Navigation );
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("Title", $Title);
 		}

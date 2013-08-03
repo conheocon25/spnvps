@@ -12,6 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdCourse = $request->getProperty('IdCourse');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -34,6 +35,17 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Course = $mCourse->find($IdCourse);
+			$Title = $Course->getName();
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("ĐÀO TẠO", "/app/course")
+			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");	
+			$LessionAll = $mCourseLession->findByPage(array($IdCourse, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Course->getLessions()->count(), $Config->getValue(), $Course->getURLLession());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -51,8 +63,11 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Course', $Course);
 			
-			$request->setProperty("Title", 'Quản Lý / Đào tạo / '.$Course->getName()." / ");
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setObject('Navigation', $Navigation);
+			$request->setObject('LessionAll', $LessionAll);
+			$request->setObject('PN', $PN);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'Course');
 			
 			return self::statuses('CMD_DEFAULT');

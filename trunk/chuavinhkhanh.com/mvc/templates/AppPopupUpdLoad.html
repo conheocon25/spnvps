@@ -1,64 +1,51 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>	
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="box-editor">
-					<div class="box-title">
-						<img src="/data/images/icon.png" width="30" />
-						<span tal:content="Title" />
-						<a href="/app/popup">&#8629; Trở lại</a>
-					</div>
-					<div class="box-editor-left">
-						<form class="form-editor" tal:attributes="action Popup/getURLUpdExe" method="post" enctype="multipart/form-data">
-							<div class="row">
-								<div for="Command" class="label">Lệnh</div>
-								<div class="textbox" >
-									<input id="Command" name="Command" type="text" tal:attributes="value Popup/getCommand" />
-								</div>
-								<div class="clear" />
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Popup/getURLUpdExe" method="post" enctype="multipart/form-data">						
+						<div class="control-group">
+							<label class="control-label" for="Command">Lệnh</label>
+							<div class="controls">
+								<input type="text" id="Command" name="Command" tal:attributes="value Popup/getCommand" />
 							</div>
-							<div class="row">
-								<div for="Enable" class="label">Bật</div>
-								<div class="textbox">
-									<input id="Enable" name="Enable" type="checkbox" tal:attributes="checked Popup/getEnable" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="Enable">Bật</label>
+							<div class="controls">
+								<input type="checkbox" id="Enable" name="Enable" tal:attributes="checked Popup/getEnable" />
 							</div>
-														
-							<div class="row">
-								<div for="URL" class="label">URL</div>
-								<div class="textbox" >
-									<input id="URL" name="URL" type="text" tal:attributes="value Popup/getURL" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="URL">URL</label>
+							<div class="controls">
+								<input id="URL" name="URL" type="text" tal:attributes="value Popup/getURL" />
 							</div>
-							<div class="row">
-								<div for="file" class="label">Tải SWF</div>
-								<div class="textbox" >
-									<input type="file" name="file" id="file" />
-								</div>
-								<div class="clear" />
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="file">Tải SWF</label>
+							<div class="controls">
+								<input type="file" name="file" id="file" />
 							</div>
-							<div class="row">
-								<div class="button">
-									<button type="submit" name="submit" value="submit-value">Cập nhật</button>
-								</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
 							</div>
-						</form>
-					</div>
-					<div class="box-editor-right">
-						
-					</div>
-				</div>
-				<div class="clear" />
+						</div>						
+					</form>
+				</div>				
 			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
 		</div>
 	</body>
 </html>

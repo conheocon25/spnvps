@@ -35,6 +35,7 @@
 				$Type=0;
 			$Category->setType($Type);
 			$Category->setBType($BType);
+			$Category->reKey();
 			
 			$mCategoryVideo->update($Category);
 														

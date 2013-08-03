@@ -47,6 +47,7 @@
 			$dMonk->setType($Type);
 			$dMonk->setBType($BType);
 			$dMonk->setURLPic($URLPic);
+			$dMonk->reKey();
 			
 			$mMonk->update($dMonk);
 			

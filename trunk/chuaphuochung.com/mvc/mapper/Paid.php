@@ -15,6 +15,12 @@ class Paid extends Mapper implements \MVC\Domain\PaidFinder{
 		$deleteStmt = sprintf("delete from %s where id=?", $tblPaid);
 		$findByStmt = sprintf("select *  from %s where id_category=? order by date", $tblPaid);
 		$findByTrackingStmt = sprintf("select *  from %s where date>=? and date<=? order by date", $tblPaid);
+		$findByPageStmt = sprintf("
+			SELECT *  
+			FROM %s 
+			WHERE id_category=:id_category
+			LIMIT :start,:max", $tblPaid
+		);
 						
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -23,6 +29,7 @@ class Paid extends Mapper implements \MVC\Domain\PaidFinder{
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByTrackingStmt = self::$PDO->prepare($findByTrackingStmt);
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
 	}	
     function getCollection( array $raw ){return new PaidCollection( $raw, $this );}
@@ -68,5 +75,13 @@ class Paid extends Mapper implements \MVC\Domain\PaidFinder{
     function selectAllStmt() {return $this->selectAllStmt;}	
 	function findBy( $values ){$this->findByStmt->execute( $values );return new PaidCollection( $this->findByStmt->fetchAll(), $this);}
 	function findByTracking( $values ){$this->findByTrackingStmt->execute( $values );return new PaidCollection( $this->findByTrackingStmt->fetchAll(), $this);}
+	
+	function findByPage( $values ){
+		$this->findByPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new PaidCollection( $this->findByPageStmt->fetchAll(), $this);
+    }
 }
 ?>

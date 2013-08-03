@@ -1,28 +1,26 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>		
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</head>
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">								
-				<div class="clear" />
-				<div class="signin-frame">
-					<h1 tal:content="Title"/>
-					<form tal:attributes="action '/signout/exe'" method="post" class="ui-body ui-body-a ui-corner-all">
-						Bạn chắc chắn thoát khỏi ứng dụng ?
-						<fieldset>
-							<button type="submit" data-theme="b" name="submit" value="submit-value">Đăng Xuất</button>
-						</fieldset>
-					</form>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span12 main">
+					<div class="signin-inner">
+						<form class="form-horizontal" tal:attributes="action '/signout/exe'" method="post">
+							Bạn chắc chắn thoát khỏi ứng dụng ?
+							<fieldset>
+								<button class="btn" type="submit" data-theme="b" name="submit" value="submit-value">Đăng Xuất</button>
+							</fieldset>
+						</form>
+					</div>
 				</div>
-				<div class="enter"></div>
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

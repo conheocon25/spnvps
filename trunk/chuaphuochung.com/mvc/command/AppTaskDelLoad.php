@@ -34,6 +34,13 @@
 			$TaskAll = $mTask->findAll();
 			
 			$Task = $mTask->find($IdTask);			
+			$Title = mb_strtoupper($Task->getTitle(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("LỊCH LÀM VIỆC", "/app/category/task"),
+				array(mb_strtoupper($Task->getTypeObj()->getName(), 'UTF8'), $Task->getTypeObj()->getURLView())
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -50,8 +57,8 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			
 			$request->setObject('Task', $Task);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / '.$Task->getTitle()." / XÓA");
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 						
 			return self::statuses('CMD_DEFAULT');

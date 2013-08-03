@@ -4,18 +4,18 @@ use MVC\Library\Number;
 require_once( "mvc/base/domain/DomainObject.php" );
 
 class Sponsor extends Object{
-
     private $Id;
 	private $Name;
     private $TimeStart;
 	private $TimeEnd;
 	private $Content;
 	private $Type;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $TimeStart=null, $TimeEnd=null, $Content=null, $Type=null){$this->Id = $Id;$this->Name = $Name;$this->TimeStart = $TimeStart;$this->TimeEnd = $TimeEnd;$this->Content = $Content;$this->Type = $Type;parent::__construct( $Id );}
+    function __construct( $Id=null, $Name=null, $TimeStart=null, $TimeEnd=null, $Content=null, $Type=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->TimeStart = $TimeStart;$this->TimeEnd = $TimeEnd;$this->Content = $Content;$this->Type = $Type; $this->Key = $Key; parent::__construct( $Id );}
     function getId( ) {return $this->Id;}
 		
     function setName( $Name ){$this->Name = $Name;$this->markDirty();}
@@ -34,6 +34,13 @@ class Sponsor extends Object{
 		
 	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}
 	function getType(){return $this->Type;}
+	
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 
 	//-------------------------------------------------------------------------------
 	//GET LIST

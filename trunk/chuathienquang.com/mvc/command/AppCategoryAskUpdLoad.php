@@ -16,28 +16,40 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mCategoryBType = new \MVC\Mapper\CategoryBType();			
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
 			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
+			$mSponsor = new \MVC\Mapper\Sponsor();
 			$mPagoda = new \MVC\Mapper\Pagoda();
 					
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------							
-			$Category = $mCategoryAsk->find($IdCategory);
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			//-------------------------------------------------------------										
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
 			
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Cập nhật";
+			$Category = $mCategoryAsk->find($IdCategory);
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
+						
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("HỎI ĐÁP", "/app/category/ask")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$request->setObject('Category', $Category);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
+			//-------------------------------------------------------------						
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			
+			$request->setObject('Category', $Category);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

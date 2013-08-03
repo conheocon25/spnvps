@@ -34,7 +34,13 @@
 			$SponsorAll = $mSponsor->findAll();
 			
 			$Category = $mCategoryTask->find($IdCategory);
-			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("LỊCH LÀM VIỆC", "/app/category/task"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -51,8 +57,8 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			
 			$request->setObject('Category', $Category);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / CÔNG VIỆC / THÊM MỚI');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');
