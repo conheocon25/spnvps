@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th align="left">LOẠI</th>
+										<th align="left">CÔNG VIỆC</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Category CategoryAll">
+										<td width="32" align="center">
+											<div tal:content="repeat/Category/number" />
+										</td>
+										<td>
+											<a tal:attributes="href Category/getURLUpdLoad">
+												<div tal:content="Category/getName" />
+											</a>
+										</td>
+										<td align="left">
+											<a tal:attributes="href Category/getURLView">
+												Công việc (<span tal:content="Category/getTasks/count"/>)
+											</a>
+										</td>
+										<td width="32" align="center">
+											<a tal:attributes="href Category/getURLDelLoad">
+												<span class="icon-remove"/>
+											</a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4" align="center">
+											<a class="btn" href="/app/category/task/ins/load">
+												<span class="icon-plus"/>Thêm mới
+											</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>

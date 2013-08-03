@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th />
+										<th align="left">TÊN</th>
+										<th width="120px" align="left">PHÂN LOẠI</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Monk MonkAll1">
+										<td width="32">
+											<div tal:content="repeat/Monk/number" />
+										</td>
+										<td width="32">
+											<span tal:condition="Monk/isVIP" class="icon-star" />
+										</td>
+										<td>
+											<a tal:attributes="href Monk/getURLUpdLoad">
+												<div tal:content="Monk/getName" />
+											</a>
+										</td>
+										<td>
+											<a tal:attributes="href Monk/getURLVideo">
+												<div><span tal:content="Monk/getBTypeName" /> (<span tal:content="Monk/getVMs/count" />)</div>
+											</a>
+										</td>
+										<td width="32">
+											<a tal:attributes="href Monk/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>																				
+										<td colspan="3" align="center">
+											<a class="btn" href="/app/monk/ins/load">
+												<span class="icon-plus" /> Thêm mới
+											</a>
+										</td>
+										<td colspan="2" align="center">
+											<a class="btn" href="/app/monk/update/all">
+												<span class="icon-edit" /> Cập nhật key
+											</a>
+										</td>
+									</tr>
+								</tfoot>
+							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>
