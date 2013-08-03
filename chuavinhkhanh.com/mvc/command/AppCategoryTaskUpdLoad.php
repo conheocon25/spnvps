@@ -23,13 +23,18 @@
 			//-------------------------------------------------------------																
 			$Category = $mCategoryTask->find($IdCategory);
 			
-			$Title = "Quản lý / chuyên mục lịch làm việc / ".$Category->getName()." / Cập nhật";	
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("LỊCH LÀM VIỆC", "/app/category/task")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty("ActiveItem", 'Home');
 		}

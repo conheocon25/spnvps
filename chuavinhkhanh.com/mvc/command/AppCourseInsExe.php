@@ -31,8 +31,10 @@
 				$DateStart,
 				$DateEnd,
 				$Description,
-				$Order
-			);			
+				$Order,
+				""
+			);
+			$Course->reKey();
 			$mCourse->insert($Course);
 			
 			//-------------------------------------------------------------

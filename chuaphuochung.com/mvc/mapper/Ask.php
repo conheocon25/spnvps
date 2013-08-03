@@ -1,9 +1,7 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
-class Ask extends Mapper implements \MVC\Domain\AskFinder {
-
+class Ask extends Mapper implements \MVC\Domain\AskFinder{
     function __construct() {
         parent::__construct();
 				
@@ -19,7 +17,8 @@ class Ask extends Mapper implements \MVC\Domain\AskFinder {
 		$findBy2Stmt = sprintf("select *  from %s where id_category=? AND answer<>' ' ORDER BY time DESC", $tblAsk);
 		$findBy3Stmt = sprintf("select *  from %s where answer='' ORDER BY time DESC", $tblAsk);
 		$findByTopStmt = sprintf("select *  from %s limit 6", $tblAsk);
-							
+		$findByPageStmt = sprintf("SELECT * FROM  %s WHERE id_category=:id_category LIMIT :start,:max", $tblAsk);
+		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
@@ -30,7 +29,7 @@ class Ask extends Mapper implements \MVC\Domain\AskFinder {
 		$this->findBy2Stmt = self::$PDO->prepare($findBy2Stmt);
 		$this->findBy3Stmt = self::$PDO->prepare($findBy3Stmt);
 		$this->findByTopStmt = self::$PDO->prepare($findByTopStmt);
-		
+		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
     }
 	
     function getCollection( array $raw ) {
@@ -80,16 +79,10 @@ class Ask extends Mapper implements \MVC\Domain\AskFinder {
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
 
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt() {
-        return $this->selectAllStmt;
-    }
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt() {return $this->selectAllStmt;}
 	
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
@@ -112,6 +105,12 @@ class Ask extends Mapper implements \MVC\Domain\AskFinder {
         $this->findByTopStmt->execute( $values );
         return new AskCollection( $this->findByTopStmt->fetchAll(), $this);
     }
-	
+	function findByPage( $values ) {
+		$this->findByPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->execute();
+        return new AskCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
 }
 ?>

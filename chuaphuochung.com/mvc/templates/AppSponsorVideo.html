@@ -1,23 +1,31 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/HeaderAdmin" />	
-			<div id="main">
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title"/>
-							<a href="/app/sponsor">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<div class="menu">
+							<ul class="nav nav-list">
+								<li class="nav-header">DANH MỤC</li>
+								<li tal:repeat="Sponsor1 SponsorAll" tal:attributes="class php:Sponsor->getId()==Sponsor1->getId()?'active':'disabled'">
+									<a tal:attributes="href Sponsor1/getURLVideo">
+										<span tal:content="Sponsor1/getName" /> <span class="badge badge-info pull-right" tal:content="Sponsor1/getVideoAll/count"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
 										<th>STT</th>
@@ -26,7 +34,7 @@
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="VS Sponsor/getVideoAll">
+									<tr class="content-rows" tal:repeat="VS VSAll">
 										<td width="32" align="center">
 											<div tal:content="repeat/VS/number" />
 										</td>
@@ -37,7 +45,7 @@
 										</td>																				
 										<td class="text-hightlight" width="32" align="center">
 											<a tal:attributes="href VS/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
+												<span class="icon-remove" />
 											</a>
 										</td>
 									</tr>
@@ -45,33 +53,17 @@
 								<tfoot>
 									<tr>
 										<td colspan="5" align="center">
-											<a tal:attributes="href Sponsor/getURLVideoInsLoad">Thêm mới</a>
+											<a class="btn" tal:attributes="href Sponsor/getURLVideoInsLoad"><span class="icon-plus"/> Thêm mới</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
-						</div>
-						<div class="clear" />
-					</div>
-				</div>				
-				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div metal:use-macro="macros.xhtml/AdminBoxTitle" />
-						<div class="manager-menu">
-							<ul>								
-								<a tal:repeat="Sponsor1 SponsorAll" tal:attributes="href Sponsor1/getURLVideo">
-									<li tal:attributes="class php:Sponsor1->getId()==Sponsor->getId()?'menu-select':'?'">
-										<div class="left" tal:content="Sponsor1/getName"/>
-										<div class="right" tal:content="Sponsor1/getVideoAll/count" />
-									</li>
-								</a>
-							</ul>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
 					</div>
 				</div>
-				<div class="clear" />
 			</div>
-			
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

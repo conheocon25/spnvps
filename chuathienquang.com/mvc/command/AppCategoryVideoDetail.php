@@ -11,41 +11,38 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
 			$Page = $request->getProperty('Page');
+			$IdCategory = $request->getProperty('IdCategory');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mVL = new \MVC\Mapper\VideoLibrary();
+			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			if (!isset($Page)) $Page=1;
-			
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			//-------------------------------------------------------------						
+			$CategoryVideoAll = $mCategoryVideo->findAll();						
 			$Category = $mCategoryVideo->find($IdCategory);
-			$VLs = $mVL->findByPage(array($IdCategory, $Page, 10));			
-			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLVideo());
-			$Title = "Quản lý / Chuyên mục Video / ".$Category->getName();
+			if (!isset($Page)) $Page = 1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VLAll = $mVL->findByPage(array($IdCategory, $Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), $Config->getValue(), $Category->getURLVideo());
+			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("VIDEO", "/app/category/video")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------						
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
 			$request->setObject("Category", $Category);
-			$request->setObject("VLs", $VLs);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('PN', $PN);
-			$request->setProperty("ActiveItem", 'Home');
+			$request->setObject("VLAll", $VLAll);
+			$request->setObject("PN", $PN);
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Page", $Page);
 			$request->setProperty("Title", $Title);
 			

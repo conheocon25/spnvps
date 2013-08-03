@@ -22,9 +22,11 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$Category = $mCategoryNews->find($IdCategory);			
+			$Str = new \MVC\Library\String($Name);
+			$Category = $mCategoryNews->find($IdCategory);
 			$Category->setName($Name);
 			$Category->setOrder($Order);
+			$Category->setKey($Str->converturl());
 			
 			$mCategoryNews->update($Category);
 			

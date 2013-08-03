@@ -33,12 +33,14 @@
 			else
 				$Type=0;
 				
+			$Str = new \MVC\Library\String($Title." ".$IdNews);
 			$News = $mNews->find($IdNews);			
 			$News->setAuthor($Author);
 			$News->setContent($Content);
 			$News->setDate($Date);
 			$News->setTitle($Title);
-			$News->setType($Type);					
+			$News->setType($Type);
+			$News->reKey();
 			$mNews->update($News);
 			
 			//-------------------------------------------------------------

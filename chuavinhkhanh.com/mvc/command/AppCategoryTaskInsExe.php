@@ -28,8 +28,10 @@
 			$Category = new \MVC\Domain\CategoryTask(
 				null,
 				$Name,
-				$Order
-			);												
+				$Order,
+				""
+			);
+			$Category->reKey();
 			$mCategoryTask->insert($Category);
 			
 			//-------------------------------------------------------------

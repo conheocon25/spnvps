@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -39,7 +40,16 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
-			$Title = "QUẢN LÝ / GIẢNG SƯ /";
+			$Title = "GIẢNG SƯ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			
+			if (!isset($Page)) $Page=1;			
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$MonkAll1 = $mMonk->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($MonkAll->count(), $Config->getValue(), "/app/monk" );
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -63,8 +73,12 @@
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
 			
+			$request->setObject('MonkAll1', $MonkAll1);
+			$request->setObject('PN', $PN);
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("ActiveAdmin", 'Monk');
 			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

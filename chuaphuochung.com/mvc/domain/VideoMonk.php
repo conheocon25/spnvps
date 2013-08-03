@@ -29,7 +29,7 @@ class VideoMonk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
-	function getURLView(){return "/library/video/".$this->getMonk()->getBType()."/monk/".$this->getIdMonk()."/".$this->getId();}
+	function getURLView(){return "/phat-am/".$this->getMonk()->getBTypeKey()."/giang-su/".$this->getMonk()->getKey()."/".$this->getVideo()->getKey();}
 	
 	function getURLUpdLoad(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/exe";}

@@ -16,7 +16,7 @@
 			$Picture = $request->getProperty('Picture');
 			$Order = $request->getProperty('Order');
 			$Type = $request->getProperty('Type');
-						
+			$BType = $request->getProperty('BType');
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -34,6 +34,8 @@
 			else
 				$Type=0;
 			$Category->setType($Type);
+			$Category->setBType($BType);
+			$Category->reKey();
 			
 			$mCategoryVideo->update($Category);
 														

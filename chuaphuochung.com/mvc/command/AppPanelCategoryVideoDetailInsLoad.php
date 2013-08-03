@@ -24,13 +24,21 @@
 			$Panel = $mPanelCategoryVideo->find($IdPanelCategoryVideo);
 			$CategoryVideoAll = $mCategoryVideo->findAll();
 			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("VIDEO NỔI BẬT", "/app/panel/category/video"),
+				array(mb_strtoupper($Panel->getName(), 'UTF8'), $Panel->getURLDetail())
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
 			$request->setObject('Panel', $Panel);
 			$request->setObject('CategoryVideoAll', $CategoryVideoAll);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / CATEGORY / VIDEO / THÊM MỚI');
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 									
 			return self::statuses('CMD_DEFAULT');
 		}

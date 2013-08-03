@@ -10,58 +10,25 @@ class Course extends Object{
 	private $DateEnd;
 	private $Description;
 	private $Order;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null){
-        $this->Id = $Id;		
-		$this->Name = $Name;
-		$this->DateStart = $DateStart;
-		$this->DateEnd = $DateEnd;
-		$this->Description = $Description;
-		$this->Order = $Order;
+    function __construct( $Id=null, $Name=Null, $DateStart=null, $DateEnd=null, $Description=null, $Order=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->DateStart = $DateStart;$this->DateEnd = $DateEnd;$this->Description = $Description;$this->Order = $Order; $this->Key = $Key;parent::__construct( $Id );}
+    function getId() {return $this->Id;}	
+	function getIdPrint(){return "e" . $this->getId();}	
 		
-        parent::__construct( $Id );
-    }
-    function getId() {
-        return $this->Id;
-    }	
-	function getIdPrint(){
-        return "e" . $this->getId();
-    }	
+	function setName( $Name ){$this->Name = $Name;$this->markDirty();}   
+	function getName( ) {return $this->Name;}
 		
-	function setName( $Name ){
-        $this->Name = $Name;
-        $this->markDirty();
-    }   
-	function getName( ) {
-        return $this->Name;
-    }
-		
-	function setDateStart( $DateStart ){
-        $this->DateStart = $DateStart;
-        $this->markDirty();
-    }   
-	function getDateStart( ) {
-        return $this->DateStart;
-    }
-	function getDateStartPrint( ){
-		$D = new \MVC\Library\Date($this->DateStart);
-        return $D->getDateFormat();
-    }
+	function setDateStart( $DateStart ){$this->DateStart = $DateStart;$this->markDirty();}   
+	function getDateStart( ) {return $this->DateStart;}
+	function getDateStartPrint( ){$D = new \MVC\Library\Date($this->DateStart);return $D->getDateFormat();}
 	
-	function setDateEnd( $DateEnd ){
-        $this->DateEnd = $DateEnd;
-        $this->markDirty();
-    }   
-	function getDateEnd( ) {
-        return $this->DateEnd;
-    }
-	function getDateEndPrint( ){
-		$D = new \MVC\Library\Date($this->DateEnd);
-        return $D->getDateFormat();
-    }
+	function setDateEnd( $DateEnd ){$this->DateEnd = $DateEnd;$this->markDirty();}   
+	function getDateEnd( ) {return $this->DateEnd;}
+	function getDateEndPrint( ){$D = new \MVC\Library\Date($this->DateEnd);return $D->getDateFormat();}
 	
 	function getImage(){
 		$first_img = '';
@@ -76,71 +43,53 @@ class Course extends Object{
 		return $first_img;
 	}
 	
-	function setDescription( $Description ){
-        $this->Description = $Description;
-        $this->markDirty();
-    }   
-	function getDescription( ) {
-        return $this->Description;
-    }
+	function setDescription( $Description ){$this->Description = $Description;$this->markDirty();}   
+	function getDescription( ) {return $this->Description;}
 	
-	function setOrder( $Order ){
-        $this->Order = $Order;
-        $this->markDirty();
-    }
-	function getOrder( ) {
-        return $this->Order;
-    }
+	function setOrder( $Order ){$this->Order = $Order;$this->markDirty();}
+	function getOrder( ) {return $this->Order;}
+	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ) {
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-	function getClasses(){
-		$mCC = new \MVC\Mapper\CourseClass();
-		$CCs = $mCC->findByCourse( array($this->getId()) );
-		return $CCs;
+	function getLessions(){
+		$mCL = new \MVC\Mapper\CourseLession();
+		$CLs = $mCL->findByCourse( array($this->getId()) );
+		return $CLs;
 	}
 	
-	function getClassNear(){
-		$mCC = new \MVC\Mapper\CourseClass();
-		$CCs = $mCC->findByNear( array($this->getId()) );
-		return $CCs->current();
+	function getLessionNear(){
+		$mCL = new \MVC\Mapper\CourseLession();
+		$CLs = $mCL->findByNear( array($this->getId()) );
+		return $CLs->current();
 	}
-	function getClassNext(){
-		$mCC = new \MVC\Mapper\CourseClass();
-		$CCs = $mCC->findByNext( array($this->getId()) );
-		return $CCs->current();
+	function getLessionNext(){
+		$mCL = new \MVC\Mapper\CourseLession();
+		$CLs = $mCL->findByNext( array($this->getId()) );
+		return $CLs->current();
 	}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){
-		return "/course/".$this->getId();
-	}
-	function getURLUpdLoad(){
-		return "/app/course/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){
-		return "/app/course/".$this->getId()."/upd/exe";
-	}
+	function getURLRead(){return "/dao-tao/".$this->getKey();}
 	
-	function getURLDelLoad(){
-		return "/app/course/".$this->getId()."/del/load";
-	}	
-	function getURLDelExe(){
-		return "/app/course/".$this->getId()."/del/exe";
-	}
+	function getURLUpdLoad(){return "/app/course/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/app/course/".$this->getId()."/upd/exe";}
 	
-	function getURLLession(){
-		return "/app/course/".$this->getId();
-	}
-	function getURLLessionInsLoad(){
-		return "/app/course/".$this->getId()."/ins/load";
-	}
-	function getURLLessionInsExe(){
-		return "/app/course/".$this->getId()."/ins/exe";
-	}
+	function getURLDelLoad(){return "/app/course/".$this->getId()."/del/load";}	
+	function getURLDelExe(){return "/app/course/".$this->getId()."/del/exe";}
+	
+	function getURLLession(){return "/app/course/".$this->getId();}
+	function getURLLessionInsLoad(){return "/app/course/".$this->getId()."/ins/load";}
+	function getURLLessionInsExe(){return "/app/course/".$this->getId()."/ins/exe";}
 			
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

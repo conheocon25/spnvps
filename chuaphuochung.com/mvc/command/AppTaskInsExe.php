@@ -31,8 +31,10 @@
 				$Type,
 				$Title,
 				$Description,
-				$URL
+				$URL,
+				""
 			);
+			$Task->reKey();
 			$mTask->insert($Task);
 			
 			//-------------------------------------------------------------

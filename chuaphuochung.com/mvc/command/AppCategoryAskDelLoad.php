@@ -22,13 +22,19 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategoryAsk->find($IdCategory);						
-			$Title = "Quản lý / Chuyên mục hỏi đáp / ".$Category->getName()." / Xóa";
+			
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("HỎI ĐÁP", "/app/category/ask")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject('Category', $Category);
-			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 		}
 	}

@@ -46,6 +46,13 @@
 			$SponsorAll = $mSponsor->findAll();			
 			$Config = $mConfig->find($IdConfig);
 			
+			$Title = mb_strtoupper($Config->getParam(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("CẤU HÌNH", "/app/config")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -63,7 +70,8 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject('Config', $Config);
 			
-			$request->setProperty("Title", 'QUẢN LÝ / CẤU HÌNH / '.$Config->getParam()." / XÓA");
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Statistic');
 			

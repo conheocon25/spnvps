@@ -28,8 +28,10 @@
 			$Category = new \MVC\Domain\CategoryNews(
 				null,
 				$Name,
-				$Order
-			);												
+				$Order,
+				""
+			);
+			$Category->reKey();
 			$mCategoryNews->insert($Category);
 			
 			//-------------------------------------------------------------

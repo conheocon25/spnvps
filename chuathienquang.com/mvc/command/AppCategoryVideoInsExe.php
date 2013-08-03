@@ -15,6 +15,7 @@
 			$Name = $request->getProperty('Name');
 			$Picture = $request->getProperty('Picture');
 			$Order = $request->getProperty('Order');
+			$BType = $request->getProperty('BType');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -32,8 +33,11 @@
 				$Name,
 				$Picture,
 				$Order,
-				0
-			);												
+				1,
+				$BType,
+				""
+			);
+			$Category->reKey();
 			$mCategoryVideo->insert($Category);
 			
 			//-------------------------------------------------------------

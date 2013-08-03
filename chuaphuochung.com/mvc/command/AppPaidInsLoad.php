@@ -36,6 +36,14 @@
 			
 			$Category = $mCategoryPaid->find($IdCategory);
 			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("KHOẢN CHI", "/app/category/paid"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -52,8 +60,9 @@
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			
-			$request->setObject('Category', $Category);			
-			$request->setProperty("Title", 'QUẢN LÝ / KHOẢN CHI / THÊM MỚI');			
+			$request->setObject('Category', $Category);
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

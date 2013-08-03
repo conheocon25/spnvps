@@ -14,7 +14,7 @@
 			$Name = $request->getProperty('Name');
 			$DateStart = $request->getProperty('DateStart');
 			$DateEnd = $request->getProperty('DateEnd');
-			$Description = \stripslashes($request->getProperty('Description'));
+			$Description = \stripslashes( $request->getProperty('Description'));
 			$Order = $request->getProperty('Order');
 			
 			//-------------------------------------------------------------
@@ -31,8 +31,10 @@
 				$DateStart,
 				$DateEnd,
 				$Description,
-				$Order
-			);			
+				$Order,
+				""
+			);
+			$Course->reKey();
 			$mCourse->insert($Course);
 			
 			//-------------------------------------------------------------

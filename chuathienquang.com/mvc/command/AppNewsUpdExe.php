@@ -7,7 +7,7 @@
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------			
 			$Session = \MVC\Base\SessionRegistry::instance();
-			$IdCategory = $Session->getCurrentCategoryNews();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -33,14 +33,14 @@
 			else
 				$Type=0;
 				
-			$News = $mNews->find($IdNews);
-			$News->setIdCategory($IdCategory);
+			$Str = new \MVC\Library\String($Title." ".$IdNews);
+			$News = $mNews->find($IdNews);			
 			$News->setAuthor($Author);
 			$News->setContent($Content);
 			$News->setDate($Date);
 			$News->setTitle($Title);
 			$News->setType($Type);
-						
+			$News->reKey();
 			$mNews->update($News);
 			
 			//-------------------------------------------------------------

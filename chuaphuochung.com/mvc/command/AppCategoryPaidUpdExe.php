@@ -19,12 +19,14 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mCategoryPaid = new \MVC\Mapper\CategoryPaid();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategoryPaid->find($IdCategory);
 			$Category->setName($Name);
 			$Category->setOrder($Order);
+			$Category->reKey();
 			
 			$mCategoryPaid->update($Category);
 																	

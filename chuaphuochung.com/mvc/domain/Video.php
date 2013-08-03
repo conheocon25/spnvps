@@ -11,17 +11,19 @@ class Video extends Object{
     private $URL;
 	private $Note;
 	private $Count;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Time=null, $URL=null, $Note=null, $Count=null) {
+    function __construct( $Id=null, $Name=null, $Time=null, $URL=null, $Note=null, $Count=null, $Key=null) {
         $this->Id = $Id;
 		$this->Name = $Name;
 		$this->Time = $Time;
 		$this->URL = $URL;
 		$this->Note = $Note;
 		$this->Count = $Count;
+		$this->Key = $Key;
         parent::__construct( $Id );
     }
 	function setId( $Id ){return $this->Id = $Id;}
@@ -47,14 +49,23 @@ class Video extends Object{
         return "";
     }
 	
-	function getIdURL( ){list($http, $sym, $addr1, $addr2, $addr3) = explode("/", $this->URL);return $addr3;}	
+	function getIdURL( ){list($http, $sym, $addr1, $addr2, $addr3) = explode("/", $this->URL);return $addr3;}
 	function getNote( ) {return $this->Note;}
 	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}
-	function getURLImage(){return "http://img.youtube.com/vi/".$this->getIdURL()."/2.jpg";}
+	function getURLImage(){				
+		return "http://img.youtube.com/vi/".$this->getIdURL()."/2.jpg";
+	}
 		
 	function setCount( $Count ) {$this->Count = $Count;$this->markDirty();}
 	function getCount( ) {return $this->Count;}
 	function getCountPrint( ) {$N = new \MVC\Library\Number($this->Count);	return $N->formatCurrency();}
+	
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function reKey( ){
+		$Str = new \MVC\Library\String($this->Name." ".$this->getId());
+		$this->Key = $Str->converturl();
+	}
+	function getKey( ) {return $this->Key;}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL

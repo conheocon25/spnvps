@@ -40,6 +40,9 @@
 			$PopupAll = $mPopup->findAll();
 			
 			$Title = "QUẢN LÝ";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu")
+			);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -62,8 +65,8 @@
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			$request->setObject('TaskAll', $TaskAll);
 			$request->setObject('PopupAll', $PopupAll);
-			
-			$request->setObject("Title", $Title);
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title);			
 			$request->setProperty("ActiveAdmin", 'Admin');
 		}
 	}

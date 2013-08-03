@@ -38,8 +38,13 @@
 			$Category = $mCategoryVideo->find($IdCategory);
 			$MonkAll = $mMonk->findAll();
 			
-			$Title = "Quản lý / chuyên mục video / ".$Category->getName()." / Thêm mới";
-			
+			$Title = "THÊM MỚI";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("VIDEO", "/app/category/video"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
@@ -52,6 +57,7 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			
+			$request->setObject('Navigation', $Navigation);
 			$request->setProperty('Title', $Title);
 			$request->setProperty('ActiveItem', "Home");
 		}

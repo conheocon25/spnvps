@@ -18,7 +18,8 @@
 			$Note = $request->getProperty('Note');
 			$Pagoda = $request->getProperty('Pagoda');
 			$Type = $request->getProperty('Type');
-			$Picture = $request->getProperty('Picture');
+			$BType = $request->getProperty('BType');
+			$URLPic = $request->getProperty('URLPic');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -44,7 +45,9 @@
 			$dMonk->setPhone($Phone);
 			$dMonk->setPagoda($Pagoda);
 			$dMonk->setType($Type);
-			$dMonk->setPicture($Picture);
+			$dMonk->setBType($BType);
+			$dMonk->setURLPic($URLPic);
+			$dMonk->reKey();
 			
 			$mMonk->update($dMonk);
 			

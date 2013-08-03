@@ -31,8 +31,10 @@
 				$TimeStart,
 				$TimeEnd,
 				$Content,
-				$Type
+				$Type,
+				""
 			);
+			$Sponsor->reKey();
 			$mSponsor->insert($Sponsor);
 			
 			//-------------------------------------------------------------

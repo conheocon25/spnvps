@@ -19,12 +19,14 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mCategoryTask = new \MVC\Mapper\CategoryTask();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
 			$Category = $mCategoryTask->find($IdCategory);			
 			$Category->setName($Name);
 			$Category->setOrder($Order);
+			$Category->reKey();
 			
 			$mCategoryTask->update($Category);
 																	

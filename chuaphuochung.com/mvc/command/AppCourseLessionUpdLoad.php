@@ -47,7 +47,13 @@
 			
 			$Course = $mCourse->find($IdCourse);
 			$CourseLession = $mCourseLession->find($IdLession);
-			
+			$Title = mb_strtoupper($CourseLession->getName(), 'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("ĐÀO TẠO", "/app/course"),
+				array(mb_strtoupper($Course->getName(), 'UTF8'), $Course->getURLLession())
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -65,8 +71,8 @@
 			
 			$request->setObject('Course', $Course);
 			$request->setObject('Lession', $CourseLession);
-			
-			$request->setProperty("Title", 'Quản Lý / Đào tạo / '.$Course->getName()." / ".$CourseLession->getName() );
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("Title", $Title );
 			$request->setProperty("ActiveItem", 'Home');
 			$request->setProperty("ActiveAdmin", 'Course');
 			

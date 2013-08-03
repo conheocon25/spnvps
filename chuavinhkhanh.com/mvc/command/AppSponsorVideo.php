@@ -12,6 +12,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$IdSponsor = $request->getProperty('IdSponsor');
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -38,6 +39,17 @@
 			
 			$Sponsor = $mSponsor->find($IdSponsor);
 			$SponsorAll = $mSponsor->findAll();
+			$Title = mb_strtoupper($Sponsor->getName(),'UTF8');
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app"),
+				array("SỔ VÀNG CÔNG ĐỨC", "/app/sponsor")
+			);
+			
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$VSAll = $mVS->findByPage(array($IdSponsor, $Page, $Config->getValue()));
+			$PN = new \MVC\Domain\PageNavigation($Sponsor->getVideoAll()->count(), $Config->getValue(), $Sponsor->getURLVideo());
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,12 +69,12 @@
 			$request->setObject('PanelNews', $PanelNews);
 			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
 			
-			$request->setObject('Sponsor', $Sponsor);
-			$request->setObject('SponsorAll', $SponsorAll);
-			
-			$request->setProperty("Title", 'QUẢN LÝ / SỔ VÀNG CÔNG ĐỨC / '.$Sponsor->getName().' / VIDEO');
-			$request->setProperty("ActiveItem", 'Home');
-			$request->setProperty("ActiveAdmin", 'Sponsor');
+			$request->setObject('Sponsor', $Sponsor);			
+			$request->setObject('VSAll', $VSAll);
+			$request->setObject('Navigation', $Navigation);
+			$request->setObject('PN', $PN);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

@@ -35,7 +35,8 @@
 				$Phone,
 				$Website,
 				$Master
-			);												
+			);
+			$Pagoda->reKey();
 			$mPagoda->insert($Pagoda);
 			
 			//-------------------------------------------------------------

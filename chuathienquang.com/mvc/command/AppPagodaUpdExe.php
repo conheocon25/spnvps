@@ -36,7 +36,7 @@
 			$Pagoda->setAddress($Address);
 			$Pagoda->setWebsite($Website);
 			$Pagoda->setMaster($Master);
-			
+			$Pagoda->reKey();
 			$mPagoda->update($Pagoda);
 			
 			//-------------------------------------------------------------

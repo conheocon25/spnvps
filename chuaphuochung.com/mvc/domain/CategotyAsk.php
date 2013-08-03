@@ -7,11 +7,12 @@ class CategoryAsk extends Object{
     private $Id;
 	private $Name;
 	private $Order;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null , $Order=Null) {$this->Id = $Id;$this->Name = $Name;$this->Order = $Order;parent::__construct( $Id );}
+    function __construct( $Id=null, $Name=null , $Order=Null, $Key=Null) {$this->Id = $Id;$this->Name = $Name;$this->Order = $Order;$this->Key = $Key; parent::__construct( $Id );}
     function getId() {return $this->Id;}	
 	function getIdPrint(){return "c" . $this->getId();}	
 	
@@ -20,6 +21,13 @@ class CategoryAsk extends Object{
 	
 	function setOrder( $Order ) {$this->Order = $Order;$this->markDirty();}
 	function getOrder( ) {return $this->Order;}
+	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
+	function getKey( ) {return $this->Key;}
+	function reKey( ) {
+		$Str = new \MVC\Library\String($this->Name);
+		$this->Key = $Str->converturl();
+	}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
@@ -39,7 +47,7 @@ class CategoryAsk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/ask/".$this->getId();}
+	function getURLRead(){return "/hoi-dap/".$this->getKey();}
 	function getURLView(){return "/app/category/ask/".$this->getId();}
 	
 	function getURLUpdLoad(){return "/app/category/ask/".$this->getId()."/upd/load";}

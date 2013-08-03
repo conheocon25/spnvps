@@ -1,80 +1,75 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
 	<body>
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
-
-			<div id="main">				
-				
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/manager.png" width="30" />
-							<span tal:content="Title" />
-							<a href="/app">&#8629; Trở lại</a>
-						</div>						
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table" >
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th />
+										<th align="left">TÊN</th>
+										<th width="120px" align="left">PHÂN LOẠI</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Monk Monks">
-										<td width="32" align="center">
+									<tr tal:repeat="Monk MonkAll1">
+										<td width="32">
 											<div tal:content="repeat/Monk/number" />
 										</td>
-										<td width="32" align="center">
-											<span tal:condition="Monk/isVIP">
-												<img src="/data/images/vip.gif" border="0" width="25" />
-											</span>
+										<td width="32">
+											<span tal:condition="Monk/isVIP" class="icon-star" />
 										</td>
-										<td class="text-hightlight">
+										<td>
 											<a tal:attributes="href Monk/getURLUpdLoad">
 												<div tal:content="Monk/getName" />
 											</a>
 										</td>
-										<td class="text-hightlight" align="center">
+										<td>
 											<a tal:attributes="href Monk/getURLVideo">
-												<div>Xem Video (<span tal:content="Monk/getVMs/count" />)</div>
+												<div><span tal:content="Monk/getBTypeName" /> (<span tal:content="Monk/getVMs/count" />)</div>
 											</a>
 										</td>
-										<td class="text-hightlight" width="32" align="center">
-											<a tal:attributes="href Monk/getURLDelLoad">
-												<div><img src="/data/images/remove.png" width="20" /></div>
-											</a>
+										<td width="32">
+											<a tal:attributes="href Monk/getURLDelLoad"><span class="icon-remove"/></a>
 										</td>
 									</tr>
 								</tbody>
 								<tfoot>
-									<tr>
-										<td colspan="5" align="center">
-											<a href="/app/monk/ins/load">
-												<div><img src="/data/images/add.png" width="20" /></div>
+									<tr>																				
+										<td colspan="3" align="center">
+											<a class="btn" href="/app/monk/ins/load">
+												<span class="icon-plus" /> Thêm mới
+											</a>
+										</td>
+										<td colspan="2" align="center">
+											<a class="btn" href="/app/monk/update/all">
+												<span class="icon-edit" /> Cập nhật key
 											</a>
 										</td>
 									</tr>
 								</tfoot>
 							</table>
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
 						</div>
-						<div class="clear"></div>
 					</div>
 				</div>
-				
-				<div id="sidebar">										
-					<div class="sidebar-box">
-						<div class="box-title">
-							<img src="/data/images/user.png" width="30" />
-							<span><a href="/app">Admin</a></span>
-							<a href="/signout/load">&#8629; Thoát</a>
-						</div>
-						<div metal:use-macro="macros.xhtml/AdminMenu" />
-					</div>
-				</div>
-				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
 	</body>
 </html>

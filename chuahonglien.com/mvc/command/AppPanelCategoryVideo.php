@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$Page = $request->getProperty('Page');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -39,6 +40,16 @@
 			$TaskAll = $mTask->findAll();
 			$PopupAll = $mPopup->findAll();
 			
+			$Title = "VIDEO NỔI BẬT";
+			$Navigation = array(
+				array("TRANG CHỦ", "/trang-chu"),
+				array("QUẢN LÝ", "/app")
+			);
+			if (!isset($Page)) $Page=1;
+			$Config = $mConfig->findByName("ROW_PER_PAGE");
+			$PanelCategoryVideoAll1 = $mPanelCategoryVideo->findByPage(array($Page, $Config->getValue() ));
+			$PN = new \MVC\Domain\PageNavigation($PanelCategoryVideoAll->count(), $Config->getValue(), "/app/panel/category/video" );
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -61,7 +72,11 @@
 			$request->setObject('TaskAll', $TaskAll); 
 			$request->setObject('PopupAll', $PopupAll); 
 			
-			$request->setProperty("Title", 'QUẢN LÝ / PANEL / DANH MỤC VIDEO / ');			
+			$request->setObject('PanelCategoryVideoAll1', $PanelCategoryVideoAll1); 
+			$request->setObject('PN', $PN); 
+			$request->setObject('Navigation', $Navigation); 
+			$request->setProperty("Title", $Title);
+			$request->setProperty("Page", $Page);
 			$request->setProperty("ActiveAdmin", 'PanelCategoryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
