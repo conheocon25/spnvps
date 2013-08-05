@@ -114,6 +114,12 @@
 			.b-content .b-right {
 				margin-left: 0px !important;
 			}
+	
+		.i3-grid {
+			width: 163px !important;
+			height: 163px !important;
+			margin: 5px !important;
+		}
 			
 		.top-nav {
 			list-style: none;
@@ -300,3 +306,8 @@
 				padding-right: 45px;
 				padding-top: 20px;
 			}
+			
+	.sidebar-3 {
+		width: 230px !important;
+		margin-left: 0 !important;
+	}
