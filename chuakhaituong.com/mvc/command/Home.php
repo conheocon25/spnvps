@@ -42,9 +42,9 @@
 			$TaskAll = $mTask->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
-			$Event = $mEvent->findByNear(null)->current();
+			$EventAll = $mEvent->findAll();
 			$Course = $mCourse->findByNear(null)->current();
-			$Popup = $mPopup->findByName("home");
+			$Popup = $mPopup->findByName("trang-chu");
 												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -55,10 +55,10 @@
 			$request->setObject("VM8", $VM8);
 			$request->setObject("VM24", $VM24);
 			$request->setObject("VL24", $VL24);
-			$request->setObject("Course", $Course);			
-			$request->setObject("Event", $Event);
+			$request->setObject("Course", $Course);						
 			$request->setObject("Popup", $Popup);
-						
+			$request->setObject("EventAll", $EventAll);
+			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryVideo", $CategoryVideo);

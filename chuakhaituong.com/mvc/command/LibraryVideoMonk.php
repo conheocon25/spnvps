@@ -42,6 +42,7 @@
 			
 			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,6 +58,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Monk", $Monk);
 			$request->setObject("PN", $PN);
 			$request->setObject("VMAll", $VMAll);

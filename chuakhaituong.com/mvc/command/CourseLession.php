@@ -30,8 +30,7 @@
 			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-												
-			$Event = $mEvent->findByNear(null)->current();			
+															
 			$Courses = $mCourse->findAll();
 			
 			$Course = $mCourse->findByKey($KCourse);
@@ -41,14 +40,16 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("dao-tao");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
-			$request->setObject("Event", $Event);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("Course", $Course);
 			$request->setObject("Courses", $Courses);
 			$request->setObject("AskAll", $AskAll);			
@@ -58,6 +59,9 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Home');
 			

@@ -95,7 +95,7 @@
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active':'?'">
-					<a href="/sponsor" style="cursor:pointer;">Sổ vàng</a>
+					<a href="/so-vang" style="cursor:pointer;">Sổ vàng</a>
 					<ul class="sub-menu">
 						<li tal:repeat="Sponsor SponsorAll">
 							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
@@ -112,7 +112,7 @@
 	<!-- LỊCH CÔNG TÁC											  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="TaskBox" class="box">
-		<div class="b-title"><div class="b-t-icon-content">Lịch Công Tác</div></div>
+		<div class="b-title"><div class="b-t-icon-content">Các hoạt động</div></div>
 		<div class="b-content">
 			<div class="g4"><div id="eventCalendarLocale" /></div>
 			<script type="text/javascript">
@@ -403,25 +403,31 @@
 	<!-- ======================================================================== -->
 	<!-- SỰ KIỆN																  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="EventBox" class="box" tal:condition="Event">
+	<div metal:define-macro="EventBox" class="box">
 		<div class="b-title">
-			<div class="b-t-icon-content">Sự kiện sắp xảy ra</div>
+			<div class="b-t-icon-content">Sự kiện gần đây</div>
 		</div>
-		<div class="b-content">
-			<div align="center" style="padding-top:10px;">
-				<a tal:attributes="href Event/getURLRead">
-					<img tal:attributes="src Event/getImage" width="300" />
-				</a>
+		<div id="BoxEventCarousel" class="carousel slide">
+			<div class="carousel-inner">
+				<div class="active item">
+					<a tal:attributes="href EventAll/current/getURLRead">
+						<img width="100%" tal:attributes="src EventAll/current/getImage" style="height:335px;"/>
+						<div class="carousel-caption">
+							<p tal:content="EventAll/current/getTitle"/>
+						</div>
+					</a>
+				</div>
+				<div tal:repeat="Event EventAll" class="item">
+					<a tal:attributes="href Event/getURLRead">
+						<img width="100%" tal:attributes="src Event/getImage" style="height:335px;"/>
+						<div class="carousel-caption">
+							<p tal:content="Event/getTitle"/>
+						</div>
+					</a>
+				</div>
 			</div>
-			<div align="center" style="padding:10px;">
-				<a tal:attributes="href Event/getURLRead" style="font-size:12px; color:#980707; line-height:30px;">
-					<h1 tal:content="Event/getTitle" />
-				</a>
-			</div>
-			<div style="margin-left:10px;">
-				<div id="defaultCountdown"></div>
-			</div>
-			<script type="text/javascript">/*<![CDATA[*/$(function(){var d1 = $("#Event").attr('alt');var parts = d1.match(/(\d+)/g);var d2 = new Date(parts[0], parts[1]-1, parts[2]);var austDay = new Date();austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);$('#defaultCountdown').countdown({until: d2});$('#defaultCountdown1').countdown({until: d2});});/*]]>*/</script>
+			<a class="carousel-control left" href="#BoxEventCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#BoxEventCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
 	

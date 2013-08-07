@@ -45,6 +45,7 @@
 			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -59,6 +60,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Category", $Category);
 			$request->setObject("CategoryBType", $CategoryBType);
 			
