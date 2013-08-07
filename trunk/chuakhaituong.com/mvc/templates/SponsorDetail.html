@@ -90,49 +90,18 @@
 				</div>
 				<div class="sidebar span5">
 					<div class="wraper">
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">Lịch Công Tác</div>
-							</div>
-							<div class="b-content">
-								<div class="g4">
-									<div id="eventCalendarLocale" />
-								</div>
-								<script type="text/javascript">
-									/*<![CDATA[*/
-									$(document).ready(function() {
-										$("#eventCalendarLocale").eventCalendar({
-											eventsjson: '/mvc/templates/script/events.json.php',
-											eventsjson: '/task',
-											monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-												"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
-											dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
-											dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
-											txt_noEvents: "Không có sự kiện nào xảy ra",
-											txt_SpecificEvents_prev: "",
-											txt_SpecificEvents_after: "sự kiện:",
-											txt_next: "Tới",
-											txt_prev: "Lui",
-											txt_NextEvents: "Sự kiện sắp xảy ra:",
-											txt_GoToEventUrl: "đi đến sự kiện"
-										});
-									});
-									/*]]>*/
-								</script>
-							</div>
-						</div>						
+						<div metal:use-macro="macros.xhtml/TaskBox"/>
 						<div metal:use-macro="macros.xhtml/EventBox"/>
 						<div metal:use-macro="macros.xhtml/CourseBox"/>
-						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
+						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
 						<div metal:use-macro="macros.xhtml/PictureBox"/>
 						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
 						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
 						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
 						<div metal:use-macro="macros.xhtml/AskBox"/>
-						<div metal:use-macro="macros.xhtml/CountBox"/>
-						<div metal:use-macro="macros.xhtml/SponsorBox"/>					
+						<div metal:use-macro="macros.xhtml/SponsorBox"/>
 						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>
+						<div metal:use-macro="macros.xhtml/CallendarBox"/>					
 					</div>
 				</div>
 			</div>
