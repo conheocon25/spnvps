@@ -114,13 +114,13 @@
 	<!-- ======================================================================== -->
 	<div metal:define-macro="BuddhaSlide" class="box">
 		<div class="b-title">
-			<div class="b-t-icon-content">Trang Video Phật Âm</div>
+			<div class="b-t-icon-content">Phật Âm</div>
 		</div>
 		<div class="b-content">
-			<div id="myCarousel2" class="carousel slide carousel-fade">
+			<div id="BuddhaCarousel" class="carousel slide carousel-fade">
 				<ol class="carousel-indicators">
-					<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-					<li data-target="#myCarousel2" data-slide-to="1"></li>
+					<li data-target="#BuddhaCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#BuddhaCarousel" data-slide-to="1"></li>
 				</ol>
 				<div class="carousel-inner">
 					<div class="active item">
@@ -134,8 +134,8 @@
 						</a>
 					</div>
 				</div>
-				<a class="carousel-control left" href="#myCarousel2" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel2" data-slide="next">&rsaquo;</a>
+				<a class="carousel-control left" href="#BuddhaCarousel" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#BuddhaCarousel" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
 	</div>
@@ -148,7 +148,7 @@
 			<div class="b-t-icon-content">Ảnh Hoạt Động</div>
 		</div>
 		<div class="b-content">
-			<a href="/library/album">
+			<a href="/thu-vien-anh">
 				<img width="100%" src="/data/images/top_img.jpg" />
 			</a>
 		</div>
@@ -162,11 +162,14 @@
 			<div class="b-t-icon-content">Tin tức nổi bật</div>
 		</div>
 		<div class="b-content">
-			<div id="myCarousel" class="carousel slide">
+			<div id="BoxNewsCarousel" class="carousel slide">
 				<div class="carousel-inner">
 					<div class="active item">
-						<a href="/library/video/1">
-							<img width="100%" src="/data/images/tmp/pic2.jpg" style="height:335px;"/>
+						<a tal:attributes="href PanelNewsAll/current/getNews/getURLRead">
+							<img width="100%" tal:attributes="src PanelNewsAll/current/getNews/getImage" style="height:335px;"/>
+							<div class="carousel-caption">
+								<p tal:content="PanelNewsAll/current/getNews/getTitle"/>
+							</div>
 						</a>
 					</div>
 					<div tal:repeat="TopNews PanelNewsAll" class="item">
@@ -178,8 +181,8 @@
 						</a>
 					</div>
 				</div>
-				<a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+				<a class="carousel-control left" href="#BoxNewsCarousel" data-slide="prev">&lsaquo;</a>
+				<a class="carousel-control right" href="#BoxNewsCarousel" data-slide="next">&rsaquo;</a>
 			</div>
 		</div>
 	</div>
@@ -216,8 +219,11 @@
 			<div id="myCarousel3" class="carousel slide">
 				<div class="carousel-inner">
 					<div class="active item">
-						<a href="/library/video/1">
-							<img width="100%" src="/data/images/question_logo.jpg" style="height:335px;"/>
+						<a tal:attributes="href MonkAll/current/getURLRead">
+							<img width="100%" style="height:335px;" tal:attributes="src MonkAll/current/getURLPic | string:/data/images/exit_picture.jpg"/>
+							<div class="carousel-caption">
+								<p tal:content="php:MonkAll->current()->getPreName() . ' ' . MonkAll->current()->getName() . ' ' . MonkAll->current()->getPagoda()"/>
+							</div>
 						</a>
 					</div>
 					<div tal:repeat="Monk MonkAll" class="item">

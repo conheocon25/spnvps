@@ -23,22 +23,17 @@
 			<div metal:use-macro="macros.xhtml/Header"/>
 			<div class="main row">
 				<div class="top-bar row">
-					<div class="date-time span6">
-						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-					</div>
-					<div class="carousel-text span7">
-						<div metal:use-macro="macros.xhtml/TextGo"/>
-					</div>
+					<div class="date-time span6"><div metal:use-macro="macros.xhtml/DateTimeBox"/></div>
+					<div class="carousel-text span7"><div metal:use-macro="macros.xhtml/TextGo"/></div>
 				</div>
 				<div class="content span8">
-					<div class="wraper">						
-						
+					<div class="wraper">												
 						<div class="box">
 							<div class="b-title">
-								<div tal:content="EventRead/getTitle" class="b-t-icon-content"/>
+								<div tal:content="Event/getTitle" class="b-t-icon-content"/>
 							</div>
 							<div class="b-content">
-								<div tal:content="structure EventRead/getContent"/>
+								<div tal:content="structure Event/getContent"/>
 							</div>
 						</div>
 						

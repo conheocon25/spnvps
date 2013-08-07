@@ -10,7 +10,7 @@
 						
 				$(document).ready(function() {
 					$('.left-slide').carousel({interval: 5000});
-					$('#myCarousel2').carousel({interval: 5000});
+					$('#LessionCarousel').carousel({interval: 5000});
 					$('.tooltipvideo').tooltip();
 				});
 			/*]]>*/
@@ -36,38 +36,13 @@
 						
 						<div class="box">
 							<div class="b-title">
-								<div class="b-t-icon-content">Tiêu điểm</div>
+								<div class="b-t-icon-content">Đào tạo</div>
 							</div>
 							<div class="b-content">
-								<!--
-								<div class="top-pic-banner" tal:condition="Course">
-									<a tal:attributes="href Course/getURLRead">
-										<img tal:attributes="src Course/getImage" class="img-polaroid"/>
-										<div class="p-b-title" tal:content="Course/getName"/>
-									</a>
-								</div>
-								-->
-								<!--
-								<iframe width="560" height="315" src="//www.youtube.com/embed/sgRmFIWAeRA?list=PLCC97EF2EF9AA2638" frameborder="0" ></iframe>
-								!-->
-								<!--
-								<script type='text/javascript' src='http://player.longtailvideo.com/jwplayer.js'></script>
-								<div id='mediaspace'>This text will be replaced</div>
-
-								<script type='text/javascript'>
-								  jwplayer('mediaspace').setup({
-									'flashplayer': 'http://player.longtailvideo.com/player.swf',
-									'file': 'http://www.youtube.com/watch?v=V0dB7BN0Uvc',
-									'controlbar': 'bottom',
-									'width': '470',
-									'height': '320'
-								  });
-								</script>
-								-->
-								<div id="myCarousel2" class="carousel slide carousel-fade">
+								<div id="LessionCarousel" class="carousel slide carousel-fade">
 									<ol class="carousel-indicators">
-										<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
-										<li data-target="#myCarousel2" data-slide-to="1"></li>
+										<li data-target="#LessionCarousel" data-slide-to="0" class="active"></li>
+										<li data-target="#LessionCarousel" data-slide-to="1"></li>
 									</ol>
 									<div class="carousel-inner">
 										<div class="active item">
@@ -87,71 +62,9 @@
 											</a>
 										</div>
 									</div>
-									<a class="carousel-control left" href="#myCarousel2" data-slide="prev">&lsaquo;</a>
-									<a class="carousel-control right" href="#myCarousel2" data-slide="next">&rsaquo;</a>
-								</div>
-								
-								<!--
-								<div class="list-picture" tal:condition="Course">																
-									<div class="grid-left parent" tal:condition="Course/getLessionNear">
-										<a tal:attributes="href Course/getLessionNear/getURLRead">
-											<img width="280" height="86" tal:attributes="src Course/getLessionNear/getImage" />
-										</a>									
-										<div style="margin-top:-25px;">
-											<h3 style="margin-bottom:5px; color:#FF0000; text-align:left; padding-left:15px; margin-top:30px;">
-												LỚP ĐÃ
-											</h3>
-											<div id="class1Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNear/getDateEnd" />
-											<h3 style="position:absolute; right:15px; bottom:5px; color:#FF0000;">
-												KẾT THÚC
-											</h3>
-										</div>
-										<script type="text/javascript">
-											/*<![CDATA[*/
-											$(function() {
-												var d1 = $("#class1Countdown").attr('alt');
-												var parts = d1.match(/(\d+)/g);										
-												var d2 = new Date(parts[0], parts[1]-1, parts[2]); 										
-												$('#class1Countdown').countdown({until: d2});											
-											});
-											/*]]>*/
-										</script>
-										<div class="child" tal:content="Course/getLessionNear/getName" />
-									</div>
-									<div class="grid-left parent" tal:condition="not:Course/getLessionNear">									
-										<span >
-											<img width="280" height="86" tal:attributes="src string:/data/images/temp.jpg" />
-										</span>
-									</div>
-									<div class="grid-right parent" tal:condition="Course/getLessionNext">									
-										<a tal:attributes="href Course/getLessionNext/getURLRead">
-											<img width="280" height="86" tal:attributes="src Course/getLessionNext/getImage" />
-										</a>									
-										<div style="margin-top:-25px;" tal:condition="Course/getLessionNext">
-											<span tal:condition="Course/getLessionNext">
-												<h3 style="margin-bottom:5px; color:#0000FF; text-align:left; padding-left:15px; margin-top:30px;">
-													CÒN
-												</h3>
-												<div id="class2Countdown" style="margin-left:5px;" tal:attributes="alt Course/getLessionNext/getDateStart" />
-												<h3 style="position:absolute; right:15px; bottom:5px; color:#0000FF;">
-													LỚP BẮT ĐẦU
-												</h3>
-											</span>
-										</div>
-										<script type="text/javascript">
-											/*<![CDATA[*/
-											$(function() {
-												var d1 = $("#class2Countdown").attr('alt');											
-												var parts = d1.match(/(\d+)/g);											
-												var d2 = new Date(parts[0], parts[1]-1, parts[2]);
-												$('#class2Countdown').countdown({until: d2});
-											});
-											/*]]>*/
-										</script>
-										<div  class="child" tal:content="Course/getLessionNext/getName"/>
-									</div>
-								</div>
-								-->
+									<a class="carousel-control left" href="#LessionCarousel" data-slide="prev">&lsaquo;</a>
+									<a class="carousel-control right" href="#LessionCarousel" data-slide="next">&rsaquo;</a>
+								</div>															
 							</div>
 						</div>
 
@@ -164,9 +77,12 @@
 									<div class="b-left span4">
 										<div class="carousel slide left-slide img-polaroid">
 											<div class="carousel-inner">
-												<div class="active item">
-													<a href="/library/video/1">
-														<img width="335px" src="/data/images/tmp/pic3.jpg"/>
+												<div class="active item">													
+													<a tal:attributes="href Category/getNewsLimit1/current/getURLRead">
+														<img tal:attributes="src Category/getNewsLimit1/current/getImage" style="height:250px; width:100%;"/>
+														<div class="carousel-caption">
+															<p tal:content="Category/getNewsLimit1/current/getTitleReduce" />
+														</div>
 													</a>
 												</div>
 												<div tal:repeat="News Category/getNewsLimit1" class="item">
@@ -182,7 +98,7 @@
 									</div>
 									<div class="b-right span4">
 										<ul class="nav nav-list left-news-list">
-											<li class="nav-header">TIN MỚI CẬP NHẬT</li>
+											<li class="nav-header">MỚI CẬP NHẬT</li>
 											<li tal:repeat="News Category/getNewsLimit1">
 												<a tal:attributes="href News/getURLRead" tal:content="News/getTitleReduce"/>
 											</li>

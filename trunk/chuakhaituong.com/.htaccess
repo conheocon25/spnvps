@@ -54,10 +54,10 @@ RewriteRule ^chua-ban/([a-z0-9_-]+)$ 								?cmd=Pagoda&KPagoda=$1 [L]
 RewriteRule ^chua-ban/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=Pagoda&KPagoda=$1&KVideoPagoda=$2 [L]
 
 RewriteRule ^hoi-dap$ 												?cmd=Ask [L]
+RewriteRule ^hoi-dap/dat-cau-hoi$ 									?cmd=AskInsLoad [L]
+RewriteRule ^hoi-dap/dat-cau-hoi/exe$ 								?cmd=AskInsExe [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)$ 								?cmd=Ask&KCategory=$1 [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=Ask&KCategory=$1&KAsk=$2 [L]
-RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi$ 					?cmd=AskInsLoad&KCategory=$1 [L]
-RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi/exe$ 				?cmd=AskInsExe&KCategory=$1 [L]
 
 RewriteRule ^dao-tao$ 												?cmd=Course [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]
