@@ -26,22 +26,20 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
-			$PagodaAll = $mPagoda->findAll();
-			
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
-
+			$PagodaAll = $mPagoda->findAll();			
 			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$Tracking = $mTracking->find($IdTracking);
 			$MonkAll = $mMonk->findVIP(null);
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("bao-cao");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("Event", $Event);
-			$request->setObject("Course", $Course);
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("TrackingAll", $TrackingAll);

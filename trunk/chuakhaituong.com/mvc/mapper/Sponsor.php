@@ -13,6 +13,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, type, `key`) values(?, ?, ?, ?, ?, ?)", $tblSponsor);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblSponsor);
 		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC LIMIT :start,:max", $tblSponsor);
+		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblSponsor);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -20,6 +21,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
     }
 	
     function getCollection( array $raw ) {return new SponsorCollection( $raw, $this );}
@@ -74,6 +76,16 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new SponsorCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
     }
 }
 ?>

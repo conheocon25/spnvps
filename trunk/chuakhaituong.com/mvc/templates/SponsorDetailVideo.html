@@ -15,6 +15,7 @@
 		</style>
 	</head>	
 	<body>
+		<div metal:use-macro="macros.xhtml/Popup" />
 		<div id="wrapper">
 			<div metal:use-macro="macros.xhtml/Header" />
 			<div id="main">				
@@ -23,11 +24,11 @@
 					<div class="news-box">
 						<div class="box-title">
 							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="php:'ĐANG PHÁT ' . VideoSponsor->getVideo()->getName()" />
+							<span tal:content="php:'ĐANG PHÁT ' . Video->getName()" />
 						</div>					
 						<div style="padding:10px;">
 							<div align="center" class="video-screen">
-								<iframe width="450" height="350" tal:attributes="src VideoSponsor/getVideo/getURL" frameborder="0"></iframe>
+								<iframe width="450" height="350" tal:attributes="src Video/getURL" frameborder="0"></iframe>
 								<script>
 									/*<![CDATA[*/
 									$("iframe").each(function(){
@@ -39,9 +40,9 @@
 								</script>
 							</div>
 							<div class="video-info">
-								<div class="name" tal:content="VideoSponsor/getVideo/getName" />								
+								<div class="name" tal:content="Video/getName" />								
 								<div class="view">
-									<span tal:content="VideoSponsor/getVideo/getCountPrint"/> lượt xem
+									<span tal:content="Video/getCountPrint"/> lượt xem
 								</div>
 								<div class="clear" />
 							</div>
@@ -93,8 +94,7 @@
 				</div>
 				<div id="sidebar">
 					<div metal:use-macro="macros.xhtml/TaskBox"/>
-						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<div metal:use-macro="macros.xhtml/CourseBox"/>
+						<div metal:use-macro="macros.xhtml/EventBox"/>						
 						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
 						<div metal:use-macro="macros.xhtml/PictureBox"/>
 						<div metal:use-macro="macros.xhtml/TopNewsBox"/>

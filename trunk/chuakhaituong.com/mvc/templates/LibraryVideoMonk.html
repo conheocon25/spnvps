@@ -19,6 +19,7 @@
 
 	<body>
 		<div id="fb-root"/>
+		<div metal:use-macro="macros.xhtml/Popup" />
 		<div class="container">
 			<div metal:use-macro="macros.xhtml/Header"/>
 			<div class="main row">
@@ -65,6 +66,13 @@
 										</a>
 									</li>
 								</ul>
+								<div class="pagination">
+									<ul>
+										<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
+											<a tal:attributes="href P/getURL" tal:content="P/getName" />
+										</li>
+									</ul>
+								</div>
 							</div>
 						</div>
 					</div>

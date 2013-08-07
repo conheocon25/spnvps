@@ -19,6 +19,7 @@
 
 	<body>
 		<div id="fb-root"/>
+		<div metal:use-macro="macros.xhtml/Popup" />
 		<div class="container">
 			<div metal:use-macro="macros.xhtml/Header"/>
 			<div class="main row">
@@ -38,7 +39,7 @@
 								<div class="b-t-icon-content">Sự kiện</div>
 							</div>
 							<div class="b-content">
-								<div tal:repeat="EV Events"  class="media img-polaroid">
+								<div tal:repeat="EV EventAll"  class="media img-polaroid">
 									<a tal:attributes="href EV/getURLRead" class="pull-left">
 										<img tal:attributes="src EV/getImage" class="media-object img-rounded" style="height:150px;width:200px;"/>
 									</a>
@@ -68,9 +69,7 @@
 				</div>
 				<div class="sidebar span5">
 					<div class="wraper">
-						<div metal:use-macro="macros.xhtml/TaskBox"/>
-						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<div metal:use-macro="macros.xhtml/CourseBox"/>
+						<div metal:use-macro="macros.xhtml/TaskBox"/>						
 						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
 						<div metal:use-macro="macros.xhtml/PictureBox"/>
 						<div metal:use-macro="macros.xhtml/TopNewsBox"/>

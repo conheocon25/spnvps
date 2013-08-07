@@ -21,31 +21,30 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Events = $mEvent->findAll();
-			$EventsNear = $mEvent->findByNear(null);
-			$EventsFinish = $mEvent->findByFinish(null);
+			$EventAll = $mEvent->findAll();
+			
 			$Categories = $mCategoryNews->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();
-						
-			$Event = $mEvent->findByKey($KEvent);
-			
-			
-			//$Event = $mEvent->findTop(null)->current();
+			$SponsorAll = $mSponsor->findAll();								
+									
 			$Course = $mCourse->findByNear(null)->current();
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$MonkAll = $mMonk->findVIP(null);
 			
+			$Event = $mEvent->findByKey($KEvent);
+			$Popup = $mPopup->findByName("su-kien");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Event", $Event);
-			$request->setObject("Events", $Events);
+			$request->setObject("EventAll", $EventAll);
 			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
@@ -56,8 +55,6 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("MonkAll", $MonkAll);
-			
-			$request->setObject("Course", $Course);			
 			
 			$request->setProperty("ActiveItem", 'Event');
 						
