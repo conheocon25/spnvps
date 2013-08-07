@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class Event extends Command {
+	class CourseDetail extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,63 +11,52 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdEvent = $request->getProperty('IdEvent');
+			$KCourse = $request->getProperty('KCourse');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
 			include("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Events = $mEvent->findAll();
-			$EventsNear = $mEvent->findByNear(null);
-			$EventsFinish = $mEvent->findByFinish(null);
-			$Categories = $mCategoryNews->findAll();
+			//-------------------------------------------------------------
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryVideo = $mCategoryVideo->findAll()->current();
+									
+			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
+			$Courses = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Event = $EventsNear->current();
+			$Event = $mEvent->findByNear(null)->current();
+			$Course = $mCourse->findByKey($KCourse);
 			
-			if (isset($IdEvent)){
-				$EventRead = $mEvent->find($IdEvent);
-			}else{
-				$EventRead = $EventsNear->current();
-			}
-			
-			//$Event = $mEvent->findTop(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
-			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("Events", $Events);
-			$request->setObject("Event", $Event);
-			$request->setObject("EventRead", $EventRead);
-			$request->setObject("EventsNear", $EventsNear);
-			$request->setObject("EventsFinish", $EventsFinish);
+			//-------------------------------------------------------------
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
+			$request->setObject("CategoryVideo", $CategoryVideo);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
+			$request->setObject("Event", $Event);
+			$request->setObject("Course", $Course);
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("Courses", $Courses);
+			$request->setObject("AskAll", $AskAll);
+			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("MonkAll", $MonkAll);
 			
-			$request->setObject("Course", $Course);			
+			$request->setProperty("ActiveItem", 'Course');
 			
-			$request->setProperty("ActiveItem", 'Event');
-						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

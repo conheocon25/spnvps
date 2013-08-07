@@ -35,36 +35,29 @@
 						
 						<div class="box">
 							<div class="b-title">
-								<div class="b-t-icon-content">Khóa học</div>
+								<div tal:content="EventRead/getTitle" class="b-t-icon-content"/>
 							</div>
 							<div class="b-content">
-								<div tal:repeat="CO Courses"  class="media img-polaroid">
-									<a tal:attributes="href CO/getURLRead" class="pull-left">
-										<img tal:attributes="src CO/getImage" class="media-object img-rounded" style="height:150px;width:200px;"/>
-									</a>
-									<div class="media-body">
-										<a tal:attributes="href CO/getURLRead">
-											<h4 tal:content="CO/getName" class="media-heading"/>
-										</a>
-										<p>Ngày bắt đầu: <span tal:content="CO/getDateStart"/></p>
-										<p>Ngày kết thúc: <span tal:content="CO/getDateEnd"/></p>
-										<p>Nội dung tóm tắt</p>
-										<p>Nội dung tóm tắt</p>
-										<p>Nội dung tóm tắt</p>
-									</div>
-								</div>
-								<!--
-								<div class="pagination">
-									<ul>
-										<li tal:repeat="P PN/getPages">
-											<a tal:attributes="href P/getURL" tal:content="P/getName" />
-										</li>
-									</ul>
-								</div>
-								-->
+								<div tal:content="structure EventRead/getContent"/>
 							</div>
 						</div>
-
+						
+						<div class="box">
+							<div class="b-title">
+								<div class="b-t-icon-content">Sự kiện khác</div>
+							</div>
+							<div class="b-content">
+								<ul class="news-box-list">
+									<li tal:repeat="EV Events">
+										<a tal:attributes="href EV/getURLRead">
+											<span tal:content="EV/getTitle"/>
+										</a>
+										(<i tal:content="EV/getDatePrint"/>)
+									</li>
+								</ul>
+							</div>
+						</div>
+						
 					</div>
 				</div>
 				<div class="sidebar span5">
@@ -101,7 +94,7 @@
 							</div>
 						</div>						
 						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<!--<div metal:use-macro="macros.xhtml/CourseBox"/>-->
+						<div metal:use-macro="macros.xhtml/CourseBox"/>
 						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
 						<div metal:use-macro="macros.xhtml/PictureBox"/>
 						<div metal:use-macro="macros.xhtml/TopNewsBox"/>

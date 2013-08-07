@@ -39,15 +39,18 @@
 								<div class="b-t-icon-content">Tiêu điểm</div>
 							</div>
 							<div class="b-content">
+								<!--
 								<div class="top-pic-banner" tal:condition="Course">
 									<a tal:attributes="href Course/getURLRead">
 										<img tal:attributes="src Course/getImage" class="img-polaroid"/>
 										<div class="p-b-title" tal:content="Course/getName"/>
 									</a>
 								</div>
+								-->
 								<!--
 								<iframe width="560" height="315" src="//www.youtube.com/embed/sgRmFIWAeRA?list=PLCC97EF2EF9AA2638" frameborder="0" ></iframe>
 								!-->
+								<!--
 								<script type='text/javascript' src='http://player.longtailvideo.com/jwplayer.js'></script>
 								<div id='mediaspace'>This text will be replaced</div>
 
@@ -60,6 +63,34 @@
 									'height': '320'
 								  });
 								</script>
+								-->
+								<div id="myCarousel2" class="carousel slide carousel-fade">
+									<ol class="carousel-indicators">
+										<li data-target="#myCarousel2" data-slide-to="0" class="active"></li>
+										<li data-target="#myCarousel2" data-slide-to="1"></li>
+									</ol>
+									<div class="carousel-inner">
+										<div class="active item">
+											<a tal:attributes="href Course/getLessions/current/getURLRead">
+												<img tal:attributes="src Course/getLessions/current/getImage" style="height:180px !important;"/>
+												<div class="carousel-caption">
+													<p tal:content="Course/getLessions/current/getName" />
+												</div>
+											</a>
+										</div>
+										<div tal:repeat="Lession Course/getLessions" class="item">
+											<a tal:attributes="href Lession/getURLRead">
+												<img tal:attributes="src Lession/getImage" style="height:180px !important;"/>
+												<div class="carousel-caption">
+													<p tal:content="Lession/getName" />
+												</div>
+											</a>
+										</div>
+									</div>
+									<a class="carousel-control left" href="#myCarousel2" data-slide="prev">&lsaquo;</a>
+									<a class="carousel-control right" href="#myCarousel2" data-slide="next">&rsaquo;</a>
+								</div>
+								
 								<!--
 								<div class="list-picture" tal:condition="Course">																
 									<div class="grid-left parent" tal:condition="Course/getLessionNear">

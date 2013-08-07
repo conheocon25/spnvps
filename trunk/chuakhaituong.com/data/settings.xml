@@ -27,6 +27,7 @@
 		<command name="SponsorDetailVideo" type="public"><view>SponsorDetailVideo</view></command>
 		
 		<command name="Event" type="public"><view>Event</view></command>
+		<command name="EventDetail" type="public"><view>EventDetail</view></command>
 		<command name="Pagoda" type="public"><view>Pagoda</view></command>
 		<command name="Ads" type="public"><view>Ads</view></command>
 				
@@ -45,6 +46,7 @@
 		<command name="AskInsExe" type="public"><view>AskInsExe</view><status value="CMD_OK"><forward>Ask</forward></status></command>
 		
 		<command name="Course" type="public"><view>Course</view></command>
+		<command name="CourseDetail" type="public"><view>CourseDetail</view></command>
 		<command name="CourseLession" type="public"><view>CourseLession</view></command>
 		
 		<!-- ============================================================================== -->

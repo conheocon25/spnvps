@@ -35,38 +35,32 @@
 						
 						<div class="box">
 							<div class="b-title">
-								<div tal:content="EventRead/getTitle" class="b-t-icon-content"/>
+								<div class="b-t-icon-content">Sự kiện</div>
 							</div>
 							<div class="b-content">
-								<div style="font-size:15px; color:#980707; margin:10px;" tal:content="structure EventRead/getContent"/>
-								<div class="news-box-sub-title">Sự kiện sắp xảy ra</div>						
-								<ul class="news-box-list">
-									<li tal:repeat="Event EventsNear">									
-										<a tal:attributes="href Event/getURLRead">
-											<span tal:content="Event/getTitle" />
+								<div tal:repeat="EV Events"  class="media img-polaroid">
+									<a tal:attributes="href EV/getURLRead" class="pull-left">
+										<img tal:attributes="src EV/getImage" class="media-object img-rounded" style="height:150px;width:200px;"/>
+									</a>
+									<div class="media-body">
+										<a tal:attributes="href EV/getURLRead">
+											<h4 tal:content="EV/getTitle" class="media-heading"/>
 										</a>
-										(<span tal:content="Event/getDatePrint" />)
-									</li>
-								</ul>
-								
-								<div class="news-box-sub-title">Sự kiện đã xảy ra</div>
-								<ul class="news-box-list">
-									<li tal:repeat="Event EventsFinish">									
-										<a tal:attributes="href Event/getURLRead">
-											<span tal:content="Event/getTitle" />
-										</a>
-										(<span tal:content="Event/getDatePrint" />)
-									</li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">SẮP CÓ SỰ KIỆN</div>
-							</div>
-							<div class="b-content">
-								
+										<p>(<span tal:content="EV/getDatePrint"/>)</p>
+										<p>Nội dung tóm tắt</p>
+										<p>Nội dung tóm tắt</p>
+										<p>Nội dung tóm tắt</p>
+									</div>
+								</div>
+								<!--
+								<div class="pagination">
+									<ul>
+										<li tal:repeat="P PN/getPages">
+											<a tal:attributes="href P/getURL" tal:content="P/getName" />
+										</li>
+									</ul>
+								</div>
+								-->
 							</div>
 						</div>
 

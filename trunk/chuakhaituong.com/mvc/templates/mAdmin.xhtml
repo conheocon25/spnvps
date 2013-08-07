@@ -74,7 +74,7 @@
 	</div>
 							
 	<div metal:define-macro="Menu" class="menu">
-		<ul class="nav nav-list">
+		<ul class="nav nav-list config-number">
 			<li class="nav-header">DANH MỤC</li>
 			<li tal:attributes="class php:ActiveAdmin=='Paid'?'active':'disable'">
 				<a tal:attributes="href '/app/category/paid'">KHOẢN CHI <span class="badge badge-info pull-right" tal:content="CategoryPaidAll/count"/></a>

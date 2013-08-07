@@ -40,19 +40,19 @@
 							</div>
 							<div class="b-content">
 								
-								<div tal:repeat="News NewsAll" class="media">
+								<div tal:repeat="News NewsAll" class="media img-polaroid">
 									<a tal:attributes="href News/getURLRead" class="pull-left">
-										<img tal:attributes="src News/getImage" width="150px" class="media-object img-polaroid"/>
+										<img tal:attributes="src News/getImage" width="150px" class="media-object img-rounded"/>
 									</a>
 									<div class="media-body">
 										<a tal:attributes="href News/getURLRead">
 											<h4 tal:content="News/getTitle" class="media-heading"/>
-											<p tal:content="structure News/getContentReduce"/>
-											<p>(<span tal:content="News/getDatePrint"/>)</p>
 										</a>
-										<a href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank">
-											<p>Chia sẻ</p>
-										</a>
+										<p tal:content="structure News/getContentReduce"/>
+										<p>(<span tal:content="News/getDatePrint"/>)</p>
+										
+										<a class="label label-info" href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank">Chia sẻ</a>
+										<a class="label label-info" href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank">Thích</a>
 									</div>
 								</div>
 								<div class="pagination">

@@ -35,33 +35,26 @@
 						
 						<div class="box">
 							<div class="b-title">
-								<div class="b-t-icon-content">Khóa học</div>
+								<div tal:content="Course/getName" class="b-t-icon-content"/>
 							</div>
 							<div class="b-content">
-								<div tal:repeat="CO Courses"  class="media img-polaroid">
-									<a tal:attributes="href CO/getURLRead" class="pull-left">
-										<img tal:attributes="src CO/getImage" class="media-object img-rounded" style="height:150px;width:200px;"/>
-									</a>
-									<div class="media-body">
-										<a tal:attributes="href CO/getURLRead">
-											<h4 tal:content="CO/getName" class="media-heading"/>
+								<div tal:content="structure Course/getDescription"/>
+							</div>
+						</div>
+						
+						<div class="box">
+							<div class="b-title">
+								<div class="b-t-icon-content">Các bài học</div>
+							</div>
+							<div class="b-content">
+								<ul class="news-box-list">
+									<li tal:repeat="LS Course/getLessions">
+										<a tal:attributes="href LS/getURLRead">
+											<span tal:content="LS/getName"/>
 										</a>
-										<p>Ngày bắt đầu: <span tal:content="CO/getDateStart"/></p>
-										<p>Ngày kết thúc: <span tal:content="CO/getDateEnd"/></p>
-										<p>Nội dung tóm tắt</p>
-										<p>Nội dung tóm tắt</p>
-										<p>Nội dung tóm tắt</p>
-									</div>
-								</div>
-								<!--
-								<div class="pagination">
-									<ul>
-										<li tal:repeat="P PN/getPages">
-											<a tal:attributes="href P/getURL" tal:content="P/getName" />
-										</li>
-									</ul>
-								</div>
-								-->
+										(<i tal:content="LS/getDateStartPrint"/> - <i tal:content="LS/getDateEndPrint"/>)
+									</li>
+								</ul>
 							</div>
 						</div>
 

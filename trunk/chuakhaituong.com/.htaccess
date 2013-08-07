@@ -42,7 +42,7 @@ RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
 RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]
 
 RewriteRule ^su-kien$ 												?cmd=Event [L]
-RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=Event&KEvent=$1 [L]
+RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=EventDetail&KEvent=$1 [L]
 
 RewriteRule ^tin-tuc$ 												?cmd=ReadCategory [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
@@ -60,7 +60,7 @@ RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi$ 					?cmd=AskInsLoad&KCategory=$
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi/exe$ 				?cmd=AskInsExe&KCategory=$1 [L]
 
 RewriteRule ^dao-tao$ 												?cmd=Course [L]
-RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=Course&KCourse=$1 [L]
+RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCourse=$1&KLession=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
