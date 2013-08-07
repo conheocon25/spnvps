@@ -38,15 +38,18 @@
 								<div tal:content="Title" class="b-t-icon-content"/>
 							</div>
 							<div class="b-content">
-								<div tal:repeat="Sponsor SponsorAll" style="padding:10px;">
-									<div width="620px" >
-										<img align="left" class="news-img" src="/data/images/sponsor_logo.gif" />
-										<span align="left" style="text-align:justify;">
-											<div class="news-title"><a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"/></div>
-											(<span tal:content="Sponsor/getTimeStartPrint"/>)
-										</span>
+								<div tal:repeat="Sponsor SponsorAll" class="media img-polaroid">
+									<a tal:attributes="href Sponsor/getURLView" class="pull-left">
+										<img src="/data/images/sponsor_logo.gif" width="80px" class="media-object img-rounded"/>
+									</a>
+									<div class="media-body">
+										<a tal:attributes="href Sponsor/getURLView">
+											<h5 tal:content="Sponsor/getName" class="media-heading"/>
+										</a>
+										(<span tal:content="Sponsor/getTimeStartPrint"/>)
 									</div>
 								</div>
+								
 							</div>
 						</div>
 						

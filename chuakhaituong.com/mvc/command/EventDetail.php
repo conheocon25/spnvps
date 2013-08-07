@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class Event extends Command {
+	class EventDetail extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdEvent = $request->getProperty('IdEvent');
+			$IdEvent = $request->getProperty('KEvent');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

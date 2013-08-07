@@ -37,10 +37,12 @@
 								<div class="b-t-icon-content">Chuyên Đề</div>
 							</div>
 							<div class="b-content">
-								<ul>								
-									<a tal:repeat="Category CategoryBType/getCategoryAll" tal:attributes="href Category/getURLRead">
-										<li><span tal:content="Category/getName" /> (<span tal:content="Category/getVLs/count" />) </li>
-									</a>
+								<ul class="nav nav-tabs nav-stacked">
+									<li tal:repeat="Category CategoryBType/getCategoryAll">
+										<a tal:attributes="href Category/getURLRead">
+											<span tal:content="Category/getName" /> (<span tal:content="Category/getVLs/count" />)
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -137,15 +139,13 @@
 								<div class="b-t-icon-content">Giảng sư</div>
 							</div>
 							<div class="b-content">
-								<ul>
-									<a tal:repeat="Monk CategoryBType/getMonkAll" tal:attributes="href Monk/getURLRead">
-										<li>
+								<ul class="nav nav-tabs nav-stacked">
+									<li tal:repeat="Monk CategoryBType/getMonkAll">
+										<a tal:attributes="href Monk/getURLRead">
+											<span class="icon-star" tal:condition="Monk/isVIP"/>
 											<span tal:content="Monk/getName" /> (<span tal:content="Monk/getVMs/count" />)
-											<span tal:condition="Monk/isVIP">
-												<img src="/data/images/vip.gif" border="0" width="20" style="position:absolute; margin-left:3px;" />
-											</span>
-										</li>
-									</a>
+										</a>
+									</li>
 								</ul>
 							</div>
 						</div>
