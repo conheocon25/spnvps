@@ -65,7 +65,7 @@
 										</tr>
 										<tr>
 											<td align="center" colspan="2">
-												<form class="form-editor" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action Category/getURLAskInsExe1" method="post">
+												<form class="form-editor" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="post">
 													<div class="row">
 														<div for="Author1" class="label">Họ & Tên</div>
 														<div class="textbox" >
@@ -130,12 +130,7 @@
 					</div>
 				</div>
 				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/BoxMonk"/>
+					<div metal:use-macro="macros.xhtml/EventBox"/>																			
 					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
 					<div metal:use-macro="macros.xhtml/AskBox"/>
 					<div metal:use-macro="macros.xhtml/CountBox"/>					

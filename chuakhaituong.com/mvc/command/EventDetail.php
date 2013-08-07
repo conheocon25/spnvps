@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdEvent = $request->getProperty('KEvent');
+			$KEvent = $request->getProperty('KEvent');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -30,14 +30,9 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
+						
+			$Event = $mEvent->findByKey($KEvent);
 			
-			$Event = $EventsNear->current();
-			
-			if (isset($IdEvent)){
-				$EventRead = $mEvent->find($IdEvent);
-			}else{
-				$EventRead = $EventsNear->current();
-			}
 			
 			//$Event = $mEvent->findTop(null)->current();
 			$Course = $mCourse->findByNear(null)->current();
@@ -49,11 +44,9 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("Events", $Events);
 			$request->setObject("Event", $Event);
-			$request->setObject("EventRead", $EventRead);
-			$request->setObject("EventsNear", $EventsNear);
-			$request->setObject("EventsFinish", $EventsFinish);
+			$request->setObject("Events", $Events);
+			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
