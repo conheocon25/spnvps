@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppMonkVideoYoutubeUpdExe extends Command{
+	class AppCategoryVideoDetailYoutubeUpdExe extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$IdMonk = $request->getProperty('IdMonk');
+			$IdCategory = $request->getProperty('IdCategory');
 			$Type = $request->getProperty('Type');
 			$IdPlaylist = $request->getProperty('URL');
 						
@@ -19,18 +19,17 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------												
 			$mVideo = new \MVC\Mapper\Video();
-			$mVideoMonk = new \MVC\Mapper\VideoMonk();
+			$mVideoLibrary = new \MVC\Mapper\VideoLibrary();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			if ($Type == "on"){
-				$mVideoMonk->deleteByMonk(array($IdMonk));
+				$mVideoLibrary->deleteByCategory(array($IdCategory));
 			}
 			
-			$Index = 0;			
+			$Index = 0;
 			$URLPlayList = 	"http://gdata.youtube.com/feeds/api/playlists/".$IdPlaylist."?v=2";
-						
 			
 			$data = file_get_contents($URLPlayList."&start-index=".($Index+1)."&max-results=50");
 			$xml = simplexml_load_string($data);
@@ -59,12 +58,12 @@
 					$Video->reKey();
 					
 					$mVideo->insert($Video);
-					$VM = new \MVC\Domain\VideoMonk(
+					$VL = new \MVC\Domain\VideoLibrary(
 						null,
 						$Video->getId(),
-						$IdMonk				
+						$IdCategory				
 					);
-					$mVideoMonk->insert($VM);
+					$mVideoLibrary->insert($VL);
 				}
 				
 				$Index += 50;
