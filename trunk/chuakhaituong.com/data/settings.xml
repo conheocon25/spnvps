@@ -187,13 +187,15 @@
 		<!-- ============================================================================== -->
 		<!-- APP.MONK.VIDEO																	-->
 		<!-- ============================================================================== -->
-		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>						
+		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>
 		<command name="AppMonkVideoInsLoad"><view>AppMonkVideoInsLoad</view></command>
 		<command name="AppMonkVideoInsExe"><view>AppMonkVideoInsExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>		
 		<command name="AppMonkVideoUpdLoad"><view>AppMonkVideoUpdLoad</view></command>
 		<command name="AppMonkVideoUpdExe"><view>AppMonkVideoUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>		
 		<command name="AppMonkVideoDelLoad"><view>AppMonkVideoDelLoad</view></command>
 		<command name="AppMonkVideoDelExe"><view>AppMonkVideoDelExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
+		<command name="AppMonkVideoYoutubeUpdLoad"><view>AppMonkVideoYoutubeUpdLoad</view></command>
+		<command name="AppMonkVideoYoutubeUpdExe"><view>AppMonkVideoYoutubeUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.ASK																-->
