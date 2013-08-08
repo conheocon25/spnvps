@@ -145,6 +145,14 @@
 		.box .b-content {
 			background-color: white;
 		}
+		
+		.padding-content {
+			padding: 10px;
+		}
+		
+		.page-number {
+			margin: 10px 0 0 0 !important;
+		}
 	
 	/* ======================================================================== */
 	/* FADE CAROUSEL															*/
@@ -348,6 +356,33 @@
 			text-align: justify;
 		}
 	
+	.new-list-polaroid {
+		text-align: justify;
+		line-height: 15px !important;
+	}
+
+		.new-list-polaroid img {
+			width: 250px !important;
+			height: 200px !important;
+		}
+		
+		.new-list-polaroid .media-heading {
+			font-size: 13px;
+			height: 40px;
+			overflow: hidden;
+		}
+		
+		.new-list-polaroid .media-time {
+			color: #696969;
+		}
+		
+		.new-list-polaroid .media-reduce {
+			font-size: 12px;
+			line-height: 18px !important;
+			height: 85px;
+			overflow: hidden;
+		}
+	
 	.news-slide {
 		margin-top: 10px !important;
 		margin-left: 10px !important;
@@ -411,6 +446,35 @@
 		padding-top: 10px;
 		color: #823918;
 	}
+	
+	.news-content .page-header {
+		padding-bottom: 20px !important;
+		margin-bottom: 10px !important;
+	}
+	
+	.news-content .news-main {
+		text-align: justify !important;
+	}
+	
+	.news-content .news-author {
+		border-top: 1px solid #823918;
+		border-bottom: 1px solid #823918;
+		text-align: right;
+		font-weight: bold;
+		padding-top: 5px;
+		padding-bottom: 5px;
+		padding-right: 10px;
+		background-color: #DDC398;
+		margin-bottom: 10px;
+		margin-left: -10px;
+		margin-right: -10px;
+		color: #823918;
+	}
+	
+	.news-content .news-tools a {
+		margin-left: 10px !important;
+	}
+
 
 	/*
 	.row,
