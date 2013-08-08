@@ -191,6 +191,9 @@ RewriteRule ^app/category/video/([0-9]+)/del/load$ 				?cmd=AppCategoryVideoDelL
 RewriteRule ^app/category/video/([0-9]+)/del/exe$ 				?cmd=AppCategoryVideoDelExe&IdCategory=$1 [L]
 
 RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
+RewriteRule ^app/category/video/([0-9]+)/youtube/upd/load$ 		?cmd=AppCategoryVideoDetailYoutubeUpdLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/video/([0-9]+)/youtube/upd/exe$ 		?cmd=AppCategoryVideoDetailYoutubeUpdExe&IdCategory=$1 [L]
+
 RewriteRule ^app/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/load$ 				?cmd=AppCategoryVideoDetailInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/exe$ 				?cmd=AppCategoryVideoDetailInsExe&IdCategory=$1 [L]

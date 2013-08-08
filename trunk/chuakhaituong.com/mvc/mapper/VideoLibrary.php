@@ -15,6 +15,8 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$updateStmt = sprintf("update %s set id_video=?, id_category=? where id=?", $tblVideoLibrary);
 		$insertStmt = sprintf("insert into %s ( id_video, id_category)  values(?, ?)", $tblVideoLibrary);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoLibrary);
+		$deleteByCategoryStmt = sprintf("delete from %s where id_category=?", $tblVideoLibrary);
+		
 		$findByStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoLibrary, $tblVideo);
 		$findByTopStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 1", $tblVideoLibrary, $tblVideo);
 		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
@@ -33,6 +35,8 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
+		
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);
@@ -79,12 +83,13 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         return $this->deleteStmt->execute( $values );
     }
 
-    function selectStmt() {
-        return $this->selectStmt;
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt(){return $this->selectAllStmt;}
+	
+	function deleteByCategory(array $values) {
+        return $this->deleteByCategoryStmt->execute( $values );
     }
-    function selectAllStmt(){
-        return $this->selectAllStmt;
-    }
+	
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
         return new VideoLibraryCollection( $this->findByStmt->fetchAll(), $this);

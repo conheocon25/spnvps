@@ -250,6 +250,9 @@
 		<!-- ============================================================================== -->
 		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>
 		
+		<command name="AppCategoryVideoDetailYoutubeUpdLoad"><view>AppCategoryVideoDetailYoutubeUpdLoad</view></command>
+		<command name="AppCategoryVideoDetailYoutubeUpdExe"><view>AppCategoryVideoDetailYoutubeUpdExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		
 		<command name="AppCategoryVideoDetailInsLoad"><view>AppCategoryVideoDetailInsLoad</view></command>
 		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
 		
