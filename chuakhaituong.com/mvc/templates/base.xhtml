@@ -25,8 +25,8 @@
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery.countdown.css"/> 
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css"/>
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css"/>	
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.min.css" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/khaituongpagoda.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/base.css"/>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -38,46 +38,57 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.min.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/facebook.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- HEADER																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="Header" class="header">
-		<div class="banner">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="Chùa Khải Tường" height="300" width="1000">
-				<param name="movie" value="/data/images/banner.swf" />
-				<param name="quality" value="high" />
-				<embed src="/data/images/banner.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="300" width="1000" />
-			</object>
+	<div metal:define-macro="Header" class="row reset-margin">
+		<div class="header">
+			<a href="/gate">
+				<object
+					classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+					codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
+					title="Chùa Khải Tường"
+					height="282" width="940">
+					<param name="movie" value="/data/images/banner.swf" />
+					<param name="quality" value="high" />
+					<embed
+						src="/data/images/banner.swf"
+						quality="high"
+						pluginspage="http://www.macromedia.com/go/getflashplayer"
+						type="application/x-shockwave-flash"
+						height="282" width="940" />
+				</object>
+			</a>
 		</div>
-		<div class="menu">
-			<ul class="top-nav clearfix">
+		<div class="top-menu">
+			<ul class="nav nav-pills">
 				<li tal:attributes="class php:ActiveItem=='Home'?'active':'?'"><a href="/trang-chu">Trang chủ</a></li>
 				<li tal:attributes="class php:ActiveItem=='Introduction'?'active':'?'" ><a href="/gioi-thieu">Giới thiệu</a></li>
-				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'active':'?'">
-					<a style="cursor:pointer;">Tin tức</a>
-					<ul class="sub-menu">
+				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Tin tức <b class="caret"/></a>
+					<ul class="dropdown-menu">
 						<li tal:repeat="Category CategoryNewsAll">
-							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"/>
 						</li>
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Course'?'active':'?'" ><a href="/dao-tao">Đào tạo</a></li>
 				<li tal:attributes="class php:ActiveItem=='Event'?'active':'?'" ><a href="/su-kien">Sự kiện</a></li>
-				<li tal:attributes="class php:ActiveItem=='Ask'?'active':'?'">
-					<a style="cursor:pointer;">PHẬT ÂM</a>
-					<ul class="sub-menu">						
+				<li tal:attributes="class php:ActiveItem=='Ask'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">PHẬT ÂM <b class="caret"/></a>
+					<ul class="dropdown-menu">
 						<li tal:repeat="Category CategoryBTypeAll">
 							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . '(' . Category->getVideoAllCountPrint() . ')'" />
 						</li>
 					</ul>
 				</li>
-				<li tal:attributes="class php:ActiveItem=='Ask'?'active':'?'">
-					<a style="cursor:pointer;">Hỏi đáp</a>
-					<ul class="sub-menu">
+				<li tal:attributes="class php:ActiveItem=='Ask'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Hỏi đáp <b class="caret"/></a>
+					<ul class="dropdown-menu">
 						<li>
 							<a tal:attributes="href '/hoi-dap/dat-cau-hoi'">Đặt câu hỏi</a>
 						</li>
@@ -87,32 +98,32 @@
 					</ul>
 				</li>	
 				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
-				<li tal:attributes="class php:ActiveItem=='Pagoda'?'active':'?'" >
-					<a style="cursor:pointer;">Danh bạ Chùa</a>
-					<ul class="sub-menu">
+				<li tal:attributes="class php:ActiveItem=='Pagoda'?'active dropdown':'dropdown'" >
+					<a class="dropdown-toggle" data-toggle="dropdown">Danh bạ Chùa <b class="caret"/></a>
+					<ul class="dropdown-menu">
 						<li tal:repeat="Pagoda PagodaAll">
 							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
 						</li>
 					</ul>
 				</li>
-				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active':'?'">
-					<a href="/so-vang" style="cursor:pointer;">Sổ vàng</a>
-					<ul class="sub-menu">
+				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Từ thiện <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="/so-vang">Sổ vàng</a></li>
 						<li tal:repeat="Sponsor SponsorAll">
 							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
 						</li>
 					</ul>
 				</li>
-				<li id="last" tal:attributes="class php:ActiveItem=='Contact'?'active':'?'">
-					<a href="/lien-he">Liên hệ</a>
-				</li>
+				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
 		</div>
 	</div>
+	
 	<!-- ======================================================================== -->
-	<!-- LỊCH CÔNG TÁC											  -->
+	<!-- LỊCH CÔNG TÁC															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="TaskBox" class="box">
+	<div metal:define-macro="TaskBox" class="box radius">
 		<div class="b-title"><div class="b-t-icon-content">Các hoạt động</div></div>
 		<div class="b-content">
 			<div class="g4"><div id="eventCalendarLocale" /></div>
@@ -139,15 +150,16 @@
 			</script>
 		</div>
 	</div>
+	
 	<!-- ======================================================================== -->
 	<!-- PHẬT ÂM 																  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="BuddhaBox" class="box">
+	<div metal:define-macro="BuddhaBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Phật Âm</div>
 		</div>
 		<div class="b-content">
-			<div id="BuddhaCarousel" class="carousel slide carousel-fade">
+			<div id="BuddhaCarousel" class="carousel slide carousel-fade sidebar-slide reset-margin">
 				<ol class="carousel-indicators">
 					<li data-target="#BuddhaCarousel" data-slide-to="0" class="active"></li>
 					<li data-target="#BuddhaCarousel" data-slide-to="1"></li>
@@ -155,12 +167,12 @@
 				<div class="carousel-inner">
 					<div class="active item">
 						<a href="/library/video/1">
-							<img width="100%" src="/data/images/bac_tong.jpg" />
+							<img src="/data/images/bac_tong.jpg" />
 						</a>
 					</div>
 					<div class="item">
 						<a href="/library/video/2">
-							<img width="100%" src="/data/images/nam_tong.jpg" />
+							<img src="/data/images/nam_tong.jpg" />
 						</a>
 					</div>
 				</div>
@@ -173,7 +185,7 @@
 	<!-- ======================================================================== -->
 	<!-- ẢNH HOẠT ĐỘNG															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="PictureBox" class="box">
+	<div metal:define-macro="PictureBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Ảnh Hoạt Động</div>
 		</div>
@@ -187,16 +199,16 @@
 	<!-- ======================================================================== -->
 	<!-- TIN TỨC MỚI CẬP NHẬT													  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="TopNewsBox" class="box">
+	<div metal:define-macro="TopNewsBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Tin tức nổi bật</div>
 		</div>
 		<div class="b-content">
-			<div id="BoxNewsCarousel" class="carousel slide">
+			<div id="BoxNewsCarousel" class="carousel slide sidebar-slide reset-margin">
 				<div class="carousel-inner">
 					<div class="active item">
 						<a tal:attributes="href PanelNewsAll/current/getNews/getURLRead">
-							<img width="100%" tal:attributes="src PanelNewsAll/current/getNews/getImage" style="height:335px;"/>
+							<img tal:attributes="src PanelNewsAll/current/getNews/getImage"/>
 							<div class="carousel-caption">
 								<p tal:content="PanelNewsAll/current/getNews/getTitle"/>
 							</div>
@@ -204,7 +216,7 @@
 					</div>
 					<div tal:repeat="TopNews PanelNewsAll" class="item">
 						<a tal:attributes="href TopNews/getNews/getURLRead">
-							<img width="100%" tal:attributes="src TopNews/getNews/getImage" style="height:335px;"/>
+							<img tal:attributes="src TopNews/getNews/getImage"/>
 							<div class="carousel-caption">
 								<p tal:content="TopNews/getNews/getTitle"/>
 							</div>
@@ -220,16 +232,16 @@
 	<!-- ======================================================================== -->
 	<!-- VIDEO MỚI CẬP NHẬT														  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="TopVideoBox" tal:repeat="Panel PanelCategoryVideoAll" class="box">
+	<div metal:define-macro="TopVideoBox" tal:repeat="Panel PanelCategoryVideoAll" class="box radius">
 		<div class="b-title">
 			<div tal:content="Panel/getName" class="b-t-icon-content" />
 		</div>
 		<div class="b-content">
-			<ul class="th-right thumbnails">
-				<li tal:repeat="Category Panel/getDetailAll" class="i-grid span2">
+			<ul class="grid-item-2 thumbnails reset-margin">
+				<li tal:repeat="Category Panel/getDetailAll" class="span2">
 					<a tal:attributes="href Category/getCategoryVideo/getURLRead">
 						<div class="thumbnail">
-							<img tal:attributes="src Category/getCategoryVideo/getPicture" width="100%" height="100%"/>
+							<img tal:attributes="src Category/getCategoryVideo/getPicture"/>
 							<p tal:content="Category/getCategoryVideo/getName"/>
 						</div>
 					</a>
@@ -241,16 +253,16 @@
 	<!-- ======================================================================== -->
 	<!-- GIẢNG SƯ NỔI BẬT														  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="TopMonkBox" class="box">
+	<div metal:define-macro="TopMonkBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">GIẢNG SƯ NỔI BẬT</div>
 		</div>
 		<div class="b-content">
-			<div id="myCarousel3" class="carousel slide">
+			<div id="myCarousel3" class="carousel slide sidebar-slide reset-margin">
 				<div class="carousel-inner">
 					<div class="active item">
 						<a tal:attributes="href MonkAll/current/getURLRead">
-							<img width="100%" style="height:335px;" tal:attributes="src MonkAll/current/getURLPic | string:/data/images/exit_picture.jpg"/>
+							<img tal:attributes="src MonkAll/current/getURLPic | string:/data/images/exit_picture.jpg"/>
 							<div class="carousel-caption">
 								<p tal:content="php:MonkAll->current()->getPreName() . ' ' . MonkAll->current()->getName() . ' ' . MonkAll->current()->getPagoda()"/>
 							</div>
@@ -258,7 +270,7 @@
 					</div>
 					<div tal:repeat="Monk MonkAll" class="item">
 						<a tal:attributes="href Monk/getURLRead">
-							<img width="100%" style="height:335px;" tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg"/>
+							<img tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg"/>
 							<div class="carousel-caption">
 								<p tal:content="php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()"/>
 							</div>
@@ -274,90 +286,39 @@
 	<!-- ======================================================================== -->
 	<!-- HỎI - ĐÁP PHẬT HỌC														  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="AskBox" class="box">
+	<div metal:define-macro="AskBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Hỏi & Đáp PHẬT HỌC</div>
 		</div>
 		<div class="b-content">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%"><tr>
-				<td width="50%" align="center">
-					<a href="/ask/1" style="color: #980707;">
-						<img src="/data/images/question_logo.jpg" width="120px" />
-					</a>
-				</td>
-				<td width="50%" align="center">
-					<a href="/ask/1" style="color: #980707; line-height:35px;">
-						<h3>Hỏi <small>& </small>Đáp</h3>
-						<h1>PHẬT HỌC</h1>
-					</a>
-				</td>
-			</tr></table>
+			<a href="/ask/1">
+				<img width="100%" src="/data/images/logo/question.jpg" />
+			</a>
 		</div>
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- THỐNG KÊ TRUY CẬP - ONLINE												  -->
+	<!-- FIXED FUNCTION															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="CountBox" class="box">
-		<div class="b-title">
-			<div class="b-t-icon-content">Trực tuyến</div>
-		</div>
-		<div class="b-content">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tr>
-					<td width="40%" align="center">
-						<a href="online" style="color: #980707;">
-							<img src="/data/images/online_logo.png" width="80px" />
-							<h4>Giao lưu trực tuyến</h4>
-						</a>
-					</td>
-					<td width="60%" align="left">
-						<div style="color:#980707; font-size:12px; margin-left:20px;">
-							<div style="text-align:center; font-size:12px;">Website được thành lập vào <b>12/2012</b></div>
-							<hr style="border-color:#980707; margin:5px;" />
-							<span><img src="/data/images/user_online_logo.png" /> <b>Online: </b></span>
-							<span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()" />
-							<br/>
-							<span><img src="/data/images/count_logo.gif" /> <b>Truy cập: </b></span>
-							<span tal:content="php:@\MVC\Library\Statistic::getCountPrint()" />
-							<span> lượt</span>
-						</div>
-					</td>
-				</tr>
-			</table>
-		</div>
-	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- FACEBOOK LIKE BOX														  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="FacebookLike" class="facebook-like-box">
-		<style>.facebook-like-box { position: fixed; left: 0; width: 65px; height: 70px; top: 50%; margin-top: -45px; background-color: rgba(0, 0, 0, .5); text-align: center; padding-top: 10px; padding-bottom: 10px; }</style>
+	<div metal:define-macro="FixedFunction" class="fixed-function">
 		<div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="https://www.facebook.com/ChuaKhaiTuong" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false" data-font="tahoma" fb-xfbml-state="rendered"></div>
+		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/>
+		<p class="bubble-item">Truy cập</p>
+		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/>
+		<p class="bubble-item">Trực tuyến</p>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- TRỢ DUYÊN - ỦNG HỘ														  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="SponsorBox" class="box">
+	<div metal:define-macro="SponsorBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Trợ Duyên</div>
 		</div>
 		<div class="b-content">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
-				<tr>
-					<td width="50%" align="center">
-						<a href="/sponsor" style="color: #980707;">
-							<img src="/data/images/sponsor_logo.gif" width="150px" />
-						</a>
-					</td>
-					<td width="50%" align="center">
-						<a href="/sponsor" style="color:#980707; line-height:40px;">
-							<h1>Sổ vàng công đức</h1>
-						</a>
-					</td>
-				</tr>
-			</table>
+			<a href="/sponsor">
+				<img width="100%" src="/data/images/logo/sponsor.jpg" />
+			</a>
 		</div>
 	</div>
 	
@@ -365,9 +326,6 @@
 	<!-- LIÊN HỆ																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="ContactBox" class="box">
-		<div class="b-title">
-			<div class="b-t-icon-content">Liên Hệ</div>
-		</div>
 		<div class="b-content">
 			<a href="/contact">
 				<img width="100%" src="/data/images/contact.jpg" />
@@ -378,7 +336,7 @@
 	<!-- ======================================================================== -->
 	<!-- LỊCH																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="CallendarBox" class="box">
+	<div metal:define-macro="CallendarBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
 		</div>
@@ -390,29 +348,29 @@
 	<!-- ======================================================================== -->
 	<!-- THANH TIÊU ĐỀ LỊCH DƯƠNG - ÂM											  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="DateTimeBox" id="date-time"><script type="text/javascript">getLunarDateString(09,11,2012,16,39,13);</script></div>
-	
-	<!-- ======================================================================== -->
-	<!-- MARQUEE TEXT															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="TextGo" class="marquee">
-		<marquee behavior="scroll" direction="left" scrollamount="1">
-			Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh đều trọn thành Phật Đạo.
-		</marquee>
+	<div metal:define-macro="CallendarBar" class="row reset-margin date-time">
+		<div id="date-time" class="span6 fix-width">
+			<script type="text/javascript">getLunarDateString(09,11,2012,16,39,13);</script>
+		</div>
+		<div class="span6 fix-width">
+			<marquee behavior="scroll" direction="left" scrollamount="1">
+				Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh đều trọn thành Phật Đạo.
+			</marquee>
+		</div>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- SỰ KIỆN																  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="EventBox" class="box">
+	<div metal:define-macro="EventBox" class="box radius">
 		<div class="b-title">
 			<div class="b-t-icon-content">Sự kiện gần đây</div>
 		</div>
-		<div id="BoxEventCarousel" class="carousel slide">
+		<div id="EventCarousel" class="carousel slide carousel-fade sidebar-slide reset-margin">
 			<div class="carousel-inner">
 				<div class="active item">
 					<a tal:attributes="href EventAll/current/getURLRead">
-						<img width="100%" tal:attributes="src EventAll/current/getImage" style="height:335px;"/>
+						<img width="100%" tal:attributes="src EventAll/current/getImage"/>
 						<div class="carousel-caption">
 							<p tal:content="EventAll/current/getTitle"/>
 						</div>
@@ -420,22 +378,22 @@
 				</div>
 				<div tal:repeat="Event EventAll" class="item">
 					<a tal:attributes="href Event/getURLRead">
-						<img width="100%" tal:attributes="src Event/getImage" style="height:335px;"/>
+						<img width="100%" tal:attributes="src Event/getImage"/>
 						<div class="carousel-caption">
 							<p tal:content="Event/getTitle"/>
 						</div>
 					</a>
 				</div>
 			</div>
-			<a class="carousel-control left" href="#BoxEventCarousel" data-slide="prev">&lsaquo;</a>
-			<a class="carousel-control right" href="#BoxEventCarousel" data-slide="next">&rsaquo;</a>
+			<a class="carousel-control left" href="#EventCarousel" data-slide="prev">&lsaquo;</a>
+			<a class="carousel-control right" href="#EventCarousel" data-slide="next">&rsaquo;</a>
 		</div>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- KHÓA HỌC SẮP KHAI GIẢNG												  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="CourseBox" class="box" tal:condition="Course/getLessionNext">
+	<div metal:define-macro="CourseBox" class="box radius" tal:condition="Course/getLessionNext">
 		<div class="b-title">
 			<div class="b-t-icon-content">Sắp khai giảng</div>
 		</div>
@@ -479,9 +437,9 @@
 	<!-- ======================================================================== -->
 	<!-- FOOTER																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="Footer" class="footer">
-		<div class="menu">
-			<ul class="top-nav clearfix">
+	<div metal:define-macro="Footer" class="row reset-margin footer">
+		<div class="top-menu">
+			<ul class="nav nav-pills">
 				<li><a href="/trang-chu">Trang chủ</a></li>								
 				<li><a href="/tin-tuc">Tin tức</a></li>
 				<li><a href="/dao-tao">Đào tạo</a></li>
@@ -494,24 +452,25 @@
 				<li id="last"><a href="/signin/load">Quản trị</a></li>
 			</ul>
 		</div>
-		<div class="row">
-			<div class="b-left span6 copyright">
-				<div><b>© 12/2012 Chùa Khải Tường</b></div>
-				<div>Biên tập - Đại Đức Thích Nhuận Tâm</div>
-				<div>Phát triển - SPN Co, Ltd & Nguyên Phong ICT</div>
-				<div>Ghi rõ nguồn <b><i>chuakhaituong.com</i></b> khi phát hành thông tin từ website này</div>
+		<div class="row reset-margin">
+			<div class="span6 reset-margin">
+				<div class="f-left">
+					<p><b>Địa chỉ:</b> 319B2 - Mỹ Phú - Mỹ Đức Đông - Cái Bè - Tiền Giang - Việt Nam</p>
+					<p><b>Điện thoại:</b> (073) 3600 943 - <b>Di Động:</b> 0918 852 102</p>
+					<p><b>Email:</b> nhuantamkhaituong@gmail.com (nhuantam@chuakhaituong.com)</p>
+					<p><b>Website:</b> <i><u>chuakhaituong.com</u></i>, <i><u>quocankhaituongtu.com</u></i>, <i><u>chuaquocankhaituong.vn</u></i></p>
+				</div>
 			</div>
-			<div class="b-right span7 info">
-				<div><b>Chùa Khải Tường</b>, Số 319B2, ấp Mỹ Phú, xã Mỹ Đức Đông, Cái Bè, Tiền Giang, Việt Nam</div>
-				<div><b>Điện thoại:</b> (073) 3600 943 - <b>Di Động:</b> 0918 852 102</div>
-				<div><b>Email:</b> nhuantamkhaituong@gmail.com (nhuantam@chuakhaituong.com)</div>
-				<div><b>Website:</b> 
-					<a href="http://chuakhaituong.com">http://chuakhaituong.com</a> 
-					<small>(<a href="http://quocankhaituongtu.com">http://quocankhaituongtu.com</a> -
-					<a href="http://chuaquocankhaituong.vn">http://chuaquocankhaituong.vn</a>)</small>
+			<div class="span6 pull-right reset-margin">
+				<div class="f-right">
+					<p><b>© 12/2012 Chùa Khải Tường</b></p>
+					<p>Biên tập - Đại Đức Thích Nhuận Tâm</p>
+					<p>Phát triển - SPN Co, Ltd & Nguyên Phong ICT</p>
+					<p>Ghi rõ nguồn <b><i>chuakhaituong.com</i></b> khi phát hành thông tin từ website này</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </body>
 </html>
