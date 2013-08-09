@@ -20,6 +20,10 @@
 		margin-left: 6.993px !important;
 	}
 	
+	.fix-width-3 {
+		margin-left: 10px !important;
+	}
+	
 	/* ======================================================================== */
 	/* HEADER																	*/
 	/* ======================================================================== */
@@ -368,9 +372,20 @@
 			height: 200px !important;
 		}
 		
+		.new-list-polaroid-3 img {
+			width: 120px !important;
+			height: 90px !important;
+		}
+		
 		.new-list-polaroid .media-heading {
 			font-size: 13px;
 			max-height: 40px;
+			overflow: hidden;
+		}
+		
+		.new-list-polaroid-3 .media-heading {
+			font-size: 13px;
+			max-height: 20px;
 			overflow: hidden;
 		}
 		
@@ -382,6 +397,13 @@
 			font-size: 12px;
 			line-height: 18px !important;
 			height: 85px;
+			overflow: hidden;
+		}
+		
+		.new-list-polaroid-3 .media-reduce {
+			font-size: 12px;
+			line-height: 18px !important;
+			height: 25px;
 			overflow: hidden;
 		}
 	
@@ -464,7 +486,7 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		padding-right: 10px;
-		background-color: #DDC398;
+		background-color: #FFEAC9;
 		margin-bottom: 10px;
 		margin-left: -10px;
 		margin-right: -10px;
@@ -477,8 +499,35 @@
 		font-weight: bold;
 		color: #823918;
 		padding-left: 10px;
+		font-size: 11px;
+	}
+	
+	.news-content .monk-author {
+		margin-top: 10px;
+	}
+
+	.news-content .news-author p a {
+		color: #823918;
 	}
 	
 	.news-content .news-tools a {
 		margin-left: 10px !important;
+	}
+	
+	.monk-label {
+		width: 20px !important;
+		margin-left: -10px !important;
+		text-align: center;
+	}
+	
+	.list-3 {
+		padding-bottom: 1px;
+	}
+	
+	.list-3 li:first-child a, .list-3 li:last-child a {
+		border-radius: 0 !important;
+	}
+	
+	.list-3 li.active a {
+		color: #E54C0B !important;
 	}
