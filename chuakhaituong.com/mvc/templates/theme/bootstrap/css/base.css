@@ -370,7 +370,7 @@
 		
 		.new-list-polaroid .media-heading {
 			font-size: 13px;
-			height: 40px;
+			max-height: 40px;
 			overflow: hidden;
 		}
 		
