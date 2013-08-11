@@ -1,32 +1,23 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<style>
-			.sponsor-paper {
-				text-align: center;
-				background: url('/data/images/paper.jpg') no-repeat top left #A70101;
-				margin: 5px 10px;
-				padding: 20px 10px;
-				box-shadow: 0 0 3px #000000;
-				color: white;
-			}
-		</style>
-	</head>	
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+
 	<body>
-		<div metal:use-macro="macros.xhtml/Popup" />
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="php:'ĐANG PHÁT ' . Video->getName()" />
-						</div>					
-						<div style="padding:10px;">
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'ĐANG PHÁT ' . Video->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
 							<div align="center" class="video-screen">
 								<iframe width="450" height="350" tal:attributes="src Video/getURL" frameborder="0"></iframe>
 								<script>
@@ -46,14 +37,14 @@
 								</div>
 								<div class="clear" />
 							</div>
-						</div>							
-					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="php:'HOẠT ĐỘNG '.Sponsor->getName()" />
 						</div>
-						<div style="padding:10px;">
+					</div>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'HOẠT ĐỘNG '.Sponsor->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
 							<ul class="list-video">
 								<li tal:repeat="VS Sponsor/getVideoAll">
 									<a tal:attributes="href VS/getURLView; title VS/getVideo/getName">
@@ -65,13 +56,13 @@
 							<div class="clear" />
 						</div>
 					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>GHI DANH SỔ CÔNG ĐỨC</span>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">GHI DANH SỔ CÔNG ĐỨC</div>
 						</div>
-						<div style="padding:10px;">
-							<table border="0" width="100%" cellpadding="0" cellspacing="1" class="manager-table">
+						<div class="b-content">
+							<table class="table table-hover">
 								<thead>
 									<th align="center" width="5%" >STT</th>
 									<th align="left" width="30%" >Họ Tên (Pháp Danh)</th>
@@ -91,23 +82,27 @@
 							</table>
 						</div>
 					</div>
+					
 				</div>
-				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/TaskBox"/>
-						<div metal:use-macro="macros.xhtml/EventBox"/>						
-						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
-						<div metal:use-macro="macros.xhtml/PictureBox"/>
-						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
-						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
-						<div metal:use-macro="macros.xhtml/AskBox"/>
-						<div metal:use-macro="macros.xhtml/SponsorBox"/>
-						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>					
-				</div>				
-				<div class="clear" />
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

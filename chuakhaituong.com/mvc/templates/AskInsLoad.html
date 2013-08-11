@@ -1,43 +1,42 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
 		<script>
 		/*<![CDATA[*/
 			$(document).ready(function() {				
 				$("#CaptchaSecurity").hide();
 			});			
 			function validateFormContactLoad() {
-					var OldCode = $("#CaptchaSecurity").val();
-					var KeydownCode = $("#CodeCaptcha").val();					
-					if ( OldCode == KeydownCode) {	
-						return true; 
-					} else {
-						$("#Mesenge").html("Mã Bảo vệ sai! Nhập lại!");
-						$("#CodeCaptcha").val("");
-						$("#CodeCaptcha").focus();
-						return false;
-					}
+				var OldCode = $("#CaptchaSecurity").val();
+				var KeydownCode = $("#CodeCaptcha").val();					
+				if ( OldCode == KeydownCode) {	
+					return true; 
+				} else {
+					$("#Mesenge").html("Mã Bảo vệ sai! Nhập lại!");
+					$("#CodeCaptcha").val("");
+					$("#CodeCaptcha").focus();
+					return false;
+				}
 			}
 		/*]]>*/
 		</script>
-	</head>	
-	<body>
-		<div metal:use-macro="macros.xhtml/Popup" />
-		<div id="wrapper">
-		
-			<div metal:use-macro="macros.xhtml/Header" />	
+	</head>
 
-			<div id="main">				
-				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="string:DANH SÁCH CÂU HỎI" />
+	<body>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">Danh sách câu hỏi</div>
 						</div>
-						<div style="padding:10px 10px 5px 10px;">
+						<div class="b-content">
 							<div class="ask" align="justify" tal:repeat="Ask AskAll">
 								<b><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></b>
 								<div style="text-indent:15px;">
@@ -46,107 +45,58 @@
 								</div>
 							</div>
 						</div>
-					</div>	
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title" />
+					</div>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content" tal:content="Title"/>
 						</div>
-						<div style="padding:10px;">
-							<div align="center" >
-								<table style="font-size:15px" align="left" border="0" cellpadding="0" cellspacing="5">
-									<tbody>										
-										<tr>
-											<td align="center" colspan="2"><br/></td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2" style="font-size:15px; color:#980707; line-height:20px;">
-												Quí <B>PHẬT TỬ</B> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây.
-											</td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2">
-												<form class="form-editor" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="post">
-													<div class="row">
-														<div for="Author1" class="label">Họ & Tên</div>
-														<div class="textbox" >
-															<input name="Author1" type="text" id="Author1" />
-														</div>
-														<div class="clear" />
-													</div>
-													<div class="row">
-														<div for="IdCategory" class="label">Chủ đề</div>
-														<div class="selectbox" >
-															<select id="IdCategory" name="IdCategory">
-																<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId">
-																	<span tal:content="Category/getName" />
-																</option>
-															</select>
-														</div>
-														<div class="clear" />
-													</div>
-													<div class="row">
-														<div for="Question" class="label">Câu hỏi</div>
-														<div class="textbox" >
-															<textarea name="Question" id="Question" cols="52" rows="2" />
-														</div>
-														<div class="clear" />
-													</div>
-													<input id="CaptchaSecurity" tal:attributes="value CaptchaSecurity" />
-													<div class="row">
-														<div for="Name" class="label">Mã bảo mật</div>																												
-															<div class="textbox" >																
-																<img style="padding-left:20px;" align="left" src="/data/captcha.jpg" height="36px" width="150px" />														
-																<br />
-																<span style="padding-left:-50px;color:red;padding-top:30px;" align="left" id="Mesenge" tal:content="MsgCaptcha" />
-															</div>
-														<div class="clear" />
-													</div>
-													<div class="row">
-														<div for="CodeCaptcha" class="label">Nhập mã</div>
-														<div class="textbox" >
-															<input name="CodeCaptcha" type="text" id="CodeCaptcha" />
-															
-														</div>
-														<div class="clear" />
-													</div>
-													<div class="row">
-														<div class="button" >
-															<button type="submit" name="submit" value="submit-value">Gửi</button>
-														</div>
-													</div>
-												</form>
-											</td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2" style="font-size:15px; color:#980707; line-height:20px;">
-												Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>nhuantamkhaituong@gmail.com</B>.
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
+						<div class="b-content padding-content">
+							<form id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="post">
+								<fieldset>
+									<legend>Quí <B>PHẬT TỬ</B> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây.</legend>
+									<div class="controls controls-row">
+										<label>Họ & Tên</label>
+										<input type="text" name="Author1" id="Author1" class="span3"/>
+										<label>Chủ đề</label>
+										<select id="IdCategory" name="IdCategory" class="span4">
+											<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId" tal:content="Category/getName"/>
+										</select>
+									</div>
+									<label>Câu hỏi</label>
+									<textarea name="Question" id="Question" cols="52" rows="2" class="span7"/>
+									<label>Mã bảo mật</label>
+									<label><img src="/data/captcha.jpg"/></label>
+									<input name="CodeCaptcha" type="text" id="CodeCaptcha"/>
+									<label><center>
+										<button type="submit" class="btn">Gữi</button>
+									</center></label>
+								</fieldset>
+							</form>
+							
+							Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>nhuantamkhaituong@gmail.com</B>.
 						</div>
-						<div class="clear" />
 					</div>
 				</div>
-				<div id="sidebar">										
-						<div metal:use-macro="macros.xhtml/TaskBox"/>
-						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<div metal:use-macro="macros.xhtml/CourseBox"/>
-						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
-						<div metal:use-macro="macros.xhtml/PictureBox"/>
-						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
-						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
-						<div metal:use-macro="macros.xhtml/AskBox"/>
-						<div metal:use-macro="macros.xhtml/SponsorBox"/>
-						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>					
-				</div>				
-				<div class="clear" />
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<!-- <div metal:use-macro="base.xhtml/EventBox"/>
+					<div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<!-- <div metal:use-macro="base.xhtml/Popup"/> -->
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>
