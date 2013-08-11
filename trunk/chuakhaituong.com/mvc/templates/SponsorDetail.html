@@ -1,100 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>		
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
 	</head>
 
 	<body>
-		<div id="fb-root"/>
-		<div metal:use-macro="macros.xhtml/Popup" />
 		<div class="container">
-			<div metal:use-macro="macros.xhtml/Header"/>
-			<div class="main row">
-				<div class="top-bar row">
-					<div class="date-time span6">
-						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">THƯ NGÕ</div>
+						</div>
+						<div class="b-content">
+							<p tal:content="structure Sponsor/getContent"/>
+						</div>
 					</div>
-					<div class="carousel-text span7">
-						<div metal:use-macro="macros.xhtml/TextGo"/>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'HOẠT ĐỘNG '.Sponsor->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
+							<ul class="thumbnails">
+								<li tal:repeat="VS Sponsor/getVideoAll" class="i-grid span2">
+									<a tal:attributes="href VS/getURLView; title VS/getVideo/getName">
+										<div class="thumbnail">
+											<img tal:attributes="src VS/getVideo/getURLImage" width="100%" height="100%"/>
+											<p tal:content="VS/getVideo/getName"/>
+										</div>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">GHI DANH SỔ CÔNG ĐỨC</div>
+						</div>
+						<div class="b-content">
+							<table class="table table-hover">
+								<thead>
+									<th align="center" width="5%" >STT</th>
+									<th align="left" width="30%" >Họ Tên (Pháp danh)</th>
+									<th align="left" width="20%" >Địa chỉ</th>
+									<th align="left" width="20%" >Ngày</th>
+									<th align="right" width="25%" >Trợ Duyên</th>
+								</thead>
+								<tbody>
+									<tr tal:repeat="SP Sponsor/getPersonAll">
+										<td align="center" tal:content="repeat/SP/number" />
+										<td align="left" tal:content="SP/getName" />
+										<td align="left" tal:content="SP/getAddress" />
+										<td align="left" tal:content="SP/getTimePrint" />
+										<td align="right" ><b tal:content="SP/getValuePrint"/></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					
 				</div>
-				<div class="content span8">
-					<div class="wraper">						
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">THƯ NGÕ</div>
-							</div>
-							<div class="b-content">
-								<p tal:content="structure Sponsor/getContent"/>
-							</div>
-						</div>
-						
-						<div class="box">
-							<div class="b-title">
-								<div tal:content="php:'HOẠT ĐỘNG '.Sponsor->getName()" class="b-t-icon-content"/>
-							</div>
-							<div class="b-content">
-								<ul class="thumbnails">
-									<li tal:repeat="VS Sponsor/getVideoAll" class="i-grid span2">
-										<a tal:attributes="href VS/getURLView; title VS/getVideo/getName">
-											<div class="thumbnail">
-												<img tal:attributes="src VS/getVideo/getURLImage" width="100%" height="100%"/>
-												<p tal:content="VS/getVideo/getName"/>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</div>
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">GHI DANH SỔ CÔNG ĐỨC</div>
-							</div>
-							<div class="b-content">
-								<table class="table table-hover">
-									<thead>
-										<th align="center" width="5%" >STT</th>
-										<th align="left" width="30%" >Họ Tên (Pháp danh)</th>
-										<th align="left" width="20%" >Địa chỉ</th>
-										<th align="left" width="20%" >Ngày</th>
-										<th align="right" width="25%" >Trợ Duyên</th>
-									</thead>
-									<tbody>
-										<tr tal:repeat="SP Sponsor/getPersonAll">
-											<td align="center" tal:content="repeat/SP/number" />
-											<td align="left" tal:content="SP/getName" />
-											<td align="left" tal:content="SP/getAddress" />
-											<td align="left" tal:content="SP/getTimePrint" />
-											<td align="right" ><b tal:content="SP/getValuePrint"/></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				<div class="sidebar span5">
-					<div class="wraper">
-						<div metal:use-macro="macros.xhtml/TaskBox"/>
-						<div metal:use-macro="macros.xhtml/EventBox"/>						
-						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
-						<div metal:use-macro="macros.xhtml/PictureBox"/>
-						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
-						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
-						<div metal:use-macro="macros.xhtml/AskBox"/>						
-						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>					
-					</div>
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer"/>
-			<div metal:use-macro="macros.xhtml/FacebookLike"/>
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>
