@@ -417,22 +417,27 @@
 	}
 	
 	.grid-item li {
-		margin-left: 6px !important;
+		margin-left: 11px !important;
 		margin-top: 6px !important;
 		margin-bottom: 0 !important;
 	}
 	
 		.grid-item li .thumbnail {
-			height: 290px !important;
+			height: 150px !important;
 		}
 	
 		.grid-item li img {
 			width: 100% !important;
-			height: 200px !important;
+			height: 115px !important;
 		}
 		
-		.grid-item li h3 {
-			font-size: 13px !important;
+		.grid-item li a {
+			color: #823918;
+			text-decoration: none !important;
+		}
+		
+		.grid-item li p {
+			font-size: 11px !important;
 			line-height: 18px;
 			text-align: justify;
 			height: 35px;

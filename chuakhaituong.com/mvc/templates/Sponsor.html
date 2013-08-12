@@ -17,28 +17,27 @@
 						<div class="b-title">
 							<div class="b-t-icon-content" tal:content="Title"/>
 						</div>
-						<div class="b-content">
-							<div tal:repeat="Sponsor SponsorAll" class="media img-polaroid">
+						<div class="b-content padding-content">
+							<div tal:repeat="Sponsor SponsorAll" class="media img-polaroid new-list-polaroid">
 								<a tal:attributes="href Sponsor/getURLView" class="pull-left">
-									<img src="/data/images/sponsor_logo.gif" width="80px" class="media-object img-rounded"/>
+									<img src="/data/images/logo/sponsor_logo.gif" class="media-object img-rounded"/>
 								</a>
 								<div class="media-body">
-									<a tal:attributes="href Sponsor/getURLView">
-										<h5 tal:content="Sponsor/getName" class="media-heading"/>
-									</a>
-									(<span tal:content="Sponsor/getTimeStartPrint"/>)
+									<h4 class="media-heading" tal:content="Sponsor/getName"/>
+									<p class="media-time">(<i tal:content="Sponsor/getTimeStartPrint"/>)</p>
+									<p class="media-reduce"/>
+									<a tal:attributes="href Sponsor/getURLView" class="btn">Xem chi tiết</a>
 								</div>
 							</div>
-						</div>
-					</div>
-					
-					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content">NHẬT KÍ THU CHI</div>
-						</div>
-						<div class="b-content">
-							<ul tal:repeat="Tracking Trackings" class="news-box-list">
-								<li><a tal:attributes="href Tracking/getURLView" tal:content="Tracking/getName" /></li>
+							<br/>
+							<ul class="nav nav-tabs nav-stacked reset-margin">
+								<li class="active news-list-title"><a>NHẬT KÍ THU CHI</a></li>
+								<li tal:repeat="Tracking Trackings" class="news-list-item">
+									<a tal:attributes="href Tracking/getURLView">
+										<span tal:content="Tracking/getName"/>
+										<i class="icon-chevron-right pull-right"/>
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>

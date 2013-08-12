@@ -93,11 +93,12 @@
 						</div>
 						<div class="b-content">
 							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VL VL8" class="span4">
+								<li tal:repeat="VL VL8" class="span2">
 									<div class="thumbnail">
-										<img tal:attributes="src VL/getVideo/getURLImage"/>
-										<h3 tal:content="VL/getVideo/getName"/>
-										<p>Tác giả <a tal:attributes="href VL/getURLView" class="btn btn-primary pull-right">Xem</a></p>
+										<a tal:attributes="href VL/getURLView">
+											<img tal:attributes="src VL/getVideo/getURLImage"/>
+											<p tal:content="VL/getVideo/getName"/>
+										</a>
 									</div>
 								</li>
 							</ul>
@@ -110,11 +111,12 @@
 						</div>
 						<div class="b-content">
 							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VM VM24" class="span4">
+								<li tal:repeat="VM VM24" class="span2">
 									<div class="thumbnail">
-										<img tal:attributes="src VM/getVideo/getURLImage"/>
-										<h3 tal:content="VM/getVideo/getName"/>
-										<p>Tác giả <a tal:attributes="href VM/getURLView" class="btn btn-primary pull-right">Xem</a></p>
+										<a tal:attributes="href VM/getURLView">
+											<img tal:attributes="src VM/getVideo/getURLImage"/>
+											<p tal:content="VM/getVideo/getName"/>
+										</a>
 									</div>
 								</li>
 							</ul>
@@ -127,11 +129,12 @@
 						</div>
 						<div class="b-content">
 							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VL VL24" class="span4">
+								<li tal:repeat="VL VL24" class="span2">
 									<div class="thumbnail">
-										<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
-										<h3 tal:content="VL/getVideo/getName"/>
-										<p>Tác giả <a tal:attributes="href VL/getURLView" class="btn btn-primary pull-right">Xem</a></p>
+										<a tal:attributes="href VL/getURLView">
+											<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
+											<p tal:content="VL/getVideo/getName"/>
+										</a>
 									</div>
 								</li>
 							</ul>

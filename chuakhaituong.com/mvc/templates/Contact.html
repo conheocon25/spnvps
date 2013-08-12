@@ -5,10 +5,11 @@
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
 		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Contact.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
 	</head>
 
-	<body>
+	<body onload='locationPathCode=1;$("#map").googleMap().loadMap01();'>
 		<div class="container">
 			<div metal:use-macro="base.xhtml/Header"/>
 			<div class="row reset-margin main">
