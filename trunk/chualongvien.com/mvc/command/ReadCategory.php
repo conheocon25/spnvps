@@ -17,7 +17,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -34,8 +34,8 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 						
 			if (!isset($Page)) $Page = 1;			
-			$Course = $mCourse->findByNear(null)->current();			
-			$Event = $mEvent->findByNear(null)->current();
+			$Course = $mCourse->findByNear(null)->current();
+			$EventAll = $mEvent->findAll();
 
 			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');
 			
@@ -46,7 +46,7 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
 			$PanelAdsAll = $mPanelAds->findAll();
 			$MonkAll = $mMonk->findVIP(null);			
-			$Popup = $mPopup->findByName("news");
+			$Popup = $mPopup->findByName("tin-tuc");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -56,7 +56,7 @@
 			$request->setObject("Category", $Category);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
-			$request->setObject("Event", $Event);
+			$request->setObject("EventAll", $EventAll);
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Course", $Course);

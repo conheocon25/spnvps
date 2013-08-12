@@ -1,6 +1,5 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 
@@ -16,6 +15,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		$updateStmt = sprintf("update %s set id_video=?, id_monk=? where id=?", $tblVideoMonk);
 		$insertStmt = sprintf("insert into %s ( id_video, id_monk)  values(?, ?)", $tblVideoMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoMonk);
+		$deleteByMonkStmt = sprintf("delete from %s where id_monk=?", $tblVideoMonk);
 		$findByStmt = sprintf("select *  from %s VM where id_monk=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoMonk, $tblVideo);	
 				
 		$findByTopLocalStmt = sprintf("select *  from %s VM limit 8", $tblVideoMonk, $tblVideo);
@@ -65,6 +65,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->deleteByMonkStmt = self::$PDO->prepare($deleteByMonkStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 				
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);		
@@ -111,17 +112,12 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		);
         $this->updateStmt->execute( $values );
     }
-
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
-    function selectStmt() {
-        return $this->selectStmt;
-    }
-    function selectAllStmt(){
-        return $this->selectAllStmt;
-    }
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
+		
+    function selectStmt() {return $this->selectStmt;}
+    function selectAllStmt(){return $this->selectAllStmt;}
+	
+	function deleteByMonk(array $values) {return $this->deleteByMonkStmt->execute( $values );}
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
         return new VideoMonkCollection( $this->findByStmt->fetchAll(), $this);
@@ -156,7 +152,6 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new VideoMonkCollection( $this->findByPageStmt->fetchAll(), $this);
-    }
-	
+    }	
 }
 ?>

@@ -11,14 +11,13 @@
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
+			//-------------------------------------------------------------			
 			$MsgCaptcha = $request->getProperty('MsgCaptcha');	
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -36,7 +35,7 @@
 			$request->setProperty("CaptchaSecurity", $CaptchaSecurited);		
 			$request->setProperty("MsgCaptcha", $MsgCaptcha);
 						
-			$Category = $mCategoryAsk->find($IdCategory);
+			//$Category = $mCategoryAsk->find($IdCategory);
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
@@ -55,7 +54,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject("Category", $Category);
+			//$request->setObject("Category", $Category);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);

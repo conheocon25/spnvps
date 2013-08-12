@@ -18,6 +18,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$findByFinishStmt = sprintf("select *  from %s where date < now() order by date desc", $tblEvent);
 		$findByNearStmt = sprintf("select *  from %s where date >= now() order by date", $tblEvent);
 		$findByPageStmt = sprintf("SELECT * FROM  %s order by date LIMIT :start,:max", $tblEvent);
+		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblEvent);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -28,6 +29,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$this->findByFinishStmt = self::$PDO->prepare($findByFinishStmt);
 		$this->findByNearStmt = self::$PDO->prepare($findByNearStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
+		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 	}
 	
     function getCollection( array $raw ){
@@ -93,6 +95,15 @@ class Event extends Mapper implements \MVC\Domain\EventFinder {
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new EventCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
     }
 }
 ?>

@@ -17,7 +17,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -29,10 +29,7 @@
 			
 			$Category = $mCategoryNews->findByKey($Key1);
 			$CategoryNewsAll = $mCategoryNews->findAll();						
-			$News = $mNews->findByKey($Key2);
-			
-			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
+			$News = $mNews->findByKey($Key2);									
 					
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
@@ -41,17 +38,19 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
-			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');			
+			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("tin-tuc");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);
-			$request->setObject("Course", $Course);
-			$request->setObject("Category", $Category);
-			$request->setObject("Event", $Event);
+			$request->setProperty("Title", $Title);			
+			$request->setObject("Category", $Category);			
 			$request->setProperty("ActiveItem", 'ReadCategory');
 			
+			$request->setObject("Popup", $Popup);
+			$request->setObject("EventAll", $EventAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject("PagodaAll", $PagodaAll);

@@ -4,26 +4,29 @@
 	<!-- META TAG INCLUDE														  -->
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeMETA">
-		<title tal:content="string:Website Chùa Phước Hưng Vĩnh Long"/>
+		<title tal:content="string:Website Chùa Vĩnh Khánh"/>
 		<base href="http://chuavinhkhanh.com"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="Pragma" content="no-cache"/>
 		<meta http-equiv="Expires" content="-1"/>
 		<meta http-equiv="Cache-Control" content="no-cache"/>
 		<meta name="keywords" content="Chùa Vĩnh Khánh"/>
-		<meta name="description" content="Website Chùa Vĩnh Khánh giới thiệu về một ngôi chùa ở Trà Ôn, Vĩnh Long, Việt Nam"/>
+		<meta name="description" content="Website Chùa Vĩnh Khánh Vĩnh Long, Việt Nam"/>
 		<meta name="page-topic" content="Chùa Vĩnh Khánh"/>
-		<meta name="Abstract" content="Website Chùa Vĩnh Khánh giới thiệu về một ngôi chùa ở Trà Ôn, Vĩnh Long, Việt Nam"/>
-		<meta name="classification" content="Chùa Vĩnh Khánh, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
+		<meta name="Abstract" content="Website Chùa Vĩnh Khánh Vĩnh Long, Việt Nam"/>
+		<meta name="classification" content="Chùa Khải Tường, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
 		<link rel="icon" type="image/png" href="/data/images/icon.png" />
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- CASCADING STYLE SHEETS INCLUDE											  -->
 	<!-- ======================================================================== -->
-	<span metal:define-macro="IncludeCSS">	
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.min.css" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/madmin.css"/>
+	<span metal:define-macro="IncludeCSS">
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery.countdown.css"/> 
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css"/>	
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/handle.css"/>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -31,7 +34,12 @@
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeJS">
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.countdown.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -74,7 +82,7 @@
 	</div>
 							
 	<div metal:define-macro="Menu" class="menu">
-		<ul class="nav nav-list">
+		<ul class="nav nav-list config-number">
 			<li class="nav-header">DANH MỤC</li>
 			<li tal:attributes="class php:ActiveAdmin=='Paid'?'active':'disable'">
 				<a tal:attributes="href '/app/category/paid'">KHOẢN CHI <span class="badge badge-info pull-right" tal:content="CategoryPaidAll/count"/></a>

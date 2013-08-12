@@ -18,7 +18,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -42,6 +42,8 @@
 			$VLAll = $mVL->findByPage(array($IdCategory, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Category->getVLs()->count(), 10, $Category->getURLRead());
 			
+			$Popup = $mPopup->findByName("phat-am");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
@@ -50,12 +52,13 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
 			$request->setObject("CategoryBType", $CategoryBType);			
-			$request->setObject("MonkAll", $MonkAll);						
+			$request->setObject("MonkAll", $MonkAll);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 						
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Category", $Category);
 			$request->setObject("PN", $PN);
 			$request->setObject("VLAll", $VLAll);

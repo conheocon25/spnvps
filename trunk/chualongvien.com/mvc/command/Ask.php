@@ -12,12 +12,11 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$KCategory = $request->getProperty('KCategory');
-			$KAsk = $request->getProperty('KAsk');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -26,30 +25,19 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			
 			$Category = $mCategoryAsk->findByKey($KCategory);
-			
-			if (!isset($KAsk)){
-				$AskAll = $mAsk->findBy2(array($IdCategory));
-				$Ask = $AskAll->current();
-			}else{
-				$Ask = $mAsk->findByKey($KAsk);
-			}			
+			$AskAll = $Category->getAsks();
 			$PagodaAll = $mPagoda->findAll();
-			
-			if (isset($Ask))
-				$AskAll = $mAsk->findBy1(array($IdCategory, $Ask->getId()));
-			else
-				$AskAll = null;
-			
+									
 			$Title = "Câu hỏi / ".$Category->getName();
-			
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
-			
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("hoi-dap");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,16 +45,16 @@
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("Category", $Category);
-			$request->setObject("Ask", $Ask);
-			$request->setObject("AskAll", $AskAll);
-			$request->setObject("Event", $Event);
-			$request->setObject("Course", $Course);
+			$request->setObject("Category", $Category);			
+			$request->setObject("AskAll", $AskAll);			
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Ask');
 			$request->setProperty("Title", $Title);

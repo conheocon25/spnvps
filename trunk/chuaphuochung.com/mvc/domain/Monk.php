@@ -80,9 +80,13 @@ class Monk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/giang-su/".$this->getKey();}
-	function getURLView(){return "/app/monk";}	
-	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}
+	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/giang-su/".$this->getKey();}	
+	function getURLView(){return "/app/monk";}
+	
+	function getURLYoutubeUpdLoad(){return "/app/monk/".$this->getId()."/video/youtube/upd/load";}
+	function getURLYoutubeUpdExe(){return "/app/monk/".$this->getId()."/video/youtube/upd/exe";}
+	
+	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}		
 	function getURLVideoInsLoad(){return "/app/monk/".$this->getId()."/video/ins/load";}
 	function getURLVideoInsExe(){return "/app/monk/".$this->getId()."/video/ins/exe";}
 	

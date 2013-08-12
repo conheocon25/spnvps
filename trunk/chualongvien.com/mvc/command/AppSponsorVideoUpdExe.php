@@ -39,6 +39,7 @@
 			$Video->setURL($URL);
 			$Video->setCount($Count);
 			$Video->setTime($Date);
+			$Video->reKey();
 			
 			$URLNew = $Video->parseURLYoutube();
 			if ($URLNew != "")

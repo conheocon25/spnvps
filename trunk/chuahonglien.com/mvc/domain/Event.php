@@ -53,7 +53,7 @@ class Event extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/event/".$this->getId();}
+	function getURLRead(){return "/su-kien/".$this->getKey();}
 	function getURLUpdLoad(){return "/app/event/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/event/".$this->getId()."/upd/exe";}	
 	function getURLDelLoad(){return "/app/event/".$this->getId()."/del/load";}

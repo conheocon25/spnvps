@@ -1,162 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
 		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Contact.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
-		<script type="text/javascript">
-			/*<![CDATA[*/
-				(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return; js = d.createElement(s);js.id = id;js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
-						
-				$(document).ready(function() {
-					$('.left-slide').carousel({interval: 5000});
-					$('#myCarousel2').carousel({interval: 5000});
-					$('.tooltipvideo').tooltip();
-					$("#map").googleMap().load();
-				});
-			/*]]>*/
-		</script>
 	</head>
 
-	<body>
-		<div id="fb-root"/>
+	<body onload='locationPathCode=1;$("#map").googleMap().loadMap01();'>
 		<div class="container">
-			<div metal:use-macro="macros.xhtml/Header"/>
-			<div class="main row">
-				<div class="top-bar row">
-					<div class="date-time span6">
-						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-					</div>
-					<div class="carousel-text span7">
-						<div metal:use-macro="macros.xhtml/TextGo"/>
-					</div>
-				</div>
-				<div class="content span8">
-					<div class="wraper">						
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">Thông tin liên lạc</div>
-							</div>
-							<div class="b-content">
-								<img src="/data/images/name_card.jpg" width="100%" />
-								<h3>
-									Quí Phật Tử có thể đặt câu hỏi trao đổi Phật Học <a href="/ask/1">Click vào tại đây</a>
-								</h3>
-								<h3>
-									Mọi thắc mắc có thể trao đổi trực tuyến <a href="/online">Click vào tại đây</a>
-								</h3>
-							</div>
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">Thông tin liên lạc</div>
 						</div>
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">HƯỚNG DẪN ĐƯỜNG ĐI</div>
-							</div>
-							<div class="b-content">
-								<div id="map" style="width:100%; height:470px;"></div>
-								<form class="form-editor" action="directions.php" method="post">								
-									<div class="row">
-										<div for="Name" class="label">Chọn vị trí</div>
-										<div class="selectbox" >
-											<select name="cboTinhThanh" id="cboTinhThanh">
-												<option label="Vĩnh Long" value="Vĩnh Long">Vĩnh Long</option>
-												<option label="Hồ Chí Minh" value="Hồ Chí Minh">Hồ Chí Minh</option>
-												<option label="Hà Nội" value="Hà Nội">Hà Nội</option>													
-												<option label="Cần Thơ" value="Cần Thơ">Cần Thơ</option>
-												<option label="An Giang" value="An Giang">An Giang</option>
-												<option label="BR - Vũng Tàu" value="BR - Vũng Tàu">BR - Vũng Tàu</option>													
-												<option label="Bạc Liêu" value="Bạc Liêu">Bạc Liêu</option>													
-												<option label="Bến Tre" value="Bến Tre">Bến Tre</option>													
-												<option label="Bình Dương" value="Bình Dương">Bình Dương</option>
-												<option label="Bình Phước" value="Bình Phước">Bình Phước</option>
-												<option label="Cà Mau" value="Cà Mau">Cà Mau</option>													
-												<option label="Đồng Nai" value="Đồng Nai">Đồng Nai</option>
-												<option label="Đồng Tháp" value="Đồng Tháp">Đồng Tháp</option>
-												<option label="Kiên Giang" value="Kiên Giang">Kiên Giang</option>
-												<option label="Long An" value="Long An">Long An</option>													
-												<option label="Sóc Trăng" value="Sóc Trăng">Sóc Trăng</option>													
-												<option label="Tiền Giang" value="Tiền Giang">Tiền Giang</option>
-												<option label="Trà Vinh" value="Trà Vinh">Trà Vinh</option>
-											</select>
-										</div>
-										<div class="clear" />
-									</div>
-								</form>	
-								
-								<form class="form-editor" action="directions.php" method="post">
-									<input id="end" type="hidden" value="Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam" />
-									<div class="row">
-										<div for="Name" class="label">Vị trí của bạn</div>
-										<div class="textbox" >
-											<input id="start" type="text" value="TP Vĩnh Long, Việt Nam" />
-										</div>
-										<div class="clear" />
-									</div>
-									<div class="row">
-										<div class="button" >
-											<button type="submit" id="getdirections" name="submit" value="submit-value">Tìm đường</button>
-										</div>
-									</div>
-								</form>
-								<div id="directions"></div>
-							</div>
+						<div class="b-content">
+							<img src="/data/images/name_card.jpg" width="100%" />
+							<h3>
+								Quí Phật Tử có thể đặt câu hỏi trao đổi Phật Học <a href="/ask/1">Click vào tại đây</a>
+							</h3>
+							<h3>
+								Mọi thắc mắc có thể trao đổi trực tuyến <a href="/online">Click vào tại đây</a>
+							</h3>
 						</div>
-						
 					</div>
-				</div>
-				<div class="sidebar span5">
-					<div class="wraper">
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">Lịch Công Tác</div>
-							</div>
-							<div class="b-content">
-								<div class="g4">
-									<div id="eventCalendarLocale" />
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">HƯỚNG DẪN ĐƯỜNG ĐI</div>
+						</div>
+						<div class="b-content">
+							<div id="map" style="width:100%; height:470px;"></div>
+							<form class="form-editor" action="directions.php" method="post">								
+								<div class="row">
+									<div for="Name" class="label">Chọn vị trí</div>
+									<div class="selectbox" >
+										<select name="cboTinhThanh" id="cboTinhThanh">
+											<option label="Vĩnh Long" value="Vĩnh Long">Vĩnh Long</option>
+											<option label="Hồ Chí Minh" value="Hồ Chí Minh">Hồ Chí Minh</option>
+											<option label="Hà Nội" value="Hà Nội">Hà Nội</option>													
+											<option label="Cần Thơ" value="Cần Thơ">Cần Thơ</option>
+											<option label="An Giang" value="An Giang">An Giang</option>
+											<option label="BR - Vũng Tàu" value="BR - Vũng Tàu">BR - Vũng Tàu</option>													
+											<option label="Bạc Liêu" value="Bạc Liêu">Bạc Liêu</option>													
+											<option label="Bến Tre" value="Bến Tre">Bến Tre</option>													
+											<option label="Bình Dương" value="Bình Dương">Bình Dương</option>
+											<option label="Bình Phước" value="Bình Phước">Bình Phước</option>
+											<option label="Cà Mau" value="Cà Mau">Cà Mau</option>													
+											<option label="Đồng Nai" value="Đồng Nai">Đồng Nai</option>
+											<option label="Đồng Tháp" value="Đồng Tháp">Đồng Tháp</option>
+											<option label="Kiên Giang" value="Kiên Giang">Kiên Giang</option>
+											<option label="Long An" value="Long An">Long An</option>													
+											<option label="Sóc Trăng" value="Sóc Trăng">Sóc Trăng</option>													
+											<option label="Tiền Giang" value="Tiền Giang">Tiền Giang</option>
+											<option label="Trà Vinh" value="Trà Vinh">Trà Vinh</option>
+										</select>
+									</div>
+									<div class="clear" />
 								</div>
-								<script type="text/javascript">
-									/*<![CDATA[*/
-									$(document).ready(function() {
-										$("#eventCalendarLocale").eventCalendar({
-											eventsjson: '/mvc/templates/script/events.json.php',
-											eventsjson: '/task',
-											monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-												"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
-											dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
-											dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
-											txt_noEvents: "Không có sự kiện nào xảy ra",
-											txt_SpecificEvents_prev: "",
-											txt_SpecificEvents_after: "sự kiện:",
-											txt_next: "Tới",
-											txt_prev: "Lui",
-											txt_NextEvents: "Sự kiện sắp xảy ra:",
-											txt_GoToEventUrl: "đi đến sự kiện"
-										});
-									});
-									/*]]>*/
-								</script>
-							</div>
-						</div>						
-						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<div metal:use-macro="macros.xhtml/CourseBox"/>
-						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
-						<div metal:use-macro="macros.xhtml/PictureBox"/>
-						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
-						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
-						<div metal:use-macro="macros.xhtml/AskBox"/>
-						<div metal:use-macro="macros.xhtml/CountBox"/>
-						<div metal:use-macro="macros.xhtml/SponsorBox"/>					
-						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>
+							</form>	
+							
+							<form class="form-editor" action="directions.php" method="post">
+								<input id="end" type="hidden" value="Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam" />
+								<div class="row">
+									<div for="Name" class="label">Vị trí của bạn</div>
+									<div class="textbox" >
+										<input id="start" type="text" value="TP Vĩnh Long, Việt Nam" />
+									</div>
+									<div class="clear" />
+								</div>
+								<div class="row">
+									<div class="button" >
+										<button type="submit" id="getdirections" name="submit" value="submit-value">Tìm đường</button>
+									</div>
+								</div>
+							</form>
+							<div id="directions"></div>
+						</div>
 					</div>
+						
+				</div>
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer"/>
-			<div metal:use-macro="macros.xhtml/FacebookLike"/>
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>
