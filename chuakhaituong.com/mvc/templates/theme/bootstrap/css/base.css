@@ -439,7 +439,7 @@
 		.grid-item li p {
 			font-size: 11px !important;
 			line-height: 18px;
-			text-align: justify;
+			text-align: center;
 			height: 35px;
 			overflow: hidden;
 		}
