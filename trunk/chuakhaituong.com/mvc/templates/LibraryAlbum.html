@@ -13,38 +13,38 @@
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
 				<div class="span8 fix-width">
 					
-					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content" tal:content="Album/getName"/>
-						</div>
-						<div class="b-content">
-							<embed 
-								type="application/x-shockwave-flash" 
-								src="https://picasaweb.google.com/s/c/bin/slideshow.swf" 
-								width="100%"
-								height="400px"
-								tal:attributes="flashvars Album/getURL"
-								pluginspage="http://www.macromedia.com/go/getflashplayer"
-								wmode="Opaque">
-							</embed>
-						</div>
-					</div>
-					
-					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content">Hình ảnh khác</div>
-						</div>
-						<div class="b-content">
-							<ul class="news-box-list">
-								<li tal:repeat="Album AlbumAll">
+					<div class="box">
+						<div class="b-content news-content padding-content">
+							<div class="page-header">
+								<h4 tal:content="Album/getName"/>
+								<i class="pull-right">Cập nhật: <span tal:content="Album/getTimePrint"/></i>
+							</div>
+							<div class="news-main">
+								<embed 
+									type="application/x-shockwave-flash" 
+									src="https://picasaweb.google.com/s/c/bin/slideshow.swf" 
+									width="100%"
+									height="400px"
+									tal:attributes="flashvars Album/getURL"
+									pluginspage="http://www.macromedia.com/go/getflashplayer"
+									wmode="Opaque">
+								</embed>
+							</div>
+							<div class="news-author"/>
+							
+							<ul class="nav nav-tabs nav-stacked reset-margin">
+								<li class="active news-list-title"><a>Hình ảnh khác</a></li>
+								<li tal:repeat="Album AlbumAll" class="news-list-item">
 									<a tal:attributes="href Album/getURLView">
 										<span tal:content="Album/getName"/>
-									</a> (<span tal:content="Album/getTimePrint" />)
+										<span tal:content="Album/getTimePrint"/>
+										<i class="icon-chevron-right pull-right"/>
+									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
-
+					
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
