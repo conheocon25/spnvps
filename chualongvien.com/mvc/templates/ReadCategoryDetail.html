@@ -1,120 +1,66 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeMETA"/>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
-		<script type="text/javascript">
-			/*<![CDATA[*/
-				(function(d, s, id){var js, fjs = d.getElementsByTagName(s)[0];if (d.getElementById(id)) return; js = d.createElement(s);js.id = id;js.src = "//connect.facebook.net/vi_VN/all.js#xfbml=1";fjs.parentNode.insertBefore(js, fjs);}(document, 'script', 'facebook-jssdk'));
-						
-				$(document).ready(function() {
-					$('.left-slide').carousel({interval: 5000});
-					$('#myCarousel2').carousel({interval: 5000});
-					$('.tooltipvideo').tooltip();
-					$("#map").googleMap().load();
-				});
-			/*]]>*/
-		</script>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
 	</head>
 
 	<body>
-		<div id="fb-root"/>
 		<div class="container">
-			<div metal:use-macro="macros.xhtml/Header"/>
-			<div class="main row">
-				<div class="top-bar row">
-					<div class="date-time span6">
-						<div metal:use-macro="macros.xhtml/DateTimeBox"/>
-					</div>
-					<div class="carousel-text span7">
-						<div metal:use-macro="macros.xhtml/TextGo"/>
-					</div>
-				</div>
-				<div class="content span8">
-					<div class="wraper">						
-						
-						<div class="box">
-							<div class="b-title">
-								<div tal:content="Title" class="b-t-icon-content"/>
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box">
+						<div class="b-content news-content padding-content">
+							<div class="page-header">
+								<h4 tal:content="Title"/>
+								<i class="pull-right">Cập nhật: <span tal:content="News/getDatePrint"/></i>
 							</div>
-							<div class="b-content">
-								Cập nhật: <span tal:content="News/getDatePrint"/>
-								<div tal:content="structure News/getContent"/>
-								<h4 align="right" tal:content="News/getAuthor"/>
-							</div>
-						</div>
-						
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">Các tin khác</div>
-							</div>
-							<div class="b-content">
-								<ul class="news-box-list">
-									<li tal:repeat="News Category/getNews">
-										<a tal:attributes="href News/getURLRead">
-											<span tal:content="News/getTitle"/>
-										</a>
-										<span tal:content="News/getDatePrint" />
-									</li>
-								</ul>
-							</div>
-						</div>
-						
-					</div>
-				</div>
-				<div class="sidebar span5">
-					<div class="wraper">
-						<div class="box">
-							<div class="b-title">
-								<div class="b-t-icon-content">Lịch Công Tác</div>
-							</div>
-							<div class="b-content">
-								<div class="g4">
-									<div id="eventCalendarLocale" />
+							<div class="news-main" tal:content="structure News/getContent"/>
+							<div class="news-author">
+								<div class="news-tools">
+									<a class="btn btn-success pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank"><i class="icon-share icon-white"/> Chia sẻ</a>
+									<a class="btn btn-primary pull-right" href="https://www.facebook.com/sharer/sharer.php?u=http://chuakhaituong.com/tin-tuc/phong-kham-dong-y" target="_blank"><i class="icon-thumbs-up icon-white"/> Thích</a>
 								</div>
-								<script type="text/javascript">
-									/*<![CDATA[*/
-									$(document).ready(function() {
-										$("#eventCalendarLocale").eventCalendar({
-											eventsjson: '/mvc/templates/script/events.json.php',
-											eventsjson: '/task',
-											monthNames: [ "Tháng 1", "Tháng 2", "Tháng 3", "Tháng 4", "Tháng 5", "Tháng 6",
-												"Tháng 7", "Tháng 8", "Tháng 9", "Tháng 10", "Tháng 11", "Tháng 12" ],
-											dayNames: [ 'Chủ Nhật','Thứ 2','Thứ 3','Thứ 4', 'Thứ 5','Thứ 6','Thứ 7' ],
-											dayNamesShort: [ 'CN','Th2','Th3','Th4', 'Th5','Th6','Th7' ],
-											txt_noEvents: "Không có sự kiện nào xảy ra",
-											txt_SpecificEvents_prev: "",
-											txt_SpecificEvents_after: "sự kiện:",
-											txt_next: "Tới",
-											txt_prev: "Lui",
-											txt_NextEvents: "Sự kiện sắp xảy ra:",
-											txt_GoToEventUrl: "đi đến sự kiện"
-										});
-									});
-									/*]]>*/
-								</script>
+								<p tal:content="News/getAuthor"/>
 							</div>
-						</div>						
-						<div metal:use-macro="macros.xhtml/EventBox"/>
-						<div metal:use-macro="macros.xhtml/CourseBox"/>
-						<div metal:use-macro="macros.xhtml/BuddhaSlide"/>
-						<div metal:use-macro="macros.xhtml/PictureBox"/>
-						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
-						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
-						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
-						<div metal:use-macro="macros.xhtml/AskBox"/>
-						<div metal:use-macro="macros.xhtml/CountBox"/>
-						<div metal:use-macro="macros.xhtml/SponsorBox"/>					
-						<div metal:use-macro="macros.xhtml/ContactBox"/>
-						<div metal:use-macro="macros.xhtml/CallendarBox"/>
+							
+							<ul class="nav nav-tabs nav-stacked reset-margin">
+								<li class="active news-list-title"><a>Các bài giới thiệu khác</a></li>
+								<li tal:repeat="News Category/getNews" class="news-list-item">
+									<a tal:attributes="href News/getURLRead">
+										<span tal:content="News/getTitle"/>
+										<span tal:content="News/getDatePrint"/>
+										<i class="icon-chevron-right pull-right"/>
+									</a>
+								</li>
+							</ul>
+						</div>
 					</div>
+
+				</div>
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer"/>
-			<div metal:use-macro="macros.xhtml/FacebookLike"/>
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

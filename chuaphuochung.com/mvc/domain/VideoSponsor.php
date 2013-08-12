@@ -27,7 +27,10 @@ class VideoSponsor extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
-	function getURLView(){return "/sponsor/".$this->getIdSponsor()."/video/".$this->getId();}	
+	function getURLView(){
+		
+		return "/so-vang/".$this->getSponsor()->getKey()."/video/".$this->getVideo()->getKey();
+	}	
 	function getURLUpdLoad(){return "/app/sponsor/".$this->getIdSponsor()."/video/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/sponsor/".$this->getIdSponsor()."/video/".$this->getId()."/upd/exe";}	
 	function getURLDelLoad(){return "/app/sponsor/".$this->getIdSponsor()."/video/".$this->getId()."/del/load";}

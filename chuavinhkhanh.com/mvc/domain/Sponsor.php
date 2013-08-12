@@ -65,7 +65,7 @@ class Sponsor extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLView(){return "/sponsor/".$this->getId();}
+	function getURLView(){return "/so-vang/".$this->getKey();}
 	function getURLSetting(){return "/app/sponsor/".$this->getId();}
 	function getURLVideo(){return "/app/sponsor/".$this->getId()."/video";}
 	function getURLPaid(){return "/app/sponsor/".$this->getId()."/paid";}

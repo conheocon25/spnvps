@@ -22,10 +22,10 @@ RewriteRule ^gioi-thieu/4$ 											?cmd=Introduction4 [L]
 RewriteRule ^task$ 													?cmd=Task [L]
 RewriteRule ^lien-he$ 												?cmd=Contact [L]
 
-RewriteRule ^sponsor$ 												?cmd=Sponsor [L]
-RewriteRule ^sponsor/([0-9]+)$ 										?cmd=SponsorDetail&IdSponsor=$1 [L]
-RewriteRule ^sponsor/([0-9]+)/video/([0-9]+)$ 						?cmd=SponsorDetailVideo&IdSponsor=$1&IdVideoSponsor=$2 [L]
-RewriteRule ^report/([0-9]+)$ 										?cmd=Report&IdTracking=$1 [L]
+RewriteRule ^so-vang$ 												?cmd=Sponsor [L]
+RewriteRule ^so-vang/([a-z0-9_-]+)$ 								?cmd=SponsorDetail&KSponsor=$1 [L]
+RewriteRule ^so-vang/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=SponsorDetailVideo&KSponsor=$1&KVideoSponsor=$2 [L]
+RewriteRule ^report/([a-z0-9_-]+)$ 									?cmd=Report&IdTracking=$1 [L]
 
 RewriteRule ^phat-am/([a-z0-9_-]+)$											?cmd=LibraryVideo&KBType=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)$					?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2 [L]
@@ -42,7 +42,7 @@ RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
 RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]
 
 RewriteRule ^su-kien$ 												?cmd=Event [L]
-RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=Event&KEvent=$1 [L]
+RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=EventDetail&KEvent=$1 [L]
 
 RewriteRule ^tin-tuc$ 												?cmd=ReadCategory [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
@@ -54,13 +54,13 @@ RewriteRule ^chua-ban/([a-z0-9_-]+)$ 								?cmd=Pagoda&KPagoda=$1 [L]
 RewriteRule ^chua-ban/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=Pagoda&KPagoda=$1&KVideoPagoda=$2 [L]
 
 RewriteRule ^hoi-dap$ 												?cmd=Ask [L]
+RewriteRule ^hoi-dap/dat-cau-hoi$ 									?cmd=AskInsLoad [L]
+RewriteRule ^hoi-dap/dat-cau-hoi/exe$ 								?cmd=AskInsExe [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)$ 								?cmd=Ask&KCategory=$1 [L]
 RewriteRule ^hoi-dap/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=Ask&KCategory=$1&KAsk=$2 [L]
-RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi$ 					?cmd=AskInsLoad&KCategory=$1 [L]
-RewriteRule ^hoi-dap/([a-z0-9_-]+)/dat-cau-hoi/exe$ 				?cmd=AskInsExe&KCategory=$1 [L]
 
 RewriteRule ^dao-tao$ 												?cmd=Course [L]
-RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=Course&KCourse=$1 [L]
+RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCourse=$1&KLession=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
@@ -150,7 +150,9 @@ RewriteRule ^app/monk/([0-9]+)/del/load$ 						?cmd=AppMonkDelLoad&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/del/exe$ 						?cmd=AppMonkDelExe&IdMonk=$1 [L]
 RewriteRule ^app/monk/update/all$ 								?cmd=AppMonkUpdateAll [L]
 
-RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]
+RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]																	 
+RewriteRule ^app/monk/([0-9]+)/video/youtube/upd/load$ 			?cmd=AppMonkVideoYoutubeUpdLoad&IdMonk=$1 [L]
+RewriteRule ^app/monk/([0-9]+)/video/youtube/upd/exe$ 			?cmd=AppMonkVideoYoutubeUpdExe&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/video/trang/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
 RewriteRule ^app/monk/([0-9]+)/video/ins/load$ 					?cmd=AppMonkVideoInsLoad&IdMonk=$1 [L]
 RewriteRule ^app/monk/([0-9]+)/video/ins/exe$ 					?cmd=AppMonkVideoInsExe&IdMonk=$1 [L]
@@ -189,6 +191,9 @@ RewriteRule ^app/category/video/([0-9]+)/del/load$ 				?cmd=AppCategoryVideoDelL
 RewriteRule ^app/category/video/([0-9]+)/del/exe$ 				?cmd=AppCategoryVideoDelExe&IdCategory=$1 [L]
 
 RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
+RewriteRule ^app/category/video/([0-9]+)/youtube/upd/load$ 		?cmd=AppCategoryVideoDetailYoutubeUpdLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/video/([0-9]+)/youtube/upd/exe$ 		?cmd=AppCategoryVideoDetailYoutubeUpdExe&IdCategory=$1 [L]
+
 RewriteRule ^app/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/load$ 				?cmd=AppCategoryVideoDetailInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/exe$ 				?cmd=AppCategoryVideoDetailInsExe&IdCategory=$1 [L]

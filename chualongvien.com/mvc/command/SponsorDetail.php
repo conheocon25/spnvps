@@ -11,17 +11,17 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSponsor = $request->getProperty('IdSponsor');
+			$KSponsor = $request->getProperty('KSponsor');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Sponsor = $mSponsor->find($IdSponsor);
+			$Sponsor = $mSponsor->findByKey($KSponsor);
 			$SponsorAll = $mSponsor->findAll();
 			if (!isset($Sponsor)) $Sponsor = $SponsorAll->current();
 			
@@ -30,28 +30,29 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
-			
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
-
+						
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("so-vang");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("Event", $Event);
+			//-------------------------------------------------------------			
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("Course", $Course);
+			$request->setObject('PagodaAll', $PagodaAll);			
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("Sponsor", $Sponsor);
 			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Sponsor');
 						

@@ -17,7 +17,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -31,8 +31,8 @@
 			$Pagoda = $mPagoda->findByKey($KPagoda);			
 			$Video = $mVideo->findByKey($KVideoPagoda);
 			
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("chua-ban");
 			
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
@@ -47,15 +47,16 @@
 			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("Event", $Event);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject("PagodaAll", $PagodaAll);
-			
-			$request->setObject("Course", $Course);
+						
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Pagoda');
 									

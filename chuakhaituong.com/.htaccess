@@ -1,7 +1,5 @@
 Options +FollowSymlinks
 RewriteEngine on
-RewriteCond %{HTTP_REFERER} !^http(s)?://(www\.)?chuakhaituong.com [NC]
-RewriteRule !antiddos.php http://chuakhaituong.com/antiddos.php?%{REQUEST_URI} [QSA]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # APP

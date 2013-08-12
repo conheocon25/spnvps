@@ -15,8 +15,7 @@
 		
 		//Sử dụng App và User lưu trữ như là một  Object trong Session
 		private function __construct() { 
-			require_once 'mvc/domain/User.php';
-			//include 'mvc/domain/App.php';
+			require_once 'mvc/domain/User.php';			
 			session_start();
 		}
 		
@@ -34,23 +33,7 @@
 		protected function set( $key, $val ) { 
 			$_SESSION[__CLASS__][$key] = $val; 
 		} 
-				
-		//Quản lí IdDomain
-		function setCurrentIdDomain( $IdDomain ) { 
-			self::instance()->set('pagoda_giacquang_current_domain', $IdDomain); 
-		}
-		function getCurrentIdDomain( ) { 
-			return self::instance()->get('pagoda_giacquang_current_domain');
-		}
-		
-		//Quản lí Table
-		function setCurrentIdTable( $IdTable ) { 
-			self::instance()->set('pagoda_giacquang_current_table', $IdTable); 
-		}
-		function getCurrentIdTable( ) { 
-			return self::instance()->get('pagoda_giacquang_current_table');
-		}
-								
+										
 		//Quản lí User
 		function setCurrentUser( \MVC\Domain\User $user ) {
 			return self::instance()->set('pagoda_giacquang_current_user', $user);
@@ -58,27 +41,7 @@
 		function getCurrentUser() {
 			return self::instance()->get('pagoda_giacquang_current_user');
 		}
-										
-		//Quản lí ReportSellingDate
-		function setReportSellingDateStart( $DateStart ) { 
-			self::instance()->set('pagoda_giacquang_selling_date_start', $DateStart); 
-		}
-		function getReportSellingDateStart( ){
-			return self::instance()->get('pagoda_giacquang_selling_date_start');
-		}
 		
-		function setReportSellingDateEnd( $DateEnd ) { 
-			self::instance()->set('pagoda_giacquang_selling_date_end', $DateEnd); 
-		}
-		function getReportSellingDateEnd( ){
-			return self::instance()->get('pagoda_giacquang_selling_date_end');
-		}
-		function setCurrentCategoryNews( $CurrentCategoryNews ) { 
-			self::instance()->set('pagoda_giacquang_CurrentCategoryNews', $CurrentCategoryNews); 
-		}
-		function getCurrentCategoryNews( ){
-			return self::instance()->get('pagoda_giacquang_CurrentCategoryNews');
-		}
 		function setCurrentCaptcha( $CurrentCaptcha ) { 
 			self::instance()->set('pagoda_giacquang_CurrentCaptcha', $CurrentCaptcha); 
 		}
@@ -197,8 +160,7 @@
 			return $obj->appController;
 		}
 		
-		static function getLimit(){
-			
+		static function getLimit(){			
 			return false;
 		}
 	}
