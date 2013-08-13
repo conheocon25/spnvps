@@ -505,7 +505,8 @@ function printTable(mm, yy) {
 	var MonthHead = mm + "/" + yy;
 	var LunarHead = getYearCanChi(ld1.year);
 	var res = "";
-	res += ('<table class="thang" border="0" cellpadding="0" cellspacing="5" width="'+PRINT_OPTS.tableWidth+'">\n');
+	//res += ('<table class="thang" border="0" cellpadding="0" cellspacing="5" width="'+PRINT_OPTS.tableWidth+'">\n');
+	res += ('<table class="thang" border="0" cellpadding="0" cellspacing="5" width="100%">\n');
 	res += printHead(mm, yy);
 	for (i = 0; i < 6; i++) {
 		res += ("<tr>\n");
