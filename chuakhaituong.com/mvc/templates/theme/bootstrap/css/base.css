@@ -15,7 +15,7 @@
 	.reset-margin {
 		margin: 0 !important;
 	}
-	
+
 	.fix-width {
 		margin-left: 6.993px !important;
 	}
@@ -129,6 +129,8 @@
 	.radius {
 		border-top-left-radius: 10px;
 		border-top-right-radius: 10px;
+		border-bottom-left-radius: 0 !important;
+		border-bottom-right-radius: 0 !important;
 	}
 	
 		.box .b-title {
@@ -136,6 +138,12 @@
 			border-bottom: 1px solid #823918;
 			border-top-left-radius: 7px;
 			border-top-right-radius: 7px;
+		}
+		
+		.hidden-accordion {
+			margin-top: -26px;
+			margin-right: 10px;
+			padding: 0 !important;
 		}
 		
 			.b-title .b-t-icon-content {
