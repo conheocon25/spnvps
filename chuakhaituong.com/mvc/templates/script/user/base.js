@@ -5,5 +5,6 @@
 		$('#LessionCarousel').carousel({interval: 5000});
 		$('#BuddhaCarousel').carousel({interval: 5000});
 		$('#EventCarousel').carousel({interval: 5000});
+		$('.monk-tooltip').tooltip(2000);
 	});			
 /*]]>*/

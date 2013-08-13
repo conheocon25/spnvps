@@ -246,28 +246,15 @@
 			<div class="b-t-icon-content">GIẢNG SƯ NỔI BẬT</div>
 		</div>
 		<div class="b-content">
-			<div id="myCarousel3" class="carousel slide sidebar-slide reset-margin">
-				<div class="carousel-inner">
-					<div class="active item">
-						<a tal:attributes="href MonkAll/current/getURLRead">
-							<img tal:attributes="src MonkAll/current/getURLPic | string:/data/images/exit_picture.jpg"/>
-							<div class="carousel-caption">
-								<p tal:content="php:MonkAll->current()->getPreName() . ' ' . MonkAll->current()->getName() . ' ' . MonkAll->current()->getPagoda()"/>
-							</div>
-						</a>
-					</div>
-					<div tal:repeat="Monk MonkAll" class="item">
-						<a tal:attributes="href Monk/getURLRead">
-							<img tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg"/>
-							<div class="carousel-caption">
-								<p tal:content="php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()"/>
-							</div>
-						</a>
-					</div>
-				</div>
-				<a class="carousel-control left" href="#myCarousel3" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel3" data-slide="next">&rsaquo;</a>
-			</div>
+			<ul class="grid-item-3 thumbnails reset-margin">
+				<li tal:repeat="Monk MonkAll" class="span2">
+					<a tal:attributes="href Monk/getURLRead;">
+						<div class="thumbnail">
+							<img class="monk-tooltip" tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg; data-original-title php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()" data-toggle="tooltip" data-placement="bottom"/>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 	
