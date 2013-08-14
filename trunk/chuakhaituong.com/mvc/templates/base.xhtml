@@ -397,8 +397,25 @@
 	<!-- POPUP QUẢNG CÁO														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Popup">
-		<script>/*<![CDATA[*/$(document).ready(function(){$("#ads-open").hide();$("#ads-open").click(function(){$(".ads-popup").show(1000);$(this).hide();});$(".ads-close").click(function(){$(".ads-popup").hide(1000);$("#ads-open").show();});});/*]]>*/</script>
-		<div class="ads-popup" tal:condition="Popup/getEnable" >
+		<script>
+		/*<![CDATA[*/
+			$(document).ready(function(){
+				$(".hide-popup").hide(function(){
+					$("#ads-open").show();
+				});
+				$("#ads-open").hide();
+				$("#ads-open").click( function(){
+					$(".ads-popup").show(1000);
+					$(this).hide();
+				});
+				$(".ads-close").click( function(){
+					$(".ads-popup").hide(1000);
+					$("#ads-open").show();
+				});
+			});
+		/*]]>*/
+		</script>
+		<div class="ads-popup ads-popup-right" tal:condition="Popup/getEnable" >
 			<div class="ads-close">X</div>
 			<object height="100%" width="100%">
 				<param name="movie" tal:attributes="value Popup/getSource" />
@@ -409,7 +426,7 @@
 				<div style="height:100%; width:100%; position:absolute; z-index:9; top:0; left:0;"></div>
 			</a>
 		</div>
-		<div id="ads-open">Mở</div>
+		<div id="ads-open" class="ads-open-right">Mở</div>
 	</div>
 	
 	<!-- ======================================================================== -->
