@@ -49,7 +49,7 @@
 								<div class="media-body">
 									<h4 class="media-heading" tal:content="VM/getVideo/getName"/>
 									<p class="media-reduce">Giảng sư: <span tal:content="Monk/getName"/></p>
-									<a tal:attributes="href VM/getURLView" class="btn pull-right"><i class="icon-share"/> Xem</a>
+									<a tal:attributes="href VM/getURLView" class="btn pull-right"><i class="icon-share"/> <span tal:content="VM/getVideo/getCount" /> xem</a>
 								</div>
 							</div>
 							
@@ -80,10 +80,7 @@
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-					<div metal:use-macro="base.xhtml/PictureBox"/>
-					<div metal:use-macro="base.xhtml/CallendarBox"/>
+					</div>										
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>
