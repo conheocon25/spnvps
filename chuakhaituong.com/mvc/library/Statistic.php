@@ -30,7 +30,7 @@ class Statistic{
 		$mGuest = new \MVC\Mapper\Guest();
 		//Lấy tham số về
 		$IP = $_SERVER['REMOTE_ADDR'];
-		$Agent = $_SERVER['REMOTE_ADDR']; //$_SERVER['USER_AGENT'];
+		$Agent = $_SERVER['USER_AGENT'];
 		$EntryTime = \time();
 		$ExitTime= \time()+(60*60*1);
 		if (!isset($Agent))
