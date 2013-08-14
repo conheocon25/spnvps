@@ -415,7 +415,7 @@
 			});
 		/*]]>*/
 		</script>
-		<div class="ads-popup ads-popup-right" tal:condition="Popup/getEnable" >
+		<div class="ads-popup hide-popup ads-popup-left" tal:condition="Popup/getEnable">
 			<div class="ads-close">X</div>
 			<object height="100%" width="100%">
 				<param name="movie" tal:attributes="value Popup/getSource" />
@@ -426,7 +426,7 @@
 				<div style="height:100%; width:100%; position:absolute; z-index:9; top:0; left:0;"></div>
 			</a>
 		</div>
-		<div id="ads-open" class="ads-open-right">Mở</div>
+		<div id="ads-open" class="ads-open-left">Mở</div>
 	</div>
 	
 	<!-- ======================================================================== -->
