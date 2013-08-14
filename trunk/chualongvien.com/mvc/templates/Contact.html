@@ -4,12 +4,16 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
-		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Contact.js"/>
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyAL3E55skCbhZdaN7Jm3Tip7Np1X04f76w" type="text/javascript"></script>				
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
+		<script type="text/javascript">
+			$(function() {			
+				$("#map").googleMap().load();				
+			});
+		</script>
 	</head>
 
-	<body onload='locationPathCode=1;$("#map").googleMap().loadMap01();'>
+	<body onunload="GUnload()">
 		<div class="container">
 			<div metal:use-macro="base.xhtml/Header"/>
 			<div class="row reset-margin main">
@@ -37,7 +41,7 @@
 						</div>
 						<div class="b-content">
 							<div id="map" style="width:100%; height:470px;"></div>
-							<form class="form-editor" action="directions.php" method="post">								
+							<form style='padding-left:50px;padding-top:30px' class="form-editor" action="directions.php" method="post">								
 								<div class="row">
 									<div for="Name" class="label">Chọn vị trí</div>
 									<div class="selectbox" >
@@ -66,8 +70,8 @@
 								</div>
 							</form>	
 							
-							<form class="form-editor" action="directions.php" method="post">
-								<input id="end" type="hidden" value="Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam" />
+							<form style='padding-left:50px;padding-top:30px' class="form-editor" action="directions.php" method="post">
+								<input id="end" type="hidden" value="Chua Long Vien, 4, tp. Vinh Long, Vinh Long, Viet Nam" />
 								<div class="row">
 									<div for="Name" class="label">Vị trí của bạn</div>
 									<div class="textbox" >
