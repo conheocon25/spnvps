@@ -232,6 +232,9 @@
 		<command name="AppCategoryNewsDelLoad"><view>AppCategoryNewsDelLoad</view></command>
 		<command name="AppCategoryNewsDelExe"><view>AppCategoryNewsDelExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>
 		
+		<command name="AppCategoryNewsAutoLoad"><view>AppCategoryNewsAutoLoad</view></command>
+		<command name="AppCategoryNewsAutoExe"><view>AppCategoryNewsAutoExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>
+		
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.VIDEO																-->
 		<!-- ============================================================================== -->

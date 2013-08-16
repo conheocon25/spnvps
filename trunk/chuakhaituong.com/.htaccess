@@ -169,6 +169,8 @@ RewriteRule ^app/category/news/([0-9]+)/upd/load$ 				?cmd=AppCategoryNewsUpdLoa
 RewriteRule ^app/category/news/([0-9]+)/upd/exe$ 				?cmd=AppCategoryNewsUpdExe&IdCategory=$1 [L]
 RewriteRule ^app/category/news/([0-9]+)/del/load$ 				?cmd=AppCategoryNewsDelLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/news/([0-9]+)/del/exe$ 				?cmd=AppCategoryNewsDelExe&IdCategory=$1 [L]
+RewriteRule ^app/category/news/([0-9]+)/auto/load$ 				?cmd=AppCategoryNewsAutoLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/news/([0-9]+)/auto/exe$ 				?cmd=AppCategoryNewsAutoExe&IdCategory=$1 [L]
 
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]

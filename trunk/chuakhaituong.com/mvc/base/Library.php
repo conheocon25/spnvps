@@ -10,4 +10,5 @@
 	require_once("mvc/library/Image.php");
 	require_once("mvc/library/String.php");
 	require_once("mvc/library/Statistic.php");
+	require_once("mvc/library/SimpleHtmlDom.php");
 ?>
