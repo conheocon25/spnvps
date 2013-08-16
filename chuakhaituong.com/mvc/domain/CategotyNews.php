@@ -56,6 +56,9 @@ class CategoryNews extends Object{
 	function getURLRead(){return "/tin-tuc/".$this->getkey();}
 	function getURLView(){return "/app/news/".$this->getId();}
 	
+	function getURLNewsAutoLoad(){return "/app/category/news/".$this->getId()."/auto/load";}
+	function getURLNewsAutoExe(){return "/app/category/news/".$this->getId()."/auto/exe";}
+	
 	function getURLUpdLoad(){return "/app/category/news/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/category/news/".$this->getId()."/upd/exe";}
 	
