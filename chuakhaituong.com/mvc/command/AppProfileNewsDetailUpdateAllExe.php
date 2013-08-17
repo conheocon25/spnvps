@@ -23,8 +23,7 @@
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------													
-			$Category = $mCategory->find($IdCategory);
+			//-------------------------------------------------------------																
 			$Profile = $mProfile->find($IdProfile);
 			
 			$xml_source = file_get_contents( $Profile->getRSS() );
@@ -36,9 +35,33 @@
 				$Date = (string) $item->pubDate;
 				$Link = (string) $item->link;
 				//Lấy tin về và lưu vào CSDL
+				$NewsTitle = "tựa của tin";
+				$NewsAuthor = "Tác giả";
+				$NewsContent = "Nội dung";
+				
+				$HTML = file_get_html($Link);
+				$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);					
+				$NewsAuthor = $HTML->find('.ctcSource', 0);
+				$NewsContent = $HTML->find('.ctcBody', 0);			
+				foreach( $NewsContent->find('img') as $img){
+					if (substr($img->src,0,1) == "/")
+						$img->src = "http://giacngo.vn/".$img->src; 
+				}
+				
+				$News = new \MVC\Domain\News(
+					null,
+					$IdCategory,
+					isset($NewsAuthor)?$NewsAuthor->plaintext:"không tác giả",
+					null,
+					$NewsContent,
+					$NewsTitle->plaintext,
+					0,
+					""
+				);
+				$News->reKey();
+				$mNews->insert($News);
+				unset($HTML);
 			}
-														
-						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
