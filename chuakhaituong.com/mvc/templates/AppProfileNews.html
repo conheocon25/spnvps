@@ -11,7 +11,7 @@
 			<div class="row-fluid">
 				<div class="row-fluid">
 					<div class="span3">
-						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+						
 					</div>
 					<div class="span9">
 						<div class="content">
@@ -20,49 +20,39 @@
 								<thead>
 									<tr>
 										<th width="32">STT</th>
-										<th>TÊN</th>
-										<th>TIN TỨC</th>
-										<th width="120">PROFILE</th>
+										<th>TÊN PROFILE</th>
+										<th width="120">CÁC TIN</th>
 										<th width="32">XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="Category CategoryAll">
+									<tr class="content-rows" tal:repeat="Profile Category/getProfileAll">
 										<td width="32" align="center">
-											<div tal:content="repeat/Category/number" />
+											<div tal:content="repeat/Profile/number" />
 										</td>
 										<td>
-											<a tal:attributes="href Category/getURLUpdLoad">
-												<div tal:content="Category/getName" />
+											<a tal:attributes="href Profile/getURLUpdLoad">
+												<div tal:content="Profile/getName" />
 											</a>
 										</td>
 										<td>
-											<a tal:attributes="href Category/getURLView">
-												<div>Số tin (<span tal:content="Category/getNews/count"/>)</div>
+											<a tal:attributes="href Profile/getURLView">
+												Xem
 											</a>
 										</td>
-										<td>
-											<a tal:attributes="href Category/getURLProfile">Xem</a>
-										</td>
-										<td><a tal:attributes="href Category/getURLDelLoad"><span class="icon-remove" /></a></td>
+										<td><a tal:attributes="href Profile/getURLDelLoad"><span class="icon-remove" /></a></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="2" align="center">
-											<a class="btn" href="/app/category/news/ins/load">
+										<td colspan="3" align="center">
+											<a class="btn" tal:attributes="href Category/getURLProfileInsLoad">
 												<span class="icon-plus" /> Thêm mới
 											</a>
-										</td>
-										<td colspan="2" align="center">
-											<a class="btn" href="/app/news/update/all">
-												<span class="icon-edit" /> Cập nhật tin
-											</a>
-										</td>
+										</td>										
 									</tr>
 								</tfoot>
-							</table>
-							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+							</table>							
 						</div>
 					</div>
 				</div>
