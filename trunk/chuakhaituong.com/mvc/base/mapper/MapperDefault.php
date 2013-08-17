@@ -29,4 +29,5 @@
 	$mVS = new \MVC\Mapper\VideoSponsor();
 	$mAsk = new \MVC\Mapper\Ask();
 	$mPopup = new \MVC\Mapper\Popup();
+	$mProfileNews = new \MVC\Mapper\ProfileNews();
 ?>

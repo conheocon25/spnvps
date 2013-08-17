@@ -43,4 +43,5 @@ interface TaskFinder  extends Finder{}
 interface PaidFinder  extends Finder{}
 interface TrackingFinder  extends Finder{}
 interface PopupFinder  extends Finder{}
+interface ProfileNewsFinder  extends Finder{}
 ?>

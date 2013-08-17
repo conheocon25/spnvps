@@ -50,26 +50,36 @@ class CategoryNews extends Object{
 		return $News;
 	}
 	
+	function getProfileAll(){
+		$mProfile = new \MVC\Mapper\ProfileNews();
+		$ProfileAll = $mProfile->findBy(array($this->getId()));
+		return $ProfileAll;
+	}
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLRead(){return "/tin-tuc/".$this->getkey();}
 	function getURLView(){return "/app/news/".$this->getId();}
 	
-	function getURLNewsAutoLoad(){return "/app/category/news/".$this->getId()."/auto/load";}
-	function getURLNewsAutoExe(){return "/app/category/news/".$this->getId()."/auto/exe";}
+	function getURLNewsAutoLoad(){		return "/app/category/news/".$this->getId()."/auto/load";}
+	function getURLNewsAutoExe(){		return "/app/category/news/".$this->getId()."/auto/exe";}
 	
-	function getURLUpdLoad(){return "/app/category/news/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/category/news/".$this->getId()."/upd/exe";}
+	function getURLUpdLoad(){			return "/app/category/news/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){			return "/app/category/news/".$this->getId()."/upd/exe";}
+	
+	function getURLProfile(){			return "/app/category/news/".$this->getId()."/profile";}
+	function getURLProfileInsLoad(){	return "/app/category/news/".$this->getId()."/profile/ins/load";}
+	function getURLProfileInsExe(){		return "/app/category/news/".$this->getId()."/profile/ins/exe";}
 	
 	function getURLDelLoad(){return "/app/category/news/".$this->getId()."/del/load";}
 	function getURLDelExe(){return "/app/category/news/".$this->getId()."/del/exe";}
 	
 	function getURLNewsInsLoad(){return "/app/news/".$this->getId()."/ins/load";}
-	function getURLNewsInsExe(){return "/app/news/".$this->getId()."/ins/exe";}		
+	function getURLNewsInsExe(){return "/app/news/".$this->getId()."/ins/exe";}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-	
 }
 ?>

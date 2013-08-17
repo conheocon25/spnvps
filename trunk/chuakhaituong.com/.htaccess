@@ -172,6 +172,17 @@ RewriteRule ^app/category/news/([0-9]+)/del/exe$ 				?cmd=AppCategoryNewsDelExe&
 RewriteRule ^app/category/news/([0-9]+)/auto/load$ 				?cmd=AppCategoryNewsAutoLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/news/([0-9]+)/auto/exe$ 				?cmd=AppCategoryNewsAutoExe&IdCategory=$1 [L]
 
+RewriteRule ^app/category/news/([0-9]+)/profile$ 					?cmd=AppProfileNews&IdCategory=$1 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/ins/load$ 			?cmd=AppProfileNewsInsLoad&IdCategory=$1 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/ins/exe$ 			?cmd=AppProfileNewsInsExe&IdCategory=$1 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/upd/load$ 	?cmd=AppProfileNewsUpdLoad&IdCategory=$1&IdProfile=$2 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/upd/exe$ 	?cmd=AppProfileNewsUpdExe&IdCategory=$1&IdProfile=$2 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/del/load$ 	?cmd=AppProfileNewsDelLoad&IdCategory=$1&IdProfile=$2 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/del/exe$ 	?cmd=AppProfileNewsDelExe&IdCategory=$1&IdProfile=$2 [L]
+
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/detail$ 	?cmd=AppProfileNewsDetail&IdCategory=$1&IdProfile=$2 [L]
+RewriteRule ^app/category/news/([0-9]+)/profile/([0-9]+)/updateall/exe$ 	?cmd=AppProfileNewsDetailUpdateAllExe&IdCategory=$1&IdProfile=$2 [L]
+
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/trang/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]

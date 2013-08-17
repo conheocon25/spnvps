@@ -236,6 +236,20 @@
 		<command name="AppCategoryNewsAutoExe"><view>AppCategoryNewsAutoExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>
 		
 		<!-- ============================================================================== -->
+		<!-- PROFILE.NEWS																	-->
+		<!-- ============================================================================== -->
+		<command name="AppProfileNews"><view>AppProfileNews</view></command>
+		<command name="AppProfileNewsInsLoad"><view>AppProfileNewsInsLoad</view></command>
+		<command name="AppProfileNewsInsExe"><view>AppProfileNewsInsExe</view><status value="CMD_OK"><forward>AppProfileNews</forward></status></command>
+		<command name="AppProfileNewsUpdLoad"><view>AppProfileNewsUpdLoad</view></command>
+		<command name="AppProfileNewsUpdExe"><view>AppProfileNewsUpdExe</view><status value="CMD_OK"><forward>AppProfileNews</forward></status></command>		
+		<command name="AppProfileNewsDelLoad"><view>AppProfileNewsDelLoad</view></command>
+		<command name="AppProfileNewsDelExe"><view>AppProfileNewsDelExe</view><status value="CMD_OK"><forward>AppProfileNews</forward></status></command>
+		
+		<command name="AppProfileNewsDetail"><view>AppProfileNewsDetail</view></command>
+		<command name="AppProfileNewsDetailUpdateAllExe"><view>AppProfileDetailNewsUpdateAllExe</view><status value="CMD_OK"><forward>AppProfileNews</forward></status></command>
+		
+		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.VIDEO																-->
 		<!-- ============================================================================== -->
 		<command name="AppCategoryVideo"><view>AppCategoryVideo</view></command>
