@@ -14,6 +14,9 @@
 			$IdCategory = $request->getProperty('IdCategory');
 			$Name = $request->getProperty('Name');
 			$RSS = $request->getProperty('RSS');
+			$CTitle = $request->getProperty('CTitle');
+			$CAuthor = $request->getProperty('CAuthor');
+			$CContent = $request->getProperty('CContent');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -29,7 +32,10 @@
 				null,
 				$Name,
 				$IdCategory,
-				$RSS
+				$RSS,
+				$CTitle,
+				$CAuthor,
+				$CContent
 			);			
 			$mProfile->insert($Profile);
 			

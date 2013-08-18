@@ -76,10 +76,11 @@
 							</div>
 							
 							<ul class="nav nav-tabs nav-stacked reset-margin">
-								<li class="active news-list-title"><a>Cùng giảng sư</a></li>
-								<li tal:repeat="VL Category/getVLs" class="news-list-item">
+								<li class="active news-list-title"><a>Cùng chủ đề</a></li>
+								<li tal:repeat="VL VLs" class="news-list-item">
 									<a tal:attributes="href VL/getURLView">
 										<span tal:content="VL/getVideo/getName"/>
+										(<i tal:content="VL/getVideo/getCountPrint"/> lượt xem)
 										<i class="icon-chevron-right pull-right"/>
 									</a>
 								</li>

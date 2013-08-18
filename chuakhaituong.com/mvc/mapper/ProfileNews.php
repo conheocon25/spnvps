@@ -1,6 +1,5 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
 
@@ -11,10 +10,10 @@ class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
 		
 		$selectAllStmt = sprintf("select * from %s", $tblProfileNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblProfileNews);
-		$updateStmt = sprintf("update %s set name=?, id_category=?, rss=? where id=?", $tblProfileNews);
-		$insertStmt = sprintf("insert into %s ( name, id_category, rss) values(?, ?, ?)", $tblProfileNews);
+		$updateStmt = sprintf("update %s set name=?, id_category=?, rss=?, ctitle=?, cauthor=?, ccontent=? where id=?", $tblProfileNews);
+		$insertStmt = sprintf("insert into %s ( name, id_category, rss, ctitle, cauthor, ccontent) values(?, ?, ?, ?, ?, ?)", $tblProfileNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblProfileNews);
-		$findByStmt = sprintf("select *  from %s where id_category=?", $tblProfileNews);						
+		$findByStmt = sprintf("select *  from %s where id_category=?", $tblProfileNews);
 		$findByPageStmt = sprintf("SELECT * FROM  %s LIMIT :start,:max" , $tblProfileNews);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
@@ -33,7 +32,10 @@ class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
 			$array['id'],
 			$array['name'],
 			$array['id_category'],
-			$array['rss']
+			$array['rss'],
+			$array['ctitle'],
+			$array['cauthor'],
+			$array['ccontent']
 		);
         return $obj;
     }
@@ -44,7 +46,10 @@ class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
         $values = array( 
 			$object->getName(),
 			$object->getIdCategory(),			
-			$object->getRSS()
+			$object->getRSS(),
+			$object->getCTitle(),
+			$object->getCAuthor(),
+			$object->getCContent()
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -56,6 +61,9 @@ class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
 			$object->getName(),
 			$object->getIdCategory(),
 			$object->getRSS(),
+			$object->getCTitle(),
+			$object->getCAuthor(),
+			$object->getCContent(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -76,6 +84,6 @@ class ProfileNews extends Mapper implements \MVC\Domain\ProfileNewsFinder{
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new ProfileNewsCollection( $this->findByPageStmt->fetchAll(), $this );
-    }	
+    }
 }
 ?>
