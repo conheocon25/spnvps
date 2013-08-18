@@ -29,8 +29,8 @@
 							</div>
 							
 							<ul class="nav nav-tabs nav-stacked reset-margin">
-								<li class="active news-list-title"><a>Các bài giới thiệu khác</a></li>
-								<li tal:repeat="News Category/getNews" class="news-list-item">
+								<li class="active news-list-title"><a>Các bài khác</a></li>
+								<li tal:repeat="News Category/getNewsLimit2" class="news-list-item">
 									<a tal:attributes="href News/getURLRead">
 										<span tal:content="News/getTitle"/>
 										<span tal:content="News/getDatePrint"/>
@@ -44,8 +44,7 @@
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
-					<div metal:use-macro="base.xhtml/EventBox"/>
-					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/EventBox"/>					
 					<div metal:use-macro="base.xhtml/BuddhaBox"/>
 					<div metal:use-macro="base.xhtml/PictureBox"/>
 					<div metal:use-macro="base.xhtml/TopNewsBox"/>

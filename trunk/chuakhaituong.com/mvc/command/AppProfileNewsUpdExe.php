@@ -15,6 +15,9 @@
 			$IdProfile = $request->getProperty('IdProfile');
 			$Name = $request->getProperty('Name');
 			$RSS = $request->getProperty('RSS');
+			$CTitle = $request->getProperty('CTitle');
+			$CAuthor = $request->getProperty('CAuthor');
+			$CContent = $request->getProperty('CContent');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -27,8 +30,13 @@
 			if (!isset($Name)) return self::statuses('CMD_OK');			
 			
 			$Profile = $mProfile->find($IdProfile);
+			
 			$Profile->setName($Name);
 			$Profile->setRSS($RSS);
+			$Profile->setCTitle($CTitle);
+			$Profile->setCAuthor($CAuthor);
+			$Profile->setCContent($CContent);
+			
 			$mProfile->update($Profile);
 			
 			//-------------------------------------------------------------

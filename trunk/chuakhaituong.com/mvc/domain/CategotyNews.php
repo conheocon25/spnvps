@@ -50,6 +50,12 @@ class CategoryNews extends Object{
 		return $News;
 	}
 	
+	function getNewsLimit2(){
+		$mNews = new \MVC\Mapper\News();
+		$News = $mNews->findByLimit2(array($this->getId()));
+		return $News;
+	}
+	
 	function getProfileAll(){
 		$mProfile = new \MVC\Mapper\ProfileNews();
 		$ProfileAll = $mProfile->findBy(array($this->getId()));

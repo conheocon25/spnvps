@@ -16,7 +16,8 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		$insertStmt = sprintf("insert into %s ( id_video, id_monk)  values(?, ?)", $tblVideoMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoMonk);
 		$deleteByMonkStmt = sprintf("delete from %s where id_monk=?", $tblVideoMonk);
-		$findByStmt = sprintf("select *  from %s VM where id_monk=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoMonk, $tblVideo);	
+		$findByStmt = sprintf("select *  from %s VM where id_monk=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoMonk, $tblVideo);
+		$findByLimitStmt = sprintf("select *  from %s VM where id_monk=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 12", $tblVideoMonk, $tblVideo);
 				
 		$findByTopLocalStmt = sprintf("select *  from %s VM limit 8", $tblVideoMonk, $tblVideo);
 		$findByTop10Stmt = sprintf("select *  from %s limit 10", $tblVideoMonk);
@@ -67,6 +68,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
 		$this->deleteByMonkStmt = self::$PDO->prepare($deleteByMonkStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
+		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
 				
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);		
 		$this->findByTop10Stmt = self::$PDO->prepare($findByTop10Stmt);
@@ -144,6 +146,11 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 	function findByViewTop( $values ){
         $this->findByViewTopStmt->execute( $values );
         return new VideoMonkCollection( $this->findByViewTopStmt->fetchAll(), $this);
+    }
+	
+	function findByLimit( $values ){
+        $this->findByLimitStmt->execute( $values );
+        return new VideoMonkCollection( $this->findByLimitStmt->fetchAll(), $this);
     }
 	
 	function findByPage( $values ){

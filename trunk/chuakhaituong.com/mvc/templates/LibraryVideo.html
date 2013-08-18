@@ -78,6 +78,7 @@
 								<li tal:repeat="VM VMUpdateTopAll" class="news-list-item">
 									<a tal:attributes="href VM/getURLView">
 										<span tal:content="VM/getVideo/getName"/>
+										(<i tal:content="VM/getVideo/getCountPrint"/> lượt xem)
 										<i class="icon-chevron-right pull-right"/>
 									</a>
 								</li>
@@ -90,6 +91,7 @@
 								<li tal:repeat="VM VMViewTopAll" class="news-list-item">
 									<a tal:attributes="href VM/getURLView">
 										<span tal:content="VM/getVideo/getName"/>
+										(<i tal:content="VM/getVideo/getCountPrint"/> lượt xem)
 										<i class="icon-chevron-right pull-right"/>
 									</a>
 								</li>

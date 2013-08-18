@@ -8,15 +8,22 @@ class ProfileNews extends Object{
 	private $Name;
 	private $IdCategory;
 	private $RSS;
-		
+	
+	private $CTitle;
+	private $CAuthor;
+	private $CContent;
+	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=Null, $IdCategory=null, $RSS=Null){
+    function __construct( $Id=null, $Name=Null, $IdCategory=null, $RSS=Null, $CTitle=Null, $CAuthor=Null, $CContent=Null){
         $this->Id = $Id;
 		$this->Name = $Name;
 		$this->IdCategory = $IdCategory;		
 		$this->RSS = $RSS;
+		$this->CTitle = $CTitle;
+		$this->CAuthor = $CAuthor;
+		$this->CContent = $CContent;
 		
         parent::__construct( $Id );
     }
@@ -31,7 +38,20 @@ class ProfileNews extends Object{
 	
 	function setRSS( $RSS ){$this->RSS = $RSS;$this->markDirty();}   
 	function getRSS( ) {return $this->RSS;}
-		
+	
+	function setCTitle( $CTitle ){$this->CTitle = $CTitle; $this->markDirty();}
+	function getCTitle( ) {return $this->CTitle;}
+	
+	function setCAuthor( $CAuthor ){$this->CAuthor = $CAuthor; $this->markDirty();}
+	function getCAuthor( ) {return $this->CAuthor;}
+	
+	function setCContent( $CContent ){$this->CContent = $CContent; $this->markDirty();}
+	function getCContent( ) {return $this->CContent;}
+	
+	function getHostName(){
+		$parse = parse_url( $this->getRSS() );
+		return "http://".$parse['host'];
+	}
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------

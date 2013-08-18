@@ -40,12 +40,13 @@
 				$NewsContent = "Nội dung";
 				
 				$HTML = file_get_html($Link);
-				$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);					
-				$NewsAuthor = $HTML->find('.ctcSource', 0);
-				$NewsContent = $HTML->find('.ctcBody', 0);			
+				$NewsTitle = $HTML->find( $Profile->getCTitle() , 0);
+				$NewsAuthor = $HTML->find( $Profile->getCAuthor() , 0);
+				$NewsContent = $HTML->find( $Profile->getCContent(), 0);
+								
 				foreach( $NewsContent->find('img') as $img){
 					if (substr($img->src,0,1) == "/")
-						$img->src = "http://giacngo.vn/".$img->src; 
+						$img->src = $Profile->getHostName().$img->src; 
 				}
 				
 				$News = new \MVC\Domain\News(

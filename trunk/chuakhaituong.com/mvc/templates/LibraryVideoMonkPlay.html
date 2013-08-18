@@ -75,9 +75,10 @@
 							
 							<ul class="nav nav-tabs nav-stacked reset-margin">
 								<li class="active news-list-title"><a>Mới cập nhật</a></li>
-								<li tal:repeat="VM Monk/getVMs" class="news-list-item">
+								<li tal:repeat="VM VMs" class="news-list-item">
 									<a tal:attributes="href VM/getURLView">
 										<span tal:content="VM/getVideo/getName"/>
+										(<i tal:content="VM/getVideo/getCountPrint"/> lượt xem)
 										<i class="icon-chevron-right pull-right"/>
 									</a>
 								</li>
