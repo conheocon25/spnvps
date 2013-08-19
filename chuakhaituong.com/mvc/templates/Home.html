@@ -13,7 +13,7 @@
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
 				<div class="span8 fix-width">
 					
-					<div class="accordion" id="accordion2">
+					<div class="accordion accordion-fix" id="accordion2">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Đào tạo</div>
@@ -50,7 +50,7 @@
 						</div>
 					</div>
 					
-					<div tal:repeat="Category CategoryNewsAll" class="accordion" tal:attributes="id Category/getIdPrint">
+					<div tal:repeat="Category CategoryNewsAll" class="accordion accordion-fix" tal:attributes="id Category/getIdPrint">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div tal:content="Category/getName" class="b-t-icon-content"/>
@@ -93,7 +93,7 @@
 						</div>
 					</div>
 					
-					<div class="accordion" id="accordion3">
+					<div class="accordion accordion-fix" id="accordion3">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">VIDEO NỘI BỘ</div>
@@ -114,7 +114,7 @@
 						</div>
 					</div>
 					
-					<div class="accordion" id="accordion4">
+					<div class="accordion accordion-fix" id="accordion4">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Bài giảng mới nhất</div>
@@ -135,7 +135,7 @@
 						</div>
 					</div>
 					
-					<div class="accordion" id="accordion5">
+					<div class="accordion accordion-fix" id="accordion5">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Chuyên đề mới nhất</div>

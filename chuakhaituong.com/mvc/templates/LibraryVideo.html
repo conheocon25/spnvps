@@ -73,6 +73,17 @@
 								</p>
 							</div>
 							
+							<ul class="thumbnails grid-item-2 reset-margin">
+								<li tal:repeat="VM VMUpdateTopAll" class="span2">
+									<div class="thumbnail">
+										<a tal:attributes="href VM/getURLView">
+											<img tal:attributes="src VM/getVideo/getURLImage"/>
+											<p tal:content="VM/getVideo/getName"/>
+										</a>
+									</div>
+								</li>
+							</ul>
+							
 							<ul class="nav nav-tabs nav-stacked reset-margin">
 								<li class="active news-list-title"><a>Mới cập nhật</a></li>
 								<li tal:repeat="VM VMUpdateTopAll" class="news-list-item">
