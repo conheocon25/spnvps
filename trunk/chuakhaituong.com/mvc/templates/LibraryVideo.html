@@ -37,9 +37,7 @@
 						<div class="b-content news-content padding-content">
 							<div class="page-header">
 								<h4 tal:content="VMUpdateTopAll/current/getVideo/getName"/>
-								<i class="pull-right">
-									<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
-								</i>
+								<i class="pull-right" tal:content="php: 'Phật Âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint() . ' Video)'"/>
 							</div>
 							<div class="img-polaroid">
 								<iframe width="100%" height="400" 
@@ -57,22 +55,24 @@
 									/*]]>*/
 								</script>
 							</div>
-							
-							<div class="news-author monk-author">
-								<div class="news-tools">
-									<a class="btn btn-danger pull-right disabled" >
-										<i class="icon-share icon-white"/>
-										<span tal:content="VMUpdateTopAll/current/getVideo/getCountPrint"/> lượt xem
-									</a>
-								</div>
-								<p>Giảng sư:
-									<a tal:attributes="href VMUpdateTopAll/current/getMonk/getURLRead">
-										<span tal:content="VMUpdateTopAll/current/getMonk/getPreName"/> - 
-										<span tal:content="VMUpdateTopAll/current/getMonk/getName"/>
-									</a>
-								</p>
+							<div class="alert alert-block clearfix reset-margin">
+								<strong>Giảng sư:</strong>
+								<a tal:attributes="href VMUpdateTopAll/current/getMonk/getURLRead">
+									<span tal:content="VMUpdateTopAll/current/getMonk/getPreName"/> - 
+									<span tal:content="VMUpdateTopAll/current/getMonk/getName"/>
+								</a>
+								
+								<span class="btn btn-danger pull-right disabled btn-small" >
+									<i class="icon-hand-up icon-white"/>
+									<span tal:content="VMUpdateTopAll/current/getVideo/getCountPrint"/> lượt xem
+								</span>
 							</div>
 							
+							<div class="news-author monk-author"><p>
+								<span class="btn btn-danger disabled btn-small">
+									<i class="icon-tags icon-white"/> Mới cập nhật
+								</span>
+							</p></div>
 							<ul class="thumbnails grid-item-2 reset-margin">
 								<li tal:repeat="VM VMUpdateTopAll" class="span2">
 									<div class="thumbnail">
@@ -84,27 +84,19 @@
 								</li>
 							</ul>
 							
-							<ul class="nav nav-tabs nav-stacked reset-margin">
-								<li class="active news-list-title"><a>Mới cập nhật</a></li>
-								<li tal:repeat="VM VMUpdateTopAll" class="news-list-item">
-									<a tal:attributes="href VM/getURLView">
-										<span tal:content="VM/getVideo/getName"/>
-										(<i tal:content="VM/getVideo/getCountPrint"/> lượt xem)
-										<i class="icon-chevron-right pull-right"/>
-									</a>
-								</li>
-							</ul>
-							
-							<div class="news-author monk-author"/>
-							
-							<ul class="nav nav-tabs nav-stacked reset-margin">
-								<li class="active news-list-title"><a>Xem nhiều nhất</a></li>
-								<li tal:repeat="VM VMViewTopAll" class="news-list-item">
-									<a tal:attributes="href VM/getURLView">
-										<span tal:content="VM/getVideo/getName"/>
-										(<i tal:content="VM/getVideo/getCountPrint"/> lượt xem)
-										<i class="icon-chevron-right pull-right"/>
-									</a>
+							<div class="news-author monk-author"><p>
+								<span class="btn btn-danger disabled btn-small">
+									<i class="icon-thumbs-up icon-white"/> Xem nhiều nhất
+								</span>
+							</p></div>
+							<ul class="thumbnails grid-item-2 reset-margin">
+								<li tal:repeat="VM VMViewTopAll" class="span2">
+									<div class="thumbnail">
+										<a tal:attributes="href VM/getURLView">
+											<img tal:attributes="src VM/getVideo/getURLImage"/>
+											<p tal:content="VM/getVideo/getName"/>
+										</a>
+									</div>
 								</li>
 							</ul>
 							
