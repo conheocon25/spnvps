@@ -107,12 +107,15 @@
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active dropdown':'dropdown'">
+					
 					<a class="dropdown-toggle" data-toggle="dropdown">Từ thiện <b class="caret"/></a>
 					<ul class="dropdown-menu">
 						<li><a href="/so-vang">Sổ vàng</a></li>
+						<!--
 						<li tal:repeat="Sponsor SponsorAll">
 							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
 						</li>
+						!-->
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>				
@@ -427,19 +430,20 @@
 			<div id="PopupCarousel" class="carousel slide carousel-fade popup-slide reset-margin">
 				<ol class="carousel-indicators">
 					<li data-target="#PopupCarousel" data-slide-to="0" class="active"></li>
-					<li data-target="#PopupCarousel" data-slide-to="1"></li>
-					<li data-target="#PopupCarousel" data-slide-to="2"></li>
 				</ol>
 				<div class="carousel-inner">
+					
 					<div class="active item">
-						<a href="/phat-am/bac-tong"><img src="/data/images/tmp/tmp1.jpg" /></a>
+						<a tal:attributes="href '#'">
+							<img width="100%" tal:attributes="src SponsorAll/current/getPicture" class="img-rounded"/>
+						</a>
 					</div>
-					<div class="item">
-						<a href="/phat-am/bac-tong"><img src="/data/images/tmp/tmp2.jpg" /></a>
-					</div>
-					<div class="item">
-						<a href="/phat-am/bac-tong"><img src="/data/images/tmp/tmp3.jpg" /></a>
-					</div>
+					
+					<div class="item" tal:repeat="Sponsor SponsorAll">
+						<a tal:attributes="href Sponsor/getURLView">
+							<img width="100%" tal:attributes="src Sponsor/getPicture" class="img-rounded"/>
+						</a>
+					</div>					
 				</div>
 			</div>
 		</div>

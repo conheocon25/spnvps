@@ -36,6 +36,7 @@
 			$SponsorAll = $mSponsor->findAll();						
 			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();

@@ -13,6 +13,7 @@
 			//-------------------------------------------------------------
 			$IdSponsor = $request->getProperty('IdSponsor');
 			$Name = $request->getProperty('Name');
+			$Picture = $request->getProperty('Picture');
 			$TimeStart = $request->getProperty('TimeStart');
 			$TimeEnd = $request->getProperty('TimeEnd');
 			$Content = \stripslashes($request->getProperty('Content'));
@@ -27,7 +28,8 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
 			$Sponsor = $mSponsor->find($IdSponsor);
-			$Sponsor->setName($Name);			
+			$Sponsor->setName($Name);
+			$Sponsor->setPicture($Picture);
 			$Sponsor->setTimeStart($TimeStart);
 			$Sponsor->setTimeEnd($TimeEnd);
 			$Sponsor->setContent($Content);
