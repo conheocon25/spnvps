@@ -18,16 +18,10 @@
 							<div class="b-t-icon-content" tal:content="Title"/>
 						</div>
 						<div class="b-content padding-content">
-							<div tal:repeat="Sponsor SponsorAll" class="media img-polaroid new-list-polaroid">
-								<a tal:attributes="href Sponsor/getURLView" class="pull-left">
-									<img src="/data/images/logo/sponsor_logo.gif" class="media-object img-rounded"/>
-								</a>
-								<div class="media-body">
-									<h4 class="media-heading" tal:content="Sponsor/getName"/>
-									<p class="media-time">(<i tal:content="Sponsor/getTimeStartPrint"/>)</p>
-									<p class="media-reduce"/>
-									<a tal:attributes="href Sponsor/getURLView" class="btn">Xem chi tiết</a>
-								</div>
+							<div tal:repeat="Sponsor SponsorAll" class="media img-polaroid">
+								<a tal:attributes="href Sponsor/getURLView">
+									<img width="100%" tal:attributes="src Sponsor/getPicture" class="img-rounded"/>
+								</a>								
 							</div>
 							<br/>
 							<ul class="nav nav-tabs nav-stacked reset-margin">
@@ -45,8 +39,7 @@
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
-					<div metal:use-macro="base.xhtml/EventBox"/>
-					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/EventBox"/>					
 					<div metal:use-macro="base.xhtml/BuddhaBox"/>
 					<div metal:use-macro="base.xhtml/PictureBox"/>
 					<div metal:use-macro="base.xhtml/TopNewsBox"/>

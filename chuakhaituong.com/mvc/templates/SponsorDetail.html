@@ -12,17 +12,14 @@
 			<div class="row reset-margin main">
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
 				<div class="span8 fix-width">
-
+					<div class="box">
+						<img width="100%" tal:attributes="src Sponsor/getPicture" />
+					</div>
 					<div class="box">
 						<div class="b-content news-content padding-content">
-							<div class="page-header">
-								<h4>THƯ NGÕ</h4>
-							</div>
+							<div class="page-header"><h4>THƯ NGÕ</h4></div>
 							<div class="news-main" tal:content="structure Sponsor/getContent"/>
-							<div class="news-author">
-								<p>GHI DANH SỔ CÔNG ĐỨC</p>
-							</div>
-							
+							<div class="news-author"><p>GHI DANH SỔ CÔNG ĐỨC</p></div>							
 							<table class="table table-hover">
 								<thead>
 									<th align="center" width="5%" >STT</th>
@@ -65,8 +62,7 @@
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
-					<div metal:use-macro="base.xhtml/EventBox"/>
-					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/EventBox"/>					
 					<div metal:use-macro="base.xhtml/BuddhaBox"/>
 					<div metal:use-macro="base.xhtml/PictureBox"/>
 					<div metal:use-macro="base.xhtml/TopNewsBox"/>

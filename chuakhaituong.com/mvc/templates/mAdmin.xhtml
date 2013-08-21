@@ -115,20 +115,14 @@
 				<a tal:attributes="href '/app/album'">HÌNH ẢNH<span class="badge badge-info pull-right" tal:content="AlbumAll/count"/></a>
 			</li>						
 			<li tal:attributes="class php:ActiveAdmin=='Sponsor'?'active':'disable'">
-				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG CÔNG ĐỨC <span class="badge badge-info pull-right" tal:content="SponsorAll/count"/></a>
+				<a tal:attributes="href '/app/sponsor'">SỔ VÀNG<span class="badge badge-info pull-right" tal:content="SponsorAll/count"/></a>
 			</li>
 			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'active':'disable'">
 				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelNewsAll/count"/></a>
 			</li>						
 			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'active':'disable'">
 				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelCategoryVideoAll/count"/></a>
-			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelAds'?'active':'disable'">
-				<a tal:attributes="href '/app/panel/ads'">QUẢNG CÁO <span class="badge badge-info pull-right" tal:content="PanelAdsAll/count"/></a>
-			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Popup'?'active':'disable'">
-				<a tal:attributes="href '/app/popup'">QUẢNG CÁO POPUP <span class="badge badge-info pull-right" tal:content="PopupAll/count"/></a>
-			</li>						
+			</li>
 			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'">
 				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a>
 			</li>
