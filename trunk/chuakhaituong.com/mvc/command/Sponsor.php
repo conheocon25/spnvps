@@ -21,6 +21,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			$SponsorAll = $mSponsor->findAll();
+			$SponsorAll = $mSponsor->findAll();
 			$Trackings = $mTracking->findAll();
 			$Categories = $mCategoryNews->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();

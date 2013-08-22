@@ -4,6 +4,7 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
 	</head>
 
 	<body>
@@ -84,8 +85,7 @@
 					<div metal:use-macro="base.xhtml/TopNewsBox"/>
 					<div metal:use-macro="base.xhtml/TopVideoBox"/>
 					<div metal:use-macro="base.xhtml/TopMonkBox"/>
-					<div metal:use-macro="base.xhtml/AskBox"/>
-					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>					
 					<div metal:use-macro="base.xhtml/ContactBox"/>
 					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
