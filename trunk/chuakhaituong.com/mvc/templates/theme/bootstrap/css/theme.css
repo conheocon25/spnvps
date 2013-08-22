@@ -145,6 +145,7 @@
 		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #823918; }
 		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #823918; }
 		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #823918; }
+		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #823918; }
 	
 	.pg-header h4 {
 		line-height: 25px !important;
@@ -153,4 +154,8 @@
 		padding-bottom: 10px;
 		margin-bottom: 10px !important;
 		min-height: 35px;
+	}
+	
+	.pg-header a {
+		color: white !important;
 	}

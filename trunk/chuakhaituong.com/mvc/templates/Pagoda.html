@@ -14,46 +14,33 @@
 				<div class="span8 fix-width">
 					
 					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content" tal:content="php:'THÔNG TIN '.Pagoda->getName()"/>
+						<div class="page-header pg-header pg-header-pagoda reset-margin">
+							<h4 class="reset-margin" tal:content="php:'THÔNG TIN '.Pagoda->getName()"/>
+							<i class="pull-right"><strong>Website:</strong> <a tal:attributes="href Pagoda/getWebsite" tal:content="Pagoda/getWebsite"/></i>
 						</div>
-						<div class="b-content">
-							<a tal:attributes="href Pagoda/getWebsite" tal:content="Pagoda/getWebsite"/>
-							<ul class="pagoda-info">
-								<li>
-									<span class="label">Địa chỉ: </span>
-									<span tal:content="Pagoda/getAddress"/>
-								</li>
-								<li>
-									<span class="label">Điện thoại: </span>
-									<span tal:content="Pagoda/getPhone"/>
-								</li>
-								<li>
-									<span class="label">Trụ trì: </span>
-									<span tal:content="Pagoda/getMaster"/>
-								</li>
-							</ul>
-						</div>
-					</div>
-					
-					<div class="box radius">
-						<div class="b-title">
-							<div tal:content="php:'HOẠT ĐỘNG '.Pagoda->getName()" class="b-t-icon-content"/>
-						</div>
-						<div class="b-content">
-							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VS Pagoda/getVPs" class="span2">
-									<div class="thumbnail">
-										<a tal:attributes="href VS/getURLView">
-											<img tal:attributes="src VS/getVideo/getURLImage"/>
-											<p tal:content="VS/getVideo/getName"/>
-										</a>
-									</div>
-								</li>
-							</ul>
+						<div class="b-content news-content padding-content">
+							<p><i class="icon-user"/> <strong>Trụ trì:</strong> <span tal:content="Pagoda/getMaster"/></p>
+							<p><i class="icon-home"/> <strong>Địa chỉ:</strong> <span tal:content="Pagoda/getAddress"/></p>
+							<p><i class="icon-book"/> <strong>Điện thoại:</strong> <span tal:content="Pagoda/getPhone"/></p>
+
+							<div class="news-author"><p>
+								<span class="btn btn-danger disabled btn-small">
+									<i class=" icon-bullhorn icon-white"/> Các hoạt động
+								</span>
+							</p></div>
+							<div tal:repeat="VS Pagoda/getVPs" class="media img-polaroid new-list-polaroid-3">
+								<a tal:attributes="href VS/getURLView" class="pull-left">
+									<img tal:attributes="src VS/getVideo/getURLImage" class="media-object img-rounded"/>
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading" tal:content="VS/getVideo/getName"/>
+									<p class="media-reduce">Giảng sư: Chưa xác định</p>
+									<a tal:attributes="href VS/getURLView" class="btn"><i class="icon-share"/> <span tal:content="VS/getVideo/getCount" /> xem</a>
+								</div>
+							</div>
+							
 						</div>
 					</div>
-					
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
