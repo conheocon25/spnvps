@@ -143,8 +143,8 @@
 	}
 	
 		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #823918; }
-		
 		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #823918; }
+		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #823918; }
 	
 	.pg-header h4 {
 		line-height: 25px !important;
