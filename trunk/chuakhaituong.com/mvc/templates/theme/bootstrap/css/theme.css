@@ -159,3 +159,24 @@
 	.pg-header a {
 		color: white !important;
 	}
+	
+	.crunchify-top:hover {
+		background-color: rgba(255, 255, 255, .6);
+		box-shadow: 0 0 5px 5px rgba(255, 255, 255, .8);
+	}
+ 
+	.crunchify-top {
+		display: none;
+		position: fixed;
+		bottom: 10px;
+		right: 10px;
+		width: 54px;
+		height: 54px;
+		font-size: 12px;
+		color: #FFFFFF;
+		background: url("/data/images/bg/go_top.png") no-repeat center center rgba(255, 255, 255, .4);
+		text-align: center;
+		cursor: pointer;
+		border-radius: 40px;
+		box-shadow: 0 0 5px 5px rgba(255, 255, 255, .6);
+	}
