@@ -4,7 +4,15 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
-		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
+		<script>
+			/*<![CDATA[*/
+			$(document).ready(function(){
+				$(".hidden-control").click(function(){
+					($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down")
+				});
+			});
+			/*]]>*/
+		</script>
 	</head>
 
 	<body>
@@ -156,7 +164,7 @@
 							</div>
 						</div>
 					</div>
-					
+					<div class="crunchify-top" data-toggle="tooltip" data-placement="left" data-original-title="Chuyển đến đầu trang"/>
 				</div>
 				<div class="span4 fix-width">					
 					<div metal:use-macro="base.xhtml/TaskBox"/>
