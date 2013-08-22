@@ -33,15 +33,14 @@
 					<div metal:use-macro="base.xhtml/ContactBox"/>
 				</div>
 				<div class="span6 fix-width-3">
-					<div class="box">
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-videos reset-margin">
+							<h4 class="reset-margin" tal:content="Category/getName"/>
+							<i class="pull-right">
+								<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
+							</i>
+						</div>
 						<div class="b-content news-content padding-content">
-							<div class="page-header">
-								<h4 tal:content="Category/getName"/>
-								<i class="pull-right">
-									<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
-								</i>
-							</div>
-							
 							<div tal:repeat="VL VLAll" class="media img-polaroid new-list-polaroid-3">
 								<a tal:attributes="href VL/getURLView" class="pull-left">
 									<img tal:attributes="src VL/getVideo/getURLImage" class="media-object img-rounded"/>

@@ -33,12 +33,12 @@
 					<div metal:use-macro="base.xhtml/ContactBox"/>
 				</div>
 				<div class="span6 fix-width-3">
-					<div class="box">
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin" tal:content="VMUpdateTopAll/current/getVideo/getName"/>
+							<i class="pull-right" tal:content="php: 'Phật Âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint() . ' Video)'"/>
+						</div>
 						<div class="b-content news-content padding-content">
-							<div class="page-header">
-								<h4 tal:content="VMUpdateTopAll/current/getVideo/getName"/>
-								<i class="pull-right" tal:content="php: 'Phật Âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint() . ' Video)'"/>
-							</div>
 							<div class="img-polaroid">
 								<iframe width="100%" height="400" 
 									tal:attributes="src VMUpdateTopAll/current/getVideo/getURL"
