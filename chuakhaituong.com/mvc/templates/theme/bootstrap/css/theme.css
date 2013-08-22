@@ -60,8 +60,8 @@
 	}
 	
 	.ads-close, #ads-open {
-		background-color: #FAFAFA;
-		border: 1px solid #696969;
+		background-color: rgba(255, 0, 0, .9);
+		border: 1px solid #FF0000;
 		border-top-left-radius: 5px;
 		border-top-right-radius: 5px;
 	}

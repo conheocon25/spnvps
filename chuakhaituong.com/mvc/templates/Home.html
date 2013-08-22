@@ -4,6 +4,7 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
 	</head>
 
 	<body>
@@ -17,7 +18,7 @@
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Đào tạo</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-fullscreen icon-white" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"/>
 							</div>
 							<div id="collapseOne" class="accordion-body collapse in b-content">
 								<div id="LessionCarousel" class="carousel slide reset-margin course-slide">
@@ -54,7 +55,7 @@
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div tal:content="Category/getName" class="b-t-icon-content"/>
-								<a class="accordion-toggle pull-right hidden-accordion icon-fullscreen icon-white" data-toggle="collapse" tal:attributes="data-parent Category/getIdPrint; href php: '#collapse' . Category->getIdPrint()"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" tal:attributes="data-parent Category/getIdPrint; href php: '#collapse' . Category->getIdPrint()"/>
 							</div>
 							<div tal:attributes="id php: 'collapse' . Category->getIdPrint()" class="accordion-body collapse in b-content">
 								<div class="row reset-margin">
@@ -97,7 +98,7 @@
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">VIDEO NỘI BỘ</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-fullscreen icon-white" data-toggle="collapse" data-parent="#accordion3" href="#collapse3"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion3" href="#collapse3"/>
 							</div>
 							<div id="collapse3" class="accordion-body collapse in b-content">
 								<ul class="thumbnails grid-item reset-margin">
@@ -118,7 +119,7 @@
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Bài giảng mới nhất</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-fullscreen icon-white" data-toggle="collapse" data-parent="#accordion4" href="#collapse4"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion4" href="#collapse4"/>
 							</div>
 							<div id="collapse4" class="accordion-body collapse in b-content">
 								<ul class="thumbnails grid-item reset-margin">
@@ -139,7 +140,7 @@
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
 								<div class="b-t-icon-content">Chuyên đề mới nhất</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-fullscreen icon-white" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
 							</div>
 							<div id="collapse5" class="accordion-body collapse in b-content">
 								<ul class="thumbnails grid-item reset-margin">
