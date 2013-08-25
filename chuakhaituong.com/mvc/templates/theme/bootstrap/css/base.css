@@ -43,10 +43,6 @@
 			cursor: pointer;
 		}
 		
-		.top-menu li.dropdown:hover .dropdown-menu {
-			display: block;
-		}
-		
 		.top-menu .dropdown-menu {
 			margin: 0 !important;
 			border-radius: 0 !important;
