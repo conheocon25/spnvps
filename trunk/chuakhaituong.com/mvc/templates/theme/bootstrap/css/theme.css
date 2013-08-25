@@ -147,16 +147,7 @@
 		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #823918; }
 		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #823918; }
 		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #823918; }
-	
-	.pg-header h4 {
-		line-height: 25px !important;
-		font-size: 18px !important;
-		border-bottom: 1px solid #DDDDDD;
-		padding-bottom: 10px;
-		margin-bottom: 10px !important;
-		min-height: 10px;
-	}
-	
+
 	.pg-header a {
 		color: white !important;
 	}
@@ -166,16 +157,6 @@
 	}
  
 	.crunchify-top {
-		display: none;
-		position: fixed;
-		bottom: 10px;
-		right: 10px;
-		width: 54px;
-		height: 54px;
-		font-size: 12px;
 		color: #FFFFFF;
 		background: url("/data/images/bg/go_top.png") no-repeat center center rgba(255, 255, 255, .4);
-		text-align: center;
-		cursor: pointer;
-		border-radius: 10px;
 	}

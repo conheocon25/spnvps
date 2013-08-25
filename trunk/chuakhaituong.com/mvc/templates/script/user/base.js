@@ -9,7 +9,6 @@
 	}(document, 'script', 'facebook-jssdk'));
 	
 	$(document).ready(function() {
-		$('.news-slide').carousel({interval: 5000});
 		$('#LessionCarousel').carousel({interval: 5000});
 		$('#BuddhaCarousel').carousel({interval: 5000});
 		$('#PopupCarousel').carousel({interval: 5000});

@@ -7,6 +7,7 @@
 		<script>
 			/*<![CDATA[*/
 			$(document).ready(function(){
+				$('.news-slide').carousel({interval: 5000});
 				$(".hidden-control").click(function(){
 					($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down")
 				});
@@ -164,7 +165,6 @@
 							</div>
 						</div>
 					</div>
-					<div class="crunchify-top" data-toggle="tooltip" data-placement="left" data-original-title="Chuyển đến đầu trang"/>
 				</div>
 				<div class="span4 fix-width">					
 					<div metal:use-macro="base.xhtml/TaskBox"/>
@@ -183,6 +183,7 @@
 			<div metal:use-macro="base.xhtml/Footer"/>
 			<div metal:use-macro="base.xhtml/Popup"/>
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
 			<div id="fb-root"/>
 		</div>
 	</body>
