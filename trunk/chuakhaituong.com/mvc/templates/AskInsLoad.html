@@ -33,50 +33,61 @@
 				<div class="span8 fix-width">
 					
 					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content">Danh sách câu hỏi</div>
+						<div class="page-header pg-header pg-header-question reset-margin">
+							<h4 class="reset-margin">Các câu hỏi</h4>
 						</div>
-						<div class="b-content">
-							<div class="ask" align="justify" tal:repeat="Ask AskAll">
-								<b><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></b>
-								<div style="text-indent:15px;">
-									<b><div tal:content="structure Ask/getQuestion" /></b>
-									<div><small>(<span tal:content="Ask/getTimePrint" />)</small></div>
+						<div class="b-content padding-content news-content">
+							<div tal:repeat="Ask AskAll" class="media img-polaroid new-list-polaroid-3">
+								<a href="#" class="pull-left">
+									<img src="/data/images/logo/question.png" class="media-object img-rounded"/>
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading"><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></h4>
+									<p tal:content="structure Ask/getQuestion"/>
+									<i tal:content="Ask/getTimePrint"/>
 								</div>
 							</div>
-						</div>
-					</div>
-					
-					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content" tal:content="Title"/>
-						</div>
-						<div class="b-content padding-content">
-							<form id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="post">
-								<fieldset>
-									<legend>Quí <B>PHẬT TỬ</B> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây.</legend>
-									<div class="controls controls-row">
-										<label>Họ & Tên</label>
-										<input type="text" name="Author1" id="Author1" class="span3"/>
-										<label>Chủ đề</label>
+							
+							<div class="news-author">
+								<p>Quí <b>PHẬT TỬ</b> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây để gữi câu hỏi / trả lời</p>
+							</div>
+							
+							<form class="form-horizontal" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="POST">
+								<div class="control-group">
+									<label class="control-label" for="Author1">Họ & Tên</label>
+									<div class="controls">
+										<input type="text" name="Author1" id="Author1" class="span4"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="IdCategory">Chủ đề</label>
+									<div class="controls">
 										<select id="IdCategory" name="IdCategory" class="span4">
 											<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId" tal:content="Category/getName"/>
 										</select>
 									</div>
-									<label>Câu hỏi</label>
-									<textarea name="Question" id="Question" cols="52" rows="2" class="span7"/>
-									<label>Mã bảo mật</label>
-									<label><img src="/data/captcha.jpg"/></label>
-									<input name="CodeCaptcha" type="text" id="CodeCaptcha"/>
-									<label><center>
-										<button type="submit" class="btn">Gữi</button>
-									</center></label>
-								</fieldset>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="Question">Câu hỏi</label>
+									<div class="controls">
+										<textarea name="Question" id="Question" cols="40" rows="2" class="span4"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="CodeCaptcha">Mã bảo mật</label>
+									<div class="controls">
+										<img src="/data/captcha.jpg" class="captcha"/><input name="CodeCaptcha" type="text" id="CodeCaptcha" class="span2"/>
+									</div>
+								</div>
+								<center><button type="submit" class="btn">Gữi</button></center>
 							</form>
 							
-							Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>nhuantamkhaituong@gmail.com</B>.
+							<div class="news-author">
+								<center><p>Ngoài ra, quí PHẬT TỬ có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email nhuantamkhaituong@gmail.com</p></center>
+							</div>
 						</div>
 					</div>
+					
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/TaskBox"/>
