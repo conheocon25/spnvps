@@ -66,10 +66,6 @@
 		border-top-right-radius: 5px;
 	}
 	
-	.ads-open-right { border-left: 5px solid red; }
-	
-	.ads-open-left { border-right: 5px solid red; }
-	
 	.fixed-function { background-color: rgba(0, 0, 0, .5); }
 	
 		.bubble {
@@ -139,21 +135,26 @@
 		color: white;
 		border-top-left-radius: 7px;
 		border-top-right-radius: 7px;
-		padding: 5px 10px 27px 60px;
+		padding: 15px 10px 27px 60px;
 	}
 	
 		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #823918; }
 		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #823918; }
 		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #823918; }
 		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #823918; }
+		.pg-header-paper { background: url("/data/images/bg/paper.png") no-repeat top left #823918; }
+		.pg-header-picture { background: url("/data/images/bg/picture.png") no-repeat top left #823918; }
+		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #823918; }
+		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #823918; }
+		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #823918; }
 	
 	.pg-header h4 {
 		line-height: 25px !important;
-		font-size: 14px !important;
+		font-size: 18px !important;
 		border-bottom: 1px solid #DDDDDD;
 		padding-bottom: 10px;
 		margin-bottom: 10px !important;
-		min-height: 35px;
+		min-height: 10px;
 	}
 	
 	.pg-header a {
@@ -162,7 +163,6 @@
 	
 	.crunchify-top:hover {
 		background-color: rgba(255, 255, 255, .6);
-		box-shadow: 0 0 5px 5px rgba(255, 255, 255, .8);
 	}
  
 	.crunchify-top {
@@ -177,6 +177,5 @@
 		background: url("/data/images/bg/go_top.png") no-repeat center center rgba(255, 255, 255, .4);
 		text-align: center;
 		cursor: pointer;
-		border-radius: 40px;
-		box-shadow: 0 0 5px 5px rgba(255, 255, 255, .6);
+		border-radius: 10px;
 	}

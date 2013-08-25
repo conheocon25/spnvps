@@ -178,14 +178,6 @@
 		padding: 0 !important;
 	}
 	
-	.ads-popup-right {
-		right: 3px;
-	}
-	
-	.ads-popup-left {
-		left: 3px;
-	}
-	
 	.ads-popup-center {
 		left: 50%;
 		margin-left: -295px;
@@ -219,16 +211,6 @@
 	
 	#ads-open:hover, .ads-close:hover {
 		opacity: .99;
-	}
-	
-	.ads-open-right {
-		right: 0;
-		border-top-left-radius: 20px;
-	}
-	
-	.ads-open-left {
-		left: 0;
-		border-top-right-radius: 20px;
 	}
 	
 	.ads-open-center {
@@ -475,6 +457,7 @@
 		padding-top: 5px;
 		padding-bottom: 5px;
 		padding-right: 10px;
+		margin-top: 10px;
 		margin-bottom: 10px;
 		margin-left: -10px;
 		margin-right: -10px;
@@ -509,4 +492,8 @@
 	
 	.list-3 li:first-child a, .list-3 li:last-child a {
 		border-radius: 0 !important;
+	}
+	
+	.captcha {
+		margin-right: 20px;
 	}
