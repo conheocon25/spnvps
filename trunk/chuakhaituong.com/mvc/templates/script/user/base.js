@@ -9,6 +9,12 @@
 	}(document, 'script', 'facebook-jssdk'));
 	
 	$(document).ready(function() {
+		$(".dropdown").hover(function(){
+			$(this).find("ul").slideDown();
+		}, function(){
+			$(this).find("ul").slideUp();
+		});
+		
 		$('#LessionCarousel').carousel({interval: 5000});
 		$('#BuddhaCarousel').carousel({interval: 5000});
 		$('#PopupCarousel').carousel({interval: 5000});
