@@ -57,24 +57,14 @@ class VideoPagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
-	function getURLView(){
-		return "/pagoda/".$this->getIdPagoda()."/video/".$this->getId();
-	}
+	function getURLView(){return "/chua-ban/".$this->getPagoda()->getKey()."/video/".$this->getVideo()->getKey();}
+		
+	function getURLUpdLoad(){return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/upd/load";}
+	function getURLUpdExe(){return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/upd/exe";}
 	
-	function getURLUpdLoad(){
-		return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/upd/load";
-	}
-	function getURLUpdExe(){
-		return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/upd/exe";
-	}
+	function getURLDelLoad(){return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/del/load";}
+	function getURLDelExe(){return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/del/exe";}
 	
-	function getURLDelLoad(){
-		return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/del/load";
-	}
-	function getURLDelExe(){
-		return "/app/pagoda/".$this->getIdPagoda()."/video/".$this->getId()."/del/exe";
-	}
-			
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	
