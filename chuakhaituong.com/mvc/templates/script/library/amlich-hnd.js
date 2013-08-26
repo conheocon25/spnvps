@@ -603,7 +603,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	var args = lunarDate.day + "," + lunarDate.month + "," + lunarDate.year + "," + lunarDate.leap;
 	args += ("," + lunarDate.jd + "," + solarDate + "," + solarMonth + "," + solarYear);
 	res += ('<td id="calendar" style="cursor:pointer;" class="'+cellClass+'"');
-	if (lunarDate != null) res += (' title="'+getDayName(lunarDate)+'" onClick="alertDayInfo('+args+'); addC();"');
+	if (lunarDate != null) res += (' title="'+getDayName(lunarDate)+'" onClick="alertDayInfo('+args+');"');
 	res += (' <div style=color:'+solarColor+' class="'+solarClass+'">'+solarDate+'</div> <div class="'+lunarClass+'">'+lunar+'</div></td>\n');
 	return res;
 }
@@ -636,6 +636,19 @@ function getDayOfWeekName(lunar) {
 }
 
 function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
+	//
+}
+
+function alertAbout() {
+	alert(ABOUT);
+}
+
+function showVietCal() {
+	window.status = getCurrentTime() + " -+- " + getTodayString();
+	window.window.setTimeout("showVietCal()",5000);
+}
+
+function loadDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 	var lunar = new LunarDate(dd, mm, yy, leap, jd);
 	var cc = getCanChi(lunar);
 
@@ -653,13 +666,15 @@ function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 	$('#hoangdao').html("<b>Giờ hoàng đạo</b><br/>" + getGioHoangDao(jd));
 }
 
-function alertAbout() {
-	alert(ABOUT);
+function loadToDay() {
+	loadDayInfo(
+		currentLunarDate.day,
+		currentLunarDate.month,
+		currentLunarDate.year,
+		currentLunarDate.leap,
+		currentLunarDate.jd,
+		today.getDate(),
+		today.getMonth(),
+		today.getYear()
+	);
 }
-
-function showVietCal() {
-	window.status = getCurrentTime() + " -+- " + getTodayString();
-	window.window.setTimeout("showVietCal()",5000);
-}
-
-//showVietCal();
