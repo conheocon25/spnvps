@@ -477,15 +477,15 @@ function printStyle() {
 	res += '<style type="text/css">\n';
 	res += '<!--\n';
 	//res += '  body {margin:0}\n';
-	res += '  .tennam {text-align:center; font-size:120%; line-height:120%; font-weight:bold; color:#000000; background-color: #CCCCCC}\n';
-	res += '  .thang {font-size: '+fontSize+'; padding:1; line-height:100%; font-family:Segoe UI, Segoe UI Web Regular, Helvetica Neue, BBAlpha Sans, S60 Sans, Arial, sans-serif; table-layout:fixed}\n';
-	res += '  .tenthang {text-align:center; font-size:100%; line-height:100%; font-weight:bold; color:#330033; background-color: #ececca}\n';
-	res += '  .navi-l {text-align:center; font-size:75%; line-height:100%; font-family:Segoe UI, Segoe UI Web Regular, Helvetica Neue, BBAlpha Sans, S60 Sans, Arial, sans-serif; font-weight:bold; color:red; background-color: #ececca}\n';
-	res += '  .navi-r {text-align:center; font-size:75%; line-height:100%; font-family:Segoe UI, Segoe UI Web Regular, Helvetica Neue, BBAlpha Sans, S60 Sans, Arial, sans-serif; font-weight:bold; color:#330033; background-color: #ececca}\n';
-	res += '  .ngaytuan {width:14%; text-align:center; font-size:100%; line-height:100%; color:#330033; background-color: #FFFFCC}\n';
-	res += '  .ngaythang {background-color:#FDFDF0}\n';
-	res += '  .homnay {background-color:#FFF000}\n';
-	res += '  .tet {background-color:#FFCC99}\n';
+	res += '  .tennam {}\n';
+	res += '  .thang {}\n';
+	res += '  .tenthang {}\n';
+	res += '  .navi-l {}\n';
+	res += '  .navi-r {}\n';
+	res += '  .ngaytuan {}\n';
+	res += '  .ngaythang {}\n';
+	res += '  .homnay {}\n';
+	res += '  .tet {}\n';
 	res += '  .am {text-align:right;font-size:75%;line-height:100%;color:#554C00}\n';
 	res += '  .am2 {text-align:right;font-size:75%;line-height:100%;color:#004080}\n';
 	res += '  .t2t6 {text-align:left;font-size:100%;color:black}\n';
@@ -506,10 +506,10 @@ function printTable(mm, yy) {
 	var LunarHead = getYearCanChi(ld1.year);
 	var res = "";
 	//res += ('<table class="thang" border="0" cellpadding="0" cellspacing="5" width="'+PRINT_OPTS.tableWidth+'">\n');
-	res += ('<table class="thang" border="0" cellpadding="0" cellspacing="5" width="100%">\n');
+	res += ('<table class="thang calendar-table" border="0" cellpadding="0" cellspacing="5" width="100%">\n');
 	res += printHead(mm, yy);
 	for (i = 0; i < 6; i++) {
-		res += ("<tr>\n");
+		res += ("<tr class='day-list'>\n");
 		for (j = 0; j < 7; j++) {
 			k = 7 * i + j;
 			if (k < emptyCells || k >= emptyCells + currentMonth.length) {
@@ -530,24 +530,24 @@ function getPrevMonthLink(mm, yy) {
 	var mm1 = mm > 1 ? mm-1 : 12;
 	var yy1 = mm > 1 ? yy : yy-1;
 	//return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><img src="left1.gif" width=8 height=12 alt="PrevMonth" border=0></a>';
-	return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'">&lt;</a>';
+	return '<a class="icon-chevron-left icon-white" href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"/>';
 }
 
 function getNextMonthLink(mm, yy) {
 	var mm1 = mm < 12 ? mm+1 : 1;
 	var yy1 = mm < 12 ? yy : yy+1;
 	//return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"><img src="right1.gif" width=8 height=12 alt="NextMonth" border=0></a>';
-	return '<a href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'">&gt;</a>';
+	return '<a class="icon-chevron-right icon-white" href="'+window.location.pathname+'?yy='+yy1+'&mm='+mm1+'"/>';
 }
 
 function getPrevYearLink(mm, yy) {
 	//return '<a href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'"><img src="left2.gif" width=16 height=12 alt="PrevYear" border=0></a>';
-	return '<a href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'">&lt;&lt;</a>';
+	return '<a class="icon-backward icon-white" href="'+window.location.pathname+'?yy='+(yy-1)+'&mm='+mm+'"/>';
 }
 
 function getNextYearLink(mm, yy) {
 	//return '<a href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'"><img src="right2.gif" width=16 height=12 alt="NextYear" border=0></a>';
-	return '<a href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'">&gt;&gt;</a>';
+	return '<a class="icon-forward icon-white" href="'+window.location.pathname+'?yy='+(yy+1)+'&mm='+mm+'"/>';
 }
 
 function printHead(mm, yy) {
@@ -560,7 +560,7 @@ function printHead(mm, yy) {
 	//res += ('<td colspan="1" class="navi-r"><a href="'+getNextMonthLink(mm, yy)+'"><img src="right1.gif" alt="Next"></a></td>\n');
 	res += ('<td style="cursor:pointer;" colspan="2" class="navi-r">'+getNextMonthLink(mm, yy)+' &nbsp;'+getNextYearLink(mm, yy)+'</td></tr>\n');
 	//res += ('<tr><td colspan="7" class="tenthang"><a href="'+getNextMonthLink(mm, yy)+'"><img src="right.gif" alt="Next"></a></td></tr>\n');
-	res += ('<tr onClick="alertAbout();">\n');
+	res += ('<tr class="day-title">\n');
 	for(var i=0;i<=6;i++) {
 		res += ('<td style="cursor:pointer;" class=ngaytuan>'+DAYNAMES[i]+'</td>\n');
 	}
@@ -603,7 +603,7 @@ function printCell(lunarDate, solarDate, solarMonth, solarYear) {
 	var args = lunarDate.day + "," + lunarDate.month + "," + lunarDate.year + "," + lunarDate.leap;
 	args += ("," + lunarDate.jd + "," + solarDate + "," + solarMonth + "," + solarYear);
 	res += ('<td id="calendar" style="cursor:pointer;" class="'+cellClass+'"');
-	if (lunarDate != null) res += (' title="'+getDayName(lunarDate)+'" onClick="alertDayInfo('+args+');"');
+	if (lunarDate != null) res += (' title="'+getDayName(lunarDate)+'" onClick="alertDayInfo('+args+'); addC();"');
 	res += (' <div style=color:'+solarColor+' class="'+solarClass+'">'+solarDate+'</div> <div class="'+lunarClass+'">'+lunar+'</div></td>\n');
 	return res;
 }
@@ -631,13 +631,26 @@ function infoCellSelect(id) {
 	}
 }
 
+function getDayOfWeekName(lunar) {
+	return dayOfWeek = TUAN[(lunar.jd + 1) % 7];
+}
+
 function alertDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 	var lunar = new LunarDate(dd, mm, yy, leap, jd);
-	var s = getDayString(lunar, sday, smonth, syear);
-	s += " \u00E2m l\u1ECBch)\n";
-	s += getDayName(lunar);
-	s += "\nGi\u1EDD ho\u00E0ng \u0111\u1EA1o: "+getGioHoangDao(jd);
-	alert(s);
+	var cc = getCanChi(lunar);
+
+	$('#thuduong').html(getDayOfWeekName(lunar));
+	$('#ngayduong').html(sday);
+	$('#thangduong').html("Tháng " + smonth + " năm " + syear);
+	
+	$('#thangam').html("Tháng " + mm);
+	$('#ngayam').html(dd);
+	$('#namam').html("Năm " + cc[2]);
+	
+	$('#canchithang').html("Tháng " + cc[1]);
+	$('#canchingay').html("Ngày " + cc[0]);
+	
+	$('#hoangdao').html("<b>Giờ hoàng đạo</b><br/>" + getGioHoangDao(jd));
 }
 
 function alertAbout() {

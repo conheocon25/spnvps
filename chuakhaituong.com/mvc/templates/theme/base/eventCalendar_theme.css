@@ -13,7 +13,7 @@
  */
 .eventCalendar-wrap {
 	border:solid 1px #d3d3d3;
-	box-shadow:0 0 15px #999;
+	*box-shadow:0 0 15px #999;
 	border-radius:5px;
 	background-color:#fff;
 }
@@ -52,7 +52,6 @@
 	}
 		.eventsCalendar-currentTitle {
 			line-height:25px;
-			
 			border-width:1px 0;
 		}
 			.eventsCalendar-currentTitle .monthTitle {

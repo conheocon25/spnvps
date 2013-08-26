@@ -7,14 +7,15 @@
 	
 		.top-menu li a {
 			color: #FFFFFF !important;
-			text-shadow: 0 0 3px #00FF00 !important;
+			text-shadow: 1px 1px 0 #696969 !important;
 		}
 		
 		.top-menu li:hover a { background: rgba(255, 255, 255, .3) !important; }
 		
-		.top-menu li.active a { background: none !important; }
-		
-		.top-menu li.active a { color: #FFFF00 !important; }
+		.top-menu li.active a {
+			background: none !important;
+			color: #FFFD5B !important;
+		}
 		
 		.top-menu .caret { border-top-color: #FFFFFF !important; }
 		
@@ -22,7 +23,7 @@
 		
 		.top-menu .dropdown-menu li a {
 			color: #FFFFFF !important;
-			text-shadow: 0 0 3px #00FF00 !important;
+			text-shadow: none !important;
 		}
 		
 		.top-menu .dropdown-menu li:hover a { background: rgba(255, 255, 255, .3) !important; }
@@ -159,4 +160,108 @@
 	.crunchify-top {
 		color: #FFFFFF;
 		background: url("/data/images/bg/go_top.png") no-repeat center center rgba(255, 255, 255, .4);
+	}
+	
+	.calendar-table {
+		border: 1px solid #E3E3E3;
+		background-color:#CCCCCC;
+		background-image: linear-gradient(top, #EEEEEE 42%, #CCCCCC 71%);
+		background-image: -o-linear-gradient(top, #EEEEEE 42%, #CCCCCC 71%);
+		background-image: -moz-linear-gradient(top, #EEEEEE 42%, #CCCCCC 71%);
+		background-image: -webkit-linear-gradient(top, #EEEEEE 42%, #CCCCCC 71%);
+		background-image: -ms-linear-gradient(top, #EEEEEE 42%, #CCCCCC 71%);
+		background-image: -webkit-gradient(
+			linear,
+			left top,
+			left bottom,
+			color-stop(0.42, #EEEEEE),
+			color-stop(0.71, #CCCCCC)
+		);
+	}
+	
+	.calendar-table tr:first-child  {
+		background-color: #823918;
+		outline: 1px solid #823918;
+		border: 1px solid #E3E3E3;
+		font-size: 110%;
+		font-weight: bold;
+		color: #fff;
+		text-align: center;
+	}
+
+		.calendar-table tr:first-child td:first-child {
+			text-align: left;
+			padding-left: 5px;
+		}
+		
+		.calendar-table tr:first-child td:last-child {
+			text-align: right;
+			padding-left: 5px;
+		}
+		
+			.calendar-table tr:first-child a {
+				margin: 5px;
+				color: white;
+				text-decoration: none !important;
+			}
+			
+	.calendar-table .day-title td {
+		padding: 5px 0;
+		font-size: 10px;
+		text-transform: uppercase;
+		color: #823918;
+		width: 14%;
+		text-align: center;
+	}
+
+	.calendar-table .day-list td {
+		border-top: solid 1px #fff;
+		border-right: solid 1px #BCBCBC;
+		line-height: 27px;
+		font-size: 13px;
+		padding: 0 2px 2px 2px;
+		height: 35px;
+		color: #823918;
+	}
+	
+	.calendar-table .day-list td div { color: #3B579D; }
+	
+	.calendar-table .day-list td.homnay {
+		box-shadow: inset 10px 10px 20px #FFF0C4;
+		background-color: #FFDD00;
+	}
+	
+	.calendar-table .day-list td#calendar:hover {
+		box-shadow: inset 5px 5px 10px #C1C1C1;
+		background-color: #E4E4E4;
+	}
+	
+	.calendar-paper {
+		text-align: center;
+		background: url("/data/images/bg/calendar.png") no-repeat top center #85440A;
+		margin-bottom: 10px;
+		color: #FFDD00;
+		box-shadow: 3px 3px 2px #696969;
+		border-radius: 5px;
+	}
+	
+	.calendar-paper tr:first-child td {
+		padding: 5px 0;
+	}
+	
+	.ngayduong {
+		font-size: 6em;
+		font-weight: bold;
+		height: 90px;
+	}
+	
+	.ngayam {
+		font-size: 2em;
+		padding: 10px 0;
+	}
+	
+	.hoangdao {
+		font-size: 12px;
+		padding-top: 10px;
+		padding-bottom: 10px;
 	}
