@@ -15,7 +15,7 @@
 		<meta name="page-topic" content="Chùa Khải Tường"/>
 		<meta name="Abstract" content="Website Chùa Khải Tường giới thiệu về một ngôi chùa ở Số 319B2, ấp Mỹ Phú, xã Mỹ Đức Đông, Cái Bè, Tiền Giang, Việt Nam"/>
 		<meta name="classification" content="Chùa Khải Tường, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
-		<link rel="icon" type="image/png" href="/data/images/bg/title_icon.png" />
+		<link rel="shortcut icon" href="/data/images/logo/favicon.ico" type="image/x-icon"/>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -322,10 +322,30 @@
 			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
 		</div>
 		<div class="b-content padding-content">
+			<table class="calendar-paper" width="100%" border="0" cellpadding="1" cellspacing="1">
+				<tbody>
+					<tr><td colspan="2" id="thangduong" class="thangduong"></td></tr>
+					<tr><td colspan="2" id="ngayduong" class="ngayduong"></td></tr>
+					<tr><td colspan="2" id="thuduong" class="thuduong"></td></tr>
+					<tr>
+						<td> 
+							<div id="thangam" class="thangam"></div>
+							<div id="ngayam" class="ngayam"></div>
+							<div id="namam" class="namam"></div>
+						</td>
+						<td class="canchi">
+							<div id="canchithang" class="gioam"></div>
+							<div id="canchingay" class="gioam"></div>
+						</td>
+					</tr>
+					<tr><td colspan="2" id="hoangdao" class="hoangdao"></td></tr>
+				</tbody>
+			</table>
 			<script language="JavaScript">
 			<!--
 				setOutputSize("small");
 				document.writeln(printSelectedMonth());
+				$(".homnay").click();
 			-->
 			</script>
 		</div>
