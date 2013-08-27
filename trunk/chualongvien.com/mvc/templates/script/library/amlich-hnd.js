@@ -649,15 +649,15 @@ function showVietCal() {
 }
 
 function loadDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
-	var lunar = new LunarDate(dd, mm, yy, leap, jd);
+	var lunar = new LunarDate(sday, smonth, syear, leap, jd);
 	var cc = getCanChi(lunar);
 
 	$('#thuduong').html(getDayOfWeekName(lunar));
-	$('#ngayduong').html(sday);
-	$('#thangduong').html("Tháng " + smonth + " năm " + syear);
+	$('#ngayduong').html(dd);
+	$('#thangduong').html("Tháng " + mm + " năm " + yy);
 	
-	$('#thangam').html("Tháng " + mm);
-	$('#ngayam').html(dd);
+	$('#thangam').html("Tháng " + smonth);
+	$('#ngayam').html(sday);
 	$('#namam').html("Năm " + cc[2]);
 	
 	$('#canchithang').html("Tháng " + cc[1]);
@@ -668,13 +668,13 @@ function loadDayInfo(dd, mm, yy, leap, jd, sday, smonth, syear) {
 
 function loadToDay() {
 	loadDayInfo(
-		currentLunarDate.day,
-		currentLunarDate.month,
-		currentLunarDate.year,
+		today.getDate(),
+		today.getMonth()+1,
+		today.getFullYear(),
 		currentLunarDate.leap,
 		currentLunarDate.jd,
-		today.getDate(),
-		today.getMonth(),
-		today.getYear()
+		currentLunarDate.day,
+		currentLunarDate.month,
+		currentLunarDate.year
 	);
 }
