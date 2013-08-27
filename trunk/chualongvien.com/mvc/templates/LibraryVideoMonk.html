@@ -33,15 +33,14 @@
 					<div metal:use-macro="base.xhtml/ContactBox"/>
 				</div>
 				<div class="span6 fix-width-3">
-					<div class="box">
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-videos reset-margin">
+							<h4 class="reset-margin">Giảng sư: <span tal:content="Monk/getName"/></h4>
+							<i class="pull-right">
+								<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
+							</i>
+						</div>
 						<div class="b-content news-content padding-content">
-							<div class="page-header">
-								<h4>Giảng sư: <span tal:content="Monk/getName"/></h4>
-								<i class="pull-right">
-									<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
-								</i>
-							</div>
-							
 							<div tal:repeat="VM VMAll" class="media img-polaroid new-list-polaroid-3">
 								<a tal:attributes="href VM/getURLView" class="pull-left">
 									<img tal:attributes="src VM/getVideo/getURLImage" class="media-object img-rounded"/>
@@ -49,7 +48,7 @@
 								<div class="media-body">
 									<h4 class="media-heading" tal:content="VM/getVideo/getName"/>
 									<p class="media-reduce">Giảng sư: <span tal:content="Monk/getName"/></p>
-									<a tal:attributes="href VM/getURLView" class="btn pull-right"><i class="icon-share"/> Xem</a>
+									<a tal:attributes="href VM/getURLView" class="btn pull-right"><i class="icon-share"/> <span tal:content="VM/getVideo/getCount" /> xem</a>
 								</div>
 							</div>
 							
@@ -80,15 +79,13 @@
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-					<div metal:use-macro="base.xhtml/PictureBox"/>
-					<div metal:use-macro="base.xhtml/CallendarBox"/>
+					</div>										
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>
 			<div metal:use-macro="base.xhtml/Popup"/>
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
 			<div id="fb-root"/>
 		</div>
 	</body>

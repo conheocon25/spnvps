@@ -4,18 +4,18 @@
 	<!-- META TAG INCLUDE														  -->
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeMETA">
-		<title tal:content="string:Website Chùa Long Viễn"/>
+		<title tal:content="string:Website Chùa Long Viễn Cái Bè Tiền Giang"/>
 		<base href="http://chualongvien.com"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="Pragma" content="no-cache"/>
 		<meta http-equiv="Expires" content="-1"/>
 		<meta http-equiv="Cache-Control" content="no-cache"/>
 		<meta name="keywords" content="Chùa Long Viễn"/>
-		<meta name="description" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 319B2, ấp Mỹ Phú, xã Mỹ Đức Đông, Cái Bè, Tiền Giang, Việt Nam"/>
+		<meta name="description" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
 		<meta name="page-topic" content="Chùa Long Viễn"/>
-		<meta name="Abstract" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 319B2, ấp Mỹ Phú, xã Mỹ Đức Đông, Cái Bè, Tiền Giang, Việt Nam"/>
+		<meta name="Abstract" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
 		<meta name="classification" content="Chùa Long Viễn, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
-		<link rel="icon" type="image/png" href="/data/images/icon.png" />
+		<link rel="shortcut icon" href="/data/images/logo/favicon.ico" type="image/x-icon"/>
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -37,7 +37,7 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.countdown.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
 	</span>
@@ -48,17 +48,17 @@
 	<div metal:define-macro="Header" class="row reset-margin">
 		<div class="header">
 			<a href="/gate">
-				<img src="/data/images/logo/banner.jpg" width="100%" height="100%"/>
+				<img src="/data/images/logo/banner.jpg"/>
 				<!--
 				<object
 					classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
 					codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0"
-					title="Chùa Khải Tường"
+					title="Chùa Long Viễn"
 					height="282" width="940">
-					<param name="movie" value="/data/images/banner.swf" />
+					<param name="movie" value="/data/images/flash/banner.swf" />
 					<param name="quality" value="high" />
 					<embed
-						src="/data/images/banner.swf"
+						src="/data/images/flash/banner.swf"
 						quality="high"
 						pluginspage="http://www.macromedia.com/go/getflashplayer"
 						type="application/x-shockwave-flash"
@@ -110,12 +110,15 @@
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active dropdown':'dropdown'">
+					
 					<a class="dropdown-toggle" data-toggle="dropdown">Từ thiện <b class="caret"/></a>
 					<ul class="dropdown-menu">
 						<li><a href="/so-vang">Sổ vàng</a></li>
+						<!--
 						<li tal:repeat="Sponsor SponsorAll">
 							<a tal:attributes="href Sponsor/getURLView" tal:content="Sponsor/getName"></a>
 						</li>
+						!-->
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>				
@@ -169,10 +172,10 @@
 				</ol>
 				<div class="carousel-inner">
 					<div class="active item">
-						<a href="/phat-am/bac-tong"><img src="/data/images/bac_tong.jpg" /></a>
+						<a href="/phat-am/bac-tong"><img src="/data/images/logo/bac_tong.jpg" /></a>
 					</div>
 					<div class="item">
-						<a href="/phat-am/nam-tong"><img src="/data/images/nam_tong.jpg" /></a>
+						<a href="/phat-am/nam-tong"><img src="/data/images/logo/nam_tong.jpg" /></a>
 					</div>
 				</div>
 				<a class="carousel-control left" href="#BuddhaCarousel" data-slide="prev">&lsaquo;</a>
@@ -190,7 +193,7 @@
 		</div>
 		<div class="b-content">
 			<a href="/thu-vien-anh">
-				<img width="100%" src="/data/images/top_img.jpg" />
+				<img width="100%" src="/data/images/logo/top_img.jpg" />
 			</a>
 		</div>
 	</div>
@@ -249,28 +252,15 @@
 			<div class="b-t-icon-content">GIẢNG SƯ NỔI BẬT</div>
 		</div>
 		<div class="b-content">
-			<div id="myCarousel3" class="carousel slide sidebar-slide reset-margin">
-				<div class="carousel-inner">
-					<div class="active item">
-						<a tal:attributes="href MonkAll/current/getURLRead">
-							<img tal:attributes="src MonkAll/current/getURLPic | string:/data/images/exit_picture.jpg"/>
-							<div class="carousel-caption">
-								<p tal:content="php:MonkAll->current()->getPreName() . ' ' . MonkAll->current()->getName() . ' ' . MonkAll->current()->getPagoda()"/>
-							</div>
-						</a>
-					</div>
-					<div tal:repeat="Monk MonkAll" class="item">
-						<a tal:attributes="href Monk/getURLRead">
-							<img tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg"/>
-							<div class="carousel-caption">
-								<p tal:content="php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()"/>
-							</div>
-						</a>
-					</div>
-				</div>
-				<a class="carousel-control left" href="#myCarousel3" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#myCarousel3" data-slide="next">&rsaquo;</a>
-			</div>
+			<ul class="grid-item-3 thumbnails reset-margin">
+				<li tal:repeat="Monk MonkAll" class="span2">
+					<a tal:attributes="href Monk/getURLRead;">
+						<div class="thumbnail">
+							<img class="monk-tooltip" tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg; data-original-title php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()" data-toggle="tooltip" data-placement="bottom"/>
+						</div>
+					</a>
+				</li>
+			</ul>
 		</div>
 	</div>
 	
@@ -322,7 +312,7 @@
 	<div metal:define-macro="ContactBox" class="box">
 		<div class="b-content">
 			<a href="/contact">
-				<img width="100%" src="/data/images/contact.jpg" />
+				<img width="100%" src="/data/images/logo/contact.jpg" />
 			</a>
 		</div>
 	</div>
@@ -334,8 +324,33 @@
 		<div class="b-title">
 			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
 		</div>
-		<div id="calendar" class="b-content">
-			<script type="text/javascript">function viewSelectedMonth(){setOutputSize("small");var s = printSelectedMonth();document.open();document.writeln(s);document.close();}viewSelectedMonth();</script>
+		<div class="b-content padding-content">
+			<table class="calendar-paper" width="100%" border="0" cellpadding="1" cellspacing="1">
+				<tbody>
+					<tr><td colspan="2" id="thangduong" class="thangduong"></td></tr>
+					<tr><td colspan="2" id="ngayduong" class="ngayduong"></td></tr>
+					<tr><td colspan="2" id="thuduong" class="thuduong"></td></tr>
+					<tr>
+						<td> 
+							<div id="thangam" class="thangam"></div>
+							<div id="ngayam" class="ngayam"></div>
+							<div id="namam" class="namam"></div>
+						</td>
+						<td class="canchi">
+							<div id="canchithang" class="gioam"></div>
+							<div id="canchingay" class="gioam"></div>
+						</td>
+					</tr>
+					<tr><td colspan="2" id="hoangdao" class="hoangdao"></td></tr>
+				</tbody>
+			</table>
+			<script language="JavaScript">
+			<!--
+				setOutputSize("small");
+				document.writeln(printSelectedMonth());
+				loadToDay();
+			-->
+			</script>
 		</div>
 	</div>
 	
@@ -413,19 +428,49 @@
 	<!-- POPUP QUẢNG CÁO														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Popup">
-		<script>/*<![CDATA[*/$(document).ready(function(){$("#ads-open").hide();$("#ads-open").click(function(){$(".ads-popup").show(1000);$(this).hide();});$(".ads-close").click(function(){$(".ads-popup").hide(1000);$("#ads-open").show();});});/*]]>*/</script>
-		<div class="ads-popup" tal:condition="Popup/getEnable" >
-			<div class="ads-close">X</div>
-			<object height="100%" width="100%">
-				<param name="movie" tal:attributes="value Popup/getSource" />
-				<param name="wmode" value="transparent"/>
-				<embed wmode="transparent" tal:attributes="src Popup/getSource" height="100%" width="100%" />
-			</object>
-			<a tal:attributes="href Popup/getURL" target="blank">
-				<div style="height:100%; width:100%; position:absolute; z-index:9; top:0; left:0;"></div>
-			</a>
+		<script>
+		/*<![CDATA[*/
+			$(document).ready(function(){
+				$(".hide-popup").hide(function(){
+					$("#ads-open").show();
+				});
+				$("#ads-open").hide();
+				$("#ads-open").click( function(){
+					$("#ads-open").slideUp('slow', function(){
+						$(".ads-popup").slideDown('slow');
+					});
+				});
+				$(".ads-close").click( function(){
+					$(".ads-popup").slideUp('slow', function(){
+						$("#ads-open").slideDown('slow');
+					});
+				});
+			});
+		/*]]>*/
+		</script>
+		<div class="ads-popup ads-popup-center" tal:condition="Popup/getEnable">
+			<div class="ads-close"><i class="icon-chevron-down icon-white"/></div>
+			<div id="PopupCarousel" class="carousel slide carousel-fade popup-slide reset-margin">
+				<ol class="carousel-indicators">
+					<li data-target="#PopupCarousel" data-slide-to="0" class="active"></li>
+				</ol>
+				<div class="carousel-inner">
+					
+					<div class="active item">
+						<a tal:attributes="href '#'">
+							<img width="100%" tal:attributes="src SponsorAll/current/getPicture" class="img-rounded"/>
+						</a>
+					</div>
+					
+					<div class="item" tal:repeat="Sponsor SponsorAll">
+						<a tal:attributes="href Sponsor/getURLView">
+							<img width="100%" tal:attributes="src Sponsor/getPicture" class="img-rounded"/>
+						</a>
+					</div>					
+				</div>
+			</div>
 		</div>
-		<div id="ads-open">Mở</div>
+		<div id="ads-open" class="ads-open-center"><i class="icon-chevron-up icon-white"/></div>
 	</div>
 	
 	<!-- ======================================================================== -->
@@ -449,21 +494,27 @@
 		<div class="row reset-margin">
 			<div class="span6 reset-margin">
 				<div class="f-left">
-					<p><b>Địa chỉ:</b> 126/27 Trần Phú - F4 - Tp.Vĩnh Long - Vĩnh Long - Việt Nam</p>
-					<p><b>Điện thoại:</b> (070) 3 824 152</p>
-					<p><b>Email:</b> chualongvien.vinhlong@gmail.com</p>
+					<p><b>Địa chỉ:</b> 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam</p>
+					<p><b>Điện thoại:</b> (070) 3 824 152 - <b>Di Động:</b> 0919 2 444 00</p>
+					<p><b>Email:</b> info@longvien.org</p>
 					<p><b>Website:</b> <i><u>chualongvien.com</u></i></p>
 				</div>
 			</div>
 			<div class="span6 pull-right reset-margin">
 				<div class="f-right">
-					<p><b>© 12/2012 Chùa Long Viễn</b></p>
-					<p>Biên tập - Thượng Tọa Thích Thiện Trí</p>
+					<p><b>© 9/2013 Chùa Long Viễn</b></p>
+					<p>Biên tập - Thượng tọa Thích Thiện Trí</p>
 					<p>Phát triển - SPN Co, Ltd & Nguyên Phong Studio</p>
 					<p>Ghi rõ nguồn <b><i>chualongvien.com</i></b> khi phát hành thông tin từ website này</p>
 				</div>
 			</div>
 		</div>
 	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- BACK ON TOP															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Backontop" class="crunchify-top" data-toggle="tooltip" data-placement="left" data-original-title="Chuyển đến đầu trang"/>
+	
 </body>
 </html>

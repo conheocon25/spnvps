@@ -9,8 +9,8 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY time_start DESC", $tblSponsor);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblSponsor);
-		$updateStmt = sprintf("update %s set name=?, time_start=?, time_end=?, content=?, type=?, `key`=? where id=?", $tblSponsor);
-		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, type, `key`) values(?, ?, ?, ?, ?, ?)", $tblSponsor);
+		$updateStmt = sprintf("update %s set name=?, time_start=?, time_end=?, content=?, type=?, picture=?, `key`=? where id=?", $tblSponsor);
+		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, picture, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblSponsor);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblSponsor);
 		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC LIMIT :start,:max", $tblSponsor);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblSponsor);
@@ -33,6 +33,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$array['time_end'],
 			$array['content'],
 			$array['type'],
+			$array['picture'],
 			$array['key']
 		);
         return $obj;
@@ -47,6 +48,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$object->getTimeEnd(),
 			$object->getContent(),
 			$object->getType(),
+			$object->getPicture(),
 			$object->getKey()
 		); 
         $this->insertStmt->execute( $values );
@@ -61,6 +63,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 			$object->getTimeEnd(),
 			$object->getContent(),
 			$object->getType(),
+			$object->getPicture(),
 			$object->getKey(),
 			$object->getId()
 		);

@@ -27,7 +27,7 @@
 			$Category = $mCategoryVideo->findByKey($KCategory);			
 			$Video = $mVideo->findByKey($KVideoLibrary);
 			
-			$VLs = $mVL->findBy(array($Category->getId()));
+			$VLs = $mVL->findByLimit(array($Category->getId()));
 									
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
