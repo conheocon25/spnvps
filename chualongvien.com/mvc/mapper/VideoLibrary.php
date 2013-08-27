@@ -18,6 +18,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$deleteByCategoryStmt = sprintf("delete from %s where id_category=?", $tblVideoLibrary);
 		
 		$findByStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoLibrary, $tblVideo);
+		$findByLimitStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC LIMIT 12", $tblVideoLibrary, $tblVideo);
 		$findByTopStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 1", $tblVideoLibrary, $tblVideo);
 		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
 		$findByTopLocalStmt = sprintf("select * from %s VM WHERE VM.id_category=1 order by (select time from %s V where V.id=VM.id_video ) DESC limit 24", $tblVideoLibrary, $tblVideo);
@@ -38,6 +39,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
 		
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
+		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
 		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
 		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);
 		$this->findByTopStmt = self::$PDO->prepare($findByTopStmt);
@@ -93,6 +95,11 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
         return new VideoLibraryCollection( $this->findByStmt->fetchAll(), $this);
+    }
+	
+	function findByLimit( $values ){
+        $this->findByLimitStmt->execute( $values );
+        return new VideoLibraryCollection( $this->findByLimitStmt->fetchAll(), $this);
     }
 	
 	function findByTop( $values ){

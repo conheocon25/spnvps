@@ -35,7 +35,7 @@
 			$CategoriesVideo = $mCategoryVideo->findAll();			
 									
 			$Monks = $mMonk->findAll();			
-			$VMs = $mVM->findBy(array($Monk->getId()));
+			$VMs = $mVM->findByLimit(array($Monk->getId()));
 			$PagodaAll = $mPagoda->findAll();
 									
 			$SponsorAll = $mSponsor->findAll();

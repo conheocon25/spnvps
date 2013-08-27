@@ -39,8 +39,8 @@
 
 			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');
 			
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 8));
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 8, $Category->getURLRead());
+			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 16));
+			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 16, $Category->getURLRead());
 						
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			

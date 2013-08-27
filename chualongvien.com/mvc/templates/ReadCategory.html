@@ -26,7 +26,7 @@
 									<h4 class="media-heading" tal:content="News/getTitle"/>
 									<p class="media-time">Cập nhật: <i tal:content="News/getDatePrint"/></p>
 									<p class="media-reduce" tal:content="structure News/getContentReduce"/>
-									<a tal:attributes="href News/getURLRead" class="btn">Xem chi tiết</a>
+									<a tal:attributes="href News/getURLRead" class="btn btn-info"><i class="icon-edit icon-white"/> Xem chi tiết</a>
 								</div>
 							</div>
 
@@ -61,6 +61,7 @@
 			<div metal:use-macro="base.xhtml/Footer"/>
 			<div metal:use-macro="base.xhtml/Popup"/>
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
 			<div id="fb-root"/>
 		</div>
 	</body>

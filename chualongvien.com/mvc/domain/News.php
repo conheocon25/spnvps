@@ -47,7 +47,7 @@ class News extends Object{
 	
 	function setTitle( $Title ){$this->Title = $Title;$this->markDirty();}   
 	function getTitle( ) {return $this->Title;}	
-	function getTitleReduce(){$S = new \MVC\Library\String($this->Title);return $S->reduce(55);}
+	function getTitleReduce(){$S = new \MVC\Library\String($this->Title);return $S->reduce(45);}
 	
 	function setType( $Type ){$this->Type = $Type;$this->markDirty();}   
 	function getType( ) {return $this->Type;}
