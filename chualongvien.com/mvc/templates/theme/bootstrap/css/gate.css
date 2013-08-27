@@ -66,18 +66,19 @@
 	.poe {
 		position: absolute;
 		background-color: rgba(255, 255, 255, .2);
-		width: 100%;
+		width: 60px;
 		box-shadow: 0 0 20px 20px rgba(255, 255, 255, .2);
 	}
 	
-	.top-poe { top: 0; }
-	.bottom-poe { bottom: 0; }
+	.top-poe { top: 0; left: 5%; }
+	.bottom-poe { bottom: 0; right: 5%; }
 	
 	.poe p {
 		text-align: center;
-		font-size: 2em;
+		font-size: 2.3em;
 		text-shadow: 1px 1px 1px #FFF;
 		color: #5D3F38;
+		line-height: 1.6em;
 	}
 	
 	.top-poe p { padding: 10px 0; }
@@ -149,6 +150,6 @@
 
 	}
 	
-	@-webkit-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 100%; } }
-	@keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 100%; } }
-	@-moz-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 100%; } }
+	@-webkit-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
+	@keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
+	@-moz-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
