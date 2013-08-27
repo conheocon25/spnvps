@@ -4,6 +4,7 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
@@ -15,6 +16,17 @@
 				$(".top-poe").slideUp();
 				$(".bottom-poe").slideUp();
 			});
+			
+			$("#jquery_audioPlayer").jPlayer({
+				ready: function() {
+					$(this).jPlayer("setMedia", {
+						mp3:"/data/intro.mp3"
+					}).jPlayer("play");
+				},
+				swfPath: "data",
+				supplied: "mp3",		
+				wmode: "window"
+			});
 		});
 		/*]]>*/
 		</script>
@@ -23,12 +35,19 @@
 	<body>
 		<div class="cover-inner">
 			<a href="/trang-chu">
-				<img class="move" src="/data/images/logo/buddha.gif"/>
+				<img class="move" src="/data/images/logo/title.png"/>
 				<p><span class="link">Vào Trang chủ</span></p>
 			</a>
 		</div>
 		
-		<div class="poe top-poe"><p>Mỗi giây mỗi phút không rời</p></div>
-		<div class="poe bottom-poe"><p>Nhất tâm niệm phật đời đời yên vui!</p></div>
+		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
+		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ lẽ trời</p></div>
+
+		<div id="jquery_audioPlayer" class="jp-jplayer"></div>
+		
+		<img class="cloud cloud1" src="/data/images/bg/cloud1.png"/>
+		<img class="cloud cloud2" src="/data/images/bg/cloud2.png"/>
+		<img class="cloud cloud3" src="/data/images/bg/cloud3.png"/>
+		<img class="bird" src="/data/images/bg/bird.gif"/>
 	</body>
 </html>
