@@ -28,8 +28,15 @@ class Viewer {
 		}		
 		$tpl->User = $User;
 		
+		$Html = $tpl->execute();
+		
+		//Giải phóng bộ nhớ bị rò rỉ
+		unset($tpl);
+		unset($objects);
+		unset($properties);
+		
 		//Kết xuất dữ liệu ra HTML
-		return $tpl->execute();
+		return $Html;
 	}
 	
 	//-------------------------------------------------
