@@ -18,13 +18,10 @@ abstract class Mapper implements \MVC\Domain\Finder {
     function __construct() { 
         if ( ! isset(self::$PDO) ) { 
             
-			$Encrypt = new Encrypted();	
-			$ReadFileKey = $Encrypt->readFromFile($Encrypt->SizeFileConfig());
-			
-			$dsn = $Encrypt->decryptData($ReadFileKey[0]);			
-			$dbname = $Encrypt->decryptData($ReadFileKey[1]);			
-			$user = $Encrypt->decryptData($ReadFileKey[2]);	
-			$pass = $Encrypt->decryptData($ReadFileKey[3]);	
+			$dsn = "mysql:host=localhost;";
+			$dbname = "dbname=spnsoft_system";			
+			$user = "spnsoft_userdb";
+			$pass = "admin068198";
 			
             if ( is_null( $dsn ) ) {
                 throw new \MVC\Base\AppException( "No DSN" );
