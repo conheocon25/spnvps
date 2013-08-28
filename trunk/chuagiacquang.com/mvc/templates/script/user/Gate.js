@@ -3,7 +3,7 @@ $(function() {
 			$("#jquery_jplayer_1").jPlayer({
 				ready: function () {
 					$(this).jPlayer("setMedia", {
-						mp3:"http://chuagiacquang.123app.net/data/chuongchua.mp3"
+						mp3:"http://chuagiacquang.com/data/chuongchua.mp3"
 					}).jPlayer("play");
 				},
 				swfPath: "data",
