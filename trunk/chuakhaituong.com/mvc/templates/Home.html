@@ -26,35 +26,31 @@
 					<div class="accordion accordion-fix" id="accordion2">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
-								<div class="b-t-icon-content">Đào tạo</div>
+								<div class="b-t-icon-content">Sự kiện gần đây</div>
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne"/>
 							</div>
 							<div id="collapseOne" class="accordion-body collapse in b-content">
-								<div id="LessionCarousel" class="carousel slide reset-margin course-slide">
-									<ol class="carousel-indicators">
-										<li data-target="#LessionCarousel" data-slide-to="0" class="active"></li>
-										<li data-target="#LessionCarousel" data-slide-to="1"></li>
-									</ol>
+								<div id="EventCarousel" class="carousel slide reset-margin course-slide">
 									<div class="carousel-inner">
 										<div class="active item">
-											<a tal:attributes="href Course/getLessions/current/getURLRead">
-												<img tal:attributes="src Course/getLessions/current/getImage"/>
+											<a tal:attributes="href EventAll/current/getURLRead">
+												<img width="100%" tal:attributes="src EventAll/current/getImage"/>
 												<div class="carousel-caption">
-													<p tal:content="Course/getLessions/current/getName" />
+													<p tal:content="EventAll/current/getTitle"/>
 												</div>
 											</a>
 										</div>
-										<div tal:repeat="Lession Course/getLessions" class="item">
-											<a tal:attributes="href Lession/getURLRead">
-												<img tal:attributes="src Lession/getImage"/>
+										<div tal:repeat="Event EventAll" class="item">
+											<a tal:attributes="href Event/getURLRead">
+												<img width="100%" tal:attributes="src Event/getImage"/>
 												<div class="carousel-caption">
-													<p tal:content="Lession/getName" />
+													<p tal:content="Event/getTitle"/>
 												</div>
 											</a>
 										</div>
 									</div>
-									<a class="carousel-control left" href="#LessionCarousel" data-slide="prev">&lsaquo;</a>
-									<a class="carousel-control right" href="#LessionCarousel" data-slide="next">&rsaquo;</a>
+									<a class="carousel-control left" href="#EventCarousel" data-slide="prev">&lsaquo;</a>
+									<a class="carousel-control right" href="#EventCarousel" data-slide="next">&rsaquo;</a>
 								</div>
 							</div>
 						</div>
