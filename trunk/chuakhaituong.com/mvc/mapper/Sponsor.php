@@ -7,7 +7,7 @@ class Sponsor extends Mapper implements \MVC\Domain\SponsorFinder{
 				
 		$tblSponsor = "chuakhaituong_sponsor";
 		
-		$selectAllStmt = sprintf("select * from %s ORDER BY time_start DESC", $tblSponsor);
+		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC", $tblSponsor);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblSponsor);
 		$updateStmt = sprintf("update %s set name=?, time_start=?, time_end=?, content=?, type=?, picture=?, `key`=? where id=?", $tblSponsor);
 		$insertStmt = sprintf("insert into %s ( name, time_start, time_end, content, picture, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblSponsor);
