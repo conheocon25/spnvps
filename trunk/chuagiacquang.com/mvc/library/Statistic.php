@@ -11,32 +11,38 @@ class Statistic{
     function __construct( ){
                 
     }
-    static function getCount(){
-		$CountPage = ("data/hit_counter.txt");
-		$Hits = \file($CountPage);
-		$Hits[0] ++;
-		$fp = \fopen($CountPage , "w");
-		\fputs($fp , "$Hits[0]");
-		\fclose($fp);
-		return $Hits[0];
+    static function getCount(){		
+		$mConfig = new \MVC\Mapper\Config();
+		$Config = $mConfig->findByName('GUEST_VISIT');
+		return $Config->getValue();
 	}
 	static function getCountPrint(){
-		$CountPage = ("data/hit_counter.txt");
-		$Hits = \file($CountPage);
-		$Hits[0] ++;
-		$fp = \fopen($CountPage , "w");
-		\fputs($fp , "$Hits[0]");
-		\fclose($fp);				
-		$N = new Number($Hits[0]);		
+		$mConfig = new \MVC\Mapper\Config();
+		$Config = $mConfig->findByName('GUEST_VISIT');
+		$Config->setValue( $Config->getValue()+1 );
+		$mConfig->update($Config);
+		$N = new Number( $Config->getValue() );
 		return $N->formatCurrency();
 	}
 	
 	static function getOnlinePrint(){
 		
 		$mGuest = new \MVC\Mapper\Guest();
-		//Lấy tham số về
-		$IP = $_SERVER['REMOTE_ADDR'];
-		$Agent = $_SERVER['REMOTE_ADDR']; //$_SERVER['USER_AGENT'];
+		//Lấy tham số về		
+		//$IP = $_SERVER['REMOTE_ADDR'];
+		//if from shared
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+			$IP = $_SERVER['HTTP_CLIENT_IP'];
+		}
+		//if from a proxy
+		else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			$IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}
+		else{
+			$IP = $_SERVER['REMOTE_ADDR'];
+		}
+		
+		$Agent = $_SERVER['REMOTE_ADDR'];
 		$EntryTime = \time();
 		$ExitTime= \time()+(60*60*1);
 		if (!isset($Agent))
@@ -62,7 +68,7 @@ class Statistic{
 			$Guests = $mGuest->findAll();
 			$N = new Number($Guests->count());
 			$mGuest->delete(array($EntryTime));
-						
+			
 			return $N->formatCurrency();
 		}
 		return 0;

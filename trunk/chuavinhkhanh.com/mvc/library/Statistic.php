@@ -28,9 +28,21 @@ class Statistic{
 	static function getOnlinePrint(){
 		
 		$mGuest = new \MVC\Mapper\Guest();
-		//Lấy tham số về
-		$IP = $_SERVER['REMOTE_ADDR'];
-		$Agent = $_SERVER['REMOTE_ADDR']; //$_SERVER['USER_AGENT'];
+		//Lấy tham số về		
+		//$IP = $_SERVER['REMOTE_ADDR'];
+		//if from shared
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+			$IP = $_SERVER['HTTP_CLIENT_IP'];
+		}
+		//if from a proxy
+		else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			$IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}
+		else{
+			$IP = $_SERVER['REMOTE_ADDR'];
+		}
+		
+		$Agent = $_SERVER['REMOTE_ADDR'];
 		$EntryTime = \time();
 		$ExitTime= \time()+(60*60*1);
 		if (!isset($Agent))
@@ -56,7 +68,7 @@ class Statistic{
 			$Guests = $mGuest->findAll();
 			$N = new Number($Guests->count());
 			$mGuest->delete(array($EntryTime));
-						
+			
 			return $N->formatCurrency();
 		}
 		return 0;
