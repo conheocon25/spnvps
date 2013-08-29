@@ -51,7 +51,7 @@ RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=ReadCategoryDetail&K
 
 RewriteRule ^chua-ban$ 												?cmd=Pagoda [L]
 RewriteRule ^chua-ban/([a-z0-9_-]+)$ 								?cmd=Pagoda&KPagoda=$1 [L]
-RewriteRule ^chua-ban/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=Pagoda&KPagoda=$1&KVideoPagoda=$2 [L]
+RewriteRule ^chua-ban/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 			?cmd=PagodaVideo&KPagoda=$1&KVideoPagoda=$2 [L]
 
 RewriteRule ^hoi-dap$ 												?cmd=Ask [L]
 RewriteRule ^hoi-dap/dat-cau-hoi$ 									?cmd=AskInsLoad [L]
