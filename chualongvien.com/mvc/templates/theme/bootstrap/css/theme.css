@@ -1,5 +1,5 @@
 	
-	body { background: url("/data/images/bg/body.jpg") repeat fixed center center transparent !important; }
+	body { background: url("/data/images/bg/body.jpg") no-repeat fixed center bottom #033594 !important; }
 	
 	.container { box-shadow: 0 0 2px 2px #000000; }
 	
@@ -31,7 +31,7 @@
 	/* ======================================================================== */
 	/* MAIN																		*/
 	/* ======================================================================== */
-	.main { background-color: rgba(255, 255, 255, .3); }
+	.main { background-color: white; }
 	
 	/* ======================================================================== */
 	/* FOOTER																	*/
@@ -68,10 +68,10 @@
 		border-top-right-radius: 5px;
 	}
 	
-	.fixed-function { background-color: rgba(0, 0, 0, .5); }
+	.fixed-function { background-color: rgba(0, 0, 0, .7); }
 	
 		.bubble {
-			background-color: #3B579D;
+			background-color: #0D8700;
 			color: white;
 			border: 1px solid white;
 		}
