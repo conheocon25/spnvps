@@ -40,6 +40,7 @@
 		width: 726px;
 		text-align: center;
 		margin-top: 50px;
+		cursor: default;
 	}
 	
 	a { text-decoration: none; }
@@ -88,6 +89,7 @@
 		background-color: rgba(255, 255, 255, .2);
 		width: 60px;
 		box-shadow: 0 0 20px 20px rgba(255, 255, 255, .2);
+		z-index: 999;
 	}
 	
 	.top-poe { top: 0; left: 5%; }
