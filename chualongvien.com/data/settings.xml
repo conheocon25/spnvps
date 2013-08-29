@@ -29,6 +29,7 @@
 		<command name="Event" type="public"><view>Event</view></command>
 		<command name="EventDetail" type="public"><view>EventDetail</view></command>
 		<command name="Pagoda" type="public"><view>Pagoda</view></command>
+		<command name="PagodaVideo" type="public"><view>PagodaVideo</view></command>
 		<command name="Ads" type="public"><view>Ads</view></command>
 				
 		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
