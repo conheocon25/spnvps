@@ -5,29 +5,18 @@
 		<span metal:use-macro="macros.xhtml/IncludeJS"/>
 	</head>	
 	<body>
+		<div metal:use-macro="macros.xhtml/Popup" />
 		<div id="wrapper">
 		
 			<div metal:use-macro="macros.xhtml/Header" />	
 
 			<div id="main">				
-				
+				<div metal:use-macro="macros.xhtml/DateTimeBox"/>
 				<div id="content">
 					<div class="news-box">
 						<div class="box-title">
-							<img src="/data/images/online.png" width="30" />
-							<span>GIAO LƯU TRỰC TUYẾN</span>
-						</div>
-						<div style="padding:10px; color:#980707; text-align:center; font-size:15px;">
-							<div>Quí vị có thể chat với nick Yahoo Messenger <b>tnhuethanh@yahoo.com</b> để gửi lại tin nhắn</div><br/>
-							<a href="ymsgr:sendIM?tnhuethanh@yahoo.com">
-							<img src="http://opi.yahoo.com/online?u=tnhuethanh@yahoo.com&m=g&t=2" border="0" alt="" /> </a>
-						</div>
-					</div>	
-					
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/contact.png" width="30" />
-							<span>Gửi tin nhắn Offline</span>
+							<img src="/data/images/icon.png" width="30" />
+							<span>lIÊN HỆ</span>
 						</div>
 						<div style="padding:10px;">
 							<div align="center" >
@@ -95,19 +84,26 @@
 								</table>
 							</div>
 						</div>
-						<div class="clear"></div>
+						<div class="clear" />
 					</div>
-				</div>
-				
-				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/VideoBox"/>					
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				</div>				
+				<div id="sidebar">
+					<div metal:use-macro="macros.xhtml/TaskBox"/>
+						<div metal:use-macro="macros.xhtml/EventBox"/>
+						<div metal:use-macro="macros.xhtml/CourseBox"/>
+						<div metal:use-macro="macros.xhtml/BuddhaBox"/>
+						<div metal:use-macro="macros.xhtml/PictureBox"/>
+						<div metal:use-macro="macros.xhtml/TopNewsBox"/>
+						<div metal:use-macro="macros.xhtml/TopVideoBox"/>
+						<div metal:use-macro="macros.xhtml/TopMonkBox"/>
+						<div metal:use-macro="macros.xhtml/AskBox"/>
+						<div metal:use-macro="macros.xhtml/SponsorBox"/>
+						<div metal:use-macro="macros.xhtml/ContactBox"/>
+						<div metal:use-macro="macros.xhtml/CallendarBox"/>					
 				</div>				
 				<div class="clear" />
 			</div>
 			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
 		</div>
 	</body>
 </html>

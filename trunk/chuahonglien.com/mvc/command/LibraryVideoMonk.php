@@ -11,50 +11,60 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdMonk = $request->getProperty('IdMonk');
+			$KBType = $request->getProperty('KBType');
+			$KMonk = $request->getProperty('KMonk');			
 			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mMonk = new \MVC\Mapper\Monk();
-			$mVM = new \MVC\Mapper\VideoMonk();
-			$mAlbum = new \MVC\Mapper\Album();			
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mVM = new \MVC\Mapper\VideoMonk();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			if (!isset($Page)) $Page=1;
 			
-			$Monks = $mMonk->findAll();
-			$VMs = $mVM->findBy(array($IdMonk));
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$CategoriesVideo = $mCategoryVideo->findAll();
-			$Monk = $mMonk->find($IdMonk);
-			$Pagodas = $mPagoda->findAll();
+			$Monk = $mMonk->findByKey($KMonk);
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdMonk = $Monk->getId();
+			$IdCategoryBType = $CategoryBType->getId();
+						
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoriesVideo = $mCategoryVideo->findAll();			
+			$Monks = $mMonk->findAll();						
+			$PagodaAll = $mPagoda->findAll();
+			$SponsorAll = $mSponsor->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
-			$VMs = $mVM->findByPage(array($IdMonk, $Page, 10));
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
 			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("Monks", $Monks);			
-			$request->setObject("VMs", $VMs);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoriesVideo", $CategoriesVideo);			
+			$request->setObject("CategoryBType", $CategoryBType);
+			$request->setObject("Monks", $Monks);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Monk", $Monk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('PN', $PN);
+			$request->setObject("PN", $PN);
+			$request->setObject("VMAll", $VMAll);
+			
 			$request->setProperty("ActiveItem", 'LibraryVideo');
-			$request->setProperty("Page", $Page );
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

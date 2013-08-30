@@ -5,12 +5,12 @@
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'Cau Co Co, Huyen Cai Be, Tien Giang, Viet Nam',		
+		center: 'Chua Long Vien, Phuong 4, tp. Vinh Long, Vinh Long, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam',
+		tooltip: 'Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam',
 		image: 'false'
     };
 
@@ -24,10 +24,10 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.336209,105.916046);		
+		var center = new GLatLng(10.245203,105.979153);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam');	
+		marker.openInfoWindowHtml('Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam');	
 	}
 	
     $.extend(GoogleMapObject.prototype, {
@@ -65,7 +65,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.336209,105.916046);
+                    center = new GLatLng(10.245203,105.979153);
 					
 					if (!point) { alert(center + " not found"); }
                     else {
