@@ -31,14 +31,14 @@
 				$Today = \getdate();
 				$CurDateTime = $Today['year']."-".$Today['mon']."-".$Today['mday']." ".$Today['hours'].":".$Today['minutes'].":".$Today['seconds'];
 				//Gửi mail về Admin
-				$AdminMailName = "cafe.123app.net";
+				$AdminMailName = "Liên Hệ Từ Phật Tử - Chùa Khải Tường";
 				$AdminMail ="contact@123app.net";			
-				$MailSubject = "Ngày $CurDateTime - $Name đã gửi Thư phản hồi với chủ đề: ". $Subject;
-				$MailContent = "Nội dung phản hồi:<br /> Người gửi: $Name <br /> Email: $Email <br /> Chủ đề: $Subject <br /> Nội dung: $Content";
+				$MailSubject = "Ngày $CurDateTime - $Name đã gửi Thư với chủ đề: ". $Subject;
+				$MailContent = "Người gửi: $Name <br /> Email: $Email <br /> Chủ đề: $Subject <br /> Nội dung: $Content";
 				//Mail($smtp_host, $admin_email, $smtp_username, $smtp_password);
 				$mMail = new Mail('localhost', 'contact@123app.net', 'contact@123app.net', 'admin123456');
-				$mMail->SendMail( $AdminMailName, $AdminMail, 'thanhbao2007vl@gmail.com', $MailSubject, $MailContent);
-				$mMail->SendMail( $AdminMailName, $AdminMail, 'tuan_buithanh@yahoo.com', $MailSubject, $MailContent);
+				$mMail->SendMail( $AdminMailName, $AdminMail, 'nhuantamkhaituong@gmail.com', $MailSubject, $MailContent);
+				$mMail->SendMail( $AdminMailName, $AdminMail, 'tuanbuithanh@gmail.com', $MailSubject, $MailContent);
 				return self::statuses('CMD_OK');
 			}
 			return self::statuses('CMD_NO_AUTHOR');

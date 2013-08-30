@@ -15,40 +15,55 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mVideo = new \MVC\Mapper\Video();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
-			$mAlbum = new \MVC\Mapper\Album();
-			$mEvent = new \MVC\Mapper\Event();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$Videos = $mVideo->findAll();
+			$Title = "WEB SITE CHÙA KHAI TƯỜNG";
+						
+			$VM24 = $mVM->findByUpdateTop(array(2));
+			$VM8 = $mVM->findByTopLocal(array(2));
+			$VL24 = $mVL->findByUpdateTop(array(2));
 			
-			$Albums = $mAlbum->findAll();
+			$AlbumAll = $mAlbum->findAll();
 			$Categories = $mCategoryNews->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryVideo = $mCategoryVideo->findAll()->current();
+									
+			$AskAll = $mAsk->findByTop(array());
+			$PagodaAll = $mPagoda->findAll();
+												
+			$Event = $mEvent->findByNear(null)->current();
+			$Course = $mCourse->findByNear(null)->current();
 			
-			$Events1 = $mEvent->findTop(null);
-			$Event = $Events1->current();
-			$CLsNext = $mClassLession->findByNext(null);
+			$SponsorAll = $mSponsor->findAll();
+			$PanelNewsAll = $mPanelNewsAll->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject("Videos", $Videos);			
+			$request->setProperty("Title", $Title);
 			
-			$request->setObject("Albums", $Albums);	
+			$request->setObject("VM8", $VM8);
+			$request->setObject("VM24", $VM24);
+			$request->setObject("VL24", $VL24);
+			$request->setObject("AlbumAll", $AlbumAll);
 			$request->setObject("Categories", $Categories);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("Event", $Event);
-			$request->setObject("Pagodas", $Pagodas);
-			$request->setObject("CLsNext", $CLsNext);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryVideo", $CategoryVideo);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
+			$request->setObject("Event", $Event);			
+			$request->setObject("AskAll", $AskAll);			
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("PagodaAll", $PagodaAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setProperty("ActiveItem", 'Online');
 						
 			return self::statuses('CMD_DEFAULT');

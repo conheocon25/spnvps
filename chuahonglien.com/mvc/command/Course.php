@@ -1,8 +1,8 @@
 <?php
 	namespace MVC\Command;	
-	class Course extends Command{
+	class Course extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");
+			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
@@ -10,52 +10,53 @@
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------						
-			$IdCourse = $request->getProperty('IdCourse');
+			//-------------------------------------------------------------
+			$KCourse = $request->getProperty('KCourse');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mEvent = new \MVC\Mapper\Event();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCourse = new \MVC\Mapper\Course();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
+			//-------------------------------------------------------------
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();
-			$Pagodas = $mPagoda->findAll();
-			
-			$Title = "Đào tạo / ";
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryVideo = $mCategoryVideo->findAll()->current();
+									
+			$AskAll = $mAsk->findByTop(array());
+			$PagodaAll = $mPagoda->findAll();
 			$Courses = $mCourse->findAll();
-			if (!isset($IdCourse)){
-				$Course = $Courses->current();
-			}else{
-				$Course = $mCourse->find( $IdCourse );
-			}
-			
-			$Events1 = $mEvent->findTop(null);
-			$Event = $Events1->current();
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
+			$SponsorAll = $mSponsor->findAll();
+						
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("dao-tao");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------												
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject("CategoriesNews", $CategoriesNews);			
-			$request->setObject("Event", $Event);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject('Courses', $Courses);
-			$request->setObject('Course', $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
+			//-------------------------------------------------------------
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject("CategoryVideo", $CategoryVideo);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);								
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("Courses", $Courses);
+			$request->setObject("AskAll", $AskAll);
+			$request->setObject("PagodaAll", $PagodaAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			
 			$request->setProperty("ActiveItem", 'Course');
-			$request->setProperty("Title", $Title);
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+
+	<body>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'THỐNG KÊ THU '.Tracking->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
+							<table class="table table-hover reset-margin">
+								<thead>
+									<th align="center" width="5%" >STT</th>
+									<th align="left" width="75%" >CHƯƠNG TRÌNH</th>
+									<th align="right" width="20%" >SỐ TIỀN</th>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Sponsor SponsorAll">
+										<td align="center" tal:content="repeat/Sponsor/number" ></td>																				
+										<td tal:content="Sponsor/getName" ></td>
+										<td align="right" tal:content="php: Tracking->getSponsorPersionAllValuePrint( Sponsor->getId() )" ></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th align="right" colspan="2">TỔNG THU</th>
+										<th align="right"><b tal:content="Tracking/getCollectAllValuePrint" /></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'THỐNG KÊ CHI '.Tracking->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
+							<table class="table table-hover reset-margin">
+								<thead>
+									<th align="center" width="5%" >STT</th>
+									<th align="left" width="75%" >CHƯƠNG TRÌNH</th>
+									<th align="right" width="20%" >SỐ TIỀN</th>
+								</thead>
+								<tbody>
+									<tr tal:repeat="Sponsor SponsorAll">
+										<td align="center" tal:content="repeat/Sponsor/number" ></td>																				
+										<td tal:content="Sponsor/getName" ></td>
+										<td align="right" tal:content="php: Tracking->getSponsorPaidAllValuePrint( Sponsor->getId() )" ></td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<th align="right" colspan="2">TỔNG CHI</th>
+										<th align="right"><b tal:content="Tracking/getPaidAllValuePrint" /></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+					
+					<div class="box radius">
+						<div class="b-title">
+							<div tal:content="php:'TỔNG KẾT '.Tracking->getName()" class="b-t-icon-content"/>
+						</div>
+						<div class="b-content">
+							<table class="table table-hover reset-margin">															
+								<tfoot>
+									<tr>
+										<th width="80%" align="right">TỒN ĐẦU</th>
+										<th width="20%" align="right"><b tal:content="Tracking/getOldValuePrint" /></th>
+									</tr>
+									<tr>
+										<th width="80%" align="right">TỔNG THU</th>
+										<th width="20%" align="right"><b tal:content="Tracking/getCollectAllValuePrint" /></th>
+									</tr>
+									<tr>
+										<th width="80%" align="right">TỔNG CHI</th>
+										<th width="20%" align="right"><b tal:content="Tracking/getPaidAllValuePrint" /></th>
+									</tr>
+									<tr>
+										<th width="80%" align="right">----------------------</th>
+										<th width="20%" align="left">-----------------------------</th>
+									</tr>
+									<tr>
+										<th width="80%" align="right">TỔNG KẾT</th>
+										<th width="20%" align="right"><b tal:content="Tracking/getValuePrint" /></th>
+									</tr>
+								</tfoot>
+							</table>
+						</div>
+					</div>
+
+				</div>
+				<div class="span4 fix-width">					
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>														
+				</div>
+			</div>
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			<div id="fb-root"/>
+		</div>
+	</body>
+</html>
