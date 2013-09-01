@@ -8,15 +8,6 @@
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
-			$(".poe").hide();
-			$(".poe-hover").hover(function(){
-				$(".top-poe").slideDown();
-				$(".bottom-poe").slideDown();
-			}, function(){
-				$(".top-poe").slideUp();
-				$(".bottom-poe").slideUp();
-			});
-			
 			$("#jquery_audioPlayer").jPlayer({
 				ready: function() {
 					$(this).jPlayer("setMedia", {
@@ -34,23 +25,12 @@
 	</head>
 	
 	<body>
-		<div class="cover-inner">
-			<img src="/data/images/logo/title.png"/>
-			<p><a href="/trang-chu"><span class="link poe-hover">Vào Trang chủ</span></a></p>
-		</div>
-		
 		<div class="p-title poe-hover"><a href="/trang-chu"><p>Chùa Hồng Liên</p></a></div>
-
-		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
-		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ lẽ trời</p></div>
+		<div class="link"><a href="/trang-chu">Vào trang chủ</a></div>
+		
+		<div class="poe top-poe"><p>Trần gian hết nỗi vấn vương</p></div>
+		<div class="poe bottom-poe"><p>Nhất tâm theo phật thoát đường trầm luân</p></div>
 
 		<div id="jquery_audioPlayer" class="jp-jplayer"></div>
-		
-		<!--
-		<img class="cloud cloud1" src="/data/images/bg/cloud1.png"/>
-		<img class="cloud cloud2" src="/data/images/bg/cloud2.png"/>
-		<img class="cloud cloud3" src="/data/images/bg/cloud3.png"/>
-		<img class="bird" src="/data/images/bg/bird.gif"/>
-		-->
 	</body>
 </html>
