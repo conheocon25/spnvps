@@ -8,6 +8,15 @@
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
+			$(".poe").hide();
+			$(".poe-ctrl").hover(function(){
+				$(".top-poe").fadeIn();
+				$(".bottom-poe").fadeIn();
+			}, function(){
+				$(".top-poe").fadeOut();
+				$(".bottom-poe").fadeOut();
+			});
+			
 			$("#jquery_audioPlayer").jPlayer({
 				ready: function() {
 					$(this).jPlayer("setMedia", {
@@ -25,8 +34,8 @@
 	</head>
 	
 	<body>
-		<div class="p-title poe-hover"><a href="/trang-chu"><p>Chùa Hồng Liên</p></a></div>
-		<div class="link"><a href="/trang-chu">Vào trang chủ</a></div>
+		<div class="p-title"><a href="/trang-chu"><p class="poe-ctrl">Chùa Hồng Liên</p></a></div>
+		<div class="link poe-ctrl"><a href="/trang-chu">Vào trang chủ</a></div>
 		
 		<div class="poe top-poe"><p>Trần gian hết nỗi vấn vương</p></div>
 		<div class="poe bottom-poe"><p>Nhất tâm theo phật thoát đường trầm luân</p></div>
