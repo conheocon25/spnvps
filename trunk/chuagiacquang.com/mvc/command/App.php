@@ -23,6 +23,7 @@
 			$mEvent = new \MVC\Mapper\Event();
 			$mMonk = new \MVC\Mapper\Monk();
 			$mCourse = new \MVC\Mapper\Course();
+			$mTask = new \MVC\Mapper\Task();
 																		
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -35,6 +36,7 @@
 			$Events = $mEvent->findAll();
 			$Monks = $mMonk->findAll();
 			$Courses = $mCourse->findAll();
+			$Tasks = $mTask->findAll();
 			
 			$Title = "QUẢN LÝ";
 			
@@ -49,6 +51,7 @@
 			$request->setObject('Events', $Events);
 			$request->setObject('Monks', $Monks);
 			$request->setObject('Courses', $Courses);
+			$request->setObject('Tasks', $Tasks);
 						
 			$request->setObject("Title", $Title);
 			$request->setProperty("ActiveItem", 'Home');

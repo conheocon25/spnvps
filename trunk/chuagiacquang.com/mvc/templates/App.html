@@ -24,8 +24,12 @@
 				</div>
 				
 				<div id="sidebar">										
-					<div class="sidebar-box">						
-						<div metal:use-macro="macros.xhtml/BoxAdminTitle" />
+					<div class="sidebar-box">
+						<div class="box-title">							
+							<img src="/data/images/user.png" width="30" />							
+							<span><a href="/changepass/load">Admin</a></span>
+							<a href="/signout/load">&#8629; Thoát</a>
+						</div>
 						<div metal:use-macro="macros.xhtml/AdminMenu" />
 					</div>
 				</div>

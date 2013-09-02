@@ -7,7 +7,7 @@ class Task extends Mapper implements \MVC\Domain\TaskFinder{
     function __construct() {
         parent::__construct();
 				
-		$tblTask = "chuathienquang_task";
+		$tblTask = "chuagiacquang_task";
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY date", $tblTask);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblTask);

@@ -34,7 +34,7 @@
 			$Courses = $mCourse->findAll();
 			$Course = $mCourse->find( $IdCourse );
 			$Class = $mCourseClass->find( $IdClass );
-			$NameCourde = "":
+			$NameCourde = "";
 			if(isset($Course)){
 				$NameCourde = $Course->getName();
 			}
