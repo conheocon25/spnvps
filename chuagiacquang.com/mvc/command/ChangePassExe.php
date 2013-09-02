@@ -15,7 +15,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------	
-			
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();	
 			$mUser = new \MVC\Mapper\User();				
 			$NewPass1 = $request->getProperty("NewPass1");
 			$NewPass2 = $request->getProperty("NewPass2");																		
@@ -31,14 +31,13 @@
 			//-------------------------------------------------------------	
 			
 			if($NewPass1 == $NewPass2) {
-			
-				$User = $Session->getCurrentUser();			
-				$User->setpass($NewPass1);				
-				$mUser->update($User);				
-				$Session->setCurrentUser(new \MVC\Domain\User());			
-				
+				$User = $Session->getCurrentUser();
+				//echo $User->getEmail();
+				$User->setpass($NewPass1);
+				//echo "Set pass xong - ".$NewPass1;
+				$mUser->update($User);
+				$Session->setCurrentUser(new \MVC\Domain\User());
 				return self::statuses('CMD_OK');
-				
 			}else {
 				return self::statuses('CMD_NO_AUTHOR');
 			}					

@@ -21,6 +21,5 @@ interface CourseClassCollection extends \Iterator {function add( Object $CourseC
 interface ClassLessionCollection extends \Iterator {function add( Object $ClassLession);}
 interface ConfigCollection extends \Iterator {function add( Object $Config);}
 interface LinkedCollection extends \Iterator {function add( Object $Linked);}
-interface PageCollection extends \Iterator {function add( Object $Page);}
 interface TaskCollection extends \Iterator {function add( Object $Task);}
 ?>
