@@ -37,7 +37,7 @@
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
-			
+			$Course = $mCourse->findByNear(null)->current();
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("so-vang");
 			
@@ -45,7 +45,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Video", $Video);
-						
+			$request->setObject("Course", $Course);
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);

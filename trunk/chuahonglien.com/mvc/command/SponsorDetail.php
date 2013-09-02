@@ -30,11 +30,11 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
-						
+			$Course = $mCourse->findByNear(null)->current();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
-			
+			$Course = $mCourse->findByNear(null)->current();
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("so-vang");
 			
@@ -50,7 +50,7 @@
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("Sponsor", $Sponsor);
 			$request->setObject("MonkAll", $MonkAll);
-			
+			$request->setObject("Course", $Course);
 			$request->setObject("EventAll", $EventAll);
 			$request->setObject("Popup", $Popup);
 			
