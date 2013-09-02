@@ -33,7 +33,7 @@
 			
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("chua-ban");
-			
+			$Course = $mCourse->findByNear(null)->current();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
@@ -44,7 +44,7 @@
 			//-------------------------------------------------------------									
 			$request->setObject("Pagoda", $Pagoda);
 			$request->setObject("Video", $Video);
-			
+			$request->setObject("Course", $Course);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			

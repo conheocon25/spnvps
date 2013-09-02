@@ -33,6 +33,8 @@
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("lien-he");
 			
+			$Course = $mCourse->findByNear(null)->current();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -44,7 +46,7 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject('MonkAll', $MonkAll);
-			
+			$request->setObject("Course", $Course);
 			$request->setObject("EventAll", $EventAll);
 			$request->setObject("Popup", $Popup);
 			

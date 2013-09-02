@@ -41,11 +41,14 @@
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("thu-vien-anh");
 			
+			$Course = $mCourse->findByNear(null)->current();
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Album", $Album);						
-			$request->setObject("AlbumAll", $AlbumAll);			
+			$request->setObject("AlbumAll", $AlbumAll);
+			$request->setObject("Course", $Course);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
