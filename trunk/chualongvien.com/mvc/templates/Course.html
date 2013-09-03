@@ -29,26 +29,13 @@
 									<p class="media-reduce">Nội dung tóm tắt<br/>Nội dung tóm tắt<br/>Nội dung tóm tắt</p>
 									<a tal:attributes="href CO/getURLRead" class="btn">Xem chi tiết</a>
 								</div>
-							</div>
-							<!--
-							<center>
-								<div class="pagination page-number">
-									<ul>
-										<li tal:repeat="P PN/getPages">
-											<a tal:attributes="href P/getURL" tal:content="P/getName" />
-										</li>
-									</ul>
-								</div>
-							</center>
-							-->
+							</div>							
 						</div>
 					</div>
 
 				</div>
 				<div class="span4 fix-width">
-					<div metal:use-macro="base.xhtml/TaskBox"/>
-					<div metal:use-macro="base.xhtml/EventBox"/>
-					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/TaskBox"/>					
 					<div metal:use-macro="base.xhtml/BuddhaBox"/>
 					<div metal:use-macro="base.xhtml/PictureBox"/>
 					<div metal:use-macro="base.xhtml/TopNewsBox"/>

@@ -29,8 +29,8 @@
 							<label class="control-label" for="Type">Loại</label>
 							<div class="controls">
 								<select id="Type" name="Type">
-									<option tal:repeat="Category CategoriesTask" tal:attributes="value Category/getId">
-										<span tal:content="Category/getName" />
+									<option tal:repeat="Category1 CategoriesTask" tal:attributes="value Category1/getId;selected php:Category->getId()==Category1->getId()?true:false">
+										<span tal:content="Category1/getName" />
 									</option>
 								</select>
 							</div>														
