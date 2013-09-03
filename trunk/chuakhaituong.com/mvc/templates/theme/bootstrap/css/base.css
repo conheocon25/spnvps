@@ -524,3 +524,39 @@
 		cursor: pointer;
 		border-radius: 10px;
 	}
+	
+	@font-face {
+		font-family: "CustomFont";
+		src: url('/data/font.ttf') format('truetype');
+	}
+	
+	.name-card {
+		background: url('/data/images/bg/name_card.jpg') no-repeat bottom right #372920;
+		color: white;
+		box-shadow: 0 0 2px 2px #666;
+		border: 1px solid #FAFAFA
+	}
+	
+	.name-card h2 {
+		font-family: "CustomFont";
+		font-size: 3em;
+		text-shadow: 0 0 5px #FFF;
+	}
+	
+	.name-card hr {
+		width: 200px;
+		border-color: #FAFAFA;
+		border-style: solid;
+		border-width: 1px 0 0 0;
+		margin-bottom: 40px;
+	}
+	
+	.name-card i {
+		margin: 0 5px;
+	}
+	
+	.name-card .txt-indent p {
+		text-indent: 30px;
+		margin: 10px 0;
+		font-size: 12px;
+	}
