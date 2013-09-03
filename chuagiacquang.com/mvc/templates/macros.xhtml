@@ -533,12 +533,7 @@
 	<!-- ADMIN MENU -->
 	<div metal:define-macro="AdminMenu" class="manager-menu">
 		<ul>
-			<a tal:attributes="href '/app/task'">
-				<li tal:attributes="class php:ActiveAdmin=='Task'?'menu-select':'?'">
-					<div class="left">LỊCH CÔNG TÁC</div>
-					<div class="right" tal:content="Tasks/count" />
-				</li>
-			</a>
+			
 			<a tal:attributes="href '/app/course'">
 				<li tal:attributes="class php:ActiveAdmin=='Course'?'menu-select':'?'">
 					<div class="left">ĐÀO TẠO</div>
