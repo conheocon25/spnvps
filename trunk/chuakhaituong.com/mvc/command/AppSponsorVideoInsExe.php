@@ -34,11 +34,16 @@
 				null,
 				$URL,
 				$Note,
-				$Count
+				$Count,
+				""
 			);
-			$Video->setURL( $Video->parseURLYoutube() );
-			
+			$Video->reKey();			
+			$URLNew = $Video->parseURLYoutube();
+			if ($URLNew != "")
+				$Video->setURL($URLNew);
+				
 			$mVideo->insert($Video);
+			
 			$VS = new \MVC\Domain\VideoSponsor(
 				null,
 				$Video->getId(),
