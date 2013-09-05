@@ -40,6 +40,9 @@
 				""
 			);
 			$Video->reKey();
+			$URLNew = $Video->parseURLYoutube();
+			if ($URLNew != "")
+				$Video->setURL($URLNew);
 			$mVideo->insert($Video);
 			
 			$VP = new \MVC\Domain\VideoPagoda(
