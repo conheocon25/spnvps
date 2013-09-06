@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 02, 2013 at 05:07 PM
+-- Generation Time: Sep 06, 2013 at 08:01 AM
 -- Server version: 5.5.8
 -- PHP Version: 5.3.5
 
@@ -16,7 +16,7 @@ SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Database: `vend`
+-- Database: `spnsoft_system`
 --
 
 -- --------------------------------------------------------
@@ -66,6 +66,25 @@ CREATE TABLE IF NOT EXISTS `123appnet_guest` (
 INSERT INTO `123appnet_guest` (`id`, `ip`, `entry_time`, `exit_time`, `agent`) VALUES
 (93, '192.168.1.3', '1356760196', '1356763796', '192.168.1.3'),
 (94, '127.0.0.1', '1357142858', '1357229258', '127.0.0.1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `123appnet_project`
+--
+
+CREATE TABLE IF NOT EXISTS `123appnet_project` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `name` varchar(50) NOT NULL,
+  `url_doc` varchar(250) NOT NULL,
+  `url_pic` varchar(250) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+
+--
+-- Dumping data for table `123appnet_project`
+--
+
 
 -- --------------------------------------------------------
 
