@@ -11,17 +11,25 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdMonk = $request->getProperty('IdMonk');
-			$IdBType = $request->getProperty('IdBType');
+			$KBType = $request->getProperty('KBType');
+			$KMonk = $request->getProperty('KMonk');			
+			$Page = $request->getProperty('Page');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------												
+			//-------------------------------------------------------------
+			if (!isset($Page)) $Page=1;
+			
+			$Monk = $mMonk->findByKey($KMonk);
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdMonk = $Monk->getId();
+			$IdCategoryBType = $CategoryBType->getId();
+						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
@@ -32,9 +40,9 @@
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
-			$Monk = $mMonk->find($IdMonk);
-			$VMs = $mVM->findBy(array($IdMonk));			
-			$CategoryBType = $mCategoryBType->find($IdBType);
+			$VMAll = $mVM->findByPage(array($IdMonk, $Page, 10));
+			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), 10, $Monk->getURLRead());
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -50,9 +58,13 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
-			$request->setObject("VMs", $VMs);			
+			$request->setObject("Popup", $Popup);
 			$request->setObject("Monk", $Monk);
+			$request->setObject("PN", $PN);
+			$request->setObject("VMAll", $VMAll);
+			
 			$request->setProperty("ActiveItem", 'LibraryVideo');
+			$request->setProperty("Page", $Page);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

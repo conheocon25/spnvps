@@ -11,13 +11,13 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCourse = $request->getProperty('IdCourse');
-			$IdLession = $request->getProperty('IdLession');
+			$KCourse = $request->getProperty('KCourse');
+			$KLession = $request->getProperty('KLession');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -30,13 +30,18 @@
 			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-												
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
+															
 			$Courses = $mCourse->findAll();
-			$Lession = $mCourseLession->find($IdLession);
+			
+			$Course = $mCourse->findByKey($KCourse);
+			$Lession = $mCourseLession->findByKey($KLession);
+			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("dao-tao");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -44,8 +49,7 @@
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
-			$request->setObject("Event", $Event);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("Course", $Course);
 			$request->setObject("Courses", $Courses);
 			$request->setObject("AskAll", $AskAll);			
@@ -54,6 +58,10 @@
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Home');
 			

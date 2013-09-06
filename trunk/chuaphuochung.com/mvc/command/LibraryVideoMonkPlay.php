@@ -11,39 +11,38 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty('IdBType');
-			$IdMonk = $request->getProperty('IdMonk');
-			$IdVideoMonk = $request->getProperty('IdVideoMonk');
+			$KBType = $request->getProperty('KBType');
+			$KMonk = $request->getProperty('KMonk');
+			$KVideo = $request->getProperty('KVideo');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$Video = $mVideo->findByKey($KVideo);
+			$Monk = $mMonk->findByKey($KMonk);
+			$Video->setCount( $Video->getCount()+1 );
+			$mVideo->update($Video);
+			
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();			
-			
-			$CategoryBType = $mCategoryBType->find($IdBType);
-			
-			$Monks = $mMonk->findAll();
-			$VM = $mVM->find($IdVideoMonk);
-			$VMs = $mVM->findBy(array($IdMonk));
-						
+									
+			$Monks = $mMonk->findAll();			
+			$VMs = $mVM->findByLimit(array($Monk->getId()));
 			$PagodaAll = $mPagoda->findAll();
-			
-			$MonkSelected = $mMonk->find($IdMonk);			
-			$Video = $VM->getVideo();
-			$Video->setCount( $Video->getCount()+1 );
-			$mVideo->update($Video);
-			
+									
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -56,12 +55,13 @@
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			
-			$request->setObject("CategoryBType", $CategoryBType);			
-			$request->setObject("VM", $VM);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);						
 			$request->setObject("VMs", $VMs);
-			$request->setObject("MonkSelected", $MonkSelected);
+			
+			$request->setObject("Popup", $Popup);
+			$request->setObject("CategoryBType", $CategoryBType);
+			$request->setObject("Video", $Video);
+			$request->setObject("Monk", $Monk);
 			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');

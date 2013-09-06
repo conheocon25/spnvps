@@ -1,64 +1,57 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />	
-			<div id="main">								
-				<div id="content">
-					<div tal:condition="Ask" class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Title" />
-							<a tal:attributes="href Category/getURLAskInsLoad1">Gửi câu hỏi</a>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-question reset-margin">
+							<h4 class="reset-margin">Các câu hỏi</h4>
 						</div>
-						<div style="padding:10px;">
-							
-							<div align="justify" class="ask">
-								<b><span tal:content="Ask/getAuthor1" />:</b>
-								<div tal:content="Ask/getQuestion" />
-								(<I tal:content="Ask/getTimePrint" />)
+						<div class="b-content padding-content news-content">
+							<div tal:repeat="Ask AskAll" class="media img-polaroid new-list-polaroid-3">
+								<a href="#" class="pull-left">
+									<img src="/data/images/logo/question.png" class="media-object img-rounded"/>
+								</a>
+								<div class="media-body">
+									<h4 class="media-heading"><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></h4>
+									<p tal:content="structure Ask/getQuestion"/>
+									<i tal:content="Ask/getTimePrint"/>
+								</div>
 							</div>
-							
-							<div align="justify" class="ask">
-								<b><span tal:content="Ask/getAuthor2" />:</b>
-								<div tal:content="structure Ask/getAnswer" />
-							</div>
-							<br />
-							<div class="news-box-sub-title">Cùng chủ đề</div>
-							<ul class="news-box-list">
-								<li tal:repeat="Ask AskAll">								
-									<a tal:attributes="href Ask/getURLRead">
-										<b>Hỏi:</b>
-										<span tal:content="Ask/getQuestionReduce"/>
-									</a>
-									<span tal:content="Ask/getTimePrint" />
-								</li>
-							</ul>
-							<div class="clear" />
 						</div>
 					</div>
+					
 				</div>
-				
-				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-				</div>				
-				<div class="clear" />
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<!-- <div metal:use-macro="base.xhtml/EventBox"/>
+					<div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<!-- <div metal:use-macro="base.xhtml/Popup"/> -->
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>	
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="span3" />
+				<div class="span9 main">
+					<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+					<form class="form-horizontal" tal:attributes="action Profile/getURLUpdExe" method="post">
+						<div class="control-group">
+							<label class="control-label" for="Name">Tên</label>
+							<div class="controls">
+								<input type="text" id="Name" name="Name" tal:attributes="value Profile/getName" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="RSS">URL RSS</label>
+							<div class="controls">
+								<input type="text" id="RSS" name="RSS" tal:attributes="value Profile/getRSS" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="CTitle">Class tiêu đề</label>
+							<div class="controls">
+								<input type="text" id="CTitle" name="CTitle" tal:attributes="value Profile/getCTitle" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="CAuthor">Class tác giả</label>
+							<div class="controls">
+								<input type="text" id="CAuthor" name="CAuthor" tal:attributes="value Profile/getCAuthor" />
+							</div>
+						</div>
+						<div class="control-group">
+							<label class="control-label" for="CContent">Class nội dung</label>
+							<div class="controls">
+								<input type="text" id="CContent" name="CContent" tal:attributes="value Profile/getCContent" />
+							</div>
+						</div>
+						<div class="control-group">
+							<div class="controls">
+								<button type="submit" class="btn" value="submit-value">Cập nhật</button>
+							</div>
+						</div>
+					</form>
+				</div>				
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>
+	</body>
+</html>

@@ -15,7 +15,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -36,14 +36,16 @@
 			$SponsorAll = $mSponsor->findAll();						
 			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
+			$PagodaAll = $mPagoda->findAll();
 			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$TaskAll = $mTask->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
-			$Event = $mEvent->findByNear(null)->current();
+			$EventAll = $mEvent->findAll();
 			$Course = $mCourse->findByNear(null)->current();
-								
+			$Popup = $mPopup->findByName("trang-chu");
 												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -54,9 +56,10 @@
 			$request->setObject("VM8", $VM8);
 			$request->setObject("VM24", $VM24);
 			$request->setObject("VL24", $VL24);
-			$request->setObject("Course", $Course);			
-			$request->setObject("Event", $Event);			
-						
+			$request->setObject("Course", $Course);						
+			$request->setObject("Popup", $Popup);
+			$request->setObject("EventAll", $EventAll);
+			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
 			$request->setObject("CategoryVideo", $CategoryVideo);
@@ -70,6 +73,7 @@
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
 
 			$request->setProperty("ActiveItem", 'Home');
 			

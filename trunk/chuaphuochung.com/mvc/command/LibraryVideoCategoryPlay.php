@@ -11,38 +11,41 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty('IdBType');
-			$IdCategory = $request->getProperty('IdCategory');
-			$IdVideoLibrary = $request->getProperty('IdVideoLibrary');
+			$KBType = $request->getProperty('KBType');
+			$KCategory = $request->getProperty('KCategory');
+			$KVideoLibrary = $request->getProperty('KVideoLibrary');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------												
-			$VL = $mVL->find($IdVideoLibrary);
-			$VLs = $mVL->findBy(array($IdCategory));
-			$Category = $mCategoryVideo->find($IdCategory);
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$Category = $mCategoryVideo->findByKey($KCategory);			
+			$Video = $mVideo->findByKey($KVideoLibrary);
 			
+			$VLs = $mVL->findByLimit(array($Category->getId()));
+									
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();			
-			$CategoryBType = $mCategoryBType->find($IdBType);			
+			
 			$Monks = $mMonk->findAll();								
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 						
-			$CategorySelected = $mCategoryVideo->find($IdCategory);			
-			$Video = $VL->getVideo();
+			//$CategorySelected = $mCategoryVideo->find($IdCategory);
+			
 			$Video->setCount( $Video->getCount()+1 );
 			$mVideo->update($Video);
 			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -57,10 +60,11 @@
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			
-			$request->setObject("CategorySelected", $CategorySelected);
+			$request->setObject("Popup", $Popup);
+			$request->setObject("Category", $Category);
 			$request->setObject("CategoryBType", $CategoryBType);
 			
-			$request->setObject("VL", $VL);
+			$request->setObject("Video", $Video);
 			$request->setObject("VLs", $VLs);
 			
 						

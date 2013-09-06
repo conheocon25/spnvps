@@ -11,40 +11,41 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty("IdBType");
+			$KBType = $request->getProperty("KBType");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------												
+			//-------------------------------------------------------------
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdBType = $CategoryBType->getId();
+			
 			$Monks = $mMonk->findAll();			
 			$VMUpdateTopAll = $mVM->findByUpdateTop(array($IdBType));
 			$VMViewTopAll = $mVM->findByViewTop(array($IdBType));
-						
-			$CategoryBType = $mCategoryBType->find($IdBType);
+									
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			
-			$Events1 = $mEvent->findTop(null);
-			$Event = $Events1->current();
-			
+									
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
 			$request->setObject("VMUpdateTopAll", $VMUpdateTopAll);
-			$request->setObject("VMViewTopAll", $VMViewTopAll);
-			$request->setObject("Event", $Event);
+			$request->setObject("VMViewTopAll", $VMViewTopAll);			
 			$request->setObject("CategoryBType", $CategoryBType);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
@@ -55,6 +56,10 @@
 			$request->setObject('SponsorAll', $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			
 			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
