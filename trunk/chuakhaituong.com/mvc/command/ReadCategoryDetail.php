@@ -40,6 +40,7 @@
 			
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
 			$EventAll = $mEvent->findAll();
+			$Course = $mCourse->findByNear(null)->current();
 			$Popup = $mPopup->findByName("tin-tuc");
 			
 			//-------------------------------------------------------------
@@ -50,6 +51,7 @@
 			$request->setProperty("ActiveItem", 'ReadCategory');
 			
 			$request->setObject("Popup", $Popup);
+			$request->setObject("Course", $Course);
 			$request->setObject("EventAll", $EventAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
