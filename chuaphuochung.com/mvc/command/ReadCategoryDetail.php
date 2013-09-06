@@ -11,13 +11,13 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
-			$IdNews = $request->getProperty('IdNews');
+			$Key1 = $request->getProperty('Key1');
+			$Key2 = $request->getProperty('Key2');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			include("mvc/base/mapper/MapperDefault.php");
+			require_once("mvc/base/mapper/MapperDefault.php");
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -27,37 +27,30 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 			
-			$Category = $mCategoryNews->find($IdCategory);
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			
-			$Category = $mCategoryNews->find($IdCategory);
-			$News = $mNews->find($IdNews);
-			
-			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-
-			if(isset($News)) {
-				$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
-			}
-			else {
-				$Title = "";
-			}						
-			
+			$Category = $mCategoryNews->findByKey($Key1);
+			$CategoryNewsAll = $mCategoryNews->findAll();						
+			$News = $mNews->findByKey($Key2);									
+					
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$PanelAdsAll = $mPanelAds->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			
+			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("tin-tuc");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);
-			$request->setObject("Course", $Course);
-			$request->setObject("Category", $Category);
-			$request->setObject("Event", $Event);
+			$request->setProperty("Title", $Title);			
+			$request->setObject("Category", $Category);			
 			$request->setProperty("ActiveItem", 'ReadCategory');
 			
+			$request->setObject("Popup", $Popup);
+			$request->setObject("EventAll", $EventAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);			
 			$request->setObject("PagodaAll", $PagodaAll);
@@ -67,7 +60,8 @@
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-						
+			$request->setObject("MonkAll", $MonkAll);
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

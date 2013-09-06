@@ -1,48 +1,76 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyDPq_xfWH0GcHK9JVxIkSOHFvtm8_OqtJA" type="text/javascript"></script>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/font-awesome.min.css"/>
+		<!--[if IE 7]>
+			<link rel="stylesheet" href="/mvc/templates/theme/bootstrap/css/font-awesome-ie7.min.css">
+		<![endif]-->
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyA2K377CdAYaYb89VbalhvSIIK7-MQSegY" type="text/javascript"></script>				
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
 		<script type="text/javascript">
 			$(function() {			
 				$("#map").googleMap().load();				
 			});
 		</script>
-	</head>	
+	</head>
+
 	<body onunload="GUnload()">
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />
-			<div id="main">								
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>Thông tin liên lạc</span>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-paper reset-margin">
+							<h4 class="reset-margin">Thông tin liên hệ</h4>
 						</div>
-						<div style="padding:10px;">
-							<img src="/data/images/namecard.jpg" width="600" />
+						<div class="b-content padding-content news-content">
+							
+							<div class="padding-content name-card">
+								<center>
+									<h2>Chùa Phước Hưng</h2>
+									<p>ấp Thạnh Hiệp - xã Hòa Thành - huyện Tam Bình - T.Vĩnh Long - Việt Nam</p>
+									<hr/>
+								</center>
+								<p><i class="icon-user"/> Đại diện: Đại đức Thích Minh Hòa</p>
+								<p><i class="icon-phone"/> Điện thoại: 0939 925 154 - 0983 36 77 11</p>
+								<p><i class="icon-envelope"/> Email: chuaphuochungminhhoa@gmail.com</p>
+								<div class="txt-indent">
+									<i class="icon-suitcase"/> Số tài khoản trong nước:
+									<p><b>NGÂN HÀNG THƯƠNG MẠI CỔ PHẦN ĐÔNG Á (DONGABANK)</b></p>
+									<p>- SỐ TÀI KHOẢN: 0107830215</p>
+									<p>- CHỦ TÀI KHOẢN: KIM SOL</p>
+								</div>
+							</div>
+							<div class="news-author">
+								<div class="news-tools clearfix">
+									<a class="btn btn-primary pull-right" href="/online"><i class="icon-info-sign icon-white"/> Liên hệ trực tuyến</a>
+									<a class="btn btn-success pull-right" href="/ask/1"><i class="icon-question-sign icon-white"/> Đặt câu hỏi</a>
+								</div>
+							</div>
 						</div>
-						<h3>
-							Quí Phật Tử có thể đặt câu hỏi trao đổi Phật Học <a href="/ask/1">Click vào tại đây</a>
-						</h3>
-						<h3>
-							Mọi thắc mắc có thể trao đổi trực tuyến <a href="/online">Click vào tại đây</a>
-						</h3>
-						<div class="clear" />
 					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span>HƯỚNG DẪN ĐƯỜNG ĐI</span>
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-location reset-margin">
+							<h4 class="reset-margin">Hướng dẫn đường đi</h4>
 						</div>
-						<div style="padding:10px;">
-							<div id="map" style="width:600px; height:470px;"></div>
-							<form class="form-editor" action="directions.php" method="post">								
-								<div class="row">
-									<div for="Name" class="label">Chọn vị trí</div>
-									<div class="selectbox" >
+						<div class="b-content padding-content news-content">
+							<div id="map" class="img-polaroid" style="width:588px; height:470px;"/>
+							<br/>
+							<div class="news-author">
+								<div class="news-tools">
+									<p>Tìm đường bằng cách chọn vị trí</p>
+								</div>
+							</div>
+							<form class="form-horizontal" action="directions.php" method="POST">
+								<div class="control-group">
+									<label class="control-label" for="Name">Chọn vị trí</label>
+									<div class="controls">
 										<select name="cboTinhThanh" id="cboTinhThanh">
 											<option label="Vĩnh Long" value="Vĩnh Long">Vĩnh Long</option>
 											<option label="Hồ Chí Minh" value="Hồ Chí Minh">Hồ Chí Minh</option>
@@ -64,49 +92,49 @@
 											<option label="Trà Vinh" value="Trà Vinh">Trà Vinh</option>
 										</select>
 									</div>
-									<div class="clear" />
 								</div>
-							</form>	
-							
-							<form class="form-editor" action="directions.php" method="post">
-								<input id="end" type="hidden" value="xa Hoa Thanh, huyen Tam Binh, tinh Vinh Long, Viet Nam" />
-								<div class="row">
-									<div for="Name" class="label">Vị trí của bạn</div>
-									<div class="textbox" >
-										<input id="start" type="text" value="TP Vĩnh Long, Việt Nam" />
-									</div>
-									<div class="clear" />
+							</form>
+							<br/>
+							<div class="news-author">
+								<div class="news-tools">
+									<p>Tìm đường bằng cách nhập vị trí</p>
 								</div>
-								<div class="row">
-									<div class="button" >
-										<button type="submit" id="getdirections" name="submit" value="submit-value">Tìm đường</button>
+							</div>
+							<form class="form-horizontal" action="directions.php" method="POST">
+								<input id="end" type="hidden" value="Chua Khai Tuong, Cai Be, Tien Giang, Viet Nam"/>
+								<div class="control-group">
+									<label class="control-label" for="Name">Vị trí của bạn</label>
+									<div class="controls">
+										<input id="start" type="text" value="TP Vĩnh Long, Việt Nam"/>
+										<button type="submit" id="getdirections" name="submit" value="submit-value" class="btn">Tìm đường</button>
 									</div>
 								</div>
 							</form>
-							<div id="directions"></div>
+							<div id="directions" class="img-polaroid"></div>
 						</div>
 					</div>
+						
 				</div>
-				
-				<div id="sidebar">										
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
-				
-				<div class="clear" />
 			</div>
-
-			<div metal:use-macro="macros.xhtml/Footer" />
-
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

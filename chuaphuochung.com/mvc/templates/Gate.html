@@ -1,75 +1,34 @@
 <!DOCTYPE html> 
-<html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>		
-		
-	<style type="text/css">	
-		html, body {
-			width: 100%;
-			height: 100%;
-			background: none;
-			margin: 0;
-			padding: 0;
-			background: url("/data/images/bg_gate.jpg") no-repeat center center transparent;
-		}
-		
-		.type-interior {
-			height: 100%;
-			width: 100%;
-			position: absolute;
-			overflow: hide;
-			margin: 0 auto;
-		}
-		
-		#map { cursor:pointer; position:absolute; background:rgba(255, 255, 255, .5); left:50%; bottom:10%; padding:20px; width: 160px; margin-left: -80px; font-size:1.7em; font-weight:bold; color:#980707; border-radius:10px; box-shadow:0px 0px 5px #FFFFFF; z-index:99999; }
-		img { position:absolute; top:50%; left:50%; margin-top:-230px; margin-left:-400px; opacity:.50; width:800px; height:460px; }
-		a:hover #map { background:rgba(255, 255, 255, .9); }
-		a:hover img { opacity:.90; }
-	</style>
-		
-	<script >
-		$(document).ready(function () {
-			$("#jquery_jplayer_1").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", {
-						mp3:"http://chuavinhkhanh.123app.net/data/nhacthien.mp3"
-					}).jPlayer("play");
-				},
-				swfPath: "data",
-				supplied: "mp3",		
-				wmode: "window"
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script>
+		/*<![CDATA[*/
+		$(document).ready(function(){
+			$(".poe").hide();
+			$(".cover-inner").hover(function(){
+				$(".top-poe").slideDown();
+				$(".bottom-poe").slideDown();
+			}, function(){
+				$(".top-poe").slideUp();
+				$(".bottom-poe").slideUp();
 			});
-			$('.jp-repeat').trigger('click');
-			$('.jp-volume-max').trigger('click');
-			$("#jp_container_1").hide();
-			$("#jquery_jplayer_1").hide();
 		});
-		
-	</script>
+		/*]]>*/
+		</script>
 	</head>
-<body  style="overflow:hide;">
-	<div style="height:100%; vertical-align:middle; text-align:center;">
-		<a href="/home">
-			<div id="map">Vào Trang Chủ</div>
-			<img src="/data/images/gate.png" border="0" />
-		</a>
-	</div>
-	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-	<div id="jp_container_1" class="jp-audio">
-		<div class="jp-type-single">
-			<div class="jp-gui jp-interface">
-				<ul class="jp-controls">
-					<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-				</ul>	
-				<div class="jp-current-time"></div>
-				<div class="jp-duration"></div>
-				<ul class="jp-toggles">
-					<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>						
-				</ul>
-			</div>				
+	
+	<body>
+		<div class="cover-inner">
+			<a href="/trang-chu">
+				<img class="move" src="/data/images/logo/buddha.gif"/>
+				<p><span class="link">Vào Trang chủ</span></p>
+			</a>
 		</div>
-	</div>
-</body>
+		
+		<div class="poe top-poe"><p>Mỗi giây mỗi phút không rời</p></div>
+		<div class="poe bottom-poe"><p>Nhất tâm niệm phật đời đời yên vui!</p></div>
+	</body>
 </html>

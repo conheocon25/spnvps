@@ -7,7 +7,7 @@
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
 			$Session = \MVC\Base\SessionRegistry::instance();
-			$IdCurrentCategory = $Session->getCurrentCategoryNews();						
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
@@ -16,8 +16,10 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			require_once("mvc/base/mapper/MapperDefault.php");			
+			//-------------------------------------------------------------						
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			$mConfig = new \MVC\Mapper\Config();
+			$mNews = new \MVC\Mapper\News();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH

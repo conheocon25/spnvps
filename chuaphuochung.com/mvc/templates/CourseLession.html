@@ -1,48 +1,61 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-	</head>	
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+
 	<body>
-		<div id="wrapper">
-			<div metal:use-macro="macros.xhtml/Header" />	
-			<div id="main">				
-				<div id="content">
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/icon.png" width="30" />
-							<span tal:content="Lession/getName"/>
-						</div>
-						<div style="padding:10px;">
-							<div class="news-content" tal:content="structure Lession/getDescription"/>
-							<div class="news-box-sub-title">Các buổi học khác</div>
-							<ul class="news-box-list">
-								<li tal:repeat="Lession Course/getLessions" >
-									<a tal:attributes="href Lession/getURLRead" tal:content="Lession/getName"/>
-									(từ <span tal:content="Lession/getDateStartPrint" /> đến <span tal:content="Lession/getDateEndPrint" />)
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box">
+						<div class="b-content news-content padding-content">
+							<div class="page-header">
+								<h4 tal:content="Lession/getName"/>
+								<i class="pull-right">Bắt đầu: <span tal:content="Lession/getDateStartPrint"/> - Kết thúc: <span tal:content="Lession/getDateEndPrint"/></i>
+							</div>
+							<div class="news-main" tal:content="structure Lession/getDescription"/>
+							<div class="news-author"></div>
+							
+							<ul class="nav nav-tabs nav-stacked reset-margin">
+								<li class="active news-list-title"><a>Các khóa học khác</a></li>
+								<li tal:repeat="Lession Course/getLessions" class="news-list-item">
+									<a tal:attributes="href Lession/getURLRead">
+										<span tal:content="Lession/getName"/>
+										<i>(<span tal:content="Lession/getDateStartPrint"/> - <span tal:content="Lession/getDateEndPrint"/>)</i>
+										<i class="icon-chevron-right pull-right"/>
+									</a>
 								</li>
 							</ul>
 						</div>
 					</div>
-				</div>				
-				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/TopPictureBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/CountBox"/>					
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
-					
+
 				</div>
-				<div class="clear" />
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<div metal:use-macro="base.xhtml/EventBox"/>
+					<!-- <div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
+				</div>
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>
