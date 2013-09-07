@@ -16,69 +16,43 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
-			$mNews = new \MVC\Mapper\News();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCourse = new \MVC\Mapper\Course();
-			$mConfig = new \MVC\Mapper\Config();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mClassLession = new \MVC\Mapper\ClassLession();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-						
+			require_once("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$EventsNear = $mEvent->findByNear(null);
-			$EventsFinish = $mEvent->findByFinish(null);									
-			$Event = $EventsNear->current();
-			
-			if (isset($IdEvent)){
-				$EventRead = $mEvent->find($IdEvent);
-			}else{
-				$EventRead = $EventsNear->current();
-			}
-			
-			$Course = $mCourse->findByNear(null)->current();						
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLsNext = $mClassLession->findByNext(null);
-			
+			$EventAll = $mEvent->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
+												
+			$Course = $mCourse->findByNear(null)->current();
+			$PanelAdsAll = $mPanelAds->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			
+			$Popup = $mPopup->findByName("su-kien");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("Event", $Event);
-			$request->setProperty("ActiveItem", 'Event');			
-			$request->setObject("EventRead", $EventRead);
-			$request->setObject("EventsNear", $EventsNear);
-			$request->setObject("EventsFinish", $EventsFinish);						
-			$request->setObject("Course", $Course);
-			$request->setObject("CLsNext", $CLsNext);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);			
-			
-			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);						
-			$request->setObject("SponsorAll", $SponsorAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("PanelAdsAll", $PanelAds);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelAdsAll", $PanelAdsAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
+									
+			$request->setProperty("ActiveItem", 'Event');
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

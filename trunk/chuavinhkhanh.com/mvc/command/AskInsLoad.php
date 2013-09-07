@@ -11,73 +11,64 @@
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------
-			$IdCategory = $request->getProperty('IdCategory');
-			$MsgCaptcha = $request->getProperty('MsgCaptcha');
+			//-------------------------------------------------------------			
+			$MsgCaptcha = $request->getProperty('MsgCaptcha');	
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-						
+			require_once("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------													
+			
 			$mCaptcha = new Captcha();
 			$mCaptcha->createImage();
-			$Session->setCurrentCaptcha($mCaptcha->getSecurityCode());
+			$CaptchaSecurited = $mCaptcha->getSecurityCode();
+			$Session->setCurrentCaptcha($CaptchaSecurited);
 			
+			$CaptchaSecurity = $Session->getCurrentCaptcha();
+			//-------------------------------------------------------------
+			//THAM SỐ GỬI ĐI
+			//-------------------------------------------------------------
+			$request->setProperty("CaptchaSecurity", $CaptchaSecurited);		
+			$request->setProperty("MsgCaptcha", $MsgCaptcha);
+						
+			//$Category = $mCategoryAsk->find($IdCategory);
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			
-			$Category = $mCategoryAsk->find($IdCategory);
-			if (!isset($Category)){
-				$Category = $CategoryAskAll->current();
-			}
-						
 			$AskAll = $mAsk->findBy3(null);
 			$Title = "Gửi câu hỏi/trả lời";
 			
-			$Events1 = $mEvent->findTop(null);
-			$Event = $Events1->current();
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
+			$Event = $mEvent->findByNear(null)->current();
+			$Course = $mCourse->findByNear(null)->current();
 			
+			$SponsorAll = $mSponsor->findAll();						
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setObject("Category", $Category);
-			$request->setObject("Event", $Event);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setProperty("ActiveItem", 'Ask');
-			$request->setProperty("Title", $Title);
-			$request->setProperty("MsgCaptcha", $MsgCaptcha);
-			
+			//$request->setObject("Category", $Category);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("Event", $Event);
 			$request->setObject('PagodaAll', $PagodaAll);
 			$request->setObject('AskAll', $AskAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("SponsorAll", $SponsorAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setProperty("ActiveItem", 'Ask');
+			$request->setProperty("Title", $Title);
 						
 			return self::statuses('CMD_DEFAULT');
 		}

@@ -11,60 +11,56 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty("IdBType");
+			$KBType = $request->getProperty("KBType");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mMonk = new \MVC\Mapper\Monk();
-			$mVM = new \MVC\Mapper\VideoMonk();
-			$mAlbum = new \MVC\Mapper\Album();
-			$mEvent = new \MVC\Mapper\Event();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-						
+			require_once("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------																		
-			$VM1s = $mVM->findByUpdateTop(null);
-			$VM2s = $mVM->findByUpdateTop(null);
-			$VM3s = $mVM->findByUpdateTop(null);
+			//-------------------------------------------------------------
+			$CategoryBType = $mCategoryBType->findByKey($KBType);
+			$IdBType = $CategoryBType->getId();
 			
-			$MonkAll = $mMonk->findAll();			
+			$Monks = $mMonk->findAll();			
+			$VMUpdateTopAll = $mVM->findByUpdateTop(array($IdBType));
+			$VMViewTopAll = $mVM->findByViewTop(array($IdBType));
+									
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryBType = $mCategoryBType->find($IdBType);
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoriesVideo = $mCategoryVideo->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$EventAll = $mEvent->findTop(null);
-			$Event = $EventAll->current();
-			$PanelAdsAll = $mPanelAds->findAll();
 			$SponsorAll = $mSponsor->findAll();
+									
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("phat-am");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
-			$request->setProperty("ActiveItem", 'LibraryVideo');
-			
-			$request->setObject("VM1s", $VM1s);
-			$request->setObject("VM2s", $VM2s);
-			$request->setObject("VM3s", $VM3s);
-			$request->setObject("Event", $Event);
-			
-			$request->setObject("MonkAll", $MonkAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("VMUpdateTopAll", $VMUpdateTopAll);
+			$request->setObject("VMViewTopAll", $VMViewTopAll);			
+			$request->setObject("CategoryBType", $CategoryBType);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryBType", $CategoryBType);						
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoriesVideo", $CategoriesVideo);
+			$request->setObject("Monks", $Monks);
+			$request->setObject('PagodaAll', $PagodaAll);
+			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			
+			$request->setProperty("ActiveItem", 'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

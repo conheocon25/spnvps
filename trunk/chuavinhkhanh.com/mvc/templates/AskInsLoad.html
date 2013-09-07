@@ -1,130 +1,114 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/Captcha.js"/>
-	</head>	
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script>
+		/*<![CDATA[*/
+			$(document).ready(function() {				
+				$("#CaptchaSecurity").hide();
+			});			
+			function validateFormContactLoad() {
+				var OldCode = $("#CaptchaSecurity").val();
+				var KeydownCode = $("#CodeCaptcha").val();					
+				if ( OldCode == KeydownCode) {	
+					return true; 
+				} else {
+					$("#Mesenge").html("Mã Bảo vệ sai! Nhập lại!");
+					$("#CodeCaptcha").val("");
+					$("#CodeCaptcha").focus();
+					return false;
+				}
+			}
+		/*]]>*/
+		</script>
+	</head>
+
 	<body>
-		<div id="wrapper">		
-			<div metal:use-macro="macros.xhtml/Header" />	
-			<div id="main">								
-				<div id="content">					
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/mail.png" width="30" />							
-							<span tal:content="Title" />
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-question reset-margin">
+							<h4 class="reset-margin">Các câu hỏi</h4>
 						</div>
-						<div style="padding:10px;">
-							<div align="center" >
-								<table style="font-size:15px" align="left" border="0" cellpadding="0" cellspacing="5">
-									<tbody>										
-										<tr>
-											<td align="center" colspan="2"><br/></td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2" style="font-size:15px; color:#980707; line-height:20px;">
-												Quí <B>PHẬT TỬ</B> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây.
-											</td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2">
-												<form class="form-editor" id="FormAppCategoryInsLoad" tal:attributes="action Category/getURLAskInsExe1" method="post">
-													<div class="row">
-														<div for="Name" class="label">Họ & Tên</div>
-														<div class="textbox" >
-															<input name="Author1" type="text" id="Author1" />
-														</div>
-														<div class="clear"/>
-													</div>
-													<div class="row">
-														<div for="Name" class="label">Chủ đề</div>
-														<div class="selectbox" >
-															<select id="IdCategory" name="IdCategory">
-																<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId">
-																	<span tal:content="Category/getName" />
-																</option>
-															</select>
-														</div>
-														<div class="clear"/>
-													</div>
-													<div class="row">
-														<div for="Name" class="label-random">Câu hỏi</div>
-														<div class="textarea" >
-															<textarea name="Question" />
-														</div>
-														<div class="clear"/>
-													</div>
-													<div class="row">
-														<div for="Name" class="label">Mã bảo mật</div>																												
-															<div class="textbox" >
-																<img id ="PicCaptcha" style="padding-left:10px;" align="left" src="/data/captcha.jpg" height="38px" width="150px" />																
-																<img id ="refreshCaptcha" style="padding-left:-30px;cursor:pointer" align="left" src="/data/images/refresh.jpg" height="20px" />																
-															</div>
-														<div class="clear"/>
-													</div>
-													<div class="row">
-														<div for="Name" class="label">Nhập mã</div>
-														<div align="left" class="textbox" >
-															<input style="width:130px;" name="CodeCaptcha" type="text" id="CodeCaptcha"/>
-															<span style="color:red;" id="Mesenge" tal:content="MsgCaptcha" />
-														</div>
-														<div class="clear"/>
-													</div>
-													<div class="row">
-														<div class="button" >
-															<button type="submit" name="submit" value="submit-value">Gửi</button>
-														</div>
-													</div>
-												</form>
-											</td>
-										</tr>
-										<tr>
-											<td align="center" colspan="2" style="font-size:15px; color:#980707; line-height:20px;">
-												Ngoài ra, quí <B>PHẬT TỬ</B> có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email <B>huongnhu9@gmail.com</B>.
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-						<div class="clear" />
-					</div>
-					<div class="news-box">
-						<div class="box-title">
-							<img src="/data/images/question.png" width="30" />
-							<span tal:content="Category/getName" />
-						</div>
-						<div style="padding:10px 10px 5px 10px;">
-							<div class="ask" align="justify" tal:repeat="Ask Category/getAsks">
-								<a tal:attributes="href Ask/getURLRead">
-									<span tal:content="repeat/Ask/number" />. Hỏi: <span tal:content="structure Ask/getQuestion" /> (<span tal:content="Ask/getAuthor1" />)
+						<div class="b-content padding-content news-content">
+							<div tal:repeat="Ask AskAll" class="media img-polaroid new-list-polaroid-3">
+								<a href="#" class="pull-left">
+									<img src="/data/images/logo/question.png" class="media-object img-rounded"/>
 								</a>
-								<div style="text-indent:15px;">
-									<div><small>(<span tal:content="Ask/getTimePrint" />)</small></div>
+								<div class="media-body">
+									<h4 class="media-heading"><span tal:content="repeat/Ask/number" />. Hỏi về <span tal:content="Ask/getCategory/getName" /></h4>
+									<p tal:content="structure Ask/getQuestion"/>
+									<i tal:content="Ask/getTimePrint"/>
 								</div>
 							</div>
+							
+							<div class="news-author">
+								<p>Quí <b>PHẬT TỬ</b> có thể điền nội dung câu hỏi vào mẫu form ở dưới đây để gữi câu hỏi / trả lời</p>
+							</div>
+							
+							<form class="form-horizontal" id="FormAppCategoryInsLoad" onsubmit="return validateFormContactLoad()" tal:attributes="action '/hoi-dap/dat-cau-hoi/exe'" method="POST">
+								<div class="control-group">
+									<label class="control-label" for="Author1">Họ & Tên</label>
+									<div class="controls">
+										<input type="text" name="Author1" id="Author1" class="span4"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="IdCategory">Chủ đề</label>
+									<div class="controls">
+										<select id="IdCategory" name="IdCategory" class="span4">
+											<option tal:repeat="Category CategoryAskAll" tal:attributes="value Category/getId" tal:content="Category/getName"/>
+										</select>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="Question">Câu hỏi</label>
+									<div class="controls">
+										<textarea name="Question" id="Question" cols="40" rows="2" class="span4"/>
+									</div>
+								</div>
+								<div class="control-group">
+									<label class="control-label" for="CodeCaptcha">Mã bảo mật</label>
+									<div class="controls">
+										<img src="/data/captcha.jpg" class="captcha"/><input name="CodeCaptcha" type="text" id="CodeCaptcha" class="span2"/>
+									</div>
+								</div>
+								<center><button type="submit" class="btn">Gữi</button></center>
+							</form>
+							
+							<div class="news-author">
+								<center><p>Ngoài ra, quí PHẬT TỬ có thể gửi CÂU HỎI hoặc KẾT QUẢ trả lời CÂU HỎI đến email nhuantamkhaituong@gmail.com</p></center>
+							</div>
 						</div>
 					</div>
+					
 				</div>
-				<div id="sidebar">
-					<div metal:use-macro="macros.xhtml/ClockBox"/>					
-					<div metal:use-macro="macros.xhtml/EventBox"/>
-					<div metal:use-macro="macros.xhtml/NorthBox"/>
-					<div metal:use-macro="macros.xhtml/SouthBox"/>
-					<div metal:use-macro="macros.xhtml/DhammapadaBox"/>					
-					<div metal:use-macro="macros.xhtml/BoxRight"/>
-					<div metal:use-macro="macros.xhtml/TopVideoBox"/>					
-					<div metal:use-macro="macros.xhtml/AskBox"/>
-					<div metal:use-macro="macros.xhtml/SponsorBox"/>
-					<div metal:use-macro="macros.xhtml/BoxAds"/>
-					<div metal:use-macro="macros.xhtml/ContactBox"/>
-					<div metal:use-macro="macros.xhtml/CallendarBox"/>
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/TaskBox"/>
+					<!-- <div metal:use-macro="base.xhtml/EventBox"/>
+					<div metal:use-macro="base.xhtml/CourseBox"/> -->
+					<div metal:use-macro="base.xhtml/BuddhaBox"/>
+					<div metal:use-macro="base.xhtml/PictureBox"/>
+					<div metal:use-macro="base.xhtml/TopNewsBox"/>
+					<div metal:use-macro="base.xhtml/TopVideoBox"/>
+					<div metal:use-macro="base.xhtml/TopMonkBox"/>
+					<div metal:use-macro="base.xhtml/AskBox"/>
+					<div metal:use-macro="base.xhtml/SponsorBox"/>
+					<div metal:use-macro="base.xhtml/ContactBox"/>
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
-				<div class="clear" />
 			</div>
-			<div metal:use-macro="macros.xhtml/Footer" />
-			<div metal:use-macro="macros.xhtml/FixedLeft"/>
+			<div metal:use-macro="base.xhtml/Footer"/>
+			<!-- <div metal:use-macro="base.xhtml/Popup"/> -->
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

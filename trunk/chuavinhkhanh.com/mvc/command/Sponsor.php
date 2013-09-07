@@ -11,56 +11,52 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSponsor = $request->getProperty('IdSponsor');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mEvent = new \MVC\Mapper\Event();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();			
-			$mCourse = new \MVC\Mapper\Course();
-			$mNews = new \MVC\Mapper\News();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Sponsor = $mSponsor->find($IdSponsor);
+			//-------------------------------------------------------------						
 			$SponsorAll = $mSponsor->findAll();
-			if (!isset($Sponsor)) $Sponsor = $SponsorAll->current();
-						
+			$SponsorAll = $mSponsor->findAll();
+			$Trackings = $mTracking->findAll();
+			$Categories = $mCategoryNews->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();
 			
-			$Event = $mEvent->findByNear(null)->current();
-			$Course = $mCourse->findByNear(null)->current();
-
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("so-vang");
+			
+			$Course = $mCourse->findByNear(null)->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("Event", $Event);
+			//-------------------------------------------------------------			
 			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("Trackings", $Trackings);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject("Course", $Course);
+			$request->setObject('PagodaAll', $PagodaAll);			
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("Sponsor", $Sponsor);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);			
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
+			$request->setProperty("Title", 'HOẠT ĐỘNG QUYÊN GÓP TỪ THIỆN');
 			$request->setProperty("ActiveItem", 'Sponsor');
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
