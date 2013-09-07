@@ -11,67 +11,57 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPagoda = $request->getProperty('IdPagoda');
-			$IdVideoPagoda = $request->getProperty('IdVideoPagoda');			
+			$KPagoda = $request->getProperty('KPagoda');
+			$KVideoPagoda = $request->getProperty('KVideoPagoda');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mEvent = new \MVC\Mapper\Event();
-			$mNews = new \MVC\Mapper\News();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mVideoPagoda = new \MVC\Mapper\VideoPagoda();
-			$mCourse = new \MVC\Mapper\Course();
-			$mConfig = new \MVC\Mapper\Config();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mClassLession = new \MVC\Mapper\ClassLession();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$Categories = $mCategoryNews->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
-			$Pagoda = $mPagoda->find($IdPagoda);
-			$VP = $mVideoPagoda->find($IdVideoPagoda);
+			
+			$Pagoda = $mPagoda->findByKey($KPagoda);			
+			$Video = $mVideo->findByKey($KVideoPagoda);
+			
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("chua-ban");
+			
+			$SponsorAll = $mSponsor->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
 			
 			$Course = $mCourse->findByNear(null)->current();
-			$Event = $mEvent->findTop(null)->current();
-			
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			$CLsNext = $mClassLession->findByNext(null);
-			
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAds = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("Event", $Event);
-			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("Pagoda", $Pagoda);
-			$request->setObject("VP", $VP);
+			$request->setObject("Video", $Video);
 			$request->setObject("Course", $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);
-			$request->setObject("CLsNext", $CLsNext);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("PanelAdsAll", $PanelAds);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setProperty("ActiveItem", 'Pagoda');
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("PagodaAll", $PagodaAll);
+						
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("MonkAll", $MonkAll);
 			
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			
+			$request->setProperty("ActiveItem", 'Pagoda');
+									
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

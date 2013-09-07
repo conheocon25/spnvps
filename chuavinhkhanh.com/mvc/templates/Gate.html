@@ -1,94 +1,54 @@
 <!DOCTYPE html> 
-<html>
+<html lang="en">
 	<head>
-		<span metal:use-macro="macros.xhtml/IncludeCSS"/>
-		<span metal:use-macro="macros.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>		
-		
-	<style type="text/css">	
-		html, body {
-			width: 100%;
-			height: 100%;
-			background: none;
-			margin: 0;
-			padding: 0;
-			background: url("/data/images/bg_gate.jpg") no-repeat center center transparent;
-		}
-		
-		.type-interior {
-			height: 100%;
-			width: 100%;
-			position: absolute;
-			overflow: hide;
-			margin: 0 auto;
-		}
-		
-		#map { cursor:pointer; position:absolute; background:rgba(255, 255, 255, .5); left:42%; bottom:10%; padding:20px; font-size:1.7em; font-weight:bold; color:#980707; border-radius:10px; box-shadow:0px 0px 5px #FFFFFF; }
-		#map:hover { background:rgba(255, 255, 255, .9); }
-		.opa { opacity: .60; }
-	</style>
-		
-	<script >
-		$(document).ready(function () {
-			$("#jquery_jplayer_1").jPlayer({
-				ready: function () {
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
+		<script>
+		/*<![CDATA[*/
+		$(document).ready(function(){
+			$(".poe").hide();
+			$(".poe-hover").hover(function(){
+				$(".top-poe").slideDown();
+				$(".bottom-poe").slideDown();
+			}, function(){
+				$(".top-poe").slideUp();
+				$(".bottom-poe").slideUp();
+			});
+			
+			$("#jquery_audioPlayer").jPlayer({
+				ready: function() {
 					$(this).jPlayer("setMedia", {
-						mp3:"http://chuavinhkhanh.123app.net/data/nhacthien.mp3"
+						mp3:"/data/intro.mp3"
 					}).jPlayer("play");
 				},
 				swfPath: "data",
-				supplied: "mp3",		
+				supplied: "mp3",
+				loop: true,
 				wmode: "window"
 			});
-			$('.jp-repeat').trigger('click');
-			$('.jp-volume-max').trigger('click');
-			$("#jp_container_1").hide();
-			$("#jquery_jplayer_1").hide();
-
-			$("#show1").addClass("opa");
-			$("#show2").addClass("opa");
-			$("#map").mouseenter(function(){
-				$("#show1").removeClass("opa");
-				$("#show2").removeClass("opa");
-			});
-			$("#map").mouseout(function(){
-				$("#show1").addClass("opa");
-				$("#show2").addClass("opa");
-			});
 		});
-		
-	</script>
+		/*]]>*/
+		</script>
 	</head>
-<body  style="overflow:hide;">
-	<div style="height:100%; vertical-align:middle; text-align:center;">
-		<a href="/home"><div id="map">Vào Trang Chủ</div></a>
-		<img id="show2" src="/data/images/vinh_khanh.png" border="0" style="position:absolute; left:12%; height:280px; top:3%; transform:rotate(-2deg); z-index:10;" />
-		<img id="show1" src="/data/images/quan_am.png" border="0" style="position:absolute; right:12%; height:250px; top:5%; z-index:10; " />
-		<div style="position:absolute; left:50%; top:50%; background-color:transparent; height:400px; margin-top:-200px; width:600px; margin-left:-300px; display:table-cell; vertical-align:middle; z-index:1;">
-			<object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" height="100%" width="100%">
-				<param name="movie" value="/data/images/gate.swf" />
-				<param name="quality" value="high" />
-				<param name="wmode" value="opaque" />
-				<embed wmode="opaque" src="/data/images/gate.swf" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash" height="100%" width="100%" />
-			</object>
+	
+	<body>
+		<div class="cover-inner">
+			<img src="/data/images/logo/title.png"/>
+			<p><a href="/trang-chu"><span class="link poe-hover">Vào Trang chủ</span></a></p>
 		</div>
-	</div>
-	<div id="jquery_jplayer_1" class="jp-jplayer"></div>
-			<div id="jp_container_1" class="jp-audio">
-				<div class="jp-type-single">
-					<div class="jp-gui jp-interface">
-						<ul class="jp-controls">
-							<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
-						</ul>	
-						<div class="jp-current-time"></div>
-						<div class="jp-duration"></div>
-						<ul class="jp-toggles">
-							<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>						
-						</ul>
-					</div>				
-				</div>
-			</div>
-	
-	
-</body>
+		
+		<div class="p-title poe-hover"><a href="/trang-chu"><p>Chùa Long Viễn</p></a></div>
+
+		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
+		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ lẽ trời</p></div>
+
+		<div id="jquery_audioPlayer" class="jp-jplayer"></div>
+		
+		<img class="cloud cloud1" src="/data/images/bg/cloud1.png"/>
+		<img class="cloud cloud2" src="/data/images/bg/cloud2.png"/>
+		<img class="cloud cloud3" src="/data/images/bg/cloud3.png"/>
+		<img class="bird" src="/data/images/bg/bird.gif"/>
+	</body>
 </html>

@@ -1,8 +1,8 @@
 <?php
 	namespace MVC\Command;	
-	class Course extends Command{
+	class Course extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");
+			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
@@ -10,71 +10,54 @@
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------						
-			$IdCourse = $request->getProperty('IdCourse');
+			//-------------------------------------------------------------
+			$KCourse = $request->getProperty('KCourse');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mAsk = new \MVC\Mapper\Ask();
-			$mEvent = new \MVC\Mapper\Event();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mCourse = new \MVC\Mapper\Course();
-			$mDhammapadaDetail = new \MVC\Mapper\DhammapadaDetail();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mPanelAds = new \MVC\Mapper\PanelAds();
-						
+			//-------------------------------------------------------------
+			require_once("mvc/base/mapper/MapperDefault.php");
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
+			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
+			$CategoryVideo = $mCategoryVideo->findAll()->current();
+									
+			$AskAll = $mAsk->findByTop(array());
 			$PagodaAll = $mPagoda->findAll();
+			$Courses = $mCourse->findAll();
 			$SponsorAll = $mSponsor->findAll();
-			
-			$Title = "Đào tạo / ";
-			$CourseAll = $mCourse->findAll();
-			if (!isset($IdCourse)){
-				$Course = $CourseAll->current();
-			}else{
-				$Course = $mCourse->find( $IdCourse );
-			}
-			
-			$Events1 = $mEvent->findTop(null);
-			$Event = $Events1->current();
-			$DhammapadaToday = $mDhammapadaDetail->rand(null);
-			
+						
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			
-			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("dao-tao");
+			$Course = $mCourse->findByNear(null)->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------												
-			$request->setProperty("ActiveItem", 'Course');
-			$request->setProperty("Title", $Title);
-			
-			$request->setObject("Event", $Event);
-			$request->setObject('Course', $Course);
-			$request->setObject("DhammapadaToday", $DhammapadaToday);			
-			
+			//-------------------------------------------------------------
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject("CategoryVideo", $CategoryVideo);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);								
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("Courses", $Courses);
+			$request->setObject("AskAll", $AskAll);
+			$request->setObject("PagodaAll", $PagodaAll);
 			$request->setObject("PanelNewsAll", $PanelNewsAll);
 			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
-			$request->setObject("PanelAdsAll", $PanelAdsAll);
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-						
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("Course", $Course);		
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
+			
+			$request->setProperty("ActiveItem", 'Course');
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

@@ -3,17 +3,18 @@
 	<!-- ======================================================================== -->
 	<!-- META TAG INCLUDE														  -->
 	<!-- ======================================================================== -->
+	
 	<span metal:define-macro="IncludeMETA">
-		<title tal:content="string:Website Chùa Vĩnh Khánh"/>
-		<base href="http://chuavinhkhanh.com"/>
+		<title tal:content="string:Website Chùa Long Viễn Vĩnh Long"/>
+		<base href="http://chualongvien.com"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="Pragma" content="no-cache"/>
 		<meta http-equiv="Expires" content="-1"/>
 		<meta http-equiv="Cache-Control" content="no-cache"/>
-		<meta name="keywords" content="Chùa Vĩnh Khánh"/>
-		<meta name="description" content="Website Chùa Vĩnh Khánh Vĩnh Long, Việt Nam"/>
-		<meta name="page-topic" content="Chùa Vĩnh Khánh"/>
-		<meta name="Abstract" content="Website Chùa Vĩnh Khánh Vĩnh Long, Việt Nam"/>
+		<meta name="keywords" content="Chùa Long Viễn"/>
+		<meta name="description" content="Website Chùa Long Viễn Vĩnh Long, Việt Nam"/>
+		<meta name="page-topic" content="Chùa Long Viễn"/>
+		<meta name="Abstract" content="Website Chùa Long Viễn Vĩnh Long, Việt Nam"/>
 		<meta name="classification" content="Chùa Khải Tường, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
 		<link rel="icon" type="image/png" href="/data/images/icon.png" />
 	</span>
@@ -48,7 +49,7 @@
 	<div metal:define-macro="Header">
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand" href="/app">Chuavinhkhanh.com</a>
+				<a class="brand" href="/app">Chualongvien.com</a>
 				<p class="navbar-text pull-right">
 					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
 				</p>

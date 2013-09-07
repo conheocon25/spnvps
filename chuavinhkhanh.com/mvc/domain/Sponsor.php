@@ -10,12 +10,13 @@ class Sponsor extends Object{
 	private $TimeEnd;
 	private $Content;
 	private $Type;
+	private $Picture;	
 	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $TimeStart=null, $TimeEnd=null, $Content=null, $Type=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->TimeStart = $TimeStart;$this->TimeEnd = $TimeEnd;$this->Content = $Content;$this->Type = $Type; $this->Key = $Key; parent::__construct( $Id );}
+    function __construct( $Id=null, $Name=null, $TimeStart=null, $TimeEnd=null, $Content=null, $Type=null, $Picture=null, $Key=null){$this->Id = $Id;$this->Name = $Name;$this->TimeStart = $TimeStart;$this->TimeEnd = $TimeEnd;$this->Content = $Content;$this->Type = $Type; $this->Picture = $Picture; $this->Key = $Key; parent::__construct( $Id );}
     function getId( ) {return $this->Id;}
 		
     function setName( $Name ){$this->Name = $Name;$this->markDirty();}
@@ -34,6 +35,9 @@ class Sponsor extends Object{
 		
 	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}
 	function getType(){return $this->Type;}
+	
+	function setPicture( $Picture ) {$this->Picture = $Picture; $this->markDirty();}
+	function getPicture(){return $this->Picture;}
 	
 	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
 	function getKey( ) {return $this->Key;}

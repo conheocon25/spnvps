@@ -2,7 +2,7 @@
 	namespace MVC\Command;	
 	class SponsorDetail extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
-			require_once("mvc/base/domain/HelperFactory.php");			
+			require_once("mvc/base/domain/HelperFactory.php");
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
@@ -11,59 +11,48 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdSponsor = $request->getProperty('IdSponsor');
-			$IdVideoSponsor = $request->getProperty('IdVideoSponsor');
+			$KSponsor = $request->getProperty('KSponsor');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mEvent = new \MVC\Mapper\Event();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
-			$mPagoda = new \MVC\Mapper\Pagoda();			
-			$mCourse = new \MVC\Mapper\Course();
-			$mNews = new \MVC\Mapper\News();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			$mPanelNews = new \MVC\Mapper\PanelNews();
-			$mPanelCategoryVideo = new \MVC\Mapper\PanelCategoryVideo();
-			$mVideoSponsor = new \MVC\Mapper\VideoSponsor();
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Sponsor = $mSponsor->find($IdSponsor);
-			$VideoSponsor = $mVideoSponsor->find($IdVideoSponsor);
-			
-			$Sponsors = $mSponsor->findAll();
-			if (!isset($Sponsor)) $Sponsor = $Sponsors->current();
+			$Sponsor = $mSponsor->findByKey($KSponsor);
+			$SponsorAll = $mSponsor->findAll();
+			if (!isset($Sponsor)) $Sponsor = $SponsorAll->current();
 			
 			$Categories = $mCategoryNews->findAll();
-			$CategoriesBType = $mCategoryBType->findAll();
-			$CategoriesNews = $mCategoryNews->findAll();
-			$CategoriesAsk = $mCategoryAsk->findAll();			
-			$Pagodas = $mPagoda->findAll();
-			
-			$Event = $mEvent->findByNear(null)->current();
+			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryAskAll = $mCategoryAsk->findAll();			
+			$PagodaAll = $mPagoda->findAll();
 			$Course = $mCourse->findByNear(null)->current();
-
-			$PanelNews = $mPanelNews->findAll();
-			$PanelCategoriesVideo = $mPanelCategoryVideo->findAll();
+			$PanelNewsAll = $mPanelNews->findAll();
+			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$MonkAll = $mMonk->findVIP(null);
+			$Course = $mCourse->findByNear(null)->current();
+			$EventAll = $mEvent->findAll();
+			$Popup = $mPopup->findByName("so-vang");
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			$request->setObject("Event", $Event);
-			$request->setObject("VideoSponsor", $VideoSponsor);
-			$request->setObject("Sponsors", $Sponsors);
-			$request->setObject("CategoriesBType", $CategoriesBType);
-			$request->setObject("CategoriesNews", $CategoriesNews);
-			$request->setObject("CategoriesAsk", $CategoriesAsk);
-			$request->setObject('Pagodas', $Pagodas);
-			$request->setObject("Course", $Course);
-			$request->setObject("PanelNews", $PanelNews);
-			$request->setObject("PanelCategoriesVideo", $PanelCategoriesVideo);
+			//-------------------------------------------------------------			
+			$request->setObject("SponsorAll", $SponsorAll);
+			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);
+			$request->setObject('PagodaAll', $PagodaAll);			
+			$request->setObject("PanelNewsAll", $PanelNewsAll);
+			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
 			$request->setObject("Sponsor", $Sponsor);
+			$request->setObject("MonkAll", $MonkAll);
+			$request->setObject("Course", $Course);
+			$request->setObject("EventAll", $EventAll);
+			$request->setObject("Popup", $Popup);
 			
 			$request->setProperty("ActiveItem", 'Sponsor');
 						
