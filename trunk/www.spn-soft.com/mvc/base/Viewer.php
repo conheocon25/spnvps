@@ -27,7 +27,9 @@ class Viewer {
 			$tpl->$key = $val;
 		}		
 		$tpl->User = $User;
-		
+		$tpl->setOutputMode(PHPTAL::HTML5);
+		//echo "mode ne".PHPTAL::HTML5;
+
 		$Html = $tpl->execute();
 		
 		//Giải phóng bộ nhớ bị rò rỉ
