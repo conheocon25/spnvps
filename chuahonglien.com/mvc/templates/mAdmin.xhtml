@@ -5,16 +5,16 @@
 	<!-- ======================================================================== -->
 	
 	<span metal:define-macro="IncludeMETA">
-		<title tal:content="string:Website Chùa Long Viễn Vĩnh Long"/>
-		<base href="http://chualongvien.com"/>
+		<title tal:content="string:Website Chùa Hồng Liên Đồng Tháp"/>
+		<base href="http://chuahonglien.com"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
 		<meta http-equiv="Pragma" content="no-cache"/>
 		<meta http-equiv="Expires" content="-1"/>
 		<meta http-equiv="Cache-Control" content="no-cache"/>
 		<meta name="keywords" content="Chùa Long Viễn"/>
-		<meta name="description" content="Website Chùa Long Viễn Vĩnh Long, Việt Nam"/>
+		<meta name="description" content="Website Chùa Hồng Liên Đồng Tháp, Việt Nam"/>
 		<meta name="page-topic" content="Chùa Long Viễn"/>
-		<meta name="Abstract" content="Website Chùa Long Viễn Vĩnh Long, Việt Nam"/>
+		<meta name="Abstract" content="Website Chùa Hồng Liên Đồng Tháp, Việt Nam"/>
 		<meta name="classification" content="Chùa Khải Tường, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
 		<link rel="icon" type="image/png" href="/data/images/icon.png" />
 	</span>
@@ -49,7 +49,7 @@
 	<div metal:define-macro="Header">
 		<div class="navbar navbar-inverse">
 			<div class="navbar-inner">
-				<a class="brand" href="/app">Chualongvien.com</a>
+				<a class="brand" href="/app">chuahonglien.com</a>
 				<p class="navbar-text pull-right">
 					<a class="navbar-link" href="/signout/load"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
 				</p>
@@ -132,8 +132,7 @@
 			</li>						
 			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'">
 				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a>
-			</li>
-			<li class="nav-header">Support: 0996-355-368</li>
+			</li>			
 		</ul>
 	</div>
 	
