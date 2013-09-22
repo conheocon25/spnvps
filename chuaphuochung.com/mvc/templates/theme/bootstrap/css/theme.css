@@ -1,6 +1,6 @@
 	
 	/* BODY */
-	body { background: url("/data/images/bg/body.gif") repeat fixed left top transparent !important; }
+	body { background: url("/data/images/bg/body.jpg") repeat fixed center center transparent !important; }
 		.container {
 			background-color: #fff;
 			box-shadow: 0 0 2px 2px #000000;
