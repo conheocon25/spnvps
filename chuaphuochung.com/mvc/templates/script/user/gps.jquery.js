@@ -5,12 +5,12 @@
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'Chua Khai Tuong, Cai Be, Tien Giang, Viet Nam',		
+		center: 'xa Hoa Thanh, huyen Tam Binh, tinh Vinh Long, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam',
+		tooltip: 'Chùa Phước Hưng ấp Thạnh Hiệp, xã Hòa Thành, huyện Tam Bình, tỉnh Vĩnh Long, Việt Nam',
 		image: 'false'
     };
 
@@ -24,10 +24,10 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.335565,105.917631);		
+		var center = new GLatLng(10.124157,106.046391);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Khải Tường, ấp Mỹ Phú, xã Mỹ Đức Đông, huyện Cái Bè, tỉnh Tiền Giang, Việt Nam');	
+		marker.openInfoWindowHtml('Chùa Phước Hưng ấp Thạnh Hiệp, xã Hòa Thành, huyện Tam Bình, tỉnh Vĩnh Long, Việt Nam');	
 	}
 	
     $.extend(GoogleMapObject.prototype, {
@@ -65,7 +65,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.335565,105.917631);
+                    center = new GLatLng(10.124157,106.046391);
 					
 					if (!point) { alert(center + " not found"); }
                     else {
