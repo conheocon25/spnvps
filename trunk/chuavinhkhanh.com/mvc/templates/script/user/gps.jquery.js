@@ -1,19 +1,20 @@
 (function($) { 
-	var map ;
+	var map ;	
+	var locationPathCode = 1;
 	
     $.GoogleMapObjectDefaults = {        
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'Chua Long Vien, Phuong 4, tp. Vinh Long, Vinh Long, Viet Nam',		
+		center: 'chua vinh khanh, Luc Sy Thanh, Tra On Vinh Long, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam',
+		tooltip: 'Chùa Vĩnh Khánh,xã Lục Sỹ Thành, Trà Ôn, Vĩnh Long, Việt Nam',
 		image: 'false'
     };
-
+	
     function GoogleMapObject(elementId, options) {        
         this._inited = false;
         this._map = null;
@@ -23,13 +24,23 @@
         this.Settings = $.extend({}, $.GoogleMapObjectDefaults, options || '');
     }
 	
-	function showMaker() {					
-		var center = new GLatLng(10.244739,105.983477);		
+	function showMakerMap01() {					
+		var center = new GLatLng(9.97099,105.897179);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam');	
+		marker.openInfoWindowHtml('Chùa Vĩnh Khánh, ấp Tân Thành, xã Lục Sỹ Thành, huyện Trà Ôn, Vĩnh Long, Việt Nam');			
 	}
 	
+	function showMakerMap02() {					
+		var center = new GLatLng(9.921994,105.98794);		
+		var marker = new GMarker(center, {draggable: false}); 
+		map.addOverlay(marker);		
+		marker.openInfoWindowHtml('Chùa Quan Âm,ấp Tích Lộc, xã Tích Thiện, huyện Trà Ôn, Vĩnh Long, Việt Nam');
+		
+	}
+	
+	
+			
     $.extend(GoogleMapObject.prototype, {
         init: function() {
             if (!this._inited) {
@@ -46,7 +57,7 @@
                 this._inited = true;
             }
         },
-        load: function() {            
+        loadMap01: function() {            
             this.init();	    
             if (this._geocoder) {                
                 var zoom = this.Settings.zoomLevel;
@@ -54,7 +65,7 @@
 				var width = this.Settings.imagewidth;
 				var height = this.Settings.imageheight;
                 map = this._map;
-				
+		
 				if (this.Settings.tooltip != 'false') {
 					var customtooltip = true;
 					var tooltipinfo = this.Settings.tooltip;
@@ -65,7 +76,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.244739,105.983477);
+                    center = new GLatLng(9.97099,105.897179);
 					
 					if (!point) { alert(center + " not found"); }
                     else {
@@ -85,45 +96,78 @@
 						}
 						
 						if(customtooltip == true) {
-							marker.openInfoWindowHtml(tooltipinfo);
+							marker.openInfoWindowHtml('Chùa Vĩnh Khánh, ấp Tân Thành, xã Lục Sỹ Thành, huyện Trà Ôn, Vĩnh Long, Việt Nam');	
+							
 						}
                     }
                 });
 				
             }
 	                
-            $.data($(this.Settings.submit)[0], 'inst', this);	
-			
-            $(this.Settings.submit).click(function(e) {
-                e.preventDefault();
-                var obj = $.data(this, 'inst');
-				var outputto = obj.Settings.directions;
-                var from = $(obj.Settings.start).val();
-                var to = $(obj.Settings.end).val();
-				map.clearOverlays();
-				$('#directions' ).html('');
-				var gdir = new GDirections(map, document.getElementById('directions'));
-				gdir.load("from: " + from + " to: " + to);
-				showMaker();				
-            });	
-			
-			$('#cboTinhThanh').change(function(e) {
-                 e.preventDefault();
-				var from; 
-				$("select#cboTinhThanh option:selected").each(function () {
-						from = $(this).text();
-				});				
-                var obj = $.data(this, 'inst');
-                var to = $('#end').val();
-				map.clearOverlays();
-				$('#directions' ).html('');
-				var gdir = new GDirections(map, document.getElementById('directions'));
-				gdir.load("from: " + from + " to: " + to);		
-				showMaker();		
-            }).change();	
+            	
 			
             return this;
-        }
+        },
+		loadMap02: function() {            
+            this.init();	    
+            if (this._geocoder) {                
+                var zoom = this.Settings.zoomLevel;
+                var center = this.Settings.center;
+				var width = this.Settings.imagewidth;
+				var height = this.Settings.imageheight;
+                map = this._map;
+		
+				if (this.Settings.tooltip != 'false') {
+					var customtooltip = true;
+					var tooltipinfo = this.Settings.tooltip;
+				}				
+				if (this.Settings.image != 'false') {
+					var customimage = true;
+					var imageurl = this.Settings.image;
+				}		
+                this._geocoder.getLatLng(center, function(point) {
+                   	center = new GLatLng(9.921994,105.98794);
+					
+					if (!point) { alert(center + " not found"); }
+                    else {
+                        //set center on the map
+                        map.setCenter(center, zoom);
+			
+						if (customimage == true) {
+							//add the marker
+							var customiconsize = new GSize(width, height);
+							var customicon = new GIcon(G_DEFAULT_ICON, imageurl);
+							customicon.iconSize = customiconsize;
+							var marker = new GMarker(center, { icon: customicon });
+							map.addOverlay(marker);
+						} else {
+							var marker = new GMarker(center);
+							map.addOverlay(marker);
+						}
+						
+						if(customtooltip == true) {
+							marker.openInfoWindowHtml('Chùa Quan Âm, ấp Tích Lộc, xã Tích Thiện, huyện Trà Ôn, Vĩnh Long, Việt Nam');
+						}
+                    }
+                });
+				
+            }        
+           	
+			
+            return this;
+        },
+		findpath: function(from , to, pathcode){			
+			map.clearOverlays();
+			var gdir = new GDirections(map, document.getElementById('directions'));
+			gdir.load("from: " + from + " to: " + to);
+			
+			if (pathcode == 1) {
+				showMakerMap01();
+			}
+			if (pathcode == 2) {
+				showMakerMap02();
+			}
+		}
     });
 
     $.extend($.fn, {
@@ -139,3 +183,4 @@
     });
 	
 })(jQuery);
+
