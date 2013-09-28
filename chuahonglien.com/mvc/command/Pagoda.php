@@ -39,7 +39,7 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
 			
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

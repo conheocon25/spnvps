@@ -27,7 +27,7 @@
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();
 						
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();

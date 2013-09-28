@@ -33,7 +33,7 @@
 			
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("chua-ban");
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			$SponsorAll = $mSponsor->findAll();
 			$PanelNewsAll = $mPanelNews->findAll();
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();

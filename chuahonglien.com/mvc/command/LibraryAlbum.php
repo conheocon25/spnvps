@@ -41,7 +41,7 @@
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("thu-vien-anh");
 			
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

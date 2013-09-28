@@ -31,7 +31,7 @@
 			$EventAll = $mEvent->findAll();
 			
 			$Popup = $mPopup->findByName("gioi-thieu");
-			$Course = $mCourse->findByNear(null)->current();			
+			$Course = $mCourse->findAll()->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

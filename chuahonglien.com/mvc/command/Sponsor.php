@@ -36,7 +36,7 @@
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("so-vang");
 			
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
