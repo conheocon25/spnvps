@@ -34,7 +34,7 @@
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 						
 			if (!isset($Page)) $Page = 1;			
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			$EventAll = $mEvent->findAll();
 
 			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');

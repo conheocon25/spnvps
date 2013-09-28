@@ -41,7 +41,7 @@
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
 			$EventAll = $mEvent->findAll();
 			$Popup = $mPopup->findByName("tin-tuc");
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

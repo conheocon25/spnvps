@@ -44,7 +44,7 @@
 			$MonkAll = $mMonk->findVIP(null);
 			
 			$EventAll = $mEvent->findAll();
-			$Course = $mCourse->findByNear(null)->current();
+			$Course = $mCourse->findAll()->current();
 			$Popup = $mPopup->findByName("trang-chu");
 												
 			//-------------------------------------------------------------
