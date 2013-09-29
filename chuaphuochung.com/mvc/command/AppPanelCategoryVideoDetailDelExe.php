@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPanelCategoryVideo = $request->getProperty('IdPanelCategoryVideo');		
+			$IdCategoryVideo = $request->getProperty('IdCategoryVideo');		
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -21,7 +21,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
-			$mDetail->delete(array($IdPanelCategoryVideo));
+			$mDetail->delete(array($IdCategoryVideo));
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
