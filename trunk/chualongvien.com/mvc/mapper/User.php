@@ -83,9 +83,11 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array(  
-			$object->getEmail(),			
-			$this->createPass($object->getPass()),	
-			$this->createPass($object->getPass2()),	
+			$object->getEmail(),	
+			$object->getPass(),
+			//$this->createPass($object->getPass()),	
+			$object->getPass2(),
+			//$this->createPass($object->getPass2()),	
 			$object->getGender(),	
 			$object->getNote(),			
 			$object->getDateCreate(),
@@ -127,8 +129,8 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
     }
 		
 	function check($name, $pass) {		
-		$repass = $this->createPass($pass);
-		$values = array($name, $repass);	
+		//$repass = $this->createPass($pass);
+		$values = array($name, $pass);	
         $this->checkStmt->execute( $values );
         $result = $this->checkStmt->fetchAll();		
 		return @$result[0][0];
