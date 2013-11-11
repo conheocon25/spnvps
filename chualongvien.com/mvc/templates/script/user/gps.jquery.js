@@ -5,12 +5,12 @@
         zoomLevel: 10,
 		imagewidth: 50,
 		imageheight: 50,
-		center: 'Chua Long Vien, Phuong 4, tp. Vinh Long, Vinh Long, Viet Nam',		
+		center: 'Bach Dan, Phuong 4, tp. Vinh Long, Vinh Long, Viet Nam',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam',
+		tooltip: 'Chùa Long Viễn, 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam',
 		image: 'false'
     };
 
@@ -24,10 +24,10 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.244739,105.983477);		
+		var center = new GLatLng(10.246597,105.979431);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Long Viễn, Phường 4, TP. Vĩnh Long, tỉnh Vĩnh Long, Việt Nam');	
+		marker.openInfoWindowHtml('Chùa Long Viễn, 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam');	
 	}
 	
     $.extend(GoogleMapObject.prototype, {
@@ -65,7 +65,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.244739,105.983477);
+                    center = new GLatLng(10.246597,105.979431);
 					
 					if (!point) { alert(center + " not found"); }
                     else {
