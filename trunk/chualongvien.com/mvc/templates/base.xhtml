@@ -92,14 +92,7 @@
 							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
 						</li>
 					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='Sponsor'?'active dropdown':'dropdown'">
-					
-					<a class="dropdown-toggle" data-toggle="dropdown">Từ thiện <b class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li><a href="/so-vang">Sổ vàng</a></li>						
-					</ul>
-				</li>
+				</li>				
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
 		</div>
@@ -264,8 +257,7 @@
 	<!-- ======================================================================== -->
 	<!-- FIXED FUNCTION															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="FixedFunction" class="fixed-function">
-		<div class="fb-like fb_edge_widget_with_comment fb_iframe_widget" data-href="https://www.facebook.com/Chualongvien" data-send="false" data-layout="box_count" data-width="450" data-show-faces="false" data-font="tahoma" fb-xfbml-state="rendered"></div>
+	<div metal:define-macro="FixedFunction" class="fixed-function">		
 		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/>
 		<p class="bubble-item">Truy cập</p>
 		<div class="bubble">
