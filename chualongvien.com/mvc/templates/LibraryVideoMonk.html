@@ -26,16 +26,12 @@
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-					<div metal:use-macro="base.xhtml/AskBox"/>
-					<div metal:use-macro="base.xhtml/SponsorBox"/>
-					<div metal:use-macro="base.xhtml/ContactBox"/>
+					</div>					
 				</div>
 				<div class="span6 fix-width-3">
 					<div class="box radius">
 						<div class="page-header pg-header pg-header-videos reset-margin">
-							<h4 class="reset-margin">Giảng sư: <span tal:content="Monk/getName"/></h4>
+							<h4 class="reset-margin">Giảng sư: <span tal:content="Monk/getPreName"/> <span tal:content="Monk/getName"/></h4>
 							<i class="pull-right">
 								<span tal:content="php: 'Phật âm ' . CategoryBType->getName() . ' (' . CategoryBType->getVideoAllCountPrint()"/> video)
 							</i>
@@ -73,7 +69,7 @@
 								<li tal:repeat="Monk1 CategoryBType/getMonkAll" tal:attributes="class php:Monk1->getId()==Monk->getId()?'active news-list-item':'news-list-item'">
 									<a tal:attributes="href Monk1/getURLRead">
 										<span class="label monk-label" tal:content="Monk1/getVMs/count"/>
-										<span tal:content="Monk1/getName"/>
+										<span tal:content="Monk/getPreName"/>  <span tal:content="Monk1/getName"/>
 										<i class="icon-star pull-right" tal:condition="Monk1/isVIP"/>
 									</a>
 								</li>
