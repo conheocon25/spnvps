@@ -26,11 +26,7 @@
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-					<div metal:use-macro="base.xhtml/AskBox"/>
-					<div metal:use-macro="base.xhtml/SponsorBox"/>
-					<div metal:use-macro="base.xhtml/ContactBox"/>
+					</div>										
 				</div>
 				<div class="span6 fix-width-3">
 					<div class="box radius">
@@ -102,15 +98,13 @@
 								<li tal:repeat="Monk1 CategoryBType/getMonkAll" tal:attributes="class php:Monk1->getId()==Monk->getId()?'active news-list-item':'news-list-item'">
 									<a tal:attributes="href Monk1/getURLRead">
 										<span class="label monk-label" tal:content="Monk1/getVMs/count"/>
-										<span tal:content="Monk1/getName"/>
+										<span tal:content="Monk/getPreName"/>  <span tal:content="Monk1/getName"/>
 										<i class="icon-star pull-right" tal:condition="Monk1/isVIP"/>
 									</a>
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-					<div metal:use-macro="base.xhtml/PictureBox"/>
+					</div>										
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>
