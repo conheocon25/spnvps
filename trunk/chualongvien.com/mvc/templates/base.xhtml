@@ -73,6 +73,7 @@
 						</li>
 					</ul>
 				</li>
+				<!--
 				<li tal:attributes="class php:ActiveItem=='Ask'?'active dropdown':'dropdown'">
 					<a class="dropdown-toggle" data-toggle="dropdown">Hỏi đáp <b class="caret"/></a>
 					<ul class="dropdown-menu">
@@ -83,8 +84,10 @@
 							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
 						</li>
 					</ul>
-				</li>	
+				</li>
+				-->
 				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
+				<!--
 				<li tal:attributes="class php:ActiveItem=='Pagoda'?'active dropdown':'dropdown'" >
 					<a class="dropdown-toggle" data-toggle="dropdown">Danh bạ Chùa <b class="caret"/></a>
 					<ul class="dropdown-menu">
@@ -92,7 +95,8 @@
 							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
 						</li>
 					</ul>
-				</li>				
+				</li>
+				-->				
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
 		</div>
@@ -490,6 +494,29 @@
 	<!-- BACK ON TOP															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Backontop" class="crunchify-top" data-toggle="tooltip" data-placement="left" data-original-title="Chuyển đến đầu trang"/>
+	
+	<!-- ======================================================================== -->
+	<!-- WARNING MESSAGE														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="WarningMsg" class="box no-border">
+		<center><a href="#myModal" role="button" class="btn btn-danger" data-toggle="modal">
+			<img src="/data/images/logo/warning.gif" width="100"/>
+			<h3>THÔNG BÁO KHẨN</h3>
+		</a></center>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<center><h3 id="myModalLabel">THÔNG BÁO KHẨN</h3></center>
+			</div>
+			<div class="modal-body">
+				<p style="text-align:justify;">Website <b><i>chualongvien.com</i></b> ra đời nhằm để phổ biến Phật pháp cũng như cung cấp các kiến thức bổ ích cho mọi người. Vì vậy, nếu có ai đó lợi dụng danh nghĩa Chùa Long Viễn hoặc các nội dung trong Website của chùa Long Viễn với bất kỳ hình thức nào, để vận động tài chánh xem như một sự xúc phạm về mặt " Đạo đức" không thể chấp nhận được; đồng thời đó là sự "Giả mạo" không phải chủ ý của Chùa Long Viễn. Rất mong Quý Phật tử, khán giả, đọc giả xa gần lưu ý cảnh giác. Chùa Long Viễn xin được tri ân đến toàn thể Quý khán giả, đọc giả và Phật tử suốt thời gian qua cũng như sắp tới</p>
+				<p style="text-align:right;">Trân trọng kính chào!</p>
+				<p style="text-align:right;">Trụ trì Chùa Long Viễn Thượng tọa Thích Thiện Trí</p>
+			</div>
+			<div class="modal-footer">
+				<center><button class="btn" data-dismiss="modal" aria-hidden="true">Đóng</button></center>
+			</div>
+		</div>
+	</div>
 	
 </body>
 </html>
