@@ -20,12 +20,12 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$Title = "WEBSITE CHÙA KHAI TƯỜNG";
+			$Title = "WEBSITE CHÙA LONG VIỄN";
 						
-			$VM24 = $mVM->findByUpdateTop1(null);
-			$VM8 = $mVM->findByTopLocal(array(2));
-			$VL24 = $mVL->findByUpdateTop(array(2));
-			$VL8 = $mVL->findByTopLocal(array(2));
+			$VM24 	= $mVM->findByUpdateTop1(null);
+			$VM8 	= $mVM->findByTopLocal(array(2));
+			$VL24 	= $mVL->findByUpdateTop(array(2));
+			$VL8 	= $mVL->findByTopLocal(array(2));
 			
 			$AlbumAll = $mAlbum->findAll();
 			$Categories = $mCategoryNews->findAll();

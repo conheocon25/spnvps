@@ -14,7 +14,7 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		$updateStmt = sprintf("update %s set name=?, picture=?, `order`=?, type=?, btype=?, `key`=? where id=?", $tblCategory);
 		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type, btype, `key`) values(?, ?, ?, ?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
-		$findByBTypeStmt = sprintf("select * from %s where btype=?", $tblCategory);
+		$findByBTypeStmt = sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblCategory);
 		$findByKeyStmt = sprintf("select * from %s where `key`=?", $tblCategory);
 		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblCategory);
 				
