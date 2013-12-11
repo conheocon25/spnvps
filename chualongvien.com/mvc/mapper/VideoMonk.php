@@ -38,7 +38,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 			where
 				id_monk in (select id from %s where btype = ? )
 			order by (select time from %s V where V.id=VM.id_video ) 
-			DESC limit 24
+			DESC limit 16
 		", $tblVideoMonk, $tblMonk, $tblVideo);
 		
 		$findByUpdateTop1Stmt = sprintf("
@@ -47,7 +47,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 			from 
 				%s VM			
 			order by (select time from %s V where V.id=VM.id_video ) 
-			DESC limit 24
+			DESC limit 16
 		", $tblVideoMonk, $tblVideo);
 		
 		$findByViewTopStmt = sprintf("
@@ -58,7 +58,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 			where
 				id_monk in (select id from %s where btype = ? )
 			order by (select count from %s V where V.id=VM.id_video ) 
-			DESC limit 24
+			DESC limit 16
 		", $tblVideoMonk, $tblMonk, $tblVideo);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
