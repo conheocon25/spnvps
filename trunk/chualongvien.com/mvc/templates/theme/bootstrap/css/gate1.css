@@ -8,6 +8,7 @@
 	
 	body {
 		font-family: "CustomFont";
+		background: url('/data/images/bg/gate.jpg') no-repeat center center fixed;
 		-webkit-background-size: cover !important;
 		-moz-background-size: cover !important;
 		-o-background-size: cover !important;
