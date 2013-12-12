@@ -38,7 +38,7 @@
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("VIDEO", "/app/category/video")
+				array( mb_strtoupper($Category->getBTypeName(), 'UTF8'), $Category->getBTypeO()->getURLSetting() )
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

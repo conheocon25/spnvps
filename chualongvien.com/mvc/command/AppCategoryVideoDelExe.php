@@ -21,12 +21,13 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
-			$Category = $mCategoryVideo->delete(array($IdCategory));
+			$Category = $mCategoryVideo->find($IdCategory);
+			$mCategoryVideo->delete(array($IdCategory));
 															
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			
+			$request->setProperty('IdBType', $Category->getBType());
 			return self::statuses('CMD_OK');
 		}
 	}

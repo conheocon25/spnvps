@@ -9,7 +9,7 @@ class CategoryBType extends Mapper implements \MVC\Domain\CategoryBTypeFinder {
 				
 		$tblCategory = "chualongvien_btype";
 		
-		$selectAllStmt 		= sprintf("select * from %s ORDER BY name", $tblCategory);
+		$selectAllStmt 		= sprintf("select * from %s ORDER BY id", $tblCategory);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblCategory);
 		$updateStmt 		= sprintf("update %s set name=?, `key`=? where id=?", $tblCategory);
 		$insertStmt 		= sprintf("insert into %s ( name, key ) values(?, ?)", $tblCategory);

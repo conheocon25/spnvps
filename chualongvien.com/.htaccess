@@ -160,7 +160,10 @@ RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/load$ 				?cmd=AppNewsDelLoad&IdCate
 RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/exe$ 				?cmd=AppNewsDelExe&IdCategory=$1&IdNews=$2 [L]
 RewriteRule ^app/news/update/all$ 								?cmd=AppNewsUpdateAll [L]
 
-RewriteRule ^app/category/video$ 								?cmd=AppCategoryVideo [L]
+RewriteRule ^app/btype$ 										?cmd=AppBType [L]
+RewriteRule ^app/btype/([0-9]+)$ 								?cmd=AppBTypeCategory&IdBType=$1 [L]
+RewriteRule ^app/btype/([0-9]+)trang/([0-9]+)$ 					?cmd=AppBTypeCategory&IdBType=$1&Page=$2 [L]
+
 RewriteRule ^app/category/video/trang/([0-9]+)$ 				?cmd=AppCategoryVideo&Page=$1 [L]
 RewriteRule ^app/category/video/ins/load$ 						?cmd=AppCategoryVideoInsLoad [L]
 RewriteRule ^app/category/video/ins/exe$ 						?cmd=AppCategoryVideoInsExe [L]
@@ -180,27 +183,6 @@ RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVid
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/exe$ 		?cmd=AppCategoryVideoDetailUpdExe&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppCategoryVideoDetailDelLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/exe$ 		?cmd=AppCategoryVideoDetailDelExe&IdCategory=$1&IdVideoLibrary=$2 [L]
-
-RewriteRule ^app/video/update/all$ 								?cmd=AppVideoUpdateAll [L]
-
-RewriteRule ^app/category/ask$ 										?cmd=AppCategoryAsk [L]
-RewriteRule ^app/category/ask/trang/([0-9]+)$ 						?cmd=AppCategoryAsk&Page=$1 [L]
-RewriteRule ^app/category/ask/update/all$ 							?cmd=AppCategoryAskUpdateAll [L]
-RewriteRule ^app/category/ask/ins/load$ 							?cmd=AppCategoryAskInsLoad [L]
-RewriteRule ^app/category/ask/ins/exe$ 								?cmd=AppCategoryAskInsExe [L]
-RewriteRule ^app/category/ask/([a-z0-9]+)/upd/load$ 				?cmd=AppCategoryAskUpdLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([a-z0-9]+)/upd/exe$ 					?cmd=AppCategoryAskUpdExe&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([a-z0-9]+)/del/load$ 				?cmd=AppCategoryAskDelLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([a-z0-9]+)/del/exe$ 					?cmd=AppCategoryAskDelExe&IdCategory=$1 [L]
-
-RewriteRule ^app/category/ask/([0-9]+)$ 							?cmd=AppCategoryAskDetail&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([0-9]+)/trang/([0-9]+)$ 				?cmd=AppCategoryAskDetail&IdCategory=$1&Page=$2 [L]
-RewriteRule ^app/category/ask/([0-9]+)/ins/load$ 					?cmd=AppCategoryAskDetailInsLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([0-9]+)/ins/exe$ 					?cmd=AppCategoryAskDetailInsExe&IdCategory=$1 [L]
-RewriteRule ^app/category/ask/([0-9]+)/([0-9]+)/upd/load$ 			?cmd=AppCategoryAskDetailUpdLoad&IdCategory=$1&IdAsk=$2 [L]
-RewriteRule ^app/category/ask/([0-9]+)/([0-9]+)/upd/exe$ 			?cmd=AppCategoryAskDetailUpdExe&IdCategory=$1&IdAsk=$2 [L]
-RewriteRule ^app/category/ask/([0-9]+)/([0-9]+)/del/load$ 			?cmd=AppCategoryAskDetailDelLoad&IdCategory=$1&IdAsk=$2 [L]
-RewriteRule ^app/category/ask/([0-9]+)/([0-9]+)/del/exe$ 			?cmd=AppCategoryAskDetailDelExe&IdCategory=$1&IdAsk=$2 [L]
 
 RewriteRule ^app/event$ 											?cmd=AppEvent [L]
 RewriteRule ^app/event/trang/([0-9]+)$ 								?cmd=AppEvent&Page=$1 [L]
