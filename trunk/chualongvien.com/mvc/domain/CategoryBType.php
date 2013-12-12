@@ -64,12 +64,8 @@ class CategoryBType extends Object{
 	//-------------------------------------------------------------------------------	
 	function getURLView(){return "/phat-am/".$this->getKey();}
 	
-	function getURLUpdLoad(){return "/app/category/btype/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/category/btype/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/category/btype/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/category/btype/".$this->getId()."/del/exe";}
-		
+	function getURLSetting(){return "/app/btype/".$this->getId();}
+				
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

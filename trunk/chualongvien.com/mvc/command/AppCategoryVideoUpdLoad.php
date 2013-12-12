@@ -18,37 +18,23 @@
 			//-------------------------------------------------------------			
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			
+												
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			
-			$Category = $mCategoryVideo->find($IdCategory);
-			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			
+			$CategoryBTypeAll 	= $mCategoryBType->findAll();						
+			$Category 			= $mCategoryVideo->find($IdCategory);
+						
 			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
 				array("QUẢN LÝ", "/app"),
-				array("VIDEO", "/app/category/video")
+				array( mb_strtoupper($Category->getBTypeName(), 'UTF8'), $Category->getBTypeO()->getURLSetting() )
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);			
 			$request->setObject('Category', $Category);
 			
 			$request->setObject('Navigation', $Navigation);		

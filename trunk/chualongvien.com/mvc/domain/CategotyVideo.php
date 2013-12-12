@@ -45,6 +45,11 @@ class CategoryVideo extends Object{
 	
 	function setBType( $BType ) {$this->BType = $BType;$this->markDirty();}   
 	function getBType( ) {return $this->BType;}
+	function getBTypeO( ) {
+		$mBType = new \MVC\Mapper\CategoryBType();
+		$Type 	= $mBType->find($this->BType);
+		return $Type;
+	}
 	function getBTypeName( ) {$mBType = new \MVC\Mapper\CategoryBType();$BType = $mBType->find($this->BType);if (!isset($BType))return "Chưa rõ";return $BType->getName();}
 	function getBTypeKey( ) {$mBType = new \MVC\Mapper\CategoryBType();$BType = $mBType->find($this->BType);if (!isset($BType))return "Chưa rõ";return $BType->getKey();}
 	

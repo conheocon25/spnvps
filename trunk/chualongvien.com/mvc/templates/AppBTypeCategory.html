@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<ul class="nav nav-list">
+							<li class="nav-header">DANH MỤC</li>
+							<li tal:repeat="Category1 CategoryBTypeAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
+								<a tal:attributes="href Category1/getURLSetting">
+									<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getCategoryAll/count"/>
+								</a>
+							</li>
+						</ul>						
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>
+										<th />
+										<th>DANH MỤC</th>
+										<th>VIDEO</th>
+										<th>XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="CV Category/getCategoryAll">
+										<td width="32" align="center"><div tal:content="repeat/CV/number" /></td>
+										<td width="32" align="center"><span tal:condition="CV/isVIP" class="icon-star"/></td>
+										<td><a tal:attributes="href CV/getURLUpdLoad"><div tal:content="CV/getNameReduce2" /></a></td>
+										<td>
+											<a tal:attributes="href CV/getURLVideo">
+												<div>
+													<span tal:content="CV/getBTypeName" />
+													(<span tal:content="CV/getVLs/count" />)
+												</div>
+											</a>
+										</td>
+										<td width="32"><a tal:attributes="href CV/getURLDelLoad"><span class="icon-remove" /></a></td>
+									</tr>
+								</tbody>
+								<tfoot>																		
+									<td colspan="5" align="center">
+										<a class="btn" href="/app/category/video/ins/load">
+											<span class="icon-plus" /> Thêm mới
+										</a>										
+									</td>
+								</tfoot>
+							</table>
+							<!--
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+							!-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>

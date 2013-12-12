@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<span metal:use-macro="mAdmin.xhtml/Menu"/>
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th>STT</th>										
+										<th>DANH MỤC</th>
+										<th>VIDEO</th>										
+									</tr>
+								</thead>
+								<tbody>
+									<tr class="content-rows" tal:repeat="Category CategoryBTypeAll">
+										<td width="32" align="center"><div tal:content="repeat/Category/number" /></td>
+										<td><div tal:content="Category/getName" /></td>
+										<td>
+											<a tal:attributes="href Category/getURLSetting">
+												Danh mục (<span tal:content="Category/getCategoryAll/count" />)
+											</a>
+										</td>										
+									</tr>
+								</tbody>								
+							</table>							
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>
