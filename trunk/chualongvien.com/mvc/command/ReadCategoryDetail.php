@@ -35,7 +35,7 @@
 			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			
 			$PanelAdsAll = $mPanelAds->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$MonkAll = $mMonk->findVIP(null);
 			
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');

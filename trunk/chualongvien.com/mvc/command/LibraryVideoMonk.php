@@ -30,7 +30,7 @@
 			$IdMonk = $Monk->getId();
 			$IdCategoryBType = $CategoryBType->getId();
 						
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();			

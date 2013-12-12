@@ -28,7 +28,7 @@
 			$VMUpdateTopAll = $mVM->findByUpdateTop(array($IdBType));
 			$VMViewTopAll = $mVM->findByViewTop(array($IdBType));
 									
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();

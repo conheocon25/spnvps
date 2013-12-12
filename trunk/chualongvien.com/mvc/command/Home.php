@@ -31,7 +31,7 @@
 			$Categories = $mCategoryNews->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryVideo = $mCategoryVideo->findAll()->current();
 			$SponsorAll = $mSponsor->findAll();						
 			$AskAll = $mAsk->findByTop(array());
@@ -45,8 +45,7 @@
 			
 			$EventAll = $mEvent->findAll();
 			$Course = $mCourse->findByNear(null)->current();
-			$Popup = $mPopup->findByName("trang-chu");
-												
+															
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -56,8 +55,7 @@
 			$request->setObject("VM8", $VM8);
 			$request->setObject("VM24", $VM24);
 			$request->setObject("VL24", $VL24);
-			$request->setObject("Course", $Course);						
-			$request->setObject("Popup", $Popup);
+			$request->setObject("Course", $Course);									
 			$request->setObject("EventAll", $EventAll);
 			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
