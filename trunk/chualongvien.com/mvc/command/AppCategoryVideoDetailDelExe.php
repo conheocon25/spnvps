@@ -29,7 +29,10 @@
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
+			//-------------------------------------------------------------			
+			$request->setProperty("IdCategory", $VL->getCategory()->getId());
+			$request->setProperty("IdBType", $VL->getCategory()->getBTypeO()->getId());
+			
 			return self::statuses('CMD_OK');
 		}
 	}

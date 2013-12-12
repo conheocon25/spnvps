@@ -85,12 +85,9 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/danh-muc/".$this->getKey();}
 	
-	function getURLView(){return "/app/category/video/".$this->getId();}	
-	function getURLVideo(){return "/app/category/video/".$this->getId();}
-	
-	function getURLYoutubeUpdLoad(){return "/app/category/video/".$this->getId()."/youtube/upd/load";}
-	function getURLYoutubeUpdExe(){return "/app/category/video/".$this->getId()."/youtube/upd/exe";}
-	
+	function getURLView(){return "/app/category/video/".$this->getId();}
+	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}
+			
 	function getURLVideoInsLoad(){return "/app/category/video/".$this->getId()."/ins/load";}
 	function getURLVideoInsExe(){return "/app/category/video/".$this->getId()."/ins/exe";}
 	

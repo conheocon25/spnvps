@@ -23,6 +23,7 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
 			$mVideo = new \MVC\Mapper\Video();
 			$mVideoLibrary = new \MVC\Mapper\VideoLibrary();
 					
@@ -44,12 +45,15 @@
 			if ($URLNew != "")
 				$Video->setURL($URLNew);
 			
-			$Video->setCount($Count);
-			
+			$Video->setCount($Count);			
 			$mVideo->update($Video);			
+			
+			$Category = $mCategoryVideo->find($IdCategory);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('IdCategory'	, $IdCategory);
+			$request->setProperty('IdBType'		, $Category->getBType());
 			
 			return self::statuses('CMD_OK');
 		}
