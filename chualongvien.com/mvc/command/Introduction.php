@@ -21,7 +21,7 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------															
 			$Categories = $mCategoryNews->findAll();
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();			
 			$PagodaAll = $mPagoda->findAll();

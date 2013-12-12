@@ -14,7 +14,7 @@
 		<meta name="description" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
 		<meta name="page-topic" content="Chùa Long Viễn"/>
 		<meta name="Abstract" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
-		<meta name="classification" content="Chùa Long Viễn, thiết kế Web, SPN, Nguyên Phong, quay phim, chụp hình"/>
+		<meta name="classification" content="Chùa Long Viễn, thiết kế Web, SPN"/>
 		<link rel="shortcut icon" href="/data/images/logo/favicon.ico" type="image/x-icon"/>
 	</span>
 	
@@ -69,34 +69,11 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">PHẬT ÂM <b class="caret"/></a>
 					<ul class="dropdown-menu">
 						<li tal:repeat="Category CategoryBTypeAll">
-							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . '(' . Category->getVideoAllCountPrint() . ')'" />
+							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . ' (' . Category->getVideoAllCountPrint() . ')'" />
 						</li>
 					</ul>
-				</li>
-				<!--
-				<li tal:attributes="class php:ActiveItem=='Ask'?'active dropdown':'dropdown'">
-					<a class="dropdown-toggle" data-toggle="dropdown">Hỏi đáp <b class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li>
-							<a tal:attributes="href '/hoi-dap/dat-cau-hoi'">Đặt câu hỏi</a>
-						</li>
-						<li tal:repeat="Category CategoryAskAll">
-							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"></a>
-						</li>
-					</ul>
-				</li>
-				-->
+				</li>				
 				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
-				<!--
-				<li tal:attributes="class php:ActiveItem=='Pagoda'?'active dropdown':'dropdown'" >
-					<a class="dropdown-toggle" data-toggle="dropdown">Danh bạ Chùa <b class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li tal:repeat="Pagoda PagodaAll">
-							<a tal:attributes="href Pagoda/getURLRead" tal:content="Pagoda/getName"></a>
-						</li>
-					</ul>
-				</li>
-				-->				
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
 		</div>
@@ -402,56 +379,7 @@
 			<script type="text/javascript">/*<![CDATA[*/$(function(){var d1 = $("#CourseBox").attr('alt');var parts = d1.match(/(\d+)/g);var d2 = new Date(parts[0], parts[1]-1, parts[2]);var austDay = new Date();austDay = new Date(austDay.getFullYear() + 1, 1 - 1, 26);$('#CourseCountdown').countdown({until: d2});});/*]]>*/</script>
 		</div>
 	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- POPUP QUẢNG CÁO														  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="Popup">
-		<script>
-		/*<![CDATA[*/
-			$(document).ready(function(){
-				$(".hide-popup").hide(function(){
-					$("#ads-open").show();
-				});
-				$("#ads-open").hide();
-				$("#ads-open").click( function(){
-					$("#ads-open").slideUp('slow', function(){
-						$(".ads-popup").slideDown('slow');
-					});
-				});
-				$(".ads-close").click( function(){
-					$(".ads-popup").slideUp('slow', function(){
-						$("#ads-open").slideDown('slow');
-					});
-				});
-			});
-		/*]]>*/
-		</script>
-		<div class="ads-popup ads-popup-center" tal:condition="Popup/getEnable">
-			<div class="ads-close"><i class="icon-chevron-down icon-white"/></div>
-			<div id="PopupCarousel" class="carousel slide carousel-fade popup-slide reset-margin">
-				<ol class="carousel-indicators">
-					<li data-target="#PopupCarousel" data-slide-to="0" class="active"></li>
-				</ol>
-				<div class="carousel-inner">
-					
-					<div class="active item">
-						<a tal:attributes="href '#'">
-							<img width="100%" tal:attributes="src SponsorAll/current/getPicture" class="img-rounded"/>
-						</a>
-					</div>
-					
-					<div class="item" tal:repeat="Sponsor SponsorAll">
-						<a tal:attributes="href Sponsor/getURLView">
-							<img width="100%" tal:attributes="src Sponsor/getPicture" class="img-rounded"/>
-						</a>
-					</div>					
-				</div>
-			</div>
-		</div>
-		<div id="ads-open" class="ads-open-center"><i class="icon-chevron-up icon-white"/></div>
-	</div>
-	
+			
 	<!-- ======================================================================== -->
 	<!-- FOOTER																	  -->
 	<!-- ======================================================================== -->
@@ -462,10 +390,8 @@
 				<li><a href="/tin-tuc">Tin tức</a></li>
 				<li><a href="/dao-tao">Đào tạo</a></li>
 				<li><a href="/su-kien">Sự kiện</a></li>				
-				<li><a href="/phat-am">PHẬT ÂM</a></li>
-				<li><a href="/hoi-dap/dat-cau-hoi">Hỏi đáp</a></li>
-				<li><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
-				<li><a href="/chua-ban">Danh bạ</a></li>
+				<li><a href="/phat-am">PHẬT ÂM</a></li>				
+				<li><a href="/thu-vien-anh">Ảnh hoạt động</a></li>				
 				<li><a href="/lien-he">Liên hệ</a></li>
 				<li id="last"><a href="/signin/load">Quản trị</a></li>
 			</ul>

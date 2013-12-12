@@ -28,18 +28,7 @@
 									<p class="media-reduce">Nội dung tóm tắt</p>
 									<a tal:attributes="href EV/getURLRead" class="btn">Xem chi tiết</a>
 								</div>
-							</div>
-							<!--
-							<center>
-								<div class="pagination page-number">
-									<ul>
-										<li tal:repeat="P PN/getPages">
-											<a tal:attributes="href P/getURL" tal:content="P/getName" />
-										</li>
-									</ul>
-								</div>
-							</center>
-							-->
+							</div>							
 						</div>
 					</div>
 
@@ -57,11 +46,9 @@
 					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
-			<div metal:use-macro="base.xhtml/Footer"/>
-			<div metal:use-macro="base.xhtml/Popup"/>
+			<div metal:use-macro="base.xhtml/Footer"/>			
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
-			<div id="fb-root"/>
 		</div>
 	</body>
 </html>

@@ -29,7 +29,7 @@
 			
 			$VLs = $mVL->findByLimit(array($Category->getId()));
 									
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();			

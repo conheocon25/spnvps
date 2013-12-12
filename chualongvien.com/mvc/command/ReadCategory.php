@@ -31,7 +31,7 @@
 			$CategoryAskAll = $mCategoryAsk->findAll();
 			$PagodaAll = $mPagoda->findAll();
 			$SponsorAll = $mSponsor->findAll();						
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 						
 			if (!isset($Page)) $Page = 1;			
 			$Course = $mCourse->findByNear(null)->current();

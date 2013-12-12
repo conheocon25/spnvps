@@ -29,7 +29,7 @@
 			$MonkSelected = $VM->getMonk();
 			$CategorySelected = $VM->getCategory();
 			
-			$CategoryBTypeAll = $mCategoryBType->findAll();
+			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
 			$CategoriesVideo = $mCategoryVideo->findAll();
 			$CategoryAskAll = $mCategoryAsk->findAll();
