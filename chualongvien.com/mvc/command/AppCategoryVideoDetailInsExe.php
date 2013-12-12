@@ -20,15 +20,18 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			$mVideo = new \MVC\Mapper\Video();
-			$mVideoLibrary = new \MVC\Mapper\VideoLibrary();
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo();
+			$mVideo 		= new \MVC\Mapper\Video();
+			$mVideoLibrary 	= new \MVC\Mapper\VideoLibrary();
 					
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			if (!isset($Name)||$Name=="")
 				return self::statuses('CMD_OK');
-				
+			
+			$Category = $mCategoryVideo->find($IdCategory);
+			
 			$Video = new \MVC\Domain\Video(
 				null,
 				$Name,
@@ -52,6 +55,9 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
+			$request->setProperty('IdBType'		, $Category->getBType());
+			$request->setProperty('IdCategory'	, $IdCategory);
+			
 			return self::statuses('CMD_OK');
 		}
 	}

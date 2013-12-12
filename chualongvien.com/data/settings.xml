@@ -38,8 +38,7 @@
 		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
 		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
 		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
-		<command name="LibraryVideoPagoda" type="public"><view>LibraryVideoPagoda</view></command>
-
+		
 		<command name="App"><view>App</view></command>
 						
 		<!-- ============================================================================== -->
@@ -95,7 +94,7 @@
 		<command name="AppEventUpdExe"><view>AppEventUpdExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>		
 		<command name="AppEventDelLoad"><view>AppEventDelLoad</view></command>
 		<command name="AppEventDelExe"><view>AppEventDelExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
-				
+			
 		
 		<!-- ============================================================================== -->
 		<!-- APP.MONK																		-->
@@ -138,6 +137,7 @@
 		<!-- ============================================================================== -->
 		<command name="AppBType"><view>AppBType</view></command>
 		<command name="AppBTypeCategory"><view>AppBTypeCategory</view></command>
+		<command name="AppBTypeCategoryVideo"><view>AppBTypeCategoryVideo</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.CATEGORY.VIDEO																-->
@@ -154,17 +154,14 @@
 		<!-- ============================================================================== -->
 		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>
 		
-		<command name="AppCategoryVideoDetailYoutubeUpdLoad"><view>AppCategoryVideoDetailYoutubeUpdLoad</view></command>
-		<command name="AppCategoryVideoDetailYoutubeUpdExe"><view>AppCategoryVideoDetailYoutubeUpdExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
-		
 		<command name="AppCategoryVideoDetailInsLoad"><view>AppCategoryVideoDetailInsLoad</view></command>
-		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
 		
 		<command name="AppCategoryVideoDetailUpdLoad"><view>AppCategoryVideoDetailUpdLoad</view></command>
-		<command name="AppCategoryVideoDetailUpdExe"><view>AppCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		<command name="AppCategoryVideoDetailUpdExe"><view>AppCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
 		
 		<command name="AppCategoryVideoDetailDelLoad"><view>AppCategoryVideoDetailDelLoad</view></command>
-		<command name="AppCategoryVideoDetailDelExe"><view>AppCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppCategoryVideoDetail</forward></status></command>
+		<command name="AppCategoryVideoDetailDelExe"><view>AppCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.NEWS																		-->
