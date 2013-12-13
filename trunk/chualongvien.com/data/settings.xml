@@ -33,6 +33,10 @@
 		<!-- ============================================================================== -->
 		<command name="Library" type="public"><view>Library</view></command>
 		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>
+		<command name="LibraryVideo1" type="public"><view>LibraryVideo1</view></command>
+		<command name="LibraryVideo2" type="public"><view>LibraryVideo2</view></command>
+		<command name="LibraryVideoLoadCategory" type="public"><view>LibraryVideoLoadCategory</view></command>
+		
 		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
 		<command name="LibraryVideoCategory" type="public"><view>LibraryVideoCategory</view></command>
 		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
