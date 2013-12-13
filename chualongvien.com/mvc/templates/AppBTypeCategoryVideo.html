@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container-fluid">
+			<span metal:use-macro="mAdmin.xhtml/Header"/>
+			<div class="row-fluid">
+				<div class="row-fluid">
+					<div class="span3">
+						<ul class="nav nav-list">
+							<li class="nav-header">DANH MỤC</li>
+							<li tal:repeat="Category1 CategoryAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
+								<a tal:attributes="href Category1/getURLSetting">
+									<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLs/count"/>
+								</a>
+							</li>
+						</ul>						
+					</div>
+					<div class="span9">
+						<div class="content">
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<table class="table table-striped table-hover">
+								<thead>
+									<tr>
+										<th width="30px">STT</th>										
+										<th align="left">TIÊU ĐỀ</th>
+										<th align="left">NGÀY</th>
+										<th width="30px">XÓA</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr tal:repeat="VL Category/getVLs">
+										<td width="32" align="center">
+											<div tal:content="repeat/VL/number" />
+										</td>
+										<td>
+											<a tal:attributes="href VL/getURLUpdLoad">
+												<div tal:content="VL/getVideo/getName" />
+											</a>
+										</td>
+										<td tal:content="VL/getVideo/getTimePrint" />
+										<td>
+											<a tal:attributes="href VL/getURLDelLoad"><span class="icon-remove"/></a>
+										</td>
+									</tr>
+								</tbody>
+								<tfoot>
+									<tr>
+										<td colspan="4">
+											<a class="btn" tal:attributes="href Category/getURLVideoInsLoad">
+												<span class="icon-plus"/> Thêm mới
+											</a>
+										</td>										
+									</tr>
+								</tfoot>
+							</table>
+							<!--
+							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+							!-->
+						</div>
+					</div>
+				</div>
+			</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+		</div>		
+	</body>
+</html>

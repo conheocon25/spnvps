@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span3 fix-width-3">
+					<div class="box radius">
+						<div class="b-title">
+							<div class="b-t-icon-content">DANH MỤC</div>
+						</div>
+						<div class="b-content">
+							<ul class="nav nav-tabs nav-stacked reset-margin list-3">								
+								<!--<li tal:repeat="Category1 CategoryBType/getCategoryAll" tal:attributes="class php:Category1->getId()==Category->getId()?'active news-list-item':'news-list-item'">!-->
+								<li tal:repeat="Category1 CategoryBType/getCategoryAll">
+									<a class="CategoryButton" tal:attributes="alt Category1/getId">
+										<span class="label monk-label" tal:content="Category1/getVLs/count"/>
+										<span tal:content="Category1/getName"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="span6 fix-width-3">
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin" id="ActiveVideoName"/>
+							<i class="pull-right">								
+								<span />
+							</i>
+						</div>
+						<div class="b-content news-content padding-content">							
+							<div class="img-polaroid">
+								<iframe id="ActiveVideoURL" width="100%" height="400" src="" frameborder="0" wmode="Opaque"/>
+							</div>
+							<div class="alert alert-block clearfix reset-margin">
+								<strong id="ActiveVideoNote" />
+								<span class="btn btn-danger pull-right disabled btn-small" >
+									<i class="icon-hand-up icon-white"/>
+									<span id="ActiveVideoCount"/> lượt xem
+								</span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="span3 fix-width-3">
+					<div class="box radius" id="VideoList" />
+				</div>
+			</div>
+			<div metal:use-macro="base.xhtml/Footer"/>			
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>			
+		</div>
+		<script>
+			/*<![CDATA[*/
+			$(".CategoryButton").click(function(){
+				var IdCategory = $(this).attr('alt');				
+				$(this).parent().toggleClass('active').siblings().removeClass('active');				
+				$("#VideoList").load("/thu-vien-phat-phap/load/"+IdCategory);
+			});
+			$(".CategoryButton:first").click();
+			
+			/*]]>*/
+		</script>
+	</body>
+</html>

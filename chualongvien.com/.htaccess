@@ -43,7 +43,11 @@ RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)$					?cmd=LibraryVideo
 RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoMonk&KBType=$1&KMonk=$2&Page=$3 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoMonkPlay&KBType=$1&KMonk=$2&KVideo=$3 [L]
 
-RewriteRule ^library/video/pagoda/([a-z0-9]+)$						?cmd=LibraryVideoPagoda&IdPagoda=$1 [L]
+RewriteRule ^thu-vien-phat-phap$									?cmd=LibraryVideo2 [L]
+RewriteRule ^lich-su-phat-giao$										?cmd=LibraryVideo1 [L]
+
+RewriteRule ^thu-vien-phat-phap/load/([0-9]+)$						?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
+RewriteRule ^lich-su-phat-giao/load/([0-9]+)$						?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
 
 RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
 RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]

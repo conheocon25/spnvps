@@ -1,7 +1,7 @@
 <?php
 	namespace MVC\Command;	
-	class Gate extends Command {
-		function doExecute( \MVC\Controller\Request $request ) {
+	class LibraryVideoLoadCategory extends Command {
+		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
@@ -11,33 +11,30 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			
+			$IdCategory 	= $request->getProperty("IdCategory");
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------						
+			require_once("mvc/base/mapper/MapperDefault.php");
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Title = "CHÀO MỪNG ĐẾN VỚI WEBSITE CHÙA LONG VIỄN";
-			$H = date('H');
+			//-------------------------------------------------------------																	
+			$Category		= $mCategoryVideo->find($IdCategory);
 			
-			if ($H>=3 && $H<=10){
-				$Id = 1;
-			}else if ($H>10 && $H<=16){
-				$Id = 2;
-			}else if ($H>16 && $H<=18){
-				$Id = 3;
-			}else{
-				$Id = 4;
+			$VLAll			= $Category->getVLs();
+			while($VLAll->valid()){
+				$VL = $VLAll->current();
+				$Video = $VL->getVideo();
+				$Video->setCount($Video->getCount() + 1);
+				$mVideo->update($Video);				
+				$VLAll->next();
 			}
-			$Image = '/data/images/bg/gate'.$Id.'.jpg';
-			$Style = "background:url(".$Image.") no-repeat center center fixed";
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);			
-			$request->setProperty("Style", $Style);
+			//-------------------------------------------------------------															
+			$request->setObject("Category"		, $Category);
+																					
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
