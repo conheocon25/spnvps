@@ -22,12 +22,14 @@
 			$Title = "CHÀO MỪNG ĐẾN VỚI WEBSITE CHÙA LONG VIỄN";
 			$H = date('H');
 			
-			if ($H>=3 && $H<=13){
+			if ($H>=3 && $H<=9){
 				$Id = 1;
-			}else if ($H>13 && $H<=17){
+			}else if ($H>9 && $H<=15){
 				$Id = 2;
-			}else{
+			}else if ($H>15 && $H<=17){
 				$Id = 3;
+			}else{
+				$Id = 4;
 			}
 			$Image = '/data/images/bg/gate'.$Id.'.jpg';
 			$Style = "background:url(".$Image.") no-repeat center center fixed";			
