@@ -20,6 +20,7 @@
 		$('#PopupCarousel').carousel({interval: 5000});
 		$('#EventCarousel').carousel({interval: 5000});
 		$('.monk-tooltip').tooltip(2000);
+		$('.banner-slide').carousel({interval: 5000});
 		
 		var offset = 220;
 		var duration = 500;
