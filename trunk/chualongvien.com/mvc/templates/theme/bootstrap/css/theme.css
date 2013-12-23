@@ -7,7 +7,8 @@
 	
 		.top-menu li a {
 			color: #FFFFFF !important;
-			text-shadow: 1px 1px 0 #696969 !important;
+			*text-shadow: 1px 1px 0 #696969 !important;
+			font-weight: 600;
 		}
 		
 		.top-menu li:hover a { background: rgba(255, 255, 255, .3) !important; }
@@ -41,16 +42,17 @@
 		color: white;
 	}
 	
-	.box { border: 1px solid #7CA324; }
+	.box { border: 1px solid #921517; }
 	
 		.box .b-title {
-			background-color: #0D8700;
+			background-color: #921517;
 			*background: url("/data/images/bg/menu.jpg") repeat-x top left transparent;
-			border-bottom: 1px solid #0D8700;
+			border-bottom: 1px solid #921517;
 		}
 		
 		.b-title .b-t-icon-content {
-			background: url("/data/images/bg/title_icon.png") no-repeat 5px 1px transparent;
+			background: url("/data/images/bg/title_icon.gif") no-repeat 5px 2px transparent;
+			background-size: 30px 30px;
 			color: white;
 		}
 		
@@ -71,7 +73,7 @@
 	.fixed-function { background-color: rgba(0, 0, 0, .7); }
 	
 		.bubble {
-			background-color: #0D8700;
+			background-color: #921517;
 			color: white;
 			border: 1px solid white;
 		}
@@ -93,7 +95,7 @@
 		
 	.news-list-title { color: #A99999; }
 	
-		.news-list-item a { color: #0D8700 !important; }
+		.news-list-item a { color: #921517 !important; }
 		
 		.new-list-polaroid .media-time { color: #696969; }
 
@@ -104,12 +106,12 @@
 	.news-content .news-author p,
 	.news-content .news-author p a,
 	.eventCalendar-wrap
-	{ color: #0D8700 !important; }
+	{ color: #921517 !important; }
 
 	
 	.news-content .news-author {
-		border-top: 1px solid #0D8700;
-		border-bottom: 1px solid #0D8700;
+		border-top: 1px solid #921517;
+		border-bottom: 1px solid #921517;
 		background-color: #FFEAC9;
 	}
 	
@@ -118,8 +120,8 @@
 	}
 	
 	.eventsCalendar-currentTitle {
-		background-color: #0D8700;
-		outline: 1px solid #0D8700;
+		background-color: #921517;
+		outline: 1px solid #921517;
 		border: 1px solid #E3E3E3;
 	}
 	
@@ -129,8 +131,8 @@
 	}
 	
 	.eventsCalendar-list .eventsCalendar-noEvents {
-		background-color: #0D8700;
-		box-shadow: 0 0 10px #0D8700;
+		background-color: #921517;
+		box-shadow: 0 0 10px #921517;
 	}
 	
 	.pg-header {
@@ -140,15 +142,15 @@
 		padding: 15px 10px 27px 60px;
 	}
 	
-		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #0D8700; }
-		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #0D8700; }
-		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #0D8700; }
-		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #0D8700; }
-		.pg-header-paper { background: url("/data/images/bg/paper.png") no-repeat top left #0D8700; }
-		.pg-header-picture { background: url("/data/images/bg/picture.png") no-repeat top left #0D8700; }
-		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #0D8700; }
-		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #0D8700; }
-		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #0D8700; }
+		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #921517; }
+		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #921517; }
+		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #921517; }
+		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #921517; }
+		.pg-header-paper { background: url("/data/images/bg/paper.png") no-repeat top left #921517; }
+		.pg-header-picture { background: url("/data/images/bg/picture.png") no-repeat top left #921517; }
+		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #921517; }
+		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #921517; }
+		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #921517; }
 
 	.pg-header a {
 		color: white !important;
