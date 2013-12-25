@@ -39,7 +39,7 @@
 		.top-menu li a {
 			border-radius: 0 !important;
 			margin: 0 !important;
-			padding: 10px !important;
+			padding: 10px 8px !important;
 			cursor: pointer;
 		}
 		
