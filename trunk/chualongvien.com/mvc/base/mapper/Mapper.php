@@ -1,6 +1,6 @@
 <?php
 namespace MVC\Mapper;
-use MVC\Library\Encrypted;
+//use MVC\Library\Encrypted;
 require_once("mvc/base/Registry.php");
 require_once("mvc/base/Exceptions.php");
 require_once("mvc/base/domain/Finders.php");
@@ -19,8 +19,8 @@ abstract class Mapper implements \MVC\Domain\Finder {
         if ( ! isset(self::$PDO) ) { 
             						
 			$dsn = "mysql:host=localhost;";
-			$dbname = "dbname=spngroup_chualongvien";
-			$user = "spngroup_userdb";
+			$dbname = "dbname=longvien_db";
+			$user = "longvien_userdb";
 			$pass = "admin068198";
 			
             if ( is_null( $dsn ) ) {
