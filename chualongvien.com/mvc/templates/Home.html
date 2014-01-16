@@ -11,6 +11,8 @@
 				$(".hidden-control").click(function(){
 					($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down")
 				});
+				
+				$("#springbtn").trigger('click');
 			});
 			/*]]>*/
 		</script>
@@ -164,6 +166,7 @@
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/WarningMsg"/>
+					<div metal:use-macro="base.xhtml/SpringMsg"/>
 					<div metal:use-macro="base.xhtml/LessionBox"/>
 					<div metal:use-macro="base.xhtml/LibraryBox"/>
 					<div metal:use-macro="base.xhtml/HistoryBox"/>
