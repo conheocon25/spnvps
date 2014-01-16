@@ -19,11 +19,13 @@ class Viewer {
 		
 		//Khởi tạo template và chuyển các thuộc tính và đối tượng sang
 		$tpl = new PHPTAL($this->Path);
-		while (list($key, $val) = each($objects)){
-			$tpl->$key = $val;
+		while (list($key, $val) = each($objects)){			
+			if (substr($key, 0, 1)!='_')
+				$tpl->$key = $val;			
 		}
-		while (list($key, $val) = each($properties)){
-			$tpl->$key = $val;
+		while (list($key, $val) = each($properties)){			
+			if (substr($key, 0, 1)!='_')
+				$tpl->$key = $val;
 		}
 		$Html = $tpl->execute();
 		

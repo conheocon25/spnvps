@@ -88,15 +88,15 @@
 				<li tal:attributes="class php:ActiveItem=='Course'?'active':'?'" ><a href="/dao-tao">Tu học</a></li>
 				<li tal:attributes="class php:ActiveItem=='Event'?'active':'?'" ><a href="/su-kien">Sự kiện</a></li>
 				<li tal:attributes="class php:ActiveItem=='LibraryVideo'?'active dropdown':'dropdown'">
-					<a class="dropdown-toggle" data-toggle="dropdown">PHẬT ÂM <b class="caret"/></a>
+					<a class="dropdown-toggle" data-toggle="dropdown">Phật âm <b class="caret"/></a>
 					<ul class="dropdown-menu">
 						<li tal:repeat="Category CategoryBTypeAll">
 							<a tal:attributes="href Category/getURLView" tal:content="php: Category->getName() . ' (' . Category->getVideoAllCountPrint() . ')'" />
 						</li>
 					</ul>
 				</li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch Sử Phật Giáo</a></li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện Phật Pháp</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử Phật giáo</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>
 				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/thu-vien-anh">Ảnh hoạt động</a></li>
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
