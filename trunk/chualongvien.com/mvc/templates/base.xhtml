@@ -471,6 +471,31 @@
 	</div>
 	
 	<!-- ======================================================================== -->
+	<!-- SPRING MESSAGE															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="SpringMsg" class="box no-border">
+		<center><a id="springbtn" href="#springModal" role="button" class="btn btn-success" data-toggle="modal">
+			<img src="/data/images/logo/spring_button.jpg" width="100%" style="border-radius:20px;"/>
+			<h3 style="font-size:29px;">MỪNG XUÂN GIÁP NGỌ 2014</h3>
+		</a></center>
+		<div id="springModal" class="modal hide fade full-screen" tabindex="-1" role="dialog" aria-labelledby="springModalLabel" aria-hidden="true">
+			<div class="modal-header" style="background-color:rgba(255,0,0,.3);color:red;">
+				<center><h3 id="springModalLabel">MỪNG XUÂN GIÁP NGỌ 2014</h3></center>
+			</div>
+			<div class="modal-body" style="position:relative;background-color:rgba(255,0,0,.1);">
+				<img style="position:absolute;left:0;top:0;image-orientation:flip;" src="/data/images/logo/canhdao.png"/>
+				<img style="position:absolute;left:100px;top:120px;image-orientation:flip;" src="/data/images/logo/phao.gif"/>
+				<center><img src="/data/images/logo/spring.jpg" width="500"/></center>
+				<img style="position:absolute;right:0;top:0;" src="/data/images/logo/canhdao.png"/>
+				<img style="position:absolute;right:100px;top:120px;" src="/data/images/logo/phao.gif"/>
+			</div>
+			<div class="modal-footer" style="background-color:rgba(255,0,0,.3);">
+				<center><button class="btn" data-dismiss="modal" aria-hidden="true">Thu nhỏ lại</button></center>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
 	<!-- THƯ VIỆN PHẬT PHÁP														  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="LibraryBox" class="box">
