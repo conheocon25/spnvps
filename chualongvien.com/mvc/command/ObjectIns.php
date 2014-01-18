@@ -1,39 +1,38 @@
 <?php
 	namespace MVC\Command;	
-	class AppConfigInsExe extends Command{
-		function doExecute( \MVC\Controller\Request $request ){
-			require_once("mvc/base/domain/HelperFactory.php");			
+	class ObjectIns extends Command {
+		function doExecute( \MVC\Controller\Request $request ) {
+			require_once("mvc/base/domain/HelperFactory.php");	
+			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
 			$Session = \MVC\Base\SessionRegistry::instance();
-									
+
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
-			//-------------------------------------------------------------		
-			$Param = $request->getProperty('Param');
-			$Value = $request->getProperty('Value');
+			//-------------------------------------------------------------
+			$ObjectName = $request->getProperty('ObjectName');
+			$Data = $request->getProperty('Data');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mConfig = new \MVC\Mapper\Config();
-			
+									
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------															
-			$Config = new \MVC\Domain\Config(
-				null,
-				$Param,
-				$Value
-			);
-			$mConfig->insert($Config);
+			//-------------------------------------------------------------
+			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
+			$Domain		= \MVC\Domain\HelperFactory::getModel($ObjectName);
+			$Domain->setArray($Data);
+			$mMapper->insert($Domain);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			
-			return self::statuses('CMD_OK');
+						
+			$json = array('result' => "OK");
+			echo json_encode($json);
 		}
 	}
 ?>

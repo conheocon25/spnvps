@@ -84,10 +84,7 @@
 							
 	<div metal:define-macro="Menu" class="menu">
 		<ul class="nav nav-list config-number">
-			<li class="nav-header">MODULE CHỨC NĂNG</li>
-			<li tal:attributes="class php:ActiveAdmin=='Task'?'active':'disable'">
-				<a tal:attributes="href '/app/category/task'">LỊCH LÀM VIỆC <span class="badge badge-info pull-right" tal:content="CategoryTaskAll/count"/></a>
-			</li>						
+			<li class="nav-header">MODULE CHỨC NĂNG</li>			
 			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'">
 				<a tal:attributes="href '/app/category/news'">TIN TỨC <span class="badge badge-info pull-right" tal:content="CategoryNewsAll/count"/></a>
 			</li>				
@@ -99,18 +96,9 @@
 			</li>						
 			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'disable'">
 				<a tal:attributes="href '/app/monk'">GIẢNG SƯ <span class="badge badge-info pull-right" tal:content="MonkAll/count"/></a>
-			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Event'?'active':'disable'">
-				<a tal:attributes="href '/app/event'">SỰ KIỆN <span class="badge badge-info pull-right" tal:content="EventAll/count"/></a>
-			</li>
+			</li>						
 			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'">
 				<a tal:attributes="href '/app/album'">HÌNH ẢNH<span class="badge badge-info pull-right" tal:content="AlbumAll/count"/></a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='PanelNews'?'active':'disable'">
-				<a tal:attributes="href '/app/panel/news'">TIN TỨC NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelNewsAll/count"/></a>
-			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='PanelCategoryVideo'?'active':'disable'">
-				<a tal:attributes="href '/app/panel/category/video'">VIDEO NỔI BẬT <span class="badge badge-info pull-right" tal:content="PanelCategoryVideoAll/count"/></a>
 			</li>
 			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'">
 				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a>

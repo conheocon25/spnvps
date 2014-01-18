@@ -61,25 +61,12 @@ RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCours
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
+RewriteRule ^object/load/([A-Za-z0-9]+)/([0-9]+)$ 					?cmd=ObjectLoad&ObjectName=$1&Id=$2 [L]
+RewriteRule ^object/del/([A-Za-z0-9]+)/([0-9]+)$ 					?cmd=ObjectDel&ObjectName=$1&Id=$2 [L]
+RewriteRule ^object/ins/([A-Za-z0-9]+)$ 							?cmd=ObjectIns&ObjectName=$1 [L]
+RewriteRule ^object/upd/([A-Za-z0-9]+)$ 							?cmd=ObjectUpd&ObjectName=$1 [L]
+
 RewriteRule ^app$ 													?cmd=App [L]
-
-RewriteRule ^app/category/task$ 									?cmd=AppCategoryTask [L]
-RewriteRule ^app/category/task/trang/([0-9]+)$ 						?cmd=AppCategoryTask&Page=$1 [L]
-RewriteRule ^app/category/task/ins/load$ 							?cmd=AppCategoryTaskInsLoad [L]
-RewriteRule ^app/category/task/ins/exe$ 							?cmd=AppCategoryTaskInsExe [L]
-RewriteRule ^app/category/task/([0-9]+)/upd/load$ 					?cmd=AppCategoryTaskUpdLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/task/([0-9]+)/upd/exe$ 					?cmd=AppCategoryTaskUpdExe&IdCategory=$1 [L]
-RewriteRule ^app/category/task/([0-9]+)/del/load$ 					?cmd=AppCategoryTaskDelLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/task/([0-9]+)/del/exe$ 					?cmd=AppCategoryTaskDelExe&IdCategory=$1 [L]
-
-RewriteRule ^app/task/([0-9]+)$ 									?cmd=AppTask&IdCategory=$1 [L]
-RewriteRule ^app/task/([0-9]+)/trang/([0-9]+)$ 						?cmd=AppTask&IdCategory=$1&Page=$2 [L]
-RewriteRule ^app/task/([0-9]+)/ins/load$ 							?cmd=AppTaskInsLoad&IdCategory=$1 [L]
-RewriteRule ^app/task/([0-9]+)/ins/exe$ 							?cmd=AppTaskInsExe&IdCategory=$1 [L]
-RewriteRule ^app/task/([0-9]+)/([0-9]+)/upd/load$ 					?cmd=AppTaskUpdLoad&IdCategory=$1&IdTask=$2 [L]
-RewriteRule ^app/task/([0-9]+)/([0-9]+)/upd/exe$ 					?cmd=AppTaskUpdExe&IdCategory=$1&IdTask=$2 [L]
-RewriteRule ^app/task/([0-9]+)/([0-9]+)/del/load$ 					?cmd=AppTaskDelLoad&IdCategory=$1&IdTask=$2 [L]
-RewriteRule ^app/task/([0-9]+)/([0-9]+)/del/exe$ 					?cmd=AppTaskDelExe&IdCategory=$1&IdTask=$2 [L]
 
 RewriteRule ^app/config$ 											?cmd=AppConfig [L]
 RewriteRule ^app/config/trang/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
@@ -177,37 +164,3 @@ RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVid
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/exe$ 		?cmd=AppCategoryVideoDetailUpdExe&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppCategoryVideoDetailDelLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/exe$ 		?cmd=AppCategoryVideoDetailDelExe&IdCategory=$1&IdVideoLibrary=$2 [L]
-
-RewriteRule ^app/event$ 											?cmd=AppEvent [L]
-RewriteRule ^app/event/trang/([0-9]+)$ 								?cmd=AppEvent&Page=$1 [L]
-RewriteRule ^app/event/ins/load$ 									?cmd=AppEventInsLoad [L]
-RewriteRule ^app/event/ins/exe$ 									?cmd=AppEventInsExe [L]
-RewriteRule ^app/event/([0-9]+)/upd/load$ 							?cmd=AppEventUpdLoad&IdEvent=$1 [L]
-RewriteRule ^app/event/([0-9]+)/upd/exe$ 							?cmd=AppEventUpdExe&IdEvent=$1 [L]
-RewriteRule ^app/event/([0-9]+)/del/load$ 							?cmd=AppEventDelLoad&IdEvent=$1 [L]
-RewriteRule ^app/event/([0-9]+)/del/exe$ 							?cmd=AppEventDelExe&IdEvent=$1 [L]
-
-RewriteRule ^app/panel/news$ 										?cmd=AppPanelNews [L]
-RewriteRule ^app/panel/news/trang/([0-9]+)$ 						?cmd=AppPanelNews&Page=$1 [L]
-RewriteRule ^app/panel/news/ins/load$ 								?cmd=AppPanelNewsInsLoad [L]
-RewriteRule ^app/panel/news/ins/exe$ 								?cmd=AppPanelNewsInsExe [L]
-RewriteRule ^app/panel/news/([0-9]+)/del/load$ 						?cmd=AppPanelNewsDelLoad&IdPanelNews=$1 [L]
-RewriteRule ^app/panel/news/([0-9]+)/del/exe$ 						?cmd=AppPanelNewsDelExe&IdPanelNews=$1 [L]
-
-RewriteRule ^app/panel/category/video$ 								?cmd=AppPanelCategoryVideo [L]
-RewriteRule ^app/panel/category/video/trang/([0-9]+)$ 				?cmd=AppPanelCategoryVideo&Page=$1 [L]
-RewriteRule ^app/panel/category/video/ins/load$ 					?cmd=AppPanelCategoryVideoInsLoad [L]
-RewriteRule ^app/panel/category/video/ins/exe$ 						?cmd=AppPanelCategoryVideoInsExe [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/upd/load$ 			?cmd=AppPanelCategoryVideoUpdLoad&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/upd/exe$ 			?cmd=AppPanelCategoryVideoUpdExe&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/del/load$ 			?cmd=AppPanelCategoryVideoDelLoad&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/del/exe$ 			?cmd=AppPanelCategoryVideoDelExe&IdPanelCategoryVideo=$1 [L]
-
-RewriteRule ^app/panel/category/video/([0-9]+)$ 					?cmd=AppPanelCategoryVideoDetail&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppPanelCategoryVideoDetail&IdPanelCategoryVideo=$1&Page=$2 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/ins/load$ 			?cmd=AppPanelCategoryVideoDetailInsLoad&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/ins/exe$ 			?cmd=AppPanelCategoryVideoDetailInsExe&IdPanelCategoryVideo=$1 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppPanelCategoryVideoDetailUpdLoad&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/upd/exe$ 	?cmd=AppPanelCategoryVideoDetailUpdExe&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppPanelCategoryVideoDetailDelLoad&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
-RewriteRule ^app/panel/category/video/([0-9]+)/([0-9]+)/del/exe$ 	?cmd=AppPanelCategoryVideoDetailDelExe&IdPanelCategoryVideo=$1&IdCategoryVideo=$2 [L]
