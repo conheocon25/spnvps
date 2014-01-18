@@ -34,9 +34,9 @@ class Config extends Object{
 	}
 	
 	function setArray( $Data ){
-        $this->Id = $Data[0];
-		$this->Param = $Data[1];		
-		$this->Value = $Data[2];
+        $this->Id 		= $Data[0];
+		$this->Param 	= $Data[1];		
+		$this->Value 	= $Data[2];
     }
 	
 	//-------------------------------------------------------------------------------

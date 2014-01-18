@@ -62,6 +62,23 @@ class CategoryNews extends Object{
 		return $ProfileAll;
 	}
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName(),		 	
+		 	'Order'			=> $this->getOrder(),
+			'Key'			=> $this->getKey()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->Name 	= $Data[1];		
+		$this->Order 	= $Data[2];		
+		$this->reKey();
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
@@ -70,17 +87,7 @@ class CategoryNews extends Object{
 	
 	function getURLNewsAutoLoad(){		return "/app/category/news/".$this->getId()."/auto/load";}
 	function getURLNewsAutoExe(){		return "/app/category/news/".$this->getId()."/auto/exe";}
-	
-	function getURLUpdLoad(){			return "/app/category/news/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){			return "/app/category/news/".$this->getId()."/upd/exe";}
-	
-	function getURLProfile(){			return "/app/category/news/".$this->getId()."/profile";}
-	function getURLProfileInsLoad(){	return "/app/category/news/".$this->getId()."/profile/ins/load";}
-	function getURLProfileInsExe(){		return "/app/category/news/".$this->getId()."/profile/ins/exe";}
-	
-	function getURLDelLoad(){return "/app/category/news/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/category/news/".$this->getId()."/del/exe";}
-	
+			
 	function getURLNewsInsLoad(){return "/app/news/".$this->getId()."/ins/load";}
 	function getURLNewsInsExe(){return "/app/news/".$this->getId()."/ins/exe";}
 	
