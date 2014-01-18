@@ -110,11 +110,11 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 	
 	function findByBType( $values ){
         $this->findByBTypeStmt->execute( $values );
-        return new EventCollection( $this->findByBTypeStmt->fetchAll(), $this);
+        return new MonkCollection( $this->findByBTypeStmt->fetchAll(), $this);
     }
 	function findVIP( $values ){
         $this->findVIPStmt->execute( $values );
-        return new EventCollection( $this->findVIPStmt->fetchAll(), $this);
+        return new MonkCollection( $this->findVIPStmt->fetchAll(), $this);
     }
 	
 	function findByKey( $values ){

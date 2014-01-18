@@ -33,10 +33,7 @@
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
 			$CategoryVideo 		= $mCategoryVideo->findAll()->current();						
 			$MonkAll 			= $mMonk->findVIP(null);
-			
-			$EventAll 			= $mEvent->findAll();
-			$Course 			= $mCourse->findByNear(null)->current();
-															
+																					
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
