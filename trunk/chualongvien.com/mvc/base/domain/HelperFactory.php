@@ -36,5 +36,14 @@ class HelperFactory {
         }
         throw new \MVC\Base\AppException( "Không biết: $collection" );
     }
+	
+	static function getModel( $model ) {
+        $model = preg_replace( "/^.*_/", "", $model );
+        $model = "\\MVC\\Domain\\{$model}";
+        if ( class_exists( $model ) ) {
+            return new $model();
+        }
+        throw new \MVC\Base\AppException( "Không biết: $model" );
+    }
 }
 ?>

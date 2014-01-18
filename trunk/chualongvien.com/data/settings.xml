@@ -27,14 +27,19 @@
 		<command name="SignoutLoad"><view>SignoutLoad</view></command>
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
 			
-				
+		<!-- ============================================================================== -->
+		<!-- JSON LOAD			 															-->
+		<!-- ============================================================================== -->		
+		<command name="ObjectLoad"><view>ObjectLoad</view></command>
+		<command name="ObjectDel"><view>ObjectDel</view></command>
+		<command name="ObjectIns"><view>ObjectIns</view></command>
+		<command name="ObjectUpd"><view>ObjectUpd</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->
 		<command name="Library" type="public"><view>Library</view></command>
-		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>
-		<command name="LibraryVideo1" type="public"><view>LibraryVideo1</view></command>
-		<command name="LibraryVideo2" type="public"><view>LibraryVideo2</view></command>
+		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>		
 		<command name="LibraryVideoLoadCategory" type="public"><view>LibraryVideoLoadCategory</view></command>
 		
 		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
@@ -55,16 +60,7 @@
 		<command name="AppLibraryAlbumUpdExe"><view>AppLibraryAlbumUpdExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>		
 		<command name="AppLibraryAlbumDelLoad"><view>AppLibraryAlbumDelLoad</view></command>
 		<command name="AppLibraryAlbumDelExe"><view>AppLibraryAlbumDelExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.TASK																		-->
-		<!-- ============================================================================== -->
-		<command name="AppTask"><view>AppTask</view></command>
-		<command name="AppTaskInsLoad"><view>AppTaskInsLoad</view></command>
-		<command name="AppTaskInsExe"><view>AppTaskInsExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
-		<command name="AppTaskUpdLoad"><view>AppTaskUpdLoad</view></command>
-		<command name="AppTaskUpdExe"><view>AppTaskUpdExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>		
-		<command name="AppTaskDelLoad"><view>AppTaskDelLoad</view></command><command name="AppTaskDelExe"><view>AppTaskDelExe</view><status value="CMD_OK"><forward>AppTask</forward></status></command>
+				
 						
 		<!-- ============================================================================== -->
 		<!-- APP.COURSE																-->
@@ -87,18 +83,6 @@
 		<command name="AppCourseLessionUpdExe"><view>AppCourseLessionUpdExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
 		<command name="AppCourseLessionDelLoad"><view>AppCourseLessionDelLoad</view></command>
 		<command name="AppCourseLessionDelExe"><view>AppCourseLessionDelExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.EVENT																		-->
-		<!-- ============================================================================== -->
-		<command name="AppEvent"><view>AppEvent</view></command>
-		<command name="AppEventInsLoad"><view>AppEventInsLoad</view></command>
-		<command name="AppEventInsExe"><view>AppEventInsExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>		
-		<command name="AppEventUpdLoad"><view>AppEventUpdLoad</view></command>
-		<command name="AppEventUpdExe"><view>AppEventUpdExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>		
-		<command name="AppEventDelLoad"><view>AppEventDelLoad</view></command>
-		<command name="AppEventDelExe"><view>AppEventDelExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
-			
 		
 		<!-- ============================================================================== -->
 		<!-- APP.MONK																		-->
@@ -189,34 +173,6 @@
 		<command name="AppConfigUpdExe"><view>AppConfigUpdExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>		
 		<command name="AppConfigDelLoad"><view>AppConfigDelLoad</view></command>
 		<command name="AppConfigDelExe"><view>AppConfigDelExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.PANEL NEWS																	-->
-		<!-- ============================================================================== -->
-		<command name="AppPanelNews"><view>AppPanelNews</view></command>
-		<command name="AppPanelNewsInsLoad"><view>AppPanelNewsInsLoad</view></command>
-		<command name="AppPanelNewsInsExe"><view>AppPanelNewsInsExe</view><status value="CMD_OK"><forward>AppPanelNews</forward></status></command>
-		<command name="AppPanelNewsDelLoad"><view>AppPanelNewsDelLoad</view></command>
-		<command name="AppPanelNewsDelExe"><view>AppPanelNewsDelExe</view><status value="CMD_OK"><forward>AppPanelNews</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.PANEL CATEGORY VIDEO														-->
-		<!-- ============================================================================== -->
-		<command name="AppPanelCategoryVideo"><view>AppPanelCategoryVideo</view></command>
-		<command name="AppPanelCategoryVideoInsLoad"><view>AppPanelCategoryVideoInsLoad</view></command>
-		<command name="AppPanelCategoryVideoInsExe"><view>AppPanelCategoryVideoInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
-		<command name="AppPanelCategoryVideoUpdLoad"><view>AppPanelCategoryVideoUpdLoad</view></command>
-		<command name="AppPanelCategoryVideoUpdExe"><view>AppPanelCategoryVideoUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
-		<command name="AppPanelCategoryVideoDelLoad"><view>AppPanelCategoryVideoDelLoad</view></command>
-		<command name="AppPanelCategoryVideoDelExe"><view>AppPanelCategoryVideoDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideo</forward></status></command>
-		
-		<command name="AppPanelCategoryVideoDetail"><view>AppPanelCategoryVideoDetail</view></command>
-		<command name="AppPanelCategoryVideoDetailInsLoad"><view>AppPanelCategoryVideoDetailInsLoad</view></command>
-		<command name="AppPanelCategoryVideoDetailInsExe"><view>AppPanelCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
-		<command name="AppPanelCategoryVideoDetailDelLoad"><view>AppPanelCategoryVideoDetailDelLoad</view></command>
-		<command name="AppPanelCategoryVideoDetailDelExe"><view>AppPanelCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
-		<command name="AppPanelCategoryVideoDetailUpdLoad"><view>AppPanelCategoryVideoDetailUpdLoad</view></command>
-		<command name="AppPanelCategoryVideoDetailUpdExe"><view>AppPanelCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppPanelCategoryVideoDetail</forward></status></command>
 		
 	</control>
 </options>

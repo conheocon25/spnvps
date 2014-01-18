@@ -1,40 +1,37 @@
 <?php
 	namespace MVC\Command;	
-	class AppConfigUpdExe extends Command{
-		function doExecute( \MVC\Controller\Request $request ){
-			require_once("mvc/base/domain/HelperFactory.php");			
+	class ObjectUpd extends Command {
+		function doExecute( \MVC\Controller\Request $request ) {
+			require_once("mvc/base/domain/HelperFactory.php");	
+			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
 			$Session = \MVC\Base\SessionRegistry::instance();
-									
+
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdConfig = $request->getProperty('IdConfig');
-			$Param = $request->getProperty('Param');
-			$Value = $request->getProperty('Value');
+			$ObjectName = $request->getProperty('ObjectName');
+			$Data = $request->getProperty('Data');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mConfig = new \MVC\Mapper\Config();
-			
+									
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$ConfigAll = $mConfig->findAll();
-						
-			$Config = $mConfig->find($IdConfig);
-			$Config->setParam($Param);
-			$Config->setValue($Value);
-			$mConfig->update($Config);
+			//-------------------------------------------------------------
+			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
+			$Domain 	= $mMapper->find($Data[0]);			
+			$Domain->setArray($Data);
+			$mMapper->update($Domain);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------
-			
-			return self::statuses('CMD_OK');
+			//-------------------------------------------------------------						
+			$json = array('result' => "OK");
+			echo json_encode($json);
 		}
 	}
 ?>

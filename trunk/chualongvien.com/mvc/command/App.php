@@ -22,17 +22,12 @@
 			//-------------------------------------------------------------			
 			$CategoryBTypeAll 	= $mCategoryBType->findAll();
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
-			$CategoryVideoAll 	= $mCategoryVideo->findAll();						
-			$CategoryTaskAll 	= $mCategoryTask->findAll();			
-			$AlbumAll 			= $mAlbum->findAll();
-			$EventAll 			= $mEvent->findAll();
+			$CategoryVideoAll 	= $mCategoryVideo->findAll();									
+			$AlbumAll 			= $mAlbum->findAll();			
 			$MonkAll 			= $mMonk->findAll();
-			$CourseAll 			= $mCourse->findAll();			
-			$PanelNewsAll 		= $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$CourseAll 			= $mCourse->findAll();						
 			$ConfigAll 			= $mConfig->findAll();
-			$TaskAll 			= $mTask->findAll();
-						
+									
 			$Title = "QUẢN LÝ";
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu")
@@ -43,17 +38,12 @@
 			//-------------------------------------------------------------			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);			
-			$request->setObject("CategoryTaskAll", $CategoryTaskAll);						
-			$request->setObject('AlbumAll', $AlbumAll);
-			$request->setObject('EventAll', $EventAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);						
+			$request->setObject('AlbumAll', $AlbumAll);			
 			$request->setObject('MonkAll', $MonkAll);
 			$request->setObject('CourseAll', $CourseAll);
 			$request->setObject('ConfigAll', $ConfigAll); 			
-			$request->setObject('PanelNewsAll', $PanelNewsAll);
-			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-			$request->setObject('TaskAll', $TaskAll);
-			
+						
 			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Title", $Title);			
 			$request->setProperty("ActiveAdmin", 'Admin');
