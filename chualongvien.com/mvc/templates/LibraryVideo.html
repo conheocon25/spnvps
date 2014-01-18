@@ -12,9 +12,7 @@
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
 				<div class="span3 fix-width-3">
 					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content">DANH MỤC</div>
-						</div>
+						<div class="b-title"><div class="b-t-icon-content">DANH MỤC</div></div>
 						<div class="b-content">
 							<ul class="nav nav-tabs nav-stacked reset-margin list-3">
 								<li tal:repeat="Category1 CategoryBType/getCategoryAll">
@@ -28,7 +26,7 @@
 					</div>
 				</div>
 				<div class="span6 fix-width-3">
-					<div class="box radius">
+					<div tal:condition="not:Video" class="box radius">
 						<div class="page-header pg-header pg-header-video reset-margin">
 							<h4 class="reset-margin" id="ActiveVideoName"/>
 							<i class="pull-right">								
@@ -37,7 +35,11 @@
 						</div>
 						<div class="b-content news-content padding-content">							
 							<div class="img-polaroid">
-								<iframe id="ActiveVideoURL" width="100%" height="400" src="" frameborder="0" wmode="Opaque"/>
+								<iframe id="ActiveVideoURL" 
+										width="100%" 
+										height="400" 
+										src="" 
+										frameborder="0" wmode="Opaque"/>																		
 							</div>
 							<div class="alert alert-block clearfix reset-margin">
 								<strong id="ActiveVideoNote" />
@@ -48,10 +50,33 @@
 							</div>
 						</div>
 					</div>
+					<div tal:condition="Video" class="box radius">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin" id="ActiveVideoName" tal:content="Video/getName"/>
+							<i class="pull-right">
+								<span />
+							</i>
+						</div>
+						<div class="b-content news-content padding-content">							
+							<div class="img-polaroid">
+								<iframe id="ActiveVideoURL" 
+										width="100%" 
+										height="400" 
+										tal:attributes="src Video/getURL"
+										frameborder="0" wmode="Opaque"/>
+							</div>
+							<div class="alert alert-block clearfix reset-margin">
+								<strong id="ActiveVideoNote" tal:content="Video/getNote"/>
+								<span class="btn btn-danger pull-right disabled btn-small" >
+									<i class="icon-hand-up icon-white"/>
+									<span id="ActiveVideoCount" tal:content="Video/getCount"/> lượt xem
+								</span>
+							</div>
+						</div>
+					</div>										
 				</div>
-				<div class="span3 fix-width-3">
-					<div class="box radius" id="VideoList" />
-				</div>
+				<div class="span3 fix-width-3"><div class="box radius" id="VideoList" /></div>
+				<div id="ActiveCategory" tal:attributes="alt Category/getId" />
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>			
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
@@ -59,12 +84,15 @@
 		</div>
 		<script>
 			/*<![CDATA[*/
+			var IdActiveCategory = $("#ActiveCategory").attr('alt');			
 			$(".CategoryButton").click(function(){
-				var IdCategory = $(this).attr('alt');				
-				$(this).parent().toggleClass('active').siblings().removeClass('active');				
-				$("#VideoList").load("/lich-su-phat-giao/load/"+IdCategory);
-			});
-			$(".CategoryButton:first").click();
+				var IdCategory = $(this).attr('alt');
+				$(".CategoryButton").parent().removeClass('active');
+				$(this).parent().addClass('active');
+				
+				$("#VideoList").load("/phat-am/load/"+IdCategory);
+			});			
+			$('.CategoryButton[alt="'+IdActiveCategory+'"]').click();
 			
 			/*]]>*/
 		</script>

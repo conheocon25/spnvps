@@ -34,20 +34,14 @@ RewriteRule ^gioi-thieu$ 											?cmd=Introduction [L]
 RewriteRule ^task$ 													?cmd=Task [L]
 RewriteRule ^lien-he$ 												?cmd=Contact [L]
 
-RewriteRule ^phat-am/([a-z0-9_-]+)$											?cmd=LibraryVideo&KBType=$1 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)$					?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoCategory&KBType=$1&KCategory=$2&Page=$3 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/danh-muc/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoCategoryPlay&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)$									?cmd=LibraryVideo&KBType=$1 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/([a-z0-9_-]+)$		?cmd=LibraryVideo&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
 
-RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)$					?cmd=LibraryVideoMonk&KBType=$1&KMonk=$2 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/trang/([0-9]+)$	?cmd=LibraryVideoMonk&KBType=$1&KMonk=$2&Page=$3 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)$	?cmd=LibraryVideoMonkPlay&KBType=$1&KMonk=$2&KVideo=$3 [L]
+RewriteRule ^thu-vien-phat-phap$									?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
+RewriteRule ^lich-su-phat-giao$										?cmd=LibraryVideo&KBType=lich-su-phat-giao [L]
 
-RewriteRule ^thu-vien-phat-phap$									?cmd=LibraryVideo2 [L]
-RewriteRule ^lich-su-phat-giao$										?cmd=LibraryVideo1 [L]
-
-RewriteRule ^thu-vien-phat-phap/load/([0-9]+)$						?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
-RewriteRule ^lich-su-phat-giao/load/([0-9]+)$						?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
+RewriteRule ^phat-am/load/([0-9]+)$									?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
+RewriteRule ^phat-am/load/([0-9]+)$									?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
 
 RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
 RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]

@@ -29,21 +29,34 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 			ORDER BY (select time FROM %s V WHERE V.id=VM.id_video ) DESC 
 			LIMIT :start,:max", $tblVideoLibrary, $tblVideo
 		);
-		
-		
-        $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
-        $this->selectStmt = self::$PDO->prepare($selectStmt);
-        $this->updateStmt = self::$PDO->prepare($updateStmt);
-        $this->insertStmt = self::$PDO->prepare($insertStmt);
-		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$findByTopLibraryStmt = sprintf("
+			SELECT * FROM %s VL 
+			WHERE VL.id_category IN (select id FROM chualongvien_category_video WHERE btype=4) 
+			ORDER BY (select time from %s V where V.id=VL.id_video ) 
+			DESC limit 8", $tblVideoLibrary, $tblVideo
+		);
+		$findByTopHistoryStmt = sprintf("
+			SELECT * FROM %s VL 
+			WHERE VL.id_category IN (select id FROM chualongvien_category_video WHERE btype=5) 
+			ORDER BY (select time from %s V where V.id=VL.id_video ) 
+			DESC limit 8", $tblVideoLibrary, $tblVideo
+		);
+				
+        $this->selectAllStmt 		= self::$PDO->prepare($selectAllStmt);
+        $this->selectStmt 			= self::$PDO->prepare($selectStmt);
+        $this->updateStmt 			= self::$PDO->prepare($updateStmt);
+        $this->insertStmt 			= self::$PDO->prepare($insertStmt);
+		$this->deleteStmt 			= self::$PDO->prepare($deleteStmt);
 		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
 		
-		$this->findByStmt = self::$PDO->prepare($findByStmt);
-		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
-		$this->findByUpdateTopStmt = self::$PDO->prepare($findByUpdateTopStmt);
-		$this->findByTopLocalStmt = self::$PDO->prepare($findByTopLocalStmt);
-		$this->findByTopStmt = self::$PDO->prepare($findByTopStmt);
-		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
+		$this->findByStmt 			= self::$PDO->prepare($findByStmt);
+		$this->findByLimitStmt 		= self::$PDO->prepare($findByLimitStmt);
+		$this->findByUpdateTopStmt 	= self::$PDO->prepare($findByUpdateTopStmt);
+		$this->findByTopLocalStmt 	= self::$PDO->prepare($findByTopLocalStmt);
+		$this->findByTopStmt 		= self::$PDO->prepare($findByTopStmt);
+		$this->findByPageStmt 		= self::$PDO->prepare($findByPageStmt);
+		$this->findByTopHistoryStmt = self::$PDO->prepare($findByTopHistoryStmt);
+		$this->findByTopLibraryStmt = self::$PDO->prepare($findByTopLibraryStmt);
     } 
     function getCollection( array $raw ) {
         return new VideoLibraryCollection( $raw, $this );
@@ -81,16 +94,10 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         $this->updateStmt->execute( $values );
     }
 
-	protected function doDelete(array $values) {
-        return $this->deleteStmt->execute( $values );
-    }
-
+	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
     function selectStmt() {return $this->selectStmt;}
-    function selectAllStmt(){return $this->selectAllStmt;}
-	
-	function deleteByCategory(array $values) {
-        return $this->deleteByCategoryStmt->execute( $values );
-    }
+    function selectAllStmt(){return $this->selectAllStmt;}	
+	function deleteByCategory(array $values) {return $this->deleteByCategoryStmt->execute( $values );}
 	
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
@@ -115,6 +122,15 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 	function findByTopLocal( $values ){
         $this->findByTopLocalStmt->execute( $values );
         return new VideoLibraryCollection( $this->findByTopLocalStmt->fetchAll(), $this);
+    }
+	
+	function findByTopHistory( $values ){
+        $this->findByTopHistoryStmt->execute( $values );
+        return new VideoLibraryCollection( $this->findByTopHistoryStmt->fetchAll(), $this);
+    }
+	function findByTopLibrary( $values ){
+        $this->findByTopLibraryStmt->execute( $values );
+        return new VideoLibraryCollection( $this->findByTopLibraryStmt->fetchAll(), $this);
     }
 	
 	function findByPage( $values ) {

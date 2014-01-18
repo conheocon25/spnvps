@@ -42,6 +42,26 @@
 							</div>
 						</div>
 					</div>
+					<div class="accordion accordion-fix" id="accordion5">
+						<div class="accordion-group box radius">
+							<div class="accordion-heading b-title clearfix">
+								<div class="b-t-icon-content">Video thư viện Phật pháp</div>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
+							</div>
+							<div id="collapse5" class="accordion-body collapse in b-content">
+								<ul class="thumbnails grid-item reset-margin">
+									<li tal:repeat="VL TopLibraryVideoAll" class="span2">
+										<div class="thumbnail">
+											<a tal:attributes="href VL/getURLView">
+												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
+												<p tal:content="VL/getVideo/getName"/>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 					<div tal:repeat="Category CategoryNewsAll" class="accordion accordion-fix" tal:attributes="id Category/getIdPrint">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
@@ -83,7 +103,27 @@
 								</div>
 							</div>
 						</div>
-					</div>										
+					</div>
+					<div class="accordion accordion-fix" id="accordion5">
+						<div class="accordion-group box radius">
+							<div class="accordion-heading b-title clearfix">
+								<div class="b-t-icon-content">Video Lịch sử Phật giáo</div>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
+							</div>
+							<div id="collapse5" class="accordion-body collapse in b-content">
+								<ul class="thumbnails grid-item reset-margin">
+									<li tal:repeat="VL TopHistoryVideoAll" class="span2">
+										<div class="thumbnail">
+											<a tal:attributes="href VL/getURLView">
+												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
+												<p tal:content="VL/getVideo/getName"/>
+											</a>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
 					<div class="accordion accordion-fix" id="accordion5">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
@@ -92,7 +132,7 @@
 							</div>
 							<div id="collapse5" class="accordion-body collapse in b-content">
 								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VL VL24" class="span2">
+									<li tal:repeat="VL TopCategoryVideoAll" class="span2">
 										<div class="thumbnail">
 											<a tal:attributes="href VL/getURLView">
 												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
@@ -107,11 +147,9 @@
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/SpringMsg"/>
-					<div metal:use-macro="base.xhtml/WarningMsg"/>					
-					<div metal:use-macro="base.xhtml/LessionBox"/>
+					<div metal:use-macro="base.xhtml/WarningMsg"/>										
 					<div metal:use-macro="base.xhtml/LibraryBox"/>
-					<div metal:use-macro="base.xhtml/HistoryBox"/>					
-					<div metal:use-macro="base.xhtml/BuddhaBox"/>					
+					<div metal:use-macro="base.xhtml/HistoryBox"/>
 					<div metal:use-macro="base.xhtml/TopMonkBox"/>
 					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
