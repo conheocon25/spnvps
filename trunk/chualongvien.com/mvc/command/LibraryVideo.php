@@ -11,7 +11,9 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$KBType = $request->getProperty("KBType");
+			$KBType 		= $request->getProperty("KBType");
+			$KCategory 		= $request->getProperty("KCategory");
+			$KVideoLibrary 	= $request->getProperty("KVideoLibrary");
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -25,18 +27,24 @@
 			$IdBType 			= $CategoryBType->getId();
 															
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
-			$CategoriesVideo 	= $mCategoryVideo->findAll();					
-			$CategoryNewsAll 	= $mCategoryNews->findAll();									
-									
+			$CategoryVideoAll 	= $mCategoryVideo->findAll();
+			$CategoryNewsAll 	= $mCategoryNews->findAll();
+			
+			$Category 			= $mCategoryVideo->findByKey($KCategory);
+			if (!isset($Category)) $Category = $CategoryVideoAll->current();			
+			$Video 				= $mVideo->findByKey($KVideoLibrary);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
-			$request->setObject("CategoryBType", $CategoryBType);
+			$request->setObject("CategoryBType", 	$CategoryBType);
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
-			$request->setObject("CategoriesVideo", $CategoriesVideo);
-									
-			$request->setProperty("ActiveItem", 'LibraryVideo');
+			$request->setObject("CategoryNewsAll", 	$CategoryNewsAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
+			$request->setObject("Category", 		$Category);
+			//print_r($Category);
+			$request->setObject("Video", 			$Video);
+			$request->setProperty("ActiveItem", 	'LibraryVideo');
 			
 			return self::statuses('CMD_DEFAULT');
 		}

@@ -22,8 +22,10 @@
 			//-------------------------------------------------------------			
 			$Title = "WEBSITE CHÙA LONG VIỄN";
 									
-			$VL24 				= $mVL->findByUpdateTop(array(2));
+			$TopCategoryVideoAll= $mVL->findByUpdateTop(array(2));
 			$LocalVideoAll 		= $mVL->findByTopLocal(array(2));
+			$TopLibraryVideoAll = $mVL->findByTopLibrary(array());
+			$TopHistoryVideoAll = $mVL->findByTopHistory(array());
 			
 			$AlbumAll 			= $mAlbum->findAll();
 			$Categories 		= $mCategoryNews->findAll();
@@ -40,8 +42,10 @@
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);
 			
-			$request->setObject("LocalVideoAll", $LocalVideoAll);
-			$request->setObject("VL24", $VL24);
+			$request->setObject("LocalVideoAll", 		$LocalVideoAll);
+			$request->setObject("TopCategoryVideoAll", 	$TopCategoryVideoAll);
+			$request->setObject("TopLibraryVideoAll", 	$TopLibraryVideoAll);
+			$request->setObject("TopHistoryVideoAll", 	$TopHistoryVideoAll);
 									
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);			
 			$request->setObject("CategoryVideo", $CategoryVideo);

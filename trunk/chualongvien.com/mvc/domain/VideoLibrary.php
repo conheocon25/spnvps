@@ -28,7 +28,7 @@ class VideoLibrary extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
-	function getURLView(){return "/phat-am/".$this->getCategory()->getBTypeKey()."/danh-muc/".$this->getCategory()->getKey()."/".$this->getVideo()->getKey();}
+	function getURLView(){return "/phat-am/".$this->getCategory()->getBTypeKey()."/".$this->getCategory()->getKey()."/".$this->getVideo()->getKey();}
 	
 	function getURLUpdLoad(){return "/app/category/video/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){return "/app/category/video/".$this->getIdCategory()."/".$this->getId()."/upd/exe";}

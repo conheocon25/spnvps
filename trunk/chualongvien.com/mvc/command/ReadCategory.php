@@ -42,8 +42,7 @@
 			$request->setProperty("Title", $Title);
 						
 			$request->setObject("Category", $Category);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
-			$request->setObject("EventAll", $EventAll);			
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("NewsAll", $NewsAll);										
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("MonkAll", $MonkAll);
