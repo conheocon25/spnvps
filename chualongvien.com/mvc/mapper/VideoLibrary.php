@@ -20,8 +20,8 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$findByStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoLibrary, $tblVideo);
 		$findByLimitStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC LIMIT 12", $tblVideoLibrary, $tblVideo);
 		$findByTopStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC limit 1", $tblVideoLibrary, $tblVideo);
-		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 16", $tblVideoLibrary, $tblVideo);
-		$findByTopLocalStmt = sprintf("select * from %s VM WHERE VM.id_category=1 order by (select time from %s V where V.id=VM.id_video ) DESC limit 16", $tblVideoLibrary, $tblVideo);
+		$findByUpdateTopStmt = sprintf("select *  from %s VM order by (select time from %s V where V.id=VM.id_video ) DESC limit 8", $tblVideoLibrary, $tblVideo);
+		$findByTopLocalStmt = sprintf("select * from %s VM WHERE VM.id_category=1 order by (select time from %s V where V.id=VM.id_video ) DESC limit 8", $tblVideoLibrary, $tblVideo);
 		$findByPageStmt = sprintf("
 			SELECT *  
 			FROM %s VM

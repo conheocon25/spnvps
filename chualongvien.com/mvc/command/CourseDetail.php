@@ -22,43 +22,23 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$CategoryVideo = $mCategoryVideo->findAll()->current();
-									
-			$AskAll = $mAsk->findByTop(array());
-			$PagodaAll = $mPagoda->findAll();			
-			$Courses = $mCourse->findAll();
-			$SponsorAll = $mSponsor->findAll();
-						
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			$MonkAll = $mMonk->findVIP(null);
-			
+			$CategoryNewsAll = $mCategoryNews->findAll();														
+			$Courses = $mCourse->findAll();												
+			$MonkAll = $mMonk->findVIP(null);			
 			$Course = $mCourse->findByKey($KCourse);
-			$EventAll = $mEvent->findAll();
-			$Popup = $mPopup->findByName("dao-tao");
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);								
-			$request->setObject("SponsorAll", $SponsorAll);
-			$request->setObject("Courses", $Courses);
-			$request->setObject("AskAll", $AskAll);
-			$request->setObject("PagodaAll", $PagodaAll);
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("CategoryAskAll", $CategoryAskAll);			
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);											
+			$request->setObject("Courses", $Courses);			
 			$request->setObject("MonkAll", $MonkAll);
 			
 			$request->setObject("Course", $Course);
-			$request->setObject("EventAll", $EventAll);
-			$request->setObject("Popup", $Popup);
-			
-			$request->setProperty("ActiveItem", 'Course');
-			
+						
+			$request->setProperty("ActiveItem", 'Course');			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
