@@ -47,7 +47,7 @@ class VideoMonk extends Mapper implements \MVC\Domain\VideoMonkFinder {
 			from 
 				%s VM			
 			order by (select time from %s V where V.id=VM.id_video ) 
-			DESC limit 16
+			DESC limit 8
 		", $tblVideoMonk, $tblVideo);
 		
 		$findByViewTopStmt = sprintf("

@@ -24,43 +24,23 @@
 			$AlbumAll = $mAlbum->findAll();
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();
-									
+												
 			if (!isset($KAlbum)){
 				$Album = $AlbumAll->current();
 			}else{
 				$Album = $mAlbum->findByKey($KAlbum);
 			}
-						
-			$SponsorAll = $mSponsor->findAll();
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
 			$MonkAll = $mMonk->findVIP(null);
-			
-			$EventAll = $mEvent->findAll();
-			$Popup = $mPopup->findByName("thu-vien-anh");
-			
-			$Course = $mCourse->findByNear(null)->current();
-			
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 			$request->setObject("Album", $Album);						
-			$request->setObject("AlbumAll", $AlbumAll);
-			$request->setObject("Course", $Course);
+			$request->setObject("AlbumAll", $AlbumAll);			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
 			$request->setObject("MonkAll", $MonkAll);
-			
-			$request->setObject("EventAll", $EventAll);
-			$request->setObject("Popup", $Popup);
-			
+						
 			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			
 			return self::statuses('CMD_DEFAULT');

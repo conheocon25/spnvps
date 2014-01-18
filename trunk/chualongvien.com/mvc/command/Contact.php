@@ -21,35 +21,16 @@
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																			
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();
-												
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
+			$CategoryNewsAll = $mCategoryNews->findAll();																		
 			$MonkAll = $mMonk->findVIP(null);
-			
-			$EventAll = $mEvent->findAll();
-			$Popup = $mPopup->findByName("lien-he");
-			
-			$Course = $mCourse->findByNear(null)->current();
-			
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);			
-			$request->setObject('PagodaAll', $PagodaAll);			
-			$request->setObject('SponsorAll', $SponsorAll);
-			$request->setObject("PanelNewsAll", $PanelNewsAll);
-			$request->setObject("PanelCategoryVideoAll", $PanelCategoryVideoAll);
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
 			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject("Course", $Course);
-			$request->setObject("EventAll", $EventAll);
-			$request->setObject("Popup", $Popup);
-			
+									
 			$request->setProperty("ActiveItem", 'Contact');
 						
 			return self::statuses('CMD_DEFAULT');
