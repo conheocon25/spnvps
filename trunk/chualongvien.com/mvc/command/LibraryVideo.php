@@ -44,7 +44,13 @@
 			$request->setObject("Category", 		$Category);
 			//print_r($Category);
 			$request->setObject("Video", 			$Video);
-			$request->setProperty("ActiveItem", 	'LibraryVideo');
+			if($KBType == "lich-su-phat-giao") {
+				$request->setProperty("ActiveItem", 	'LibraryVideo1');
+				$request->setProperty("ImageFrame", 	'background:url("/data/images/logo/lich_su.gif") no-repeat center center transparent;-webkit-background-size: cover !important;-moz-background-size: cover !important;-o-background-size: cover !important;background-size: cover !important;');
+			} else {
+				$request->setProperty("ActiveItem", 	'LibraryVideo2');
+				$request->setProperty("ImageFrame", 	'background:url("/data/images/logo/thu_vien.gif") no-repeat center center transparent;-webkit-background-size: cover !important;-moz-background-size: cover !important;-o-background-size: cover !important;background-size: cover !important;');
+			}
 			
 			return self::statuses('CMD_DEFAULT');
 		}
