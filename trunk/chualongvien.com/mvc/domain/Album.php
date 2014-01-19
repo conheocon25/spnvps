@@ -38,17 +38,32 @@ class Album extends Object{
 		$this->Key = $Str->converturl();
 	}
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName(),		 	
+		 	'Time'			=> $this->getTime(),
+			'URL'			=> $this->getURL(),
+			'Note'			=> $this->getNote(),
+			'Key'			=> $this->getKey()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->Name 	= $Data[1];		
+		$this->Time 	= $Data[2];
+		$this->URL 		= $Data[3];
+		$this->Note 	= $Data[4];
+		$this->reKey();
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "thu-vien-anh/".$this->getKey();}
-	
-	function getURLUpdLoad(){return "/app/album/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/album/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/album/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/album/".$this->getId()."/del/exe";}
-			
+					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

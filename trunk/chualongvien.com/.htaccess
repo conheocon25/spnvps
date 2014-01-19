@@ -100,6 +100,12 @@ RewriteRule ^app/category/news/trang/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/trang/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
+RewriteRule ^app/news/([0-9]+)/ins/load$ 						?cmd=AppNewsInsLoad&IdCategory=$1 [L]
+RewriteRule ^app/news/([0-9]+)/ins/exe$ 						?cmd=AppNewsInsExe&IdCategory=$1 [L]
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/load$ 				?cmd=AppNewsUpdLoad&IdCategory=$1&IdNews=$2 [L]
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/exe$ 				?cmd=AppNewsUpdExe&IdCategory=$1&IdNews=$2 [L]
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/load$ 				?cmd=AppNewsDelLoad&IdCategory=$1&IdNews=$2 [L]
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/exe$ 				?cmd=AppNewsDelExe&IdCategory=$1&IdNews=$2 [L]
 
 RewriteRule ^app/btype$ 										?cmd=AppBType [L]
 RewriteRule ^app/btype/([0-9]+)$ 								?cmd=AppBTypeCategory&IdBType=$1 [L]

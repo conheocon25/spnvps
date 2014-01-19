@@ -78,7 +78,31 @@ class News extends Object{
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-		
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdCategory' 	=> $this->getIdCategory(),
+			'Author' 		=> $this->getAuthor(),
+			'Date'			=> $this->getDate(),
+			'Content'		=> $this->getContent(),	
+			'Title'			=> $this->getTitle(),
+			'Type'			=> $this->getType(),
+			'Key'			=> $this->getKey()
+		);				
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdCategory 	= $Data[1];
+		$this->Author 		= $Data[2];
+		$this->Date 		= $Data[3];		
+		$this->Content 		= \stripslashes($Data[4]);
+		$this->Title		= $Data[5];
+		$this->Type			= $Data[6];
+		$this->reKey();
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
