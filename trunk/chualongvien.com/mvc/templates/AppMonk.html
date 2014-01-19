@@ -34,31 +34,25 @@
 										<td width="32">
 											<span tal:condition="Monk/isVIP" class="icon-star" />
 										</td>
-										<td>
-											<a tal:attributes="href Monk/getURLUpdLoad">
-												<div tal:content="Monk/getName" />
-											</a>
+										<td>											
+											<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Monk/getId" tal:content="Monk/getName"/>
 										</td>
 										<td>
 											<a tal:attributes="href Monk/getURLVideo">
 												<div><span tal:content="Monk/getBTypeName" /> (<span tal:content="Monk/getVMs/count" />)</div>
 											</a>
-										</td>
-										<td width="32">
-											<a tal:attributes="href Monk/getURLDelLoad"><span class="icon-remove"/></a>
-										</td>
+										</td>										
+										<td class="center"><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Monk/getId">X</a></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>																				
 										<td colspan="3" align="center">
-											<a class="btn" href="/app/monk/ins/load">
-												<span class="icon-plus" /> Thêm mới
+											<a href="#DialogIns" data-toggle="modal" class="btn btn-primary btn-ins">
+												<i class="glyphicons-plus"/> Thêm mới
 											</a>
-										</td>
-										<td colspan="2" align="center">
-											<a class="btn" href="/app/monk/update/all">
-												<span class="icon-edit" /> Cập nhật key
+											<a href="#DialogDelSelected" data-toggle="modal" class="btn btn-primary btn-ins">
+												<i class="glyphicons-remove_2"/> Xóa chọn
 											</a>
 										</td>
 									</tr>
@@ -70,6 +64,211 @@
 				</div>
 			</div>
 			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>		
+		</div>
+		<!-- INSERT DIALOG  -->
+			<div id="DialogIns" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3><i class="glyphicons-cogwheel modal-icon"/>THÊM MỚI GIẢNG SƯ</h3>
+						</div>
+						<div class="form-horizontal">
+							<div class="modal-body">
+								<div class="form-group">
+									<label class="control-label">Tên</label>
+									<div class="controls">
+										<input id="Name1" name="Name1" type="text" class="form-control input-small"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Thứ tự</label>
+									<div class="controls">
+										<input id="Order1" name="Order1" type="text" class="form-control input-small"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">URL hình</label>
+									<div class="controls">
+										<input id="Picture1" name="Picture1" type="text" class="form-control input-small"/>
+									</div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Đặc biệt</label>
+									<div class="controls">
+										<input id="Type1" name="Type1" type="text" class="form-control input-small"/>
+									</div>
+								</div>
+							</div>
+							<div class="modal-footer">
+								<button id="URLInsButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+								<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END INSERT DIALOG  -->
+			
+			<!-- UPDATE DIALOG  -->
+			<div id="DialogEdit" class="modal fade">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h3><i class="glyphicons-cogwheel modal-icon"/>CẬP NHẬT GIẢNG SƯ</h3>
+						</div>
+						<div class="form-horizontal">
+							<div class="modal-body">
+								<div class="form-group">
+									<label class="control-label">Pháp danh</label>
+									<div class="controls"><input id="PreName2" name="PreName2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Tên</label>
+									<div class="controls"><input id="Name2" name="Name2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Chùa</label>
+									<div class="controls"><input id="Pagoda2" name="Pagoda2" type="text" class="form-control input-small"/></div>
+								</div>								
+								<div class="form-group">
+									<label class="control-label">Điện thoại</label>
+									<div class="controls"><input id="Phone2" name="Phone2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Ghi chú</label>
+									<div class="controls"><input id="Note2" name="Note2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Đặc biệt</label>
+									<div class="controls"><input id="Type2" name="Type2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Tông phái</label>
+									<div class="controls"><input id="BType2" name="BType2" type="text" class="form-control input-small"/></div>
+								</div>
+								<div class="form-group">
+									<label class="control-label">Hình ảnh</label>
+									<div class="controls"><input id="URLPic2" name="URLPic2" type="text" class="form-control input-small"/></div>
+								</div>
+							</div>									
+							<div class="modal-footer">
+								<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+								<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- END UPDATE DIALOG  -->
+			<div metal:use-macro="mDialog.xhtml/DialogDel"/>
+			<div metal:use-macro="mDialog.xhtml/DialogDelSelected"/>			
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			//-----------------------------------------------------------------------------------
+			//Delete 1 Monk			
+			//-----------------------------------------------------------------------------------
+			$('#URLDelSelectedButton').click(function(){
+				var count = 0;
+				var Data = [];
+				var URL = "/object/del/Monk/0";
+				
+				$(".CheckedDel").each(function( i, obj){
+					if ( $(this).is(':checked')==true ){
+						count += 1;
+						Data[count] = $(this).attr('data-id');
+					}
+				});
+				
+				$.ajax({
+					type: "POST",
+					data: {ListId:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+			$('.remove-item').click(function(){
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
+			});
+			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
+			$('#URLDelButton').click(function(){			
+				var URL = "/object/del/Monk/" + $(this).attr('alt');
+				$.ajax({
+					type: "POST",
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+		
+			//-----------------------------------------------------------------------------------
+			//Insert 1 Monk
+			$('#URLInsButton').click(function(){
+				var Data = [];
+				Data[0] = 'null';
+				Data[1] = $('#Name1').val();
+				Data[2] = $('#Order1').val();								
+				Data[3] = $('#Picture1').val();
+				Data[4] = $('#Type1').val();
+				Data[5] = $('#BTypeActive').attr('alt');
+				
+				var URL = "/object/ins/Monk";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 Monk
+			//-----------------------------------------------------------------------------------
+			$('.update-item').click(function(){
+				//Load dữ liệu JSON về
+				var url = "/object/load/Monk/" + $(this).attr('data-id');
+				
+				//Load dữ liệu JSON lên FORM
+				$.getJSON(url, function(data){
+					$('#URLUpdButton').attr('alt', 	data.Id);
+					$('#PreName2').attr('value', 	data.PreName);
+					$('#Name2').attr('value', 		data.Name);
+					$('#Pagoda2').attr('value', 	data.Pagoda);
+					$('#Phone2').attr('value', 		data.Phone);
+					$('#Note2').attr('value', 		data.Note);
+					$('#Type2').attr('value', 		data.Type);
+					$('#BType2').attr('value', 		data.BType);
+					$('#URLPic2').attr('value', 	data.URLPic);					
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 UNIT
+			//-----------------------------------------------------------------------------------
+			$('#URLUpdButton').click(function(){
+				var Data = [];
+				Data[0] = $('#URLUpdButton').attr('alt');
+				Data[1] = $('#Name2').val();
+				Data[2] = $('#Order2').val();
+				Data[3] = $('#Picture2').val();
+				Data[4] = $('#Type2').val();
+				Data[5] = $('#BTypeActive').attr('alt');
+				
+				var URL = "/object/upd/Monk";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});		
+		/*]]>*/</script>
 	</body>
 </html>

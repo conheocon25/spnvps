@@ -77,24 +77,41 @@ class Monk extends Object{
 		return $VMs;
 	}
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'PreName'		=> $this->getPreName(),
+			'Name'			=> $this->getName(),
+			'Pagoda'		=> $this->getPagoda(),
+		 	'Phone'			=> $this->getPhone(),
+			'Note'			=> $this->getNote(),
+			'Type'			=> $this->getType(),
+			'BType'			=> $this->getBType(),
+			'URLPic'		=> $this->getURLPic(),
+			'Key'			=> $this->getKey()
+		);				
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->PreName 	= $Data[1];
+		$this->Name 	= $Data[2];
+		$this->Pagoda 	= $Data[3];
+		$this->Phone 	= $Data[4];		
+		$this->Note 	= $Data[5];		
+		$this->Type 	= $Data[6];
+		$this->BType 	= $Data[7];
+		$this->URLPic 	= $Data[8];
+		$this->reKey();
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
 	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/giang-su/".$this->getKey();}	
-	function getURLView(){return "/app/monk";}
-	
-	function getURLYoutubeUpdLoad(){return "/app/monk/".$this->getId()."/video/youtube/upd/load";}
-	function getURLYoutubeUpdExe(){return "/app/monk/".$this->getId()."/video/youtube/upd/exe";}
-	
+	function getURLView(){return "/app/monk";}			
 	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}		
-	function getURLVideoInsLoad(){return "/app/monk/".$this->getId()."/video/ins/load";}
-	function getURLVideoInsExe(){return "/app/monk/".$this->getId()."/video/ins/exe";}
-	
-	function getURLUpdLoad(){return "/app/monk/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/monk/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/monk/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/monk/".$this->getId()."/del/exe";}
 			
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
