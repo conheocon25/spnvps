@@ -18,21 +18,14 @@
 			//-------------------------------------------------------------			
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mCategoryAsk = new \MVC\Mapper\CategoryAsk();
-			$mPagoda = new \MVC\Mapper\Pagoda();
-			$mSponsor = new \MVC\Mapper\Sponsor();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------										
 			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();
-						
+			$CategoryNewsAll = $mCategoryNews->findAll();									
 			$Category = $mCategoryNews->find($IdCategory);
-			$PagodaAll = $mPagoda->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			
+						
 			$Title = "THÊM MỚI";
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
@@ -48,10 +41,7 @@
 			$request->setObject( 'Navigation', $Navigation );
 			
 			$request->setObject( 'CategoryBTypeAll', $CategoryBTypeAll );
-			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );
-			$request->setObject( 'CategoryAskAll', $CategoryAskAll );
-			$request->setObject( 'PagodaAll', $PagodaAll);
-			$request->setObject( 'SponsorAll', $SponsorAll);
+			$request->setObject( 'CategoryNewsAll', $CategoryNewsAll );			
 			$request->setObject( 'Category', $Category );
 			
 			$request->setProperty("ActiveItem", 'Home');

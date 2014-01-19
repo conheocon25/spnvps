@@ -23,23 +23,13 @@
 			//-------------------------------------------------------------						
 			$CategoryBTypeAll = $mCategoryBType->findAll();
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();
-			$CategoryAskAll = $mCategoryAsk->findAll();			
-			$CategoryTaskAll = $mCategoryTask->findAll();			
-			$CategoryPaidAll = $mCategoryPaid->findAll();			
-			$PagodaAll = $mPagoda->findAll();
+			$CategoryVideoAll = $mCategoryVideo->findAll();									
 			$AlbumAll = $mAlbum->findAll();
-			$EventAll = $mEvent->findAll();
-			$MonkAll = $mMonk->findAll();
-			$CourseAll = $mCourse->findAll();
-			$SponsorAll = $mSponsor->findAll();
-			$PanelAdsAll = $mPanelAds->findAll();
-			$PanelNewsAll = $mPanelNews->findAll();
-			$PanelCategoryVideoAll = $mPanelCategoryVideo->findAll();
-			$ConfigAll = $mConfig->findAll();
-			$TaskAll = $mTask->findAll();
-			$PopupAll = $mPopup->findAll();
 			
+			$MonkAll = $mMonk->findAll();
+			$CourseAll = $mCourse->findAll();			
+			$ConfigAll = $mConfig->findAll();
+						
 			$Title = "HÌNH ẢNH";
 			$Navigation = array(
 				array("TRANG CHỦ", "/trang-chu"),
@@ -56,23 +46,12 @@
 			//-------------------------------------------------------------						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
-			$request->setObject("CategoryAskAll", $CategoryAskAll);			
-			$request->setObject("CategoryTaskAll", $CategoryTaskAll);
-			$request->setObject("CategoryPaidAll", $CategoryPaidAll);
-			$request->setObject('PagodaAll', $PagodaAll);
-			$request->setObject('AlbumAll', $AlbumAll);
-			$request->setObject('EventAll', $EventAll);
+			$request->setObject("CategoryVideoAll", $CategoryVideoAll);								
+			$request->setObject('AlbumAll', $AlbumAll);			
 			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);
-			$request->setObject('SponsorAll', $SponsorAll); 
+			$request->setObject('CourseAll', $CourseAll);			
 			$request->setObject('ConfigAll', $ConfigAll); 
-			$request->setObject('PanelAdsAll', $PanelAdsAll);
-			$request->setObject('PanelNewsAll', $PanelNewsAll);
-			$request->setObject('PanelCategoryVideoAll', $PanelCategoryVideoAll);
-			$request->setObject('TaskAll', $TaskAll);
-			$request->setObject('PopupAll', $PopupAll);
-			
+						
 			$request->setObject('AlbumAll1', $AlbumAll1);
 			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
