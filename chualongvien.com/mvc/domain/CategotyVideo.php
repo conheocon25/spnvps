@@ -80,6 +80,29 @@ class CategoryVideo extends Object{
 		return $VMs;
 	}
 	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName(),
+			'Picture'		=> $this->getPicture(),
+		 	'Order'			=> $this->getOrder(),
+			'Type'			=> $this->getType(),
+			'BType'			=> $this->getBType(),
+			'Key'			=> $this->getKey()
+		);				
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->Name 	= $Data[1];
+		$this->Picture 	= $Data[2];
+		$this->Order 	= $Data[3];		
+		$this->Type 	= $Data[4];
+		$this->BType 	= $Data[5];
+		$this->reKey();
+    }
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
