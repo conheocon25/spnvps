@@ -10,7 +10,11 @@
 		<command name="Contact" type="public"><view>Contact</view></command>
 		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
-		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>		
+		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
+		
+		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
+		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>		
+		
 		<command name="Task" type="public"><view>Task</view></command>					
 		<command name="Event" type="public"><view>Event</view></command>
 		<command name="EventDetail" type="public"><view>EventDetail</view></command>
@@ -49,18 +53,7 @@
 		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
 		
 		<command name="App"><view>App</view></command>
-						
-		<!-- ============================================================================== -->
-		<!-- APP.LIBRARY.ALBUM																-->
-		<!-- ============================================================================== -->
-		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>
-		<command name="AppLibraryAlbumInsLoad"><view>AppLibraryAlbumInsLoad</view></command>
-		<command name="AppLibraryAlbumInsExe"><view>AppLibraryAlbumInsExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>		
-		<command name="AppLibraryAlbumUpdLoad"><view>AppLibraryAlbumUpdLoad</view></command>
-		<command name="AppLibraryAlbumUpdExe"><view>AppLibraryAlbumUpdExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>		
-		<command name="AppLibraryAlbumDelLoad"><view>AppLibraryAlbumDelLoad</view></command>
-		<command name="AppLibraryAlbumDelExe"><view>AppLibraryAlbumDelExe</view><status value="CMD_OK"><forward>AppLibraryAlbum</forward></status></command>
-				
+		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>				
 						
 		<!-- ============================================================================== -->
 		<!-- APP.COURSE																-->
@@ -80,46 +73,24 @@
 		<command name="AppCourseLessionInsLoad"><view>AppCourseLessionInsLoad</view></command>
 		<command name="AppCourseLessionInsExe"><view>AppCourseLessionInsExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
 		<command name="AppCourseLessionUpdLoad"><view>AppCourseLessionUpdLoad</view></command>
-		<command name="AppCourseLessionUpdExe"><view>AppCourseLessionUpdExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
+		<command name="AppCourseLessionUpdExe"><view>AppCourseLessionUpdExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
 		<command name="AppCourseLessionDelLoad"><view>AppCourseLessionDelLoad</view></command>
 		<command name="AppCourseLessionDelExe"><view>AppCourseLessionDelExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
 		
 		<!-- ============================================================================== -->
 		<!-- APP.MONK																		-->
-		<!-- ============================================================================== -->
+		<!-- ============================================================================== -->		
 		<command name="AppMonk"><view>AppMonk</view></command>
-		<command name="AppMonkInsLoad"><view>AppMonkInsLoad</view></command>
-		<command name="AppMonkInsExe"><view>AppMonkInsExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
-		<command name="AppMonkUpdLoad"><view>AppMonkUpdLoad</view></command>
-		<command name="AppMonkUpdExe"><view>AppMonkUpdExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>		
-		<command name="AppMonkDelLoad"><view>AppMonkDelLoad</view></command>
-		<command name="AppMonkDelExe"><view>AppMonkDelExe</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
-		<command name="AppMonkUpdateAll"><view>AppMonkUpdateAll</view><status value="CMD_OK"><forward>AppMonk</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.MONK.VIDEO																	-->
-		<!-- ============================================================================== -->
 		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>
 		<command name="AppMonkVideoInsLoad"><view>AppMonkVideoInsLoad</view></command>
-		<command name="AppMonkVideoInsExe"><view>AppMonkVideoInsExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>		
+		<command name="AppMonkVideoInsExe"><view>AppMonkVideoInsExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
 		<command name="AppMonkVideoUpdLoad"><view>AppMonkVideoUpdLoad</view></command>
 		<command name="AppMonkVideoUpdExe"><view>AppMonkVideoUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>		
 		<command name="AppMonkVideoDelLoad"><view>AppMonkVideoDelLoad</view></command>
 		<command name="AppMonkVideoDelExe"><view>AppMonkVideoDelExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
 		<command name="AppMonkVideoYoutubeUpdLoad"><view>AppMonkVideoYoutubeUpdLoad</view></command>
 		<command name="AppMonkVideoYoutubeUpdExe"><view>AppMonkVideoYoutubeUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.CATEGORY.NEWS																-->
-		<!-- ============================================================================== -->
-		<command name="AppCategoryNews"><view>AppCategoryNews</view></command>
-		<command name="AppCategoryNewsInsLoad"><view>AppCategoryNewsInsLoad</view></command>
-		<command name="AppCategoryNewsInsExe"><view>AppCategoryNewsInsExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>		
-		<command name="AppCategoryNewsUpdLoad"><view>AppCategoryNewsUpdLoad</view></command>
-		<command name="AppCategoryNewsUpdExe"><view>AppCategoryNewsUpdExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>		
-		<command name="AppCategoryNewsDelLoad"><view>AppCategoryNewsDelLoad</view></command>
-		<command name="AppCategoryNewsDelExe"><view>AppCategoryNewsDelExe</view><status value="CMD_OK"><forward>AppCategoryNews</forward></status></command>
-		
+								
 		<!-- ============================================================================== -->
 		<!-- APP.BTYPE																-->
 		<!-- ============================================================================== -->
@@ -153,7 +124,8 @@
 		
 		<!-- ============================================================================== -->
 		<!-- APP.NEWS																		-->
-		<!-- ============================================================================== -->
+		<!-- ============================================================================== -->		
+		<command name="AppCategoryNews"><view>AppCategoryNews</view></command>
 		<command name="AppNews"><view>AppNews</view></command>
 		<command name="AppNewsInsLoad"><view>AppNewsInsLoad</view></command>
 		<command name="AppNewsInsExe"><view>AppNewsInsExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
@@ -166,12 +138,6 @@
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
-		<command name="AppConfigInsLoad"><view>AppConfigInsLoad</view></command>
-		<command name="AppConfigInsExe"><view>AppConfigInsExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>		
-		<command name="AppConfigUpdLoad"><view>AppConfigUpdLoad</view></command>
-		<command name="AppConfigUpdExe"><view>AppConfigUpdExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>		
-		<command name="AppConfigDelLoad"><view>AppConfigDelLoad</view></command>
-		<command name="AppConfigDelExe"><view>AppConfigDelExe</view><status value="CMD_OK"><forward>AppConfig</forward></status></command>
-		
+				
 	</control>
 </options>
