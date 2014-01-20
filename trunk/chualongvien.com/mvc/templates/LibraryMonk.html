@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+	</head>
+	<body>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span3 fix-width-3">
+					<div class="box radius">
+						<div class="b-title"><div class="b-t-icon-content">GIẢNG SƯ</div></div>
+						<div class="b-content">
+							<ul class="nav nav-tabs nav-stacked reset-margin list-3">
+								<li tal:repeat="Monk1 MonkAll">
+									<a class="MonkButton" tal:attributes="alt Monk1/getId">
+										<span class="label monk-label" tal:content="Monk1/getVMs/count"/>
+										<span tal:content="Monk1/getName"/>
+									</a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div class="span6 fix-width-3">
+					<div tal:condition="not:Video" class="box radius">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin" id="ActiveVideoName"/>
+							<i class="pull-right">								
+								<span />
+							</i>
+						</div>
+						<div class="b-content news-content padding-content">							
+							<div class="img-polaroid">
+								<iframe id="ActiveVideoURL" 
+										tal:attributes="style ImageFrame"
+										width="100%" 
+										height="331" 
+										src="" 
+										frameborder="0" wmode="Opaque"/>																		
+							</div>
+							<div class="alert alert-block clearfix reset-margin">
+								<strong id="ActiveVideoNote" />
+								<span class="btn btn-danger pull-right disabled btn-small" >
+									<i class="icon-hand-up icon-white"/>
+									<span id="ActiveVideoCount"/> lượt xem
+								</span>
+							</div>
+						</div>
+					</div>
+					<div tal:condition="Video" class="box radius">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin" id="ActiveVideoName" tal:content="Video/getName"/>
+							<i class="pull-right">
+								<span />
+							</i>
+						</div>
+						<div class="b-content news-content padding-content">							
+							<div class="img-polaroid">
+								<iframe id="ActiveVideoURL" 
+										width="100%" 
+										height="400" 
+										tal:attributes="src Video/getURL"
+										frameborder="0" wmode="Opaque"/>
+							</div>
+							<div class="alert alert-block clearfix reset-margin">
+								<strong id="ActiveVideoNote" tal:content="Video/getNote"/>
+								<span class="btn btn-danger pull-right disabled btn-small" >
+									<i class="icon-hand-up icon-white"/>
+									<span id="ActiveVideoCount" tal:content="Video/getCount"/> lượt xem
+								</span>
+							</div>
+						</div>
+					</div>										
+				</div>
+				<div class="span3 fix-width-3"><div class="box radius" id="VideoList" /></div>
+				<div id="ActiveMonk" tal:attributes="alt Monk/getId" />
+			</div>
+			<div metal:use-macro="base.xhtml/Footer"/>			
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>			
+		</div>
+		<script>
+			/*<![CDATA[*/
+			var IdActiveMonk = $("#ActiveMonk").attr('alt');
+						
+			$(".MonkButton").click(function(){
+				var IdMonk = $(this).attr('alt');
+				$(".MonkButton").parent().removeClass('active');				
+				$(this).parent().addClass('active');				
+				$("#VideoList").load("/giang-su/load/"+IdMonk);
+			});
+			$('.MonkButton[alt="'+IdActiveMonk+'"]').click();
+			
+			/*]]>*/
+		</script>
+	</body>
+</html>

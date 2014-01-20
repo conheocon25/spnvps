@@ -109,7 +109,7 @@ class Monk extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
-	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/giang-su/".$this->getKey();}	
+	function getURLRead(){return "/giang-su/".$this->getKey();}
 	function getURLView(){return "/app/monk";}			
 	function getURLVideo(){return "/app/monk/".$this->getId()."/video";}		
 			

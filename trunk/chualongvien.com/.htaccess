@@ -34,6 +34,10 @@ RewriteRule ^gioi-thieu$ 											?cmd=Introduction [L]
 RewriteRule ^task$ 													?cmd=Task [L]
 RewriteRule ^lien-he$ 												?cmd=Contact [L]
 
+RewriteRule ^giang-su/([a-z0-9_-]+)$								?cmd=LibraryMonk&KMonk=$1 [L]
+RewriteRule ^giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)/exe$				?cmd=LibraryMonk&KMonk=$1&KVideoMonk=$2 [L]
+RewriteRule ^giang-su/load/([0-9]+)$								?cmd=LibraryMonkLoad&IdMonk=$1 [L]
+
 RewriteRule ^phat-am/([a-z0-9_-]+)$									?cmd=LibraryVideo&KBType=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/([a-z0-9_-]+)$		?cmd=LibraryVideo&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
 
