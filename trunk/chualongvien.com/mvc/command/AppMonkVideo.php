@@ -31,11 +31,10 @@
 			$VMAll = $mVM->findByPage(array($IdMonk, $Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation($Monk->getVMs()->count(), $Config->getValue(), $Monk->getURLVideo());
 						
-			$Title = mb_strtoupper($Monk->getName(), 'UTF8');
+			$Title = $Monk->getName();
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu"),
-				array("QUẢN LÝ", "/app"),
-				array("GIẢNG SƯ", "/app/monk")
+				array("Quản Lý", "/app"),
+				array("Giảng Sư", "/app/monk")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

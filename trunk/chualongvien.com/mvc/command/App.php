@@ -28,10 +28,8 @@
 			$CourseAll 			= $mCourse->findAll();						
 			$ConfigAll 			= $mConfig->findAll();
 									
-			$Title = "QUẢN LÝ";
-			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu")
-			);
+			$Title = "Quản Lý";
+			$Navigation = array();
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
