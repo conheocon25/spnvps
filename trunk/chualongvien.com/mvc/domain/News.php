@@ -69,8 +69,10 @@ class News extends Object{
 	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
 	function getKey( ) {return $this->Key;}
 	function reKey( ){
-		$Str = new \MVC\Library\String($this->Title." ".$this->getId());
-		$this->Key = $Str->converturl();
+		$Id = $this->getId();
+		if (!isset($Id)||$Id==0) $Id = time();
+		$Str = new \MVC\Library\String($this->Title." ".$Id);
+		$this->Key = $Str->converturl();		
 	}
 	
 	

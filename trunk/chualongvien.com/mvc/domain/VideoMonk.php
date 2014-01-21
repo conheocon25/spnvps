@@ -30,12 +30,26 @@ class VideoMonk extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
 	function getURLView(){return "/phat-am/".$this->getMonk()->getBTypeKey()."/giang-su/".$this->getMonk()->getKey()."/".$this->getVideo()->getKey();}
+	function toJSON(){		    
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdVideo' 		=> $this->getIdVideo(),
+			'IdMonk' 		=> $this->getIdMonk(),
+			'Name' 			=> $this->getVideo()->getName(),
+			'Time' 			=> $this->getVideo()->getTime(),
+			'URL' 			=> $this->getVideo()->getURL(),
+			'Note' 			=> $this->getVideo()->getNote(),
+			'Count' 		=> $this->getVideo()->getCount(),
+			'Key'			=> $this->getVideo()->getKey()
+		);				
+		return json_encode($json);
+	}
 	
-	function getURLUpdLoad(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/exe";}
-			
-	function getURLDelLoad(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/del/exe";}
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdVideo 		= $Data[1];
+		$this->IdMonk 		= $Data[2];
+    }
 			
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

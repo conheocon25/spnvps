@@ -1,6 +1,5 @@
 <?php
 namespace MVC\Domain;
-use MVC\Library\Number;
 require_once( "mvc/base/domain/DomainObject.php" );
 
 class Video extends Object{
@@ -62,26 +61,44 @@ class Video extends Object{
 	
 	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
 	function reKey( ){
-		$Str = new \MVC\Library\String($this->Name." ".$this->getId());
+		$Id = $this->getId();
+		if (!isset($Id)||$Id==0) $Id = time();
+		$Str = new \MVC\Library\String($this->Name." ".$Id);
 		$this->Key = $Str->converturl();
 	}
 	function getKey( ) {return $this->Key;}
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),			
+			'Name' 			=> $this->getName(),
+			'Time' 			=> $this->getTime(),
+			'URL' 			=> $this->getURL(),
+			'Note' 			=> $this->getNote(),
+			'Count' 		=> $this->getCount(),
+			'Key'			=> $this->getKey()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->Name 		= $Data[1];
+		$this->Time 		= $Data[2];
+		$this->URL 			= $Data[3];		
+		$this->Note 		= $Data[4];
+		$this->Count		= $Data[5];		
+		$this->reKey();
+    }	
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
 	function getURLView(){return "/library/video/".$this->getId();}
-	
-	function getURLUpdLoad(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/monk/".$this->getIdMonk()."/video/".$this->getId()."/del/exe";}
-			
+					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 	
 }
-
 ?>
