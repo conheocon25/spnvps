@@ -39,9 +39,7 @@
 											<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id VL/getId" tal:content="VL/getVideo/getName"/>
 										</td>
 										<td tal:content="VL/getVideo/getTimePrint" />
-										<td>											
-											<td class="center"><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id VL/getId">X</a></td>
-										</td>
+										<td><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id VL/getId; data-id-video VL/getVideo/getId">X</a></td>
 									</tr>
 								</tbody>
 								<tfoot>
@@ -61,98 +59,92 @@
 					</div>
 				</div>
 			</div>
-			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>			
+		</div>		
 		<!-- INSERT DIALOG  -->
-			<div id="DialogIns" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3><i class="glyphicons-cogwheel modal-icon"/>THÊM MỚI VIDEO</h3>
+		<div id="DialogIns" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3><i class="glyphicons-cogwheel modal-icon"/>THÊM MỚI VIDEO</h3>
+					</div>
+					<div class="form-horizontal">
+						<div class="modal-body">								
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls"><input id="Name1" name="Name1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls"><input id="Time1" name="Time1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls"><input id="URL1" name="URL1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls"><input id="Note1" name="Note1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Bộ đếm</label>
+								<div class="controls"><input id="Count1" name="Count1" type="text" class="form-control input-small"/></div>
+							</div>
 						</div>
-						<div class="form-horizontal">
-							<div class="modal-body">
-								<div class="form-group">
-									<label class="control-label">Tên</label>
-									<div class="controls">
-										<input id="Name1" name="Name1" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">Thứ tự</label>
-									<div class="controls">
-										<input id="Order1" name="Order1" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">URL hình</label>
-									<div class="controls">
-										<input id="Picture1" name="Picture1" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">Đặc biệt</label>
-									<div class="controls">
-										<input id="Type1" name="Type1" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-							</div>
-							<div class="modal-footer">
-								<button id="URLInsButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
-								<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
-							</div>
+						<div class="modal-footer">
+							<button id="URLInsButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- END INSERT DIALOG  -->
-			
-			<!-- UPDATE DIALOG  -->
-			<div id="DialogEdit" class="modal fade">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h3><i class="glyphicons-cogwheel modal-icon"/>CẬP NHẬT VIDEO</h3>
-						</div>
-						<div class="form-horizontal">
-							<div class="modal-body">
-								<div class="form-group">
-									<label class="control-label">Tên</label>
-									<div class="controls">
-										<input id="Name2" name="Name2" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">Thứ tự</label>
-									<div class="controls">
-										<input id="Order2" name="Order2" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">URL hình</label>
-									<div class="controls">
-										<input id="Picture2" name="Picture2" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-								<div class="form-group">
-									<label class="control-label">Đặc biệt</label>
-									<div class="controls">
-										<input id="Type2" name="Type2" type="text" class="form-control input-small"/>
-									</div>
-								</div>
-							</div>									
-							<div class="modal-footer">
-								<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
-								<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+		</div>
+		<!-- END INSERT DIALOG  -->
+		
+		<!-- UPDATE DIALOG  -->
+		<div id="DialogEdit" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header"><h3><i class="glyphicons-cogwheel modal-icon"/>CẬP NHẬT VIDEO</h3></div>
+					<div class="form-horizontal">
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label">Id</label>
+								<div class="controls"><input readonly="true" id="IdVideo2" name="IdVideo2" type="text" class="form-control input-small"/></div>
 							</div>
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls"><input id="Name2" name="Name2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls"><input id="Time2" name="Time2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls"><input id="URL2" name="URL2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls"><input id="Note2" name="Note2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Bộ đếm</label>
+								<div class="controls"><input id="Count2" name="Count2" type="text" class="form-control input-small"/></div>
+							</div>
+						</div>									
+						<div class="modal-footer">
+							<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- END UPDATE DIALOG  -->
-			<div metal:use-macro="mDialog.xhtml/DialogDel"/>
-			<div metal:use-macro="mDialog.xhtml/DialogDelSelected"/>	
-			<div id="BTypeActive" tal:attributes="alt Category/getId"/>
+		</div>
+		<!-- END UPDATE DIALOG  -->
+		<div metal:use-macro="mDialog.xhtml/DialogDel"/>
+		<div metal:use-macro="mDialog.xhtml/DialogDelSelected"/>	
+		<div id="CategoryActive" tal:attributes="alt Category/getId"/>
 		<script type="text/javascript">
 		/*<![CDATA[*/
 			//-----------------------------------------------------------------------------------
@@ -181,40 +173,68 @@
 			});
 			
 			$('.remove-item').click(function(){
-				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
+				$('#URLDelButton').attr('data-id', $(this).attr('data-id'));
+				$('#URLDelButton').attr('data-id-video', $(this).attr('data-id-video'));				
 			});
 			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
-			$('#URLDelButton').click(function(){			
-				var URL = "/object/del/VideoLibrary/" + $(this).attr('alt');
+			$('#URLDelButton').click(function(){
+				var URL = "/object/del/VideoLibrary/" + $(this).attr('data-id');
+				var IdVideo = $(this).attr('data-id-video');				
+				
 				$.ajax({
 					type: "POST",
 					url: URL,
-					success: function(msg){
-						location.reload();
+					success: function(msg){						
+						URL = "/object/del/Video/" + IdVideo;
+						$.ajax({
+							type: "POST",
+							url: URL,
+							success: function(msg){														
+								location.reload();
+							}
+						});						
 					}
 				});
+				
 			});
 		
 			//-----------------------------------------------------------------------------------
 			//Insert 1 VideoLibrary
 			$('#URLInsButton').click(function(){
 				var Data = [];
+				var IdVideo = -1;
+				var IdCategory = $("#CategoryActive").attr('alt');
+				
 				Data[0] = 'null';
 				Data[1] = $('#Name1').val();
-				Data[2] = $('#Order1').val();								
-				Data[3] = $('#Picture1').val();
-				Data[4] = $('#Type1').val();
-				Data[5] = $('#BTypeActive').attr('alt');
+				Data[2] = $('#Time1').val();
+				Data[3] = $('#URL1').val();
+				Data[4] = $('#Note1').val();
+				Data[5] = $('#Count1').val();
 				
-				var URL = "/object/ins/VideoLibrary";
+				var URL = "/object/ins/Video";
 				$.ajax({
 					type: "POST",
 					data: {Data:Data},
+					dataType: "json",					
+					async: false,
 					url: URL,
-					success: function(msg){
-						location.reload();
+					success: function(msg){						
+						Data[0] = 'null';
+						Data[1] = msg.id;
+						Data[2] = IdCategory;						
+						var URL = "/object/ins/VideoLibrary";
+						$.ajax({
+							type: "POST",
+							data: {Data:Data},
+							async: false,
+							url: URL,
+							success: function(msg){						
+								location.reload();
+							}
+						});
 					}
-				});
+				});												
 			});
 			
 			//-----------------------------------------------------------------------------------
@@ -226,11 +246,13 @@
 				
 				//Load dữ liệu JSON lên FORM
 				$.getJSON(url, function(data){
-					$('#URLUpdButton').attr('alt', 	data.Id);
+					$('#URLUpdButton').attr('alt', 	data.IdVideo);
+					$('#IdVideo2').attr('value', 	data.IdVideo);
 					$('#Name2').attr('value', 		data.Name);
-					$('#Order2').attr('value', 		data.Order);
-					$('#Picture2').attr('value', 	data.Picture);
-					$('#Type2').attr('value', 		data.Type);
+					$('#Time2').attr('value', 		data.Time);
+					$('#URL2').attr('value', 		data.URL);
+					$('#Note2').attr('value', 		data.Note);
+					$('#Count2').attr('value', 		data.Count);
 				});
 			});
 			
@@ -241,12 +263,12 @@
 				var Data = [];
 				Data[0] = $('#URLUpdButton').attr('alt');
 				Data[1] = $('#Name2').val();
-				Data[2] = $('#Order2').val();
-				Data[3] = $('#Picture2').val();
-				Data[4] = $('#Type2').val();
-				Data[5] = $('#BTypeActive').attr('alt');
+				Data[2] = $('#Time2').val();
+				Data[3] = $('#URL2').val();
+				Data[4] = $('#Note2').val();
+				Data[5] = $('#Count2').val();
 				
-				var URL = "/object/upd/VideoLibrary";
+				var URL = "/object/upd/Video";
 				$.ajax({
 					type: "POST",
 					data: {Data:Data},

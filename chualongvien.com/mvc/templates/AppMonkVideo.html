@@ -11,64 +11,273 @@
 			<div class="row-fluid">
 				<div class="row-fluid">
 					<div class="span3">
-						<div class="menu">
-							<ul class="nav nav-list">
-								<li class="nav-header">DANH MỤC</li>
-								<li tal:repeat="Monk1 MonkAll" tal:attributes="class php:Monk->getId()==Monk1->getId()?'active':'disabled'">
-									<a tal:attributes="href Monk1/getURLVideo">
-										<span tal:content="Monk1/getName" /> <span class="badge badge-info pull-right" tal:content="Monk1/getVMs/count"/>
-									</a>
-								</li>
-							</ul>
-						</div>
+						<ul class="nav nav-list">
+							<li class="nav-header">GIẢNG SƯ</li>
+							<li tal:repeat="Monk1 MonkAll" tal:attributes="class php:Monk->getId()==Monk1->getId()?'active':'disabled'">
+								<a tal:attributes="href Monk1/getURLVideo">
+									<span tal:content="Monk1/getName" /> <span class="badge badge-info pull-right" tal:content="Monk1/getVMs/count"/>
+								</a>
+							</li>
+						</ul>						
 					</div>
 					<div class="span9">
 						<div class="content">
-							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
+							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>														
 							<table class="table table-striped table-hover">
 								<thead>
 									<tr>
-										<th width="30px">STT</th>
+										<th width="30px">STT</th>										
 										<th align="left">TIÊU ĐỀ</th>
-										<th width="80px" align="left">THỜI GIAN</th>
+										<th align="left">NGÀY</th>
 										<th width="30px">XÓA</th>
 									</tr>
 								</thead>
 								<tbody>
-									<tr class="content-rows" tal:repeat="VM VMAll">
-										<td align="center"><div tal:content="repeat/VM/number" /></td>
-										<td class="text-hightlight">
-											<a tal:attributes="href VM/getURLUpdLoad">
-												<div tal:content="VM/getVideo/getName" />
-											</a>
+									<tr tal:repeat="VM VMAll">
+										<td width="32" align="center"><div tal:content="repeat/VM/number" /></td>
+										<td>											
+											<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id VM/getId" tal:content="VM/getVideo/getName"/>
 										</td>
-										<td>
-											<div tal:content="VM/getVideo/getTimePrint" />
-										</td>
-										<td>
-											<a tal:attributes="href VM/getURLDelLoad">
-												<span class="icon-remove"/>
-											</a>
-										</td>
+										<td tal:content="VM/getVideo/getTimePrint" />
+										<td><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id VM/getId; data-id-video VM/getVideo/getId">X</a></td>
 									</tr>
 								</tbody>
 								<tfoot>
 									<tr>
-										<td colspan="2">
-											<a class="btn" tal:attributes="href Monk/getURLVideoInsLoad"><span class="icon-plus"/>Thêm mới</a>
-										</td>
-										<td colspan="2">
-											<a class="btn" tal:attributes="href Monk/getURLYoutubeUpdLoad"><span class="icon-facetime-video"/>Youtube</a>
-										</td>
+										<td colspan="4">
+											<a href="#DialogIns" data-toggle="modal" class="btn btn-primary btn-ins">
+												<i class="glyphicons-plus"/> Thêm mới
+											</a>
+											<a href="#DialogDelSelected" data-toggle="modal" class="btn btn-primary btn-ins">
+												<i class="glyphicons-remove_2"/> Xóa chọn
+											</a>
+										</td>										
 									</tr>
 								</tfoot>
-							</table>
-							<span metal:use-macro="mAdmin.xhtml/PageBar"/>
+							</table>							
 						</div>
 					</div>
 				</div>
 			</div>
-			<span metal:use-macro="mAdmin.xhtml/Footer"/>
+			<span metal:use-macro="mAdmin.xhtml/Footer"/>			
 		</div>		
+		<!-- INSERT DIALOG  -->
+		<div id="DialogIns" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3><i class="glyphicons-cogwheel modal-icon"/>THÊM MỚI VIDEO</h3>
+					</div>
+					<div class="form-horizontal">
+						<div class="modal-body">								
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls"><input id="Name1" name="Name1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls"><input id="Time1" name="Time1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls"><input id="URL1" name="URL1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls"><input id="Note1" name="Note1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Bộ đếm</label>
+								<div class="controls"><input id="Count1" name="Count1" type="text" class="form-control input-small"/></div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="URLInsButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END INSERT DIALOG  -->
+		
+		<!-- UPDATE DIALOG  -->
+		<div id="DialogEdit" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header"><h3><i class="glyphicons-cogwheel modal-icon"/>CẬP NHẬT VIDEO</h3></div>
+					<div class="form-horizontal">
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label">Id</label>
+								<div class="controls"><input readonly="true" id="IdVideo2" name="IdVideo2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls"><input id="Name2" name="Name2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls"><input id="Time2" name="Time2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls"><input id="URL2" name="URL2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls"><input id="Note2" name="Note2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Bộ đếm</label>
+								<div class="controls"><input id="Count2" name="Count2" type="text" class="form-control input-small"/></div>
+							</div>
+						</div>									
+						<div class="modal-footer">
+							<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END UPDATE DIALOG  -->
+		<div metal:use-macro="mDialog.xhtml/DialogDel"/>
+		<div metal:use-macro="mDialog.xhtml/DialogDelSelected"/>	
+		<div id="MonkActive" tal:attributes="alt Monk/getId"/>
+		<script type="text/javascript">
+		/*<![CDATA[*/
+			//-----------------------------------------------------------------------------------
+			//Delete 1 VideoMonk			
+			//-----------------------------------------------------------------------------------
+			$('#URLDelSelectedButton').click(function(){
+				var count = 0;
+				var Data = [];
+				var URL = "/object/del/VideoMonk/0";
+				
+				$(".CheckedDel").each(function( i, obj){
+					if ( $(this).is(':checked')==true ){
+						count += 1;
+						Data[count] = $(this).attr('data-id');
+					}
+				});
+				
+				$.ajax({
+					type: "POST",
+					data: {ListId:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+			$('.remove-item').click(function(){
+				$('#URLDelButton').attr('data-id', $(this).attr('data-id'));
+				$('#URLDelButton').attr('data-id-video', $(this).attr('data-id-video'));				
+			});
+			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
+			$('#URLDelButton').click(function(){
+				var URL = "/object/del/VideoMonk/" + $(this).attr('data-id');
+				var IdVideo = $(this).attr('data-id-video');				
+				
+				$.ajax({
+					type: "POST",
+					url: URL,
+					success: function(msg){						
+						URL = "/object/del/Video/" + IdVideo;
+						$.ajax({
+							type: "POST",
+							url: URL,
+							success: function(msg){														
+								location.reload();
+							}
+						});						
+					}
+				});
+				
+			});
+		
+			//-----------------------------------------------------------------------------------
+			//Insert 1 VideoMonk
+			$('#URLInsButton').click(function(){
+				var Data = [];
+				var IdVideo = -1;
+				var IdMonk = $("#MonkActive").attr('alt');
+				
+				Data[0] = 'null';
+				Data[1] = $('#Name1').val();
+				Data[2] = $('#Time1').val();
+				Data[3] = $('#URL1').val();
+				Data[4] = $('#Note1').val();
+				Data[5] = $('#Count1').val();
+				
+				var URL = "/object/ins/Video";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					dataType: "json",					
+					async: false,
+					url: URL,
+					success: function(msg){						
+						Data[0] = 'null';
+						Data[1] = msg.id;
+						Data[2] = IdMonk;
+						var URL = "/object/ins/VideoMonk";
+						$.ajax({
+							type: "POST",
+							data: {Data:Data},
+							async: false,
+							url: URL,
+							success: function(msg){						
+								location.reload();
+							}
+						});
+					}
+				});												
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 VideoMonk
+			//-----------------------------------------------------------------------------------
+			$('.update-item').click(function(){
+				//Load dữ liệu JSON về
+				var url = "/object/load/VideoMonk/" + $(this).attr('data-id');
+				
+				//Load dữ liệu JSON lên FORM
+				$.getJSON(url, function(data){
+					$('#URLUpdButton').attr('alt', 	data.IdVideo);
+					$('#IdVideo2').attr('value', 	data.IdVideo);
+					$('#Name2').attr('value', 		data.Name);
+					$('#Time2').attr('value', 		data.Time);
+					$('#URL2').attr('value', 		data.URL);
+					$('#Note2').attr('value', 		data.Note);
+					$('#Count2').attr('value', 		data.Count);
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 UNIT
+			//-----------------------------------------------------------------------------------
+			$('#URLUpdButton').click(function(){
+				var Data = [];
+				Data[0] = $('#URLUpdButton').attr('alt');
+				Data[1] = $('#Name2').val();
+				Data[2] = $('#Time2').val();
+				Data[3] = $('#URL2').val();
+				Data[4] = $('#Note2').val();
+				Data[5] = $('#Count2').val();
+				
+				var URL = "/object/upd/Video";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});		
+		/*]]>*/</script>
 	</body>
 </html>

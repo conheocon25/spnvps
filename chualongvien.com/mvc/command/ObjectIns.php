@@ -31,7 +31,10 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
 						
-			$json = array('result' => "OK");
+			$json = array(
+				'result' 	=> "OK",
+				'id'		=> $Domain->getId()
+			);
 			echo json_encode($json);
 		}
 	}
