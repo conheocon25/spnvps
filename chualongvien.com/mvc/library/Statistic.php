@@ -24,12 +24,24 @@ class Statistic{
 		$N = new Number( $Config->getValue() );
 		return $N->formatCurrency();
 	}
+	static function getIPPrint(){
+		if (!empty($_SERVER['HTTP_CLIENT_IP'])){
+			$IP = $_SERVER['HTTP_CLIENT_IP'];
+		}
+		//if from a proxy
+		else if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])){
+			$IP = $_SERVER['HTTP_X_FORWARDED_FOR'];
+		}
+		else{
+			$IP = $_SERVER['REMOTE_ADDR'];
+		}
+		return $IP;
+	}
 	
 	static function getOnlinePrint(){
 		
 		$mGuest = new \MVC\Mapper\Guest();
-		//Lấy tham số về		
-		//$IP = $_SERVER['REMOTE_ADDR'];
+		//Lấy tham số về				
 		//if from shared
 		if (!empty($_SERVER['HTTP_CLIENT_IP'])){
 			$IP = $_SERVER['HTTP_CLIENT_IP'];

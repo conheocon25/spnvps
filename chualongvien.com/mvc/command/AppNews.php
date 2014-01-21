@@ -32,11 +32,10 @@
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), $Config->getValue(), $Category->getURLView());
 			
-			$Title = mb_strtoupper($Category->getName(), 'UTF8');
+			$Title = $Category->getName();
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu"),
-				array("QUẢN LÝ", "/app"),
-				array("TIN TỨC", "/app/category/news")
+				array("Quản Lý", "/app"),
+				array("Tin Tức", "/app/category/news")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

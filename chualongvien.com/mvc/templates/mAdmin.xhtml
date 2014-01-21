@@ -3,7 +3,6 @@
 	<!-- ======================================================================== -->
 	<!-- META TAG INCLUDE														  -->
 	<!-- ======================================================================== -->
-	
 	<span metal:define-macro="IncludeMETA">
 		<title tal:content="string:Website Chùa Long Viễn Vĩnh Long"/>
 		<base href="http://chualongvien.com"/>
@@ -22,98 +21,146 @@
 	<!-- ======================================================================== -->
 	<!-- CASCADING STYLE SHEETS INCLUDE											  -->
 	<!-- ======================================================================== -->
-	<span metal:define-macro="IncludeCSS">
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery.countdown.css"/> 
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css"/>	
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.css" media="screen"/>
-		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/handle.css"/>
+	<span metal:define-macro="IncludeCSS">	
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/bootstrap.min.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/bootstrap-glyphicons.css"/>
+        <link rel="stylesheet" href="/mvc/templates/theme/admin/css/jquery-ui.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/datepicker.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/icheck/flat/blue.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/select2.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/unicorn.main.css"/>
+		<link rel="stylesheet" href="/mvc/templates/theme/admin/css/unicorn.grey.css" class="skin-color"/>
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- JAVASCRIPT INCLUDE														  -->
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeJS">
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.countdown.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.eventCalendar.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
+		<script src="/mvc/templates/theme/admin/js/jquery.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery-ui.custom.js"></script>
+		<script src="/mvc/templates/theme/admin/js/bootstrap.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.icheck.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/select2.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/bootstrap-datepicker.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.dataTables.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.jpanelmenu.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/unicorn.js"></script>
+		<script src="/mvc/templates/theme/admin/js/unicorn.tables.js"></script>
+		<script src="/mvc/templates/theme/admin/js/excanvas.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.flot.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.flot.resize.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/jquery.sparkline.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/fullcalendar.min.js"></script>
+		<script src="/mvc/templates/theme/admin/js/unicorn.dashboard.js"></script>
+		<script src="/mvc/templates/theme/admin/js/regkey.js"></script>
 	</span>
 	
 	<!-- ======================================================================== -->
 	<!-- HEADER																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="Header">
-		<div class="navbar navbar-inverse">
-			<div class="navbar-inner">
-				<a class="brand" href="/app">Chualongvien.com</a>
-				<p class="navbar-text pull-right">
-					<a class="navbar-link" href="/signout/exe"><span tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/></a>
-				</p>
-			</div>
-		</div>
+	<div metal:define-macro="Header" id="header">
+		<h1><a href="/setting">Chualonvien.com</a></h1>	
+		<a id="menu-trigger" href="#"><i class="glyphicon glyphicon-align-justify"></i></a>	
+	</div>
+	
+	<div metal:define-macro="UserNavigation" id="user-nav">
+		<ul class="btn-group">
+			<li class="btn open"><a href="/trang-chu" title="Trang chủ Website - Chualongvien.com" class="tip-bottom">
+				<i class="glyphicon glyphicon-home"/> <span class="text">Chualongvien.com</span>
+			</a></li>
+			<li class="btn open"><a title="Địa chỉ IP đang sử dụng" class="tip-bottom">
+				<i class="glyphicon glyphicon-signal"/> <span class="text" tal:content="php:@\MVC\Library\Statistic::getIPPrint()"/>
+			</a></li>
+			<li class="btn open"><a title="Tài khoản đang sử dụng" class="tip-bottom">
+				<i class="glyphicon glyphicon-user"/> <span class="text" tal:content="string:Quản trị viên"/>
+			</a></li>
+			<li class="btn"><a href="#signoutDialog" data-toggle="modal" title="Thoát trang quản lý" class="tip-bottom">
+				<i class="glyphicon glyphicon-share-alt"/> <span class="text">Thoát</span>
+			</a></li>
+		</ul>
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- LOCATION BAR															  -->
+	<!-- LEFT MENU - SIDEBAR													  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="LocationBar">
-		<div class="row-fluid">			
-			<ul class="span12 breadcrumb">
-				<li tal:repeat="Item Navigation">
-					<a tal:attributes="href php:Item[1]" tal:content="php:Item[0]" /> <span class="divider">/</span>
-				</li>
-				<li class="active" tal:content="Title"/>
-			</ul>
-		</div>
-	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- LOCATION BAR															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="PageBar" class="pagination">
+	<div metal:define-macro="Sidebar" id="sidebar">
 		<ul>
-			<li tal:repeat="P PN/getPages" tal:attributes="class php:Page==P->getId()?'disabled':'active'">
-				<a tal:attributes="href P/getURL" tal:content="P/getName" />
-			</li>
+			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'"><a href="/app/category/news"><i class="glyphicon glyphicon-th"></i> <span>TIN TỨC</span> <span class="badge badge-info pull-right" tal:content="CategoryNewsAll/count"/></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'"><a href="/app/btype"><i class="glyphicon glyphicon-th"></i> <span>VIDEO</span> <span class="badge badge-info pull-right" tal:content="CategoryBTypeAll/count"/></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'disable'"><a href="/app/course"><i class="glyphicon glyphicon-th"></i> <span>TU HỌC</span> <span class="badge badge-info pull-right" tal:content="CourseAll/count"/></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'disable'"><a href="/app/monk"><i class="glyphicon glyphicon-th"></i> <span>GIẢNG SƯ</span> <span class="badge badge-info pull-right" tal:content="MonkAll/count"/></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'"><a href="/app/album"><i class="glyphicon glyphicon-th"></i> <span>HÌNH ẢNH</span> <span class="badge badge-info pull-right" tal:content="AlbumAll/count"/></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'"><a href="/app/config"><i class="glyphicon glyphicon-th"></i> <span>CẤU HÌNH</span> <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a></li>
 		</ul>
 	</div>
-							
-	<div metal:define-macro="Menu" class="menu">
-		<ul class="nav nav-list config-number">
-			<li class="nav-header">MODULE CHỨC NĂNG</li>			
-			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'">
-				<a tal:attributes="href '/app/category/news'">TIN TỨC <span class="badge badge-info pull-right" tal:content="CategoryNewsAll/count"/></a>
-			</li>				
-			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'">
-				<a tal:attributes="href '/app/btype'">VIDEO <span class="badge badge-info pull-right" tal:content="CategoryBTypeAll/count"/></a>
-			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'disable'">
-				<a tal:attributes="href '/app/course'">TU HỌC <span class="badge badge-info pull-right" tal:content="CourseAll/count"/></a>
-			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'disable'">
-				<a tal:attributes="href '/app/monk'">GIẢNG SƯ <span class="badge badge-info pull-right" tal:content="MonkAll/count"/></a>
-			</li>						
-			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'">
-				<a tal:attributes="href '/app/album'">HÌNH ẢNH<span class="badge badge-info pull-right" tal:content="AlbumAll/count"/></a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'">
-				<a tal:attributes="href '/app/config'">CẤU HÌNH <span class="badge badge-info pull-right" tal:content="ConfigAll/count"/></a>
-			</li>
-			<li class="nav-header">Support: 0996-355-368</li>
-		</ul>
+	
+	<!-- ======================================================================== -->
+	<!-- COLOR CHANGE - STYLE SWITCHER											  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="StyleSwitcher" id="style-switcher">
+		<i class="glyphicon glyphicon-arrow-left"></i>
+		<span>Style:</span>
+		<a href="#grey" style="background-color: #555555;border-color: #aaaaaa;"></a>
+		<a href="#light-blue" style="background-color: #8399b0;"></a>
+		<a href="#blue" style="background-color: #2D2F57;"></a>
+		<a href="#red" style="background-color: #673232;"></a>
+		<a href="#red-green" style="background-image: url('/mvc/templates/theme/admin/img/demo/red-green.png');background-repeat: no-repeat;"></a>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- BREADCRUMB																  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Breadcrumb" id="breadcrumb">
+		<a href="/trang-chu" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> Trang Chủ</a>
+		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]; title php:'Về trang '.Item[0]" tal:content="php:Item[0]" class="tip-bottom"/>
+		<a class="current" tal:content="Title"/>
 	</div>
 	
 	<!-- ======================================================================== -->
 	<!-- FOOTER																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="Footer">
-		<div class="row-fluid footer">
-			<span class="label pull-right copyright">&#169; 2012 SPN</span>
+	<div metal:define-macro="Footer" class="row">
+		<div id="footer" class="col-12">
+			2013 &copy; Chualongvien.com - Phát triễn: <a href="https://spn-soft.com">SPN Group</a>
 		</div>
-	</div>	
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- SINGLE DELETE DIALOG													  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="DeleteDialog" id="deleteDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"><h3>XÓA</h3></div>
+				<div class="modal-body">
+					<p>Bạn có chắc muốn xóa mục này ?</p>
+				</div>
+				<div class="modal-footer">
+					<button id="deleteButton" class="btn btn-primary btn-small">Xóa</button>
+					<button data-dismiss="modal" class="btn btn-default btn-small">Không</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- SIGNOUT DIALOG															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="SignoutDialog" id="signoutDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"><h3>Đăng xuất</h3></div>
+				<div class="modal-body">
+					<p>Bạn có chắc muốn thoát khỏi trang quản lý ?</p>
+				</div>
+				<div class="modal-footer">
+					<form action="/signout/exe" method="post">
+						<button type="submit" class="btn btn-primary btn-small">OK</button>
+						<button data-dismiss="modal" class="btn btn-default btn-small">Không</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

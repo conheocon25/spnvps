@@ -28,10 +28,9 @@
 			$CourseAll 			= $mCourse->findAll();						
 			$ConfigAll 			= $mConfig->findAll();
 							
-			$Title = "VIDEO";
+			$Title = "Video";
 			$Navigation = array(
-				array("TRANG CHỦ", "/trang-chu"),
-				array("QUẢN LÝ", "/app")
+				array("Quản Lý", "/app")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

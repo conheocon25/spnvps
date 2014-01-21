@@ -2,26 +2,47 @@
 <html lang="en">
 	<head>
 		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
-		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>		
-		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
 	</head>
 	<body>
-		<div class="container-fluid">
-			<span metal:use-macro="mAdmin.xhtml/Header"/>
-			<div class="row-fluid">
-				<div class="row-fluid">
-					<div class="span3">
-						<span metal:use-macro="mAdmin.xhtml/Menu"/>
-					</div>
-					<div class="span9">
-						<div class="content">
-							<span metal:use-macro="mAdmin.xhtml/LocationBar"/>
-							<center><img src="/data/images/bg_manager.png" width="50%" style="opacity:.25;"/></center>
-						</div>
+		<div metal:use-macro="mAdmin.xhtml/Header"/>
+		<div metal:use-macro="mAdmin.xhtml/UserNavigation"/>
+		<div metal:use-macro="mAdmin.xhtml/Sidebar"/>
+		<div metal:use-macro="mAdmin.xhtml/StyleSwitcher"/>
+
+		<div id="content">
+			<div id="content-header"><h1>Quản lý</h1></div>
+			<div metal:use-macro="mAdmin.xhtml/Breadcrumb"/>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="widget-box">
+							<div class="widget-title"><span class="icon"><i class="glyphicon glyphicon-signal"></i></span><h5>Thống kê số liệu</h5><div class="buttons"><a href="#" class="btn"><i class="glyphicon glyphicon-refresh"></i> Cập nhật ngay</a></div></div>
+							<div class="widget-content">
+								<div class="row">
+									<div class="col-12 col-sm-4">
+										<ul class="site-stats">
+											<li><div class="cc"><i class="glyphicon glyphicon-arrow-right"></i> <strong>1433</strong> <small>Lượt truy cập</small></div></li>
+											<li><div class="cc"><i class="glyphicon glyphicon-user"></i> <strong>200</strong> <small>Giảng sư</small></div></li>
+											<li class="divider"></li>
+											<li><div class="cc"><i class="glyphicon glyphicon-th"></i> <strong>25923</strong> <small>Tin tức phật giáo</small></div></li>
+											<li><div class="cc"><i class="glyphicon glyphicon-th"></i> <strong>12</strong> <small>Khóa học</small></div></li>
+											<li><div class="cc"><i class="glyphicon glyphicon-th"></i> <strong>3</strong> <small>Khóa học đang diễn ra</small></div></li>
+										</ul>
+									</div>
+									<div class="col-12 col-sm-8">
+										<div class="chart"></div>
+									</div>	
+								</div>							
+							</div>
+						</div>					
 					</div>
 				</div>
 			</div>
-			<span metal:use-macro="mAdmin.xhtml/Footer"/>
-		</div>		
+		</div>
+		
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mAdmin.xhtml/SignoutDialog"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</body>
 </html>

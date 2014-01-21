@@ -23,11 +23,10 @@
 			//-------------------------------------------------------------			
 			$CategoryBTypeAll 	= $mCategoryBType->findAll();
 			$Category 			= $mCategoryBType->find($IdBType);			
-			$Title 				= mb_strtoupper($Category->getName(), 'UTF8');
+			$Title 				= $Category->getName();
 			$Navigation = array(
-				array("TRANG CHỦ"	, "/trang-chu"),
-				array("QUẢN LÝ"		, "/app"),
-				array("VIDEO"		, "/app/btype")
+				array("Quản Lý"		, "/app"),
+				array("Video"		, "/app/btype")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
