@@ -17,6 +17,7 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			require_once("mvc/base/mapper/MapperDefault.php");
+			$mEvent = new \MVC\Mapper\Event();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH

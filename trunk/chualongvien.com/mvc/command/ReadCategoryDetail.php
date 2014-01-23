@@ -21,8 +21,7 @@
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$Category 			= $mCategoryNews->findByKey($Key1);
+			//-------------------------------------------------------------									
 			$News 				= $mNews->findByKey($Key2);
 			
 			$CategoryNewsAll 	= $mCategoryNews->findAll();						
@@ -35,7 +34,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);			
-			$request->setObject("Category", $Category);			
+			$request->setObject("Category", $News->getCategory());			
 			$request->setProperty("ActiveItem", 'ReadCategory');
 									
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
