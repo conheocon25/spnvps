@@ -11,8 +11,8 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, date DESC", $tblNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblNews);
-		$updateStmt = sprintf("update %s set id_category=?, author=?, date=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
-		$insertStmt = sprintf("insert into %s ( id_category, author, date, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
+		$updateStmt = sprintf("update %s set id_category=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
+		$insertStmt = sprintf("insert into %s ( id_category, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblNews);

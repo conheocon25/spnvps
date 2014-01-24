@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Theme 1</title>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/anime002.css"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
+		<script type="text/javascript" language="javascript">
+		$(document).ready(function(){
+			$("#jquery_audioPlayer").jPlayer({
+				ready: function() {
+					$(this).jPlayer("setMedia", {
+						mp3:"http://nhacthien.net/upload/uploads//1%20-%20Om%20Mani%20Padme%20Hum.mp3"
+					}).jPlayer("play");
+				},
+				swfPath: "data",
+				supplied: "mp3",
+				loop: true,
+				wmode: "window"
+			});
+		});
+		</script>
+	</head>
+
+	<body>
+		<div class="body">
+			<div class="buddha" />
+			<p><a href="/hinh-anh-hoat-hinh"><h3>Quay lại thư viện</h3></a></p>
+		</div>
+		<div id="jquery_audioPlayer"></div>
+	</body>
+</html>

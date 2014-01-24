@@ -35,7 +35,7 @@
 									<div class="control-group">
 										<label class="control-label" for="Date">Thời gian</label>
 										<div class="controls">
-											<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate" />
+											<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate"  data-date-format="yyyy-mm-dd"/>
 										</div>
 									</div>
 									<div class="control-group">
@@ -70,8 +70,10 @@
 			/* ---------------------------------------------------------------------------- */
 			/* SET TODAY FOR DATEPICKER														*/
 			/* ---------------------------------------------------------------------------- */
-			var today = $.datepicker.formatDate('yy-mm-dd', new Date());
-			$('#Date').val(today).attr('data-date', today).datepicker();
+			//THIẾT LẬP NGÀY GIỜ GIAO DỊCH
+			$('#Date').datepicker({language:'vi'});
+			//var today = $.datepicker.formatDate('yy-mm-dd', new Date());
+			//$('#Date').val(today).attr('data-date', today).datepicker();
 		/*]]>*/
 		</script>
 	</body>

@@ -34,8 +34,8 @@
 			
 			$Title = $Category->getName();
 			$Navigation = array(
-				array("Quản Lý", "/app"),
-				array("Tin Tức", "/app/category/news")
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC", "/app/category/news")
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

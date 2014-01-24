@@ -29,9 +29,9 @@
 			$CourseAll = $mCourse->findAll();			
 			$ConfigAll = $mConfig->findAll();
 									
-			$Title = "Tin Tức";
+			$Title = "TIN TỨC";
 			$Navigation = array(
-				array("Quản Lý", "/app")
+				array("QUẢN LÝ", "/app")
 			);
 			
 			if (!isset($Page)) $Page=1;

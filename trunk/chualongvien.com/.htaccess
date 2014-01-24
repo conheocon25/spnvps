@@ -47,8 +47,12 @@ RewriteRule ^lich-su-phat-giao$										?cmd=LibraryVideo&KBType=lich-su-phat-g
 RewriteRule ^phat-am/load/([0-9]+)$									?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
 RewriteRule ^phat-am/load/([0-9]+)$									?cmd=LibraryVideoLoadCategory&IdCategory=$1 [L]
 
-RewriteRule ^thu-vien-anh$											?cmd=LibraryAlbum [L]
-RewriteRule ^thu-vien-anh/([a-z0-9_-]+)$							?cmd=LibraryAlbum&KAlbum=$1 [L]
+RewriteRule ^hinh-anh-hoat-dong$									?cmd=LibraryAlbum [L]
+RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)$						?cmd=LibraryAlbum&KAlbum=$1 [L]
+
+RewriteRule ^hinh-anh-hoat-hinh$									?cmd=LibraryAnime [L]
+RewriteRule ^hinh-anh-hoat-hinh/chua-long-vien$						?cmd=LibraryAnime001 [L]
+RewriteRule ^hinh-anh-hoat-hinh/phat-thich-ca-ngoi-thien-vuon-truc$	?cmd=LibraryAnime002 [L]	
 
 RewriteRule ^su-kien$ 												?cmd=Event [L]
 RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=EventDetail&KEvent=$1 [L]
