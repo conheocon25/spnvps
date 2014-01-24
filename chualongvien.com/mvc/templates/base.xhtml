@@ -79,8 +79,14 @@
 					</ul>
 				</li>
 				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử Phật giáo</a></li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>
-				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'"><a href="/thu-vien-anh">Thư viện ảnh</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>				
+				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Thư viện ảnh <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li><a href="/hinh-anh-hoat-dong">Hoạt động</a></li>
+						<li><a href="/hinh-anh-hoat-hinh">Hoạt hình</a></li>
+					</ul>
+				</li>
 				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
 			</ul>
 		</div>
@@ -371,7 +377,7 @@
 				<li><a href="/phat-am">Phật âm</a></li>
 				<li><a href="/lich-su-phat-giao">Lịch sử Phật giáo</a></li>
 				<li><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>
-				<li><a href="/thu-vien-anh">Thư viện ảnh</a></li>
+				<li><a href="/anh-hoat-dong">Thư viện ảnh</a></li>
 				<li><a href="/lien-he">Liên hệ</a></li>
 				<li id="last"><a href="/signin/load">Quản trị</a></li>
 			</ul>

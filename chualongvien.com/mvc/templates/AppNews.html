@@ -38,24 +38,21 @@
 										<tr>
 											<th width="30px">STT</th>
 											<th />
-											<th align="left">TIÊU ĐỀ</th>
-											<th width="30px">XÓA</th>
+											<th><div class="text-left">NGÀY</div></th>
+											<th><div class="text-left">TIÊU ĐỀ</div></th>											
+											<th width="30px" />
 										</tr>
 									</thead>
 									<tbody>
 										<tr tal:repeat="News NewsAll" >
 											<td><div tal:content="repeat/News/number" /></td>
 											<td>
-												<span tal:condition="News/isVIP" class="icon-star"/>																						
+												<span tal:condition="News/isVIP" class="glyphicon glyphicon-star"/>
+												<span tal:condition="not:News/isVIP" class="glyphicon glyphicon-star-empty"/>
 											</td>
-											<td>
-												<a tal:attributes="href News/getURLUpdLoad">
-													<div tal:content="News/getTitle" />
-												</a>
-											</td>
-											<td>
-												<a tal:attributes="href News/getURLDelLoad">X</a>
-											</td>
+											<td width="90px"><div tal:content="News/getDatePrint" /></td>
+											<td><a tal:attributes="href News/getURLUpdLoad"><div tal:content="News/getTitle" /></a></td>
+											<td><a tal:attributes="href News/getURLDelLoad"><i class="glyphicon glyphicon-remove"/></a></td>
 										</tr>
 									</tbody>
 								</table>

@@ -10,6 +10,11 @@
 		<command name="Contact" type="public"><view>Contact</view></command>
 		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
+		
+		<command name="LibraryAnime" type="public"><view>LibraryAnime</view></command>
+		<command name="LibraryAnime001" type="public"><view>LibraryAnime001</view></command>
+		<command name="LibraryAnime002" type="public"><view>LibraryAnime002</view></command>
+		
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
 		
 		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
