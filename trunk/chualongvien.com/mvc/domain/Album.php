@@ -62,7 +62,7 @@ class Album extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLView(){return "thu-vien-anh/".$this->getKey();}
+	function getURLView(){return "hinh-anh-hoat-dong/".$this->getKey();}
 					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
