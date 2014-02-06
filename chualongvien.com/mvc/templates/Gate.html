@@ -19,17 +19,23 @@
 				$(".bottom-poe").slideUp();
 			});
 			*/
+			
+			var track = []; var start = 0;
+			track[0] = "https://dl.dropboxusercontent.com/s/s1gj1ysckuug1bs/audio-item-3.mp3?dl=1&token_hash=AAFeohtjrFjljWaU5R-mC5rReiBtyhbMQAjE5tsQXJddLA";
+			track[1] = "https://dl.dropboxusercontent.com/s/0e315v8t9xr66gz/audio-item-2.mp3?dl=1&token_hash=AAHDsB1Q52Bzr-7xKxsk3JuroFg3Tqq-FD-urLIak701WQ";
+			track[2] = "https://dl.dropboxusercontent.com/s/a4n9a4rklwrz33o/audio-item-1.mp3?dl=1&token_hash=AAES-8g7zemGxgKxEinyZmy06o0_X3K27FqPSFAkWn-wEw";
 			$("#jquery_audioPlayer").jPlayer({
-				ready: function() {
-					$(this).jPlayer("setMedia", {
-						mp3:"/data/intro.mp3"
-					}).jPlayer("play");
+				ready: function () {
+					$(this).jPlayer("setMedia", { mp3: track[start] }).jPlayer("play");
+				},
+				ended: function (event) {
+					start++; if(start>track.length) start = 0;
+					$(this).jPlayer("setMedia", { mp3: track[start] }).jPlayer("play");
 				},
 				swfPath: "data",
-				supplied: "mp3",
-				loop: true,
-				wmode: "window"
+				supplied: "mp3"
 			});
+			
 			$(window).bind('contextmenu', false);
 			$(document)[0].oncontextmenu = function() { return false; }
 			$(document).mousedown(function(e){
@@ -45,8 +51,7 @@
 		/*]]>*/
 		</script>
 	</head>
-	
-	<!--<body style="background:url('/data/images/bg/gate3.jpg') no-repeat center center fixed;">!-->
+
 	<body tal:attributes="style Style">
 		<div class="cover-inner">
 			<img src="/data/images/logo/title.png"/>
