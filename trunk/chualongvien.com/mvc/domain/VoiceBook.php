@@ -2,27 +2,27 @@
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
 
-class CategoryVideo extends Object{
+class VoiceBook extends Object{
 
     private $Id;
-	private $Name;
-	private $Picture;
+	private $Name;	
 	private $Order;
 	private $Type;
 	private $BType;
+	private $MP3Raw;
 	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null, $BType=Null, $Key=Null){
-        $this->Id = $Id;
-		$this->Name = $Name;
-		$this->Picture = $Picture;
-		$this->Order = $Order;
-		$this->Type = $Type;
-		$this->BType = $BType;
-		$this->Key = $Key;
+    function __construct( $Id=null, $Name=null, $Order=Null, $Type=Null, $BType=Null, $MP3Raw=Null, $Key=Null){
+        $this->Id 		= $Id;
+		$this->Name 	= $Name;		
+		$this->Order 	= $Order;
+		$this->Type 	= $Type;
+		$this->BType 	= $BType;
+		$this->MP3Raw	= $MP3Raw;
+		$this->Key 		= $Key;
         parent::__construct( $Id );
     }
     function getId(){return $this->Id;}	
@@ -33,8 +33,8 @@ class CategoryVideo extends Object{
 	function getNameReduce1(){$S = new \MVC\Library\String($this->Name);return $S->reduce(38);}
 	function getNameReduce2(){$S = new \MVC\Library\String($this->Name);return $S->reduce(80);}
 	
-	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}   
-	function getPicture( ) {return $this->Picture;}
+	function setMP3Raw( $MP3Raw ) {$this->MP3Raw = $MP3Raw;$this->markDirty();}   
+	function getMP3Raw( ) {return $this->MP3Raw;}
 	
 	function setOrder( $Order ) {$this->Order = $Order;$this->markDirty();}   
 	function getOrder( ) {return $this->Order;}
@@ -61,39 +61,20 @@ class CategoryVideo extends Object{
 	}
 	//-------------------------------------------------------------------------------
 	//GET LISTs
-	//-------------------------------------------------------------------------------
-	function getVoiceBookAll(){
-		$mVB 	= new \MVC\Mapper\VoiceBook();
-		$VBAll 	= $mVB->findBy( array($this->getId()) );
-		return $VBAll;
-	}	
-	
-	function getVLs(){
-		$mVL = new \MVC\Mapper\VideoLibrary();
-		$VLs = $mVL->findBy( array($this->getId()) );
-		return $VLs;
-	}	
-	
-	function getVLTop(){
-		$mVL = new \MVC\Mapper\VideoLibrary();
-		$VLTop = $mVL->findByTop( array($this->getId()) );
-		return $VLTop;
-	}
-	
-	function getVMsLimit10(){
-		$mVM = new \MVC\Mapper\VideoMonk();
-		$VMs = $mVM->findByCategoryLimit10( array($this->getId()) );
-		return $VMs;
+	//-------------------------------------------------------------------------------		
+	function getMP3All(){
+		
+		return null;
 	}
 	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
-			'Name'			=> $this->getName(),
-			'Picture'		=> $this->getPicture(),
+			'Name'			=> $this->getName(),			
 		 	'Order'			=> $this->getOrder(),
 			'Type'			=> $this->getType(),
 			'BType'			=> $this->getBType(),
+			'MP3Raw'		=> $this->getMP3Raw(),
 			'Key'			=> $this->getKey()
 		);				
 		return json_encode($json);
@@ -101,11 +82,11 @@ class CategoryVideo extends Object{
 	
 	function setArray( $Data ){
         $this->Id 		= $Data[0];
-		$this->Name 	= $Data[1];
-		$this->Picture 	= $Data[2];
-		$this->Order 	= $Data[3];		
-		$this->Type 	= $Data[4];
-		$this->BType 	= $Data[5];
+		$this->Name 	= $Data[1];		
+		$this->Order 	= $Data[2];
+		$this->Type 	= $Data[3];
+		$this->BType 	= $Data[4];
+		$this->MP3Raw	= $Data[5];
 		$this->reKey();
     }
 	
@@ -117,16 +98,7 @@ class CategoryVideo extends Object{
 	function getURLView(){return "/app/category/video/".$this->getId();}
 	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}
 	function getURLSettingVoice(){return "/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
-			
-	function getURLVideoInsLoad(){return "/app/category/video/".$this->getId()."/ins/load";}
-	function getURLVideoInsExe(){return "/app/category/video/".$this->getId()."/ins/exe";}
-	
-	function getURLUpdLoad(){return "/app/category/video/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/category/video/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/category/video/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/category/video/".$this->getId()."/del/exe";}
-			
+					
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	

@@ -11,6 +11,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/VideoMonk.php" );	
 	require_once( "mvc/mapper/VideoLibrary.php" );
 	require_once( "mvc/mapper/Album.php" );
+	require_once( "mvc/mapper/VoiceBook.php" );
 	require_once( "mvc/mapper/Monk.php" );
 	require_once( "mvc/mapper/Guest.php");
 	require_once( "mvc/mapper/Course.php");
