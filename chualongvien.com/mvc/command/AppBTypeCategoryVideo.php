@@ -26,11 +26,11 @@
 			$CategoryAll 	= $BType->getCategoryAll();
 			$Category		= $mCategoryVideo->find($IdCategory);
 			
-			$Title 			= $Category->getName();
+			$Title 			= mb_strtoupper($Category->getName(), 'UTF8').' - YOUTUBE';
 			$Navigation = array(
-				array("Quản Lý"		, "/app"),
-				array("Video"		, "/app/btype"),
-				array($BType->getName(), $BType->getURLSetting())
+				array("QUẢN LÝ"									, "/app"),
+				array("THƯ VIỆN"								, "/app/btype"),
+				array(mb_strtoupper($BType->getName(), 'UTF8')	, $BType->getURLSetting())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

@@ -25,11 +25,12 @@
 			$CategoryBType 	= $mCategoryBType->find($IdBType);
 			$CategoryVideo 	= $mCategoryVideo->find($IdCategory);
 			$CategoryAll 	= $mCategoryVideo->findByBType(array($IdBType));
-			
+									
 			$Title 			= mb_strtoupper($CategoryVideo->getName(), 'UTF8').' - SÁCH NÓI';
 			$Navigation = array(
-				array("QUẢN LÝ"			, "/app"),
-				array("DANH MỤC CÂP 1"	, "/app/btype")
+				array("QUẢN LÝ"									, "/app"),
+				array("THƯ VIỆN"								, "/app/btype"),
+				array(mb_strtoupper($CategoryBType->getName(), 'UTF8')	, $CategoryBType->getURLSetting())
 			);
 			
 			//-------------------------------------------------------------
