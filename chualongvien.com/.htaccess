@@ -118,13 +118,7 @@ RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/exe$ 				?cmd=AppNewsDelExe&IdCatego
 RewriteRule ^app/btype$ 										?cmd=AppBType [L]
 RewriteRule ^app/btype/([0-9]+)$ 								?cmd=AppBTypeCategory&IdBType=$1 [L]
 RewriteRule ^app/btype/([0-9]+)/([0-9]+)$ 						?cmd=AppBTypeCategoryVideo&IdBType=$1&IdCategory=$2 [L]
-
-RewriteRule ^app/category/video/ins/load$ 						?cmd=AppCategoryVideoInsLoad [L]
-RewriteRule ^app/category/video/ins/exe$ 						?cmd=AppCategoryVideoInsExe [L]
-RewriteRule ^app/category/video/([0-9]+)/upd/load$ 				?cmd=AppCategoryVideoUpdLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/upd/exe$ 				?cmd=AppCategoryVideoUpdExe&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/del/load$ 				?cmd=AppCategoryVideoDelLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/del/exe$ 				?cmd=AppCategoryVideoDelExe&IdCategory=$1 [L]
+RewriteRule ^app/btype/([0-9]+)/([0-9]+)/voice$ 				?cmd=AppVoiceBook&IdBType=$1&IdCategory=$2 [L]
 
 RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]

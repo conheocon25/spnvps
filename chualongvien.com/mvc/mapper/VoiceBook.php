@@ -5,14 +5,13 @@ require_once( "mvc/base/Mapper.php" );
 class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 
     function __construct() {
-        parent::__construct();
-				
+        parent::__construct();				
 		$tblVoiceBook = "chualongvien_book_voice";
 		
 		$selectAllStmt 			= sprintf("select * from %s ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$selectStmt 			= sprintf("select *  from %s where id=?", $tblVoiceBook);
-		$updateStmt 			= sprintf("update %s set name=?, `order`=?, type=?, btype=?, `mp3_raw`=?, `key`=? where id=?", $tblVoiceBook);
-		$insertStmt 			= sprintf("insert into %s ( name, `order`, type, btype, mp3_raw, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblVoiceBook);
+		$updateStmt 			= sprintf("update %s set name=?, `date_time`=?, `order`=?, type=?, btype=?, `mp3_raw`=?, `note`=?, `count`=?, `key`=? where id=?", $tblVoiceBook);
+		$insertStmt 			= sprintf("insert into %s ( name, `date_time`, `order`, type, btype, mp3_raw, note, `count`, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblVoiceBook);
 		$deleteStmt 			= sprintf("delete from %s where id=?", $tblVoiceBook);
 		$findByStmt 			= sprintf("select * from %s WHERE type=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$findByBTypeStmt 		= sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
@@ -33,11 +32,14 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\VoiceBook( 
 			$array['id'],
-			$array['name'],			
+			$array['name'],
+			$array['date_time'],			
 			$array['order'],
 			$array['type'],
 			$array['btype'],
 			$array['mp3_raw'],
+			$array['note'],
+			$array['count'],
 			$array['key']
 		);
         return $obj;
@@ -45,11 +47,14 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
     protected function targetClass() {return "VoiceBook";}
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getName(),			
+			$object->getName(),
+			$object->getDateTime(),
 			$object->getOrder(),
 			$object->getType(),
 			$object->getBType(),
 			$object->getMP3Raw(),
+			$object->getNote(),
+			$object->getCount(),
 			$object->getKey()
 		);
 		
@@ -60,12 +65,15 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getName(),			
+			$object->getName(),
+			$object->getDateTime(),
 			$object->getOrder(),
 			$object->getType(),
-			$object->getBType(),
-			$object->getKey(),
+			$object->getBType(),			
 			$object->getMP3Raw(),
+			$object->getNote(),
+			$object->getCount(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
