@@ -5,6 +5,12 @@
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
+		
+		<link href="/mvc/templates/theme/playlist/css/styles.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="/mvc/templates/theme/playlist/js/jquery-1.7.2.min.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/playlist/js/jquery-ui-1.8.21.custom.min.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/playlist/js/main.js"></script>
+		
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
@@ -19,11 +25,11 @@
 				$(".bottom-poe").slideUp();
 			});
 			*/
-			
+			/*
 			var track = []; var start = 0;
-			track[0] = "https://docs.google.com/uc?export=download&id=0B490knwG8sUYaWx5WkJGV0tnNWs";
-			track[1] = "https://dl.dropboxusercontent.com/s/0e315v8t9xr66gz/audio-item-2.mp3?dl=1&token_hash=AAHDsB1Q52Bzr-7xKxsk3JuroFg3Tqq-FD-urLIak701WQ";
-			track[2] = "https://dl.dropboxusercontent.com/s/a4n9a4rklwrz33o/audio-item-1.mp3?dl=1&token_hash=AAES-8g7zemGxgKxEinyZmy06o0_X3K27FqPSFAkWn-wEw";
+			track[0] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkbGwweHo1ZWppbEU&export=download";
+			track[1] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download";
+			track[2] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download";
 			$("#jquery_audioPlayer").jPlayer({
 				ready: function () {
 					$(this).jPlayer("setMedia", { mp3: track[start] }).jPlayer("play");
@@ -35,6 +41,10 @@
 				swfPath: "data",
 				supplied: "mp3"
 			});
+			*/
+
+			var tmp = 0;
+			$(".audio-ctrl").click(function(){ var auh = $(".audio").height() + "px"; if(tmp==0) { $(".audio").animate({ height: "-="+auh }); tmp ++; } else { $(".audio").css("height", "auto"); tmp--; } $(".audio-ctrl.up").toggleClass("a-hidden"); });
 			
 			$(window).bind('contextmenu', false);
 			$(document)[0].oncontextmenu = function() { return false; }
@@ -56,12 +66,40 @@
 
 		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
 		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ chân thường</p></div>
-
+		<!--
 		<div id="jquery_audioPlayer" class="jp-jplayer"></div>
-		
+		-->
 		<img class="cloud cloud1" src="/data/images/bg/cloud1.png"/>
 		<img class="cloud cloud2" src="/data/images/bg/cloud2.png"/>
 		<img class="cloud cloud3" src="/data/images/bg/cloud3.png"/>
 		<img class="bird" src="/data/images/bg/bird.gif"/>
+
+		<div class="audio">
+			<div class="player">
+				<div class="pl"></div>
+				<div class="title"></div>
+				<div class="artist"></div>
+				<div class="cover"></div>
+				<div class="controls">
+					<div class="play"></div>
+					<div class="pause"></div>
+					<div class="rew"></div>
+					<div class="fwd"></div>
+				</div>
+				<div class="volume"></div>
+				<div class="tracker"></div>
+			</div>
+			<ul class="playlist hidden">
+				<!--
+				<li audiourl="http://tmp.mp3.stream.nixcdn.com/fdd5f389b0252eb58eedd57c0c58f527/52f4ae85/NhacCuaTui218/NhacChuongNokia-Nokia_3xhpu.mp3" cover="" artist="">Nokia.mp3</li>
+				-->
+				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkbGwweHo1ZWppbEU&export=download" cover="" artist="">01.mp3</li>
+				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download" cover="" artist="">02.mp3</li>
+				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download" cover="" artist="">03.mp3</li>
+			</ul>
+			<div class="audio-ctrl down"/>
+			<div class="audio-ctrl up a-hidden"/>
+		</div>
+		
 	</body>
 </html>
