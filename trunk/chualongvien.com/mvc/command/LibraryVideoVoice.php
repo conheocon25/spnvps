@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LibraryAnime002 extends Command{
+	class LibraryVideoVoice extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -15,7 +15,8 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			
+			$mVB	= new \MVC\Mapper\VoiceBook();
+			$VB 	= $mVB->find(3);
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
@@ -33,11 +34,14 @@
 			}
 			$Image = '/data/images/bg/gate'.$Id.'.jpg';
 			$Style = "background:url(".$Image.") no-repeat center center fixed";
+			
+			//print_r($VB->getMP3All());
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);			
 			$request->setProperty("Style", $Style);
+			$request->setObject("VB", $VB);
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
