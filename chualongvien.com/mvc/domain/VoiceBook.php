@@ -78,7 +78,9 @@ class VoiceBook extends Object{
 	//GET LISTs
 	//-------------------------------------------------------------------------------		
 	function getMP3All(){
-		return null;
+		$S 		= new \MVC\Library\String($this->MP3Raw);
+		$Arr 	= $S->explode(' ');
+		return $Arr;
 	}
 	
 	function toJSON(){
@@ -113,7 +115,7 @@ class VoiceBook extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/danh-muc/".$this->getKey();}
+	function getURLRead(){return "/phat-am/voice/".$this->getKey();}
 	
 	function getURLView(){return "/app/category/video/".$this->getId();}
 	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}

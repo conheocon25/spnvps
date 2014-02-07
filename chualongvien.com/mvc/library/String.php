@@ -62,9 +62,9 @@ class String {
      * -------------------------------------------------------------------*/  
     function explode($delimiter,$ignore_case=false){
     	if($ignore_case)
-    		return spliti($delimiter,$this->value);
+    		return explode($delimiter,$this->value);
     	else
-    		return split($delimiter,$this->value);
+    		return explode($delimiter,$this->value);
     }
         
 	/** -------------------------------------------------------------------

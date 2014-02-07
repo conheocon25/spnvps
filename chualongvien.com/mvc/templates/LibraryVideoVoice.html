@@ -14,37 +14,20 @@
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
+		
 			$(".top-poe").slideDown();
 			$(".bottom-poe").slideDown();
-			/*$(".poe").hide();
-			$(".poe-hover").hover(function(){
-				$(".top-poe").slideDown();
-				$(".bottom-poe").slideDown();
-			}, function(){
-				$(".top-poe").slideUp();
-				$(".bottom-poe").slideUp();
-			});
-			*/
-			/*
-			var track = []; var start = 0;
-			track[0] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkbGwweHo1ZWppbEU&export=download";
-			track[1] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download";
-			track[2] = "https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download";
-			$("#jquery_audioPlayer").jPlayer({
-				ready: function () {
-					$(this).jPlayer("setMedia", { mp3: track[start] }).jPlayer("play");
-				},
-				ended: function (event) {
-					start++; if(start>track.length-1) start = 0;
-					$(this).jPlayer("setMedia", { mp3: track[start] }).jPlayer("play");
-				},
-				swfPath: "data",
-				supplied: "mp3"
-			});
-			*/
-
+			
 			var tmp = 0;
-			$(".audio-ctrl").click(function(){ var auh = $(".audio").height() + "px"; if(tmp==0) { $(".audio").animate({ height: "-="+auh }); tmp ++; } else { $(".audio").css("height", "auto"); tmp--; } $(".audio-ctrl.up").toggleClass("a-hidden"); });
+			$(".audio-ctrl").click(function(){ 
+				var auh = $(".audio").height() + "px";
+				if(tmp==0) { 
+					$(".audio").animate({ height: "-="+auh }); tmp ++;
+				} else { 
+					$(".audio").css("height", "auto"); tmp--; 
+				}
+				$(".audio-ctrl.up").toggleClass("a-hidden"); 
+			});
 			
 			$(window).bind('contextmenu', false);
 			$(document)[0].oncontextmenu = function() { return false; }
@@ -57,18 +40,16 @@
 	</head>
 
 	<body tal:attributes="style Style">
-		<div class="cover-inner">
+		<div class="cover-inner" onclick="window.history.back()">
 			<img src="/data/images/logo/title.png"/>
-			<p><a href="/trang-chu"><span class="link poe-hover">Vào Trang chủ</span></a></p>
+			<p style="font:34px"><span class="link poe-hover" tal:content="VB/getName"/></p>
 		</div>
 		
-		<div class="p-title poe-hover"><a href="/trang-chu"><p>Chùa Long Viễn</p></a></div>
+		<div class="p-title poe-hover" onclick="window.history.back()"><p>Chùa Long Viễn</p></div>
 
 		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
 		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ chân thường</p></div>
-		<!--
-		<div id="jquery_audioPlayer" class="jp-jplayer"></div>
-		-->
+		
 		<img class="cloud cloud1" src="/data/images/bg/cloud1.png"/>
 		<img class="cloud cloud2" src="/data/images/bg/cloud2.png"/>
 		<img class="cloud cloud3" src="/data/images/bg/cloud3.png"/>
@@ -88,11 +69,13 @@
 				</div>
 				<div class="volume"></div>
 				<div class="tracker"></div>
-			</div>
-			<ul class="playlist hidden">				
-				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkbGwweHo1ZWppbEU&export=download" cover="" artist="">01.mp3</li>
-				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download" cover="" artist="">02.mp3</li>
-				<li audiourl="https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download" cover="" artist="">03.mp3</li>
+			</div>			
+			<ul class="playlist hidden">
+				<li tal:repeat="MP3 VB/getMP3All"
+					tal:attributes="audiourl php:'https://docs.google.com/uc?authuser=0&id=' . MP3 . '&export=download'"
+					cover="" artist="">
+					<span tal:content="VB/getName"/>
+				</li>				
 			</ul>
 			<div class="audio-ctrl down"/>
 			<div class="audio-ctrl up a-hidden"/>
