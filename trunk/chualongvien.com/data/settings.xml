@@ -86,47 +86,17 @@
 		<!-- APP.MONK																		-->
 		<!-- ============================================================================== -->		
 		<command name="AppMonk"><view>AppMonk</view></command>
-		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>
-		<command name="AppMonkVideoInsLoad"><view>AppMonkVideoInsLoad</view></command>
-		<command name="AppMonkVideoInsExe"><view>AppMonkVideoInsExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
-		<command name="AppMonkVideoUpdLoad"><view>AppMonkVideoUpdLoad</view></command>
-		<command name="AppMonkVideoUpdExe"><view>AppMonkVideoUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>		
-		<command name="AppMonkVideoDelLoad"><view>AppMonkVideoDelLoad</view></command>
-		<command name="AppMonkVideoDelExe"><view>AppMonkVideoDelExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
-		<command name="AppMonkVideoYoutubeUpdLoad"><view>AppMonkVideoYoutubeUpdLoad</view></command>
-		<command name="AppMonkVideoYoutubeUpdExe"><view>AppMonkVideoYoutubeUpdExe</view><status value="CMD_OK"><forward>AppMonkVideo</forward></status></command>
-								
+		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>		
+										
 		<!-- ============================================================================== -->
 		<!-- APP.BTYPE																-->
 		<!-- ============================================================================== -->
-		<command name="AppBType"><view>AppBType</view></command>
-		<command name="AppBTypeCategory"><view>AppBTypeCategory</view></command>
-		<command name="AppBTypeCategoryVideo"><view>AppBTypeCategoryVideo</view></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.CATEGORY.VIDEO																-->
-		<!-- ============================================================================== -->		
-		<command name="AppCategoryVideoInsLoad"><view>AppCategoryVideoInsLoad</view></command>
-		<command name="AppCategoryVideoInsExe"><view>AppCategoryVideoInsExe</view><status value="CMD_OK"><forward>AppBTypeCategory</forward></status></command>		
-		<command name="AppCategoryVideoUpdLoad"><view>AppCategoryVideoUpdLoad</view></command>
-		<command name="AppCategoryVideoUpdExe"><view>AppCategoryVideoUpdExe</view><status value="CMD_OK"><forward>AppBTypeCategory</forward></status></command>		
-		<command name="AppCategoryVideoDelLoad"><view>AppCategoryVideoDelLoad</view></command>
-		<command name="AppCategoryVideoDelExe"><view>AppCategoryVideoDelExe</view><status value="CMD_OK"><forward>AppBTypeCategory</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.CATEGORY.VIDEO.DETAIL														-->
-		<!-- ============================================================================== -->
-		<command name="AppCategoryVideoDetail"><view>AppCategoryVideoDetail</view></command>
-		
-		<command name="AppCategoryVideoDetailInsLoad"><view>AppCategoryVideoDetailInsLoad</view></command>
-		<command name="AppCategoryVideoDetailInsExe"><view>AppCategoryVideoDetailInsExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
-		
-		<command name="AppCategoryVideoDetailUpdLoad"><view>AppCategoryVideoDetailUpdLoad</view></command>
-		<command name="AppCategoryVideoDetailUpdExe"><view>AppCategoryVideoDetailUpdExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
-		
-		<command name="AppCategoryVideoDetailDelLoad"><view>AppCategoryVideoDetailDelLoad</view></command>
-		<command name="AppCategoryVideoDetailDelExe"><view>AppCategoryVideoDetailDelExe</view><status value="CMD_OK"><forward>AppBTypeCategoryVideo</forward></status></command>
-		
+		<command name="AppBType">				<view>AppBType</view></command>
+		<command name="AppBTypeCategory">		<view>AppBTypeCategory</view></command>
+		<command name="AppBTypeCategoryVideo">	<view>AppBTypeCategoryVideo</view></command>
+		<command name="AppCategoryVideoDetail">	<view>AppCategoryVideoDetail</view></command>
+		<command name="AppVoiceBook">			<view>AppVoiceBook</view></command>
+				
 		<!-- ============================================================================== -->
 		<!-- APP.NEWS																		-->
 		<!-- ============================================================================== -->		
