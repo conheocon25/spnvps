@@ -16,7 +16,7 @@
 						<div class="b-content">
 							<ul class="nav nav-tabs nav-stacked reset-margin list-3">
 								<li tal:repeat="Category1 CategoryBType/getCategoryAll">
-									<a class="CategoryButton" tal:attributes="alt Category1/getId">
+									<a class="CategoryButton" tal:attributes="alt Category1/getId" href="Javascript:;">
 										<span class="label monk-label" tal:content="Category1/getVLs/count"/>
 										<span tal:content="Category1/getName"/>
 									</a>
@@ -76,7 +76,7 @@
 						</div>
 					</div>										
 				</div>
-				<div class="span3 fix-width-3"><div class="box radius" id="VideoList" /></div>
+				<div class="span3 fix-width-3"><div id="VideoList"></div></div>
 				<div id="ActiveCategory" tal:attributes="alt Category/getId" />
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>			

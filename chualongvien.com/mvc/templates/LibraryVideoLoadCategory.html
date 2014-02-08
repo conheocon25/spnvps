@@ -11,7 +11,7 @@
 			<div class="b-content">				
 				<ul class="nav nav-tabs nav-stacked reset-margin list-3">
 					<li class="news-list-item" tal:repeat="VL Category/getVLs">
-						<a class="VideoButton" tal:attributes="data-name VL/getVideo/getName; data-url VL/getVideo/getURL; data-count VL/getVideo/getCount; data-note VL/getVideo/getNote">
+						<a href="Javascript:;" class="VideoButton" tal:attributes="data-name VL/getVideo/getName; data-url VL/getVideo/getURL; data-count VL/getVideo/getCount; data-note VL/getVideo/getNote">
 							<span tal:content="VL/getVideo/getName"/>
 						</a>
 					</li>
@@ -24,7 +24,7 @@
 			<div class="b-content">
 				<ul class="nav nav-tabs nav-stacked reset-margin list-3">
 					<li class="news-list-item" tal:repeat="VB Category/getVoiceBookAll">
-						<a class="VoiceButton" tal:attributes="href VB/getURLRead">
+						<a href="Javascript:;" class="VoiceButton" tal:attributes="href VB/getURLRead">
 							<span tal:content="VB/getName"/>
 						</a>
 					</li>

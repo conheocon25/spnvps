@@ -5,7 +5,6 @@
 		<!-- ============================================================================== -->		
 		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Gate</forward></status></command>
 		<command name="Gate" type="public"><view>Gate</view></command>
-		<command name="Gate1" type="public"><view>Gate1</view></command>
 		<command name="Home" type="public"><view>Home</view></command>		
 		<command name="Introduction" type="public"><view>Introduction</view></command>
 		<command name="Contact" type="public"><view>Contact</view></command>
