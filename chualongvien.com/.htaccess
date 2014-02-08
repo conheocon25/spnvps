@@ -29,6 +29,7 @@ RewriteRule ^signout/load$ 											?cmd=SignoutLoad [L]
 RewriteRule ^signout/exe$ 											?cmd=SignoutExe [L]
 
 RewriteRule ^gate$ 													?cmd=Gate [L]
+RewriteRule ^gate1$ 												?cmd=Gate1 [L]
 RewriteRule ^gioi-thieu$ 											?cmd=Introduction [L]
 
 RewriteRule ^task$ 													?cmd=Task [L]
