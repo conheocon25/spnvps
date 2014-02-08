@@ -41,6 +41,7 @@ RewriteRule ^giang-su/load/([0-9]+)$								?cmd=LibraryMonkLoad&IdMonk=$1 [L]
 
 RewriteRule ^phat-am/([a-z0-9_-]+)$									?cmd=LibraryVideo&KBType=$1 [L]
 RewriteRule ^phat-am/voice/([a-z0-9_-]+)$							?cmd=LibraryVideoVoice&KBVoice=$1 [L]
+RewriteRule ^phat-am/voice/([a-z0-9_-]+)/load$						?cmd=LibraryVideoVoiceLoad&KBVoice=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/([a-z0-9_-]+)$		?cmd=LibraryVideo&KBType=$1&KCategory=$2&KVideoLibrary=$3 [L]
 
 RewriteRule ^thu-vien-phat-phap$									?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
@@ -51,10 +52,6 @@ RewriteRule ^phat-am/load/([0-9]+)$									?cmd=LibraryVideoLoadCategory&IdCate
 
 RewriteRule ^hinh-anh-hoat-dong$									?cmd=LibraryAlbum [L]
 RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)$						?cmd=LibraryAlbum&KAlbum=$1 [L]
-
-RewriteRule ^hinh-anh-hoat-hinh$									?cmd=LibraryAnime [L]
-RewriteRule ^hinh-anh-hoat-hinh/chua-long-vien$						?cmd=LibraryAnime001 [L]
-RewriteRule ^hinh-anh-hoat-hinh/phat-thich-ca-ngoi-thien-vuon-truc$	?cmd=LibraryAnime002 [L]	
 
 RewriteRule ^su-kien$ 												?cmd=Event [L]
 RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=EventDetail&KEvent=$1 [L]
