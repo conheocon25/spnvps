@@ -187,11 +187,12 @@
 		height: auto;
 		bottom: 0;
 		left: 0;
+		z-index: 99999999999;
 	}
 	
 	.audio-ctrl {
 		position: absolute;
-		left: 10px;
+		left: 2px;
 		cursor: pointer;
 		height: 0;
 		width: 0;
@@ -200,12 +201,12 @@
 	}
 	
 	.audio-ctrl.up {
-		border-bottom-color: #424242;
+		border-bottom-color: #009BE3;
 		top: -30px;
 	}
 	
 	.audio-ctrl.down {
-		border-top-color: #DDD;
+		border-top-color: #009BE3;
 		top: 2px;
 	}
 	
