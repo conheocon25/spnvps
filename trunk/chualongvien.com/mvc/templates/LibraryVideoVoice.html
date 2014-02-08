@@ -14,10 +14,10 @@
 		$(document).ready(function(){
 			var PlayList = null;
 			var URL = "";
-			
-			$(".top-poe").slideDown();
-			$(".bottom-poe").slideDown();
-			
+			$('body').css('opacity', '0').fadeTo(1500, 1,'swing');
+			$(".top-poe").animate({ top: "+=100%" }, { duration: 1500 });
+			$(".bottom-poe").animate({ bottom: "+=100%" }, { duration: 1500 });
+
 			URL = $(".audio").attr('URL');
 			$.ajax({
 				type: "POST",
@@ -56,18 +56,21 @@
 			$(document).bind('keydown keypress', 'ctrl+s', function(){return false;});
 			$(document).bind('keydown keypress', 'f12', function(){return false;});
 			
+			$(".voice-title").css("margin-left", "-"+$(".voice-title").width()/2+"px");
 		});
 		/*]]>*/
 		</script>
 	</head>
 
 	<body tal:attributes="style Style">
+		<h1 class="voice-title" tal:content="VB/getName"/>
+		
 		<div class="cover-inner" onclick="window.history.back()">
 			<img src="/data/images/logo/title.png"/>
-			<p><span class="link poe-hover">Quay lại</span></p>
+			<p><a href="Javascript:;"><span class="link poe-hover">Trở lại</span></a></p>
 		</div>
-		<H1 tal:content="VB/getName" />
-		<div class="p-title poe-hover"><p>Chùa Long Viễn</p></div>
+		
+		<div class="p-title poe-hover"><a href="/trang-chu"><p>Chùa Long Viễn</p></a></div>
 
 		<div class="poe top-poe"><p>Trăm năm nhìn xuống đời hư ảo</p></div>
 		<div class="poe bottom-poe"><p>Phút chốc nhìn lên ngộ chân thường</p></div>
@@ -121,6 +124,7 @@
 			
 			<div class="audio-ctrl down"/>
 			<div class="audio-ctrl up a-hidden"/>
-		</div>		
+		</div>
+		
 	</body>
 </html>

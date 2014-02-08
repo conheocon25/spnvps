@@ -46,7 +46,7 @@
 	
 	.link {
 		font-family: "CustomFont";
-		padding: 50px 30px;
+		padding: 50px 60px;
 		background: url('/data/images/bg/cloud.png') no-repeat center center transparent;
 		font-size: 1.3em;
 		color: #403A3A;
@@ -94,8 +94,8 @@
 		z-index: 999;
 	}
 	
-	.top-poe { top: 0; left: 5%; }
-	.bottom-poe { bottom: 0; right: 5%; }
+	.top-poe { top: -100%; left: 5%; }
+	.bottom-poe { bottom: -100%; right: 5%; }
 	
 	.poe p {
 		text-align: center;
@@ -211,3 +211,14 @@
 	}
 	
 	.audio-ctrl.up.a-hidden { visibility: hidden; }
+	
+	.voice-title {
+		position: absolute;
+		width: auto;
+		left: 50%;
+		top: 20px;
+		color: #750F12;
+		font-size: 50px;
+		font-family: "CustomFont";
+		text-shadow: 1px -1px #FCF9F9, -1px 1px #FCF9F9;
+	}
