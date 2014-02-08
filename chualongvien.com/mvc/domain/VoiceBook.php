@@ -116,6 +116,7 @@ class VoiceBook extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLRead(){return "/phat-am/voice/".$this->getKey();}
+	function getURLLoadMP3Raw(){return "/phat-am/voice/".$this->getKey()."/load";}
 	
 	function getURLView(){return "/app/category/video/".$this->getId();}
 	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}

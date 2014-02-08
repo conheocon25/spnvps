@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LibraryVideoVoice extends Command{
+	class LibraryVideoVoiceLoad extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -18,31 +18,26 @@
 			//-------------------------------------------------------------			
 			$mVB	= new \MVC\Mapper\VoiceBook();
 			$VB 	= $mVB->findByKey($KBVoice);
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Title = "CHÀO MỪNG ĐẾN VỚI WEBSITE CHÙA LONG VIỄN";
-			$H = date('H');
+			//-------------------------------------------------------------
+			$Data 	= array();
+			$S 		= new \MVC\Library\String( $VB->getMP3Raw() );
+			$Arr 	= $S->explode(' ');
 			
-			if ($H>=3 && $H<=10){
-				$Id = 1;
-			}else if ($H>10 && $H<=16){
-				$Id = 2;
-			}else if ($H>16 && $H<=18){
-				$Id = 3;
-			}else{
-				$Id = 4;
+			$Index = 1;
+			foreach ($Arr as $A){
+				$Data[] = array(
+					'title' 	=> "Phần " . $Index++,
+					'mp3'		=> "https://docs.google.com/uc?authuser=0&id=".$A."&export=download"
+				);
 			}
-			$Image = '/data/images/bg/gate'.$Id.'.jpg';
-			$Style = "background:url(".$Image.") no-repeat center center fixed";
-						
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);			
-			$request->setProperty("Style", $Style);
-			$request->setObject("VB", $VB);
-			return self::statuses('CMD_DEFAULT');
+			echo json_encode($Data);
 		}
 	}
 ?>

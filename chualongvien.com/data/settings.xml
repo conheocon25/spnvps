@@ -47,6 +47,7 @@
 		<command name="Library" type="public"><view>Library</view></command>
 		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>		
 		<command name="LibraryVideoVoice" type="public"><view>LibraryVideoVoice</view></command>		
+		<command name="LibraryVideoVoiceLoad" type="public"><view>LibraryVideoVoiceLoad</view></command>
 		<command name="LibraryVideoLoadCategory" type="public"><view>LibraryVideoLoadCategory</view></command>
 		
 		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
