@@ -8,8 +8,9 @@
 		<script>
 		/*<![CDATA[*/
 		$(document).ready(function(){
-			$(".top-poe").slideDown();
-			$(".bottom-poe").slideDown();
+			$('body').css('opacity', '0').fadeTo(1500, 1,'swing');
+			$(".top-poe").animate({ top: "+=100%" }, { duration: 1500 });
+			$(".bottom-poe").animate({ bottom: "+=100%" }, { duration: 1500 });
 			/*$(".poe").hide();
 			$(".poe-hover").hover(function(){
 				$(".top-poe").slideDown();
