@@ -33,14 +33,21 @@
 			});
 			$(window).bind('contextmenu', false);
 			$(document)[0].oncontextmenu = function() { return false; }
-			$(document).mousedown(function(e){ if( e.button == 2 ) { return false; } else { return true; } });
+			$(document).mousedown(function(e){
+				if( e.button == 2 ) {
+					return false;
+				} else {
+					return true;
+				}
+			});
 			$(document).bind('keydown keypress', 'ctrl+s', function(){return false;});
 			$(document).bind('keydown keypress', 'f12', function(){return false;});
 		});
 		/*]]>*/
 		</script>
 	</head>
-
+	
+	<!--<body style="background:url('/data/images/bg/gate3.jpg') no-repeat center center fixed;">!-->
 	<body tal:attributes="style Style">
 		<div class="cover-inner">
 			<img src="/data/images/logo/title.png"/>
