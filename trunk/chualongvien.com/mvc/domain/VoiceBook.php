@@ -3,9 +3,9 @@ Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
 
 class VoiceBook extends Object{
-
     private $Id;
-	private $Name;	
+	private $Name;
+	private $Author;
 	private $DateTime;	
 	private $Order;
 	private $Type;
@@ -13,14 +13,16 @@ class VoiceBook extends Object{
 	private $MP3Raw;
 	private $Note;
 	private $Count;
+	private $IdAnime;
 	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $DateTime=null, $Order=Null, $Type=Null, $BType=Null, $MP3Raw=Null, $Note=Null, $Count=Null, $Key=Null){
+    function __construct( $Id=null, $Name=null, $Author=null, $DateTime=null, $Order=Null, $Type=Null, $BType=Null, $MP3Raw=Null, $Note=Null, $Count=Null, $IdAnime=Null, $Key=Null){
         $this->Id 		= $Id;
 		$this->Name 	= $Name;		
+		$this->Author 	= $Author;		
 		$this->DateTime = $DateTime;
 		$this->Order 	= $Order;
 		$this->Type 	= $Type;
@@ -28,6 +30,7 @@ class VoiceBook extends Object{
 		$this->MP3Raw	= $MP3Raw;
 		$this->Note		= $Note;
 		$this->Count	= $Count;
+		$this->IdAnime	= $IdAnime;
 		$this->Key 		= $Key;
         parent::__construct( $Id );
     }
@@ -38,6 +41,9 @@ class VoiceBook extends Object{
 	function getName( ) {if (!isset($this->Name)||$this->Name=="")return "Chưa có chủ đề"; return $this->Name;}
 	function getNameReduce1(){$S = new \MVC\Library\String($this->Name);return $S->reduce(38);}
 	function getNameReduce2(){$S = new \MVC\Library\String($this->Name);return $S->reduce(80);}
+
+	function setAuthor( $Author ) {$this->Author = $Author;$this->markDirty();}   
+	function getAuthor( ) {if (!isset($this->Author)||$this->Author=="")return "Chưa có tác giả"; return $this->Author;}
 	
 	function setDateTime( $DateTime ) {$this->DateTime = $DateTime;$this->markDirty();}   
 	function getDateTime( ) {return $this->DateTime;}
@@ -68,6 +74,14 @@ class VoiceBook extends Object{
 	function setCount( $Count ) {$this->Count = $Count;$this->markDirty();}   
 	function getCount( ) {return $this->Count;}
 	
+	function setIdAnime( $IdAnime ) {$this->IdAnime = $IdAnime;$this->markDirty();}
+	function getIdAnime( ) {return $this->IdAnime;}
+	function getAnime(){
+		$mAnime = new \MVC\Mapper\Anime();
+		$Anime = $mAnime->find($this->getIdAnime());
+		return $Anime;
+	}
+	
 	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
 	function getKey( ) {return $this->Key;}
 	function reKey( ) {
@@ -86,7 +100,8 @@ class VoiceBook extends Object{
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
-			'Name'			=> $this->getName(),			
+			'Name'			=> $this->getName(),
+			'Author'		=> $this->getAuthor(),			
 			'DateTime'		=> $this->getDateTime(),
 		 	'Order'			=> $this->getOrder(),
 			'Type'			=> $this->getType(),
@@ -94,6 +109,7 @@ class VoiceBook extends Object{
 			'MP3Raw'		=> $this->getMP3Raw(),
 			'Note'			=> $this->getNote(),
 			'Count'			=> $this->getCount(),
+			'IdAnime'		=> $this->getIdAnime(),
 			'Key'			=> $this->getKey()
 		);				
 		return json_encode($json);
@@ -102,13 +118,15 @@ class VoiceBook extends Object{
 	function setArray( $Data ){
         $this->Id 		= $Data[0];
 		$this->Name 	= $Data[1];		
-		$this->DateTime	= $Data[2];
-		$this->Order 	= $Data[3];
-		$this->Type 	= $Data[4];
-		$this->BType 	= $Data[5];
-		$this->MP3Raw	= $Data[6];
-		$this->Note		= $Data[7];
-		$this->Count	= $Data[8];
+		$this->Author 	= $Data[2];
+		$this->DateTime	= \date("Y-m-d H:i:s");
+		$this->Order 	= $Data[4];
+		$this->Type 	= $Data[5];
+		$this->BType 	= $Data[6];
+		$this->MP3Raw	= $Data[7];
+		$this->Note		= $Data[8];
+		$this->Count	= $Data[9];
+		$this->IdAnime	= $Data[10];
 		$this->reKey();
     }
 	

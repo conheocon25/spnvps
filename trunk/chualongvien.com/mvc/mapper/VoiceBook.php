@@ -10,8 +10,8 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		
 		$selectAllStmt 			= sprintf("select * from %s ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$selectStmt 			= sprintf("select *  from %s where id=?", $tblVoiceBook);
-		$updateStmt 			= sprintf("update %s set name=?, `date_time`=?, `order`=?, type=?, btype=?, `mp3_raw`=?, `note`=?, `count`=?, `key`=? where id=?", $tblVoiceBook);
-		$insertStmt 			= sprintf("insert into %s ( name, `date_time`, `order`, type, btype, mp3_raw, note, `count`, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblVoiceBook);
+		$updateStmt 			= sprintf("update %s set name=?, author=?, `date_time`=?, `order`=?, type=?, btype=?, `mp3_raw`=?, `note`=?, `count`=?, `id_anime`=?, `key`=? where id=?", $tblVoiceBook);
+		$insertStmt 			= sprintf("insert into %s ( name, author, `date_time`, `order`, type, btype, mp3_raw, note, `count`, id_anime, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblVoiceBook);
 		$deleteStmt 			= sprintf("delete from %s where id=?", $tblVoiceBook);
 		$findByStmt 			= sprintf("select * from %s WHERE type=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$findByBTypeStmt 		= sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
@@ -33,6 +33,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
         $obj = new \MVC\Domain\VoiceBook( 
 			$array['id'],
 			$array['name'],
+			$array['author'],
 			$array['date_time'],			
 			$array['order'],
 			$array['type'],
@@ -40,6 +41,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 			$array['mp3_raw'],
 			$array['note'],
 			$array['count'],
+			$array['id_anime'],
 			$array['key']
 		);
         return $obj;
@@ -48,6 +50,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
+			$object->getAuthor(),
 			$object->getDateTime(),
 			$object->getOrder(),
 			$object->getType(),
@@ -55,6 +58,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 			$object->getMP3Raw(),
 			$object->getNote(),
 			$object->getCount(),
+			$object->getIdAnime(),
 			$object->getKey()
 		);
 		
@@ -66,6 +70,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getName(),
+			$object->getAuthor(),
 			$object->getDateTime(),
 			$object->getOrder(),
 			$object->getType(),
@@ -73,9 +78,11 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 			$object->getMP3Raw(),
 			$object->getNote(),
 			$object->getCount(),
+			$object->getIdAnime(),
 			$object->getKey(),
 			$object->getId()
 		);
+				
         $this->updateStmt->execute( $values );
     }
 		

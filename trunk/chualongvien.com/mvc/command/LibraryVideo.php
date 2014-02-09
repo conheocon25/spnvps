@@ -27,13 +27,13 @@
 			$IdBType 			= $CategoryBType->getId();
 															
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
-			$CategoryVideoAll 	= $mCategoryVideo->findAll();
+			$CategoryVideoAll 	= $mCategoryVideo->findByBType(array($IdBType));
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
 			
 			$Category 			= $mCategoryVideo->findByKey($KCategory);
 			if (!isset($Category)) $Category = $CategoryVideoAll->current();			
 			$Video 				= $mVideo->findByKey($KVideoLibrary);
-			
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
@@ -42,7 +42,7 @@
 			$request->setObject("CategoryNewsAll", 	$CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("Category", 		$Category);
-			//print_r($Category);
+			
 			$request->setObject("Video", 			$Video);
 			if($KBType == "lich-su-phat-giao") {
 				$request->setProperty("ActiveItem", 	'LibraryVideo1');

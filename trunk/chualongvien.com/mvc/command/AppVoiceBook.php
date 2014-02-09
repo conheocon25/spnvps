@@ -18,6 +18,8 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
 			require_once("mvc/base/mapper/MapperDefault.php");
+			$mAnime	= new \MVC\Mapper\Anime();
+			
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -25,6 +27,7 @@
 			$CategoryBType 	= $mCategoryBType->find($IdBType);
 			$CategoryVideo 	= $mCategoryVideo->find($IdCategory);
 			$CategoryAll 	= $mCategoryVideo->findByBType(array($IdBType));
+			$AnimeAll		= $mAnime->findAll();
 									
 			$Title 			= mb_strtoupper($CategoryVideo->getName(), 'UTF8').' - SÁCH NÓI';
 			$Navigation = array(
@@ -39,7 +42,8 @@
 			$request->setObject("CategoryBType"	, $CategoryBType);
 			$request->setObject("CategoryVideo"	, $CategoryVideo);
 			$request->setObject("CategoryAll"	, $CategoryAll);
-									
+			$request->setObject("AnimeAll"		, $AnimeAll);
+			
 			$request->setObject('Navigation'	, $Navigation);
 			$request->setProperty("ActiveAdmin"	, 'Video');
 			$request->setProperty("Title"		, $Title);

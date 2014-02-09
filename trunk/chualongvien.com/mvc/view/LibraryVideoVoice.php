@@ -1,5 +1,8 @@
 <?php
 	require_once("mvc/base/Viewer.php");
-	$Viewer = new Viewer("mvc/templates/LibraryVideoVoice.html");
+	
+	$request 	= \MVC\Base\RequestRegistry::getRequest();
+	$VB 		= $request->getObject("VB");	
+	$Viewer 	= new Viewer("mvc/templates/".$VB->getAnime()->getHtml());
 	echo $Viewer->html();
 ?>

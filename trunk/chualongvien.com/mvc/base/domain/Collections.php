@@ -1,7 +1,7 @@
 <?php
 namespace MVC\Domain;
 
-interface AppCollection 			extends \Iterator {function add( Object $App );}
+interface AnimeCollection 			extends \Iterator {function add( Object $Anime );}
 interface UserCollection 			extends \Iterator {function add( Object $user );}
 interface CategoryNewsCollection 	extends \Iterator {function add( Object $CategoryNews );}
 interface CategoryVideoCollection 	extends \Iterator {function add( Object $CategoryVideo );}
