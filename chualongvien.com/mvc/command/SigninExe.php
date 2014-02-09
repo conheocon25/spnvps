@@ -19,7 +19,7 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mUser = new \MVC\Mapper\User();
-			$mApp = new \MVC\Mapper\App();			
+			
 									
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -31,10 +31,8 @@
 			
 			$IdUser = $mUser->check($Email, $Pass);
 			if ($IdUser > 0){								
-				$User = $mUser->find($IdUser);																				
-				$App = $mApp->find(1);
-				$User->setApp($App);
-				$Session->setCurrentUser($User);				
+				$User = $mUser->find($IdUser);																								
+				$Session->setCurrentUser($User);
 			}else{				
 				$request->addFeedback("error");				
 				return self::statuses('CMD_NO_AUTHOR');
