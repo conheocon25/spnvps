@@ -20,26 +20,16 @@
 			$VB 	= $mVB->findByKey($KBVoice);
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Title = "CHÀO MỪNG ĐẾN VỚI WEBSITE CHÙA LONG VIỄN";
-			$H = date('H');
+			//-------------------------------------------------------------						
+																		
+			$Style = "background:url(/data/images/bg/gate1.jpg) no-repeat center center fixed";
 			
-			if ($H>=3 && $H<=10){
-				$Id = 1;
-			}else if ($H>10 && $H<=16){
-				$Id = 2;
-			}else if ($H>16 && $H<=18){
-				$Id = 3;
-			}else{
-				$Id = 4;
-			}
-			$Image = '/data/images/bg/gate'.$Id.'.jpg';
-			$Style = "background:url(".$Image.") no-repeat center center fixed";
-						
+			$VB->setCount( $VB->getCount() + 1);
+			$mVB->update($VB);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			$request->setProperty("Title", $Title);			
+			//-------------------------------------------------------------						
 			$request->setProperty("Style", $Style);
 			$request->setObject("VB", $VB);
 			return self::statuses('CMD_DEFAULT');

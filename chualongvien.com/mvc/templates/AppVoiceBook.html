@@ -35,16 +35,16 @@
 									<thead>
 										<tr>
 											<th width="30px">STT</th>										
-											<th align="left"><div class="text-left">TIÊU ĐỀ</div></th>											
+											<th align="left"><div class="text-left">TIÊU ĐỀ</div></th>
+											<th align="left" width="180px"><div class="text-left">TÁC GIẢ</div></th>
 											<th width="30px" />
 										</tr>
 									</thead>
 									<tbody>
 										<tr tal:repeat="VB CategoryVideo/getVoiceBookAll">
 											<td width="32" align="center"><div tal:content="repeat/VB/number" /></td>
-											<td>											
-												<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id VB/getId" tal:content="VB/getName"/>
-											</td>											
+											<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id VB/getId" tal:content="VB/getName"/></td>
+											<td><span tal:content="VB/getAuthor"/></td>
 											<td><a class="remove-item" href="#deleteDialog" data-toggle="modal" tal:attributes="data-id VB/getId">X</a></td>
 										</tr>
 									</tbody>
@@ -70,8 +70,12 @@
 								<div class="controls"><input id="Name1" name="Name1" type="text" class="form-control input-small"/></div>
 							</div>
 							<div class="form-group">
+								<label class="control-label">Tác giả</label>
+								<div class="controls"><input id="Author1" name="Author1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
 								<label class="control-label">Thời gian</label>
-								<div class="controls"><input id="DateTime1" name="DateTime1" type="text" class="form-control input-small"/></div>
+								<div class="controls"><input id="DateTime1" name="DateTime1" readonly="true" type="text" class="form-control input-small"/></div>
 							</div>							
 							<div class="form-group">
 								<label class="control-label">Thứ tự</label>
@@ -88,6 +92,16 @@
 							<div class="form-group">
 								<label class="control-label">Bộ đếm</label>
 								<div class="controls"><input id="Count1" name="Count1" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Hoạt cảnh</label>
+								<div class="controls">
+									<select name="IdAnime1" id="IdAnime1" style="width:80%;">
+										<option tal:repeat="Anime AnimeAll" tal:attributes="value Anime/getId">
+											<span tal:content="Anime/getName" />
+										</option>
+									</select>
+								</div>	
 							</div>
 						</div>
 						<div class="modal-footer">
@@ -112,8 +126,12 @@
 								<div class="controls"><input id="Name2" name="Name2" type="text" class="form-control input-small"/></div>
 							</div>
 							<div class="form-group">
+								<label class="control-label">Tác giả</label>
+								<div class="controls"><input id="Author2" name="Author2" type="text" class="form-control input-small"/></div>
+							</div>
+							<div class="form-group">
 								<label class="control-label">Thời gian</label>
-								<div class="controls"><input id="DateTime2" name="DateTime2" type="text" class="form-control input-small"/></div>
+								<div class="controls"><input id="DateTime2" name="DateTime2" readonly="true" type="text" class="form-control input-small"/></div>
 							</div>							
 							<div class="form-group">
 								<label class="control-label">Thứ tự</label>
@@ -131,6 +149,16 @@
 								<label class="control-label">Bộ đếm</label>
 								<div class="controls"><input id="Count2" name="Count2" type="text" class="form-control input-small"/></div>
 							</div>
+							<div class="form-group">
+								<label class="control-label">Hoạt cảnh</label>
+								<div class="controls">
+									<select name="IdAnime2" id="IdAnime2" style="width:80%;">
+										<option tal:repeat="Anime AnimeAll" tal:attributes="value Anime/getId">
+											<span tal:content="Anime/getName" />
+										</option>
+									</select>
+								</div>	
+							</div>							
 						</div>									
 						<div class="modal-footer">
 							<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
@@ -204,14 +232,16 @@
 				var IdBType 	= $("#BTypeActive").attr('alt');
 				
 				Data[0] = 'null';
-				Data[1] = $('#Name1').val();				
-				Data[2] = $('#DateTime1').val();
-				Data[3] = $('#Order1').val();
-				Data[4] = IdCategory;
-				Data[5] = IdBType;
-				Data[6] = $('#MP3Raw1').val();
-				Data[7] = $('#Note1').val();
-				Data[8] = $('#Count1').val();
+				Data[1] = $('#Name1').val();
+				Data[2] = $('#Author1').val();
+				Data[3] = $('#DateTime1').val();
+				Data[4] = $('#Order1').val();
+				Data[5] = IdCategory;
+				Data[6] = IdBType;
+				Data[7] = $('#MP3Raw1').val();
+				Data[8] = $('#Note1').val();
+				Data[9] = $('#Count1').val();
+				Data[10] = $('#IdAnime1').val();
 				
 				var URL = "/object/ins/VoiceBook";
 				$.ajax({
@@ -237,11 +267,13 @@
 				$.getJSON(url, function(data){
 					$('#URLUpdButton').attr('alt', 	data.Id);					
 					$('#Name2').attr('value', 		data.Name);
+					$('#Author2').attr('value', 	data.Author);
 					$('#DateTime2').attr('value', 	data.DateTime);
 					$('#Order2').attr('value', 		data.Order);
 					$('#MP3Raw2').attr('value', 	data.MP3Raw);					
 					$('#Note2').attr('value', 		data.Note);
 					$('#Count2').attr('value', 		data.Count);
+					$('#IdAnime2').select2('val', 	data.IdAnime);
 				});
 			});
 			
@@ -256,13 +288,15 @@
 				
 				Data[0] = $('#URLUpdButton').attr('alt');
 				Data[1] = $('#Name2').val();
-				Data[2] = $('#DateTime2').val();
-				Data[3] = $('#Order2').val();
-				Data[4] = IdCategory;
-				Data[5] = IdBType;
-				Data[6] = $('#MP3Raw2').val();
-				Data[7] = $('#Note2').val();
-				Data[8] = $('#Count2').val();
+				Data[2] = $('#Author2').val();
+				Data[3] = $('#DateTime2').val();
+				Data[4] = $('#Order2').val();
+				Data[5] = IdCategory;
+				Data[6] = IdBType;
+				Data[7] = $('#MP3Raw2').val();
+				Data[8] = $('#Note2').val();
+				Data[9] = $('#Count2').val();
+				Data[10] = $('#IdAnime2').val();
 				
 				var URL = "/object/upd/VoiceBook";
 				$.ajax({
