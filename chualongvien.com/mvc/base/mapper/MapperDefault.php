@@ -8,9 +8,8 @@
 	$mCourse 			= new \MVC\Mapper\Course();
 	$mCourseLession 	= new \MVC\Mapper\CourseLession();
 	
-	$mConfig 			= new \MVC\Mapper\Config();	
-	$mNews 				= new \MVC\Mapper\News();	
-	$mVideo 			= new \MVC\Mapper\Video();
+	$mConfig 			= new \MVC\Mapper\Config();		
 	$mVM 				= new \MVC\Mapper\VideoMonk();
 	$mVL 				= new \MVC\Mapper\VideoLibrary();		
+	$mVideo				= new \MVC\Mapper\Video();		
 ?>
