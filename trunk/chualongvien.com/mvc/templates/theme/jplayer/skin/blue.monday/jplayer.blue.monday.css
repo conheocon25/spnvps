@@ -389,6 +389,10 @@ div.jp-playlist {
 	background-color:#ccc;
 	border-top:1px solid #009be3;
 }
+div.jp-playlist {
+	height: 70px;
+	overflow: auto;
+}
 div.jp-type-single div.jp-title,
 div.jp-type-playlist div.jp-title,
 div.jp-type-single div.jp-playlist {
@@ -401,13 +405,15 @@ div.jp-playlist ul {
 	padding:0 20px;
 	font-size:.72em;
 }
-
+div.jp-playlist ul {
+	font-size: 13px;
+}
 div.jp-title li {
 	padding:5px 0;
 	font-weight:bold;
 }
 div.jp-playlist li {
-	padding:5px 0 4px 20px;
+	padding:3px 0 3px 20px;
 	border-bottom:1px solid #eee;
 }
 
