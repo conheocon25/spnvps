@@ -16,16 +16,17 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			require_once("mvc/base/mapper/MapperDefault.php");
+			$mAlbum 	= new \MVC\Mapper\Album();
+			$mConfig 	= new \MVC\Mapper\Config();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------									
 			$AlbumAll 			= $mAlbum->findAll();
 															
-			$Title = "Hình Ảnh";
+			$Title = "HÌNH ẢNH";
 			$Navigation = array(
-				array("Quản Lý", "/app")
+				array("QUẢN LÝ", "/app")
 			);
 			
 			if (!isset($Page)) $Page=1;			

@@ -26,11 +26,11 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();									
 			$Category = $mCategoryNews->find($IdCategory);
 						
-			$Title = "Thêm Mới";
+			$Title = "THÊM MỚI";
 			$Navigation = array(
-				array("Quản Lý", "/app"),
-				array("Tin Tức", "/app/category/news"),
-				array($Category->getName(), $Category->getURLView())
+				array("QUẢN LÝ", "/app"),
+				array("TIN TỨC", "/app/category/news"),
+				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
 			);
 			
 			//-------------------------------------------------------------

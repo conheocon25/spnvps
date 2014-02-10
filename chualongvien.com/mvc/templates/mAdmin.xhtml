@@ -93,7 +93,7 @@
 	<div metal:define-macro="Sidebar" id="sidebar">
 		<ul>
 			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'"><a href="/app/category/news"><i class="glyphicon glyphicon-th"></i> <span>TIN TỨC</span> </a></li>
-			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'"><a href="/app/btype"><i class="glyphicon glyphicon-th"></i> <span>VIDEO</span> </a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'"><a href="/app/btype"><i class="glyphicon glyphicon-th"></i> <span>THƯ VIỆN</span> </a></li>
 			<li tal:attributes="class php:ActiveAdmin=='Course'?'active':'disable'"><a href="/app/course"><i class="glyphicon glyphicon-th"></i> <span>TU HỌC</span> </a></li>
 			<li tal:attributes="class php:ActiveAdmin=='Monk'?'active':'disable'"><a href="/app/monk"><i class="glyphicon glyphicon-th"></i> <span>GIẢNG SƯ</span> </a></li>
 			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'"><a href="/app/album"><i class="glyphicon glyphicon-th"></i> <span>HÌNH ẢNH</span></a></li>
@@ -118,7 +118,7 @@
 	<!-- BREADCRUMB																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Breadcrumb" id="breadcrumb">
-		<a href="/trang-chu" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> Trang Chủ</a>
+		<a href="/trang-chu" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> TRANG CHỦ</a>
 		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]; title php:'Về trang '.Item[0]" tal:content="php:Item[0]" class="tip-bottom"/>
 		<a class="current" tal:content="Title"/>
 	</div>

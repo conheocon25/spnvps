@@ -23,9 +23,9 @@
 			//-------------------------------------------------------------						
 			$ConfigAll = $mConfig->findAll();
 									
-			$Title = "Cấu Hình";
+			$Title = "CẤU HÌNH";
 			$Navigation = array(
-				array("Quản Lý", "/app")
+				array("QUẢN LÝ", "/app")
 			);
 			
 			if (!isset($Page)) $Page=1;			
