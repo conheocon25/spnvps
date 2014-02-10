@@ -16,41 +16,33 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			require_once("mvc/base/mapper/MapperDefault.php");
+			$mMonk 				= new \MVC\Mapper\Monk();
+			$mConfig 			= new \MVC\Mapper\Config();
+			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();									
-			$AlbumAll = $mAlbum->findAll();			
+			//-------------------------------------------------------------						
 			$MonkAll = $mMonk->findAll();
-			$CourseAll = $mCourse->findAll();			
-			$ConfigAll = $mConfig->findAll();
-						
+			$CategoryBTypeAll 	= $mCategoryBType->findAll();
+			
 			$Title = "Giảng Sư";
 			$Navigation = array(
 				array("Quản Lý", "/app")
 			);
 			
 			if (!isset($Page)) $Page=1;			
-			$Config = $mConfig->findByName("ROW_PER_PAGE");
-			$MonkAll1 = $mMonk->findByPage(array($Page, $Config->getValue() ));
-			$PN = new \MVC\Domain\PageNavigation($MonkAll->count(), $Config->getValue(), "/app/monk" );
+			$Config 	= $mConfig->findByName("ROW_PER_PAGE");
+			$MonkAll1 	= $mMonk->findByPage(array($Page, $Config->getValue() ));
+			$PN 		= new \MVC\Domain\PageNavigation($MonkAll->count(), $Config->getValue(), "/app/monk" );
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);					
-			$request->setObject('AlbumAll', $AlbumAll);			
-			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);			
-			$request->setObject('ConfigAll', $ConfigAll); 
-						
+			//-------------------------------------------------------------									
+			$request->setObject('MonkAll', $MonkAll);									
 			$request->setObject('MonkAll1', $MonkAll1);
+			$request->setObject('CategoryBTypeAll', $CategoryBTypeAll);
+			
 			$request->setObject('PN', $PN);
 			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("ActiveAdmin", 'Monk');

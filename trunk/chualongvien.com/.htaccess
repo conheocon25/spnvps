@@ -80,8 +80,8 @@ RewriteRule ^app/config/trang/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 RewriteRule ^app/course$ 											?cmd=AppCourse [L]
 RewriteRule ^app/course/trang/([0-9]+)$ 							?cmd=AppCourse&Page=$1 [L]
 
-RewriteRule ^app/course/([0-9]+)$ 							?cmd=AppCourseLession&IdCourse=$1 [L]
-RewriteRule ^app/course/([0-9]+)/trang/([0-9]+)$ 			?cmd=AppCourseLession&IdCourse=$1&Page=$2 [L]
+RewriteRule ^app/course/([0-9]+)$ 								?cmd=AppCourseLession&IdCourse=$1 [L]
+RewriteRule ^app/course/([0-9]+)/trang/([0-9]+)$ 				?cmd=AppCourseLession&IdCourse=$1&Page=$2 [L]
 
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
 RewriteRule ^app/album/trang/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]

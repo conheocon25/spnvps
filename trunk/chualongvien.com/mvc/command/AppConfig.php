@@ -16,17 +16,11 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
-			require_once("mvc/base/mapper/MapperDefault.php");
+			$mConfig = new \MVC\Mapper\Config();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$CategoryBTypeAll = $mCategoryBType->findAll();
-			$CategoryNewsAll = $mCategoryNews->findAll();
-			$CategoryVideoAll = $mCategoryVideo->findAll();			
-			$AlbumAll = $mAlbum->findAll();			
-			$MonkAll = $mMonk->findAll();
-			$CourseAll = $mCourse->findAll();			
+			//-------------------------------------------------------------						
 			$ConfigAll = $mConfig->findAll();
 									
 			$Title = "Cấu Hình";
@@ -41,15 +35,7 @@
 					
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("CategoryVideoAll", $CategoryVideoAll);						
-			$request->setObject('AlbumAll', $AlbumAll);
-			$request->setObject('MonkAll', $MonkAll);
-			$request->setObject('CourseAll', $CourseAll);			
-			$request->setObject('ConfigAll', $ConfigAll);
-									
+			//-------------------------------------------------------------																					
 			$request->setObject('ConfigAll1', $ConfigAll1);
 			$request->setObject('Navigation', $Navigation);
 			$request->setObject('PN', $PN);
