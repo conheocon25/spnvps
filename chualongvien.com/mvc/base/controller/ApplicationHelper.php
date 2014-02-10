@@ -47,8 +47,7 @@
 			}
 			foreach ( $options->control->command as $command_view ) {
 				$command =  trim((string)$command_view['name'] );
-				$type =  trim((string)$command_view['type'] );
-				//echo "--".$command.":".$type;
+				$type =  trim((string)$command_view['type'] );				
 				$map->addClassrootType( $command, $type );
 				
 				if ( $command_view->classalias ) {

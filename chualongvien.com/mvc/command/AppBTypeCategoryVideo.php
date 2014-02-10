@@ -17,8 +17,11 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			require_once("mvc/base/mapper/MapperDefault.php");
-			
+			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
+			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
+			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
+								
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			

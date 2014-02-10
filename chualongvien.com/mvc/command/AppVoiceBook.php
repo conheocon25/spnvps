@@ -16,8 +16,9 @@
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------
-			require_once("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------			
+			$mCategoryBType = new \MVC\Mapper\CategoryBType(); 
+			$mCategoryVideo = new \MVC\Mapper\CategoryVideo(); 
 			$mAnime	= new \MVC\Mapper\Anime();
 			
 			
