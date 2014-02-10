@@ -81,37 +81,69 @@
 					</div>
 				</div>
 			</div>
+			<div class="audio-ctrl down" title="Thu nhỏ lại"/>
+			<div class="audio-ctrl up" title="Mở danh sách phát"/>
+			<div class="voice-content">
+				<div>Lượt xem: <span tal:content="VB/getCount"/></div>
+				<div>Tác giả: <span tal:content="VB/getAuthor"/></div>
+			</div>
 		</div>
 				
 		<script src="/mvc/templates/theme/bgslide/js/jquery.imagesloaded.min.js"></script>
-		<script src="/mvc/templates/theme/bgslide/js/cbpBGSlideshow.min.js"></script>
+		<script src="/mvc/templates/theme/bgslide/js/cbpBGSlideshow.js"></script>
 		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jquery.jplayer.min.js"></script>
 		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jplayer.playlist.min.js"></script>
 		<script src="/mvc/templates/theme/bgslide/js/modernizr.custom.js"></script>
 		<script>
 		/*<![CDATA[*/
-		$(document).ready(function(){
-			new jPlayerPlaylist({
-				jPlayer: "#jquery_jplayer_1",
-				cssSelectorAncestor: "#jp_container_1"
-			}, [
-				{
-					title:"Bài 1.mp3",
-					mp3:"https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download"
-				},
-				{
-					title:"Bài 2.mp3",
-					mp3:"https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download"
+		$(document).ready(function(){			
+			
+			URL = $(".audio").attr('URL');
+			$.ajax({
+				type: "POST",
+				url: URL,
+				dataType: "json",
+				async: false,
+				success: function(data){
+					PlayList = data
 				}
-			], {
-				swfPath: "theme/jplayer/js",
-				supplied: "mp3",
-				wmode: "window",
-				smoothPlayBar: true,
-				keyEnabled: true,
-				playlistOptions: { autoPlay: true }
 			});
-
+					
+			//Thư viện PlayList
+			new jPlayerPlaylist(
+				{
+					jPlayer: "#jquery_jplayer_1",
+					cssSelectorAncestor: "#jp_container_1"
+				},
+				PlayList,
+				{
+					swfPath: "/mvc/templates/theme/jplayer/js",
+					supplied: "mp3",
+					wmode: "window",
+					smoothPlayBar: true,
+					keyEnabled: true,
+					playlistOptions: { autoPlay: true }
+				}
+			);
+			
+			$(".jp-repeat").trigger("click");
+			var tmp = 0;
+			$(".audio-ctrl.up").hide();
+			$(".audio-ctrl").click(function(){
+				var auh = $(".audio").height() + "px";
+				if(tmp==0) {
+					$(".audio").animate({ height: "-="+auh });
+					tmp ++;
+					$(".audio-ctrl.up").show();
+					$(".audio-ctrl.down").hide();
+				} else {
+					$(".audio").css("height", "auto");
+					tmp--;
+					$(".audio-ctrl.up").hide();
+					$(".audio-ctrl.down").show();
+				}
+			});
+			
 			cbpBGSlideshow.init();
 		});
 		/*]]>*/
