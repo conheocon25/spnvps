@@ -17,9 +17,9 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
-			$mConfig = new \MVC\Mapper\Config();
-			$mNews = new \MVC\Mapper\News();
+			$mCategoryNews 	= new \MVC\Mapper\CategoryNews();
+			$mConfig 		= new \MVC\Mapper\Config();
+			$mNews 			= new \MVC\Mapper\News();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -28,15 +28,16 @@
 			$CategoryNewsAll = $mCategoryNews->findAll();						
 			if (!isset($Page)) $Page=1;
 			
-			$Config = $mConfig->findByName("ROW_PER_PAGE");
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, $Config->getValue() ));
+			$Config 	= $mConfig->findByName("ROW_PER_PAGE");
+			$NewsAll 	= $mNews->findByCategoryPage(array($IdCategory, $Page, $Config->getValue() ));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), $Config->getValue(), $Category->getURLView());
 			
-			$Title = $Category->getName();
+			$Title = mb_strtoupper($Category->getName(), 'UTF8');
 			$Navigation = array(
 				array("QUẢN LÝ", "/app"),
 				array("TIN TỨC", "/app/category/news")
 			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						

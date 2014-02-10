@@ -26,9 +26,9 @@
 			$MonkAll = $mMonk->findAll();
 			$CategoryBTypeAll 	= $mCategoryBType->findAll();
 			
-			$Title = "Giảng Sư";
+			$Title = "GIẢNG SƯ";
 			$Navigation = array(
-				array("Quản Lý", "/app")
+				array("QUẢN LÝ", "/app")
 			);
 			
 			if (!isset($Page)) $Page=1;			
