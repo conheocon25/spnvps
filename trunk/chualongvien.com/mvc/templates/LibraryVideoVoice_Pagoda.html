@@ -49,7 +49,21 @@
 			
 			$(".jp-repeat").trigger("click");
 			var tmp = 0;
-			$(".audio-ctrl").click(function(){ var auh = $(".audio").height() + "px"; if(tmp==0) { $(".audio").animate({ height: "-="+auh }); tmp ++; } else { $(".audio").css("height", "auto"); tmp--; } $(".audio-ctrl.up").toggleClass("a-hidden"); });
+			$(".audio-ctrl.up").hide();
+			$(".audio-ctrl").click(function(){
+				var auh = $(".audio").height() + "px";
+				if(tmp==0) {
+					$(".audio").animate({ height: "-="+auh });
+					tmp ++;
+					$(".audio-ctrl.up").show();
+					$(".audio-ctrl.down").hide();
+				} else {
+					$(".audio").css("height", "auto");
+					tmp--;
+					$(".audio-ctrl.up").hide();
+					$(".audio-ctrl.down").show();
+				}
+			});
 			
 			$(window).bind('contextmenu', false);
 			$(document)[0].oncontextmenu = function() { return false; }
@@ -68,8 +82,7 @@
 	</head>
 	<body style="background:url(/data/images/bg/gate1.jpg) no-repeat center center fixed">
 		<h1 class="voice-title" tal:content="VB/getName"/>
-		<h3 tal:content="VB/getCount"/>
-		<h3 tal:content="VB/getAuthor"/>
+		
 		<div class="cover-inner" onclick="window.history.back()">
 			<img src="/data/images/logo/title.png"/>
 			<p><a href="Javascript:;"><span class="link poe-hover">Trở lại</span></a></p>
@@ -127,8 +140,12 @@
 				</div>
 			</div>
 			
-			<div class="audio-ctrl down"/>
-			<div class="audio-ctrl up a-hidden"/>
+			<div class="audio-ctrl down" title="Thu nhỏ lại"/>
+			<div class="audio-ctrl up" title="Mở danh sách phát"/>
+			<div class="voice-content">
+				<div>Lượt xem: <span tal:content="VB/getCount"/></div>
+				<div>Tác giả: <span tal:content="VB/getAuthor"/></div>
+			</div>
 		</div>
 		
 	</body>

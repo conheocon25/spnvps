@@ -201,13 +201,13 @@
 	}
 	
 	.audio-ctrl.up {
-		border-bottom-color: #009BE3;
-		top: -30px;
+		border-bottom-color: white;
+		top: -32px;
 	}
 	
 	.audio-ctrl.down {
-		border-top-color: #009BE3;
-		top: 2px;
+		border-top-color: white;
+		top: -17px;
 	}
 	
 	.audio-ctrl.up.a-hidden { visibility: hidden; }
@@ -222,3 +222,29 @@
 		font-family: "CustomFont";
 		text-shadow: 2px -1px #FFEC8A, -1px 2px #FFEC8A;
 	}
+	
+	.voice-content {
+		position: absolute;
+		width: 100%;
+		left: 0;
+		top: -20px;
+		background: #009BE3;
+		color: white;
+		height: 20px;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	
+	.voice-content:after {
+		clear: both;
+		content: ".";
+		display: block;
+		height: 0;
+		line-height: 0;
+		visibility: hidden;
+	}
+	
+	.voice-content div { float: left; text-align: right; }
+	.voice-content div:first-child { width: 35%; }
+	.voice-content div:last-child { width: 65%; }
+	.voice-content div span { padding-right: 10px; }
