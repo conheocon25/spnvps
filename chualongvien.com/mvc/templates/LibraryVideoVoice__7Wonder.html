@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		<title>7 Wonder</title>
+		<link rel="stylesheet" type="text/css" href="theme/bgslide/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="theme/bgslide/css/component.css" />
+		<link href="theme/jplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css"/>
+		<style>
+			.audio {
+				position: absolute;
+				width: auto;
+				height: auto;
+				bottom: 0;
+				left: 0;
+				z-index: 99999999999;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="clearfix">
+				<h1>7 Wonder</h1>
+			</header>	
+			<div class="main">
+				<ul id="cbp-bislideshow" class="cbp-bislideshow">
+					<li><img src="theme/bgslide/images/1.jpg" alt="image01"/></li>
+					<li><img src="theme/bgslide/images/2.jpg" alt="image02"/></li>
+					<li><img src="theme/bgslide/images/3.jpg" alt="image03"/></li>
+					<li><img src="theme/bgslide/images/4.jpg" alt="image04"/></li>
+					<li><img src="theme/bgslide/images/5.jpg" alt="image05"/></li>
+					<li><img src="theme/bgslide/images/6.jpg" alt="image06"/></li>
+					<li><img src="theme/bgslide/images/7.jpg" alt="image06"/></li>
+				</ul>
+			</div>
+		</div>
+		
+		<div class="audio" tal:attributes="URL VB/getURLLoadMP3Raw">
+			<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+			<div id="jp_container_1" class="jp-audio">
+				<div class="jp-type-playlist">
+					<div class="jp-gui jp-interface">
+						<ul class="jp-controls">
+							<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+							<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+							<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+							<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+							<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+							<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+							<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+							<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+						</ul>
+						<div class="jp-progress">
+							<div class="jp-seek-bar">
+								<div class="jp-play-bar"></div>
+							</div>
+						</div>
+						<div class="jp-volume-bar">
+							<div class="jp-volume-bar-value"></div>
+						</div>
+						<div class="jp-time-holder">
+							<div class="jp-current-time"></div>
+							<div class="jp-duration"></div>
+						</div>
+						<ul class="jp-toggles">
+							<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+							<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+							<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+							<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+						</ul>
+					</div>
+					<div class="jp-playlist">
+						<ul>
+							<li></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="theme/bgslide/js/jquery.imagesloaded.min.js"></script>
+		<script src="theme/bgslide/js/cbpBGSlideshow.min.js"></script>
+		<script type="text/javascript" src="theme/jplayer/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="theme/jplayer/js/jplayer.playlist.min.js"></script>
+		<script src="theme/bgslide/js/modernizr.custom.js"></script>
+		<script>
+		/*<![CDATA[*/
+		$(document).ready(function(){
+			new jPlayerPlaylist({
+				jPlayer: "#jquery_jplayer_1",
+				cssSelectorAncestor: "#jp_container_1"
+			}, [
+				{
+					title:"Bài 1.mp3",
+					mp3:"https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkWlM4UlRzNHlNVzQ&export=download"
+				},
+				{
+					title:"Bài 2.mp3",
+					mp3:"https://docs.google.com/uc?authuser=0&id=0Bxe3QBmCe_wkTzdwRU1iZVV2enc&export=download"
+				}
+			], {
+				swfPath: "theme/jplayer/js",
+				supplied: "mp3",
+				wmode: "window",
+				smoothPlayBar: true,
+				keyEnabled: true,
+				playlistOptions: { autoPlay: true }
+			});
+
+			cbpBGSlideshow.init();
+		});
+		/*]]>*/
+		</script>
+	</body>
+</html>
