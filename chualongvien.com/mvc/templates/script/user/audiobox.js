@@ -1,5 +1,5 @@
 ﻿/*<![CDATA[*/
-$(function () {
+$(document).ready(function(){
 	var PlayList 	= null;
 	var URL 		= "";
 	var tmp 		= 0;
