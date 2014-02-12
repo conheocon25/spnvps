@@ -17,6 +17,10 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		$findByBTypeStmt 		= sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$findByKeyStmt 			= sprintf("select * from %s where `key`=?", $tblVoiceBook);
 		$findByPageStmt 		= sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblVoiceBook);
+		$findByTopLibraryStmt 	= sprintf("SELECT * FROM %s WHERE btype=4 ORDER BY date_time DESC limit 4", $tblVoiceBook);
+		$findByTopHistoryStmt 	= sprintf("SELECT * FROM %s WHERE btype=5 ORDER BY date_time DESC limit 4", $tblVoiceBook);
+		$findByTopLocalStmt 	= sprintf("SELECT * FROM %s WHERE type=1 ORDER BY date_time DESC limit 4", $tblVoiceBook);
+		$findByTopCategoryStmt 	= sprintf("SELECT * FROM %s WHERE type<>1 ORDER BY date_time DESC limit 4", $tblVoiceBook);
 				
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -27,6 +31,10 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		$this->findByBTypeStmt 	= self::$PDO->prepare($findByBTypeStmt);
 		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
+		$this->findByTopLibraryStmt 	= self::$PDO->prepare($findByTopLibraryStmt);
+		$this->findByTopHistoryStmt 	= self::$PDO->prepare($findByTopHistoryStmt);
+		$this->findByTopLocalStmt 		= self::$PDO->prepare($findByTopLocalStmt);
+		$this->findByTopCategoryStmt 	= self::$PDO->prepare($findByTopCategoryStmt);
     } 
     function getCollection( array $raw ) {return new VoiceBookCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
@@ -98,6 +106,26 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 	function findByBType( $values ){
 		$this->findByBTypeStmt->execute($values);
         return new VoiceBookCollection( $this->findByBTypeStmt->fetchAll(), $this);
+    }
+	
+	function findByTopHistory( $values ){
+		$this->findByTopHistoryStmt->execute($values);
+        return new VoiceBookCollection( $this->findByTopHistoryStmt->fetchAll(), $this);
+    }
+	
+	function findByTopLibrary( $values ){
+		$this->findByTopLibraryStmt->execute($values);
+        return new VoiceBookCollection( $this->findByTopLibraryStmt->fetchAll(), $this);
+    }
+	
+	function findByTopLocal( $values ){
+		$this->findByTopLocalStmt->execute($values);
+        return new VoiceBookCollection( $this->findByTopLocalStmt->fetchAll(), $this);
+    }
+	
+	function findByTopCategory( $values ){
+		$this->findByTopCategoryStmt->execute($values);
+        return new VoiceBookCollection( $this->findByTopCategoryStmt->fetchAll(), $this);
     }
 	
 	function findByKey( $values ) {	

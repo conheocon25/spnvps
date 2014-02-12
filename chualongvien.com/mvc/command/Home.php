@@ -25,8 +25,9 @@
 			$mConfig 			= new \MVC\Mapper\Config();
 			$mVM 				= new \MVC\Mapper\VideoMonk();
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
-			$mVideo				= new \MVC\Mapper\Video();		
-						
+			$mVideo				= new \MVC\Mapper\Video();
+			$mVB				= new \MVC\Mapper\VoiceBook();
+			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
@@ -36,6 +37,11 @@
 			$LocalVideoAll 		= $mVL->findByTopLocal(array(2));
 			$TopLibraryVideoAll = $mVL->findByTopLibrary(array());
 			$TopHistoryVideoAll = $mVL->findByTopHistory(array());
+			
+			$TopLibraryBookAll 	= $mVB->findByTopLibrary(array());
+			$TopHistoryBookAll 	= $mVB->findByTopHistory(array());
+			$TopLocalBookAll 	= $mVB->findByTopLocal(array());
+			$TopCategoryBookAll = $mVB->findByTopCategory(array());
 			
 			$AlbumAll 			= $mAlbum->findAll();
 			$Categories 		= $mCategoryNews->findAll();
@@ -53,12 +59,17 @@
 			$request->setObject("TopCategoryVideoAll", 	$TopCategoryVideoAll);
 			$request->setObject("TopLibraryVideoAll", 	$TopLibraryVideoAll);
 			$request->setObject("TopHistoryVideoAll", 	$TopHistoryVideoAll);
-									
-			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);			
-			$request->setObject("CategoryVideo", $CategoryVideo);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);			
-			$request->setObject("AlbumAll", $AlbumAll);						
-			$request->setObject("MonkAll", $MonkAll);
+			
+			$request->setObject("TopHistoryBookAll", 	$TopHistoryBookAll);
+			$request->setObject("TopLibraryBookAll", 	$TopLibraryBookAll);
+			$request->setObject("TopLocalBookAll", 		$TopLocalBookAll);
+			$request->setObject("TopCategoryBookAll", 	$TopCategoryBookAll);
+			
+			$request->setObject("CategoryBTypeAll", 	$CategoryBTypeAll);			
+			$request->setObject("CategoryVideo", 		$CategoryVideo);
+			$request->setObject("CategoryNewsAll", 		$CategoryNewsAll);			
+			$request->setObject("AlbumAll", 			$AlbumAll);						
+			$request->setObject("MonkAll", 				$MonkAll);
 
 			$request->setProperty("ActiveItem", 'Home');
 			

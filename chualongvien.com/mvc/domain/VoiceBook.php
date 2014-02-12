@@ -88,6 +88,9 @@ class VoiceBook extends Object{
 		$Str = new \MVC\Library\String($this->Name);
 		$this->Key = $Str->converturl();
 	}
+	
+	function getImage(){return "/data/images/bg/file_mp3_cd.png";}
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------		
