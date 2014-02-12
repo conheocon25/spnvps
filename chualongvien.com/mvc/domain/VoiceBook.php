@@ -89,7 +89,7 @@ class VoiceBook extends Object{
 		$this->Key = $Str->converturl();
 	}
 	
-	function getImage(){return "/data/images/bg/file_mp3_cd.png";}
+	function getImage(){return "/data/images/bg/mp3.jpg";}
 	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
