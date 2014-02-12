@@ -17,7 +17,7 @@
 							<ul class="nav nav-tabs nav-stacked reset-margin list-3">
 								<li tal:repeat="Category1 CategoryBType/getCategoryAll">
 									<a class="CategoryButton" tal:attributes="alt Category1/getId" href="Javascript:;">
-										<span class="label monk-label" tal:content="Category1/getVLs/count"/>
+										<span class="label monk-label" tal:content="php: Category1->getVLs()->count() + Category1->getVoiceBookAll()->count()"/>
 										<span tal:content="Category1/getName"/>
 									</a>
 								</li>
