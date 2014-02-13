@@ -16,13 +16,13 @@ class CategoryVideo extends Object{
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
     function __construct( $Id=null, $Name=null, $Picture=null , $Order=Null, $Type=Null, $BType=Null, $Key=Null){
-        $this->Id = $Id;
-		$this->Name = $Name;
-		$this->Picture = $Picture;
-		$this->Order = $Order;
-		$this->Type = $Type;
-		$this->BType = $BType;
-		$this->Key = $Key;
+        $this->Id 		= $Id;
+		$this->Name 	= $Name;
+		$this->Picture 	= $Picture;
+		$this->Order 	= $Order;
+		$this->Type 	= $Type;
+		$this->BType 	= $BType;
+		$this->Key 		= $Key;
         parent::__construct( $Id );
     }
     function getId(){return $this->Id;}	
@@ -68,10 +68,10 @@ class CategoryVideo extends Object{
 		return $VBAll;
 	}	
 	
-	function getVLs(){
+	function getVLAll(){
 		$mVL = new \MVC\Mapper\VideoLibrary();
-		$VLs = $mVL->findBy( array($this->getId()) );
-		return $VLs;
+		$VLAll = $mVL->findBy( array($this->getId()) );
+		return $VLAll;
 	}	
 	
 	function getVLTop(){
@@ -112,21 +112,19 @@ class CategoryVideo extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/phat-am/".$this->getBTypeKey()."/danh-muc/".$this->getKey();}
-	
-	function getURLView(){return "/app/category/video/".$this->getId();}
-	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}
-	function getURLSettingVoice(){return "/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
+	function getURLRead(){
+		if ($this->BType == 4)
+			return "/thu-vien-phat-phap/".$this->getKey();
+		else if ($this->BType == 5)
+			return "/lich-su-phat-giao/".$this->getKey();
 			
-	function getURLVideoInsLoad(){return "/app/category/video/".$this->getId()."/ins/load";}
-	function getURLVideoInsExe(){return "/app/category/video/".$this->getId()."/ins/exe";}
+		return "/phat-am/".$this->getBTypeKey()."/".$this->getKey();
+	}
 	
-	function getURLUpdLoad(){return "/app/category/video/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){return "/app/category/video/".$this->getId()."/upd/exe";}
-	
-	function getURLDelLoad(){return "/app/category/video/".$this->getId()."/del/load";}
-	function getURLDelExe(){return "/app/category/video/".$this->getId()."/del/exe";}
-			
+	function getURLView(){return 			"/app/category/video/".$this->getId();}
+	function getURLSetting(){return 		"/app/btype/".$this->getBType()."/".$this->getId();}
+	function getURLSettingVoice(){return 	"/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
+					
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	

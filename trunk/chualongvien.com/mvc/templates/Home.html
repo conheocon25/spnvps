@@ -32,7 +32,7 @@
 								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VL LocalVideoAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLView">
+											<a tal:attributes="href VL/getURLRead">
 												<img tal:attributes="src VL/getVideo/getURLImage"/>
 												<p tal:content="VL/getVideo/getName"/>
 											</a>
@@ -62,7 +62,7 @@
 								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VL TopLibraryVideoAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLView">
+											<a tal:attributes="href VL/getURLRead">
 												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
 												<p tal:content="VL/getVideo/getName"/>
 											</a>
@@ -134,7 +134,7 @@
 								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VL TopHistoryVideoAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLView">
+											<a tal:attributes="href VL/getURLRead">
 												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
 												<p tal:content="VL/getVideo/getName"/>
 											</a>
@@ -164,7 +164,7 @@
 								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VL TopCategoryVideoAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLView">
+											<a tal:attributes="href VL/getURLRead">
 												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
 												<p tal:content="VL/getVideo/getName"/>
 											</a>

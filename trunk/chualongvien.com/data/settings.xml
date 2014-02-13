@@ -10,15 +10,11 @@
 		<command name="Contact" type="public"><view>Contact</view></command>
 		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
-		
-				
-		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>		
+						
+		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
 		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
 		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>		
-		
-		<command name="Task" type="public"><view>Task</view></command>					
-		<command name="Event" type="public"><view>Event</view></command>
-		<command name="EventDetail" type="public"><view>EventDetail</view></command>
+						
 		<command name="Course" type="public"><view>Course</view></command>
 		<command name="CourseDetail" type="public"><view>CourseDetail</view></command>
 		<command name="CourseLession" type="public"><view>CourseLession</view></command>
@@ -45,7 +41,8 @@
 		<!-- ============================================================================== -->
 		<command name="Library" type="public"><view>Library</view></command>
 		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>		
-		<command name="LibraryVideoVoice" type="public"><view>LibraryVideoVoice</view></command>		
+		<command name="LibraryVideoYouTube" type="public"><view>LibraryVideoYouTube</view></command>
+		<command name="LibraryVideoVoice" type="public"><view>LibraryVideoVoice</view></command>
 		<command name="LibraryVideoVoiceLoad" type="public"><view>LibraryVideoVoiceLoad</view></command>
 		<command name="LibraryVideoLoadCategory" type="public"><view>LibraryVideoLoadCategory</view></command>
 		
