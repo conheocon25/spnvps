@@ -12,7 +12,7 @@
 			<ul>
 				<li tal:repeat="Category1 CategoryAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
 					<a tal:attributes="href Category1/getURLSetting">
-						<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLs/count"/>
+						<span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getVLAll/count"/>
 					</a>
 				</li>
 			</ul>
@@ -43,7 +43,7 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr tal:repeat="VL Category/getVLs">
+										<tr tal:repeat="VL Category/getVLAll">
 											<td width="32" align="center"><div tal:content="repeat/VL/number" /></td>
 											<td>											
 												<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id VL/getId" tal:content="VL/getVideo/getName"/>

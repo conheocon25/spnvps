@@ -11,7 +11,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$KBVoice = $request->getProperty('KBVoice');
+			$KCategory 	= $request->getProperty('KCategory');
+			$KBVoice 	= $request->getProperty('KBVoice');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU

@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LibraryVideoLoadCategory extends Command {
+	class LibraryVideoYouTube extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,30 +11,28 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdCategory 	= $request->getProperty("IdCategory");
+			$KCategory 	= $request->getProperty('KCategory');
+			$KYouTube 	= $request->getProperty('KYouTube');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------						
-			require_once("mvc/base/mapper/MapperDefault.php");
+			//-------------------------------------------------------------			
+			$mVideo		= new \MVC\Mapper\Video();
+			$mCategory	= new \MVC\Mapper\CategoryVideo();					
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------																	
-			$Category		= $mCategoryVideo->find($IdCategory);
+			//-------------------------------------------------------------						
+			$Category 	= $mCategory->findByKey($KCategory);
+			$Video 		= $mVideo->findByKey($KYouTube);
+			$Video->setCount( $Video->getCount() + 1);
+			$mVideo->update($Video);
 			
-			$VLAll			= $Category->getVLs();
-			while($VLAll->valid()){
-				$VL = $VLAll->current();
-				$Video = $VL->getVideo();
-				$Video->setCount($Video->getCount() + 1);
-				$mVideo->update($Video);				
-				$VLAll->next();
-			}
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------															
-			$request->setObject("Category"		, $Category);
-																					
+			//-------------------------------------------------------------									
+			$request->setObject("Category", $Category);
+			$request->setObject("Video", 	$Video);
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

@@ -40,7 +40,9 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.timeago.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
+		<!--
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/locker.js"/>
+		!-->
 	</span>
 	
 	<!-- ======================================================================== -->
@@ -492,6 +494,10 @@
 	<!-- ======================================================================== -->
 	<!-- FORWARD BUTTON													  		  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="ForwardButton" class="forward-button" title="Trở về trang trước" onclick="window.history.back()">www.<big>chualongvien</big>.com</div>
+	<div metal:define-macro="ForwardButton" class="forward-button" title="Trở về trang trước">
+		<a tal:attributes="href VB/getCategory/getURLRead">
+			www.<big>chualongvien</big>.com
+		</a>
+	</div>
 </body>
 </html>

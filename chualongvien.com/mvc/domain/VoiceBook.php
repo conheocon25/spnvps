@@ -56,7 +56,7 @@ class VoiceBook extends Object{
 	
 	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}   
 	function getType( ) {return $this->Type;}
-	function isVIP( ){if ($this->Type == 1)return true;return false;}
+	function getCategory( ) {$mCategory = new \MVC\Mapper\CategoryVideo();$Category = $mCategory->find($this->Type);return $Category;}
 	
 	function setBType( $BType ) {$this->BType = $BType;$this->markDirty();}   
 	function getBType( ) {return $this->BType;}
@@ -136,12 +136,19 @@ class VoiceBook extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){return "/phat-am/voice/".$this->getKey();}
-	function getURLLoadMP3Raw(){return "/phat-am/voice/".$this->getKey()."/load";}
+	function getURLRead(){
+		$Category = $this->getCategory();		
+		return $Category->getURLRead()."/sach-noi/".$this->getKey();
+	}
 	
-	function getURLView(){return "/app/category/video/".$this->getId();}
-	function getURLSetting(){return "/app/btype/".$this->getBType()."/".$this->getId();}
-	function getURLSettingVoice(){return "/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
+	function getURLLoadMP3Raw(){
+		$Category = $this->getCategory();		
+		return $Category->getURLRead()."/sach-noi/".$this->getKey()."/load";		
+	}
+	
+	function getURLView(){			return "/app/category/video/".$this->getId();}
+	function getURLSetting(){		return "/app/btype/".$this->getBType()."/".$this->getId();}
+	function getURLSettingVoice(){	return "/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
 					
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

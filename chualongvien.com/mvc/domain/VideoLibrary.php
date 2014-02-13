@@ -49,7 +49,10 @@ class VideoLibrary extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
-	function getURLView(){return "/phat-am/".$this->getCategory()->getBTypeKey()."/".$this->getCategory()->getKey()."/".$this->getVideo()->getKey();}
+	function getURLRead(){
+		$Category = $this->getCategory();		
+		return $Category->getURLRead()."/YouTube/".$this->getVideo()->getKey();
+	}
 					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
