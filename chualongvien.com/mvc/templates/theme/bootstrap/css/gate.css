@@ -192,22 +192,22 @@
 	
 	.audio-ctrl {
 		position: absolute;
-		left: 2px;
+		left: 5px;
 		cursor: pointer;
 		height: 0;
 		width: 0;
-		border: 15px solid transparent;
+		border: 10px solid transparent;
 		z-index: 99999;
 	}
-	
+
 	.audio-ctrl.up {
 		border-bottom-color: white;
-		top: -32px;
+		top: -25px;
 	}
 	
 	.audio-ctrl.down {
 		border-top-color: white;
-		top: -17px;
+		top: -15px;
 	}
 	
 	.audio-ctrl.up.a-hidden { visibility: hidden; }
@@ -247,4 +247,23 @@
 	.voice-content div { float: left; text-align: right; }
 	.voice-content div:first-child { width: 35%; }
 	.voice-content div:last-child { width: 65%; }
-	.voice-content div span { padding-right: 10px; }
+	.voice-content div:last-child span  { padding-right: 10px; }
+	
+	.forward-button {
+		position: absolute;
+		z-index: 99999;
+		top: 20px;
+		left: 20px;
+		cursor: pointer;
+		color: rgba(255, 255, 255, .9);
+		background: rgba(255, 255, 255, .5);
+		border: 3px solid rgba(255, 255, 255, .7);
+		padding: 5px 10px;
+		font-size: 17px;
+		border-radius: 10px;
+	}
+	.forward-button:hover {
+		color: white;
+		background: rgba(255, 255, 255, .6);
+		border: 3px solid rgba(255, 255, 255, .8);
+	}
