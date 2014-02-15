@@ -35,8 +35,7 @@ class VoiceBook extends Object{
         parent::__construct( $Id );
     }
     function getId(){return $this->Id;}	
-	function getIdPrint(){return "c" . $this->getId();}	
-	
+		
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {if (!isset($this->Name)||$this->Name=="")return "Chưa có chủ đề"; return $this->Name;}
 	function getNameReduce1(){$S = new \MVC\Library\String($this->Name);return $S->reduce(38);}
@@ -85,8 +84,11 @@ class VoiceBook extends Object{
 	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
 	function getKey( ) {return $this->Key;}
 	function reKey( ) {
+		$Id = $this->getId();
+		if (!isset($Id)||$Id==0) $Id = time();
+		
 		$Str = new \MVC\Library\String($this->Name);
-		$this->Key = $Str->converturl();
+		$this->Key = $Str->converturl().$Id;
 	}
 	
 	function getImage(){return "/data/images/bg/mp3.jpg";}
