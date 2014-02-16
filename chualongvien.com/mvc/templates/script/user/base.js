@@ -29,6 +29,12 @@
 			return false;
 		})
 		
-		$('.crunchify-top').tooltip()
+		$('.crunchify-top').tooltip();
+		
+		$(".btn-bubble").hover(function(){
+			$(this).find(".bubble-text").css("display", "block");
+		}, function(){
+			$(this).find(".bubble-text").css("display", "none");
+		});
 	});			
 /*]]>*/
