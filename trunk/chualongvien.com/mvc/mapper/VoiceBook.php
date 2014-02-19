@@ -17,10 +17,10 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		$findByBTypeStmt 		= sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$findByKeyStmt 			= sprintf("select * from %s where `key`=?", $tblVoiceBook);
 		$findByPageStmt 		= sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblVoiceBook);
-		$findByTopLibraryStmt 	= sprintf("SELECT * FROM %s WHERE btype=4 ORDER BY date_time DESC limit 4", $tblVoiceBook);
-		$findByTopHistoryStmt 	= sprintf("SELECT * FROM %s WHERE btype=5 ORDER BY date_time DESC limit 4", $tblVoiceBook);
-		$findByTopLocalStmt 	= sprintf("SELECT * FROM %s WHERE type=1 ORDER BY date_time DESC limit 4", $tblVoiceBook);
-		$findByTopCategoryStmt 	= sprintf("SELECT * FROM %s WHERE type<>1 ORDER BY date_time DESC limit 4", $tblVoiceBook);
+		$findByTopLibraryStmt 	= sprintf("SELECT * FROM %s WHERE btype=4 ORDER BY date_time DESC limit 8", $tblVoiceBook);
+		$findByTopHistoryStmt 	= sprintf("SELECT * FROM %s WHERE btype=5 ORDER BY date_time DESC limit 8", $tblVoiceBook);
+		$findByTopLocalStmt 	= sprintf("SELECT * FROM %s WHERE type=1 ORDER BY date_time DESC limit 8", $tblVoiceBook);
+		$findByTopCategoryStmt 	= sprintf("SELECT * FROM %s WHERE type<>1 ORDER BY date_time DESC limit 8", $tblVoiceBook);
 				
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
