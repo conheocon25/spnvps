@@ -22,12 +22,12 @@
 							<div class="news-main" tal:content="structure News/getContent"/>
 							<div class="news-author">
 								<div class="news-tools">
-									<a class="btn btn-success pull-right" ><i class="icon-share icon-white"/> Chia sẻ</a>
+									<span metal:use-macro="base.xhtml/ShareButton"/>
 									<a class="btn btn-primary pull-right" ><i class="icon-thumbs-up icon-white"/> Thích</a>
 								</div>
 								<p tal:content="News/getAuthor"/>
 							</div>
-							
+
 							<ul class="nav nav-tabs nav-stacked reset-margin">
 								<li class="active news-list-title"><a>Các bài khác</a></li>
 								<li tal:repeat="News Category/getNewsLimit2" class="news-list-item">
@@ -53,9 +53,9 @@
 					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
-			<div metal:use-macro="base.xhtml/Footer"/>			
+			<div metal:use-macro="base.xhtml/Footer"/>
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
-			<div metal:use-macro="base.xhtml/Backontop"/>			
+			<div metal:use-macro="base.xhtml/Backontop"/>
 		</div>
 	</body>
 </html>
