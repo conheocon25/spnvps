@@ -469,7 +469,7 @@
 		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-				<h3 id="myModalLabel">Modal header</h3>
+				<h3 id="myModalLabel">Chia sẻ Liên kết tin này</h3>
 			</div>
 			<div class="form-horizontal">
 				<form>
@@ -477,18 +477,18 @@
 						<div class="form-group">
 							<label class="control-label">Email</label>
 							<div class="controls">
-								<input name="Email" type="email" class="form-control"/>
+								<input id="EmailShare" name="Email" type="email" class="form-control"/>
 							</div>
 						</div>
 						<div class="form-group" style="margin-top:10px;">
 							<label class="control-label">Lời nhắn</label>
 							<div class="controls">
-								<textarea name="Content" rows="5"></textarea>
+								<textarea id="ContentShare" name="Content" rows="5"></textarea>
 							</div>
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button class="btn btn-primary btn-small" type="submit"><i class="glyphicons-share_alt"/> Gữi</button>
+						<button id="URLShareLink" class="btn btn-primary btn-small" ><i class="glyphicons-share_alt"/> Gữi</button>
 						<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
 					</div>
 				</form>
