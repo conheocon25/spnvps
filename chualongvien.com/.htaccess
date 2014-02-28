@@ -50,6 +50,8 @@ RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 			?cmd=ReadCategory&Key1=$1&Page=$2 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
+RewriteRule ^send-mail/([a-z0-9_-]+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
+
 RewriteRule ^dao-tao$ 												?cmd=Course [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCourse=$1&KLession=$2 [L]

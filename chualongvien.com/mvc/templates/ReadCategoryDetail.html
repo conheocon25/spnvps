@@ -19,7 +19,7 @@
 							<i class="pull-right">Cập nhật: <span tal:content="News/getDatePrint"/></i>
 						</div>
 						<div class="b-content news-content padding-content">
-							<div class="news-main" tal:content="structure News/getContent"/>
+							<div class="news-main" tal:content="structure News/getContent" tal:attributes="alt News/getURLRead"/>
 							<div class="news-author">
 								<div class="news-tools">
 									<span metal:use-macro="base.xhtml/ShareButton"/>
@@ -57,5 +57,30 @@
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
 		</div>
+		 <script type="text/javascript">
+		/*<![CDATA[*/
+			$('#URLShareLink').click(function(e){
+				var URLNew 	=  $('news-main').attr('alt');
+				var EmailShare 		= $('#EmailShare').val();
+				var ContentShare 	= $('#ContentShare').val();
+				URL = "/send-mail/"+EmailShare+"/"+ContentShare+"/"+URLNew;				
+				e.stopImmediatePropagation();
+				$("#myModal").modal('hide');
+				$.ajax({
+					type: "POST", 
+					async: false,
+					url: URL,
+					dataType: 'json',
+					success: function(data){
+						//var TableActive = "#" + $("#TableActive").attr('alt');
+						//$("#Session").load("/selling/load/table/"+IdTable);
+						$('#ContentShare').val('');
+						$('#EmailShare').val('');
+					}
+				});
+			});
+			
+		/*]]>*/
+		</script>
 	</body>
 </html>

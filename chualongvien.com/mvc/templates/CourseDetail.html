@@ -48,31 +48,6 @@
 			<div metal:use-macro="base.xhtml/Footer"/>			
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>			
-		</div>
-		 <script type="text/javascript">
-		/*<![CDATA[*/
-			$('#URLShareLink').click(function(e){
-				var URLNew 	= "";
-				var EmailShare 		= $('#EmailShare').val();
-				var ContentShare 	= $('#ContentShare').val();
-				URL = "/sendsharenew/"+EmailShare+"/"+ContentShare+"/"+URLNew;				
-				e.stopImmediatePropagation();
-				$("#myModal").modal('hide');
-				$.ajax({
-					type: "POST", 
-					async: false,
-					url: URL,
-					dataType: 'json',
-					success: function(data){
-						//var TableActive = "#" + $("#TableActive").attr('alt');
-						//$("#Session").load("/selling/load/table/"+IdTable);
-						
-						
-					}
-				});
-			});
-			
-		/*]]>*/
-		</script>
+		</div>		
 	</body>
 </html>
