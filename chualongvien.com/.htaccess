@@ -1,6 +1,6 @@
 Options +FollowSymlinks
 RewriteEngine on
-
+AddDefaultCharset UTF-8
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 			?cmd=ReadCategory&Key1=$1&Page=$2 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
-RewriteRule ^send-mail/([a-z0-9_-]+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
+RewriteRule ^send-mail/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
 
 RewriteRule ^dao-tao$ 												?cmd=Course [L]
 RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]

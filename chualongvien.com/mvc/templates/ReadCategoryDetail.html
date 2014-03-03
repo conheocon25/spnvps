@@ -3,7 +3,7 @@
 	<head>
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>		
 	</head>
 
 	<body>
@@ -63,7 +63,7 @@
 				var ID_New 	=  $('news-main').attr('alt');
 				var EmailShare 		= $('#EmailShare').val();
 				var ContentShare 	= $('#ContentShare').val();
-				URL = "/send-mail/"+EmailShare+"/"+ContentShare+"/"+ID_New;				
+				URL = "/send-mail/"+EmailShare+"/"+ID_New+"/"+ContentShare;				
 				e.stopImmediatePropagation();				
 				$("#myModal").modal('hide');
 				$.ajax({
@@ -71,8 +71,7 @@
 					async: false,
 					url: URL,
 					dataType: 'json',
-					success: function(data){
-						alert(data);
+					success: function(data){						
 						$('#ContentShare').val('');
 						$('#EmailShare').val('');
 					}
