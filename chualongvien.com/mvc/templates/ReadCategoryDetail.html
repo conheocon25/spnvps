@@ -59,21 +59,21 @@
 		</div>
 		 <script type="text/javascript">
 		/*<![CDATA[*/
-			$('#URLShareLink').click(function(e){
-				var ID_New 	=  $('news-main').attr('alt');
-				var EmailShare 		= $('#EmailShare').val();
-				var ContentShare 	= $('#ContentShare').val();
-				URL = "/send-mail/"+EmailShare+"/"+ID_New+"/"+ContentShare;				
-				e.stopImmediatePropagation();				
-				$("#myModal").modal('hide');
+			$('#URLShareLink').click(function(e){						
+				$("#myModal").modal('hide');				
+				var URL = "http://chualongvien.com/?cmd=SendMailShare&ID_New=" + $('.news-main').attr('alt') + "&EmailShare=" + $('#EmailShare').val() +"&ContentShare=" + $('#ContentShare').val();
 				$.ajax({
-					type: "POST", 
-					async: false,
+					type: "POST",					
 					url: URL,
 					dataType: 'json',
+					contentType:"application/json; charset=utf-8",	
 					success: function(data){						
 						$('#ContentShare').val('');
-						$('#EmailShare').val('');
+						$('#EmailShare').val('');											
+					},
+					error: function(data){
+						$('#ContentShare').val('');	
+						$('#EmailShare').val('');							
 					}
 				});
 			});
