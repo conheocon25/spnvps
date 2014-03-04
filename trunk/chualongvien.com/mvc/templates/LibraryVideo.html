@@ -4,12 +4,23 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/cloud-carousel.1.0.5.min.js"/>
 	</head>
 	<body>
 		<div class="container">
 			<div metal:use-macro="base.xhtml/Header"/>
 			<div class="row reset-margin main">
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="row">
+					<div class="span12">
+						<div id="carousel1" style="width:100%; height:330px;">
+							<div class="carousel1-title"><p id="title-text"></p></div>
+							<img class="cloudcarousel" tal:repeat="VB Category/getVoiceBookAll" tal:attributes="src VB/getImage; title VB/getName"/>
+							<input id="left-but"  type="button" value="&#171;"/>
+							<input id="right-but" type="button" value="&#187;"/>
+						</div>
+					</div>
+				</div>
 				<div class="span3 fix-width-3">
 					<div class="box radius">
 						<div class="b-title"><div class="b-t-icon-content">DANH MỤC</div></div>
@@ -81,6 +92,26 @@
 			<div metal:use-macro="base.xhtml/Footer"/>			
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
+			<script>
+				$(document).ready(function(){
+					$("#carousel1").CloudCarousel({
+						xPos: 470,
+						yPos: 50,
+						buttonLeft: $("#left-but"),
+						buttonRight: $("#right-but"),
+						altBox: $("#alt-text"),
+						titleBox: $("#title-text"),
+						minScale: 0.35,
+						reflHeight: 56,
+						reflGap:1,
+						yRadius:40,
+						speed:0.05,
+						mouseWheel:false,
+						autoRotate: 'left',
+						autoRotateDelay: 5000
+					}); 
+				});
+			</script>
 		</div>		
 	</body>
 </html>
