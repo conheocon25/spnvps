@@ -11,6 +11,7 @@ interface Finder {
 }
 interface AnimeFinder  			extends Finder{}
 interface UserFinder  			extends Finder{}
+interface FeedFinder  			extends Finder{}
 interface CategoryNewsFinder  	extends Finder{}
 interface CategoryVideoFinder  	extends Finder{}
 interface CategoryBTypeFinder  	extends Finder{}

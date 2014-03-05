@@ -3,6 +3,7 @@ namespace MVC\Domain;
 
 interface AnimeCollection 			extends \Iterator {function add( Object $Anime );}
 interface UserCollection 			extends \Iterator {function add( Object $user );}
+interface FeedCollection 			extends \Iterator {function add( Object $Feed );}
 interface CategoryNewsCollection 	extends \Iterator {function add( Object $CategoryNews );}
 interface CategoryVideoCollection 	extends \Iterator {function add( Object $CategoryVideo );}
 interface CategoryBTypeCollection 	extends \Iterator {function add( Object $CategoryBType );}

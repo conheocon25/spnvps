@@ -5,6 +5,7 @@ require_once( "mvc/base/mapper/Collection.php");
 
 class AnimeCollection 			extends Collection implements \MVC\Domain\AnimeCollection {function targetClass( ) 			{return "\MVC\Domain\Anime";}}
 class UserCollection 			extends Collection implements \MVC\Domain\UserCollection {function targetClass( ) 			{return "\MVC\Domain\User";}}
+class FeedCollection 			extends Collection implements \MVC\Domain\FeedCollection {function targetClass( ) 			{return "\MVC\Domain\Feed";}}
 class CategoryNewsCollection 	extends Collection implements \MVC\Domain\CategoryNewsCollection {function targetClass( ) 	{return "\MVC\Domain\CategoryNews";}}
 class CategoryVideoCollection 	extends Collection implements \MVC\Domain\CategoryVideoCollection {function targetClass( ) 	{return "\MVC\Domain\CategoryVideo";}}
 class CategoryBTypeCollection 	extends Collection implements \MVC\Domain\CategoryBTypeCollection {function targetClass( ) 	{return "\MVC\Domain\BType";}}
