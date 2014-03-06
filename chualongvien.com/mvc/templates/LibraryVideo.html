@@ -11,7 +11,7 @@
 			<div metal:use-macro="base.xhtml/Header"/>
 			<div class="row reset-margin main">
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
-				<div class="span3 fix-width-3">
+				<div class="span3 fix-width">
 					<div class="box radius">
 						<div class="b-title"><div class="b-t-icon-content">DANH MỤC</div></div>
 						<div class="b-content">
@@ -26,30 +26,15 @@
 						</div>
 					</div>
 				</div>
-				<div class="span6 fix-width-3">
-					<div class="box radius">
-						<div class="page-header pg-header pg-header-video reset-margin">
-							<h4 class="reset-margin" id="ActiveVideoName"/>
-							<i class="pull-right">								
-								<span />
-							</i>
+				<div class="span9 fix-width">
+					<div class="box no-border">
+						<div class="input-append">
+							<form style="text-align:center;margin:0;">
+								<input type="text" class="span7" style="border-color:#980707;margin-left:30px;color:#980707;"/>
+								<button class="btn" type="button" style="border-color:#980707;color:#980707;">Tìm kiếm</button>
+							</form>
 						</div>
-						<div class="b-content news-content padding-content">							
-							<div class="img-polaroid">
-								<iframe id="ActiveVideoURL" 
-										tal:attributes="style ImageFrame"
-										width="100%" 
-										height="331" 
-										src="" 
-										frameborder="0" wmode="Opaque"/>																		
-							</div>
-							<div class="alert alert-block clearfix reset-margin">
-								<strong id="ActiveVideoNote" />								
-							</div>
-						</div>
-					</div>					
-				</div>
-				<div class="span3 fix-width-3">
+					</div>
 					
 					<div class="box radius" id="VoiceList">
 						<div class="b-title"><div class="b-t-icon-content" tal:content="string:SÁCH NÓI"/></div>
@@ -76,32 +61,12 @@
 							</ul>
 						</div>
 					</div>
-					
+						
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>			
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
-			<script>
-				$(document).ready(function(){
-					$("#carousel1").CloudCarousel({
-						xPos: 470,
-						yPos: 50,
-						buttonLeft: $("#left-but"),
-						buttonRight: $("#right-but"),
-						altBox: $("#alt-text"),
-						titleBox: $("#title-text"),
-						minScale: 0.35,
-						reflHeight: 56,
-						reflGap:1,
-						yRadius:40,
-						speed:0.05,
-						mouseWheel:false,
-						autoRotate: 'left',
-						autoRotateDelay: 5000
-					}); 
-				});
-			</script>
 		</div>		
 	</body>
 </html>
