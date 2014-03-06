@@ -28,12 +28,14 @@ RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?c
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=$1&KCategory=$2&KYouTube=$3 [L]
 
 RewriteRule ^thu-vien-phat-phap$											?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
+RewriteRule ^thu-vien-phat-phap/tim-kiem/exe$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
 RewriteRule ^thu-vien-phat-phap/([a-z0-9_-]+)$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap&KCategory=$1 [L]
 RewriteRule ^thu-vien-phat-phap/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=thu-vien-phat-phap&KCategory=$1&KBVoice=$2 [L]
 RewriteRule ^thu-vien-phat-phap/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=thu-vien-phat-phap&KCategory=$1&KBVoice=$2 [L]
 RewriteRule ^thu-vien-phat-phap/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$		?cmd=LibraryVideoYouTube&KBType=thu-vien-phat-phap&KCategory=$1&KYouTube=$2 [L]
 
 RewriteRule ^lich-su-phat-giao$												?cmd=LibraryVideo&KBType=lich-su-phat-giao [L]
+RewriteRule ^lich-su-phat-giao/tim-kiem/exe$								?cmd=LibraryVideo&KBType=lich-su-phat-giao [L]
 RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)$								?cmd=LibraryVideo&KBType=lich-su-phat-giao&KCategory=$1 [L]
 RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=lich-su-phat-giao&KCategory=$1&KBVoice=$2 [L]
 RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=lich-su-phat-giao&KCategory=$1&KBVoice=$2 [L]
