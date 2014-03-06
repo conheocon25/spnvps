@@ -15,6 +15,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		$deleteStmt 			= sprintf("delete from %s where id=?", $tblVoiceBook);
 		$findByStmt 			= sprintf("select * from %s WHERE type=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
 		$findByBTypeStmt 		= sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblVoiceBook);
+		$findByKey1Stmt 		= sprintf("select * from %s where btype=:btype AND `key` like :key", $tblVoiceBook);
 		$findByKeyStmt 			= sprintf("select * from %s where `key`=?", $tblVoiceBook);
 		$findByPageStmt 		= sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblVoiceBook);
 		$findByTopLibraryStmt 	= sprintf("SELECT * FROM %s WHERE btype=4 ORDER BY date_time DESC limit 8", $tblVoiceBook);
@@ -30,6 +31,7 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
 		$this->findByBTypeStmt 	= self::$PDO->prepare($findByBTypeStmt);
 		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
+		$this->findByKey1Stmt 	= self::$PDO->prepare($findByKey1Stmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
 		$this->findByTopLibraryStmt 	= self::$PDO->prepare($findByTopLibraryStmt);
 		$this->findByTopHistoryStmt 	= self::$PDO->prepare($findByTopHistoryStmt);
@@ -136,6 +138,13 @@ class VoiceBook extends Mapper implements \MVC\Domain\VoiceBookFinder {
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
         return $object;		
+    }
+	
+	function findByKey1( $values ) {
+		$this->findByKey1Stmt->bindValue(':btype', 	$values[0], 		\PDO::PARAM_INT);
+		$this->findByKey1Stmt->bindValue(':key', 	"%".$values[1]."%", \PDO::PARAM_STR);
+		$this->findByKey1Stmt->execute();
+        return new VoiceBookCollection( $this->findByKey1Stmt->fetchAll(), $this );
     }
 	
 	function findByPage( $values ) {		

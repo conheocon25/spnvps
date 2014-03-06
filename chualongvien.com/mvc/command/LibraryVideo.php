@@ -13,6 +13,7 @@
 			//-------------------------------------------------------------
 			$KBType 		= $request->getProperty("KBType");
 			$KCategory 		= $request->getProperty("KCategory");
+			$Term 			= $request->getProperty("Term");
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -24,6 +25,9 @@
 			$mAlbum 			= new \MVC\Mapper\Album();	
 			$mMonk 				= new \MVC\Mapper\Monk();
 			$mNews 				= new \MVC\Mapper\News();
+			
+			$mVB 				= new \MVC\Mapper\VoiceBook();
+			$mVL 				= new \MVC\Mapper\VideoLibrary();
 												
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -35,8 +39,27 @@
 			$CategoryVideoAll 	= $mCategoryVideo->findByBType(array($IdBType));
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
 			
+			$CVAll = $CategoryBType->getCategoryAll();
+			$SumVB = 0;
+			$SumYT = 0;
+			while ($CVAll->valid()){
+				$CV = $CVAll->current();
+				$SumVB += $CV->getVoiceBookAll()->count();
+				$SumYT += $CV->getVLAll()->count();
+				$CVAll->next();
+			}
+			
 			$Category 			= $mCategoryVideo->findByKey($KCategory);
-			if (!isset($Category)) $Category = $CategoryVideoAll->current();			
+			if (!isset($Category)) $Category = $CategoryVideoAll->current();
+			
+			if (isset($Term)){
+				$StrTerm = new \MVC\Library\String($Term);				
+				$VBAll = $mVB->findByKey1(array($IdBType, 	$StrTerm->converturl()));
+				$YTAll = $mVL->findByKey(array($IdBType, 	$StrTerm->converturl()));				
+			}else{
+				$VBAll = $Category->getVoiceBookAll();
+				$YTAll = $Category->getVLAll();
+			}
 												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -46,13 +69,18 @@
 			$request->setObject("CategoryNewsAll", 	$CategoryNewsAll);
 			$request->setObject("CategoryVideoAll", $CategoryVideoAll);
 			$request->setObject("Category", 		$Category);
+			$request->setObject("VBAll", 			$VBAll);
+			$request->setObject("YTAll", 			$YTAll);
+			
+			$request->setProperty("SumVB", 			$SumVB);
+			$request->setProperty("SumYT", 			$SumYT);
 						
 			if($KBType == "lich-su-phat-giao") {
 				$request->setProperty("ActiveItem", 	'LibraryVideo1');
-				$request->setProperty("ImageFrame", 	'background:url("/data/images/logo/lich_su.gif") no-repeat center center transparent;-webkit-background-size: cover !important;-moz-background-size: cover !important;-o-background-size: cover !important;background-size: cover !important;');
+				$request->setProperty("URLSearch", 		'/lich-su-phat-giao/tim-kiem/exe');
 			} else {
-				$request->setProperty("ActiveItem", 	'LibraryVideo2');
-				$request->setProperty("ImageFrame", 	'background:url("/data/images/logo/thu_vien.gif") no-repeat center center transparent;-webkit-background-size: cover !important;-moz-background-size: cover !important;-o-background-size: cover !important;background-size: cover !important;');
+				$request->setProperty("ActiveItem", 	'LibraryVideo2');				
+				$request->setProperty("URLSearch", 		'/thu-vien-phat-phap/tim-kiem/exe');
 			}
 			
 			return self::statuses('CMD_DEFAULT');

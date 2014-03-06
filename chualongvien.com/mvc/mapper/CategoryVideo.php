@@ -98,5 +98,6 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		$this->findByPageStmt->execute();
         return new CategoryVideoCollection( $this->findByPageStmt->fetchAll(), $this );
     }
+			
 }
 ?>

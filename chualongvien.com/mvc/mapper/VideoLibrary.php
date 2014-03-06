@@ -41,6 +41,28 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 			ORDER BY (select time from %s V where V.id=VL.id_video ) 
 			DESC limit 8", $tblVideoLibrary, $tblVideo
 		);
+		
+		$findByKeyStmt = sprintf("
+			SELECT 
+				VL.id as id,
+				VL.id_category as id_category,
+				VL.id_video as id_video	
+			FROM 
+				(
+					chualongvien_category_video CV 	
+						INNER JOIN
+					chualongvien_video_library	VL	
+						ON 
+					CV.id = VL.id_category
+				)
+					INNER JOIN
+				chualongvien_video VIDEO
+					ON
+				VL.id_video = VIDEO.id		
+			WHERE
+				CV.btype=:btype AND VIDEO.key like :key
+	
+		", $tblVideoLibrary, $tblVideo);
 				
         $this->selectAllStmt 		= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 			= self::$PDO->prepare($selectStmt);
@@ -50,6 +72,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
 		
 		$this->findByStmt 			= self::$PDO->prepare($findByStmt);
+		$this->findByKeyStmt 		= self::$PDO->prepare($findByKeyStmt);
 		$this->findByLimitStmt 		= self::$PDO->prepare($findByLimitStmt);
 		$this->findByUpdateTopStmt 	= self::$PDO->prepare($findByUpdateTopStmt);
 		$this->findByTopLocalStmt 	= self::$PDO->prepare($findByTopLocalStmt);
@@ -139,6 +162,13 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new VideoLibraryCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	
+	function findByKey( $values ) {
+		$this->findByKeyStmt->bindValue(':btype', 	$values[0], 		\PDO::PARAM_INT);
+		$this->findByKeyStmt->bindValue(':key', 	"%".$values[1]."%", \PDO::PARAM_STR);
+		$this->findByKeyStmt->execute();
+        return new VideoLibraryCollection( $this->findByKeyStmt->fetchAll(), $this );
     }
 }
 ?>
