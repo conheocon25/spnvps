@@ -25,6 +25,8 @@ class VideoLibrary extends Object{
     function getIdCategory( ) {return $this->IdCategory;}
 	function getCategory( ) {$mCategory = new \MVC\Mapper\CategoryVideo();$Category = $mCategory->find($this->IdCategory);return $Category;}
 	
+	function getImage(){return "/data/images/bg/mp3.jpg";}
+	
 	function toJSON(){		    
 		$json = array(
 			'Id' 			=> $this->getId(),
