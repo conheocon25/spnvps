@@ -15,13 +15,7 @@
 					<div class="box radius">
 						<div class="b-title"><div class="b-t-icon-content">DANH MỤC</div></div>
 						<div class="b-content">
-							<ul class="nav nav-tabs nav-stacked reset-margin list-3">
-								<li>
-									<a class="CategoryButton" tal:attributes="href '/thu-vien-phat-phap/moi-cap-nhat'">
-										<span class="label monk-label">0</span>
-										Cập nhật gần đây
-									</a>
-								</li>
+							<ul class="nav nav-tabs nav-stacked reset-margin list-3">								
 								<li tal:repeat="Category1 CategoryBType/getCategoryAll" tal:attributes="class php:Category1->getId()==Category->getId()?'active':''">
 									<a class="CategoryButton" tal:attributes="href Category1/getURLRead">
 										<span class="label monk-label" tal:content="php: Category1->getVLAll()->count() + Category1->getVoiceBookAll()->count()"/>
@@ -44,9 +38,7 @@
 					</div>					
 
 					<div class="box radius">
-						<div class="b-title">
-							<div class="b-t-icon-content">Video thư viện Phật pháp</div>
-						</div>
+						<div class="b-title"><div class="b-t-icon-content">SÁCH NÓI (<span tal:content="VBAll/count"/>)</div></div>
 						<div class="b-content">
 							<ul class="thumbnails grid-item reset-margin">
 								<li tal:repeat="VB VBAll" class="span2">
@@ -57,12 +49,17 @@
 										</a>
 									</div>
 								</li>
-							</ul>
+							</ul>							
+						</div>
+					</div>
+					<div class="box radius">
+						<div class="b-title"><div class="b-t-icon-content">YOUTUBE (<span tal:content="YTAll/count"/>)</div></div>
+						<div class="b-content">							
 							<ul class="thumbnails grid-item reset-margin">
 								<li tal:repeat="VL YTAll" class="span2">
 									<div class="thumbnail">
 										<a tal:attributes="href VL/getURLRead">												
-											<img tal:attributes="src VL/getImage"/>
+											<img tal:attributes="src VL/getVideo/getURLImage"/>
 											<p tal:content="VL/getVideo/getName"/>
 										</a>
 									</div>

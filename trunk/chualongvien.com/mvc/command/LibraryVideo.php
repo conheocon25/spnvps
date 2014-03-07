@@ -78,9 +78,12 @@
 			if($KBType == "lich-su-phat-giao") {
 				$request->setProperty("ActiveItem", 	'LibraryVideo1');
 				$request->setProperty("URLSearch", 		'/lich-su-phat-giao/tim-kiem/exe');
-			} else {
+			} else if ($KBType == "thu-vien-phat-phap") {
 				$request->setProperty("ActiveItem", 	'LibraryVideo2');				
 				$request->setProperty("URLSearch", 		'/thu-vien-phat-phap/tim-kiem/exe');
+			}else{
+				$request->setProperty("ActiveItem", 	'LibraryVideo2');				
+				$request->setProperty("URLSearch", 		'/phat-am/tong-hop/tim-kiem/exe');
 			}
 			
 			return self::statuses('CMD_DEFAULT');

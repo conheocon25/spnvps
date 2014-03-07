@@ -22,6 +22,7 @@ RewriteRule ^giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)/exe$				?cmd=LibraryMonk&KMonk
 RewriteRule ^giang-su/load/([0-9]+)$								?cmd=LibraryMonkLoad&IdMonk=$1 [L]
 
 RewriteRule ^phat-am/([a-z0-9_-]+)$												?cmd=LibraryVideo&KBType=$1 [L]
+RewriteRule ^phat-am/([a-z0-9_-]+)/tim-kiem/exe$								?cmd=LibraryVideo&KBType=$1&KCategory=$2 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)$								?cmd=LibraryVideo&KBType=$1&KCategory=$2 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=$1&KCategory=$2&KBVoice=$3 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=$1&KCategory=$2&KBVoice=$3 [L]
