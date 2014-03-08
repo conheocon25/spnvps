@@ -233,9 +233,9 @@
 		position: fixed;
 		left: 0;
 		width: 75px;
-		height: 107px;
+		height: 162px;
 		top: 50%;
-		margin-top: -53px;
+		margin-top: -81px;
 		text-align: center;
 		padding-top: 10px;
 		padding-bottom: 10px;
@@ -270,6 +270,8 @@
 			font-size: 11px;
 			margin-bottom: 2px !important;
 		}
+		
+	.fixed-function a { text-decoration: none; }
 	
 	/* ======================================================================== */
 	/* HISTORY BOX																*/
