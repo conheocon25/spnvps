@@ -20,8 +20,7 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
-			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
+			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
 						
 			$mConfig 			= new \MVC\Mapper\Config();		
@@ -41,8 +40,7 @@
 			}else{
 				$Album = $mAlbum->findByKey($KAlbum);
 			}
-			$MonkAll = $mMonk->findVIP(null);
-									
+												
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
@@ -50,8 +48,7 @@
 			$request->setObject("AlbumAll", $AlbumAll);			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
-			$request->setObject("MonkAll", $MonkAll);
-						
+									
 			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			
 			return self::statuses('CMD_DEFAULT');

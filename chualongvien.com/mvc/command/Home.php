@@ -20,8 +20,7 @@
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
-						
+									
 			$mConfig 			= new \MVC\Mapper\Config();
 			$mVM 				= new \MVC\Mapper\VideoMonk();
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
@@ -48,8 +47,7 @@
 			$CategoryNewsAll 	= $mCategoryNews->findAll();			
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
 			$CategoryVideo 		= $mCategoryVideo->findAll()->current();						
-			$MonkAll 			= $mMonk->findVIP(null);
-																					
+																								
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -69,8 +67,7 @@
 			$request->setObject("CategoryVideo", 		$CategoryVideo);
 			$request->setObject("CategoryNewsAll", 		$CategoryNewsAll);			
 			$request->setObject("AlbumAll", 			$AlbumAll);						
-			$request->setObject("MonkAll", 				$MonkAll);
-
+			
 			$request->setProperty("ActiveItem", 'Home');
 			
 			return self::statuses('CMD_DEFAULT');

@@ -21,8 +21,7 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
-			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
+			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
 						
 			$mConfig 			= new \MVC\Mapper\Config();		
@@ -37,8 +36,7 @@
 			
 			$CategoryNewsAll 	= $mCategoryNews->findAll();						
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
-			$MonkAll 			= $mMonk->findVIP(null);
-			
+						
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
 						
 			//-------------------------------------------------------------
@@ -51,8 +49,7 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("News", $News);						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("MonkAll", $MonkAll);
-			
+						
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

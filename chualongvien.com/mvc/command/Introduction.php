@@ -34,15 +34,13 @@
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
-			$MonkAll 			= $mMonk->findVIP(null);
-						
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
-			$request->setObject("MonkAll", $MonkAll);			
-						
+									
 			$request->setProperty("ActiveItem", 'Introduction');
 						
 			return self::statuses('CMD_DEFAULT');
