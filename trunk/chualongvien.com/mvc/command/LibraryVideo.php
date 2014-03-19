@@ -81,9 +81,15 @@
 			} else if ($KBType == "thu-vien-phat-phap") {
 				$request->setProperty("ActiveItem", 	'LibraryVideo2');				
 				$request->setProperty("URLSearch", 		'/thu-vien-phat-phap/tim-kiem/exe');
+			}else if ($KBType == "phim-truyen-phat-giao"){
+				$request->setProperty("ActiveItem", 	'LibraryVideo3');
+				$request->setProperty("URLSearch", 		'/phim-truyen-phat-giao/tim-kiem/exe');
+			}else if ($KBType == "giang-su-thuyet-phap"){
+				$request->setProperty("ActiveItem", 	'LibraryVideo5');
+				$request->setProperty("URLSearch", 		'/giang-su-thuyet-phap/tim-kiem/exe');
 			}else{
-				$request->setProperty("ActiveItem", 	'LibraryVideo2');				
-				$request->setProperty("URLSearch", 		'/phat-am/tong-hop/tim-kiem/exe');
+				$request->setProperty("ActiveItem", 	'LibraryVideo4');
+				$request->setProperty("URLSearch", 		'/nhac-phat-giao/tim-kiem/exe');
 			}
 			
 			return self::statuses('CMD_DEFAULT');
