@@ -4,22 +4,17 @@ AddDefaultCharset UTF-8
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^trang-chu$ 											?cmd=Home [L]
+RewriteRule ^trang-chu$ 														?cmd=Home [L]
 
-RewriteRule ^signin/load$ 											?cmd=SigninLoad [L]
-RewriteRule ^signin/exe$ 											?cmd=SigninExe [L]
-RewriteRule ^signout/load$ 											?cmd=SignoutLoad [L]
-RewriteRule ^signout/exe$ 											?cmd=SignoutExe [L]
+RewriteRule ^signin/load$ 														?cmd=SigninLoad [L]
+RewriteRule ^signin/exe$ 														?cmd=SigninExe [L]
+RewriteRule ^signout/load$ 														?cmd=SignoutLoad [L]
+RewriteRule ^signout/exe$ 														?cmd=SignoutExe [L]
 
-RewriteRule ^gate$ 													?cmd=Gate [L]
-RewriteRule ^gioi-thieu$ 											?cmd=Introduction [L]
+RewriteRule ^gate$ 																?cmd=Gate [L]
+RewriteRule ^gioi-thieu$ 														?cmd=Introduction [L]
 
-RewriteRule ^task$ 													?cmd=Task [L]
-RewriteRule ^lien-he$ 												?cmd=Contact [L]
-
-RewriteRule ^giang-su/([a-z0-9_-]+)$								?cmd=LibraryMonk&KMonk=$1 [L]
-RewriteRule ^giang-su/([a-z0-9_-]+)/([a-z0-9_-]+)/exe$				?cmd=LibraryMonk&KMonk=$1&KVideoMonk=$2 [L]
-RewriteRule ^giang-su/load/([0-9]+)$								?cmd=LibraryMonkLoad&IdMonk=$1 [L]
+RewriteRule ^lien-he$ 															?cmd=Contact [L]
 
 RewriteRule ^phat-am/([a-z0-9_-]+)$												?cmd=LibraryVideo&KBType=$1 [L]
 RewriteRule ^phat-am/([a-z0-9_-]+)/tim-kiem/exe$								?cmd=LibraryVideo&KBType=$1&KCategory=$2 [L]
@@ -42,58 +37,62 @@ RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=Libra
 RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=lich-su-phat-giao&KCategory=$1&KBVoice=$2 [L]
 RewriteRule ^lich-su-phat-giao/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=lich-su-phat-giao&KCategory=$1&KYouTube=$2 [L]
 
-RewriteRule ^hinh-anh-hoat-dong$									?cmd=LibraryAlbum [L]
-RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)$						?cmd=LibraryAlbum&KAlbum=$1 [L]
+RewriteRule ^giang-su-thuyet-phap$											?cmd=LibraryVideo&KBType=giang-su-thuyet-phap [L]
+RewriteRule ^giang-su-thuyet-phap/tim-kiem/exe$								?cmd=LibraryVideo&KBType=giang-su-thuyet-phap [L]
+RewriteRule ^giang-su-thuyet-phap/([a-z0-9_-]+)$							?cmd=LibraryVideo&KBType=giang-su-thuyet-phap&KCategory=$1 [L]
+RewriteRule ^giang-su-thuyet-phap/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=giang-su-thuyet-phap&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^giang-su-thuyet-phap/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=giang-su-thuyet-phap&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^giang-su-thuyet-phap/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=giang-su-thuyet-phap&KCategory=$1&KYouTube=$2 [L]
 
-RewriteRule ^su-kien$ 												?cmd=Event [L]
-RewriteRule ^su-kien/([a-z0-9_-]+)$ 								?cmd=EventDetail&KEvent=$1 [L]
+RewriteRule ^phim-truyen-phat-giao$											?cmd=LibraryVideo&KBType=phim-truyen-phat-giao [L]
+RewriteRule ^phim-truyen-phat-giao/tim-kiem/exe$							?cmd=LibraryVideo&KBType=phim-truyen-phat-giao [L]
+RewriteRule ^phim-truyen-phat-giao/([a-z0-9_-]+)$							?cmd=LibraryVideo&KBType=phim-truyen-phat-giao&KCategory=$1 [L]
+RewriteRule ^phim-truyen-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=phim-truyen-phat-giao&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^phim-truyen-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=phim-truyen-phat-giao&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^phim-truyen-phat-giao/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=phim-truyen-phat-giao&KCategory=$1&KYouTube=$2 [L]
 
-RewriteRule ^tin-tuc$ 												?cmd=ReadCategory [L]
-RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 								?cmd=ReadCategory&Key1=$1 [L]
-RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 			?cmd=ReadCategory&Key1=$1&Page=$2 [L]
-RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
+RewriteRule ^nhac-phat-giao$												?cmd=LibraryVideo&KBType=nhac-phat-giao [L]
+RewriteRule ^nhac-phat-giao/tim-kiem/exe$									?cmd=LibraryVideo&KBType=nhac-phat-giao [L]
+RewriteRule ^nhac-phat-giao/([a-z0-9_-]+)$									?cmd=LibraryVideo&KBType=nhac-phat-giao&KCategory=$1 [L]
+RewriteRule ^nhac-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$			?cmd=LibraryVideoVoice&KBType=nhac-phat-giao&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^nhac-phat-giao/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$		?cmd=LibraryVideoVoiceLoad&KBType=nhac-phat-giao&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^nhac-phat-giao/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=nhac-phat-giao&KCategory=$1&KYouTube=$2 [L]
+
+RewriteRule ^kenh-tong-hop$													?cmd=LibraryVideo&KBType=kenh-tong-hop [L]
+RewriteRule ^kenh-tong-hop/tim-kiem/exe$									?cmd=LibraryVideo&KBType=kenh-tong-hop [L]
+RewriteRule ^kenh-tong-hop/([a-z0-9_-]+)$									?cmd=LibraryVideo&KBType=kenh-tong-hop&KCategory=$1 [L]
+RewriteRule ^kenh-tong-hop/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$			?cmd=LibraryVideoVoice&KBType=kenh-tong-hop&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^kenh-tong-hop/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$		?cmd=LibraryVideoVoiceLoad&KBType=kenh-tong-hop&KCategory=$1&KBVoice=$2 [L]
+RewriteRule ^kenh-tong-hop/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$				?cmd=LibraryVideoYouTube&KBType=kenh-tong-hop&KCategory=$1&KYouTube=$2 [L]
+
+RewriteRule ^hinh-anh-hoat-dong$											?cmd=LibraryAlbum [L]
+RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)$								?cmd=LibraryAlbum&KAlbum=$1 [L]
+
+RewriteRule ^tin-tuc$ 														?cmd=ReadCategory [L]
+RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 										?cmd=ReadCategory&Key1=$1 [L]
+RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 					?cmd=ReadCategory&Key1=$1&Page=$2 [L]
+RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 							?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
 RewriteRule ^send-mail/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
-
-RewriteRule ^dao-tao$ 												?cmd=Course [L]
-RewriteRule ^dao-tao/([a-z0-9_-]+)$ 								?cmd=CourseDetail&KCourse=$1 [L]
-RewriteRule ^dao-tao/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=CourseLession&KCourse=$1&KLession=$2 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^object/load/([A-Za-z0-9]+)/([0-9]+)$ 					?cmd=ObjectLoad&ObjectName=$1&Id=$2 [L]
-RewriteRule ^object/del/([A-Za-z0-9]+)/([0-9]+)$ 					?cmd=ObjectDel&ObjectName=$1&Id=$2 [L]
-RewriteRule ^object/ins/([A-Za-z0-9]+)$ 							?cmd=ObjectIns&ObjectName=$1 [L]
-RewriteRule ^object/upd/([A-Za-z0-9]+)$ 							?cmd=ObjectUpd&ObjectName=$1 [L]
+RewriteRule ^object/load/([A-Za-z0-9]+)/([0-9]+)$ 				?cmd=ObjectLoad&ObjectName=$1&Id=$2 [L]
+RewriteRule ^object/del/([A-Za-z0-9]+)/([0-9]+)$ 				?cmd=ObjectDel&ObjectName=$1&Id=$2 [L]
+RewriteRule ^object/ins/([A-Za-z0-9]+)$ 						?cmd=ObjectIns&ObjectName=$1 [L]
+RewriteRule ^object/upd/([A-Za-z0-9]+)$ 						?cmd=ObjectUpd&ObjectName=$1 [L]
 
-RewriteRule ^app$ 													?cmd=App [L]
+RewriteRule ^app$ 												?cmd=App [L]
 
-RewriteRule ^app/config$ 											?cmd=AppConfig [L]
-RewriteRule ^app/config/trang/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
-
-RewriteRule ^app/course$ 											?cmd=AppCourse [L]
-RewriteRule ^app/course/trang/([0-9]+)$ 							?cmd=AppCourse&Page=$1 [L]
-
-RewriteRule ^app/course/([0-9]+)$ 								?cmd=AppCourseLession&IdCourse=$1 [L]
-RewriteRule ^app/course/([0-9]+)/trang/([0-9]+)$ 				?cmd=AppCourseLession&IdCourse=$1&Page=$2 [L]
+RewriteRule ^app/config$ 										?cmd=AppConfig [L]
+RewriteRule ^app/config/trang/([0-9]+)$ 						?cmd=AppConfig&Page=$1 [L]
 
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
 RewriteRule ^app/album/trang/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
 
 RewriteRule ^app/monk$ 											?cmd=AppMonk [L]
 RewriteRule ^app/monk/trang/([0-9]+)$ 							?cmd=AppMonk&Page=$1 [L]
-
-RewriteRule ^app/monk/([0-9]+)/video$ 							?cmd=AppMonkVideo&IdMonk=$1 [L]																	 
-RewriteRule ^app/monk/([0-9]+)/video/YouTube/upd/load$ 			?cmd=AppMonkVideoYouTubeUpdLoad&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/YouTube/upd/exe$ 			?cmd=AppMonkVideoYouTubeUpdExe&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/trang/([0-9]+)$ 			?cmd=AppMonkVideo&IdMonk=$1&Page=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/ins/load$ 					?cmd=AppMonkVideoInsLoad&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/ins/exe$ 					?cmd=AppMonkVideoInsExe&IdMonk=$1 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/load$ 		?cmd=AppMonkVideoUpdLoad&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/upd/exe$ 			?cmd=AppMonkVideoUpdExe&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/load$ 		?cmd=AppMonkVideoDelLoad&IdMonk=$1&IdVideoMonk=$2 [L]
-RewriteRule ^app/monk/([0-9]+)/video/([0-9]+)/del/exe$ 			?cmd=AppMonkVideoDelExe&IdMonk=$1&IdVideoMonk=$2 [L]
 
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
 RewriteRule ^app/category/news/trang/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]

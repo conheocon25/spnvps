@@ -71,95 +71,19 @@
 							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"/>
 						</li>
 					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo'?'active dropdown':'dropdown'">
-					<a class="dropdown-toggle" data-toggle="dropdown">Phật âm <b class="caret"/></a>
-					<ul class="dropdown-menu">
-						<li tal:repeat="Category CategoryBTypeAll">
-							<a tal:attributes="href Category/getURLView" tal:content="Category/getName" />
-						</li>
-					</ul>
-				</li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử Phật giáo</a></li>
-				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>
+				</li>				
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo3'?'active':'?'" ><a href="/phim-truyen-phat-giao">Phim truyện</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo4'?'active':'?'" ><a href="/nhac-phat-giao">Nhạc</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo5'?'active':'?'" ><a href="/giang-su-thuyet-phap">Giảng sư</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo6'?'active':'?'" ><a href="/kenh-tong-hop">Kênh tổng hợp</a></li>
 				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'" ><a href="/hinh-anh-hoat-dong">Thư viện ảnh</a></li>				
-				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>
+				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>								
 			</ul>
 		</div>
-	</div>
-			
-	<!-- ======================================================================== -->
-	<!-- PHẬT ÂM 																  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="BuddhaBox" class="box radius">
-		<div class="b-title">
-			<div class="b-t-icon-content">Phật Âm</div>
-		</div>
-		<div class="b-content">
-			<div id="BuddhaCarousel" class="carousel slide carousel-fade sidebar-slide reset-margin">
-				<ol class="carousel-indicators">
-					<li data-target="#BuddhaCarousel" data-slide-to="0" class="active"/>
-					<li data-target="#BuddhaCarousel" data-slide-to="1"/>
-					<li data-target="#BuddhaCarousel" data-slide-to="2"/>
-				</ol>
-				<div class="carousel-inner">
-					<div class="active item">
-						<a href="/phat-am/bac-tong"><img src="/data/images/logo/bac_tong.jpg" /></a>
-					</div>
-					<div class="item">
-						<a href="/phat-am/nam-tong"><img src="/data/images/logo/nam_tong.jpg" /></a>
-					</div>
-					<div class="item">
-						<a href="/phat-am/tong-hop"><img src="/data/images/logo/tong_hop.jpg" /></a>
-					</div>
-				</div>
-				<a class="carousel-control left" href="#BuddhaCarousel" data-slide="prev">&lsaquo;</a>
-				<a class="carousel-control right" href="#BuddhaCarousel" data-slide="next">&rsaquo;</a>
-			</div>
-		</div>
-	</div>
-					
-	<!-- ======================================================================== -->
-	<!-- VIDEO MỚI CẬP NHẬT														  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="TopVideoBox" tal:repeat="Panel PanelCategoryVideoAll" class="box radius">
-		<div class="b-title">
-			<div tal:content="Panel/getName" class="b-t-icon-content" />
-		</div>
-		<div class="b-content">
-			<ul class="grid-item-2 thumbnails reset-margin">
-				<li tal:repeat="Category Panel/getDetailAll" class="span2">
-					<a tal:attributes="href Category/getCategoryVideo/getURLRead">
-						<div class="thumbnail">
-							<img tal:attributes="src Category/getCategoryVideo/getPicture"/>
-							<p tal:content="Category/getCategoryVideo/getName"/>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- GIẢNG SƯ NỔI BẬT														  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="TopMonkBox" class="box radius">
-		<div class="b-title">
-			<div class="b-t-icon-content">GIẢNG SƯ NỔI BẬT</div>
-		</div>
-		<div class="b-content">
-			<ul class="grid-item-3 thumbnails reset-margin">
-				<li tal:repeat="Monk MonkAll" class="span2">
-					<a tal:attributes="href Monk/getURLRead;">
-						<div class="thumbnail">
-							<img class="monk-tooltip" tal:attributes="src Monk/getURLPic | string:/data/images/exit_picture.jpg; data-original-title php:Monk->getPreName() . ' ' . Monk->getName() . ' ' . Monk->getPagoda()" data-toggle="tooltip" data-placement="bottom"/>
-						</div>
-					</a>
-				</li>
-			</ul>
-		</div>
-	</div>
-			
+	</div>	
+						
 	<!-- ======================================================================== -->
 	<!-- FIXED FUNCTION															  -->
 	<!-- ======================================================================== -->
@@ -253,10 +177,14 @@
 		<div class="top-menu">
 			<ul class="nav nav-pills">
 				<li><a href="/trang-chu">Trang chủ</a></li>								
-				<li><a href="/tin-tuc">Tin tức</a></li>				
-				<li><a href="/phat-am">Phật âm</a></li>
-				<li><a href="/lich-su-phat-giao">Lịch sử Phật giáo</a></li>
-				<li><a href="/thu-vien-phat-phap">Thư viện Phật pháp</a></li>
+				<li><a href="/gioi-thieu">Giới thiệu</a></li>
+				<li><a href="/tin-tuc">Tin tức</a></li>
+				<li><a href="/lich-su-phat-giao">Lịch sử</a></li>
+				<li><a href="/thu-vien-phat-phap">Thư viện</a></li>
+				<li><a href="/phim-truyen-phat-giao">Phim truyện</a></li>
+				<li><a href="/nhac-phat-giao">Nhạc</a></li>	
+				<li><a href="/giang-su-thuyet-phap">Giảng sư</a></li>
+				<li><a href="/kenh-tong-hop">Kênh tổng hợp</a></li>
 				<li><a href="/hinh-anh-hoat-dong">Thư viện ảnh</a></li>
 				<li><a href="/lien-he">Liên hệ</a></li>
 				<li id="last"><a href="/signin/load">Quản trị</a></li>
@@ -379,6 +307,50 @@
 	</div>
 	
 	<!-- ======================================================================== -->
+	<!-- GIẢNG SƯ														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MonkBox" class="box">
+		<div class="b-content">
+			<a href="/giang-su-thuyet-phap">
+				<img width="100%" src="/data/images/logo/lich_su.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- PHIM TRUYỆN															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="FilmBox" class="box">
+		<div class="b-content">
+			<a href="/phim-truyen-phat-giao">
+				<img width="100%" src="/data/images/logo/lich_su.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- NHẠC PHẬT GIÁO															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MusicBox" class="box">
+		<div class="b-content">
+			<a href="/nhac-phat-giao">
+				<img width="100%" src="/data/images/logo/lich_su.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- KÊNH TỔNG HỢP															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="GeneralBox" class="box">
+		<div class="b-content">
+			<a href="/kenh-tong-hop">
+				<img width="100%" src="/data/images/logo/lich_su.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
 	<!-- NẤU MÓN CHAY															  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="CookingBox" class="box radius">
@@ -399,18 +371,7 @@
 			</a>
 		</div>
 	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- BÁT QUAN TRAI															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="LessionBox" class="box">
-		<div class="b-content">
-			<a href="/dao-tao/khoa-tu-bat-quan-trai">
-				<img width="100%" src="/data/images/logo/bat_quan_trai.jpg" />
-			</a>
-		</div>
-	</div>
-	
+			
 	<!-- ======================================================================== -->
 	<!-- AUDIO BOX														  		  -->
 	<!-- ======================================================================== -->
