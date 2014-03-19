@@ -20,7 +20,6 @@
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
 			$mNews 				= new \MVC\Mapper\News();
 						
 			//-------------------------------------------------------------
@@ -28,14 +27,12 @@
 			//-------------------------------------------------------------																			
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();																		
-			$MonkAll = $mMonk->findVIP(null);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
-			$request->setObject('MonkAll', $MonkAll);
 									
 			$request->setProperty("ActiveItem", 'Contact');
 						

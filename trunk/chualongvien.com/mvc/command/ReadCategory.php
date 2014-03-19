@@ -21,8 +21,7 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
-			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
+			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
 						
 			$mConfig 			= new \MVC\Mapper\Config();		
@@ -45,8 +44,7 @@
 			
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 16));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 16, $Category->getURLRead());									
-			$MonkAll = $mMonk->findVIP(null);
-			
+						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -56,8 +54,7 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("NewsAll", $NewsAll);										
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("MonkAll", $MonkAll);
-						
+									
 			$request->setObject("PN", $PN);			
 			$request->setProperty("ActiveItem", 'ReadCategory');
 			$request->setProperty("Page", $Page);	

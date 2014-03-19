@@ -18,7 +18,11 @@ class VideoLibrary extends Object{
 	//Thông tin Video
 	function setIdVideo( $IdVideo ){$this->IdVideo = $IdVideo;$this->markDirty();}
     function getIdVideo( ) {return $this->IdVideo;}
-	function getVideo( ) {$mVideo = new \MVC\Mapper\Video();$Video = $mVideo->find($this->IdVideo);return $Video;}
+	function getVideo( ) {
+		$mVideo = new \MVC\Mapper\Video();
+		$Video = $mVideo->find($this->IdVideo);
+		return $Video;
+	}
 	
 	//Thông tin Category
     function setIdCategory( $IdCategory ){$this->IdCategory = $IdCategory;$this->markDirty();}

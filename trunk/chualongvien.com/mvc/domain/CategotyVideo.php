@@ -117,8 +117,14 @@ class CategoryVideo extends Object{
 			return "/thu-vien-phat-phap/".$this->getKey();
 		else if ($this->BType == 5)
 			return "/lich-su-phat-giao/".$this->getKey();
-			
-		return "/phat-am/".$this->getBTypeKey()."/".$this->getKey();
+		else if ($this->BType == 3){
+			return "/phim-truyen-phat-giao/".$this->getKey();
+		}else if ($this->BType == 1){
+			return "/giang-su-thuyet-phap/".$this->getKey();
+		}else if ($this->BType == 2){
+			return "/nhac-phat-giao/".$this->getKey();
+		}
+		return "/kenh-tong-hop/".$this->getKey();
 	}
 	
 	function getURLView(){return 			"/app/category/video/".$this->getId();}
