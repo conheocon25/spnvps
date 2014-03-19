@@ -16,13 +16,6 @@ RewriteRule ^gioi-thieu$ 														?cmd=Introduction [L]
 
 RewriteRule ^lien-he$ 															?cmd=Contact [L]
 
-RewriteRule ^phat-am/([a-z0-9_-]+)$												?cmd=LibraryVideo&KBType=$1 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/tim-kiem/exe$								?cmd=LibraryVideo&KBType=$1&KCategory=$2 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)$								?cmd=LibraryVideo&KBType=$1&KCategory=$2 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)$		?cmd=LibraryVideoVoice&KBType=$1&KCategory=$2&KBVoice=$3 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/sach-noi/([a-z0-9_-]+)/load$	?cmd=LibraryVideoVoiceLoad&KBType=$1&KCategory=$2&KBVoice=$3 [L]
-RewriteRule ^phat-am/([a-z0-9_-]+)/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$			?cmd=LibraryVideoYouTube&KBType=$1&KCategory=$2&KYouTube=$3 [L]
-
 RewriteRule ^thu-vien-phat-phap$											?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
 RewriteRule ^thu-vien-phat-phap/tim-kiem/exe$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
 RewriteRule ^thu-vien-phat-phap/([a-z0-9_-]+)$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap&KCategory=$1 [L]
