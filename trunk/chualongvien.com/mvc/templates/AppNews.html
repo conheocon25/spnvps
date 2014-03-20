@@ -39,7 +39,9 @@
 											<th width="30px">STT</th>
 											<th width="32px"/>
 											<th><div class="text-left">NGÀY</div></th>
-											<th><div class="text-left">TIÊU ĐỀ</div></th>											
+											<th><div class="text-left">TIÊU ĐỀ</div></th>
+											<th width="30px" />
+											<th width="30px" />
 											<th width="30px" />
 										</tr>
 									</thead>
@@ -52,6 +54,8 @@
 											</td>
 											<td width="90px"><div tal:content="News/getDatePrint" /></td>
 											<td><a tal:attributes="href News/getURLUpdLoad"><div tal:content="News/getTitle" /></a></td>
+											<td><a tal:attributes="href News/getURLBookmark1"><i class="glyphicon glyphicon-bookmark"/>1</a></td>
+											<td><a tal:attributes="href News/getURLBookmark2"><i class="glyphicon glyphicon-bookmark"/>2</a></td>
 											<td><a tal:attributes="href News/getURLDelLoad"><i class="glyphicon glyphicon-remove"/></a></td>
 										</tr>
 									</tbody>
