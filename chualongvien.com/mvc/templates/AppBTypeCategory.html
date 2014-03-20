@@ -47,23 +47,15 @@
 										<tr class="content-rows" tal:repeat="CV Category/getCategoryAll">
 											<td width="32" align="center"><div tal:content="repeat/CV/number" /></td>
 											<td width="32" align="center"><span tal:condition="CV/isVIP" class="icon-star"/></td>
-											<td>											
-												<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id CV/getId" tal:content="CV/getName"/>
-											</td>
+											<td><a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id CV/getId" tal:content="CV/getName"/></td>
 											<td>
 												<a tal:attributes="href CV/getURLSetting">
-													<div>
-														Xem
-														(<span tal:content="CV/getVLAll/count" />)
-													</div>
+													<div>Xem(<span tal:content="CV/getVLAll/count" />)</div>
 												</a>
 											</td>										
 											<td>
 												<a tal:attributes="href CV/getURLSettingVoice">
-													<div>
-														Xem														
-														(<span tal:content="CV/getVoiceBookAll/count" />)
-													</div>
+													<div>Xem(<span tal:content="CV/getVoiceBookAll/count" />)</div>
 												</a>
 											</td>
 											<td class="center"><a class="remove-item" href="#deleteDialog" data-toggle="modal" tal:attributes="data-id CV/getId"><i class="glyphicon glyphicon-remove"/></a></td>
@@ -90,6 +82,14 @@
 								<label class="control-label">Tên</label>
 								<div class="controls">
 									<input id="Name1" name="Name1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Danh mục</label>
+								<div class="controls">
+									<select name="IdBType1" id="IdBType1" style="width:80%;">
+										<option tal:repeat="Category1 CategoryBTypeAll" tal:attributes="value Category1/getId" tal:content="Category1/getName" />
+									</select>									
 								</div>
 							</div>
 							<div class="form-group">
@@ -134,6 +134,14 @@
 								<label class="control-label">Tên</label>
 								<div class="controls">
 									<input id="Name2" name="Name2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Danh mục</label>
+								<div class="controls">
+									<select name="IdBType1" id="IdBType2" style="width:80%;">
+										<option tal:repeat="Category2 CategoryBTypeAll" tal:attributes="value Category2/getId" tal:content="Category2/getName" />
+									</select>									
 								</div>
 							</div>
 							<div class="form-group">
@@ -248,6 +256,7 @@
 					$('#Order2').attr('value', 		data.Order);
 					$('#Picture2').attr('value', 	data.Picture);
 					$('#Type2').attr('value', 		data.Type);
+					$('#IdBType2').select2('val', 	$('#BTypeActive').attr('alt'));
 				});
 			});
 			
@@ -261,7 +270,7 @@
 				Data[2] = $('#Order2').val();
 				Data[3] = $('#Picture2').val();
 				Data[4] = $('#Type2').val();
-				Data[5] = $('#BTypeActive').attr('alt');
+				Data[5] = $('#IdBType2').val();
 				
 				var URL = "/object/upd/CategoryVideo";
 				$.ajax({
