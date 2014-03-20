@@ -111,8 +111,8 @@ class News extends Object{
 	function getURLRead(){		return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
 	function getURLUpdLoad(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
 	function getURLUpdExe(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/exe";}
-	function getURLBookmark1(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark1/exe";}
-	function getURLBookmark2(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark2/exe";}
+	function getURLBookmark1(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark1";}
+	function getURLBookmark2(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark2";}
 	
 	function getURLDelLoad(){return "/app/news/".$this->getIdCategory()."/".$this->getId()."/del/load";}	
 	function getURLDelExe(){return "/app/news/".$this->getIdCategory()."/".$this->getId()."/del/exe";}

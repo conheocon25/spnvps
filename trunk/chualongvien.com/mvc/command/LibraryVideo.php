@@ -87,6 +87,9 @@
 			}else if ($KBType == "giang-su-thuyet-phap"){
 				$request->setProperty("ActiveItem", 	'LibraryVideo5');
 				$request->setProperty("URLSearch", 		'/giang-su-thuyet-phap/tim-kiem/exe');
+			}else if ($KBType == "kenh-tong-hop"){
+				$request->setProperty("ActiveItem", 	'LibraryVideo6');
+				$request->setProperty("URLSearch", 		'/kenh-tong-hop/tim-kiem/exe');
 			}else{
 				$request->setProperty("ActiveItem", 	'LibraryVideo4');
 				$request->setProperty("URLSearch", 		'/nhac-phat-giao/tim-kiem/exe');

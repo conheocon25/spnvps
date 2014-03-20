@@ -84,9 +84,6 @@ RewriteRule ^app/config/trang/([0-9]+)$ 						?cmd=AppConfig&Page=$1 [L]
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
 RewriteRule ^app/album/trang/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
 
-RewriteRule ^app/monk$ 											?cmd=AppMonk [L]
-RewriteRule ^app/monk/trang/([0-9]+)$ 							?cmd=AppMonk&Page=$1 [L]
-
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
 RewriteRule ^app/category/news/trang/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
 
@@ -99,6 +96,9 @@ RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/load$ 				?cmd=AppNewsUpdLoad&IdCate
 RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/exe$ 				?cmd=AppNewsUpdExe&IdCategory=$1&IdNews=$2 [L]
 RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/load$ 				?cmd=AppNewsDelLoad&IdCategory=$1&IdNews=$2 [L]
 RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/exe$ 				?cmd=AppNewsDelExe&IdCategory=$1&IdNews=$2 [L]
+
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/bookmark1$ 				?cmd=AppNewsBookmarkExe&IdCategory=$1&IdNews=$2&IdBookmark=1 [L]
+RewriteRule ^app/news/([0-9]+)/([0-9]+)/bookmark2$ 				?cmd=AppNewsBookmarkExe&IdCategory=$1&IdNews=$2&IdBookmark=2 [L]
 
 RewriteRule ^app/btype$ 										?cmd=AppBType [L]
 RewriteRule ^app/btype/([0-9]+)$ 								?cmd=AppBTypeCategory&IdBType=$1 [L]

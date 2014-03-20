@@ -56,35 +56,7 @@
 		
 		<command name="App"><view>App</view></command>
 		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>				
-						
-		<!-- ============================================================================== -->
-		<!-- APP.COURSE																-->
-		<!-- ============================================================================== -->
-		<command name="AppCourse"><view>AppCourse</view></command>
-		<command name="AppCourseInsLoad"><view>AppCourseInsLoad</view></command>
-		<command name="AppCourseInsExe"><view>AppCourseInsExe</view><status value="CMD_OK"><forward>AppCourse</forward></status></command>		
-		<command name="AppCourseUpdLoad"><view>AppCourseUpdLoad</view></command>
-		<command name="AppCourseUpdExe"><view>AppCourseUpdExe</view><status value="CMD_OK"><forward>AppCourse</forward></status></command>		
-		<command name="AppCourseDelLoad"><view>AppCourseDelLoad</view></command>
-		<command name="AppCourseDelExe"><view>AppCourseDelExe</view><status value="CMD_OK"><forward>AppCourse</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.COURSE.LESSION																-->
-		<!-- ============================================================================== -->
-		<command name="AppCourseLession"><view>AppCourseLession</view></command>
-		<command name="AppCourseLessionInsLoad"><view>AppCourseLessionInsLoad</view></command>
-		<command name="AppCourseLessionInsExe"><view>AppCourseLessionInsExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>		
-		<command name="AppCourseLessionUpdLoad"><view>AppCourseLessionUpdLoad</view></command>
-		<command name="AppCourseLessionUpdExe"><view>AppCourseLessionUpdExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
-		<command name="AppCourseLessionDelLoad"><view>AppCourseLessionDelLoad</view></command>
-		<command name="AppCourseLessionDelExe"><view>AppCourseLessionDelExe</view><status value="CMD_OK"><forward>AppCourseLession</forward></status></command>
-		
-		<!-- ============================================================================== -->
-		<!-- APP.MONK																		-->
-		<!-- ============================================================================== -->		
-		<command name="AppMonk"><view>AppMonk</view></command>
-		<command name="AppMonkVideo"><view>AppMonkVideo</view></command>		
-										
+														
 		<!-- ============================================================================== -->
 		<!-- APP.BTYPE																-->
 		<!-- ============================================================================== -->
@@ -105,6 +77,8 @@
 		<command name="AppNewsUpdExe"><view>AppNewsUpdExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
 		<command name="AppNewsDelLoad"><view>AppNewsDelLoad</view></command>
 		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
+		
+		<command name="AppNewsBookmarkExe"><view>AppNewsBookmarkExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>	
 		
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
