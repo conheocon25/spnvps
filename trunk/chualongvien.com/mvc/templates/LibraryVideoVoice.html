@@ -4,68 +4,8 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
 		<link href="/mvc/templates/theme/jplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css"/>
-		
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
-		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jquery.jplayer.min.js"></script>
-		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jplayer.playlist.min.js"></script>
-		<script type="text/javascript" src="/mvc/templates/theme/bootstrap/js/jquery.simple-text-rotator.min.js"></script>
-		
-		<script>
-		/*<![CDATA[*/
-		$(document).ready(function(){
-			var PlayList = null;
-			var URL = "";
-			$('body').css('opacity', '0').fadeTo(1500, 1,'swing');
-			$(".top-poe").animate({ top: "+=100%" }, { duration: 1500 });
-			$(".bottom-poe").animate({ bottom: "+=100%" }, { duration: 1500 });
-
-			URL = $(".audio").attr('URL');
-			$.ajax({
-				type: "POST",
-				url: URL,
-				dataType: "json",
-				async: false,
-				success: function(data){
-					PlayList = data
-				}
-			});
-					
-			//Thư viện PlayList
-			new jPlayerPlaylist(
-				{
-					jPlayer: "#jquery_jplayer_1",
-					cssSelectorAncestor: "#jp_container_1"
-				},
-				PlayList,
-				{
-					swfPath: "/mvc/templates/theme/jplayer/js",
-					supplied: "mp3",
-					wmode: "window",
-					smoothPlayBar: true,
-					keyEnabled: true,
-					playlistOptions: { autoPlay: true }
-				}
-			);
-			
-			$(".jp-repeat").trigger("click");
-			var tmp = 0;
-			$(".audio-ctrl").click(function(){ var auh = $(".audio").height() + "px"; if(tmp==0) { $(".audio").animate({ height: "-="+auh }); tmp ++; } else { $(".audio").css("height", "auto"); tmp--; } $(".audio-ctrl.up").toggleClass("a-hidden"); });
-			
-			$(window).bind('contextmenu', false);
-			$(document)[0].oncontextmenu = function() { return false; }
-			$(document).mousedown(function(e){ if( e.button == 2 ) { return false; } else { return true; }});
-			$(document).bind('keydown keypress', 'ctrl+s', function(){return false;});
-			$(document).bind('keydown keypress', 'f12', function(){return false;});
-			
-			$(".voice-title").css("margin-left", "-"+$(".voice-title").width()/2+"px");
-			$(".voice-title").textrotator({
-				animation: "fade",
-				speed: 1000
-			});
-		});
-		/*]]>*/
-		</script>
 	</head>
+	
 	<body style="background:url(/data/images/bg/gate1.jpg) no-repeat center center fixed">
 		<h1 class="voice-title" tal:content="VB/getName"/>
 		<h3 tal:content="VB/getCount"/>
@@ -130,5 +70,64 @@
 			<div class="audio-ctrl up a-hidden"/>
 		</div>
 		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery-1.7.1.min.js"/>
+		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jplayer.playlist.min.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/bootstrap/js/jquery.simple-text-rotator.min.js"></script>
+		<script>
+		/*<![CDATA[*/
+		$(document).ready(function(){
+			var PlayList = null;
+			var URL = "";
+			$('body').css('opacity', '0').fadeTo(1500, 1,'swing');
+			$(".top-poe").animate({ top: "+=100%" }, { duration: 1500 });
+			$(".bottom-poe").animate({ bottom: "+=100%" }, { duration: 1500 });
+
+			URL = $(".audio").attr('URL');
+			$.ajax({
+				type: "POST",
+				url: URL,
+				dataType: "json",
+				async: false,
+				success: function(data){
+					PlayList = data
+				}
+			});
+					
+			//Thư viện PlayList
+			new jPlayerPlaylist(
+				{
+					jPlayer: "#jquery_jplayer_1",
+					cssSelectorAncestor: "#jp_container_1"
+				},
+				PlayList,
+				{
+					swfPath: "/mvc/templates/theme/jplayer/js",
+					supplied: "mp3",
+					wmode: "window",
+					smoothPlayBar: true,
+					keyEnabled: true,
+					playlistOptions: { autoPlay: true }
+				}
+			);
+			
+			$(".jp-repeat").trigger("click");
+			var tmp = 0;
+			$(".audio-ctrl").click(function(){ var auh = $(".audio").height() + "px"; if(tmp==0) { $(".audio").animate({ height: "-="+auh }); tmp ++; } else { $(".audio").css("height", "auto"); tmp--; } $(".audio-ctrl.up").toggleClass("a-hidden"); });
+			
+			$(window).bind('contextmenu', false);
+			$(document)[0].oncontextmenu = function() { return false; }
+			$(document).mousedown(function(e){ if( e.button == 2 ) { return false; } else { return true; }});
+			$(document).bind('keydown keypress', 'ctrl+s', function(){return false;});
+			$(document).bind('keydown keypress', 'f12', function(){return false;});
+			
+			$(".voice-title").css("margin-left", "-"+$(".voice-title").width()/2+"px");
+			$(".voice-title").textrotator({
+				animation: "fade",
+				speed: 1000
+			});
+		});
+		/*]]>*/
+		</script>
 	</body>
 </html>
