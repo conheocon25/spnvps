@@ -3,8 +3,6 @@
 	<head>
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>
-		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
 	</head>
 
 	<body>
@@ -141,5 +139,8 @@
 			<div metal:use-macro="base.xhtml/Backontop"/>
 			<div id="fb-root"/>
 		</div>
+		
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
 	</body>
 </html>

@@ -3,7 +3,6 @@
 	<head>
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>		
 	</head>
 
 	<body>
@@ -60,7 +59,8 @@
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
 		</div>
-		 <script type="text/javascript">
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script type="text/javascript">
 		/*<![CDATA[*/
 			$('#URLShareLink').click(function(e){						
 				$("#myModal").modal('hide');				
