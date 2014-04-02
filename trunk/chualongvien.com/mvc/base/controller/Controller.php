@@ -28,13 +28,12 @@
 				}
 			}else{				
 				$Type = $AppController->getCommandType( $request);
-				$NameCommand = $request->getProperty('cmd');
-				/*				
+				$NameCommand = $request->getProperty('cmd');				
 				if ($Type != "public" && isset($NameCommand)){										
 					$request->setProperty('cmd','Gate');
 				}else if (!isset($NameCommand)){					
 					$request->setProperty('cmd','Gate');
-				}*/
+				}
 				while( $cmd = $AppController->getCommand( $request ) ) {
 					$cmd->execute( $request );
 				}
