@@ -7,8 +7,7 @@
 	
 	/*-----------------------------------------------------------------------------------*/				
 	class ApplicationHelper { 
-		private static $instance; 
-				
+		private static $instance; 				
 		private $config = "data/settings.xml"; 
 		 
 		private function __construct() {} 
@@ -25,7 +24,7 @@
 			if ( ! is_null( $dsn ) ) { 
 				return; 
 			} 
-			$this->getOptions();			
+			$this->getOptions();	
 		}
 						
 		private function getOptions() { 
@@ -47,7 +46,8 @@
 			}
 			foreach ( $options->control->command as $command_view ) {
 				$command =  trim((string)$command_view['name'] );
-				$type =  trim((string)$command_view['type'] );				
+				$type =  trim((string)$command_view['type'] );
+				//echo "--".$command.":".$type;
 				$map->addClassrootType( $command, $type );
 				
 				if ( $command_view->classalias ) {

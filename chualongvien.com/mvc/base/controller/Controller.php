@@ -21,23 +21,11 @@
 		function handleRequest() {			
 			$request = new Request();
 			$AppController = \MVC\Base\ApplicationRegistry::appController();						
-			@$User = \MVC\Base\SessionRegistry::getCurrentUser();			
-			if (isset($User)&&$User->getEmail()!=""){				
-				while( $cmd = $AppController->getCommand( $request ) ) {			
-					$cmd->execute( $request );					
-				}
-			}else{				
-				$Type = $AppController->getCommandType( $request);
-				$NameCommand = $request->getProperty('cmd');				
-				if ($Type != "public" && isset($NameCommand)){										
-					$request->setProperty('cmd','Gate');
-				}else if (!isset($NameCommand)){					
-					$request->setProperty('cmd','Gate');
-				}
-				while( $cmd = $AppController->getCommand( $request ) ) {
-					$cmd->execute( $request );
-				}
-			}						
+									
+			while( $cmd = $AppController->getCommand( $request ) ) {			
+				$cmd->execute( $request );					
+			}
+						
 			$this->invokeView( $AppController->getView( $request ) );
 		}
 		function invokeView( $target ) {

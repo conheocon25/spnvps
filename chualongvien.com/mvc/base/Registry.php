@@ -15,13 +15,13 @@
 		
 		//Sử dụng App và User lưu trữ như là một  Object trong Session
 		private function __construct() { 
-			require_once 'mvc/domain/User.php';			
+			require_once 'mvc/domain/User.php';
 			session_start();
 		}
 		
- 		static function instance() { 
+ 		static function instance(){
 			if ( ! isset(self::$instance) ) { self::$instance = new self(); } 
-				return self::$instance;          
+				return self::$instance;
 		} 
  
 		protected function get( $key ) { 
@@ -33,20 +33,44 @@
 		protected function set( $key, $val ) { 
 			$_SESSION[__CLASS__][$key] = $val; 
 		} 
-										
+												
 		//Quản lí User
 		function setCurrentUser( \MVC\Domain\User $user ) {
-			return self::instance()->set('pagoda_giacquang_current_user', $user);
+			return self::instance()->set('cafe_current_user', $user);
 		}
 		function getCurrentUser() {
-			return self::instance()->get('pagoda_giacquang_current_user');
+			return self::instance()->get('cafe_current_user');
 		}
 		
-		function setCurrentCaptcha( $CurrentCaptcha ) { 
-			self::instance()->set('pagoda_giacquang_CurrentCaptcha', $CurrentCaptcha); 
+		function setCurrentTheme( $theme ) {
+			return self::instance()->set('cafe_current_theme', $theme);
 		}
-		function getCurrentCaptcha( ){
-			return self::instance()->get('pagoda_giacquang_CurrentCaptcha');
+		
+		function getCurrentTheme(){
+			$Theme = self::instance()->get('cafe_current_theme');
+			if (!isset($Theme)){
+				$mConfig = new \MVC\Mapper\Config();
+				$Config = $mConfig->findByName("THEME");
+				if (!isset($Config))
+					return "grey";
+				else
+					return $Config->getValue();
+			}
+				
+			return self::instance()->get('cafe_current_theme');
+		}
+		
+		function setCurrentIdUser( $Iduser ) {
+			return self::instance()->set('cafe_current_Iduser', $Iduser);
+		}
+		function getCurrentIdUser() {
+			return self::instance()->get('cafe_current_Iduser');
+		}
+		
+		function setCurrentAction( $Action ) {return self::instance()->set('cafe_current_action', $Action);}		
+		function getCurrentAction() {
+			$result = self::instance()->get('cafe_current_action');			
+			return $result;
 		}
 	}
 	/*--------------------------------------------------------------------------------*/
@@ -120,14 +144,7 @@
 			file_put_contents( $path, serialize( $val ) );
 			$this->mtimes[$key]=time();
 		}
-		
-		static function setInfo( $info ) {
-			return self::instance()->set('info', $info);
-		}
-		static function getInfo() {
-			return self::instance()->get('info');
-		}
-						
+								
 		//---------------------------------------------------------------------
 		// Thông tin App của hệ thống
 		//---------------------------------------------------------------------
@@ -160,7 +177,8 @@
 			return $obj->appController;
 		}
 		
-		static function getLimit(){			
+		static function getLimit(){
+			
 			return false;
 		}
 	}

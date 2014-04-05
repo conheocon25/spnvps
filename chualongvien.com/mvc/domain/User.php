@@ -4,56 +4,64 @@ require_once( "mvc/base/domain/DomainObject.php" );
 class User extends Object{
 
     private $Id;
+	private $Name;
 	private $Email;
     private $Pass;
-    private $Pass2;
 	private $Gender;
 	private $Note;
 	private $DateCreate;
 	private $DateUpdate;	
 	private $DateActivity;
 	private $Type;
-	
-	private $App;
-	private $Apps;
+	private $Code;
+				
 	/*Hàm khởi tạo và thiết lập các thuộc tính*/
     function __construct( 
 		$Id=null, 
+		$Name=null,
 		$Email=null, 
-		$Pass=null, 
-		$Pass2=null, 
+		$Pass=null, 		
 		$Gender=null, 
 		$Note=null, 		
 		$DateCreate = null,	
 		$DateUpdate = null,	
 		$DateActivity = null,	
-		$Type = null
+		$Type = null,
+		$Code = null
 	) {
         $this->Id = $Id;
+		$this->Name = $Name;
 		$this->Email = $Email;
-		$this->Pass = $Pass;
-		$this->Pass2 = $Pass2;
+		$this->Pass = $Pass;		
 		$this->Gender = $Gender;
 		$this->Note = $Note;		
 		$this->DateCreate = $DateCreate;
 		$this->DateUpdate = $DateUpdate;
 		$this->DateActivity = $DateActivity;
 		$this->Type = $Type;
+		$this->Code = $Code;
+		
         parent::__construct( $Id );
     }
-    function getId( ) {
-        return $this->Id;
-    }
-		
+    function getId( ) {return $this->Id;}
+	
+	function setName( $Name ) {$this->Name= $Name;$this->markDirty();}
+	function getName(){return $this->Name;}
+	function getNameReduce(){
+		$arr = \explode(" ", $this->Name);
+		$temp = "";
+		foreach ($arr as $a){
+			$temp = $temp.\substr($a,0,1);
+		}
+		return $temp;
+	}
+	
 	function setEmail( $Email ) {$this->Email = $Email;$this->markDirty();}
 	function getEmail(){return $this->Email;}
 	
     function setPass( $Pass ) {$this->Pass = $Pass;$this->markDirty();}
     function getPass( ) {return $this->Pass;}
-	
-	function setPass2( $Pass2 ) {$this->Pass2 = $Pass2;$this->markDirty();}
-    function getPass2( ) {return $this->Pass2;}
-	
+			
     function setGender( $Gender ) {$this->Gender = $Gender;$this->markDirty();}	
     function getGender( ) {return $this->Gender;}
 	function getGenderPrint( ){
@@ -65,55 +73,60 @@ class User extends Object{
     }
 	
 	function setNote( $Note ) {$this->Note = $Note;$this->markDirty();}	
-	function getNote( ) {return $this->Note;}	
-	function setApp( $App ){$this->App = $App;$this->markDirty();}
-	function getApp($IdApp=null){return $this->App;}	
-	function getApps(){
-		if (!isset($this->Apps)){
-			$mUserApp = new \MVC\Mapper\UserApp();
-			$this->Apps = $mUserApp->findBy(array($this->Id));
-		}
-		return $this->Apps;
-	}		
-	function getNotSigned(){$mApp = new \MVC\Mapper\App();$Apps = $mApp->notSigned(array($this->Id));return $Apps;}
-		
+	function getNote( ) {return $this->Note;}
+				
 	function setDateCreate( $DateCreate){$this->DateCreate = $DateCreate;$this->markDirty();}	
-	function getDateCreate(){return $this->DateCreate;}	
+	function getDateCreate(){return $this->DateCreate;}
+	
 	function setDateUpdate( $DateUpdate){$this->DateUpdate = $DateUpdate;$this->markDirty();}	
-	function getDateUpdate(){return $this->DateUpdate;}	
-	function setDateActivity( $DateActivity){$this->DateActivity = $DateActivity;$this->markDirty();}
+	function getDateUpdate(){return $this->DateUpdate;}
 	
-	function getDateActivity(){return $this->DateActivity;}	
+	function setDateActivity( $DateActivity){$this->DateActivity = $DateActivity;$this->markDirty();}	
+	function getDateActivity(){return $this->DateActivity;}
+	
 	function setType( $Type){$this->Type = $Type;$this->markDirty();}
-	function getType(){return $this->Type;}
-	function getTypePrint(){$Arr = array("", "Doanh nghiệp", "Đại lý", "", "Quản trị");return $Arr[$this->Type];}
+	function getType(){return $this->Type;}	
+	function getTypePrint(){$Arr = array("", "Bán hàng", "Quản lý", "Quan sát", "Quản trị");return $Arr[$this->Type];}	
 	
-	//Chứng thực quyền người dùng
-	function authorize($Command){
-		$mUser = new \MVC\Mapper\User();		
-		$result = $mUser->authorize(array($Command, $Command, $this->Type));
-		return $result;
-	}
+	function isAdmin(){if ($this->getType()==4)return true;return false;}	
+	function isViewer(){if ($this->getType()==3)return true;return false;}	
+	function isManager(){if ($this->getType()==2)return true;return false;}	
+	function isSeller(){	if ($this->getType()==1)return true;return false;}
 	
-	//Lấy địa chỉ
-		
-	function getURLViewSystem(){return "/quan_tri/".$this->Id;}	
-	function getURLViewVendor(){return "/dai_ly";}	
-	function getURLViewIndex(){$Prefix = $this->getApp()->getAlias();return $Prefix;}
+	function setCode( $Code){	$this->Code= $Code;$this->markDirty();}
+	function getCode(){	return $this->Code;}
 	
-	function getURLDefault(){
-		$Prefix = $this->getApp()->getAlias();
-		
-		$Arr = array(
-			"", 
-			$Prefix."/ban_hang", 
-			$this->getURLViewVendor(),
-			"",
-			$this->getURLViewSystem()
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName(),
+			'Email'			=> $this->getEmail(),
+			'Pass'			=> $this->getPass(),
+			'Gender'		=> $this->getGender(),
+			'Note'			=> $this->getNote(),
+			'DateCreate'	=> $this->getDateCreate(),
+			'DateUpdate'	=> $this->getDateUpdate(),
+			'DateActivity'	=> $this->getDateActivity(),
+			'Type'			=> $this->getType(),
+			'Code'			=> $this->getCode()
 		);
-        return $Arr[$this->Type];
+		return json_encode($json);
 	}
 	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->Name 		= $Data[1];
+		$this->Email 		= $Data[2];
+		$this->Pass 		= $Data[3];
+		$this->Gender 		= $Data[4];
+		$this->Note 		= $Data[5];
+		$this->DateCreate 	= $Data[6];
+		$this->DateUpdate 	= $Data[7];
+		$this->DateActivity = $Data[8];
+		$this->Type 		= $Data[9];
+		$this->Code 		= $Data[10];
+    }
+			
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
 }
