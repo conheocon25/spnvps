@@ -8,32 +8,32 @@
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------
 			$Session = \MVC\Base\SessionRegistry::instance();
-									
+
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$Email = $request->getProperty('Email');
 			$Pass = $request->getProperty('Pass');
-						
+
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
 			$mUser = new \MVC\Mapper\User();
-											
+
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------
 			if (!isset($Email)||!isset($Pass)){
 				$request->addFeedback("error");			
-				return self::statuses('CMD_OK');				
+				return self::statuses('CMD_OK');
 			}
 			
 			$IdUser = $mUser->check($Email, $Pass);
 			if ($IdUser > 0){								
-				$User = $mUser->find($IdUser);																								
+				$User = $mUser->find($IdUser);				
 				$Session->setCurrentUser($User);
 			}else{				
-				$request->addFeedback("error");				
+				$request->addFeedback("error");
 				return self::statuses('CMD_NO_AUTHOR');
 			}
 			//-------------------------------------------------------------
