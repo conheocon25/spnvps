@@ -78,7 +78,7 @@
 			<h1><a>Pagoda App</a></h1>
 			<a id="menu-trigger" href="#"><i class="glyphicon glyphicon-align-justify"/></a>	
 		</div>
-		<div id="user-nav">			
+		<div id="user-nav">
             <ul class="btn-group">
 				<li class="btn">
 					<a class="tip-bottom" data-original-title="Click để đăng nhập" href="/signin/load">
@@ -120,114 +120,46 @@
 	</ul>
 	
 	<!-- ======================================================================== -->
-	<!-- MENU.APP															  	  -->
+	<!-- HEADER																	  -->
+	<!-- ======================================================================== -->		
+	<div metal:define-macro="UserNavigation" id="user-nav">
+		<!--
+		<ul class="btn-group">
+			<li class="btn open"><a href="/trang-chu" title="Trang chủ Website - Chualongvien.com" class="tip-bottom">
+				<i class="glyphicon glyphicon-home"/> <span class="text">Chualongvien.com</span>
+			</a></li>
+			<li class="btn open"><a title="Địa chỉ IP đang sử dụng" class="tip-bottom">
+				<i class="glyphicon glyphicon-signal"/> <span class="text" tal:content="php:@\MVC\Library\Statistic::getIPPrint()"/>
+			</a></li>
+			<li class="btn open"><a title="Tài khoản đang sử dụng" class="tip-bottom">				
+				<i class="glyphicon glyphicon-user"></i> <span class="text" tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()" tal:content="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->getEmail()"/>
+			</a></li>
+			<li class="btn"><a href="#signoutDialog" data-toggle="modal" title="Thoát trang quản lý" class="tip-bottom">
+				<i class="glyphicon glyphicon-share-alt"/> <span class="text">Thoát</span>
+			</a></li>
+		</ul>
+		!-->
+	</div>
+	
 	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuApp" id="sidebar">
-		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">
-			<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
-				<a tal:attributes="href '/selling'"><i class="glyphicons-drink" />BÁN HÀNG</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Import'?'active':'disable'">
-				<a tal:attributes="href '/import'"><i class="glyphicons-truck" />NHẬP HÀNG</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='PayRoll'?'active':'disable'">
-				<a tal:attributes="href '/payroll'"><i class="glyphicons-table" />CHẤM CÔNG</a>
-			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Money'?'active':'disable'">
-				<a tal:attributes="href '/money'"><i class="glyphicons-transfer" />THU / CHI</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Report'?'active':'disable'">
-				<a tal:attributes="href '/report'"><i class="glyphicons-fax" />BÁO CÁO</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Setting'?'active':'disable'">
-				<a tal:attributes="href '/setting'"><i class="glyphicons-cogwheels" />THIẾT LẬP</a>
-			</li>
-		</ul>
-		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isSeller()">
-			<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
-				<a tal:attributes="href '/selling'"><i class="glyphicons-drink" />BÁN HÀNG</a>
-			</li>			
-		</ul>
-		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isManager()">
-			<li tal:attributes="class php:ActiveAdmin=='Selling'?'active':'disable'">
-				<a tal:attributes="href '/selling'"><i class="glyphicons-drink" />BÁN HÀNG</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Import'?'active':'disable'">
-				<a tal:attributes="href '/import'"><i class="glyphicons-truck" />NHẬP HÀNG</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Money'?'active':'disable'">
-				<a tal:attributes="href '/money'"><i class="glyphicons-transfer" />THU / CHI</a>
-			</li>			
-			<li tal:attributes="class php:ActiveAdmin=='Setting'?'active':'disable'">
-				<a tal:attributes="href '/setting'"><i class="glyphicons-cogwheels" />THIẾT LẬP</a>
-			</li>
-		</ul>
-		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isViewer()">
-			<li tal:attributes="class php:ActiveAdmin=='Report'?'active':'disable'">
-				<a tal:attributes="href '/report'"><i class="glyphicons-fax" />BÁO CÁO</a>
-			</li>
-			<li>
-				<a tal:attributes="href '/change/pass/load'"><i class="glyphicons-keys" />ĐỔI MẬT KHẨU</a>
-			</li>
+	<!-- LEFT MENU - SIDEBAR													  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Sidebar" id="sidebar" >
+		<ul>
+			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'"><a href="/app/category/news"><i class="glyphicon glyphicon-th"></i> <span>TIN TỨC</span> </a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'"><a href="/app/btype"><i class="glyphicon glyphicon-th"></i> <span>THƯ VIỆN</span> </a></li>						
+			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'"><a href="/app/album"><i class="glyphicon glyphicon-th"></i> <span>HÌNH ẢNH</span></a></li>
+			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'"><a href="/app/config"><i class="glyphicon glyphicon-th"></i> <span>CẤU HÌNH</span></a></li>
 		</ul>
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- MENU.SETTING															  -->
+	<!-- BREADCRUMB																  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuSetting" id="sidebar">				
-		<ul tal:condition="php: @\MVC\Base\SessionRegistry::instance()->getCurrentUser()->isAdmin()">		
-			<li tal:attributes="class php:ActiveAdmin=='Category'?'active':'disable'">
-				<a tal:attributes="href '/setting/category'" >
-					<i class="glyphicons-fast_food" />DANH MỤC MÓN
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Supplier'?'active':'disable'">
-				<a tal:attributes="href '/setting/supplier'" >
-					<i class="glyphicons-truck" />NHÀ CUNG CẤP
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Domain'?'active':'disable'">
-				<a tal:attributes="href '/setting/domain'">
-					<i class="glyphicons-show_big_thumbnails" />KHU VỰC
-				</a>
-			</li>				
-			<li tal:attributes="class php:ActiveAdmin=='Customer'?'active':'disable'">
-				<a tal:attributes="href '/setting/customer'">
-					<i class="glyphicons-group" />KHÁCH HÀNG 
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='User'?'active':'disable'">
-				<a tal:attributes="href '/setting/user'">
-					<i class="glyphicons-group" />NGƯỜI DÙNG 
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Unit'?'active':'disable'">
-				<a tal:attributes="href '/setting/unit'">
-					<i class="glyphicons-tags" />ĐƠN VỊ TÍNH 
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Employee'?'active':'disable'">
-				<a tal:attributes="href '/setting/employee'">
-					<i class="glyphicons-group" />NHÂN VIÊN
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='TermCollect'?'active':'disable'">
-				<a tal:attributes="href '/setting/termcollect'">
-					<i class="glyphicons-disk_save" />DANH MỤC THU
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='TermPaid'?'active':'disable'">
-				<a tal:attributes="href '/setting/termpaid'">
-					<i class="glyphicons-disk_open" />DANH MỤC CHI
-				</a>
-			</li>
-			<li tal:attributes="class php:ActiveAdmin=='Config'?'active':'disable'">
-				<a tal:attributes="href '/setting/config'">
-					<i class="glyphicons-cogwheel" />CẤU HÌNH
-				</a>
-			</li>
-		</ul>	
+	<div metal:define-macro="Breadcrumb" id="breadcrumb">
+		<a href="/app" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> QUẢN LÝ</a>
+		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]; title php:'Về trang '.Item[0]" tal:content="php:Item[0]" class="tip-bottom"/>
+		<a class="current" tal:content="Title"/>
 	</div>
 	
 	<!-- ======================================================================== -->
@@ -240,18 +172,24 @@
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- STYLE SWITCHER															  -->
+	<!-- SIGNOUT DIALOG															  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="StyleTools" id="style-switcher">
-		<i class="glyphicon glyphicon-arrow-left"></i>
-		<span>Giao diện:</span>
-		<a href="/setting/theme/grey" alt="#grey" style="background-color:#555555;border-color:#aaaaaa;cursor:pointer;"></a>
-		<a href="/setting/theme/light-blue" alt="#light-blue" style="background-color:#8399b0;cursor:pointer;"></a>
-		<a href="/setting/theme/blue" alt="#blue" style="background-color:#2D2F57;cursor:pointer;"></a>
-		<a href="/setting/theme/red" alt="#red" style="background-color:#673232;cursor:pointer;"></a>
-		<a href="/setting/theme/red-green" alt="#red-green" style="background-image:url('/mvc/templates/theme/cms/img/demo/red-green.png');background-repeat:no-repeat;cursor:pointer;"></a>
-	</div>
-	
+	<div metal:define-macro="SignoutDialog" id="signoutDialog" class="modal fade">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header"><h3>Đăng xuất</h3></div>
+				<div class="modal-body">
+					<p>Bạn có chắc muốn thoát khỏi trang quản lý ?</p>
+				</div>
+				<div class="modal-footer">
+					<form action="/signout/exe" method="post">
+						<button type="submit" class="btn btn-primary btn-small">OK</button>
+						<button data-dismiss="modal" class="btn btn-default btn-small">Không</button>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>	
 		
 </body>
 </html>
