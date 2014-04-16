@@ -6,7 +6,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 
     function __construct() {
         parent::__construct();
-		$tblUser = "tbl_user";
+		$tblUser = "chualongvien_user";
 		
 		$selectAllStmt = sprintf("select * from %s", $tblUser);
 		$selectStmt = sprintf("select * from %s where id=?", $tblUser);
@@ -113,7 +113,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 		
 	function check($name, $pass) {		
         $this->checkStmt->execute( array($name, $pass) );
-        $result = $this->checkStmt->fetchAll();		
+        $result = $this->checkStmt->fetchAll();			
 		return @$result[0][0];
     }
 	
@@ -131,7 +131,7 @@ class User extends Mapper implements \MVC\Domain\UserFinder {
 	
 	function checkEmail( $values ) {	
         $this->checkEmailStmt->execute( $values );
-		$result = $this->checkEmailStmt->fetchAll();		
+		$result = $this->checkEmailStmt->fetchAll();
 		if (!isset($result) || $result==null)
 			return null;        
         return $result[0][0];
