@@ -29,7 +29,6 @@
 						
 			$Title = $News->getTitle();
 			$Navigation = array(
-				array("QUẢN LÝ", "/app"),
 				array("TIN TỨC", "/app/category/news"),
 				array( mb_strtoupper($News->getCategory()->getName(), 'UTF8'), $News->getCategory()->getURLView())
 			);

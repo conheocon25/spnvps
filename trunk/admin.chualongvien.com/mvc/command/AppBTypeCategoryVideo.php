@@ -30,8 +30,7 @@
 			$Category		= $mCategoryVideo->find($IdCategory);
 			
 			$Title 			= mb_strtoupper($Category->getName(), 'UTF8').' - YOUTUBE';
-			$Navigation = array(
-				array("QUẢN LÝ"									, "/app"),
+			$Navigation = array(				
 				array("THƯ VIỆN"								, "/app/btype"),
 				array(mb_strtoupper($BType->getName(), 'UTF8')	, $BType->getURLSetting())
 			);

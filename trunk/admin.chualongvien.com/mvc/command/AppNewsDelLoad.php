@@ -19,8 +19,7 @@
 			$mCategoryBType = new \MVC\Mapper\CategoryBType();
 			$mCategoryNews = new \MVC\Mapper\CategoryNews();						
 			$mNews = new \MVC\Mapper\News();
-			
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------							
@@ -29,8 +28,7 @@
 			$News = $mNews->find($IdNews);
 						
 			$Title = $News->getTitle();
-			$Navigation = array(
-				array("QUẢN LÝ", "/app"),
+			$Navigation = array(			
 				array("TIN TỨC", "/app/category/news"),
 				array(mb_strtoupper($News->getCategory()->getName(), 'UTF8'), $News->getCategory()->getURLView())
 			);

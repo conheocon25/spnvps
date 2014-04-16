@@ -27,8 +27,7 @@
 			$Category = $mCategoryNews->find($IdCategory);
 						
 			$Title = "THÊM MỚI";
-			$Navigation = array(
-				array("QUẢN LÝ", "/app"),
+			$Navigation = array(				
 				array("TIN TỨC", "/app/category/news"),
 				array(mb_strtoupper($Category->getName(), 'UTF8'), $Category->getURLView())
 			);

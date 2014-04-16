@@ -12,14 +12,11 @@
 			<ul>
 				<li tal:repeat="Category1 CategoryNewsAll" tal:attributes="class php:Category->getId()==Category1->getId()?'active':'disabled'">
 					<a tal:attributes="href Category1/getURLView">
-						<i class="glyphicon glyphicon-th"></i> <span tal:content="Category1/getName" /> <span class="badge badge-info pull-right" tal:content="Category1/getNews/count"/> 
+						<i class="glyphicon glyphicon-th"></i> <span tal:content="Category1/getName" />
 					</a>
 				</li>
 			</ul>
 		</div>
-		
-		<div metal:use-macro="mAdmin.xhtml/StyleSwitcher"/>
-
 		<div id="content">
 			<div id="content-header">
 				<h1 tal:content="Title"/>
@@ -73,7 +70,7 @@
 		</div>
 
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
-		<div metal:use-macro="mAdmin.xhtml/DeleteDialog"/>
+		<div metal:use-macro="mDialog.xhtml/DialogDel"/>
 		<div metal:use-macro="mAdmin.xhtml/SignoutDialog"/>
 		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 	</body>
