@@ -152,10 +152,28 @@
 		<div metal:use-macro="mAdmin.xhtml/SignoutDialog"/>
 		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
 		<script type="text/javascript">
-		/*<![CDATA[*/
-			var today = $.datepicker.formatDate('yy-mm-dd', new Date());
-			$('#Time1').val(today).attr('data-date', today).datepicker();
-			$('#Time2').datepicker();
+		/*<![CDATA[*/						
+			$('#Time1').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});
+			
+			$('#Time2').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});
 			
 			//-----------------------------------------------------------------------------------
 			//Delete 1 Album			

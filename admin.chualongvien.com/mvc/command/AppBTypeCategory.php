@@ -26,7 +26,6 @@
 			$Title 				= mb_strtoupper($Category->getName(), 'UTF8');
 			
 			$Navigation = array(
-				array("QUẢN LÝ"		, "/app"),
 				array("THƯ VIỆN"	, "/app/btype")
 			);
 			//-------------------------------------------------------------

@@ -33,17 +33,17 @@ RewriteRule ^app$ 												?cmd=App [L]
 RewriteRule ^app$ 												?cmd=App [L]
 
 RewriteRule ^app/config$ 										?cmd=AppConfig [L]
-RewriteRule ^app/config/trang/([0-9]+)$ 						?cmd=AppConfig&Page=$1 [L]
+RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
-RewriteRule ^app/album/trang/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
+RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
 
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
-RewriteRule ^app/category/news/trang/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
+RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
 
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
-RewriteRule ^app/news/([0-9]+)/trang/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
+RewriteRule ^app/news/([0-9]+)/page/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/news/([0-9]+)/ins/load$ 						?cmd=AppNewsInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/ins/exe$ 						?cmd=AppNewsInsExe&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/load$ 				?cmd=AppNewsUpdLoad&IdCategory=$1&IdNews=$2 [L]
@@ -60,7 +60,7 @@ RewriteRule ^app/btype/([0-9]+)/([0-9]+)$ 						?cmd=AppBTypeCategoryVideo&IdBTy
 RewriteRule ^app/btype/([0-9]+)/([0-9]+)/voice$ 				?cmd=AppVoiceBook&IdBType=$1&IdCategory=$2 [L]
 
 RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/trang/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
+RewriteRule ^app/category/video/([0-9]+)/page/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/load$ 				?cmd=AppCategoryVideoDetailInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/ins/exe$ 				?cmd=AppCategoryVideoDetailInsExe&IdCategory=$1 [L]
 RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVideoDetailUpdLoad&IdCategory=$1&IdVideoLibrary=$2 [L]

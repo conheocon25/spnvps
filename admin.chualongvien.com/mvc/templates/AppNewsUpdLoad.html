@@ -33,7 +33,7 @@
 									<div class="control-group">
 										<label class="control-label" for="Date">Thời gian</label>
 										<div class="controls">
-											<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate"  data-date-format="yyyy-mm-dd"/>
+											<input type="text" id="Date" name="Date" placeholder="Thời gian" tal:attributes="value News/getDate"  class="form-control input-small" data-date-format="yyyy-mm-dd hh:ii"/>
 										</div>
 									</div>
 									<div class="control-group">
@@ -61,17 +61,24 @@
 		
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
 		<div metal:use-macro="mAdmin.xhtml/SignoutDialog"/>
-		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/ckeditor/ckeditor.js"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/cms/ckeditor/ckeditor.js"/>
 		<script type="text/javascript">
 		/*<![CDATA[*/
 			/* ---------------------------------------------------------------------------- */
 			/* SET TODAY FOR DATEPICKER														*/
 			/* ---------------------------------------------------------------------------- */
 			//THIẾT LẬP NGÀY GIỜ GIAO DỊCH
-			$('#Date').datepicker({language:'vi'});
-			//var today = $.datepicker.formatDate('yy-mm-dd', new Date());
-			//$('#Date').val(today).attr('data-date', today).datepicker();
+			$('#Date').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});			
 		/*]]>*/
 		</script>
 	</body>
