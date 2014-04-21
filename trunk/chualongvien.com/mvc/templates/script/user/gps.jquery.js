@@ -3,14 +3,14 @@
 	
     $.GoogleMapObjectDefaults = {        
         zoomLevel: 10,
-		imagewidth: 50,
-		imageheight: 50,
-		center: 'Bach Dan, Phuong 4, tp. Vinh Long, Vinh Long, Viet Nam',		
+		imagewidth: 60,
+		imageheight: 60,
+		center: 'Bach Dan, Phuong 4, Vinh Long',		
 		start: '#start',		
         end: '#end',
 		directions: 'directions',
         submit: '#getdirections',      	
-		tooltip: 'Chùa Long Viễn, 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam',
+		tooltip: '<div style="overflow-x: hidden;"><img src="/data/images/bg/gate.png" height="60px" width="60px"/><span style="font:bold 24px/30px arial;color:red;padding-left:5%">Chùa Long Viễn</span><br /><span>Địa chỉ:126/27 Trần Phú, Phường4, TP.Vĩnh Long, Vĩnh Long</span><br /><span>Điện thoại:(070)3 824 152  <br /> Di Động: 09192 444 00 - 0949 661 494 <br /> Email: thichthientrilongvien@gmail.com</span></div>',
 		image: 'false'
     };
 
@@ -24,10 +24,10 @@
     }
 	
 	function showMaker() {					
-		var center = new GLatLng(10.246597,105.979431);		
+		var center = new GLatLng(10.246895,105.98003);		
 		var marker = new GMarker(center, {draggable: false}); 
 		map.addOverlay(marker);		
-		marker.openInfoWindowHtml('Chùa Long Viễn, 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam');	
+		marker.openInfoWindowHtml('<div style="overflow-x: hidden;"><img src="/data/images/bg/gate.png" height="60px" width="60px"/><span style="font:bold 24px/30px arial;color:red;padding-left:5%">Chùa Long Viễn</span><br /><span>Địa chỉ:126/27 Trần Phú, Phường4, TP.Vĩnh Long, Vĩnh Long</span><br /><span>Điện thoại:(070)3 824 152 <br /> Di Động: 09192 444 00 - 0949 661 494 <br /> Email: thichthientrilongvien@gmail.com</span></div>');	
 	}
 	
     $.extend(GoogleMapObject.prototype, {
@@ -65,7 +65,7 @@
 				}		
                 this._geocoder.getLatLng(center, function(point) {
 				
-                    center = new GLatLng(10.246597,105.979431);
+                    center = new GLatLng(10.246895,105.98003);
 					
 					if (!point) { alert(center + " not found"); }
                     else {
