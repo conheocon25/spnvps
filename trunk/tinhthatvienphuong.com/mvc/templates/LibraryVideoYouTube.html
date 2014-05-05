@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/gate.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bgslide/css/default.css" />
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bgslide/css/component.css" />		
+		<link href="/mvc/templates/theme/jplayer/skin/blue.monday/jplayer.blue.monday.css" rel="stylesheet" type="text/css"/>
+		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.min.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
+		
+		<style>
+			.audio {
+				position: absolute;
+				width: auto;
+				height: auto;
+				bottom: 0;
+				left: 0;
+				z-index: 99999999999;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header class="clearfix"><h1>7 Kỳ Quan Phật Giáo</h1></header>
+			<div class="main">
+				<ul id="cbp-bislideshow" class="cbp-bislideshow">
+					<li><img src="/data/images/7wonders/1.jpg" alt="image01"/></li>
+					<li><img src="/data/images/7wonders/2.jpg" alt="image02"/></li>
+					<li><img src="/data/images/7wonders/3.jpg" alt="image03"/></li>
+					<li><img src="/data/images/7wonders/4.jpg" alt="image04"/></li>
+					<li><img src="/data/images/7wonders/5.jpg" alt="image05"/></li>
+					<li><img src="/data/images/7wonders/6.jpg" alt="image06"/></li>
+					<li><img src="/data/images/7wonders/7.jpg" alt="image07"/></li>
+				</ul>
+			</div>			
+		</div>		
+		<!-- PHÂN ĐỊNH NGHĨA NỘI DUNG YOUTUBE TRANG!-->
+		<div class="forward-button" title="Trở về trang trước">
+			<a tal:attributes="href Category/getURLRead">
+				www.<big>chualongvien</big>.com
+			</a>
+		</div>
+		<iframe width="560" height="315" 
+				tal:attributes="src Video/getURL" 
+				frameborder="0" allowfullscreen="true">
+		</iframe>
+		
+		<script src="/mvc/templates/theme/bgslide/js/jquery.imagesloaded.min.js"></script>
+		<script src="/mvc/templates/theme/bgslide/js/cbpBGSlideshow.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jquery.jplayer.min.js"></script>
+		<script type="text/javascript" src="/mvc/templates/theme/jplayer/js/jplayer.playlist.min.js"></script>
+		<script src="/mvc/templates/theme/bgslide/js/modernizr.custom.js"></script>						
+		<script>
+		/*<![CDATA[*/
+		$(document).ready(function(){									
+			cbpBGSlideshow.init();			
+		});
+		/*]]>*/
+		</script>
+	</body>
+</html>
