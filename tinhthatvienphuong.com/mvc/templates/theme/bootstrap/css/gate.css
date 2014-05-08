@@ -15,168 +15,110 @@
 		overflow: hidden;
 	}
 	
-	.cover-inner {
-		width: 477px;
-		height: 320px;
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		margin-left: -363px;
-		margin-top: -180px;
-		background: url('/data/images/bg/gate.png') no-repeat top left transparent;
-		padding-right: 249px;
-		text-align: right;
-		cursor: pointer;
-	}
-
-	.cover-inner img {
-		border: none;
-		margin-right: -249px;
-		height: 320px;
-	}
-	
-	.cover-inner p {
-		width: 726px;
-		text-align: center;
-		margin-top: 50px;
-		cursor: default;
-	}
-	
-	a { text-decoration: none; }
-	
-	.link {
-		font-family: "CustomFont";
-		padding: 50px 60px;
-		background: url('/data/images/bg/cloud.png') no-repeat center center transparent;
-		font-size: 1.3em;
-		color: #403A3A;
-		text-shadow: 0 1px 2px #FAFAFA;
-		position: relative;
-		z-index: 99;
-	}
-	
-	.link:hover {
-		color: #F2C500;
-	}
-	
 	.p-title {
-		position: absolute;
-		left: 50%;
-		top: 50%;
-		margin-left: -363px;
-		margin-top: -180px;
-		text-align: center;
-	}
-	
-	.p-title p {
-		font-family: "CustomFont";
-		padding-top: 25px;
-		line-height: 2em;
-		font-size: 2.8em;
-		color: #F2C500;
-		text-shadow: 1px -1px #666, -1px 1px #333;
-	}
-	
-	.p-title a {
-		display: block;
-		width: 76px;
-		height: 320px;
-		padding-left: 580px;
-		padding-right: 70px;
-	}
-	
-	.poe {
 		font-family: "CustomFont";
 		position: absolute;
-		background-color: rgba(255, 255, 255, .2);
-		width: 60px;
-		box-shadow: 0 0 20px 20px rgba(255, 255, 255, .2);
-		z-index: 999;
-	}
-	
-	.top-poe { top: -100%; left: 5%; }
-	.bottom-poe { bottom: -100%; right: 5%; }
-	
-	.poe p {
 		text-align: center;
-		font-size: 2.5em;
-		text-shadow: 1px 1px 1px #FFF;
-		color: #750F12;
-		line-height: 1.6em;
+		color: white;
+		text-shadow: 3px 3px #333;
 	}
 	
-	.top-poe p { padding: 10px 0; }
-	.bottom-poe p { padding-bottom: 20px; }
+		.p-title.name {
+			width: 220px;
+			font-size: 40px;
+			left: 20px;
+			top: 20px;
+		}
+		
+		.p-title.add {
+			width: 60px;
+			font-size: 30px;
+			left: 250px;
+			top: 100px;
+		}
+		
+	.p-title.name:hover {
+		color: #ddd;
+	}
 	
+	.balloons {
+		background-image: url('/data/images/bg/balloons.png');
+		background-repeat: no-repeat;
+		background-size: 1500px 506px;
+		width: 200px;
+		height: 300px;
+		position: absolute;
+	}
+	
+	.balloon-red {
+		left: 25%;
+		bottom: -20%;
+		background-position: 5px -8px;
+
+				animation: cloudSlide1 20s; animation-iteration-count: infinite; animation-timing-function: ease-out;
+		   -moz-animation: cloudSlide1 20s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
+		-webkit-animation: cloudSlide1 20s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
+
+	}
+	
+	.balloon-yellow {
+		left: 40%;
+		bottom: -30%;
+		background-position: -432px -6px;
+		
+				animation: cloudSlide2 40s; animation-iteration-count: infinite; animation-timing-function: ease-out;
+		   -moz-animation: cloudSlide2 40s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
+		-webkit-animation: cloudSlide2 40s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
+	}
+	
+	.balloon-blue {
+		left: 55%;
+		bottom: -40%;
+		background-position: -868px -6px;
+		
+				animation: cloudSlide3 45s; animation-iteration-count: infinite; animation-timing-function: ease-out;
+		   -moz-animation: cloudSlide3 45s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
+		-webkit-animation: cloudSlide3 45s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
+	}
+	
+	.balloon-pink {
+		left: 70%;
+		bottom: -10%;
+		background-position: -1300px -5px;
+		
+				animation: cloudSlide4 60s; animation-iteration-count: infinite; animation-timing-function: ease-out;
+		   -moz-animation: cloudSlide4 60s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
+		-webkit-animation: cloudSlide4 60s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
+	}
+	
+	.balloons img {
+		position: absolute;
+		width: 180px;
+		height: 210px;
+		top: 13px;
+		left: 12px;
+		border-radius: 100px;
+		border: 1px solid #222;
+	}
+		
 	/* ------------------------------------------------------------------------- //
 	//                         Cloud Animation In Gate                           //
 	// ------------------------------------------------------------------------- */
-	.cloud {
-		position: absolute;
-		height: 165px;
-		width: 276px;
-		z-index: 10;
-	}
+	@keyframes cloudSlide1 { 0% { bottom: -20%; left: 25%; } 100% { bottom: 100%; left: 40%; } }
+	@-moz-keyframes cloudSlide1 { 0% { bottom: -20%; left: 25%; } 100% { bottom: 100%; left: 40%; } }
+	@-webkit-keyframes cloudSlide1 { 0% { bottom: -20%; left: 25%; } 100% { bottom: 100%; left: 40%; } }
 	
-	.cloud1 {
-		top: 38%;
-		margin-top: -83px;
-		left: -10%;
-
-		        animation: cloudSlide1 300s; animation-iteration-count: infinite; animation-timing-function: ease-out;
-		   -moz-animation: cloudSlide1 300s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
-		-webkit-animation: cloudSlide1 300s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
-	}
-
-	@keyframes cloudSlide1 { 0% { left: -10%; } 50% { left: 100%; } }
-	@-moz-keyframes cloudSlide1 { 0% { left: -10%; } 50% { left: 100%; } }
-	@-webkit-keyframes cloudSlide1 { 0% { left: -10%; } 50% { left: 100%; } }
+	@keyframes cloudSlide2 { 0% { bottom: -30%; left: 40%; } 100% { bottom: 120%; left: 20%; } }
+	@-moz-keyframes cloudSlide2 { 0% { bottom: -30%; left: 40%; } 100% { bottom: 120%; left: 20%; } }
+	@-webkit-keyframes cloudSlide2 { 0% { bottom: -30%; left: 40%; } 100% { bottom: 120%; left: 20%; } }
 	
-	.cloud2 {
-		bottom: 18%;
-		margin-bottom: -83px;
-		right: -10%;
-
-		        animation: cloudSlide2 200s; animation-iteration-count: infinite; animation-timing-function: ease-out;
-		   -moz-animation: cloudSlide2 200s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
-		-webkit-animation: cloudSlide2 200s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
-
-	}
-
-	@keyframes cloudSlide2 { 0% { right: -10%; } 50% { right: 100%; } }
-	@-moz-keyframes cloudSlide2 { 0% { right: -10%; } 50% { right: 100%; } }
-	@-webkit-keyframes cloudSlide2 { 0% { right: -10%; } 50% { right: 100%; } }
+	@keyframes cloudSlide3 { 0% { bottom: -40%; left: 55%; } 100% { bottom: 100%; left: 70%; } }
+	@-moz-keyframes cloudSlide3 { 0% { bottom: -40%; left: 55%; } 100% { bottom: 100%; left: 70%; } }
+	@-webkit-keyframes cloudSlide3 { 0% { bottom: -40%; left: 55%; } 100% { bottom: 100%; left: 70%; } }
 	
-	.cloud3 {
-		top: 64%;
-		right: 20%;
-		margin-top: -83px;
-		margin-right: -138px;
-
-		        animation: cloudSlide3 400s; animation-iteration-count: infinite; animation-timing-function: ease-out;
-		   -moz-animation: cloudSlide3 400s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
-		-webkit-animation: cloudSlide3 400s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
-
-	}
-
-	@keyframes cloudSlide3 { 0% { right: 20%; } 50% { right: 70%; } }
-	@-moz-keyframes cloudSlide3 { 0% { right: 20%; } 50% { right: 70%; } }
-	@-webkit-keyframes cloudSlide3 { 0% { right: 20%; } 50% { right: 70%; } }
-	
-	.bird {
-		position: absolute;
-		right: -10%;
-		top: -10%;
-
-		        animation: bird 40s; animation-iteration-count: infinite; animation-timing-function: ease-out;
-		   -moz-animation: bird 40s; -moz-animation-iteration-count: infinite; -moz-animation-timing-function: ease-out;
-		-webkit-animation: bird 40s; -webkit-animation-iteration-count: infinite; -webkit-animation-timing-function: ease-out;
-
-	}
-	
-	@-webkit-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
-	@keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
-	@-moz-keyframes bird { 5% { right: -10%; top: -10%; } 100% { right: 100%; top: 20%; } }
+	@keyframes cloudSlide4 { 0% { bottom: -10%; left: 70%; } 100% { bottom: 100%; left: 30%; } }
+	@-moz-keyframes cloudSlide4 { 0% { bottom: -10%; left: 70%; } 100% { bottom: 100%; left: 30%; } }
+	@-webkit-keyframes cloudSlide4 { 0% { bottom: -10%; left: 70%; } 100% { bottom: 100%; left: 30%; } }
 	
 	/* ------------------------------------------------------------------------- //
 	//                             Audio Play List                               //
