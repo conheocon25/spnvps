@@ -39,6 +39,7 @@ class VideoLibrary extends Object{
 			'Name' 			=> $this->getVideo()->getName(),
 			'Time' 			=> $this->getVideo()->getTime(),
 			'URL' 			=> $this->getVideo()->getURL(),
+			'URLApp' 		=> $this->getVideo()->getURLApp(),
 			'Note' 			=> $this->getVideo()->getNote(),
 			'Count' 		=> $this->getVideo()->getCount(),
 			'Key'			=> $this->getVideo()->getKey()
@@ -51,6 +52,21 @@ class VideoLibrary extends Object{
 		$this->IdVideo 		= $Data[1];
 		$this->IdCategory 	= $Data[2];
     }	
+	
+	function toXML(){
+		$S = "
+		<object>
+			<id>".$this->getId()."</id>
+			<idvideo>".$this->getIdVideo()."</idvideo>
+			<name>".$this->getVideo()->getName()."</name>
+			<time>".$this->getVideo()->getTime()."</time>
+			<url>".$this->getVideo()->parseURLApp()."</url>
+			<note>".$this->getVideo()->getNote()."</note>
+			<count>".$this->getVideo()->getCount()."</count>
+		</object>
+		";
+		return $S;
+	}
 	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
