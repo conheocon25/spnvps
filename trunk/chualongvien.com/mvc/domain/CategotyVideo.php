@@ -130,7 +130,22 @@ class CategoryVideo extends Object{
 	function getURLView(){return 			"/app/category/video/".$this->getId();}
 	function getURLSetting(){return 		"/app/btype/".$this->getBType()."/".$this->getId();}
 	function getURLSettingVoice(){return 	"/app/btype/".$this->getBType()."/".$this->getId()."/voice";}
-					
+	
+	function toXML(){
+		$S = "
+		<object>
+			<id>".$this->getId()."</id>
+			<name>".$this->getName()."</name>
+			<picture>".$this->getPicture()."</picture>
+			<order>".$this->getOrder()."</order>
+			<type>".$this->getType()."</type>
+			<btype>".$this->getBType()."</btype>
+			<key>".$this->getKey()."</key>
+		</object>
+		";
+		return $S;
+	}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	

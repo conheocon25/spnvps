@@ -46,7 +46,9 @@
 			$Categories 		= $mCategoryNews->findAll();
 			$CategoryNewsAll 	= $mCategoryNews->findAll();			
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
-			$CategoryVideo 		= $mCategoryVideo->findAll()->current();						
+			$CategoryVideo 		= $mCategoryVideo->findAll()->current();
+			
+			//echo $CategoryVideo->toXML();
 																								
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

@@ -38,6 +38,9 @@
 		<command name="ObjectIns"><view>ObjectIns</view></command>
 		<command name="ObjectUpd"><view>ObjectUpd</view></command>
 		
+		<command name="ModelLoadAll"><view>ModelLoadAll</view></command>
+		<command name="ModelFindBy"><view>ModelFindBy</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->

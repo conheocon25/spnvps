@@ -8,7 +8,7 @@ class UserCollection 			extends Collection implements \MVC\Domain\UserCollection
 class FeedCollection 			extends Collection implements \MVC\Domain\FeedCollection {function targetClass( ) 			{return "\MVC\Domain\Feed";}}
 class CategoryNewsCollection 	extends Collection implements \MVC\Domain\CategoryNewsCollection {function targetClass( ) 	{return "\MVC\Domain\CategoryNews";}}
 class CategoryVideoCollection 	extends Collection implements \MVC\Domain\CategoryVideoCollection {function targetClass( ) 	{return "\MVC\Domain\CategoryVideo";}}
-class CategoryBTypeCollection 	extends Collection implements \MVC\Domain\CategoryBTypeCollection {function targetClass( ) 	{return "\MVC\Domain\BType";}}
+class CategoryBTypeCollection 	extends Collection implements \MVC\Domain\CategoryBTypeCollection {function targetClass( ) 	{return "\MVC\Domain\CategoryBType";}}
 class PageCollection 			extends Collection implements \MVC\Domain\PageCollection {function targetClass( ) 			{return "\MVC\Domain\Page";}}
 class NewsCollection 			extends Collection implements \MVC\Domain\NewsCollection {function targetClass( ) 			{return "\MVC\Domain\News";}}
 class VideoCollection 			extends Collection implements \MVC\Domain\VideoCollection {function targetClass( ) 			{return "\MVC\Domain\Video";}}

@@ -65,10 +65,20 @@ class CategoryBType extends Object{
 	function getURLView(){return "/phat-am/".$this->getKey();}
 	
 	function getURLSetting(){return "/app/btype/".$this->getId();}
-				
+	
+	function toXML(){
+		$S = "
+		<object>
+			<id>".$this->getId()."</id>
+			<name>".$this->getName()."</name>
+			<key>".$this->getKey()."</key>
+		</object>
+		";
+		return $S;
+	}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
-    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
-	
+    static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	
 }
 ?>

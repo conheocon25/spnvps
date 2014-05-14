@@ -38,14 +38,19 @@ class Video extends Object{
 	
 	function setURL( $URL ) {$this->URL = $URL;$this->markDirty();}
     function getURL( ) {return $this->URL;}
-	function parseURLYoutube() {		
+	function parseURLYoutube() {
 		$arr = \parse_url($this->URL);
 		if (!isset($arr['query']))
 			return "";
 		\parse_str($arr['query'], $Param);
 		if (isset($Param['v']))
-			return "http://www.youtube.com/embed/".$Param['v'];			
+			return "http://www.youtube.com/embed/".$Param['v'];
         return "";
+    }
+	
+	function parseURLApp() {
+		$arr = \explode("/", $this->URL);		
+		return "http://www.youtube.com/v/".end($arr);
     }
 	
 	function getIdURL( ){list($http, $sym, $addr1, $addr2, $addr3) = explode("/", $this->URL);return $addr3;}
