@@ -40,7 +40,7 @@
 											</td>
 											<td><span tal:content="Album/getTimePrint"/></td>
 											<td width="32" align="center">
-												<a class="remove-item" href="#deleteDialog" data-toggle="modal" tal:attributes="data-id Album/getId">
+												<a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Album/getId">
 													<i class="glyphicon glyphicon-remove"/>
 												</a>
 											</td>
@@ -178,33 +178,12 @@
 			//-----------------------------------------------------------------------------------
 			//Delete 1 Album			
 			//-----------------------------------------------------------------------------------
-			$('#URLDelSelectedButton').click(function(){
-				var count = 0;
-				var Data = [];
-				var URL = "/object/del/Album/0";
-				
-				$(".CheckedDel").each(function( i, obj){
-					if ( $(this).is(':checked')==true ){
-						count += 1;
-						Data[count] = $(this).attr('data-id');
-					}
-				});
-				
-				$.ajax({
-					type: "POST",
-					data: {ListId:Data},
-					url: URL,
-					success: function(msg){
-						location.reload();
-					}
-				});
-			});
 			
 			$('.remove-item').click(function(){
-				$('#deleteButton').attr('alt', $(this).attr('data-id'));
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
 			});
 			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
-			$('#deleteButton').click(function(){			
+			$('#URLDelButton').click(function(){			
 				var URL = "/object/del/Album/" + $(this).attr('alt');
 				$.ajax({
 					type: "POST",
@@ -235,6 +214,7 @@
 					}
 				});
 			});
+			
 			
 			//-----------------------------------------------------------------------------------
 			//Load 1 Album
