@@ -29,6 +29,7 @@
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
 		
 		<command name="SendMailShare" type="public"><view>SendMailShare</view></command>
+		<command name="NewCategoryInsAuto" type="public"><view>NewCategoryInsAuto</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- JSON LOAD			 															-->
