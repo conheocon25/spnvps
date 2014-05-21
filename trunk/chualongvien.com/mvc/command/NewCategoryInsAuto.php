@@ -12,7 +12,7 @@
 				//15	Hằng ngày	lấy 5 tin đầu tiên
 				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=1";
 				$IdCategory= 15;
-				//InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				InsNewByRssUrl($UrlHangNgay, $IdCategory);
 				//11	Phật Giáo
 				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=130";
 				$IdCategory= 11;
@@ -20,11 +20,11 @@
 				//12	Những vị thuốc Đông y phổ thông
 				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=190";
 				$IdCategory= 12;
-				//InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				InsNewByRssUrl($UrlHangNgay, $IdCategory);
 				//17	Các món ăn chay
 				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=200";
 				$IdCategory= 17;
-				//InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				InsNewByRssUrl($UrlHangNgay, $IdCategory);
 				
 				echo "Thêm Thành Công!";				
 				
@@ -64,7 +64,7 @@
 						$dom->saveHTMLFile("data\giacngo". $IdCategory .".html");
 						$HTML = file_get_html("data\giacngo". $IdCategory .".html");					
 						
-						$NewsTitle = $item['title'];//$HTML->find('#ZoomContentHeadline', 0);							
+						$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);							
 						$NewsAuthor = $HTML->find('.ctcSource', 0);										
 						$NewsContent = $HTML->find('.ctcBody', 0);					
 						foreach( $NewsContent->find('img') as $img){
@@ -76,10 +76,10 @@
 						$News = new \MVC\Domain\News(
 							null,
 							$IdCategory,
-							$NewsAuthor,
+							$NewsAuthor->plaintext,
 							null,
 							$NewsContent,
-							$NewsTitle,
+							$NewsTitle->plaintext,
 							$Type,
 							""
 						);
