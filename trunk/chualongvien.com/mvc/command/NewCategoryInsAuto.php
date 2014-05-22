@@ -1,7 +1,7 @@
 <?php
 	namespace MVC\Command;
 	use MVC\Library\ReadRss;	
-	include_once('MVC\Library\SimpleHtmlDom.php');
+	include_once('MVC/Library/SimpleHtmlDom.php');
 	
 	class NewCategoryInsAuto extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
@@ -61,8 +61,8 @@
 						$dom = new \DOMDocument();
 						@$dom->loadHTML($data);
 						
-						$dom->saveHTMLFile("data\giacngo". $IdCategory .".html");
-						$HTML = file_get_html("data\giacngo". $IdCategory .".html");					
+						$dom->saveHTMLFile("data/giacngo". $IdCategory .".html");
+						$HTML = file_get_html("data/giacngo". $IdCategory .".html");					
 						
 						$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);							
 						$NewsAuthor = $HTML->find('.ctcSource', 0);										
@@ -76,13 +76,14 @@
 						$News = new \MVC\Domain\News(
 							null,
 							$IdCategory,
-							$NewsAuthor->plaintext,
+							html_entity_decode($NewsAuthor->plaintext, ENT_QUOTES, 'UTF-8'),
 							null,
 							$NewsContent,
-							$NewsTitle->plaintext,
+							html_entity_decode($NewsTitle->plaintext, ENT_QUOTES, 'UTF-8'),
 							$Type,
 							""
-						);
+						);						
+						
 						$News->reKey();
 						$mNews->insert($News);
 						
