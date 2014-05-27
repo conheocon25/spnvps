@@ -1,32 +1,27 @@
 <?php
 	namespace MVC\Command;
-	use MVC\Library\ReadRss;	
-	include_once('MVC/Library/SimpleHtmlDom.php');
-	
+	use MVC\Library\ReadRss;
+	require_once('mvc/library/SimpleHtmlDom.php');	
 	class NewCategoryInsAuto extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");
-				
-				
-				
+			
 				//15	Hằng ngày	lấy 5 tin đầu tiên
 				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=1";
-				$IdCategory= 15;
-				InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				$IdCategoryHangNgay= 15;
+				InsNewByRssUrl($UrlHangNgay, $IdCategoryHangNgay);
 				//11	Phật Giáo
-				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=130";
-				$IdCategory= 11;
-				InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				$UrlPhatGiao = "http://giacngo.vn/thongtin/rss/?ID=130";
+				$IdCategoryPhatGiao= 11;
+				InsNewByRssUrl($UrlPhatGiao, $IdCategoryPhatGiao);
 				//12	Những vị thuốc Đông y phổ thông
-				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=190";
-				$IdCategory= 12;
-				InsNewByRssUrl($UrlHangNgay, $IdCategory);
+				$UrlDongY = "http://giacngo.vn/thongtin/rss/?ID=190";
+				$IdCategoryDongY= 12;
+				InsNewByRssUrl($UrlDongY, $IdCategoryDongY);
 				//17	Các món ăn chay
-				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=200";
-				$IdCategory= 17;
-				InsNewByRssUrl($UrlHangNgay, $IdCategory);
-				
-				echo "Thêm Thành Công!";				
+				$UrlAnChay = "http://giacngo.vn/thongtin/rss/?ID=200";
+				$IdCategoryAnChay= 17;
+				InsNewByRssUrl($UrlAnChay, $IdCategoryAnChay);				
 				
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -38,6 +33,8 @@
 	}
 	function InsNewByRssUrl($Url, $IdCategory) {
 				$mNews = new \MVC\Mapper\News();
+				$datetime = new \DateTime('NOW');
+				$strDatatime = "_" . $datetime->format('Y-m-d_H_i_s');
 				//$Type = 0 binh thuong = 1 đặc biệt
 				$Type = 0;
 				$ReadRssXml = new ReadRss($Url);				
@@ -48,6 +45,9 @@
 				{					
 					foreach ($chItems as $key => $item)
 					{
+					   if($i == 0) {
+					   	$Type = 1;
+					   }
 					    $curl_handle=curl_init();
 						curl_setopt($curl_handle, CURLOPT_URL,$item['link']);
 						curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
@@ -61,8 +61,10 @@
 						$dom = new \DOMDocument();
 						@$dom->loadHTML($data);
 						
-						$dom->saveHTMLFile("data/giacngo". $IdCategory .".html");
-						$HTML = file_get_html("data/giacngo". $IdCategory .".html");					
+
+						$dom->saveHTMLFile("data/giacngo". $IdCategory . $strDatatime . ".html");
+						$HTML = file_get_html("data/giacngo". $IdCategory . $strDatatime . ".html");					
+
 						
 						$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);							
 						$NewsAuthor = $HTML->find('.ctcSource', 0);										
