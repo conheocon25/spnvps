@@ -6,41 +6,39 @@
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");
 			
-				//15	Hằng ngày	lấy 5 tin đầu tiên
-				$UrlHangNgay = "http://giacngo.vn/thongtin/rss/?ID=1";
-				$IdCategoryHangNgay= 15;
-				InsNewByRssUrl($UrlHangNgay, $IdCategoryHangNgay);
-				//11	Phật Giáo
-				$UrlPhatGiao = "http://giacngo.vn/thongtin/rss/?ID=130";
-				$IdCategoryPhatGiao= 11;
-				InsNewByRssUrl($UrlPhatGiao, $IdCategoryPhatGiao);
-				//12	Những vị thuốc Đông y phổ thông
-				$UrlDongY = "http://giacngo.vn/thongtin/rss/?ID=190";
-				$IdCategoryDongY= 12;
-				InsNewByRssUrl($UrlDongY, $IdCategoryDongY);
-				//17	Các món ăn chay
-				$UrlAnChay = "http://giacngo.vn/thongtin/rss/?ID=200";
-				$IdCategoryAnChay= 17;
-				InsNewByRssUrl($UrlAnChay, $IdCategoryAnChay);				
+				$IdRss = $request->getProperty('IdRss');
 				
-			//-------------------------------------------------------------
-			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			
-			//return self::statuses('CMD_DEFAULT');
-		}
-		
-	}
-	function InsNewByRssUrl($Url, $IdCategory) {
+				//15	Hằng ngày
+				$Url = "http://giacngo.vn/thongtin/rss/?ID=". $IdRss;
+				
+				if (isset($IdRss) && $IdRss == '1')
+				{
+					$IdCategory= 15;
+				}
+				if (isset($IdRss) && $IdRss == '130')
+				{
+					$IdCategory= 11;
+				}
+				if (isset($IdRss) && $IdRss == '190')
+				{
+					$IdCategory= 12;
+				}
+				if (isset($IdRss) && $IdRss == '200')
+				{
+					$IdCategory= 17;
+				}
+				
 				$mNews = new \MVC\Mapper\News();
-				$datetime = new \DateTime('NOW');
-				$strDatatime = "_" . $datetime->format('Y-m-d_H_i_s');
+				$todaytime = new \DateTime('NOW');
+				$interval = new \DateInterval('P0Y0DT5H0M');	
+				$strDatatime = "_" . $todaytime->format('Y-m-d_H_i_s');
 				//$Type = 0 binh thuong = 1 đặc biệt
 				$Type = 0;
 				$ReadRssXml = new ReadRss($Url);				
 				$ReadRssXml->ReadRssXMLByCurl();				
 				$chItems = $ReadRssXml->GetItems();
 				$i = 0;
+				$j = 0;
 				if (is_array($chItems) and count($chItems)>0)
 				{					
 					foreach ($chItems as $key => $item)
@@ -62,11 +60,11 @@
 						@$dom->loadHTML($data);
 						
 
-						$dom->saveHTMLFile("data/giacngo". $IdCategory . $strDatatime . ".html");
-						$HTML = file_get_html("data/giacngo". $IdCategory . $strDatatime . ".html");					
+						$dom->saveHTMLFile("data/giacngo_". $IdCategory . "_" . $strDatatime . "_" . $j . ".html");
+						$HTML = file_get_html("data/giacngo_". $IdCategory . "_" . $strDatatime . "_" . $j . ".html");					
 
 						
-						$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);							
+						//$NewsTitle = $HTML->find('#ZoomContentHeadline', 0);							
 						$NewsAuthor = $HTML->find('.ctcSource', 0);										
 						$NewsContent = $HTML->find('.ctcBody', 0);					
 						foreach( $NewsContent->find('img') as $img){
@@ -74,39 +72,66 @@
 								$img->src = "http://giacngo.vn/".$img->src; 
 						}
 						
-						//Them tin mới vào db
-						$News = new \MVC\Domain\News(
-							null,
-							$IdCategory,
-							html_entity_decode($NewsAuthor->plaintext, ENT_QUOTES, 'UTF-8'),
-							null,
-							$NewsContent,
-							html_entity_decode($NewsTitle->plaintext, ENT_QUOTES, 'UTF-8'),
-							$Type,
-							""
-						);						
+						//xu ly thoi gian tao tin de them tin moi thoi
+						$DateArray = explode(' ', $item['pubDate']);
+						$CurDate = explode('/',$DateArray[0]);
+						$CNewDate = $CurDate[2] . "/". $CurDate[1] . "/" . $CurDate[0] . " " . $DateArray[1];
+						//Cong them 5h do lech muoi gio quoc te
+											
+						$todaytime->add($interval);
+						//tao ngay từ rss	
+						$date = new \DateTime($CNewDate);	
 						
-						$News->reKey();
-						$mNews->insert($News);
-						
-						if($i > 4) {
+						if (($todaytime->diff($date)->format('%D') <= 0) && ($todaytime->diff($date)->format('%R') == '-')) {
+							$News = new \MVC\Domain\News(
+								null,
+								$IdCategory,
+								html_entity_decode($NewsAuthor->plaintext, ENT_QUOTES, 'UTF-8'),
+								null,
+								$NewsContent,
+								$item['title'],
+								$Type,
+								""
+							);						
+							
+							$News->reKey();
+							$mNews->insert($News);
+							$i= $i + 1;
+						}
+												
+						if($i > 15) {
 							break;
 						}
-						$i= $i + 1;
+						
 						unset($dom);
 						unset($HTML);
 						unset($data);
 						unset($News);						
-						$NewsTitle = "";
+						unset($DateArray);						
+						unset($CurDate);						
+						unset($CNewDate);						
+						//$NewsTitle = "";
 						$NewsAuthor = "";
 						$NewsContent = "";
+						$Type = 0;
+						$j=$j+1;
 					}
 						
 				}
+				echo "Them Thanh Cong ".$i. "cua Id New:" . $IdCategory;
+				unset($todaytime);
+				unset($interval);
 				unset($mNews);
 				unset($ReadRssXml);
-				unset($chItems);
+				unset($chItems);				
 				unset($i);
-				
+				unset($j);
+			//-------------------------------------------------------------
+			//THAM SỐ GỬI ĐI
+			//-------------------------------------------------------------			
+			
+			//return self::statuses('CMD_DEFAULT');
 		}
+		
+	}	
 ?>
