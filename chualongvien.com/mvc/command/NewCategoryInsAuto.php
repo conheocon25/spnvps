@@ -30,7 +30,7 @@
 				
 				$mNews = new \MVC\Mapper\News();
 				$todaytime = new \DateTime('NOW');
-				$interval = new \DateInterval('P0Y0DT5H0M');	
+				$interval = new \DateInterval('P0Y0DT11H0M');	
 				$strDatatime = "_" . $todaytime->format('Y-m-d_H_i_s');
 				//$Type = 0 binh thuong = 1 đặc biệt
 				$Type = 0;
@@ -118,7 +118,7 @@
 					}
 						
 				}
-				echo "Them Thanh Cong ".$i. "cua Id New:" . $IdCategory;
+				echo "Them Thanh Cong ".$i. " cua Id New:" . $IdCategory;
 				unset($todaytime);
 				unset($interval);
 				unset($mNews);
