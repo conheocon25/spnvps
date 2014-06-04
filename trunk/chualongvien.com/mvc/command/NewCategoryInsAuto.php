@@ -15,6 +15,12 @@
 				{
 					$IdCategory= 15;
 				}
+				
+				if (isset($IdRss) && $IdRss == '110')
+				{
+					$IdCategory= 15;
+				}
+				
 				if (isset($IdRss) && $IdRss == '130')
 				{
 					$IdCategory= 11;
