@@ -12,7 +12,11 @@ class Date{
 	}
 	
 	function getDateTimeFormat(){
-		return date('d/m/Y H:i:s',strtotime($this->Value));
+		$interval = new \DateInterval('P0Y0DT11H0M');
+		$dateVN = new \DateTime($this->Value);	
+		$dateVN->add($interval);
+		return date('d/m/Y H:i:s',$dateVN);
+		//return date('d/m/Y H:i:s',strtotime($this->Value));
 	}
 	
 	function getTimeFormat(){
