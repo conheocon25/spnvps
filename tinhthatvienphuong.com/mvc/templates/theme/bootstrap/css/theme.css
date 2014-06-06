@@ -42,12 +42,12 @@
 		color: white;
 	}
 	
-	.box { border: 1px solid #028902; }
+	.box { border: 1px solid #4D9EED; }
 	
 		.box .b-title {
-			background-color: #028902;
+			background-color: #4D9EED;
 			*background: url("/data/images/bg/menu.jpg") repeat-x top left transparent;
-			border-bottom: 1px solid #028902;
+			border-bottom: 1px solid #4D9EED;
 		}
 		
 		.b-title .b-t-icon-content {
@@ -73,7 +73,7 @@
 	.fixed-function { background-color: rgba(0, 0, 0, .7); }
 	
 		.bubble {
-			background-color: #028902;
+			background-color: #4D9EED;
 			color: white;
 			border: 1px solid white;
 		}
@@ -95,7 +95,7 @@
 		
 	.news-list-title { color: #A99999; }
 	
-		.news-list-item a { color: #028902 !important; }
+		.news-list-item a { color: #4D9EED !important; }
 		
 		.new-list-polaroid .media-time { color: #696969; }
 
@@ -106,12 +106,12 @@
 	.news-content .news-author p,
 	.news-content .news-author p a,
 	.eventCalendar-wrap
-	{ color: #028902 !important; }
+	{ color: #4D9EED !important; }
 
 	
 	.news-content .news-author {
-		border-top: 1px solid #028902;
-		border-bottom: 1px solid #028902;
+		border-top: 1px solid #4D9EED;
+		border-bottom: 1px solid #4D9EED;
 		background-color: #FFEAC9;
 	}
 	
@@ -120,8 +120,8 @@
 	}
 	
 	.eventsCalendar-currentTitle {
-		background-color: #028902;
-		outline: 1px solid #028902;
+		background-color: #4D9EED;
+		outline: 1px solid #4D9EED;
 		border: 1px solid #E3E3E3;
 	}
 	
@@ -131,8 +131,8 @@
 	}
 	
 	.eventsCalendar-list .eventsCalendar-noEvents {
-		background-color: #028902;
-		box-shadow: 0 0 10px #028902;
+		background-color: #4D9EED;
+		box-shadow: 0 0 10px #4D9EED;
 	}
 	
 	.pg-header {
@@ -142,15 +142,15 @@
 		padding: 15px 10px 27px 60px;
 	}
 	
-		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #028902; }
-		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #028902; }
-		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #028902; }
-		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #028902; }
-		.pg-header-paper { background: url("/data/images/bg/paper.png") no-repeat top left #028902; }
-		.pg-header-picture { background: url("/data/images/bg/picture.png") no-repeat top left #028902; }
-		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #028902; }
-		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #028902; }
-		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #028902; }
+		.pg-header-video { background: url("/data/images/bg/video.png") no-repeat top left #4D9EED; }
+		.pg-header-videos { background: url("/data/images/bg/videos.png") no-repeat top left #4D9EED; }
+		.pg-header-news { background: url("/data/images/bg/news.png") no-repeat top left #4D9EED; }
+		.pg-header-pagoda { background: url("/data/images/bg/pagoda.png") no-repeat top left #4D9EED; }
+		.pg-header-paper { background: url("/data/images/bg/paper.png") no-repeat top left #4D9EED; }
+		.pg-header-picture { background: url("/data/images/bg/picture.png") no-repeat top left #4D9EED; }
+		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #4D9EED; }
+		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #4D9EED; }
+		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #4D9EED; }
 
 	.pg-header a {
 		color: white !important;
