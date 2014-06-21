@@ -27,7 +27,8 @@ class HelperFactory {
         if ( class_exists( $mapper ) ) {
             return new $mapper();
         }
-        throw new \MVC\Base\AppException( "Không biết: $mapper" );
+        //throw new \MVC\Base\AppException( "Không biết: $mapper" );
+		return null;
     }
 
     static function getCollection( $type ) {
