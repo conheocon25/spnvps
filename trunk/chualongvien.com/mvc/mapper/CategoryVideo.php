@@ -15,14 +15,19 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
 		$insertStmt = sprintf("insert into %s ( name, picture, `order`, type, btype, `key`) values(?, ?, ?, ?, ?, ?)", $tblCategory);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblCategory);		
 		$findByBTypeStmt = sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblCategory);
+		$findByStmt = sprintf("select * from %s WHERE btype=? ORDER BY type DESC, `order` DESC", $tblCategory);
 		$findByKeyStmt = sprintf("select * from %s where `key`=?", $tblCategory);
-		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC, `order` DESC LIMIT :start,:max", $tblCategory);
+		$findByPageStmt = sprintf("SELECT * FROM  %s 
+			WHERE btype = :btype
+			ORDER BY type DESC, `order` DESC 
+			LIMIT :start,:max", $tblCategory);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);		
@@ -82,6 +87,11 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
         return new CategoryVideoCollection( $this->findByBTypeStmt->fetchAll(), $this);
     }
 	
+	function findBy( $values ){
+		$this->findByStmt->execute($values);
+        return new CategoryVideoCollection( $this->findByStmt->fetchAll(), $this);
+    }
+	
 	function findByKey( $values ) {	
 		$this->findByKeyStmt->execute( array($values) );
         $array = $this->findByKeyStmt->fetch();
@@ -92,9 +102,10 @@ class CategoryVideo extends Mapper implements \MVC\Domain\CategoryVideoFinder {
         return $object;		
     }
 	
-	function findByPage( $values ) {		
-		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
-		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+	function findByPage( $values ) {						
+		$this->findByPageStmt->bindValue(':btype', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new CategoryVideoCollection( $this->findByPageStmt->fetchAll(), $this );
     }

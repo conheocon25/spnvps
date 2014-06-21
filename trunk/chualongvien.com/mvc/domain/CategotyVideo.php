@@ -95,7 +95,7 @@ class CategoryVideo extends Object{
 			'Type'			=> $this->getType(),
 			'BType'			=> $this->getBType(),
 			'Key'			=> $this->getKey()
-		);				
+		);
 		return json_encode($json);
 	}
 	
