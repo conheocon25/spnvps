@@ -1,23 +1,24 @@
 <?php
 namespace MVC\Domain;
-if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
-	require_once( "mvc/mapper/Anime.php" );
-	require_once( "mvc/mapper/User.php" );	
-	require_once( "mvc/mapper/Feed.php" );	
-	require_once( "mvc/mapper/CategoryNews.php" );
-	require_once( "mvc/mapper/CategoryVideo.php" );	
-	require_once( "mvc/mapper/CategoryBType.php" );	
-	require_once( "mvc/mapper/News.php" );
-	require_once( "mvc/mapper/Video.php" );
-	require_once( "mvc/mapper/VideoMonk.php" );	
-	require_once( "mvc/mapper/VideoLibrary.php" );
+if ( ! isset( $EG_DISABLE_INCLUDES ) ) {	
 	require_once( "mvc/mapper/Album.php" );
-	require_once( "mvc/mapper/VoiceBook.php" );
-	require_once( "mvc/mapper/Monk.php" );
-	require_once( "mvc/mapper/Guest.php");
-	require_once( "mvc/mapper/Course.php");
-	require_once( "mvc/mapper/CourseLession.php");
-	require_once( "mvc/mapper/Config.php");	
+	require_once( "mvc/mapper/Anime.php" );
+	require_once( "mvc/mapper/User.php" );			
+	require_once( "mvc/mapper/Config.php");		
+	require_once( "mvc/mapper/Guest.php");	
+	require_once( "mvc/mapper/Feed.php");
+	require_once( "mvc/mapper/CategoryNews.php");
+	require_once( "mvc/mapper/CategoryBType.php");
+	require_once( "mvc/mapper/CategoryVideo.php");		
+	require_once( "mvc/mapper/News.php");
+		
+	require_once( "mvc/mapper/Video.php");
+	require_once( "mvc/mapper/VideoLibrary.php");
+	require_once( "mvc/mapper/VideoMonk.php");
+	require_once( "mvc/mapper/VoiceBook.php");	
+	
+	require_once( "mvc/mapper/Pagoda.php");	
+	require_once( "mvc/mapper/Event.php");	
 }
 
 class HelperFactory {
@@ -27,8 +28,7 @@ class HelperFactory {
         if ( class_exists( $mapper ) ) {
             return new $mapper();
         }
-        //throw new \MVC\Base\AppException( "Không biết: $mapper" );
-		return null;
+        throw new \MVC\Base\AppException( "Không biết: $mapper" );
     }
 
     static function getCollection( $type ) {
@@ -48,5 +48,6 @@ class HelperFactory {
         }
         throw new \MVC\Base\AppException( "Không biết: $model" );
     }
+	
 }
 ?>

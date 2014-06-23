@@ -55,6 +55,19 @@ class Event extends Object{
 		$this->Content 	= $Data[4];
     }
 	
+	function toXML(){
+		$S = "
+		<object>
+			<id>".$this->getId()."</id>
+			<id_pagoda>".$this->getIdPagoda()."</id_pagoda>
+			<name>".$this->getName()."</name>
+			<date>".$this->getDate()."</date>
+			<content>".$this->getContent()."</content>			
+		</object>
+		";
+		return $S;
+	}
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
