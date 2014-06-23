@@ -55,6 +55,19 @@ class Pagoda extends Object{
 		$this->Longitude= $Data[4];		
     }
 	
+	function toXML(){
+		$S = "
+		<object>
+			<id>".$this->getId()."</id>
+			<name>".$this->getName()."</name>
+			<address>".$this->getAddress()."</address>
+			<latitude>".$this->getLatitude()."</latitude>
+			<longitude>".$this->getLongitude()."</longitude>			
+		</object>
+		";
+		return $S;
+	}
+	
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
