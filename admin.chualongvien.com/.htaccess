@@ -35,6 +35,14 @@ RewriteRule ^app$ 												?cmd=App [L]
 RewriteRule ^app/config$ 										?cmd=AppConfig [L]
 RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 
+RewriteRule ^app/pagoda$ 										?cmd=AppPagoda [L]
+RewriteRule ^app/pagoda/page/([0-9]+)$ 							?cmd=AppPagoda&Page=$1 [L]
+RewriteRule ^app/pagoda/([0-9]+)/event$			 				?cmd=AppPagodaEvent&IdPagoda=$1 [L]
+RewriteRule ^app/pagoda/([0-9]+)/event/page/([0-9]+)$			?cmd=AppPagodaEvent&IdPagoda=$1&Page=$2 [L]
+
+RewriteRule ^app/pagoda/([0-9]+)/video			 				?cmd=AppPagodaVideo&IdPagoda=$1 [L]
+RewriteRule ^app/pagoda/([0-9]+)/notify			 				?cmd=AppPagodaNotify&IdPagoda=$1 [L]
+
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
 RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
 

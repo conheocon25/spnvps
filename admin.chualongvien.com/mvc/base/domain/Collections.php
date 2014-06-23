@@ -18,4 +18,7 @@ interface UserCollection 			extends \Iterator {function add( Object $object );}
 interface ConfigCollection 			extends \Iterator {function add( Object $object );}
 interface PageCollection 			extends \Iterator {function add( Object $object );}
 interface GuestCollection 			extends \Iterator {function add( Object $object );}
+
+interface PagodaCollection 			extends \Iterator {function add( Object $object );}
+interface EventCollection 			extends \Iterator {function add( Object $object );}
 ?>

@@ -53,6 +53,7 @@
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
-				
+		<command name="AppPagoda"><view>AppPagoda</view></command>
+		<command name="AppPagodaEvent"><view>AppPagodaEvent</view></command>
 	</control>
 </options>

@@ -16,6 +16,9 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/VideoLibrary.php");
 	require_once( "mvc/mapper/VideoMonk.php");
 	require_once( "mvc/mapper/VoiceBook.php");	
+	
+	require_once( "mvc/mapper/Pagoda.php");	
+	require_once( "mvc/mapper/Event.php");	
 }
 
 class HelperFactory {
