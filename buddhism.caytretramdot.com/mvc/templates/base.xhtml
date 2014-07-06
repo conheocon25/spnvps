@@ -1,0 +1,474 @@
+<html lang="en" xml:lang="en">
+<body>
+	<!-- ======================================================================== -->
+	<!-- META TAG INCLUDE														  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="IncludeMETA">
+		<title tal:content="string:Website Chùa Long Viễn Vĩnh Long"/>
+		<base href="http://chualongvien.com"/>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+		<meta http-equiv="Pragma" content="no-cache"/>
+		<meta http-equiv="Expires" content="-1"/>
+		<meta http-equiv="Cache-Control" content="no-cache"/>
+		<meta name="keywords" content="Chùa Long Viễn"/>
+		<meta name="description" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
+		<meta name="page-topic" content="Chùa Long Viễn"/>
+		<meta name="Abstract" content="Website Chùa Long Viễn giới thiệu về một ngôi chùa ở Số 126/27 Trần Phú, Phường 4, TP.Vĩnh Long, Vĩnh Long, Việt Nam"/>
+		<meta name="classification" content="Chùa Long Viễn, thiết kế Web, SPN"/>
+		<link rel="shortcut icon" href="/data/images/logo/favicon.ico" type="image/x-icon"/>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- CASCADING STYLE SHEETS INCLUDE											  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="IncludeCSS">
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/jquery.countdown.css"/> 
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar.css"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/base/eventCalendar_theme.css"/>	
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/bootstrap.css" media="screen"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/base.css"/>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- JAVASCRIPT INCLUDE														  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="IncludeJS">
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/ga.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.min.js"/>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/amlich-hnd.js"/>		
+		<script type="text/javascript" language="javascript" src="/mvc/templates/theme/bootstrap/js/bootstrap.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/base.js"/>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- HEADER																	  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Header" class="row reset-margin">
+		<div class="header">
+			<div class="carousel slide carousel-fade reset-margin banner-slide">
+				<div class="carousel-inner">
+					<div class="active item"><a href="/gate"><img src="/data/images/logo/banner1.jpg"/></a></div>
+					<div class="item"><a href="/gate"><img src="/data/images/logo/banner3.jpg"/></a></div>
+					<div class="item"><a href="/gate"><img src="/data/images/logo/banner2.jpg"/></a></div>
+					<div class="item"><a href="/gate"><img src="/data/images/logo/banner.jpg"/></a></div>
+				</div>
+			</div>
+		</div>
+		<div class="top-menu">
+			<ul class="nav nav-pills">
+				<li tal:attributes="class php:ActiveItem=='Home'?'active':'?'"><a href="/trang-chu">Trang chủ</a></li>
+				<li tal:attributes="class php:ActiveItem=='Introduction'?'active':'?'" ><a href="/gioi-thieu">Giới thiệu</a></li>
+				<li tal:attributes="class php:ActiveItem=='ReadCategory'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Tin tức <b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li tal:repeat="Category CategoryNewsAll">
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"/>
+						</li>
+					</ul>
+				</li>				
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo3'?'active':'?'" ><a href="/phim-truyen-phat-giao">Phim truyện</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo4'?'active':'?'" ><a href="/nhac-phat-giao">Nhạc</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo5'?'active':'?'" ><a href="/giang-su-thuyet-phap">Giảng sư</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryVideo6'?'active':'?'" ><a href="/kenh-tong-hop">Kênh tổng hợp</a></li>
+				<li tal:attributes="class php:ActiveItem=='LibraryAlbum'?'active':'?'" ><a href="/hinh-anh-hoat-dong">Thư viện ảnh</a></li>				
+				<li tal:attributes="class php:ActiveItem=='Contact'?'active':'?'"><a href="/lien-he">Liên hệ</a></li>								
+			</ul>
+		</div>
+	</div>	
+						
+	<!-- ======================================================================== -->
+	<!-- FIXED FUNCTION															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="FixedFunction" class="fixed-function">		
+		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/>
+		<p class="bubble-item">Truy cập</p>
+		<div class="bubble">
+			<span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/>
+		</div>
+		<p class="bubble-item"><img src="/data/images/logo/count_logo.gif"/> Online</p>
+		<a id="bookmark-tooltip" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Đặt làm trang chủ của trình duyệt">
+			<div class="bubble">
+				<img src="/data/images/logo/home.png"/>
+			</div>
+			<p class="bubble-item">Bookmark</p>
+		</a>
+		<script language="JavaScript">
+			<!--
+			$('#bookmark-tooltip').tooltip();
+			-->
+		</script>
+	</div>
+		
+	<!-- ======================================================================== -->
+	<!-- LIÊN HỆ																  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="ContactBox" class="box">
+		<div class="b-content">
+			<a href="/contact">
+				<img width="100%" src="/data/images/logo/contact.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- LỊCH																	  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="CallendarBox" class="box radius">
+		<div class="b-title">
+			<div class="b-t-icon-content">Lịch Dương <small>Âm</small></div>
+		</div>
+		<div class="b-content padding-content">
+			<table class="calendar-paper" width="100%" border="0" cellpadding="1" cellspacing="1">
+				<tbody>
+					<tr><td colspan="2" id="thangduong" class="thangduong"></td></tr>
+					<tr><td colspan="2" id="ngayduong" class="ngayduong"></td></tr>
+					<tr><td colspan="2" id="thuduong" class="thuduong"></td></tr>
+					<tr>
+						<td> 
+							<div id="thangam" class="thangam"></div>
+							<div id="ngayam" class="ngayam"></div>
+							<div id="namam" class="namam"></div>
+						</td>
+						<td class="canchi">
+							<div id="canchithang" class="gioam"></div>
+							<div id="canchingay" class="gioam"></div>
+						</td>
+					</tr>
+					<tr><td colspan="2" id="hoangdao" class="hoangdao"></td></tr>
+				</tbody>
+			</table>
+			<script language="JavaScript">
+			<!--
+				setOutputSize("small");
+				document.writeln(printSelectedMonth());
+				loadToDay();
+			-->
+			</script>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- THANH TIÊU ĐỀ LỊCH DƯƠNG - ÂM											  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="CallendarBar" class="row reset-margin date-time">
+		<div id="date-time" class="span7 fix-width">
+			<script type="text/javascript">getLunarDateString(09,11,2012,16,39,13);</script>
+		</div>
+		<div class="span5 fix-width">
+			<marquee behavior="scroll" direction="left" scrollamount="1">
+				Kính chúc chư tôn đức tăng ni cùng quý phật tử thân tâm thường an lạc ! Nguyện đem công đức này hướng về khắp tất cả đệ tử và chúng sanh đều trọn thành Phật Đạo.
+			</marquee>
+		</div>
+	</div>
+							
+	<!-- ======================================================================== -->
+	<!-- FOOTER																	  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Footer" class="row reset-margin footer">
+		<div class="top-menu">
+			<ul class="nav nav-pills">
+				<li><a href="/trang-chu">Trang chủ</a></li>								
+				<li><a href="/gioi-thieu">Giới thiệu</a></li>
+				<li><a href="/tin-tuc">Tin tức</a></li>
+				<li><a href="/lich-su-phat-giao">Lịch sử</a></li>
+				<li><a href="/thu-vien-phat-phap">Thư viện</a></li>
+				<li><a href="/phim-truyen-phat-giao">Phim truyện</a></li>
+				<li><a href="/nhac-phat-giao">Nhạc</a></li>	
+				<li><a href="/giang-su-thuyet-phap">Giảng sư</a></li>
+				<li><a href="/kenh-tong-hop">Kênh tổng hợp</a></li>
+				<li><a href="/hinh-anh-hoat-dong">Thư viện ảnh</a></li>
+				<li><a href="/lien-he">Liên hệ</a></li>
+				<li id="last"><a href="/signin/load">Quản trị</a></li>
+			</ul>
+		</div>
+		<div class="row reset-margin">
+			<div class="span6 reset-margin">
+				<div class="f-left">
+					<p><b>Địa chỉ:</b> 126/27 Trần Phú - Phường 4 - TP.Vĩnh Long - Vĩnh Long - Việt Nam</p>
+					<p><b>Điện thoại:</b> (070) 3 824 152 - <b>Di Động:</b> 0919 2 444 00 - 0949 66 14 94</p>
+					<p><b>Email:</b> thichthientrilongvien@gmail.com</p>
+					<p><b>Website:</b> <i><u>chualongvien.com</u></i></p>
+				</div>
+			</div>
+			<div class="span6 pull-right reset-margin">
+				<div class="f-right">
+					<p><b>© Website Chùa Long Viễn thành lập vào 11/2013</b></p>
+					<p>Biên tập - Thượng tọa Thích Thiện Trí</p>
+					<p>Phát triển - SPN Co, Ltd</p>
+					<p>Ghi rõ nguồn <b><i>chualongvien.com</i></b> khi phát hành thông tin từ website này</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- BACK ON TOP															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="Backontop" class="crunchify-top" data-toggle="tooltip" data-placement="left" data-original-title="Chuyển đến đầu trang"/>
+	
+	<!-- ======================================================================== -->
+	<!-- WARNING MESSAGE														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="WarningMsg" class="box no-border">
+		<center style="position:relative">
+			<a href="#myModal" role="button" class="btn btn-danger btn-bubble" data-toggle="modal">
+				<img src="/data/images/logo/warning.gif" width="50%"/>
+				<h3 style="font-size:29px;">THÔNG BÁO KHẨN</h3>
+				
+				<div class="bubble-text">
+					<blockquote class="oval-thought-border">
+						<p>Click để xem chi tiết</p>
+					</blockquote>
+				</div>
+			</a>
+		</center>
+		<div id="myModal" class="modal hide fade full-screen" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<center><h3 id="myModalLabel">THÔNG BÁO KHẨN</h3></center>
+			</div>
+			<div class="modal-body" style="font-size:16px;color:red">
+				<p style="text-align:justify;">Website <b><i>chualongvien.com</i></b> ra đời nhằm để phổ biến Phật pháp cũng như cung cấp các kiến thức bổ ích cho mọi người. Vì vậy, nếu có ai đó lợi dụng danh nghĩa Chùa Long Viễn hoặc các nội dung trong Website của chùa Long Viễn với bất kỳ hình thức nào, để vận động tài chánh xem như một sự xúc phạm về mặt " Đạo đức" không thể chấp nhận được; đồng thời đó là sự "Giả mạo" không phải chủ ý của Chùa Long Viễn. Rất mong Quý Phật tử, khán giả, đọc giả xa gần lưu ý cảnh giác. Chùa Long Viễn xin được tri ân đến toàn thể Quý khán giả, đọc giả và Phật tử suốt thời gian qua cũng như sắp tới</p>
+				<p style="text-align:right; margin-right:95px;">Trân trọng kính chào!</p>
+				<p style="text-align:right;">Trụ trì Chùa Long Viễn Thượng tọa Thích Thiện Trí</p>
+			</div>
+			<div class="modal-footer">
+				<center><button class="btn" data-dismiss="modal" aria-hidden="true">Thu nhỏ lại</button></center>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- SPRING MESSAGE															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="SpringMsg" class="box no-border">
+		<center style="position:relative">
+			<a href="#springModal" role="button" data-toggle="modal">
+				<img src="/data/images/logo/spring_button.jpg" width="100%" style="border-radius:20px;"/>
+				<div class="bubble-text">
+					<blockquote class="oval-thought-border">
+						<p>Click để xem chi tiết</p>
+					</blockquote>
+				</div>
+			</a>
+		</center>
+		<div id="springModal" class="modal hide fade full-screen" tabindex="-1" role="dialog" aria-labelledby="springModalLabel" aria-hidden="true">
+			<div class="modal-header" style="background-color:rgba(255,0,0,.3);color:red;">
+				<center><h3 id="springModalLabel">KÍNH MỪNG ĐẠI LỄ PHẬT ĐẢN 2014</h3></center>
+			</div>
+			<div class="modal-body" style="position:relative;background-color:rgba(255,0,0,.1);height:500px;">
+				<img style="position:absolute;left:20px;top:0;" src="/data/images/logo/spring_2.gif"/>
+				<img style="position:absolute;right:20px;top:20px;" src="/data/images/logo/spring.jpg" width="600"/>			
+				<img style="position:absolute;right:0;top:150px;" src="/data/images/logo/canhdao.png"/>			
+				<img style="position:absolute;right:150px;top:270px;" src="/data/images/logo/phao.gif" width="40"/>			
+				<div style="position:absolute;top:190px;left:300px;font-size:20px;font-family:'CustomFont';color:red;text-align:center;line-height:45px">
+					<p>Ba ngàn thế giới đều rung chuyển</p>
+					<p>Cùng hân hoan mở hội rải hoa</p>
+					<p>Cùng đằng vân hội nhập cõi ta bà</p>
+					<p>Cúng dường ngày Phật Đản Thích Ca</p>
+				</div>
+			</div>
+			<div class="modal-footer" style="background-color:rgba(255,0,0,.3);">
+				<center><button class="btn" data-dismiss="modal" aria-hidden="true">Thu nhỏ lại</button></center>
+			</div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- THƯ VIỆN PHẬT PHÁP														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="LibraryBox" class="box">
+		<div class="b-content">
+			<a href="/thu-vien-phat-phap">
+				<img width="100%" src="/data/images/logo/thu_vien.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- LỊCH SỬ PHẬT GIÁO														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="HistoryBox" class="box">
+		<div class="b-content">
+			<a href="/lich-su-phat-giao">
+				<img width="100%" src="/data/images/logo/lich_su.gif" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- GIẢNG SƯ														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MonkBox" class="box">
+		<div class="b-content">
+			<a href="/giang-su-thuyet-phap">
+				<img width="100%" src="/data/images/logo/thuyet_phap.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- PHIM TRUYỆN															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="FilmBox" class="box">
+		<div class="b-content">
+			<a href="/phim-truyen-phat-giao">
+				<img width="100%" src="/data/images/logo/phim_truyen.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- NHẠC PHẬT GIÁO															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MusicBox" class="box">
+		<div class="b-content">
+			<a href="/nhac-phat-giao">
+				<img width="100%" src="/data/images/logo/am_nhac.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- KÊNH TỔNG HỢP															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="GeneralBox" class="box">
+		<div class="b-content">
+			<a href="/kenh-tong-hop">
+				<img width="100%" height="300px" src="/data/images/logo/tong_hop.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- NẤU MÓN CHAY															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="CookingBox" class="box radius">
+		<div class="b-content">
+			<a href="/tin-tuc/cac-mon-an-chay">
+				<img width="100%" src="/data/images/logo/mon_chay.jpg" />
+			</a>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- PHÒNG THUỐC ĐÔNG Y														  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MecdBox" class="box">
+		<div class="b-content">
+			<a href="/tin-tuc/dong-y">
+				<img width="100%" src="/data/images/logo/dong_y.JPG" />
+			</a>
+		</div>
+	</div>
+			
+	<!-- ======================================================================== -->
+	<!-- AUDIO BOX														  		  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="AudioBox" class="audio" tal:attributes="URL VB/getURLLoadMP3Raw">		
+		<div id="jquery_jplayer_1" class="jp-jplayer"></div>
+		<div id="jp_container_1" class="jp-audio">
+			<div class="jp-type-playlist">
+				<div class="jp-gui jp-interface">
+					<ul class="jp-controls">
+						<li><a href="javascript:;" class="jp-previous" tabindex="1">previous</a></li>
+						<li><a href="javascript:;" class="jp-play" tabindex="1">play</a></li>
+						<li><a href="javascript:;" class="jp-pause" tabindex="1">pause</a></li>
+						<li><a href="javascript:;" class="jp-next" tabindex="1">next</a></li>
+						<li><a href="javascript:;" class="jp-stop" tabindex="1">stop</a></li>
+						<li><a href="javascript:;" class="jp-mute" tabindex="1" title="mute">mute</a></li>
+						<li><a href="javascript:;" class="jp-unmute" tabindex="1" title="unmute">unmute</a></li>
+						<li><a href="javascript:;" class="jp-volume-max" tabindex="1" title="max volume">max volume</a></li>
+					</ul>
+					<div class="jp-progress">
+						<div class="jp-seek-bar">
+							<div class="jp-play-bar"></div>
+						</div>
+					</div>
+					<div class="jp-volume-bar">
+						<div class="jp-volume-bar-value"></div>
+					</div>
+					<div class="jp-time-holder">
+						<div class="jp-current-time"></div>
+						<div class="jp-duration"></div>
+					</div>
+					<ul class="jp-toggles">
+						<li><a href="javascript:;" class="jp-shuffle" tabindex="1" title="shuffle">shuffle</a></li>
+						<li><a href="javascript:;" class="jp-shuffle-off" tabindex="1" title="shuffle off">shuffle off</a></li>
+						<li><a href="javascript:;" class="jp-repeat" tabindex="1" title="repeat">repeat</a></li>
+						<li><a href="javascript:;" class="jp-repeat-off" tabindex="1" title="repeat off">repeat off</a></li>
+					</ul>
+				</div>
+				<div class="jp-playlist">
+					<ul>
+						<li></li>
+					</ul>
+				</div>
+			</div>
+		</div>		
+		<div class="audio-ctrl down" title="Thu nhỏ lại"/>
+		<div class="audio-ctrl up" title="Mở danh sách phát"/>
+		<div class="audio-ctrl up" title="Đóng lại"/>
+		<div class="voice-content">
+			<div>Lượt xem: <span tal:content="VB/getCount"/></div>
+			<div>Tác giả: <span tal:content="VB/getAuthor"/></div>
+		</div>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- FORWARD BUTTON													  		  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="ForwardButton" class="forward-button" title="Trở về trang trước">
+		<a tal:attributes="href VB/getCategory/getURLRead">
+			www.<big>chualongvien</big>.com
+		</a>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- FORWARD BUTTON													  		  -->
+	<!-- ======================================================================== -->
+	<span metal:define-macro="ShareButton">
+		<a href="#myModal" role="button" data-toggle="modal" class="btn btn-success pull-right" ><i class="icon-share icon-white"/> Chia sẻ</a>
+		<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+				<h3 id="myModalLabel">Chia sẻ bài viết đến bạn bè</h3>
+			</div>
+			<div class="form-horizontal">
+				
+					<div class="modal-body">
+						<div class="form-group">
+							<label class="control-label">Email người nhận</label>
+							<div class="controls">
+								<input id="EmailShare" name="Email" type="email" class="form-control"/>
+							</div>
+						</div>
+						<div class="form-group" style="margin-top:10px;">
+							<label class="control-label">Lời nhắn</label>
+							<div class="controls">
+								<textarea id="ContentShare" name="Content" rows="5"></textarea>								
+							</div>							
+						</div>
+					</div>
+					<div class="modal-footer">
+						<button id="URLShareLink" class="btn btn-primary btn-small" ><i class="glyphicons-share_alt"/> Gửi đi</button>
+						<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+					</div>
+				
+			</div>
+		</div>
+	</span>
+	
+	<!-- ======================================================================== -->
+	<!-- ALEXA RANK																  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="AlexaRank" class="box no-border">
+		<center>
+			<a href="http://www.alexa.com/siteinfo/chualongvien.com">
+				<script type="text/javascript" src="http://xslt.alexa.com/site_stats/js/s/a?url=chualongvien.com"></script>
+			</a>
+		</center>
+	</div>
+</body>
+</html>

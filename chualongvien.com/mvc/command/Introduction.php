@@ -19,9 +19,8 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
-			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
-						
+			$mAlbum 			= new \MVC\Mapper\Album();
+									
 			$mConfig 			= new \MVC\Mapper\Config();		
 			$mVM 				= new \MVC\Mapper\VideoMonk();
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
