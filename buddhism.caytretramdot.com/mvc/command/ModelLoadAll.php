@@ -18,8 +18,7 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
-			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);
-			
+			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);			
 			if (isset($mMapper)){
 				$ObjAll 	= $mMapper->findAll();
 				$S = "
