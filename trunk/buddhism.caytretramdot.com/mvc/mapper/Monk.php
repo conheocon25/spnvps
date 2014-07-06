@@ -1,50 +1,29 @@
 <?php
 namespace MVC\Mapper;
-
 require_once( "mvc/base/Mapper.php" );
 class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 
     function __construct() {
         parent::__construct();
 				
-		$tblMonk = "chualongvien_monk";
-		$tblVideo = "chualongvien_video_monk";
-		
+		$tblMonk = "buddhismtv_monk";
+				
 		$selectAllStmt = sprintf("
 			SELECT * FROM %s M
-			ORDER BY 
-			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
-		", $tblMonk, $tblVideo);
-		
-		$findByKeyStmt = sprintf("SELECT * FROM %s M WHERE `key`=?", $tblMonk);
-		
-		$findVIPStmt = sprintf("
-			SELECT * FROM %s M
-			WHERE type=1
-			ORDER BY 
-			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
-		", $tblMonk, $tblVideo);
-		
+			ORDER BY name			
+		", $tblMonk);
+			
 		$selectStmt = sprintf("select * from %s where id=?", $tblMonk);
 		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, btype=?, url_pic=?, `key`=? where id=?", $tblMonk);
 		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, btype, url_pic, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblMonk);
-		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);
-		$findByBTypeStmt = sprintf("
-			SELECT *  from %s M
-			WHERE btype=?
-			ORDER BY 
-			type DESC, (SELECT count(*) FROM %s V WHERE M.id=V.id_monk ) DESC
-		", $tblMonk, $tblVideo);
-		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY type DESC LIMIT :start,:max", $tblMonk);		
+		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);		
+		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblMonk);		
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
-		$this->deleteStmt = self::$PDO->prepare($deleteStmt);		
-		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
-		$this->findVIPStmt = self::$PDO->prepare($findVIPStmt);
-		$this->findByBTypeStmt = self::$PDO->prepare($findByBTypeStmt);
+		$this->deleteStmt = self::$PDO->prepare($deleteStmt);				
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		
     } 
@@ -52,35 +31,28 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Monk( 
-			$array['id'],
-			$array['pre_name'],
+			$array['id'],		
 			$array['name'],
-			$array['pagoda'],
-			$array['phone'],
+			$array['alias'],
+			$array['birthday'],
 			$array['note'],
-			$array['type'],
-			$array['btype'],
-			$array['url_pic'],
-			$array['key']
+			$array['picture'],
+			$array['viewed'],
+			$array['rated']			
 		);
         return $obj;
     }
-
-    protected function targetClass() {        
-		return "Monk";
-    }
+    protected function targetClass() { return "Monk";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
-        $values = array( 
-			$object->getPreName(),
+        $values = array( 			
 			$object->getName(),
-			$object->getPagoda(),
-			$object->getPhone(),
+			$object->getAlias(),
+			$object->getBirthday(),
 			$object->getNote(),
-			$object->getType(),
-			$object->getBType(),
-			$object->getURLPic(),
-			$object->getKey()
+			$object->getPicture(),
+			$object->getViewed(),
+			$object->getRated()			
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -89,15 +61,13 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array(
-			$object->getPreName(),
 			$object->getName(),
-			$object->getPagoda(),
-			$object->getPhone(),
+			$object->getAlias(),
+			$object->getBirthday(),
 			$object->getNote(),
-			$object->getType(),
-			$object->getBType(),
-			$object->getURLPic(),
-			$object->getKey(),
+			$object->getPicture(),
+			$object->getViewed(),
+			$object->getRated(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -107,27 +77,8 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 
     function selectStmt() {return $this->selectStmt;}
     function selectAllStmt() {return $this->selectAllStmt;}
-	
-	function findByBType( $values ){
-        $this->findByBTypeStmt->execute( $values );
-        return new MonkCollection( $this->findByBTypeStmt->fetchAll(), $this);
-    }
-	function findVIP( $values ){
-        $this->findVIPStmt->execute( $values );
-        return new MonkCollection( $this->findVIPStmt->fetchAll(), $this);
-    }
-	
-	function findByKey( $values ){
-		$this->findByKeyStmt->execute( array($values) );
-        $array = $this->findByKeyStmt->fetch();
-        $this->findByKeyStmt->closeCursor();
-        if ( ! is_array( $array ) ) { return null; }
-        if ( ! isset( $array['id'] ) ) { return null; }
-        $object = $this->doCreateObject( $array );
-        return $object;		
-    }
-	
-	function findByPage( $values ) {
+		
+	function findByPage( $values ){
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
