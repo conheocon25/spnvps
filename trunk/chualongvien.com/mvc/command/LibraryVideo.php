@@ -22,8 +22,7 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 				
-			$mAlbum 			= new \MVC\Mapper\Album();	
-			$mMonk 				= new \MVC\Mapper\Monk();
+			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
 			
 			$mVB 				= new \MVC\Mapper\VoiceBook();
