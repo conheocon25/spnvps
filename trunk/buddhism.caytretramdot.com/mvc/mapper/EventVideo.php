@@ -14,8 +14,8 @@ class EventVideo extends Mapper implements \MVC\Domain\EventVideoFinder{
 		$updateStmt 		= sprintf("update %s set id_pagoda=?, name=?, `date`=?, content=? where id=?", $tblEventVideo);
 		$insertStmt 		= sprintf("insert into %s ( id_pagoda, name, `date`, content) values(?, ?, ?, ?)", $tblEventVideo);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblEventVideo);
-		$findByStmt 		= sprintf("select *  from %s where id_pagoda=?", $tblEventVideo);
-		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=:id_pagoda LIMIT :start,:max", $tblEventVideo);
+		$findByStmt 		= sprintf("select *  from %s where id_event=?", $tblEventVideo);
+		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_event=:id_event LIMIT :start,:max", $tblEventVideo);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -76,7 +76,7 @@ class EventVideo extends Mapper implements \MVC\Domain\EventVideoFinder{
     }
 	
 	function findByPage( $values ) {				
-		$this->findByPageStmt->bindValue(':id_pagoda', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':id_event', $values[0], \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
