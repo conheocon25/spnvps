@@ -14,8 +14,8 @@ class EventMP3 extends Mapper implements \MVC\Domain\EventMP3Finder{
 		$updateStmt 		= sprintf("update %s set id_pagoda=?, name=?, `date`=?, content=? where id=?", $tblEventMP3);
 		$insertStmt 		= sprintf("insert into %s ( id_pagoda, name, `date`, content) values(?, ?, ?, ?)", $tblEventMP3);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblEventMP3);
-		$findByStmt 		= sprintf("select *  from %s where id_pagoda=?", $tblEventMP3);
-		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=:id_pagoda LIMIT :start,:max", $tblEventMP3);
+		$findByStmt 		= sprintf("select *  from %s where id_event=?", $tblEventMP3);
+		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_event=:id_event LIMIT :start,:max", $tblEventMP3);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -69,7 +69,7 @@ class EventMP3 extends Mapper implements \MVC\Domain\EventMP3Finder{
     }
 	
 	function findByPage( $values ) {				
-		$this->findByPageStmt->bindValue(':id_pagoda', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':id_event', $values[0], \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();

@@ -14,18 +14,16 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$updateStmt 		= sprintf("update %s set id_province=?, id_district=?, name=?, address=?, latitude=?, longitude=? where id=?", $tblPagoda);
 		$insertStmt 		= sprintf("insert into %s ( id_province, id_district, name, address, latitude, longitude) values(?, ?, ?, ?, ?, ?)", $tblPagoda);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
-		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblPagoda);
-		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);		
-		$findByPart1Stmt 	= sprintf("SELECT * FROM  %s WHERE id<=3", $tblPagoda);
-				
+		$findByStmt 		= sprintf("select *  from %s where id_province=?", $tblPagoda);
+		$findByPageStmt 	= sprintf("SELECT * FROM  %s where id_province=:id_province LIMIT :start,:max", $tblPagoda);
+						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
         $this->updateStmt 		= self::$PDO->prepare($updateStmt);
         $this->insertStmt 		= self::$PDO->prepare($insertStmt);
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
-		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
-		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
-		$this->findByPart1Stmt 	= self::$PDO->prepare($findByPart1Stmt);
+		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
+		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);		
     }
 	
     function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
@@ -73,10 +71,16 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 
     function selectStmt() {return $this->selectStmt;}
     function selectAllStmt() {return $this->selectAllStmt;}	
-			
-	function findByPage( $values ) {
-		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
-		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+	
+	function findBy( $values ){
+		$this->findByStmt->execute($values);
+        return new PagodaCollection( $this->findByStmt->fetchAll(), $this);
+    }
+	
+	function findByPage( $values ) {				
+		$this->findByPageStmt->bindValue(':id_province', $values[0], \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this );
     }
