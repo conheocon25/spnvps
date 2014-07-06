@@ -2,58 +2,57 @@
 Namespace MVC\Domain;
 require_once( "mvc/base/domain/DomainObject.php" );
 
-class Pagoda extends Object{
+class Province extends Object{
 
     private $Id;
-	private $IdProvince;
-	private $IdDistrict;
-	private $Name;
-	private $Address;
+	private $Name;	
 	private $Latitude;
 	private $Longitude;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdProvince=null, $IdDistrict=null, $Name=null, $Address=null, $Latitude=0, $Longitude=0) {
+    function __construct( $Id=null, $Name=null, $Latitude=0, $Longitude=0){
 		$this->Id 			= $Id;
-		$this->IdProvince	= $IdProvince;
-		$this->IdDistrict	= $IdDistrict;
-		$this->Name 		= $Name; 
-		$this->Address 		= $Address;
+		$this->Name 		= $Name; 		
 		$this->Latitude 	= $Latitude;
 		$this->Longitude 	= $Longitude;
 		
 		parent::__construct( $Id );
 	}
     function getId() {return $this->Id;}	
-	
-	function setIdProvince( $IdProvince ) {$this->IdProvince = $IdProvince;$this->markDirty();}   
-	function getIdProvince( ) {return $this->IdProvince;}
-	
-	function setIdDistrict( $IdDistrict ) {$this->IdDistrict = $IdDistrict;$this->markDirty();}   
-	function getIdDistrict( ) {return $this->IdDistrict;}
-	
+		
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
-	
-	function setAddress( $Address ) {$this->Address = $Address;$this->markDirty();}   
-	function getAddress( ) {return $this->Address;}
-	
+			
 	function setLatitude( $Latitude ) {$this->Latitude = $Latitude;$this->markDirty();}   
 	function getLatitude( ) {return $this->Latitude;}	
 	
 	function setLongitude( $Longitude ) {$this->Longitude = $Longitude;$this->markDirty();}   
 	function getLongitude( ) {return $this->Longitude;}	
-			
+	
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'Name'			=> $this->getName(),	
+		 	'Latitude'		=> $this->getLatitude(),
+			'Longitude'		=> $this->getLongitude()			
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 		= $Data[0];
+		$this->Name 	= $Data[1];		
+		$this->Latitude = $Data[2];		
+		$this->Longitude= $Data[3];		
+    }
+	
 	function toXML(){
 		$S = "
 		<object>
 			<id>".$this->getId()."</id>
-			<id_province>".$this->getIdProvince()."</id_province>
-			<id_district>".$this->getIdDistrict()."</id_district>
-			<name>".$this->getName()."</name>
-			<address>".$this->getAddress()."</address>
+			<name>".$this->getName()."</name>			
 			<latitude>".$this->getLatitude()."</latitude>
 			<longitude>".$this->getLongitude()."</longitude>			
 		</object>
@@ -69,6 +68,7 @@ class Pagoda extends Object{
 		$EventAll = $mEvent->findBy(array($this->getId()));
 		return $EventAll;
 	}	
+	
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			

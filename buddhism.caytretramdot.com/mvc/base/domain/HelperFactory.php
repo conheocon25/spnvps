@@ -3,9 +3,14 @@ namespace MVC\Domain;
 if ( ! isset( $EG_DISABLE_INCLUDES ) ) {		
 		
 	require_once( "mvc/mapper/User.php");		
+	require_once( "mvc/mapper/Province.php");
+	require_once( "mvc/mapper/District.php");
 	require_once( "mvc/mapper/Pagoda.php");	
 	require_once( "mvc/mapper/Monk.php");	
 	require_once( "mvc/mapper/Event.php");	
+	require_once( "mvc/mapper/EventVideo.php");
+	require_once( "mvc/mapper/EventImage.php");
+	require_once( "mvc/mapper/EventMP3.php");
 }
 
 class HelperFactory {
