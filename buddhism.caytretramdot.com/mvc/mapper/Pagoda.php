@@ -16,6 +16,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
 		$findByStmt 		= sprintf("select *  from %s where id_province=?", $tblPagoda);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s where id_province=:id_province LIMIT :start,:max", $tblPagoda);
+		$findByPage1Stmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -24,6 +25,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);		
+		$this->findByPage1Stmt 	= self::$PDO->prepare($findByPage1Stmt);
     }
 	
     function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
@@ -83,6 +85,13 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
         return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	
+	function findByPage1( $values ) {		
+		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->execute();
+        return new PagodaCollection( $this->findByPage1Stmt->fetchAll(), $this );
     }
 		
 }

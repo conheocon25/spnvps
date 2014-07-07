@@ -15,6 +15,7 @@ class Province extends Mapper implements \MVC\Domain\ProvinceFinder{
 		$insertStmt 		= sprintf("insert into %s ( name, address, latitude, longitude) values(?, ?, ?, ?)", $tblProvince);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblProvince);		
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblProvince);		
+		$findByPage1Stmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblProvince);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -22,6 +23,7 @@ class Province extends Mapper implements \MVC\Domain\ProvinceFinder{
         $this->insertStmt 		= self::$PDO->prepare($insertStmt);
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);		
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);		
+		$this->findByPage1Stmt 	= self::$PDO->prepare($findByPage1Stmt);		
     }
 	
     function getCollection( array $raw ) {return new ProvinceCollection( $raw, $this );}
@@ -68,5 +70,11 @@ class Province extends Mapper implements \MVC\Domain\ProvinceFinder{
         return new ProvinceCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 	
+	function findByPage1( $values ) {		
+		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->execute();
+        return new ProvinceCollection( $this->findByPage1Stmt->fetchAll(), $this );
+    }	
 }
 ?>

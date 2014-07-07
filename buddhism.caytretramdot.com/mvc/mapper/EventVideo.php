@@ -16,6 +16,8 @@ class EventVideo extends Mapper implements \MVC\Domain\EventVideoFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblEventVideo);
 		$findByStmt 		= sprintf("select *  from %s where id_event=?", $tblEventVideo);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_event=:id_event LIMIT :start,:max", $tblEventVideo);
+		$findByPage1Stmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblEventVideo);
+		$findByPage2Stmt 	= sprintf("SELECT * FROM  %s WHERE id_monk=:id_monk LIMIT :start,:max", $tblEventVideo);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -24,6 +26,8 @@ class EventVideo extends Mapper implements \MVC\Domain\EventVideoFinder{
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
+		$this->findByPage1Stmt 	= self::$PDO->prepare($findByPage1Stmt);
+		$this->findByPage2Stmt 	= self::$PDO->prepare($findByPage2Stmt);
     }
 	
     function getCollection( array $raw ) {return new EventVideoCollection( $raw, $this );}
@@ -82,6 +86,21 @@ class EventVideo extends Mapper implements \MVC\Domain\EventVideoFinder{
 		$this->findByPageStmt->execute();
         return new EventVideoCollection( $this->findByPageStmt->fetchAll(), $this );
     }
-		
+	
+	function findByPage1( $values ) {		
+		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->execute();
+        return new EventVideoCollection( $this->findByPage1Stmt->fetchAll(), $this );
+    }	
+	
+	function findByPage2( $values ) {				
+		$this->findByPage2Stmt->bindValue(':id_monk', $values[0], \PDO::PARAM_INT);
+		$this->findByPage2Stmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPage2Stmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByPage2Stmt->execute();
+        return new EventVideoCollection( $this->findByPageStmt->fetchAll(), $this );
+    }
+	
 }
 ?>
