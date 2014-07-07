@@ -14,13 +14,17 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			$ObjectName = $request->getProperty('ObjectName');
+			$Page 		= $request->getProperty('Page');
 												
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------						
 			$mMapper 	= \MVC\Domain\HelperFactory::getFinder($ObjectName);			
+			if (!isset($Page)) $Page=1;			
 			if (isset($mMapper)){
 				$ObjAll 	= $mMapper->findAll();
+				$ObjAll1 	= $mMapper->findByPage1(array($Page, 10));
+				
 				$S = "
 				<result>				
 					<count>".$ObjAll->count()."</count>
@@ -28,11 +32,11 @@
 					<rpage>10</rpage>
 				</result>
 				";
-				while ($ObjAll->valid()){
-					$Obj = $ObjAll->current();
+				while ($ObjAll1->valid()){
+					$Obj = $ObjAll1->current();
 					$S = $S.trim($Obj->toXML());
-					$ObjAll->next();
-				}	
+					$ObjAll1->next();
+				}
 			}else{
 				$S = "
 				<result>				

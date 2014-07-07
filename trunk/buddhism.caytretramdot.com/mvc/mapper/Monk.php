@@ -8,16 +8,14 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 				
 		$tblMonk = "buddhismtv_monk";
 				
-		$selectAllStmt = sprintf("
-			SELECT * FROM %s M
-			ORDER BY name			
-		", $tblMonk);
+		$selectAllStmt = sprintf("SELECT * FROM %s M ORDER BY name", $tblMonk);
 			
 		$selectStmt = sprintf("select * from %s where id=?", $tblMonk);
 		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, btype=?, url_pic=?, `key`=? where id=?", $tblMonk);
 		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, btype, url_pic, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);		
 		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblMonk);		
+		$findByPage1Stmt = sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblMonk);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -25,6 +23,7 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);				
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
+		$this->findByPage1Stmt = self::$PDO->prepare($findByPage1Stmt);
 		
     } 
     function getCollection( array $raw ) {return new MonkCollection( $raw, $this );}
@@ -84,5 +83,12 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 		$this->findByPageStmt->execute();
         return new MonkCollection( $this->findByPageStmt->fetchAll(), $this );
     }
+	
+	function findByPage1( $values ) {		
+		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->execute();
+        return new MonkCollection( $this->findByPage1Stmt->fetchAll(), $this );
+    }	
 }
 ?>

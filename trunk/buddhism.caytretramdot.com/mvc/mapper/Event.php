@@ -16,6 +16,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblEvent);
 		$findByStmt 		= sprintf("select *  from %s where id_pagoda=?", $tblEvent);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=:id_pagoda LIMIT :start,:max", $tblEvent);
+		$findByPage1Stmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblEvent);
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -24,6 +25,7 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
+		$this->findByPage1Stmt 	= self::$PDO->prepare($findByPage1Stmt);
     }
 	
     function getCollection( array $raw ) {return new EventCollection( $raw, $this );}
@@ -78,6 +80,12 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
 		$this->findByPageStmt->execute();
         return new EventCollection( $this->findByPageStmt->fetchAll(), $this );
     }
-		
+	
+	function findByPage1( $values ) {		
+		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
+		$this->findByPage1Stmt->execute();
+        return new EventCollection( $this->findByPage1Stmt->fetchAll(), $this);
+    }
 }
 ?>
