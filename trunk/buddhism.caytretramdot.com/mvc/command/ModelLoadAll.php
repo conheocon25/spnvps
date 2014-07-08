@@ -29,6 +29,7 @@
 				<result>				
 					<count>".$ObjAll->count()."</count>
 					<npage>".((int)($ObjAll->count()/10 + 1) )."</npage>
+					<ipage>".$Page."</ipage>
 					<rpage>10</rpage>
 				</result>
 				";
@@ -42,6 +43,7 @@
 				<result>				
 					<count>0</count>					
 					<npage>0</npage>
+					<ipage>0</ipage>
 					<rpage>10</rpage>
 				</result>
 				";

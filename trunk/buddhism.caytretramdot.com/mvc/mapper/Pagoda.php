@@ -34,8 +34,12 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 			$array['id'],
 			$array['id_province'],
 			$array['id_district'],
+			$array['id_monk'],
 			$array['name'],
 			$array['address'],
+			$array['phone'],
+			$array['email'],
+			$array['website'],
 			$array['latitude'],
 			$array['longitude']
 		);
