@@ -19,6 +19,7 @@
 			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
+			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
@@ -40,7 +41,7 @@
 			}else{
 				$Album = $mAlbum->findByKey($KAlbum);
 			}
-												
+			$CategoryDocumentAll= $mCategoryDocument->findAll();									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
@@ -48,7 +49,7 @@
 			$request->setObject("AlbumAll", $AlbumAll);			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
-									
+			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);						
 			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			
 			return self::statuses('CMD_DEFAULT');

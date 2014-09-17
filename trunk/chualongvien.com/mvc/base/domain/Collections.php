@@ -5,9 +5,11 @@ interface AlbumCollection 			extends \Iterator {function add( Object $object );}
 interface AnimeCollection 			extends \Iterator {function add( Object $object );}
 interface FeedCollection 			extends \Iterator {function add( Object $object );}
 interface CategoryNewsCollection 	extends \Iterator {function add( Object $object );}
+interface CategoryDocumentCollection 	extends \Iterator {function add( Object $object );}
 interface CategoryBTypeCollection 	extends \Iterator {function add( Object $object );}
 interface CategoryVideoCollection 	extends \Iterator {function add( Object $object );}
 interface NewsCollection 			extends \Iterator {function add( Object $object );}
+interface DocumentCollection 		extends \Iterator {function add( Object $object );}
 
 interface VideoCollection 			extends \Iterator {function add( Object $object );}
 interface VideoLibraryCollection 	extends \Iterator {function add( Object $object );}

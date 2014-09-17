@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class ReadCategory extends Command {
+	class ReadCDocument extends Command {
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -21,6 +21,7 @@
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
+			$mDocument 			= new \MVC\Mapper\Document();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
@@ -32,33 +33,37 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------						
-			$CategoryDocumentAll= $mCategoryDocument->findAll();
-			$Category = $mCategoryNews->findByKey($Key1);
+			//-------------------------------------------------------------									
 			$CategoryNewsAll = $mCategoryNews->findAll();
-			if (!isset($Category)) $Category = $CategoryNewsAll->current();
+			
+			$Category = $mCategoryDocument->findByKey($Key1);
+			$CategoryDocumentAll = $mCategoryDocument->findAll();
+			
+			if (!isset($Category)) $Category = $CategoryDocumentAll->current();
 			$IdCategory = $Category->getId();
 						
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();						
 			if (!isset($Page)) $Page = 1;			
 			
-			$Title = mb_strtoupper("TIN TỨC / ".$Category->getName(), 'UTF8');
+			$Title = mb_strtoupper("VĂN BẢN / ".$Category->getName(), 'UTF8');
 			
-			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 16));
-			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 16, $Category->getURLRead());									
+			$DocumentAll = $mDocument->findByPage(array($IdCategory, $Page, 10));
+			$PN = new \MVC\Domain\PageNavigation($Category->getDocumentAll()->count(), 10, $Category->getURLRead());
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
 			$request->setProperty("Title", $Title);
 						
 			$request->setObject("Category", $Category);
-			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
-			$request->setObject("NewsAll", $NewsAll);										
+			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
+			$request->setObject("CategoryDocumentAll", $CategoryDocumentAll);			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
-			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);							
-			$request->setObject("PN", $PN);			
-			$request->setProperty("ActiveItem", 'ReadCategory');
+			
+			$request->setObject("DocumentAll", $DocumentAll);
+									
+			$request->setObject("PN", $PN);
+			$request->setProperty("ActiveItem", 'ReadCDocument');
 			$request->setProperty("Page", $Page);	
 			
 			return self::statuses('CMD_DEFAULT');
