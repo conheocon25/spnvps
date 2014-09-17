@@ -18,7 +18,8 @@
 			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
-				
+			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
+			
 			$mAlbum 			= new \MVC\Mapper\Album();	
 									
 			$mConfig 			= new \MVC\Mapper\Config();
@@ -48,8 +49,8 @@
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
 			$CategoryVideo 		= $mCategoryVideo->findAll()->current();
 			
-			//echo $CategoryVideo->toXML();
-																								
+			$CategoryDocumentAll= $mCategoryDocument->findAll();
+																														
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -66,6 +67,7 @@
 			$request->setObject("TopCategoryBookAll", 	$TopCategoryBookAll);
 			
 			$request->setObject("CategoryBTypeAll", 	$CategoryBTypeAll);			
+			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);
 			$request->setObject("CategoryVideo", 		$CategoryVideo);
 			$request->setObject("CategoryNewsAll", 		$CategoryNewsAll);			
 			$request->setObject("AlbumAll", 			$AlbumAll);						

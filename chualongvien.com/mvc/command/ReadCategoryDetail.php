@@ -20,7 +20,8 @@
 			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
-				
+			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
+			
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
 						
@@ -38,14 +39,15 @@
 			$CategoryBTypeAll 	= $mCategoryBType->findByPart1();
 						
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
-						
+			$CategoryDocumentAll= $mCategoryDocument->findAll();			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);			
 			$request->setObject("Category", $News->getCategory());			
 			$request->setProperty("ActiveItem", 'ReadCategory');
-									
+			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);
+			
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("News", $News);						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);

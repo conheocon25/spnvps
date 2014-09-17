@@ -66,6 +66,14 @@
 						</li>
 					</ul>
 				</li>				
+				<li tal:attributes="class php:ActiveItem=='ReadCDocument'?'active dropdown':'dropdown'">
+					<a class="dropdown-toggle" data-toggle="dropdown">Văn bản<b class="caret"/></a>
+					<ul class="dropdown-menu">
+						<li tal:repeat="Category CategoryDocumentAll">
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName"/>
+						</li>
+					</ul>
+				</li>
 				<li tal:attributes="class php:ActiveItem=='LibraryVideo1'?'active':'?'" ><a href="/lich-su-phat-giao">Lịch sử</a></li>
 				<li tal:attributes="class php:ActiveItem=='LibraryVideo2'?'active':'?'" ><a href="/thu-vien-phat-phap">Thư viện</a></li>
 				<li tal:attributes="class php:ActiveItem=='LibraryVideo3'?'active':'?'" ><a href="/phim-truyen-phat-giao">Phim truyện</a></li>
@@ -213,13 +221,12 @@
 	<!-- ======================================================================== -->
 	<div metal:define-macro="WarningMsg" class="box no-border">
 		<center style="position:relative">
-			<a href="#myModal" role="button" class="btn btn-danger btn-bubble" data-toggle="modal">
-				<img src="/data/images/logo/warning.gif" width="50%"/>
-				<h3 style="font-size:29px;">THÔNG BÁO KHẨN</h3>
-				
+			<a href="/van-ban" role="button" class="btn btn-danger btn-bubble">
+				<img src="/data/images/logo/VanBan.gif" width="50%"/>
+				<h3 style="font-size:29px;">VĂN BẢN QUI CHẾ GIÁO HỘI</h3>				
 				<div class="bubble-text">
-					<blockquote class="oval-thought-border">
-						<p>Click để xem chi tiết</p>
+					<blockquote class="oval-thought-border">						
+						<p>Click để xem chi tiết</p>						
 					</blockquote>
 				</div>
 			</a>

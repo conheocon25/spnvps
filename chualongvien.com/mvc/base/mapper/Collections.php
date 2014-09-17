@@ -7,9 +7,11 @@ class AlbumCollection 			extends Collection implements \MVC\Domain\AlbumCollecti
 class AnimeCollection 			extends Collection implements \MVC\Domain\AnimeCollection 			{function targetClass( ) {return "\MVC\Domain\Anime";}}
 class FeedCollection 			extends Collection implements \MVC\Domain\FeedCollection 			{function targetClass( ) {return "\MVC\Domain\Feed";}}
 class CategoryNewsCollection 	extends Collection implements \MVC\Domain\CategoryNewsCollection 	{function targetClass( ) {return "\MVC\Domain\CategoryNews";}}
+class CategoryDocumentCollection 	extends Collection implements \MVC\Domain\CategoryDocumentCollection 	{function targetClass( ) {return "\MVC\Domain\CategoryDocument";}}
 class CategoryBTypeCollection 	extends Collection implements \MVC\Domain\CategoryBTypeCollection 	{function targetClass( ) {return "\MVC\Domain\CategoryBType";}}
 class CategoryVideoCollection 	extends Collection implements \MVC\Domain\CategoryVideoCollection 	{function targetClass( ) {return "\MVC\Domain\CategoryVideo";}}
 class NewsCollection 			extends Collection implements \MVC\Domain\NewsCollection 			{function targetClass( ) {return "\MVC\Domain\News";}}
+class DocumentCollection 		extends Collection implements \MVC\Domain\DocumentCollection 		{function targetClass( ) {return "\MVC\Domain\Document";}}
 
 class VideoCollection 			extends Collection implements \MVC\Domain\VideoCollection 			{function targetClass( ) {return "\MVC\Domain\Video";}}
 class VideoLibraryCollection 	extends Collection implements \MVC\Domain\VideoLibraryCollection 	{function targetClass( ) {return "\MVC\Domain\VideoLibrary";}}

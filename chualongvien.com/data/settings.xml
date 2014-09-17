@@ -58,6 +58,8 @@
 		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
 		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
 		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
-						
+		
+		<command name="ReadCDocument" type="public"><view>ReadCDocument</view></command>
+		
 	</control>
 </options>

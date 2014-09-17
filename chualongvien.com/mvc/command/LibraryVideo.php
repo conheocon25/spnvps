@@ -21,6 +21,7 @@
 			$mCategoryBType 	= new \MVC\Mapper\CategoryBType();
 			$mCategoryNews 		= new \MVC\Mapper\CategoryNews();
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
+			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
@@ -59,7 +60,7 @@
 				$VBAll = $Category->getVoiceBookAll();
 				$YTAll = $Category->getVLAll();
 			}
-												
+			$CategoryDocumentAll= $mCategoryDocument->findAll();									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
@@ -70,6 +71,7 @@
 			$request->setObject("Category", 		$Category);
 			$request->setObject("VBAll", 			$VBAll);
 			$request->setObject("YTAll", 			$YTAll);
+			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);
 			
 			$request->setProperty("SumVB", 			$SumVB);
 			$request->setProperty("SumYT", 			$SumYT);

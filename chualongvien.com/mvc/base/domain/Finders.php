@@ -16,9 +16,11 @@ interface ConfigFinder 			extends Finder {}
 interface GuestFinder 			extends Finder {}
 interface FeedFinder			extends Finder {}
 interface CategoryNewsFinder 	extends Finder {}
+interface CategoryDocumentFinder 	extends Finder {}
 interface CategoryBTypeFinder 	extends Finder {}
 interface CategoryVideoFinder 	extends Finder {}
 interface NewsFinder			extends Finder {}
+interface DocumentFinder		extends Finder {}
 
 interface VideoFinder 			extends Finder {}
 interface VideoLibraryFinder	extends Finder {}
