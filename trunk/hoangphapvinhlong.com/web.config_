@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <system.webServer>
+        <rewrite>
+            <rules>
+                <rule name="Imported Rule 1">
+                    <match url="^trang-chu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+                <rule name="Imported Rule 2">
+                    <match url="^gioi-thieu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=gioithieu&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 3">
+                    <match url="^trangdownload$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=trangdownload&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 4">
+                    <match url="^so-vang-cong-duc-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sovangct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 5">
+                    <match url="^thong-bao$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbao&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 6">
+                    <match url="^thong-bao-chi-tiet([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbaoct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 7">
+                    <match url="^tin-tuc([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 8">
+                    <match url="^tin-tuc([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 9">
+                    <match url="^tin-tuc-chi-tiet-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintucct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 10">
+                    <match url="^quang-cao-chi-tiet-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=quancaoct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 11">
+                    <match url="^su-kien$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukien&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 12">
+                    <match url="^chi-tiet-su-kien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 13">
+                    <match url="^phat-am-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=video&amp;videoid={R:1}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 14">
+                    <match url="^([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 15">
+                    <match url="^trang-([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 16">
+                    <match url="^trang([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 17">
+                    <match url="^videogiam-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 18">
+                    <match url="^video-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayer&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 19">
+                    <match url="^videohat-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayergiam&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 20">
+                    <match url="^dat-cau-hoi$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=datcauhoi&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 21">
+                    <match url="^danh-muc-hoi-dap([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 22">
+                    <match url="^danh-muc-hoi-dap([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 23">
+                    <match url="^hoi-dap-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidapct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 24">
+                    <match url="^tra-loi-cau-hoi([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=traloicauhoi&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 25">
+                    <match url="^anh-hoat-dong([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=anhhoatdong&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 26">
+                    <match url="^danh-ba-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 27">
+                    <match url="^danh-ba-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 28">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 29">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;page={R:3}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 30">
+                    <match url="^tu-thien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 31">
+                    <match url="^tu-thien([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 32">
+                    <match url="^tu-thien-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 33">
+                    <match url="^lien-he$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhe&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 34">
+                    <match url="^lien-he-mail$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhemail&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 35">
+                    <match url="^nhac-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audio&amp;audio=audio&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 36">
+                    <match url="^nhac([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideo&amp;nhacvideo=nhacvideo&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 37">
+                    <match url="^album-audio-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 38">
+                    <match url="^nghe-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 39">
+                    <match url="^albumvideo-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 40">
+                    <match url="^xem-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 41">
+                    <match url="^giang-su-tat-ca$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsutatca{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 42">
+                    <match url="^([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsu&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 1-1">
+                    <match url="^trang-chu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+                <rule name="Imported Rule 2-1">
+                    <match url="^gioi-thieu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=gioithieu&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 3-1">
+                    <match url="^trangdownload$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=trangdownload&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 4-1">
+                    <match url="^so-vang-cong-duc-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sovangct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 5-1">
+                    <match url="^thong-bao$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbao&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 6-1">
+                    <match url="^thong-bao-chi-tiet([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbaoct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 7-1">
+                    <match url="^tin-tuc([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 8-1">
+                    <match url="^tin-tuc([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 9-1">
+                    <match url="^tin-tuc-chi-tiet-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintucct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 10-1">
+                    <match url="^quang-cao-chi-tiet-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=quancaoct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 11-1">
+                    <match url="^su-kien$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukien&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 12-1">
+                    <match url="^chi-tiet-su-kien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 13-1">
+                    <match url="^phat-am-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=video&amp;videoid={R:1}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 14-1">
+                    <match url="^([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 15-1">
+                    <match url="^trang-([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 16-1">
+                    <match url="^trang([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 17-1">
+                    <match url="^videogiam-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 18-1">
+                    <match url="^video-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayer&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 19-1">
+                    <match url="^videohat-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayergiam&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 20-1">
+                    <match url="^dat-cau-hoi$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=datcauhoi&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 21-1">
+                    <match url="^danh-muc-hoi-dap([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 22-1">
+                    <match url="^danh-muc-hoi-dap([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 23-1">
+                    <match url="^hoi-dap-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidapct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 24-1">
+                    <match url="^tra-loi-cau-hoi([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=traloicauhoi&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 25-1">
+                    <match url="^anh-hoat-dong([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=anhhoatdong&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 26-1">
+                    <match url="^danh-ba-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 27-1">
+                    <match url="^danh-ba-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 28-1">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 29-1">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;page={R:3}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 30-1">
+                    <match url="^tu-thien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 31-1">
+                    <match url="^tu-thien([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 32-1">
+                    <match url="^tu-thien-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 33-1">
+                    <match url="^lien-he$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhe&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 34-1">
+                    <match url="^lien-he-mail$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhemail&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 35-1">
+                    <match url="^nhac-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audio&amp;audio=audio&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 36-1">
+                    <match url="^nhac([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideo&amp;nhacvideo=nhacvideo&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 37-1">
+                    <match url="^album-audio-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 38-1">
+                    <match url="^nghe-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 39-1">
+                    <match url="^albumvideo-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 40-1">
+                    <match url="^xem-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 41-1">
+                    <match url="^giang-su-tat-ca$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsutatca{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 42-1">
+                    <match url="^gs-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsu&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 43">
+                    <match url="^trang-chu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+                <rule name="Imported Rule 44">
+                    <match url="^gioi-thieu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=gioithieu&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 45">
+                    <match url="^trangdownload$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=trangdownload&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 46">
+                    <match url="^so-vang-cong-duc-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sovangct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 47">
+                    <match url="^thong-bao$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbao&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 48">
+                    <match url="^thong-bao-chi-tiet([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbaoct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 49">
+                    <match url="^tin-tuc([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 50">
+                    <match url="^tin-tuc([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 51">
+                    <match url="^tin-tuc-chi-tiet-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintucct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 52">
+                    <match url="^quang-cao-chi-tiet-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=quancaoct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 53">
+                    <match url="^su-kien$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukien&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 54">
+                    <match url="^chi-tiet-su-kien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 55">
+                    <match url="^phat-am-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=video&amp;videoid={R:1}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 56">
+                    <match url="^([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 57">
+                    <match url="^trang-([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 58">
+                    <match url="^trang([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 59">
+                    <match url="^videogiam-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 60">
+                    <match url="^video-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayer&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 61">
+                    <match url="^videohat-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayergiam&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 62">
+                    <match url="^dat-cau-hoi$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=datcauhoi&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 63">
+                    <match url="^danh-muc-hoi-dap([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 64">
+                    <match url="^danh-muc-hoi-dap([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 65">
+                    <match url="^hoi-dap-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidapct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 66">
+                    <match url="^tra-loi-cau-hoi([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=traloicauhoi&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 67">
+                    <match url="^anh-hoat-dong([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=anhhoatdong&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 68">
+                    <match url="^danh-ba-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 69">
+                    <match url="^danh-ba-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 70">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 71">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;page={R:3}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 72">
+                    <match url="^tu-thien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 73">
+                    <match url="^tu-thien([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 74">
+                    <match url="^tu-thien-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 75">
+                    <match url="^lien-he$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhe&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 76">
+                    <match url="^lien-he-mail$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhemail&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 77">
+                    <match url="^nhac-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audio&amp;audio=audio&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 78">
+                    <match url="^nhac([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideo&amp;nhacvideo=nhacvideo&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 79">
+                    <match url="^album-audio-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 80">
+                    <match url="^nghe-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 81">
+                    <match url="^albumvideo-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 82">
+                    <match url="^xem-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 83">
+                    <match url="^giang-su-tat-ca$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsutatca{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 84">
+                    <match url="^gs-([^/\.]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsu&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 1-2">
+                    <match url="^trang-chu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+                <rule name="Imported Rule 2-2">
+                    <match url="^gioi-thieu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=gioithieu&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 3-2">
+                    <match url="^trangdownload$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=trangdownload&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 4-2">
+                    <match url="^so-vang-cong-duc-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sovangct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 5-2">
+                    <match url="^thong-bao$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbao&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 6-2">
+                    <match url="^thong-bao-chi-tiet([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbaoct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 7-2">
+                    <match url="^tin-tuc([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 8-2">
+                    <match url="^tin-tuc([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 9-2">
+                    <match url="^tin-tuc-chi-tiet-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintucct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 10-2">
+                    <match url="^quang-cao-chi-tiet-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=quancaoct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 11-2">
+                    <match url="^su-kien$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukien&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 12-2">
+                    <match url="^chi-tiet-su-kien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 13-2">
+                    <match url="^phat-am-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=video&amp;videoid={R:1}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 14-2">
+                    <match url="^([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 15-2">
+                    <match url="^trang-([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 16-2">
+                    <match url="^trang([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 17-2">
+                    <match url="^videogiam-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 18-2">
+                    <match url="^video-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayer&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 19-2">
+                    <match url="^videohat-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayergiam&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 20-2">
+                    <match url="^dat-cau-hoi$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=datcauhoi&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 21-2">
+                    <match url="^danh-muc-hoi-dap([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 22-2">
+                    <match url="^danh-muc-hoi-dap([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 23-2">
+                    <match url="^hoi-dap-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidapct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 24-2">
+                    <match url="^tra-loi-cau-hoi([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=traloicauhoi&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 25-2">
+                    <match url="^anh-hoat-dong([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=anhhoatdong&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 26-2">
+                    <match url="^danh-ba-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 27-2">
+                    <match url="^danh-ba-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 28-2">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 29-2">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;page={R:3}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 30-2">
+                    <match url="^tu-thien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 31-2">
+                    <match url="^tu-thien([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 32-2">
+                    <match url="^tu-thien-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 33-2">
+                    <match url="^lien-he$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhe&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 34-2">
+                    <match url="^lien-he-mail$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhemail&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 35-2">
+                    <match url="^nhac-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audio&amp;audio=audio&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 36-2">
+                    <match url="^nhac([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideo&amp;nhacvideo=nhacvideo&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 37-2">
+                    <match url="^album-audio-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 38-2">
+                    <match url="^nghe-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 39-2">
+                    <match url="^albumvideo-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 40-2">
+                    <match url="^xem-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 41-2">
+                    <match url="^giang-su-tat-ca$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsutatca{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 42-2">
+                    <match url="^([^/\.]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsu&amp;idg={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 43-1">
+                    <match url="^tai-nhac-([^/\.]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="tainhac.php?file={R:1}&amp;id={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 44-1">
+                    <match url="^trang-chu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php" />
+                </rule>
+                <rule name="Imported Rule 45-1">
+                    <match url="^gioi-thieu$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=gioithieu&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 46-1">
+                    <match url="^trangdownload$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=trangdownload&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 47-1">
+                    <match url="^so-vang-cong-duc-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sovangct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 48-1">
+                    <match url="^thong-bao$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbao&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 49-1">
+                    <match url="^thong-bao-chi-tiet([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=thongbaoct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 50-1">
+                    <match url="^tin-tuc([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 51-1">
+                    <match url="^tin-tuc([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintuc&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 52-1">
+                    <match url="^tin-tuc-chi-tiet-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tintucct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 53-1">
+                    <match url="^quang-cao-chi-tiet-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=quancaoct&amp;id={R:1}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 54-1">
+                    <match url="^su-kien$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukien&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 55-1">
+                    <match url="^chi-tiet-su-kien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=sukienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 56-1">
+                    <match url="^phat-am-([0-9]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=video&amp;videoid={R:1}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 57-1">
+                    <match url="^([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 58-1">
+                    <match url="^trang-([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsu&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 59-1">
+                    <match url="^trang([0-9]+)-([0-9]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}&amp;page={R:3}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 60-1">
+                    <match url="^videogiam-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videogiangsugiam&amp;id1={R:1}&amp;id2={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 61-1">
+                    <match url="^video-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayer&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 62-1">
+                    <match url="^videohat-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=videoplayergiam&amp;id1={R:1}&amp;id2={R:2}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 63-1">
+                    <match url="^dat-cau-hoi$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=datcauhoi&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 64-1">
+                    <match url="^danh-muc-hoi-dap([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 65-1">
+                    <match url="^danh-muc-hoi-dap([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidap&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 66-1">
+                    <match url="^hoi-dap-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=hoidapct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 67-1">
+                    <match url="^tra-loi-cau-hoi([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=traloicauhoi&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 68-1">
+                    <match url="^anh-hoat-dong([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=anhhoatdong&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 69-1">
+                    <match url="^danh-ba-([0-9]+)-(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 70-1">
+                    <match url="^danh-ba-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbachua&amp;id={R:1}&amp;page={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 71-1">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 72-1">
+                    <match url="^hat-video-([0-9]+)-([0-9]+)-page=([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=danhbaplayer&amp;iddb1={R:1}&amp;iddb2={R:2}&amp;page={R:3}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 73-1">
+                    <match url="^tu-thien([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 74-1">
+                    <match url="^tu-thien([0-9]+)-page=(.+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthien&amp;id={R:1}&amp;page={R:2}{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 75-1">
+                    <match url="^tu-thien-chi-tiet([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=tuthienct&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 76-1">
+                    <match url="^lien-he$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhe&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 77-1">
+                    <match url="^lien-he-mail$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=lienhemail&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 78-1">
+                    <match url="^nhac-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audio&amp;audio=audio&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 79-1">
+                    <match url="^nhac([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideo&amp;nhacvideo=nhacvideo&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 80-1">
+                    <match url="^album-audio-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 81-1">
+                    <match url="^nghe-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=audiohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 82-1">
+                    <match url="^albumvideo-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideodanhsach&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 83-1">
+                    <match url="^xem-album([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=nhacvideohat&amp;id={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 84-1">
+                    <match url="^giang-su-tat-ca$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsutatca{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 85">
+                    <match url="^([^/\.]+)-([0-9]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="index.php?frame=giangsu&amp;idg={R:1}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+                <rule name="Imported Rule 86">
+                    <match url="^tai-nhac-([^/\.]+)-([^/\.]+)$" ignoreCase="false" />
+                    <action type="Rewrite" url="tainhac.php?file={R:1}&amp;id={R:2}&amp;{QUERY_STRING}" appendQueryString="false" />
+                </rule>
+            </rules>
+        </rewrite>
+        <defaultDocument>
+            <files>
+                <clear />
+                <add value="Default.htm" />
+                <add value="Default.asp" />
+                <add value="index.htm" />
+                <add value="index.html" />
+                <add value="iisstart.htm" />
+                <add value="index.php" />
+            </files>
+        </defaultDocument>
+    </system.webServer>
+</configuration>
