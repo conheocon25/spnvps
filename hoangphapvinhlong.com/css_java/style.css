@@ -1,0 +1,65 @@
+#slidett2-panel{position: relative; width: 340px; border:1px; padding:10px;}
+#slidett2 {background: #eee; width: 340px; height: 335px; border:1px solid #ddd}
+#slidett2 img { width: 340px; height: 280px }
+
+#slidett3-panel{position: relative; width: 340px; border:1px; padding:10px;}
+#slidett3 {background: #eee; width: 340px; height: 335px; border:1px solid #ddd}
+#slidett3 img { width: 340px; height: 280px }
+
+#slidett4-panel{position: relative; width: 340px; border:1px; padding:10px;}
+#slidett4 {background: #eee; width: 340px; height: 335px; border:1px solid #ddd}
+#slidett4 img { width: 340px; height: 280px }
+
+#slidett5-panel{position: relative; width: 340px; border:1px; padding:10px;}
+#slidett5 {background: #eee; width: 340px; height: 335px; border:1px solid #ddd}
+#slidett5 img { width: 340px; height: 280px }
+
+#slidett6-panel{position: relative; width: 340px; border:1px; padding:10px;}
+#slidett6 {background: #eee; width: 340px; height: 335px; border:1px solid #ddd}
+#slidett6 img { width: 340px; height: 280px }
+
+#lean_overlay {
+	position: fixed;
+    z-index:100;
+    top: 0px;
+    left: 0px;
+    height:100%;
+    width:100%;
+    background: #000;
+	display:none;
+}
+
+#popuptvd, .popuptvd {
+    width: 404px;
+	left:35%;
+	margin-top:10%;
+ 	padding-bottom: 2px;
+    background: #FFF;
+    border-radius: 5px; -moz-border-radius: 5px; 
+    -webkit-border-radius: 5px;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.7); 
+    -webkit-box-shadow: 0 0 4px rgba(0,0,0,0.7); 
+    -moz-box-shadow: 0 0px 4px rgba(0,0,0,0.7);
+}
+
+#popuptvd-header, .popuptvd-header { 
+	background: url(../images/hd-bg.png); 
+	padding: 18px 18px 14px 18px; 
+	border-bottom: 1px solid #CCC; 
+	border-top-left-radius: 5px; 
+	-moz-border-radius-topleft: 5px; 
+	-webkit-border-top-left-radius: 5px; 
+	border-top-right-radius: 5px; 
+	-moz-border-radius-topright: 5px; 
+	-webkit-border-top-right-radius: 5px; 
+}
+
+#popuptvd-header  h2, .popuptvd-header  h2 { color: #444; text-align:center; font-size: 2em; font-weight: 700; margin-bottom: 3px; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); }
+#popuptvd-header  p, .popup-header  p { color: #444; font-size: 1.5em; margin: 0; text-shadow: 1px 1px 0 rgba(255, 255, 255, 0.5); text-shadow: none; }
+.infotvd_popup { text-align:center; margin:20px; }      
+.closetvd_popup { position: absolute; top: 12px; right: 12px; display: block; width: 14px; height: 14px; background: url(../images/modal_close.png); z-index: 2; }
+
+
+
+
+
