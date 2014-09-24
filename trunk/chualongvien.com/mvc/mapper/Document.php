@@ -15,9 +15,9 @@ class Document extends Mapper implements \MVC\Domain\DocumentFinder{
 		$insertStmt = sprintf("insert into %s ( name, `order`, `key`) values(?, ?, ?)", $tblDocument);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblDocument);		
 		
-		$findByStmt = sprintf("select *  from %s where id_category=?", $tblDocument);
+		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY `order`", $tblDocument);
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblDocument);
-		$findByPageStmt = sprintf("SELECT * FROM  %s where id_category=:id_category LIMIT :start,:max", $tblDocument);
+		$findByPageStmt = sprintf("SELECT * FROM  %s where id_category=:id_category ORDER BY `order` LIMIT :start,:max", $tblDocument);
 				
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
