@@ -8,11 +8,11 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title></title>
     </head>
-    <body>
+    <body>	
       <?php
-       $con=mysql_connect("localhost","nguyenphong","Admin123456")
+		$con=mysql_connect("localhost","spncom_admindb","admin368189")
                or die("không kết nối được");
-       $db=mysql_select_db("hoangphapvinhlong", $con)
+		$db=mysql_select_db("hoangphapvinhlong", $con)
                or die("không kết nối được CSDL");
         mysql_set_charset('utf8',$con); // dinh dang
         ?>
