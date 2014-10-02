@@ -1,8 +1,8 @@
 ﻿<?php
 
 $hostname     = "localhost";
-$username     = "nguyenphong";
-$password     = "Admin123456";
+$username     = "spncom_admindb";
+$password     = "admin368189";
 $databasename = "hoangphapvinhlong";
 $visitorTimeout = 900; //=15 * 60
 
