@@ -112,7 +112,10 @@ RewriteRule ^van-ban$ 														?cmd=ReadCDocument [L]
 RewriteRule ^van-ban/([a-z0-9_-]+)$ 										?cmd=ReadCDocument&Key1=$1 [L]
 RewriteRule ^van-ban/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 					?cmd=ReadCDocument&Key1=$1&Page=$2 [L]
 
-RewriteRule ^danh-ba$ 														?cmd=Pagoda [L]
+RewriteRule ^danh-ba/tinh/([0-9]+)$ 										?cmd=PagodaContactProvinceLoad&IdProvince=$1 [L]
+RewriteRule ^danh-ba/huyen/([0-9]+)$ 										?cmd=PagodaContactDistrictLoad&IdDistrict=$1 [L]
+RewriteRule ^danh-ba/chua/([0-9]+)$ 										?cmd=PagodaContactPagodaLoad&IdPagoda=$1 [L]
+
 RewriteRule ^danh-ba/([a-z0-9_-]+)$ 										?cmd=PagodaContact&Key=$1 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------

@@ -62,6 +62,9 @@
 		<command name="ReadCDocument" type="public"><view>ReadCDocument</view></command>
 		
 		<command name="PagodaContact" type="public"><view>PagodaContact</view></command>
+		<command name="PagodaContactProvinceLoad" type="public"><view>PagodaContactProvinceLoad</view></command>
+		<command name="PagodaContactDistrictLoad" type="public"><view>PagodaContactDistrictLoad</view></command>
+		<command name="PagodaContactPagodaLoad" type="public"><view>PagodaContactPagodaLoad</view></command>
 		
 	</control>
 </options>

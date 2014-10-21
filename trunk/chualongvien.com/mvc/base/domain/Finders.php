@@ -27,6 +27,8 @@ interface VideoLibraryFinder	extends Finder {}
 interface VideoMonkFinder		extends Finder {}
 interface VoiceBookFinder		extends Finder {}
 
+interface ProvinceFinder		extends Finder {}
+interface DistrictFinder		extends Finder {}
 interface PagodaFinder			extends Finder {}
 interface EventFinder			extends Finder {}
 ?>

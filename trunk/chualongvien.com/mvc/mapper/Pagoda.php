@@ -16,7 +16,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
 		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblPagoda);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);		
-		$findByPart1Stmt 	= sprintf("SELECT * FROM  %s WHERE id<=3", $tblPagoda);
+		$findByDistrictStmt = sprintf("SELECT * FROM  %s WHERE id_district=?", $tblPagoda);
 				
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -25,13 +25,14 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
-		$this->findByPart1Stmt 	= self::$PDO->prepare($findByPart1Stmt);
+		$this->findByDistrictStmt 	= self::$PDO->prepare($findByDistrictStmt);
     }
 	
     function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Pagoda( 
 			$array['id'],
+			$array['id_district'],
 			$array['name'],
 			$array['address'],
 			$array['phone'],
@@ -48,6 +49,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
     protected function targetClass() {return "Pagoda";}
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdDistrict(),
 			$object->getName(),
 			$object->getAddress(),
 			$object->getPhone(),
@@ -65,6 +67,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdDistrict(),
 			$object->getName(),
 			$object->getAddress(),
 			$object->getPhone(),
@@ -99,5 +102,10 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
         $object = $this->doCreateObject( $array );
         return $object;		
     }
+	
+	function findByDistrict( $values ){
+        $this->findByDistrictStmt->execute( $values );
+        return new PagodaCollection( $this->findByDistrictStmt->fetchAll(), $this);
+    }	
 }
 ?>
