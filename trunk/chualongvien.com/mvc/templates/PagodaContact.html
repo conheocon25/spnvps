@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<link rel="stylesheet" type="text/css" href="/mvc/templates/theme/bootstrap/css/font-awesome.min.css"/>
+		<!--[if IE 7]>
+			<link rel="stylesheet" href="/mvc/templates/theme/bootstrap/css/font-awesome-ie7.min.css">
+		<![endif]-->
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyAL3E55skCbhZdaN7Jm3Tip7Np1X04f76w" type="text/javascript"></script>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps1.jquery.js"/>
+		<script type="text/javascript">
+			$(function() {			
+				$("#map").googleMap().load();				
+			});
+		</script>
+	</head>
+
+	<body onunload="GUnload()">
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-paper reset-margin">
+							<h4 class="reset-margin">Thông tin cơ sở</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<div class="padding-content name-card">
+								<center>
+									<h2 tal:content="Pagoda/getName"/>
+									<p tal:content="Pagoda/getAddress"/>
+									<hr/>
+								</center>
+								<p><i class="icon-user"/> Đại diện: <span tal:content="Pagoda/getMonk"/></p>
+								<p><i class="icon-phone"/> Điện thoại: <span tal:content="Pagoda/getPhone"/></p>
+								<p><i class="icon-envelope"/> Email: <span tal:content="Pagoda/getEmail"/></p>
+								<p><i class="icon-link"/> Website: <span tal:content="Pagoda/getWebsite"/></p>
+								
+								<input id="Name" type="hidden" tal:attributes="value Pagoda/getName"/>
+								<input id="X" type="hidden" tal:attributes="value Pagoda/getLatitude"/>
+								<input id="Y" type="hidden" tal:attributes="value Pagoda/getLongitude"/>
+								<input id="Logo" type="hidden" tal:attributes="value '/data/images/bg/gate.png'"/>
+										
+							</div>							
+						</div>
+					</div>
+					
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-location reset-margin">
+							<h4 class="reset-margin">Vị trí trên bản đồ</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<div id="map" class="img-polaroid" style="width:588px; height:470px;"/>
+						</div>
+					</div>						
+				</div>
+				<div class="span4 fix-width">
+					
+				</div>
+			</div>
+			<div metal:use-macro="base.xhtml/Footer"/>						
+			<div metal:use-macro="base.xhtml/FixedFunction"/>			
+			<div metal:use-macro="base.xhtml/Backontop"/>
+			
+		</div>
+	</body>
+</html>

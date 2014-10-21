@@ -34,8 +34,13 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 			$array['id'],
 			$array['name'],
 			$array['address'],
+			$array['phone'],
+			$array['email'],
+			$array['website'],			
+			$array['monk'],			
 			$array['latitude'],
-			$array['longitude']
+			$array['longitude'],
+			$array['key']
 		);
         return $obj;
     }
@@ -45,8 +50,13 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
         $values = array( 
 			$object->getName(),
 			$object->getAddress(),
+			$object->getPhone(),
+			$object->getEmail(),
+			$object->getWebsite(),
+			$object->getMonk(),
 			$object->getLatitude(),
-			$object->getLongitude()
+			$object->getLongitude(),
+			$object->getKey()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -57,8 +67,13 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
         $values = array( 
 			$object->getName(),
 			$object->getAddress(),
+			$object->getPhone(),
+			$object->getEmail(),
+			$object->getWebsite(),
+			$object->getMonk(),
 			$object->getLatitude(),
 			$object->getLongitude(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -72,8 +87,17 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
-        return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this );
+        return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this);
     }
-		
+	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
+    }
 }
 ?>

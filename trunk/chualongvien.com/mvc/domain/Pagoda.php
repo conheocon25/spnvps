@@ -7,18 +7,28 @@ class Pagoda extends Object{
     private $Id;
 	private $Name;
 	private $Address;
+	private $Phone;
+	private $Email;
+	private $Website;
+	private $Monk;	
 	private $Latitude;
 	private $Longitude;
+	private $Key;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Address=null, $Latitude=0, $Longitude=0) {
+    function __construct( $Id=null, $Name=null, $Address=null, $Phone=null, $Email=null, $Website=null, $Monk=null,  $Latitude=0, $Longitude=0, $Key=null){
 		$this->Id 			= $Id;
-		$this->Name 		= $Name; 
+		$this->Name 		= $Name;
 		$this->Address 		= $Address;
+		$this->Phone 		= $Phone;
+		$this->Email 		= $Email;
+		$this->Website 		= $Website;
+		$this->Monk 		= $Monk;
 		$this->Latitude 	= $Latitude;
 		$this->Longitude 	= $Longitude;
+		$this->Key 			= $Key;
 		
 		parent::__construct( $Id );
 	}
@@ -30,19 +40,44 @@ class Pagoda extends Object{
 	function setAddress( $Address ) {$this->Address = $Address;$this->markDirty();}   
 	function getAddress( ) {return $this->Address;}
 	
+	function setPhone( $Phone ) {$this->Phone = $Phone;$this->markDirty();}   
+	function getPhone( ) {return $this->Phone;}
+	
+	function setEmail( $Email ) {$this->Email = $Email;$this->markDirty();}   
+	function getEmail( ) {return $this->Email;}
+	
+	function setWebsite( $Website ) {$this->Website = $Website;$this->markDirty();}   
+	function getWebsite( ) {return $this->Website;}
+	
+	function setMonk( $Monk ) {$this->Monk = $Monk;$this->markDirty();}   
+	function getMonk( ) {return $this->Monk;}
+	
 	function setLatitude( $Latitude ) {$this->Latitude = $Latitude;$this->markDirty();}   
-	function getLatitude( ) {return $this->Latitude;}	
+	function getLatitude( ) {return $this->Latitude;}
 	
 	function setLongitude( $Longitude ) {$this->Longitude = $Longitude;$this->markDirty();}   
 	function getLongitude( ) {return $this->Longitude;}	
+		
+	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
+	function getKey( ) {return $this->Key;}
+	function reKey( ){
+		$Id = $this->getId();		
+		$Str = new \MVC\Library\String($this->Name." ".$Id);
+		$this->Key = $Str->converturl();		
+	}
 	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
-			'Name'			=> $this->getName(),
+			'Name'			=> $this->getName(),			
 			'Address'		=> $this->getAddress(),
+			'Phone'			=> $this->getPhone(),
+			'Email'			=> $this->getEmail(),
+			'Website'		=> $this->getWebsite(),
+			'Monk'			=> $this->getMonk(),
 		 	'Latitude'		=> $this->getLatitude(),
-			'Longitude'		=> $this->getLongitude()			
+			'Longitude'		=> $this->getLongitude(),
+			'Key'			=> $this->getLongitude()
 		);
 		return json_encode($json);
 	}
@@ -51,37 +86,23 @@ class Pagoda extends Object{
         $this->Id 		= $Data[0];
 		$this->Name 	= $Data[1];
 		$this->Address 	= $Data[2];
-		$this->Latitude = $Data[3];		
-		$this->Longitude= $Data[4];		
+		$this->Phone 	= $Data[3];
+		$this->Email 	= $Data[4];
+		$this->Website 	= $Data[5];
+		$this->Monk 	= $Data[6];
+		$this->Latitude = $Data[7];		
+		$this->Longitude= $Data[8];
+		$this->reKey();
     }
-	
-	function toXML(){
-		$S = "
-		<object>
-			<id>".$this->getId()."</id>
-			<name>".$this->getName()."</name>
-			<address>".$this->getAddress()."</address>
-			<latitude>".$this->getLatitude()."</latitude>
-			<longitude>".$this->getLongitude()."</longitude>			
-		</object>
-		";
-		return $S;
-	}
-	
+			
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
-	function getEventAll(){
-		$mEvent = new \MVC\Mapper\Event();
-		$EventAll = $mEvent->findBy(array($this->getId()));
-		return $EventAll;
-	}
-	
+		
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
-	function getURLSettingEvent(){return "/app/pagoda/".$this->getId()."/event";}
-				
+					
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

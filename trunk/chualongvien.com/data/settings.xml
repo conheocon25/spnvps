@@ -61,5 +61,7 @@
 		
 		<command name="ReadCDocument" type="public"><view>ReadCDocument</view></command>
 		
+		<command name="PagodaContact" type="public"><view>PagodaContact</view></command>
+		
 	</control>
 </options>
