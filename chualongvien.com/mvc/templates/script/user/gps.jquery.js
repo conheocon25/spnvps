@@ -2,7 +2,7 @@
 	var map ;
 	
     $.GoogleMapObjectDefaults = {        
-        zoomLevel: 10,
+        zoomLevel: 15,
 		imagewidth: 60,
 		imageheight: 60,
 		center: 'Bach Dan, Phuong 4, Vinh Long',		
