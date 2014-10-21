@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">	
+	<body>
+		<div id="DistrictDomain" class="controls">									
+			<select name="IdDistrict" id="DistrictList" style="width:100%;">
+				<option tal:repeat="District Province/getDistrictAll" tal:attributes="value District/getId;">
+					<span tal:content="District/getName"/>
+				</option>
+			</select>
+		</div>
+		<script>									
+			//NẠP DANH SÁCH CÁC HUYỆN TƯƠNG ỨNG TỈNH
+			$('#DistrictList').on('change', function (e){
+				var IdDistrict = $(this).val();				
+				$("#PagodaDomain").load("/danh-ba/huyen/"+IdDistrict);
+			});
+			$('#DistrictList').change();
+			
+		</script>
+	</body>
+</html>

@@ -21,17 +21,19 @@
 			$mCategoryVideo 	= new \MVC\Mapper\CategoryVideo();
 			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();						
 			$mNews 				= new \MVC\Mapper\News();
-			$CategoryDocumentAll= $mCategoryDocument->findAll();
-			
 			$mPagoda 			= new \MVC\Mapper\Pagoda();
-			
+			$mProvince 			= new \MVC\Mapper\Province();
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																			
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();
+			$CategoryDocumentAll= $mCategoryDocument->findAll();
 			
-			$Pagoda = $mPagoda->findByKey($Key);
+			$ProvinceAll 	= $mProvince->findAll();
+			//echo $ProvinceAll->count();
+			$Pagoda 		= $mPagoda->findByKey($Key);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -40,6 +42,9 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
 			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);						
 			$request->setProperty("ActiveItem", 'Contact');
+			
+			$request->setObject("ProvinceAll", $ProvinceAll);
+			$request->setObject("ProvinceCurrent", 58);
 			$request->setProperty("Pagoda", $Pagoda);
 			
 			return self::statuses('CMD_DEFAULT');

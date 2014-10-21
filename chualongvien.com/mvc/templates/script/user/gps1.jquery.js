@@ -28,6 +28,8 @@
 		var marker = new GMarker(center, {draggable: false});
 		var Name = "<B>" + $('#Name').val() + "</B>";
 		var Image = '<img src="'+ $('#Logo').val() +'" width="60px"/>'+Name;
+		//alert( parseFloat($('#X').val()));
+		//alert( parseFloat($('#Y').val()));
 		map.addOverlay(marker);	
 		marker.openInfoWindowHtml(Image);
 	}

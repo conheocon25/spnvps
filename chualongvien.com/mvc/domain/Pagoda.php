@@ -5,6 +5,7 @@ require_once( "mvc/base/domain/DomainObject.php" );
 class Pagoda extends Object{
 
     private $Id;
+	private $IdDistrict;
 	private $Name;
 	private $Address;
 	private $Phone;
@@ -18,8 +19,9 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Address=null, $Phone=null, $Email=null, $Website=null, $Monk=null,  $Latitude=0, $Longitude=0, $Key=null){
+    function __construct( $Id=null, $IdDistrict=null, $Name=null, $Address=null, $Phone=null, $Email=null, $Website=null, $Monk=null,  $Latitude=0, $Longitude=0, $Key=null){
 		$this->Id 			= $Id;
+		$this->IdDistrict 	= $IdDistrict;
 		$this->Name 		= $Name;
 		$this->Address 		= $Address;
 		$this->Phone 		= $Phone;
@@ -34,7 +36,10 @@ class Pagoda extends Object{
 	}
     function getId() {return $this->Id;}	
 		
-    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
+    function setIdDistrict( $IdDistrict ) {$this->IdDistrict = $IdDistrict;$this->markDirty();}   
+	function getIdDistrict( ) {return $this->IdDistrict;}
+	
+	function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
 	
 	function setAddress( $Address ) {$this->Address = $Address;$this->markDirty();}   
@@ -69,6 +74,7 @@ class Pagoda extends Object{
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
+			'IdDistrict' 	=> $this->getIdDistrict(),
 			'Name'			=> $this->getName(),			
 			'Address'		=> $this->getAddress(),
 			'Phone'			=> $this->getPhone(),
@@ -83,15 +89,16 @@ class Pagoda extends Object{
 	}
 	
 	function setArray( $Data ){
-        $this->Id 		= $Data[0];
-		$this->Name 	= $Data[1];
-		$this->Address 	= $Data[2];
-		$this->Phone 	= $Data[3];
-		$this->Email 	= $Data[4];
-		$this->Website 	= $Data[5];
-		$this->Monk 	= $Data[6];
-		$this->Latitude = $Data[7];		
-		$this->Longitude= $Data[8];
+        $this->Id 			= $Data[0];
+		$this->IdDistrict 	= $Data[1];
+		$this->Name 		= $Data[2];
+		$this->Address 		= $Data[3];
+		$this->Phone 		= $Data[4];
+		$this->Email 		= $Data[5];
+		$this->Website 		= $Data[6];
+		$this->Monk 		= $Data[7];
+		$this->Latitude 	= $Data[8];		
+		$this->Longitude	= $Data[9];
 		$this->reKey();
     }
 			
