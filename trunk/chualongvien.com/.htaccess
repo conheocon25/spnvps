@@ -105,6 +105,7 @@ RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 					?cmd=ReadCategory&K
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 							?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
 RewriteRule ^tin-tuc-auto/([a-z0-9_-]+)$ 									?cmd=NewCategoryInsAuto&IdRss=$1 [L]
+RewriteRule ^tin-tuc-auto-del/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=NewCategoryDelAuto&IdCategory=$1&IdMonth=$2 [L]
 
 RewriteRule ^send-mail/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
 
