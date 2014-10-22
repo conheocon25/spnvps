@@ -30,6 +30,7 @@
 		
 		<command name="SendMailShare" type="public"><view>SendMailShare</view></command>
 		<command name="NewCategoryInsAuto" type="public"><view>NewCategoryInsAuto</view></command>
+		<command name="NewCategoryDelAuto" type="public"><view>NewCategoryDelAuto</view></command>
 		
 		<!-- ============================================================================== -->
 		<!-- JSON LOAD			 															-->

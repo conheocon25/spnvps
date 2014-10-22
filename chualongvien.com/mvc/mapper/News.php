@@ -14,6 +14,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$updateStmt = sprintf("update %s set id_category=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
 		$insertStmt = sprintf("insert into %s ( id_category, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
+		$deleteByCategoryStmt = sprintf("delete from %s where id_category=? AND (month(`date`))<=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
 		$findByKeyStmt = sprintf("select *  from %s where `key`=?", $tblNews);
 		$findByLimitStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC limit 5", $tblNews);
@@ -44,6 +45,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
 		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
+		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
 		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
@@ -109,7 +111,11 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 	protected function doDelete(array $values) {
         return $this->deleteStmt->execute( $values );
     }
-
+	
+	function deleteByCategoryDate( $values ){        
+        return $this->deleteByCategoryStmt->execute( $values );
+    }	
+	
     function selectStmt() {
         return $this->selectStmt;
     }
@@ -139,6 +145,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
         $this->findByCategoryDateStmt->execute( $values );
         return new NewsCollection( $this->findByCategoryDateStmt->fetchAll(), $this);
     }
+	
 	
 	function findByPage( $values ) {		
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
