@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppBTypeCategory extends Command{
+	class AppProvince extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,33 +11,28 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdBType = $request->getProperty('IdBType');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mCategoryBType = new \MVC\Mapper\CategoryBType();
+			$mProvince = new \MVC\Mapper\Province();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$CategoryBTypeAll 	= $mCategoryBType->findAll();
-			$Category 			= $mCategoryBType->find($IdBType);			
-			$Title 				= mb_strtoupper($Category->getName(), 'UTF8');
+			$ProvinceAll 	= $mProvince->findAll();			
+			$Title 			= mb_strtoupper("TỈNH THÀNH", 'UTF8');
 			
-			$Navigation = array(
-				array("THƯ VIỆN"	, "/app/btype")
-			);
+			$Navigation = array();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("CategoryBTypeAll"	, $CategoryBTypeAll);
-			$request->setObject("Category"			, $Category);
-									
-			$request->setObject('Navigation', $Navigation);			
-			$request->setProperty("ActiveAdmin", 'Video');
+			$request->setObject("ProvinceAll"	, $ProvinceAll);
+												
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("ActiveAdmin", 'Pagoda');
 			$request->setProperty("Title", $Title);
-						
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

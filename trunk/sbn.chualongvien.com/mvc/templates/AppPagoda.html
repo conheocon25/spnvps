@@ -7,9 +7,7 @@
 	<body>
 		<div metal:use-macro="mAdmin.xhtml/Header"/>
 		<div metal:use-macro="mAdmin.xhtml/UserNavigation"/>
-		<div metal:use-macro="mAdmin.xhtml/Sidebar"/>		
-
-		<div id="content">			
+		<div id="content">
 			<div id="content-header">
 				<h1 tal:content="Title"/>
 				<div class="btn-group">
@@ -28,16 +26,22 @@
 											<th>STT</th>										
 											<th><div class="text-left">TÊN</div></th>
 											<th><div class="text-left">SỰ KIỆN</div></th>
+											<th><div class="text-left">NHÂN SỰ</div></th>
 											<th width="32" />
 										</tr>
 									</thead>
 									<tbody>
-										<tr class="content-rows" tal:repeat="Pagoda PagodaAll">
+										<tr class="content-rows" tal:repeat="Pagoda District/getPagodaAll">
 											<td width="32" align="center"><div tal:content="repeat/Pagoda/number" /></td>
 											<td>												
 												<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Pagoda/getId" tal:content="Pagoda/getName"/>
 											</td>
 											<td><a tal:attributes="href Pagoda/getURLSettingEvent">Xem</a></td>
+											<td>
+												<a tal:attributes="href Pagoda/getURLSettingMonk">
+													Xem (<span tal:content="Pagoda/getMonkAll/count"/>)
+												</a>
+											</td>
 											<td class="center">
 												<a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Pagoda/getId"><i class="glyphicon glyphicon-remove"/></a>
 											</td>
