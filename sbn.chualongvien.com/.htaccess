@@ -30,48 +30,9 @@ RewriteRule ^object/upd/([A-Za-z0-9]+)$ 							?cmd=ObjectUpd&ObjectName=$1 [L]
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^app$ 												?cmd=App [L]
 
-RewriteRule ^app$ 												?cmd=App [L]
-
 RewriteRule ^app/config$ 										?cmd=AppConfig [L]
 RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 
-RewriteRule ^app/pagoda$ 										?cmd=AppPagoda [L]
-RewriteRule ^app/pagoda/page/([0-9]+)$ 							?cmd=AppPagoda&Page=$1 [L]
-RewriteRule ^app/pagoda/([0-9]+)/event$			 				?cmd=AppPagodaEvent&IdPagoda=$1 [L]
-RewriteRule ^app/pagoda/([0-9]+)/event/page/([0-9]+)$			?cmd=AppPagodaEvent&IdPagoda=$1&Page=$2 [L]
-
-RewriteRule ^app/pagoda/([0-9]+)/video			 				?cmd=AppPagodaVideo&IdPagoda=$1 [L]
-RewriteRule ^app/pagoda/([0-9]+)/notify			 				?cmd=AppPagodaNotify&IdPagoda=$1 [L]
-
-RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
-RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
-
-RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
-RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
-
-RewriteRule ^app/news$ 											?cmd=AppNews [L]
-RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
-RewriteRule ^app/news/([0-9]+)/page/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
-RewriteRule ^app/news/([0-9]+)/ins/load$ 						?cmd=AppNewsInsLoad&IdCategory=$1 [L]
-RewriteRule ^app/news/([0-9]+)/ins/exe$ 						?cmd=AppNewsInsExe&IdCategory=$1 [L]
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/load$ 				?cmd=AppNewsUpdLoad&IdCategory=$1&IdNews=$2 [L]
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/upd/exe$ 				?cmd=AppNewsUpdExe&IdCategory=$1&IdNews=$2 [L]
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/load$ 				?cmd=AppNewsDelLoad&IdCategory=$1&IdNews=$2 [L]
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/del/exe$ 				?cmd=AppNewsDelExe&IdCategory=$1&IdNews=$2 [L]
-
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/bookmark1$ 				?cmd=AppNewsBookmarkExe&IdCategory=$1&IdNews=$2&IdBookmark=1 [L]
-RewriteRule ^app/news/([0-9]+)/([0-9]+)/bookmark2$ 				?cmd=AppNewsBookmarkExe&IdCategory=$1&IdNews=$2&IdBookmark=2 [L]
-
-RewriteRule ^app/btype$ 										?cmd=AppBType [L]
-RewriteRule ^app/btype/([0-9]+)$ 								?cmd=AppBTypeCategory&IdBType=$1 [L]
-RewriteRule ^app/btype/([0-9]+)/([0-9]+)$ 						?cmd=AppBTypeCategoryVideo&IdBType=$1&IdCategory=$2 [L]
-RewriteRule ^app/btype/([0-9]+)/([0-9]+)/voice$ 				?cmd=AppVoiceBook&IdBType=$1&IdCategory=$2 [L]
-
-RewriteRule ^app/category/video/([0-9]+)$ 						?cmd=AppCategoryVideoDetail&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/page/([0-9]+)$ 		?cmd=AppCategoryVideoDetail&IdCategory=$1&Page=$2 [L]
-RewriteRule ^app/category/video/([0-9]+)/ins/load$ 				?cmd=AppCategoryVideoDetailInsLoad&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/ins/exe$ 				?cmd=AppCategoryVideoDetailInsExe&IdCategory=$1 [L]
-RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/load$ 	?cmd=AppCategoryVideoDetailUpdLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
-RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/upd/exe$ 		?cmd=AppCategoryVideoDetailUpdExe&IdCategory=$1&IdVideoLibrary=$2 [L]
-RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/load$ 	?cmd=AppCategoryVideoDetailDelLoad&IdCategory=$1&IdVideoLibrary=$2 [L]
-RewriteRule ^app/category/video/([0-9]+)/([0-9]+)/del/exe$ 		?cmd=AppCategoryVideoDetailDelExe&IdCategory=$1&IdVideoLibrary=$2 [L]
+RewriteRule ^app/province$ 										?cmd=AppProvince [L]
+RewriteRule ^app/province/([0-9]+)$ 							?cmd=AppDistrict&IdProvince=$1 [L]
+RewriteRule ^app/province/([0-9]+)/([0-9]+)$ 					?cmd=AppPagoda&IdProvince=$1&IdDistrict=$2 [L]

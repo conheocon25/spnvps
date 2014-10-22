@@ -1,46 +1,42 @@
 <?php
 	namespace MVC\Command;	
-	class AppNewsUpdateAll extends Command{
+	class AppDistrict extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
 			$Session = \MVC\Base\SessionRegistry::instance();
-			
+									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdProvince = $request->getProperty('IdProvince');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			require_once("mvc/base/mapper/MapperDefault.php");			
+			//-------------------------------------------------------------
+			$mProvince = new \MVC\Mapper\Province();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$CategoryAll = $mCategoryNews->findAll();
-			while($CategoryAll->valid()){
-				$Category = $CategoryAll->current();
-				$Category->reKey();
-				$mCategoryNews->update($Category);
-				$CategoryAll->next();
-			}
+			//-------------------------------------------------------------			
+			$Province 	= $mProvince->find($IdProvince);
+			$Title 		= mb_strtoupper($Province->getName(), 'UTF8');
 			
-			$NewsAll = $mNews->findAll();
-			while($NewsAll->valid()){
-				$News = $NewsAll->current();
-				$News->reKey();
-				$mNews->update($News);
-				$NewsAll->next();			
-			}
-			
+			$Navigation = array(
+				array("TỈNH THÀNH", "/app/province")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-						
-			return self::statuses('CMD_OK');
+			$request->setObject("Province"	, $Province);
+												
+			$request->setObject('Navigation', $Navigation);
+			$request->setProperty("ActiveAdmin", 'Pagoda');
+			$request->setProperty("Title", $Title);
+			
+			return self::statuses('CMD_DEFAULT');
 		}
 	}
 ?>

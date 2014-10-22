@@ -5,7 +5,7 @@
 	<!-- ======================================================================== -->
 	<span metal:define-macro="IncludeMETA">
 		<title tal:content="string:Hệ thống quản lý thông tin Chùa"/>
-		<base href="http://admin.chualongvien.com"/>
+		<base href="http://sbn.chualongvien.com"/>
 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
@@ -137,12 +137,8 @@
 	<!-- LEFT MENU - SIDEBAR													  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Sidebar" id="sidebar" >
-		<ul>
-			<li tal:attributes="class php:ActiveAdmin=='News'?'active':'disable'"><a href="/app/category/news"><i class="glyphicon glyphicon-th"></i> <span>TIN TỨC</span> </a></li>
-			<li tal:attributes="class php:ActiveAdmin=='Video'?'active':'disable'"><a href="/app/btype"><i class="glyphicon glyphicon-th"></i> <span>THƯ VIỆN</span> </a></li>						
-			<li tal:attributes="class php:ActiveAdmin=='Album'?'active':'disable'"><a href="/app/album"><i class="glyphicon glyphicon-th"></i> <span>HÌNH ẢNH</span></a></li>
-			<li tal:attributes="class php:ActiveAdmin=='Statistic'?'active':'disable'"><a href="/app/config"><i class="glyphicon glyphicon-th"></i> <span>CẤU HÌNH</span></a></li>
-			<li tal:attributes="class php:ActiveAdmin=='Pagoda'?'active':'disable'"><a href="/app/pagoda"><i class="glyphicon glyphicon-th"></i> <span>CHÙA</span></a></li>
+		<ul>			
+			<li tal:attributes="class php:ActiveAdmin=='Province'?'active':'disable'"><a href="/app/province"><i class="glyphicon glyphicon-th"></i> <span>TỈNH THÀNH</span></a></li>
 		</ul>
 	</div>
 	
@@ -150,7 +146,7 @@
 	<!-- BREADCRUMB																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Breadcrumb" id="breadcrumb">
-		<a href="/app" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> QUẢN LÝ</a>
+		<a href="/" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> QUẢN LÝ</a>
 		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]; title php:'Về trang '.Item[0]" tal:content="php:Item[0]" class="tip-bottom"/>
 		<a class="current" tal:content="Title"/>
 	</div>

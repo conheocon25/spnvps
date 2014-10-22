@@ -11,28 +11,29 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdDistrict = $request->getProperty('IdDistrict');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mDistrict = new \MVC\Mapper\District();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$PagodaAll 	= $mPagoda->findAll();			
-			$Title 		= mb_strtoupper("DANH SÁCH CHÙA", 'UTF8');
+			$District 	= $mDistrict->find($IdDistrict);
+			$Title 		= mb_strtoupper($District->getName(), 'UTF8');
 			
 			$Navigation = array(
-				//array("THƯ VIỆN"	, "/app/btype")
+				array( "TỈNH THÀNH", "/app/province"),
+				array( mb_strtoupper($District->getProvince()->getName(), 'UTF8'), $District->getProvince()->getURLSettingDistrict())
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("PagodaAll"	, $PagodaAll);
+			$request->setObject("District"	, $District);
 												
-			$request->setObject('Navigation', $Navigation);			
-			$request->setProperty("ActiveAdmin", 'Pagoda');
+			$request->setObject('Navigation', $Navigation);						
 			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');

@@ -16,7 +16,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
 		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblPagoda);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);		
-		$findByPart1Stmt 	= sprintf("SELECT * FROM  %s WHERE id<=3", $tblPagoda);
+		$findByDistrictStmt = sprintf("SELECT * FROM  %s WHERE id_district=?", $tblPagoda);
 				
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -25,17 +25,23 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
-		$this->findByPart1Stmt 	= self::$PDO->prepare($findByPart1Stmt);
+		$this->findByDistrictStmt 	= self::$PDO->prepare($findByDistrictStmt);
     }
 	
     function getCollection( array $raw ) {return new PagodaCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Pagoda( 
 			$array['id'],
+			$array['id_district'],
 			$array['name'],
 			$array['address'],
+			$array['phone'],
+			$array['email'],
+			$array['website'],			
+			$array['monk'],			
 			$array['latitude'],
-			$array['longitude']
+			$array['longitude'],
+			$array['key']
 		);
         return $obj;
     }
@@ -43,10 +49,16 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
     protected function targetClass() {return "Pagoda";}
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdDistrict(),
 			$object->getName(),
 			$object->getAddress(),
+			$object->getPhone(),
+			$object->getEmail(),
+			$object->getWebsite(),
+			$object->getMonk(),
 			$object->getLatitude(),
-			$object->getLongitude()
+			$object->getLongitude(),
+			$object->getKey()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -55,10 +67,16 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
+			$object->getIdDistrict(),
 			$object->getName(),
 			$object->getAddress(),
+			$object->getPhone(),
+			$object->getEmail(),
+			$object->getWebsite(),
+			$object->getMonk(),
 			$object->getLatitude(),
 			$object->getLongitude(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -72,8 +90,22 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
-        return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this );
+        return new PagodaCollection( $this->findByPageStmt->fetchAll(), $this);
     }
-		
+	
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
+    }
+	
+	function findByDistrict( $values ){
+        $this->findByDistrictStmt->execute( $values );
+        return new PagodaCollection( $this->findByDistrictStmt->fetchAll(), $this);
+    }	
 }
 ?>

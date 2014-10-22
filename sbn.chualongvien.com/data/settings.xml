@@ -24,36 +24,13 @@
 		<command name="ObjectUpd"><view>ObjectUpd</view></command>
 		
 		<command name="App"><view>App</view></command>
-		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>				
-														
-		<!-- ============================================================================== -->
-		<!-- APP.BTYPE																-->
-		<!-- ============================================================================== -->
-		<command name="AppBType">				<view>AppBType</view></command>
-		<command name="AppBTypeCategory">		<view>AppBTypeCategory</view></command>
-		<command name="AppBTypeCategoryVideo">	<view>AppBTypeCategoryVideo</view></command>
-		<command name="AppCategoryVideoDetail">	<view>AppCategoryVideoDetail</view></command>
-		<command name="AppVoiceBook">			<view>AppVoiceBook</view></command>
-				
-		<!-- ============================================================================== -->
-		<!-- APP.NEWS																		-->
-		<!-- ============================================================================== -->		
-		<command name="AppCategoryNews"><view>AppCategoryNews</view></command>
-		<command name="AppNews"><view>AppNews</view></command>
-		<command name="AppNewsInsLoad"><view>AppNewsInsLoad</view></command>
-		<command name="AppNewsInsExe"><view>AppNewsInsExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
-		<command name="AppNewsUpdLoad"><view>AppNewsUpdLoad</view></command>
-		<command name="AppNewsUpdExe"><view>AppNewsUpdExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
-		<command name="AppNewsDelLoad"><view>AppNewsDelLoad</view></command>
-		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
-		
-		<command name="AppNewsBookmarkExe"><view>AppNewsBookmarkExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>	
-		
+		<command name="AppProvince"><view>AppProvince</view></command>
+		<command name="AppDistrict"><view>AppDistrict</view></command>
+		<command name="AppPagoda"><view>AppPagoda</view></command>
+																							
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
-		<command name="AppConfig"><view>AppConfig</view></command>
-		<command name="AppPagoda"><view>AppPagoda</view></command>
-		<command name="AppPagodaEvent"><view>AppPagodaEvent</view></command>
+		<command name="AppConfig"><view>AppConfig</view></command>		
 	</control>
 </options>
