@@ -66,5 +66,10 @@
 		<command name="PagodaContactDistrictLoad" type="public"><view>PagodaContactDistrictLoad</view></command>
 		<command name="PagodaContactPagodaLoad" type="public"><view>PagodaContactPagodaLoad</view></command>
 		
+		<command name="Pagoda" type="public"><view>Pagoda</view></command>
+		<command name="PagodaProvinceLoad" type="public"><view>PagodaProvinceLoad</view></command>
+		<command name="PagodaDistrictLoad" type="public"><view>PagodaDistrictLoad</view></command>
+		<command name="PagodaInfoLoad" type="public"><view>PagodaInfoLoad</view></command>
+		
 	</control>
 </options>

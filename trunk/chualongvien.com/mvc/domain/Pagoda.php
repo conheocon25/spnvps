@@ -71,6 +71,12 @@ class Pagoda extends Object{
 		$this->Key = $Str->converturl();		
 	}
 	
+	function getMonkAll(){
+		$mMonk 		= new \MVC\Mapper\Monk();
+		$MonkAll 	= $mMonk->findByPagoda(array($this->getId()));
+		return $MonkAll;
+	}
+	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
