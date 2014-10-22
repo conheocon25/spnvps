@@ -82,7 +82,7 @@
 						$DateArray = explode(' ', $item['pubDate']);
 						$CurDate = explode('/',$DateArray[0]);
 						$CNewDate = $CurDate[2] . "/". $CurDate[1] . "/" . $CurDate[0] . " " . $DateArray[1];
-						//Cong them 5h do lech muoi gio quoc te
+						//Cong them 11h do lech muoi gio quoc te host USA
 											
 						$todaytime->add($interval);
 						//tao ngay từ rss	
