@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class PagodaContactDistrictLoad extends Command{
+	class PagodaProvinceLoad extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,22 +11,22 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdDistrict = $request->getProperty('IdDistrict');
+			$IdProvince = $request->getProperty('IdProvince');
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------						
-			$mDistrict 			= new \MVC\Mapper\District();
+			$mProvince 			= new \MVC\Mapper\Province();
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																								
-			$District = $mDistrict->find($IdDistrict);
+			$Province 			= $mProvince->find($IdProvince);
 									
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setProperty("District", $District);			
+			$request->setProperty("Province", $Province);			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

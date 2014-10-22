@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class PagodaContact extends Command{
+	class Pagoda extends Command{
 		function doExecute( \MVC\Controller\Request $request ) {
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
