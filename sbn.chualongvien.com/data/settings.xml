@@ -26,8 +26,13 @@
 		<command name="App"><view>App</view></command>
 		<command name="AppProvince"><view>AppProvince</view></command>
 		<command name="AppDistrict"><view>AppDistrict</view></command>
+		
 		<command name="AppPagoda"><view>AppPagoda</view></command>
-																							
+		<command name="AppPagodaMonk"><view>AppPagodaMonk</view></command>
+		<command name="AppPagodaVideo"><view>AppPagodaVideo</view></command>
+		<command name="AppPagodaAlbum"><view>AppPagodaAlbum</view></command>
+		<command name="AppPagodaPost"><view>AppPagodaPost</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
