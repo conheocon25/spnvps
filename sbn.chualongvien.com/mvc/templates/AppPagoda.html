@@ -76,6 +76,30 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="control-label">Điện thoại</label>
+								<div class="controls">
+									<input id="Phone1" name="Phone1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Email</label>
+								<div class="controls">
+									<input id="Email1" name="Email1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Website</label>
+								<div class="controls">
+									<input id="Website1" name="Website1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Trụ trì</label>
+								<div class="controls">
+									<input id="Monk1" name="Monk1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="control-label">Kinh độ</label>
 								<div class="controls">
 									<input id="Latitude1" name="Latitude1" type="text" class="form-control input-small"/>
@@ -120,6 +144,30 @@
 								</div>
 							</div>
 							<div class="form-group">
+								<label class="control-label">Điện thoại</label>
+								<div class="controls">
+									<input id="Phone2" name="Phone2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Email</label>
+								<div class="controls">
+									<input id="Email2" name="Email2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Website</label>
+								<div class="controls">
+									<input id="Website2" name="Website2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Trụ trì</label>
+								<div class="controls">
+									<input id="Monk2" name="Monk2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
 								<label class="control-label">Kinh độ</label>
 								<div class="controls">
 									<input id="Latitude2" name="Latitude2" type="text" class="form-control input-small"/>
@@ -140,6 +188,7 @@
 				</div>
 			</div>
 		</div>
+		<div id="DistrictCurrent" tal:attributes="alt District/getId" />
 		<!-- END UPDATE DIALOG  -->
 		
 		<div metal:use-macro="mAdmin.xhtml/Footer"/>
@@ -193,10 +242,15 @@
 			$('#URLInsButton').click(function(){
 				var Data = [];
 				Data[0] = 'null';
-				Data[1] = $('#Name1').val();
-				Data[2] = $('#Address1').val();								
-				Data[3] = $('#Latitude1').val();
-				Data[4] = $('#Longitude1').val();
+				Data[1] = $('#DistrictCurrent').attr('alt');
+				Data[2] = $('#Name1').val();
+				Data[3] = $('#Address1').val();
+				Data[4] = $('#Phone1').val();
+				Data[5] = $('#Email1').val();
+				Data[6] = $('#Website1').val();
+				Data[7] = $('#Monk1').val();
+				Data[8] = $('#Latitude1').val();
+				Data[9] = $('#Longitude1').val();
 								
 				var URL = "/object/ins/Pagoda";
 				$.ajax({
@@ -221,6 +275,10 @@
 					$('#URLUpdButton').attr('alt', 	data.Id);
 					$('#Name2').attr('value', 		data.Name);
 					$('#Address2').attr('value', 	data.Address);
+					$('#Phone2').attr('value', 		data.Phone);
+					$('#Email2').attr('value', 		data.Email);
+					$('#Website2').attr('value', 	data.Website);
+					$('#Monk2').attr('value', 		data.Monk);
 					$('#Latitude2').attr('value', 	data.Latitude);
 					$('#Longitude2').attr('value', 	data.Longitude);
 				});
@@ -232,10 +290,15 @@
 			$('#URLUpdButton').click(function(){
 				var Data = [];
 				Data[0] = $('#URLUpdButton').attr('alt');
-				Data[1] = $('#Name2').val();
-				Data[2] = $('#Address2').val();								
-				Data[3] = $('#Latitude2').val();
-				Data[4] = $('#Longitude2').val();
+				Data[1] = $('#DistrictCurrent').attr('alt');
+				Data[2] = $('#Name2').val();
+				Data[3] = $('#Address2').val();								
+				Data[4] = $('#Phone2').val();
+				Data[5] = $('#Email2').val();
+				Data[6] = $('#Website2').val();
+				Data[7] = $('#Monk2').val();
+				Data[8] = $('#Latitude2').val();
+				Data[9] = $('#Longitude2').val();
 				
 				var URL = "/object/upd/Pagoda";
 				$.ajax({
