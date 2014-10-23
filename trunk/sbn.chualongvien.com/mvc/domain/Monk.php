@@ -67,7 +67,29 @@ class Monk extends Object{
 		
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
-	//-------------------------------------------------------------------------------	
+	//-------------------------------------------------------------------------------
+	function toJSON(){
+		$json = array(
+			'Id' 			=> $this->getId(),
+			'IdPagoda' 		=> $this->getIdPagoda(),
+			'Name'			=> $this->getName(),
+			'Alias'			=> $this->getAlias(),
+			'Birthday'		=> $this->getBirthday(),
+			'Note'			=> $this->getNote(),			
+			'Picture'		=> $this->getPicture()
+		);
+		return json_encode($json);
+	}
+	
+	function setArray( $Data ){
+        $this->Id 			= $Data[0];
+		$this->IdPagoda 	= $Data[1];
+		$this->Name 		= $Data[2];
+		$this->Alias 		= $Data[3];
+		$this->Birthday 	= $Data[4];
+		$this->Note 		= $Data[5];
+		$this->Picture 		= $Data[6];
+    }
 				
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

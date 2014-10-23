@@ -121,12 +121,17 @@ class Pagoda extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
 	function getURLSettingEvent(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/event";
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";
 	}
 	function getURLSettingMonk(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/monk";
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/monk";
 	}
-	
+	function getURLSettingVideo(){
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/video";
+	}
+	function getURLSettingAlbum(){
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/album";
+	}
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

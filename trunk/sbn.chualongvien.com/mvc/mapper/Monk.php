@@ -11,8 +11,8 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 		$selectAllStmt = sprintf("SELECT * FROM %s M ORDER BY name", $tblMonk);
 			
 		$selectStmt = sprintf("select * from %s where id=?", $tblMonk);
-		$updateStmt = sprintf("update %s set pre_name=?, name=?, pagoda=?, phone=?, note=?, type=?, btype=?, url_pic=?, `key`=? where id=?", $tblMonk);
-		$insertStmt = sprintf("insert into %s (pre_name, name, pagoda, phone, note, type, btype, url_pic, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblMonk);
+		$updateStmt = sprintf("update %s set id_pagoda=?, name=?, alias=?, birthday=?, note=?, picture=? where id=?", $tblMonk);
+		$insertStmt = sprintf("insert into %s (id_pagoda, name, alias, birthday, note, picture) values(?, ?, ?, ?, ?, ?)", $tblMonk);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblMonk);		
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s ORDER BY name LIMIT :start,:max", $tblMonk);		
 		$findByPagodaStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=?", $tblMonk);
@@ -51,9 +51,7 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			$object->getAlias(),
 			$object->getBirthday(),
 			$object->getNote(),
-			$object->getPicture(),
-			$object->getViewed(),
-			$object->getRated()			
+			$object->getPicture()			
 		); 
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -67,9 +65,7 @@ class Monk extends Mapper implements \MVC\Domain\MonkFinder {
 			$object->getAlias(),
 			$object->getBirthday(),
 			$object->getNote(),
-			$object->getPicture(),
-			$object->getViewed(),
-			$object->getRated(),
+			$object->getPicture(),			
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
