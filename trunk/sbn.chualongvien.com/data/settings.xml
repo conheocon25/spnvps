@@ -33,6 +33,8 @@
 		<command name="AppPagodaAlbum"><view>AppPagodaAlbum</view></command>
 		<command name="AppPagodaPost"><view>AppPagodaPost</view></command>
 		
+		<command name="AppUser"><view>AppUser</view></command>
+		
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
