@@ -126,6 +126,9 @@ class Pagoda extends Object{
 	function getURLSettingMonk(){
 		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/monk";
 	}
+	function getURLSettingPost(){
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post";
+	}
 	function getURLSettingVideo(){
 		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/video";
 	}

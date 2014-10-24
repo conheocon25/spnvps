@@ -42,3 +42,5 @@ RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/event$ 	?cmd=AppPagodaEvent
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/video$ 	?cmd=AppPagodaVideo&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post$ 		?cmd=AppPagodaPost&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/album$ 	?cmd=AppPagodaAlbum&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
+
+RewriteRule ^app/user$ 											?cmd=AppUser [L]
