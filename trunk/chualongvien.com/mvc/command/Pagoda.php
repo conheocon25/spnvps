@@ -11,7 +11,7 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$Key = $request->getProperty('Key');
+			$PagodaKey = $request->getProperty('PagodaKey');
 						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -32,8 +32,10 @@
 			$CategoryDocumentAll= $mCategoryDocument->findAll();
 			
 			$ProvinceAll 	= $mProvince->findAll();
-			//echo $ProvinceAll->count();
-			$Pagoda 		= $mPagoda->findByKey($Key);
+			if (!isset($PagodaKey)){
+				$PagodaKey = "chua-long-vien-25";
+			}
+			$Pagoda 		= $mPagoda->findByKey($PagodaKey);
 						
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

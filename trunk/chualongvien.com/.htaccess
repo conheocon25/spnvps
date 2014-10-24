@@ -118,6 +118,7 @@ RewriteRule ^danh-ba/huyen/([0-9]+)$ 										?cmd=PagodaDistrictLoad&IdDistric
 RewriteRule ^danh-ba/chua/([0-9]+)$ 										?cmd=PagodaInfoLoad&IdPagoda=$1 [L]
 
 RewriteRule ^danh-ba$ 														?cmd=Pagoda [L]
+RewriteRule ^danh-ba/([a-z0-9_-]+)$ 										?cmd=Pagoda&PagodaKey=$1 [L]
 
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
