@@ -5,7 +5,7 @@
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>	
 		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyAL3E55skCbhZdaN7Jm3Tip7Np1X04f76w" type="text/javascript"></script>				
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps.jquery.js"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps1.jquery.js"/>
 		<script type="text/javascript">
 			$(function() {			
 				$("#map").googleMap().load();				
@@ -19,7 +19,83 @@
 			<div class="row reset-margin main">
 				<div metal:use-macro="base.xhtml/CallendarBar"/>
 				<div class="span8 fix-width" id="PagodaInfo">
-					<div id="map" class="img-polaroid" style="width:588px; height:470px;"/>
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-paper reset-margin">
+							<h4 class="reset-margin">Thông tin</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<div class="padding-content name-card">
+								<center>
+									<h2 tal:content="Pagoda/getName"/>
+									<p tal:content="Pagoda/getAddress"/>
+									<hr/>
+								</center>
+								<p><i class="icon-user"/> Đại diện: <span tal:content="Pagoda/getMonk"/></p>
+								<p><i class="icon-phone"/> Điện thoại: <span tal:content="Pagoda/getPhone"/></p>
+								<p><i class="icon-envelope"/> Email: <span tal:content="Pagoda/getEmail"/></p>
+								<p><i class="icon-link"/> Website: <a tal:attributes="href Pagoda/getWebsite" tal:content="Pagoda/getWebsite" target="blank"/></p>
+								
+								<input id="Name" type="hidden" tal:attributes="value Pagoda/getName"/>
+								<input id="X" type="hidden" tal:attributes="value Pagoda/getLatitude"/>
+								<input id="Y" type="hidden" tal:attributes="value Pagoda/getLongitude"/>
+								<input id="Logo" type="hidden" tal:attributes="value '/data/images/bg/gate.png'"/>
+										
+							</div>							
+						</div>
+					</div>
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-paper reset-margin">
+							<h4 class="reset-margin">Nhân sự</h4>
+						</div>
+						<div class="b-content padding-content news-content">											
+							<table border="1px">
+								<tr tal:repeat="Monk Pagoda/getMonkAll">
+									<td tal:content="Monk/getName" />
+									<td tal:content="Monk/getAlias" />
+								</tr>
+							</table>
+						</div>
+					</div>
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-location reset-margin">
+							<h4 class="reset-margin">Bản đồ</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<div id="map" class="ABC img-polaroid" style="width:588px; height:470px;"/>
+						</div>
+					</div>
+					<div class="box radius">
+						<div class="page-header pg-header pg-header-paper reset-margin">
+							<h4 class="reset-margin">Phản hồi</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<p>Nếu thông tin về <B tal:content="Pagoda/getName"/> chưa chính xác hoặc thiếu xót. Quí vị có thể liên lạc trực tiếp với chúng tôi
+							bằng cách điền form thông tin mẫu ở bên dưới đây. Các thông tin sẽ được BBT Website xác định tính chính xác và cập nhật kịp thời thông tin mà quí vị phản hồi.</p>
+							<div id="contact-form">
+								<div class="col-md-6 col-sm-12 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span class="input-icon input-icon-user"></span><span class="input-text">Tên&#42;</span></span>
+										<input type="text" name="contact-name" id="contact-name" required="" class="form-control input-lg"/>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="input-icon input-icon-email"></span><span class="input-text">Email&#42;</span></span>
+										<input type="email" name="contact-email" id="contact-email" required="" class="form-control input-lg"/>
+									</div>
+									<div class="input-group">
+										<span class="input-group-addon"><span class="input-icon input-icon-subject"></span><span class="input-text">Chủ đề&#42;</span></span>
+										<input type="text" name="contact-subject" id="contact-subject" required="" class="form-control input-lg"/>
+									</div>
+								</div>
+								<div class="col-md-6 col-sm-12 col-xs-12">
+									<div class="input-group textarea-container">
+										<span class="input-group-addon"><span class="input-icon input-icon-message"></span><span class="input-text">Nội dung</span></span>
+										<textarea name="contact-message" id="contact-message" class="form-control" cols="30" rows="6"></textarea>
+									</div>
+									<input id="BtnSend" type="submit" value="Gửi" class="btn btn-custom-2 md-margin"/>
+								</div>
+							</div>
+						</div>
+					</div>
 				</div>
 				<div class="span4 fix-width">
 					<div id="ProvinceDomain" class="controls">
