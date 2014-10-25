@@ -28,6 +28,7 @@
 		<command name="AppDistrict"><view>AppDistrict</view></command>
 		
 		<command name="AppPagoda"><view>AppPagoda</view></command>
+		<command name="AppPagodaDetail"><view>AppPagodaDetail</view></command>
 		<command name="AppPagodaMonk"><view>AppPagodaMonk</view></command>
 		<command name="AppPagodaVideo"><view>AppPagodaVideo</view></command>
 		<command name="AppPagodaAlbum"><view>AppPagodaAlbum</view></command>

@@ -17,15 +17,20 @@
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
 			$mProvince = new \MVC\Mapper\Province();
-			
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
+			if (isset($IdProvince)){
+				$Province = $mProvince->find($IdProvince);
+				$IsProvince = true;
+			}
+			
 			$Province 	= $mProvince->find($IdProvince);
 			$Title 		= mb_strtoupper($Province->getName(), 'UTF8');
 			
 			$Navigation = array(
-				array("TỈNH THÀNH", "/app/province")
+				array("TỈNH THÀNH", "/app/province", false)
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

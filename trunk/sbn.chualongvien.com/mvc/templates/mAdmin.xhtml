@@ -85,16 +85,7 @@
             </ul>
         </div>
 	</div>
-
-	<!-- ======================================================================== -->
-	<!-- LOCATION BAR															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="LocationBar" id="breadcrumb">
-		<a class="tip-bottom" title="" href="/app" data-original-title="Về trang chủ"><i class="glyphicons-shop"></i> HỆ THỐNG</a>
-		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]" tal:content="php:Item[0]" data-original-title="Về trang này" class="tip-bottom"/>
-		<a tal:content="Title" class="current"/>
-	</div>
-	
+		
 	<!-- ======================================================================== -->
 	<!-- CONTENT HEADER															  -->
 	<!-- ======================================================================== -->	
@@ -143,13 +134,56 @@
 		</ul>
 	</div>
 	
+	<div metal:define-macro="SidebarPagoda" id="sidebar" >
+		<ul>			
+			<li>
+				<a href="#">
+					<i class="glyphicon glyphicon-th"></i> <span>THÔNG TIN</span>
+				</a>
+			</li>
+			<li>
+				<a tal:attributes="href Pagoda/getURLSettingMonk">
+					<i class="glyphicon glyphicon-th"></i> <span>NHÂN SỰ</span>
+				</a>
+			</li>
+			<li>
+				<a tal:attributes="href Pagoda/getURLSettingEvent">
+					<i class="glyphicon glyphicon-th"></i> <span>SỰ KIỆN</span>
+				</a>
+			</li>
+			<li>
+				<a tal:attributes="href Pagoda/getURLSettingVideo">
+					<i class="glyphicon glyphicon-th"></i> <span>VIDEO</span>
+				</a>
+			</li>
+			<li>
+				<a tal:attributes="href Pagoda/getURLSettingAlbum">
+					<i class="glyphicon glyphicon-th"></i> <span>ALBUM</span>
+				</a>
+			</li>
+			<li>
+				<a tal:attributes="href Pagoda/getURLSettingPost">
+					<i class="glyphicon glyphicon-th"></i> <span>BÀI VIẾT</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+	
 	<!-- ======================================================================== -->
 	<!-- BREADCRUMB																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Breadcrumb" id="breadcrumb">
-		<a href="/" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> QUẢN LÝ</a>
-		<a tal:repeat="Item Navigation" tal:attributes="href php:Item[1]; title php:'Về trang '.Item[0]" tal:content="php:Item[0]" class="tip-bottom"/>
-		<a class="current" tal:content="Title"/>
+		<a href="/app" title="Về trang chủ Website" class="tip-bottom"><i class="glyphicon glyphicon-home"></i> QUẢN LÝ</a>
+		<span tal:repeat="Item Navigation" class="tip-bottom">
+			<a 	tal:condition="php:Item[2]"
+				tal:attributes="href php:Item[1]" 
+				tal:content="php:Item[0]"
+				data-original-title="Về trang này"
+				class="tip-bottom"
+			/>
+			<span tal:condition="php:not Item[2]" tal:content="php:Item[0]"/>
+		</span>
+		<a class="current" tal:content="Title"/>								
 	</div>
 	
 	<!-- ======================================================================== -->

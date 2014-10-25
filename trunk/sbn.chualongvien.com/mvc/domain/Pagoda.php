@@ -124,6 +124,10 @@ class Pagoda extends Object{
 		return "/danh-ba/".$this->getKey();
 	}
 	
+	function getURLSetting(){
+		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId();
+	}
+	
 	function getURLSettingEvent(){
 		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";
 	}

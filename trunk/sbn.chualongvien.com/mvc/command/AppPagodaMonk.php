@@ -28,12 +28,14 @@
 			$Province 	= $mProvince->find($IdProvince);
 			$District 	= $mDistrict->find($IdDistrict);
 			$Pagoda 	= $mPagoda->find($IdPagoda);
-			$Title 		= "NHÂN SỰ " . mb_strtoupper($Pagoda->getName(), 'UTF8');
+			$Title 		= "NHÂN SỰ ";
 			
 			$Navigation = array(
-				array( "TỈNH THÀNH", "/app/province"),
-				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict()),
-				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda())
+				array( "TỈNH THÀNH", "/app/province", false),
+				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), false),
+				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), false),
+				array( mb_strtoupper($Pagoda->getName(), 'UTF8'), 	$Pagoda->getURLSetting(), true)
+				
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
