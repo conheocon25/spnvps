@@ -40,7 +40,12 @@ RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)$ 			?cmd=AppPagodaDetail&Id
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/monk$ 		?cmd=AppPagodaMonk&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/event$ 	?cmd=AppPagodaEvent&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/video$ 	?cmd=AppPagodaVideo&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
-RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post$ 		?cmd=AppPagodaPost&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/album$ 	?cmd=AppPagodaAlbum&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
+
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post$ 		?cmd=AppPagodaPost&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post/ins/load$ 	?cmd=AppPagodaPostInsLoad&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post/ins/exe$ 		?cmd=AppPagodaPostInsExe&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post/([0-9]+)/upd/load$ 	?cmd=AppPagodaPostUpdLoad&IdProvince=$1&IdDistrict=$2&IdPagoda=$3&IdPost=$4 [L]
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/post/([0-9]+)/upd/exe$ 	?cmd=AppPagodaPostUpdExe&IdProvince=$1&IdDistrict=$2&IdPagoda=$3&IdPost=$4 [L]
 
 RewriteRule ^app/user$ 											?cmd=AppUser [L]

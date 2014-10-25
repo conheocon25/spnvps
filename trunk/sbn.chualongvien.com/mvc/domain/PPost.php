@@ -108,12 +108,17 @@ class PPost extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLRead(){		return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
-	function getURLUpdLoad(){	return "/app/PPost/".$this->getIdPagoda()."/".$this->getId()."/upd/load";}
-	function getURLUpdExe(){	return "/app/PPost/".$this->getIdPagoda()."/".$this->getId()."/upd/exe";}
-	function getURLDelLoad(){	return "/app/PPost/".$this->getIdPagoda()."/".$this->getId()."/del/load";}	
-	function getURLDelExe(){	return "/app/PPost/".$this->getIdPagoda()."/".$this->getId()."/del/exe";}
-			
+	function getURLRead()	{	return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
+		
+	function getURLUpdLoad(){
+		$Pagoda = $this->getPagoda();		
+		return "/app/province/".$Pagoda->getDistrict()->getIdProvince()."/".$Pagoda->getIdDistrict()."/".$Pagoda->getId()."/post/".$this->getId()."/upd/load";
+	}
+	function getURLUpdExe(){
+		$Pagoda = $this->getPagoda();		
+		return "/app/province/".$Pagoda->getDistrict()->getIdProvince()."/".$Pagoda->getIdDistrict()."/".$Pagoda->getId()."/post/".$this->getId()."/upd/exe";
+	}
+				
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

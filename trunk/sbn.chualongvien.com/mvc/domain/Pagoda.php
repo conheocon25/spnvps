@@ -82,6 +82,12 @@ class Pagoda extends Object{
 		return $MonkAll;
 	}
 	
+	function getPostAll(){
+		$mPost 		= new \MVC\Mapper\PPost();
+		$PostAll 	= $mPost->findBy(array($this->getId()));
+		return $PostAll;
+	}
+	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
@@ -120,29 +126,17 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
-	function getURLView(){
-		return "/danh-ba/".$this->getKey();
-	}
+	function getURLView()			{return "/danh-ba/".$this->getKey();}
+	function getURLSetting()		{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId();}	
+	function getURLSettingEvent()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";}
+	function getURLSettingMonk()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/monk";}
+	function getURLSettingPost()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post";}
+	function getURLSettingVideo()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/video";}
+	function getURLSettingAlbum()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/album";}
 	
-	function getURLSetting(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId();
-	}
+	function getURLPostInsLoad()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post/ins/load";}
+	function getURLPostInsExe()		{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post/ins/exe";}
 	
-	function getURLSettingEvent(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";
-	}
-	function getURLSettingMonk(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/monk";
-	}
-	function getURLSettingPost(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post";
-	}
-	function getURLSettingVideo(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/video";
-	}
-	function getURLSettingAlbum(){
-		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/album";
-	}
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}

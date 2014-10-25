@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPagodaMonk extends Command{
+	class AppPagodaPost extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -28,7 +28,7 @@
 			$Province 	= $mProvince->find($IdProvince);
 			$District 	= $mDistrict->find($IdDistrict);
 			$Pagoda 	= $mPagoda->find($IdPagoda);
-			$Title 		= "NHÂN SỰ";
+			$Title 		= "BÀI VIẾT";
 			
 			$Navigation = array(
 				array( "TỈNH THÀNH", "/app/province", false),

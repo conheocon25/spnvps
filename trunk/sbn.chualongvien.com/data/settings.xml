@@ -32,10 +32,21 @@
 		<command name="AppPagodaMonk"><view>AppPagodaMonk</view></command>
 		<command name="AppPagodaVideo"><view>AppPagodaVideo</view></command>
 		<command name="AppPagodaAlbum"><view>AppPagodaAlbum</view></command>
+		
 		<command name="AppPagodaPost"><view>AppPagodaPost</view></command>
+		<command name="AppPagodaPostInsLoad"><view>AppPagodaPostInsLoad</view></command>
+		<command name="AppPagodaPostInsExe" type="public">
+			<view>AppPagodaPostInsExe</view>
+			<status value="CMD_OK"><forward>AppPagodaPost</forward></status>			
+		</command>
+		<command name="AppPagodaPostUpdLoad"><view>AppPagodaPostUpdLoad</view></command>
+		<command name="AppPagodaPostUpdExe" type="public">
+			<view>AppPagodaPostUpdExe</view>
+			<status value="CMD_OK"><forward>AppPagodaPost</forward></status>
+		</command>
 		
-		<command name="AppUser"><view>AppUser</view></command>
 		
+		<command name="AppUser"><view>AppUser</view></command>		
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
