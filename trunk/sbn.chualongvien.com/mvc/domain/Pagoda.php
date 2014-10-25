@@ -120,6 +120,10 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
+	function getURLView(){
+		return "/danh-ba/".$this->getKey();
+	}
+	
 	function getURLSettingEvent(){
 		return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";
 	}

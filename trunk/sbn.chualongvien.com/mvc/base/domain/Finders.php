@@ -11,6 +11,10 @@ interface Finder {
 }
 
 interface UserFinder  			extends Finder {}
+interface UserPagodaFinder  	extends Finder {}
+interface UserDistrictFinder  	extends Finder {}
+interface UserProvinceFinder  	extends Finder {}
+
 interface ConfigFinder 			extends Finder {}
 interface GuestFinder 			extends Finder {}
 interface PagodaFinder			extends Finder {}

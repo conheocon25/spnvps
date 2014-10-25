@@ -2,6 +2,9 @@
 namespace MVC\Domain;
 if ( ! isset( $EG_DISABLE_INCLUDES ) ) {		
 	require_once( "mvc/mapper/User.php" );			
+	require_once( "mvc/mapper/UserPagoda.php" );
+	require_once( "mvc/mapper/UserDistrict.php" );
+	require_once( "mvc/mapper/UserProvince.php" );
 	require_once( "mvc/mapper/Config.php");		
 	require_once( "mvc/mapper/Guest.php");					
 	require_once( "mvc/mapper/Pagoda.php");
