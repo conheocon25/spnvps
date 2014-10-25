@@ -48,7 +48,8 @@
 			$request->setObject("ProvinceAll", $ProvinceAll);
 			$request->setObject("ProvinceCurrent", 58);
 			$request->setProperty("Pagoda", $Pagoda);
-			
+			$request->setProperty("PagodaKey", $PagodaKey);
+
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

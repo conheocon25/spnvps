@@ -53,6 +53,7 @@ RewriteRule ^gate$ 																?cmd=Gate [L]
 RewriteRule ^gioi-thieu$ 														?cmd=Introduction [L]
 
 RewriteRule ^lien-he$ 															?cmd=Contact [L]
+RewriteRule ^lien-he/recaptcha/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ 				?cmd=FReCaptcha&CodeChallenge=$1&CodeResponse=$2	[L]
 
 RewriteRule ^thu-vien-phat-phap$											?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
 RewriteRule ^thu-vien-phat-phap/tim-kiem/exe$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
@@ -119,7 +120,7 @@ RewriteRule ^danh-ba/chua/([0-9]+)$ 										?cmd=PagodaInfoLoad&IdPagoda=$1 [L
 
 RewriteRule ^danh-ba$ 														?cmd=Pagoda [L]
 RewriteRule ^danh-ba/([a-z0-9_-]+)$ 										?cmd=Pagoda&PagodaKey=$1 [L]
-
+RewriteRule ^danh-ba/email$ 												?cmd=PagodaContactSend	[L]
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
