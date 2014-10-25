@@ -27,6 +27,7 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setProperty("Pagoda", $Pagoda);
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

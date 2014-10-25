@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">	
 	<body>
-		<div id="PagodaDomain">
-			<div tal:repeat="Pagoda District/getPagodaAll">
+		<ul class="nav nav-tabs nav-stacked reset-margin list-3">
+			<li class="PagodaName" tal:repeat="Pagoda District/getPagodaAll" tal:attributes="id Pagoda/getKey">
+			<!-- <li tal:repeat="Pagoda District/getPagodaAll" tal:attributes="class php:PagodaKey==Pagoda->getKey()?'active':''"> -->
 				<a tal:attributes="href Pagoda/getURLView"><span tal:content="Pagoda/getName"/></a>
-			</div>
-		</div>		
+			</li>
+		</ul>
+		
+		<script>
+			var active = "#" + $("#PagodaDomain").attr("class");
+			$(active).addClass("active");
+		</script>
 	</body>
 </html>

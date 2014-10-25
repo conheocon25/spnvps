@@ -26,7 +26,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setProperty("District", $District);			
+			$request->setProperty("District", $District);
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

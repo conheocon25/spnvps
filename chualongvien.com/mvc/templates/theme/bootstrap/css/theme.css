@@ -151,6 +151,7 @@
 		.pg-header-location { background: url("/data/images/bg/location.png") no-repeat top left #921517; }
 		.pg-header-question { background: url("/data/images/bg/question.png") no-repeat top left #921517; }
 		.pg-header-event { background: url("/data/images/bg/event.png") no-repeat top left #921517; }
+		.pg-header-person { background: url("/data/images/bg/person.png") no-repeat 5px 15px #921517; background-size: 8% 60%; }
 
 	.pg-header a {
 		color: white !important;
