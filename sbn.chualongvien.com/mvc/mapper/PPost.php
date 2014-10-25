@@ -41,14 +41,10 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
         $this->selectStmt = self::$PDO->prepare($selectStmt);
         $this->updateStmt = self::$PDO->prepare($updateStmt);
         $this->insertStmt = self::$PDO->prepare($insertStmt);
-		$this->deleteStmt = self::$PDO->prepare($deleteStmt);
-		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
+		$this->deleteStmt = self::$PDO->prepare($deleteStmt);		
 		$this->findByStmt = self::$PDO->prepare($findByStmt);
 		$this->findByKeyStmt = self::$PDO->prepare($findByKeyStmt);
-		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
-		$this->findByLimit1Stmt = self::$PDO->prepare($findByLimit1Stmt);
-		$this->findByLimit2Stmt = self::$PDO->prepare($findByLimit2Stmt);
-		
+				
 		$this->findByCategoryDateStmt = self::$PDO->prepare($findByCategoryDateStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		$this->findByCategoryPageStmt = self::$PDO->prepare($findByCategoryPageStmt);
@@ -78,7 +74,7 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getIdCategory(),
+			$object->getIdPagoda(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),
@@ -93,7 +89,7 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
-			$object->getIdCategory(),
+			$object->getIdPagoda(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),

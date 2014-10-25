@@ -11,6 +11,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/Monk.php");
 	require_once( "mvc/mapper/Province.php");
 	require_once( "mvc/mapper/District.php");
+	require_once( "mvc/mapper/PPost.php");
 }
 
 class HelperFactory {

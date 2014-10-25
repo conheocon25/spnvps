@@ -14,4 +14,6 @@ interface PagodaCollection 			extends \Iterator {function add( Object $object );
 interface MonkCollection 			extends \Iterator {function add( Object $object );}
 interface ProvinceCollection 		extends \Iterator {function add( Object $object );}
 interface DistrictCollection 		extends \Iterator {function add( Object $object );}
+
+interface PPostCollection 			extends \Iterator {function add( Object $object );}
 ?>
