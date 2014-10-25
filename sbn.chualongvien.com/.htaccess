@@ -36,7 +36,7 @@ RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 RewriteRule ^app/province$ 										?cmd=AppProvince [L]
 RewriteRule ^app/province/([0-9]+)$ 							?cmd=AppDistrict&IdProvince=$1 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)$ 					?cmd=AppPagoda&IdProvince=$1&IdDistrict=$2 [L]
-
+RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)$ 			?cmd=AppPagodaDetail&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/monk$ 		?cmd=AppPagodaMonk&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/event$ 	?cmd=AppPagodaEvent&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]
 RewriteRule ^app/province/([0-9]+)/([0-9]+)/([0-9]+)/video$ 	?cmd=AppPagodaVideo&IdProvince=$1&IdDistrict=$2&IdPagoda=$3 [L]

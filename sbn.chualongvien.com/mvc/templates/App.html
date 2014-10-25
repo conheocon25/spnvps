@@ -16,20 +16,20 @@
 			<div class="container-fluid">
 				<div class="row">
 					<div class="col-12">
-						<button tal:condition="Province" class="btn">
+						<button tal:condition="IsProvince" class="btn">
 							<a tal:attributes="href Province/getURLSettingDistrict">
 								<B tal:content="Province/getName" />
 							</a>
 						</button>
 						<br/>
-						<button tal:condition="District" class="btn">
+						<button tal:condition="IsDistrict" class="btn">
 							<a tal:attributes="href District/getURLSettingPagoda">
 								<B tal:content="District/getName" />
 							</a>
 						</button>
 						<br/>
-						<button tal:condition="Pagoda" class="btn">
-							<a tal:attributes="href Pagoda/getURLSettingEvent">
+						<button tal:condition="IsPagoda" class="btn">
+							<a tal:attributes="href Pagoda/getURLSetting">
 								<B tal:content="Pagoda/getName" />
 							</a>
 						</button>

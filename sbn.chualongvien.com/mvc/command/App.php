@@ -25,20 +25,33 @@
 						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
+			//-------------------------------------------------------------
+			$IsProvince = false;
+			$IsDistrict = false;
+			$IsPagoda 	= false;
+			$Pagoda 	= null;
+			$District 	= null;
+			$Province 	= null;
+			
 			$IdProvince = $mUserProvince->check($Session->getCurrentIdUser());
 			if (isset($IdProvince)){
 				$Province = $mProvince->find($IdProvince);
+				$IsProvince = true;
 			}
-			
+					
 			$IdDistrict = $mUserDistrict->check($Session->getCurrentIdUser());
-			if (isset($IdDistrict)){
+			//echo $IdDistrict;
+			
+			if (isset($IdDistrict)){				
 				$District = $mDistrict->find($IdDistrict);
+				$IsDistrict = true;
+				//print_r($District);
 			}
 			
 			$IdPagoda = $mUserPagoda->check($Session->getCurrentIdUser());
 			if (isset($IdPagoda)){
 				$Pagoda = $mPagoda->find($IdPagoda);
+				$IsPagoda = true;
 			}
 			
 			$Title = "";
@@ -50,7 +63,10 @@
 									
 			$request->setObject('Navigation', $Navigation);
 			$request->setProperty("Title", $Title);
-			$request->setProperty("ActiveAdmin", "");
+			
+			$request->setProperty("IsProvince"	, $IsProvince);
+			$request->setProperty("IsDistrict"	, $IsDistrict);
+			$request->setProperty("IsPagoda"	, $IsPagoda);
 			
 			$request->setObject("Province", $Province);
 			$request->setObject("District", $District);
