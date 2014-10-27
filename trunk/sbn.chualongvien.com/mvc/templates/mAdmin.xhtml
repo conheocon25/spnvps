@@ -138,9 +138,12 @@
 	<div metal:define-macro="SidebarPagoda" id="sidebar" >
 		<ul>			
 			<li>
-				<a href="#">
+				<a 	class="update-item" 
+					href="#DialogEdit" 
+					data-toggle="modal" 
+					tal:attributes="data-id Pagoda/getId">
 					<i class="glyphicon glyphicon-th"></i> <span>THÔNG TIN</span>
-				</a>
+				</a>	
 			</li>
 			<li>
 				<a tal:attributes="href Pagoda/getURLSettingMonk">

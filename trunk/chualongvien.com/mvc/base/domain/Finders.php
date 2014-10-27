@@ -32,5 +32,5 @@ interface DistrictFinder		extends Finder {}
 interface PagodaFinder			extends Finder {}
 interface EventFinder			extends Finder {}
 interface MonkFinder			extends Finder {}
-
+interface PPostFinder			extends Finder {}
 ?>

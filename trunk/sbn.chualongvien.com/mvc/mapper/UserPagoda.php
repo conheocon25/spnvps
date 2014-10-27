@@ -5,7 +5,7 @@ class UserPagoda extends Mapper implements \MVC\Domain\UserPagodaFinder {
 
     function __construct() {
         parent::__construct();
-		$tblUserPagoda = "buddhismtv_user_Pagoda";
+		$tblUserPagoda = "buddhismtv_user_pagoda";
 		
 		$selectAllStmt = sprintf("select * from %s", $tblUserPagoda);
 		$selectStmt = sprintf("select * from %s where id=?", $tblUserPagoda);

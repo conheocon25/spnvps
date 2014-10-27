@@ -5,7 +5,7 @@ class UserDistrict extends Mapper implements \MVC\Domain\UserDistrictFinder {
 
     function __construct() {
         parent::__construct();
-		$tblUserDistrict = "buddhismtv_user_District";
+		$tblUserDistrict = "buddhismtv_user_district";
 		
 		$selectAllStmt = sprintf("select * from %s", $tblUserDistrict);
 		$selectStmt = sprintf("select * from %s where id=?", $tblUserDistrict);

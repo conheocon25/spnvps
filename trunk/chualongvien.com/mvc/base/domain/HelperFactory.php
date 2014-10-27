@@ -24,6 +24,7 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/Pagoda.php");	
 	require_once( "mvc/mapper/Event.php");	
 	require_once( "mvc/mapper/Monk.php");	
+	require_once( "mvc/mapper/PPost.php");
 }
 
 class HelperFactory {
