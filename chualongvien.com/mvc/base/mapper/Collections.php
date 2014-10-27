@@ -29,5 +29,6 @@ class DistrictCollection 		extends Collection implements \MVC\Domain\DistrictCol
 class PagodaCollection 			extends Collection implements \MVC\Domain\PagodaCollection			{function targetClass(){return "\MVC\Domain\Pagoda";}}
 class EventCollection 			extends Collection implements \MVC\Domain\EventCollection			{function targetClass(){return "\MVC\Domain\Event";}}
 class MonkCollection 			extends Collection implements \MVC\Domain\MonkCollection			{function targetClass(){return "\MVC\Domain\Monk";}}
+class PPostCollection 			extends Collection implements \MVC\Domain\PPostCollection			{function targetClass(){return "\MVC\Domain\PPost";}}
 
 ?>

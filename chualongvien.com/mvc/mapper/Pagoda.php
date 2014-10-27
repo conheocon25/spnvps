@@ -11,8 +11,8 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		
 		$selectAllStmt 		= sprintf("select * from %s ORDER BY id", $tblPagoda);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblPagoda);
-		$updateStmt 		= sprintf("update %s set name=?, address=?, latitude=?, longitude=? where id=?", $tblPagoda);
-		$insertStmt 		= sprintf("insert into %s ( name, address, latitude, longitude) values(?, ?, ?, ?)", $tblPagoda);
+		$updateStmt 		= sprintf("update %s set id_district=?, name=?, address=?, phone=?, email=?, website=?, monk=?, latitude=?, longitude=?, `key`=? where id=?", $tblPagoda);
+		$insertStmt 		= sprintf("insert into %s ( id_district, name, address, phone, email, website, monk, latitude, longitude, `key`) values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblPagoda);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
 		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblPagoda);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);		

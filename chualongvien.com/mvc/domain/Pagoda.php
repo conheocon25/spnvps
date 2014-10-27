@@ -38,6 +38,11 @@ class Pagoda extends Object{
 		
     function setIdDistrict( $IdDistrict ) {$this->IdDistrict = $IdDistrict;$this->markDirty();}   
 	function getIdDistrict( ) {return $this->IdDistrict;}
+	function getDistrict( ) {
+		$mDistrict = new \MVC\Mapper\District();
+		$District = $mDistrict->find($this->getIdDistrict());
+		return $District;
+	}
 	
 	function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
@@ -75,6 +80,12 @@ class Pagoda extends Object{
 		$mMonk 		= new \MVC\Mapper\Monk();
 		$MonkAll 	= $mMonk->findByPagoda(array($this->getId()));
 		return $MonkAll;
+	}
+	
+	function getPostAll(){
+		$mPost 		= new \MVC\Mapper\PPost();
+		$PostAll 	= $mPost->findBy(array($this->getId()));
+		return $PostAll;
 	}
 	
 	function toJSON(){
@@ -115,9 +126,17 @@ class Pagoda extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------			
-	function getURLView(){
-		return "/danh-ba/".$this->getKey();
-	}
+	function getURLView()			{return "/danh-ba/".$this->getKey();}
+	function getURLSetting()		{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId();}	
+	function getURLSettingEvent()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/event";}
+	function getURLSettingMonk()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/monk";}
+	function getURLSettingPost()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post";}
+	function getURLSettingVideo()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/video";}
+	function getURLSettingAlbum()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/album";}
+	
+	function getURLPostInsLoad()	{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post/ins/load";}
+	function getURLPostInsExe()		{return "/app/province/".$this->getDistrict()->getIdProvince()."/".$this->getIdDistrict()."/".$this->getId()."/post/ins/exe";}
+	
 	//--------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}
