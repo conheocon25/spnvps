@@ -121,6 +121,7 @@ RewriteRule ^danh-ba/chua/([0-9]+)$ 										?cmd=PagodaInfoLoad&IdPagoda=$1 [L
 RewriteRule ^danh-ba$ 														?cmd=Pagoda [L]
 RewriteRule ^danh-ba/([a-z0-9_-]+)$ 										?cmd=Pagoda&PagodaKey=$1 [L]
 RewriteRule ^danh-ba/email$ 												?cmd=PagodaContactSend	[L]
+RewriteRule ^danh-ba/recaptcha/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ 			?cmd=PagodaReCaptcha&CodeChallenge=$1&CodeResponse=$2	[L]
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------

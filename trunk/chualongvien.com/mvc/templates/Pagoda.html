@@ -2,18 +2,10 @@
 <html lang="en">
 	<head>
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
-		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>	
-		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyAL3E55skCbhZdaN7Jm3Tip7Np1X04f76w" type="text/javascript"></script>				
-		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps1.jquery.js"/>
-		<script type="text/javascript">
-			$(function() {			
-				$("#map").googleMap().load();				
-			});
-		</script>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>		
 	</head>
 
-	<body onunload="GUnload()">
+	<body onload="showRecaptcha('myrecaptcha');" onunload="GUnload()">
 		<div class="container">
 			<div metal:use-macro="base.xhtml/Header"/>
 			<div class="row reset-margin main">
@@ -88,7 +80,7 @@
 						<div class="b-content padding-content news-content">
 							<p>Nếu thông tin về <B tal:content="Pagoda/getName"/> chưa chính xác hoặc thiếu xót. Quí vị có thể liên lạc trực tiếp với chúng tôi
 							bằng cách điền form thông tin mẫu ở bên dưới đây. Các thông tin sẽ được BBT Website xác định tính chính xác và cập nhật kịp thời thông tin mà quí vị phản hồi.</p>
-							<form class="form-horizontal" action="" method="POST">
+							<div class="form-horizontal">
 								<div class="control-group">
 									<label class="control-label">Tên&#42;</label>
 									<div class="controls">
@@ -113,10 +105,13 @@
 										<textarea name="contact-message" id="contact-message" class="form-control input-xlarge" cols="30" rows="6"></textarea>
 									</div>
 								</div>
+								<div class="control-group">
+									<div id="myrecaptcha" class="controls"/>	
+								</div>
 								<center>
 									<input id="BtnSend" type="submit" value="Gửi" class="btn btn-custom-2 md-margin"/>
 								</center>
-							</form>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -140,17 +135,85 @@
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>						
-			<div metal:use-macro="base.xhtml/FixedFunction"/>			
-			<div metal:use-macro="base.xhtml/Backontop"/>
-			<script>									
-				//NẠP DANH SÁCH CÁC HUYỆN TƯƠNG ỨNG TỈNH
-				$('#ProvinceList').on('change', function (e) {
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>			
+		</div>
+		
+		<span metal:use-macro="base.xhtml/IncludeJS"/>	
+		<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;sensor=true&amp;key=AIzaSyAL3E55skCbhZdaN7Jm3Tip7Np1X04f76w" type="text/javascript"></script>				
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/user/gps1.jquery.js"/>
+		<script type="text/javascript" src="/mvc/templates/script/user/recaptcha_ajax.js"/>
+		<script type="text/javascript">	
+			function showRecaptcha(element) {
+			   Recaptcha.create("6LekkfwSAAAAAOkn1ysJlMJY3dkIGR5jAUfXfVrl", element, {
+				 theme: "white",
+				 tabindex: 1,
+				 callback: Recaptcha.focus_response_field});
+			 }		
+		</script>
+		
+		<script type="text/javascript">
+			$(function() {			
+				$("#map").googleMap().load();				
+			});
+			
+			$('#ProvinceList').on('change', function (e) {
 					var IdProvince = $(this).val();				
 					$("#DistrictDomain").load("/danh-ba/tinh/"+IdProvince);
-				});
-				$('#ProvinceList').change();				
+			});
 			
-			</script>
-		</div>
+			$('#ProvinceList').change();
+				
+			$('#BtnSend').click(function(e){
+			
+				var URL = "/danh-ba/recaptcha/" +  Recaptcha.get_challenge() + "/" + Recaptcha.get_response();				
+				alert (URL);
+					$.ajax({
+							type: "POST",							
+							url: URL,
+							dataType: "json",
+							success: function(msg){								
+								var txtCaptcha = msg.result.trim();
+								if (txtCaptcha === 'OK') {
+								
+									var Data = [];
+									Data[0] = $("#contact-name").val();
+									Data[1] = $("#contact-email").val();
+									Data[2] = $("#contact-subject").val();				
+									Data[3] = $("#contact-message").val();					
+											
+									var URL1 = "/danh-ba/email";									
+									$.ajax({
+										type: "POST",
+										data: {Data:Data},
+										url: URL1,
+										success: function(msg1){	
+											var txtResult = msg1.result;											
+											if (txtResult = 'OK') { 
+												$("#contact-name").val('');
+												$("#contact-email").val('');
+												$("#contact-subject").val('');
+												$("#contact-message").val('');	
+												Recaptcha.reload();
+												alert ("Gui thanh cong!");
+											}else {
+												alert ("Gui that bai !Ban hay gui lai!");
+											}
+										}
+									});	
+									$("#contact-name").val('');
+												$("#contact-email").val('');
+												$("#contact-subject").val('');
+												$("#contact-message").val('');
+								}
+								if (txtCaptcha === 'FALSE') {
+									alert ("Captcha that bai !Ban hay gui lai!");
+									Recaptcha.reload();
+								}
+							}
+						});
+			});	
+			
+		</script>		
 	</body>
 </html>
