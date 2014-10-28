@@ -29,6 +29,7 @@
 		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
 		
 		<command name="SendMailShare" type="public"><view>SendMailShare</view></command>
+		
 		<command name="NewCategoryInsAuto" type="public"><view>NewCategoryInsAuto</view></command>
 		<command name="NewCategoryDelAuto" type="public"><view>NewCategoryDelAuto</view></command>
 		
@@ -72,5 +73,7 @@
 		<command name="PagodaDistrictLoad" type="public"><view>PagodaDistrictLoad</view></command>
 		<command name="PagodaInfoLoad" type="public"><view>PagodaInfoLoad</view></command>
 		
+		<command name="PagodaContactSend" type="public"><view>PagodaContactSend</view></command>
+		<command name="PagodaReCaptcha" type="public"><view>PagodaReCaptcha</view></command>
 	</control>
 </options>
