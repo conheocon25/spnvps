@@ -18,5 +18,7 @@ class ProvinceCollection 		extends Collection implements \MVC\Domain\ProvinceCol
 class DistrictCollection 		extends Collection implements \MVC\Domain\DistrictCollection		{function targetClass(){return "\MVC\Domain\District";}}
 
 class PPostCollection 			extends Collection implements \MVC\Domain\PPostCollection			{function targetClass(){return "\MVC\Domain\PPost";}}
+class PAlbumCollection 			extends Collection implements \MVC\Domain\PAlbumCollection			{function targetClass(){return "\MVC\Domain\PAlbum";}}
+class PVideoCollection 			extends Collection implements \MVC\Domain\PVideoCollection			{function targetClass(){return "\MVC\Domain\PVideo";}}
 
 ?>

@@ -25,9 +25,10 @@
 										<tr>
 											<th>STT</th>										
 											<th><div class="text-left">TÊN</div></th>											
-											<th><div class="text-left">NHÂN SỰ</div></th>
-											<th><div class="text-left">SỰ KIỆN</div></th>
+											<th><div class="text-left">NHÂN SỰ</div></th>											
 											<th><div class="text-left">TIN TỨC</div></th>
+											<th><div class="text-left">VIDEO</div></th>
+											<th><div class="text-left">HÌNH ẢNH</div></th>
 											<th width="32" />
 										</tr>
 									</thead>
@@ -41,11 +42,20 @@
 												<a tal:attributes="href Pagoda/getURLSettingMonk">
 													Xem (<span tal:content="Pagoda/getMonkAll/count"/>)
 												</a>
-											</td>
-											<td><a tal:attributes="href Pagoda/getURLSettingEvent">Xem</a></td>
+											</td>											
 											<td>
 												<a tal:attributes="href Pagoda/getURLSettingPost">
 													Xem (<span tal:content="Pagoda/getPostAll/count"/>)
+												</a>
+											</td>
+											<td>
+												<a tal:attributes="href Pagoda/getURLSettingVideo">
+													Xem (<span tal:content="Pagoda/getVideoAll/count"/>)
+												</a>
+											</td>
+											<td>
+												<a tal:attributes="href Pagoda/getURLSettingAlbum">
+													Xem (<span tal:content="Pagoda/getAlbumAll/count"/>)
 												</a>
 											</td>
 											<td class="center">

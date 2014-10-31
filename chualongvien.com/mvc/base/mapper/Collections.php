@@ -30,5 +30,7 @@ class PagodaCollection 			extends Collection implements \MVC\Domain\PagodaCollec
 class EventCollection 			extends Collection implements \MVC\Domain\EventCollection			{function targetClass(){return "\MVC\Domain\Event";}}
 class MonkCollection 			extends Collection implements \MVC\Domain\MonkCollection			{function targetClass(){return "\MVC\Domain\Monk";}}
 class PPostCollection 			extends Collection implements \MVC\Domain\PPostCollection			{function targetClass(){return "\MVC\Domain\PPost";}}
+class PAlbumCollection 			extends Collection implements \MVC\Domain\PAlbumCollection			{function targetClass(){return "\MVC\Domain\PAlbum";}}
+class PVideoCollection 			extends Collection implements \MVC\Domain\PVideoCollection			{function targetClass(){return "\MVC\Domain\PVideo";}}
 
 ?>

@@ -23,5 +23,7 @@ interface ProvinceFinder		extends Finder {}
 interface DistrictFinder		extends Finder {}
 
 interface PPostFinder			extends Finder {}
+interface PAlbumFinder			extends Finder {}
+interface PVideoFinder			extends Finder {}
 
 ?>

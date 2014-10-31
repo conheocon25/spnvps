@@ -124,64 +124,68 @@
 							</div>
 						</div>
 					</div>
-					<div class="accordion accordion-fix" id="accordion5">
+					<!-- TIN TỨC MẠNG CÁC CHỦA !-->
+					<div class="accordion accordion-fix" id="PagodaLocal">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
-								<div class="b-t-icon-content">Video Lịch sử Phật giáo</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
+								<div tal:content="string:TIN TỨC CHÙA ĐỊA PHƯƠNG" class="b-t-icon-content"/>
+								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" />
 							</div>
-							<div id="collapse5" class="accordion-body collapse in b-content">
-								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VL TopHistoryVideoAll" class="span2">
-										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLRead">
-												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
-												<p tal:content="VL/getVideo/getName"/>
-											</a>
+							<div class="accordion-body collapse in b-content">
+								<div class="row reset-margin">
+									<div class="span4 reset-margin">
+										<div class="carousel slide carousel-fade img-polaroid news-slide">
+											<div class="carousel-inner">
+												<div class="active item">													
+													<a tal:attributes="href PPostAll/current/getURLRead">
+														<img tal:attributes="src PPostAll/current/getImage"/>
+														<div class="carousel-caption">
+															<p tal:content="PPostAll/current/getTitleReduce" />
+														</div>
+													</a>
+												</div>
+												<div tal:repeat="Post PPostAll" class="item">
+													<a tal:attributes="href Post/getURLRead">
+														<img tal:attributes="src Post/getImage"/>
+														<div class="carousel-caption">
+															<p tal:content="Post/getTitleReduce" />
+														</div>
+													</a>
+												</div>
+											</div>
 										</div>
-									</li>
-								</ul>
-							</div>
-							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VB TopHistoryBookAll" class="span2">
-									<div class="thumbnail">
-										<a tal:attributes="href VB/getURLRead">
-											<img tal:attributes="src VB/getImage" />
-											<p tal:content="VB/getName"/>
-										</a>
 									</div>
-								</li>
-							</ul>
+									<div class="span4 reset-margin pull-right news-list">
+										<ul class="nav nav-tabs nav-stacked">
+											<li class="active news-list-title"><a>MỚI CẬP NHẬT</a></li>
+											<li class="news-list-item" tal:repeat="Post PPostAll">
+												<a tal:attributes="href Post/getURLRead" tal:content="Post/getTitleReduce"/>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
 						</div>
 					</div>
+					
 					<div class="accordion accordion-fix" id="accordion5">
 						<div class="accordion-group box radius">
 							<div class="accordion-heading b-title clearfix">
-								<div class="b-t-icon-content">Chuyên đề mới nhất</div>
+								<div class="b-t-icon-content">Video Chùa Địa Phương</div>
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
 							</div>
 							<div id="collapse5" class="accordion-body collapse in b-content">
 								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VL TopCategoryVideoAll" class="span2">
+									<li tal:repeat="Video PVideoAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLRead">
-												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
-												<p tal:content="VL/getVideo/getName"/>
+											<a tal:attributes="href Video/getURLView">
+												<img tal:condition="Video/getURL" tal:attributes="src Video/getURLImage"/>
+												<p tal:content="Video/getName"/>
 											</a>
 										</div>
 									</li>
 								</ul>
-								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VB TopCategoryBookAll" class="span2">
-										<div class="thumbnail">
-											<a tal:attributes="href VB/getURLRead">
-												<img tal:attributes="src VB/getImage" />
-												<p tal:content="VB/getName"/>
-											</a>
-										</div>
-									</li>
-								</ul>
-							</div>
+							</div>							
 						</div>
 					</div>
 				</div>

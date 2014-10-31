@@ -33,9 +33,10 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
 			WHERE id_pagoda=:id_pagoda
 			ORDER BY date desc			
 			LIMIT :start,:max"
-		, $tblPPost);
-		
+		, $tblPPost);		
 		$findByPageStmt = sprintf("SELECT * FROM  %s ORDER BY date desc LIMIT :start,:max" , $tblPPost);
+		
+		$findByTop6Stmt = sprintf("SELECT * FROM  %s ORDER BY date desc LIMIT 6" , $tblPPost);
 		
         $this->selectAllStmt = self::$PDO->prepare($selectAllStmt);
         $this->selectStmt = self::$PDO->prepare($selectStmt);
@@ -48,6 +49,7 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
 		$this->findByCategoryDateStmt = self::$PDO->prepare($findByCategoryDateStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
 		$this->findByCategoryPageStmt = self::$PDO->prepare($findByCategoryPageStmt);
+		$this->findByTop6Stmt = self::$PDO->prepare($findByTop6Stmt);
 
     } 
     function getCollection( array $raw ) {
@@ -143,5 +145,11 @@ class PPost extends Mapper implements \MVC\Domain\PPostFinder {
         $object = $this->doCreateObject( $array );
         return $object;		
     }
+	
+	function findByTop6( $values ){
+        $this->findByTop6Stmt->execute( $values );
+        return new PPostCollection( $this->findByTop6Stmt->fetchAll(), $this);
+    }
+	
 }
 ?>

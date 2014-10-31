@@ -47,6 +47,8 @@
 			);
 			$PPost->reKey();
 			$mPPost->insert($PPost);
+			$PPost->reKey();
+			$mPPost->update($PPost);
 			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI

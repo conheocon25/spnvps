@@ -21,6 +21,8 @@
 			$mProvince 	= new \MVC\Mapper\Province();
 			$mDistrict 	= new \MVC\Mapper\District();
 			$mPagoda 	= new \MVC\Mapper\Pagoda();
+			$mUserProvince		= new \MVC\Mapper\UserProvince();
+			$mUserDistrict 		= new \MVC\Mapper\UserDistrict();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -30,10 +32,18 @@
 			$Pagoda 	= $mPagoda->find($IdPagoda);
 			$Title 		= "BÀI VIẾT";
 			
+			$IsProvince = false;
+			$IdUP 		= $mUserProvince->check($Session->getCurrentIdUser());
+			if (isset($IdUP)){$IsProvince = true;}
+			
+			$IsDistrict = false;
+			$IdUD 		= $mUserDistrict->check($Session->getCurrentIdUser());									
+			if (isset($IdUD)){$IsDistrict = true;}
+			
 			$Navigation = array(
 				array( "TỈNH THÀNH", "/app/province", false),
-				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), false),
-				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), false),
+				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), $IsProvince),
+				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), $IsDistrict),
 				array( mb_strtoupper($Pagoda->getName(), 'UTF8'), 	$Pagoda->getURLSetting(), true)
 				
 			);

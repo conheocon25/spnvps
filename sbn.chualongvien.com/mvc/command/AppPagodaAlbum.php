@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPagoda extends Command{
+	class AppPagodaAlbum extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,35 +11,46 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			$IdProvince = $request->getProperty('IdProvince');
 			$IdDistrict = $request->getProperty('IdDistrict');
+			$IdPagoda 	= $request->getProperty('IdPagoda');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mDistrict 		= new \MVC\Mapper\District();
-			$mUserProvince 	= new \MVC\Mapper\UserProvince();
+			$mProvince 	= new \MVC\Mapper\Province();
+			$mDistrict 	= new \MVC\Mapper\District();
+			$mPagoda 	= new \MVC\Mapper\Pagoda();
+			$mUserProvince		= new \MVC\Mapper\UserProvince();
+			$mUserDistrict 		= new \MVC\Mapper\UserDistrict();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
+			$Province 	= $mProvince->find($IdProvince);
 			$District 	= $mDistrict->find($IdDistrict);
-			$Title 		= mb_strtoupper($District->getName(), 'UTF8');
+			$Pagoda 	= $mPagoda->find($IdPagoda);
+			$Title 		= "HÌNH ẢNH";
 			
 			$IsProvince = false;
-			$IdProvince = $mUserProvince->check($Session->getCurrentIdUser());
-						
-			if (isset($IdProvince)){
-				$IsProvince = true;
-			}
-									
+			$IdUP 		= $mUserProvince->check($Session->getCurrentIdUser());
+			if (isset($IdUP)){$IsProvince = true;}
+			
+			$IsDistrict = false;
+			$IdUD 		= $mUserDistrict->check($Session->getCurrentIdUser());									
+			if (isset($IdUD)){$IsDistrict = true;}
+			
 			$Navigation = array(
 				array( "TỈNH THÀNH", "/app/province", false),
-				array( mb_strtoupper($District->getProvince()->getName(), 'UTF8'), $District->getProvince()->getURLSettingDistrict(), $IsProvince)
+				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), $IsProvince),
+				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), $IsDistrict),
+				array( mb_strtoupper($Pagoda->getName(), 'UTF8'), 	$Pagoda->getURLSetting(), true)
+				
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("District"	, $District);
+			$request->setObject("Pagoda"	, $Pagoda);
 												
 			$request->setObject('Navigation', $Navigation);						
 			$request->setProperty("Title", $Title);
