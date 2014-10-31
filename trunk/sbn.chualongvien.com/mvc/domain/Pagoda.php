@@ -34,7 +34,8 @@ class Pagoda extends Object{
 		
 		parent::__construct( $Id );
 	}
-    function getId() {return $this->Id;}	
+    function setId($Id) { $this->Id = $Id;}	
+	function getId() 	{return $this->Id;}	
 		
     function setIdDistrict( $IdDistrict ) {$this->IdDistrict = $IdDistrict;$this->markDirty();}   
 	function getIdDistrict( ) {return $this->IdDistrict;}
@@ -71,7 +72,9 @@ class Pagoda extends Object{
 	function setKey( $Key ){$this->Key = $Key;$this->markDirty();}
 	function getKey( ) {return $this->Key;}
 	function reKey( ){
-		$Id = $this->getId();		
+				
+		$Id = $this->getId();
+		if (!isset($Id)||$Id==0) $Id = time();		
 		$Str = new \MVC\Library\String($this->Name." ".$Id);
 		$this->Key = $Str->converturl();		
 	}
@@ -86,6 +89,18 @@ class Pagoda extends Object{
 		$mPost 		= new \MVC\Mapper\PPost();
 		$PostAll 	= $mPost->findBy(array($this->getId()));
 		return $PostAll;
+	}
+	
+	function getAlbumAll(){
+		$mAlbum		= new \MVC\Mapper\PAlbum();
+		$AlbumAll 	= $mAlbum->findBy(array($this->getId()));		
+		return $AlbumAll;
+	}
+	
+	function getVideoAll(){
+		$mVideo		= new \MVC\Mapper\PVideo();
+		$VideoAll 	= $mVideo->findBy(array($this->getId()));		
+		return $VideoAll;
 	}
 	
 	function toJSON(){

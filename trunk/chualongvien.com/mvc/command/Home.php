@@ -27,13 +27,14 @@
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
 			$mVideo				= new \MVC\Mapper\Video();
 			$mVB				= new \MVC\Mapper\VoiceBook();
+			$mPPost				= new \MVC\Mapper\PPost();
+			$mPVideo			= new \MVC\Mapper\PVideo();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
 			$Title = "WEBSITE CHÙA LONG VIỄN";
-									
-			$TopCategoryVideoAll= $mVL->findByUpdateTop(array(2));
+												
 			$LocalVideoAll 		= $mVL->findByTopLocal(array(2));
 			$TopLibraryVideoAll = $mVL->findByTopLibrary(array());
 			$TopHistoryVideoAll = $mVL->findByTopHistory(array());
@@ -50,14 +51,16 @@
 			$CategoryVideo 		= $mCategoryVideo->findAll()->current();
 			
 			$CategoryDocumentAll= $mCategoryDocument->findAll();
+			
+			$PPostAll 			= $mPPost->findByTop6(array());
+			$PVideoAll 			= $mPVideo->findByTop8(array());
 																														
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setProperty("Title", $Title);
 			
-			$request->setObject("LocalVideoAll", 		$LocalVideoAll);
-			$request->setObject("TopCategoryVideoAll", 	$TopCategoryVideoAll);
+			$request->setObject("LocalVideoAll", 		$LocalVideoAll);			
 			$request->setObject("TopLibraryVideoAll", 	$TopLibraryVideoAll);
 			$request->setObject("TopHistoryVideoAll", 	$TopHistoryVideoAll);
 			
@@ -71,6 +74,9 @@
 			$request->setObject("CategoryVideo", 		$CategoryVideo);
 			$request->setObject("CategoryNewsAll", 		$CategoryNewsAll);			
 			$request->setObject("AlbumAll", 			$AlbumAll);						
+			
+			$request->setObject("PPostAll", 			$PPostAll);
+			$request->setObject("PVideoAll", 			$PVideoAll);
 			
 			$request->setProperty("ActiveItem", 'Home');
 			

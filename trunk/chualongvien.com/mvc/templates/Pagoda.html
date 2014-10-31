@@ -36,31 +36,79 @@
 						</div>
 					</div>
 					<div class="box radius" tal:condition="Pagoda/getPostAll/count">
-						<div class="page-header pg-header pg-header-person reset-margin">
-							<h4 class="reset-margin">BÀI VIẾT</h4>
+						<div class="page-header pg-header pg-header-news reset-margin">
+							<h4 class="reset-margin">BÀI VIẾT (<span tal:content="Pagoda/getPostAll/count"/>)</h4>
 						</div>
 						<div class="b-content padding-content news-content">
-							<div class="b-content news-content padding-content">
-								<div class="news-main" tal:content="structure Pagoda/getPostAll/current/getContent" />
-								<div class="news-author">
-									<div class="news-tools">
-										<span metal:use-macro="base.xhtml/ShareButton"/>
-										<a class="btn btn-primary pull-right" ><i class="icon-thumbs-up icon-white"/> Thích</a>
-									</div>
-									<p tal:content="Pagoda/getPostAll/current/getAuthor"/>
-								</div>								
-							</div>							
+							<table class="table table-bordered">
+								<tr tal:repeat="Post Pagoda/getPostAll">									
+									<td width="10%">
+										<a tal:attributes="href Post/getURLRead">
+											<span tal:content="repeat/Post/number"/>
+										</a>
+									</td>
+									<td width="70%">
+										<a tal:attributes="href Post/getURLRead">
+											<span tal:content="Post/getTitle"/>
+										</a>
+									</td>
+									<td width="20%">
+										<a tal:attributes="href Post/getURLRead">
+											<span tal:content="Post/getDatePrint"/>
+										</a>
+									</td>
+								</tr>
+							</table>
+						</div>
+					</div>					
+					<div class="box radius" tal:condition="Pagoda/getVideoAll/count">
+						<div class="page-header pg-header pg-header-video reset-margin">
+							<h4 class="reset-margin">VIDEO (<span tal:content="Pagoda/getVideoAll/count"/>)</h4>
+						</div>
+						<div class="b-content padding-content news-content">
+							<table class="table table-bordered">
+								<tr tal:repeat="Video Pagoda/getVideoAll">									
+									<td width="10%">
+										<a tal:attributes="href Video/getURLView">
+											<span tal:content="repeat/Video/number"/>
+										</a>
+									</td>
+									<td width="70%">
+										<a tal:attributes="href Video/getURLView">
+											<span tal:content="Video/getName"/>
+										</a>
+									</td>
+									<td width="20%">
+										<a tal:attributes="href Video/getURLView">
+											<span tal:content="Video/getTimePrint"/>
+										</a>
+									</td>
+								</tr>
+							</table>
 						</div>
 					</div>
-					<div class="box radius" tal:condition="Pagoda/getMonkAll/count">
-						<div class="page-header pg-header pg-header-person reset-margin">
-							<h4 class="reset-margin">NHÂN SỰ</h4>
+					<div class="box radius" tal:condition="Pagoda/getAlbumAll/count">
+						<div class="page-header pg-header pg-header-picture reset-margin">
+							<h4 class="reset-margin">HÌNH ẢNH (<span tal:content="Pagoda/getAlbumAll/count"/>)</h4>
 						</div>
-						<div class="b-content padding-content news-content">											
+						<div class="b-content padding-content news-content">
 							<table class="table table-bordered">
-								<tr tal:repeat="Monk Pagoda/getMonkAll">
-									<td tal:content="Monk/getName" />
-									<td tal:content="Monk/getAlias" />
+								<tr tal:repeat="Album Pagoda/getAlbumAll">									
+									<td width="10%">
+										<a tal:attributes="href Album/getURLView">
+											<span tal:content="repeat/Album/number"/>
+										</a>
+									</td>
+									<td width="70%">
+										<a tal:attributes="href Album/getURLView">
+											<span tal:content="Album/getName"/>
+										</a>
+									</td>
+									<td width="20%">
+										<a tal:attributes="href Album/getURLView">
+											<span tal:content="Album/getTimePrint"/>
+										</a>
+									</td>
 								</tr>
 							</table>
 						</div>

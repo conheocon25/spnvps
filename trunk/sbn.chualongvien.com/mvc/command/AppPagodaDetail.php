@@ -18,9 +18,11 @@
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mProvince 	= new \MVC\Mapper\Province();
-			$mDistrict 	= new \MVC\Mapper\District();
-			$mPagoda 	= new \MVC\Mapper\Pagoda();
+			$mProvince 			= new \MVC\Mapper\Province();			
+			$mDistrict 			= new \MVC\Mapper\District();			
+			$mPagoda 			= new \MVC\Mapper\Pagoda();
+			$mUserProvince		= new \MVC\Mapper\UserProvince();
+			$mUserDistrict 		= new \MVC\Mapper\UserDistrict();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -30,10 +32,18 @@
 			$Pagoda 	= $mPagoda->find($IdPagoda);
 			$Title 		= mb_strtoupper($Pagoda->getName(), 'UTF8');
 			
+			$IsProvince = false;
+			$IdUP 		= $mUserProvince->check($Session->getCurrentIdUser());
+			if (isset($IdUP)){$IsProvince = true;}
+			
+			$IsDistrict = false;
+			$IdUD 		= $mUserDistrict->check($Session->getCurrentIdUser());									
+			if (isset($IdUD)){$IsDistrict = true;}
+						
 			$Navigation = array(
 				array( "TỈNH THÀNH", "/app/province", false),
-				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), false),
-				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), false)
+				array( mb_strtoupper($Province->getName(), 'UTF8'), $Province->getURLSettingDistrict(), $IsProvince),
+				array( mb_strtoupper($District->getName(), 'UTF8'), $District->getURLSettingPagoda(), $IsDistrict)
 			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -41,8 +51,7 @@
 			$request->setObject("Pagoda"	, $Pagoda);
 												
 			$request->setObject('Navigation', $Navigation);						
-			$request->setProperty("Title", $Title);
-			//$request->setProperty("ActiveAdmin", $Title);
+			$request->setProperty("Title", $Title);			
 			
 			return self::statuses('CMD_DEFAULT');
 		}

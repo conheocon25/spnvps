@@ -33,4 +33,6 @@ interface PagodaFinder			extends Finder {}
 interface EventFinder			extends Finder {}
 interface MonkFinder			extends Finder {}
 interface PPostFinder			extends Finder {}
+interface PAlbumFinder			extends Finder {}
+interface PVideoFinder			extends Finder {}
 ?>

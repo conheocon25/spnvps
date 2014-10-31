@@ -32,6 +32,7 @@
 		<command name="AppPagodaMonk"><view>AppPagodaMonk</view></command>
 		<command name="AppPagodaVideo"><view>AppPagodaVideo</view></command>
 		<command name="AppPagodaAlbum"><view>AppPagodaAlbum</view></command>
+		<command name="AppPagodaEvent"><view>AppPagodaEvent</view></command>
 		
 		<command name="AppPagodaPost"><view>AppPagodaPost</view></command>
 		<command name="AppPagodaPostInsLoad"><view>AppPagodaPostInsLoad</view></command>

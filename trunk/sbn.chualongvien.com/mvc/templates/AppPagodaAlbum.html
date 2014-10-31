@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="mAdmin.xhtml/IncludeMETA"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeCSS"/>
+	</head>
+	<body>
+		<div metal:use-macro="mAdmin.xhtml/Header"/>
+		<div metal:use-macro="mAdmin.xhtml/UserNavigation"/>		
+		<div id="sidebar">
+			
+		</div>			
+		<div id="content">
+			<div id="content-header">
+				<h1 tal:content="Title"/>
+				<div class="btn-group"><button id="insertObject" href="#DialogIns" data-toggle="modal" class="btn btn-success sinleins"><i class="glyphicon glyphicon-plus"> Thêm mới</i></button></div>
+			</div>
+			<div metal:use-macro="mAdmin.xhtml/Breadcrumb"/>
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-12">
+						<div class="widget-box">
+							<div class="widget-content nopadding">
+								<table class="table table-bordered table-striped table-hover">
+									<thead>
+										<tr>
+											<th>STT</th>											
+											<th><div class="text-left">TÊN</div></th>
+											<th width="32"/>
+										</tr>
+									</thead>
+									<tbody>
+										<tr class="content-rows" tal:repeat="Album Pagoda/getAlbumAll">
+											<td width="32" align="center"><div tal:content="repeat/Album/number" /></td>
+											<td align="left">
+												<a class="update-item" href="#DialogEdit" data-toggle="modal" tal:attributes="data-id Album/getId" tal:content="Album/getName"/>
+											</td>
+											<td width="32" class="center"><a class="remove-item" href="#DialogDel" data-toggle="modal" tal:attributes="data-id Album/getId"><i class="glyphicon glyphicon-remove"/></a></td>
+										</tr>
+									</tbody>
+								</table>								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="PagodaCurrent" tal:attributes="alt Pagoda/getId" />
+		
+		<!-- INSERT DIALOG  -->
+		<div id="DialogIns" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3><i class="glyphicons-cogwheel modal-icon"/>THÊM MỚI ALBUM ẢNH</h3>
+					</div>
+					<div class="form-horizontal">
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls">
+									<input id="Name1" name="Name1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls">
+									<input id="Time1" name="Time1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls">
+									<input id="URL1" name="URL1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls">
+									<input id="Note1" name="Note1" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button id="URLInsButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END INSERT DIALOG  -->
+		
+		<!-- UPDATE DIALOG  -->
+		<div id="DialogEdit" class="modal fade">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h3><i class="glyphicons-cogwheel modal-icon"/>CẬP NHẬT ALBUM ẢNH</h3>
+					</div>
+					<div class="form-horizontal">
+						<div class="modal-body">
+							<div class="form-group">
+								<label class="control-label">Tên</label>
+								<div class="controls">
+									<input id="Name2" name="Name2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Thời gian</label>
+								<div class="controls">
+									<input id="Time2" name="Time2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">URL</label>
+								<div class="controls">
+									<input id="URL2" name="URL2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+							<div class="form-group">
+								<label class="control-label">Ghi chú</label>
+								<div class="controls">
+									<input id="Note2" name="Note2" type="text" class="form-control input-small"/>
+								</div>
+							</div>
+						</div>									
+						<div class="modal-footer">
+							<button id="URLUpdButton" class="btn btn-primary btn-small" type="submit"><i class="glyphicons-download_alt"/> Lưu</button>
+							<button data-dismiss="modal" class="btn btn-default btn-small"><i class="glyphicons-undo"/> Hủy</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END UPDATE DIALOG  -->		
+		<div metal:use-macro="mAdmin.xhtml/Footer"/>
+		<div metal:use-macro="mDialog.xhtml/DialogDel"/>
+		<div metal:use-macro="mAdmin.xhtml/SignoutDialog"/>
+		<span metal:use-macro="mAdmin.xhtml/IncludeJS"/>
+		<script type="text/javascript">
+		/*<![CDATA[*/						
+			$('#Time1').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});
+			
+			$('#Time2').datetimepicker({
+				language:  'vi',
+				weekStart: 1,
+				todayBtn:  1,
+				autoclose: 1,
+				todayHighlight: 1,
+				startView: 2,
+				forceParse: 0,
+				showMeridian: 1
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Delete 1 Album			
+			//-----------------------------------------------------------------------------------
+			
+			$('.remove-item').click(function(){
+				$('#URLDelButton').attr('alt', $(this).attr('data-id'));
+			});
+			//Khi người dùng Click vào nút URLDelButton thì tiến  hành gọi Ajax xóa tự động
+			$('#URLDelButton').click(function(){			
+				var URL = "/object/del/PAlbum/" + $(this).attr('alt');
+				$.ajax({
+					type: "POST",
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+		
+			//-----------------------------------------------------------------------------------
+			//Insert 1 Album
+			$('#URLInsButton').click(function(){
+				var Data = [];
+				Data[0] = 'null';
+				Data[1] = $('#PagodaCurrent').attr('alt');
+				Data[2] = $('#Name1').val();
+				Data[3] = $('#Time1').val();
+				Data[4] = $('#URL1').val();
+				Data[5] = $('#Note1').val();
+				
+				var URL = "/object/ins/PAlbum";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});
+			
+			
+			//-----------------------------------------------------------------------------------
+			//Load 1 Album
+			//-----------------------------------------------------------------------------------
+			$('.update-item').click(function(){
+				//Load dữ liệu JSON về
+				var url = "/object/load/PAlbum/" + $(this).attr('data-id');
+				
+				//Load dữ liệu JSON lên FORM
+				$.getJSON(url, function(data){
+					$('#URLUpdButton').attr('alt', 	data.Id);
+					$('#Name2').attr('value', 		data.Name);
+					$('#Time2').attr('value', 		data.Time);
+					$('#URL2').attr('value', 		data.URL);
+					$('#Note2').attr('value', 		data.Note);
+				});
+			});
+			
+			//-----------------------------------------------------------------------------------
+			//Update 1 UNIT
+			//-----------------------------------------------------------------------------------
+			$('#URLUpdButton').click(function(){
+				var Data = [];
+				Data[0] = $('#URLUpdButton').attr('alt');
+				Data[1] = $('#PagodaCurrent').attr('alt');
+				Data[2] = $('#Name2').val();
+				Data[3] = $('#Time2').val();
+				Data[4] = $('#URL2').val();
+				Data[5] = $('#Note2').val();
+								
+				var URL = "/object/upd/PAlbum";
+				$.ajax({
+					type: "POST",
+					data: {Data:Data},
+					url: URL,
+					success: function(msg){
+						location.reload();
+					}
+				});
+			});		
+		/*]]>*/</script>
+	</body>
+</html>
