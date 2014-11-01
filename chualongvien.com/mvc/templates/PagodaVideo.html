@@ -65,7 +65,7 @@
 							<ul class="nav nav-tabs nav-stacked reset-margin">
 								<li class="active news-list-title"><a>Video khác</a></li>
 								<li tal:repeat="Video Pagoda/getVideoAll" class="news-list-item">
-									<a tal:attributes="href Pagoda/getURLView">
+									<a tal:attributes="href Video/getURLView">
 										<span tal:content="Video/getName"/>
 										<span tal:content="Video/getTimePrint"/>
 										<i class="icon-chevron-right pull-right"/>
