@@ -61,7 +61,7 @@ class PPost extends Object{
 			$first_img = $matches[1][0];
 		}
 		else {
-			$first_img = "/data/images/PPost.jpg";
+			$first_img = "/data/images/news.jpg";
 		}
 		return $first_img;
 	}
