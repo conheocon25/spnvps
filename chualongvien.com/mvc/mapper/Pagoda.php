@@ -16,7 +16,7 @@ class Pagoda extends Mapper implements \MVC\Domain\PagodaFinder{
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblPagoda);
 		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblPagoda);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblPagoda);		
-		$findByDistrictStmt = sprintf("SELECT * FROM  %s WHERE id_district=?", $tblPagoda);
+		$findByDistrictStmt = sprintf("SELECT * FROM  %s WHERE id_district=? order by name", $tblPagoda);
 				
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
