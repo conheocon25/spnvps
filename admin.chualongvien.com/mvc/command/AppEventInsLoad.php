@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class LibraryVideoVoiceLoad extends Command{
+	class AppEventInsLoad extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,33 +11,29 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$KBVoice = $request->getProperty('KBVoice');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------			
-			$mVB	= new \MVC\Mapper\VoiceBook();
-			$VB 	= $mVB->findByKey($KBVoice);
+			//-------------------------------------------------------------
+			$mEvent = new \MVC\Mapper\Event();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------
-			$Data 	= array();
-			$S 		= new \MVC\Library\String( $VB->getMP3Raw() );
-			$Arr 	= $S->explode(' ');
+			//-------------------------------------------------------------			
+			$EventAll 	= $mEvent->findAll();			
+			$Title 		= mb_strtoupper("THÊM MỚI", 'UTF8');
 			
-			$Index = 1;
-			foreach ($Arr as $A){
-				$Data[] = array(
-					'title' 	=> "Phần " . $Index++,
-					'mp3'		=> "https://drive.google.com/uc?authuser=0&id=".$A."&export=download"
-				);
-			}
-			
+			$Navigation = array(
+				array("SỰ KIỆN", "/app/event")
+			);
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------			
-			echo json_encode($Data);
+			//-------------------------------------------------------------																					
+			$request->setObject('Navigation', $Navigation);			
+			$request->setProperty("ActiveAdmin", 'Event');
+			$request->setProperty("Title", $Title);
+			
+			return self::statuses('CMD_DEFAULT');
 		}
 	}
 ?>

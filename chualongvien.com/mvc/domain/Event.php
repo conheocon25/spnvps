@@ -4,22 +4,24 @@ require_once( "mvc/base/domain/DomainObject.php" );
 
 class Event extends Object{
 
-    private $Id;
-	private $IdPagoda;
+    private $Id;	
 	private $Name;
 	private $Date;
+	private $Picture;
 	private $Content;
-		
+	private $Key;
+	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdPagoda=null, $Name=null, $Date=null, $Content=null){
-		$this->Id 			= $Id;
-		$this->IdPagoda 	= $IdPagoda;
+    function __construct( $Id=null, $Name=null, $Date=null, $Picture=null, $Content=null, $Key=null){
+		$this->Id 			= $Id;		
 		$this->Name 		= $Name; 
 		$this->Date 		= $Date;
+		$this->Picture		= $Picture;
 		$this->Content 		= $Content;
-				
+		$this->Key 			= $Key;
+		
 		parent::__construct( $Id );
 	}
     function getId() {return $this->Id;}	
@@ -27,47 +29,47 @@ class Event extends Object{
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
 	
-	function setIdPagoda( $IdPagoda ) {$this->IdPagoda = $IdPagoda;$this->markDirty();}   
-	function getIdPagoda( ) {return $this->IdPagoda;}
-	
 	function setDate( $Date ) {$this->Date = $Date;$this->markDirty();}   
 	function getDate( ) {return $this->Date;}
-			
+	function getDatePrint( ){$D = new \MVC\Library\Date($this->Date);return $D->getDateFormat();}
+	
+	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}   
+	function getPicture( ) {return $this->Picture;}
+	
 	function setContent( $Content ) {$this->Content = $Content;$this->markDirty();}   
-	function getContent( ) {return $this->Content;}	
+	function getContent( ) {return $this->Content;}
+	
+	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
+	function getKey( ) {return $this->Key;}
+	
+	function reKey( ){
+		$Id = $this->getId();
+		if (!isset($Id)||$Id==0) $Id = time();
+		$Str = new \MVC\Library\String($this->Name." ".$Id);
+		$this->Key = $Str->converturl();		
+	}
 	
 	function toJSON(){
 		$json = array(
-			'Id' 			=> $this->getId(),
-			'IdPagoda' 		=> $this->getIdPagoda(),
+			'Id' 			=> $this->getId(),			
 			'Name'			=> $this->getName(),
 			'Date'			=> $this->getDate(),
-		 	'Content'		=> $this->getContent()			
+			'Picture' 		=> $this->getPicture(),
+		 	'Content'		=> $this->getContent(),
+			'Key'			=> $this->getKey()			
 		);
 		return json_encode($json);
 	}
 	
 	function setArray( $Data ){
         $this->Id 		= $Data[0];
-		$this->IdPagoda	= $Data[1];
-		$this->Name 	= $Data[2];
-		$this->Date 	= $Data[3];
+		$this->Name 	= $Data[1];
+		$this->Date 	= $Data[2];
+		$this->Picture	= $Data[3];
 		$this->Content 	= $Data[4];
+		$this->Key	 	= $Data[5];
     }
-	
-	function toXML(){
-		$S = "
-		<object>
-			<id>".$this->getId()."</id>
-			<id_pagoda>".$this->getIdPagoda()."</id_pagoda>
-			<name>".$this->getName()."</name>
-			<date>".$this->getDate()."</date>
-			<content>".$this->getContent()."</content>			
-		</object>
-		";
-		return $S;
-	}
-	
+			
 	//-------------------------------------------------------------------------------
 	//GET LISTs
 	//-------------------------------------------------------------------------------
@@ -75,7 +77,9 @@ class Event extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-					
+	function getURLView(){return "/su-kien/".$this->getKey();}
+	function getURLUpdLoad(){return "/app/event/".$this->getId()."/upd/load";}	
+	function getURLUpdExe()	{return "/app/event/".$this->getId()."/upd/exe";}
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	

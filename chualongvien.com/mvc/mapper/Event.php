@@ -7,16 +7,16 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
     function __construct() {
         parent::__construct();
 				
-		$tblEvent = "buddhismtv_event";
+		$tblEvent = "chualongvien_event";
 		
-		$selectAllStmt 		= sprintf("select * from %s ORDER BY id", $tblEvent);
+		$selectAllStmt 		= sprintf("select * from %s ORDER BY `date` DESC", $tblEvent);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblEvent);
-		$updateStmt 		= sprintf("update %s set id_pagoda=?, name=?, `date`=?, content=? where id=?", $tblEvent);
-		$insertStmt 		= sprintf("insert into %s ( id_pagoda, name, `date`, content) values(?, ?, ?, ?)", $tblEvent);
+		$updateStmt 		= sprintf("update %s set name=?, `date`=?, picture=?, content=?, `key`=? where id=?", $tblEvent);
+		$insertStmt 		= sprintf("insert into %s ( name, `date`, picture, content, `key`) values(?, ?, ?, ?, ?)", $tblEvent);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblEvent);
 		$findByStmt 		= sprintf("select *  from %s where id_pagoda=?", $tblEvent);
 		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=:id_pagoda LIMIT :start,:max", $tblEvent);
-		$findByPage1Stmt 	= sprintf("SELECT * FROM  %s LIMIT :start,:max", $tblEvent);
+		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblEvent);	
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -24,29 +24,31 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
         $this->insertStmt 		= self::$PDO->prepare($insertStmt);
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
+		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
 		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
-		$this->findByPage1Stmt 	= self::$PDO->prepare($findByPage1Stmt);
     }
 	
     function getCollection( array $raw ) {return new EventCollection( $raw, $this );}
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\Event( 
-			$array['id'],
-			$array['id_pagoda'],
+			$array['id'],			
 			$array['name'],
 			$array['date'],
-			$array['content']			
+			$array['picture'],
+			$array['content'],
+			$array['key']
 		);
         return $obj;
     }
 
     protected function targetClass() {return "Event";}
     protected function doInsert( \MVC\Domain\Object $object ) {
-        $values = array( 
-			$object->getIdPagoda(),
+        $values = array( 			
 			$object->getName(),
-			$object->getDate(),			
-			$object->getContent()
+			$object->getDate(),
+			$object->getPicture(),
+			$object->getContent(),
+			$object->getKey()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -54,11 +56,12 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
     }
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
-        $values = array(
-			$object->getIdPagoda(),
+        $values = array(			
 			$object->getName(),
-			$object->getDate(),			
+			$object->getDate(),
+			$object->getPicture(),
 			$object->getContent(),
+			$object->getKey(),
 			$object->getId()
 		);
         $this->updateStmt->execute( $values );
@@ -81,11 +84,14 @@ class Event extends Mapper implements \MVC\Domain\EventFinder{
         return new EventCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 	
-	function findByPage1( $values ) {		
-		$this->findByPage1Stmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
-		$this->findByPage1Stmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
-		$this->findByPage1Stmt->execute();
-        return new EventCollection( $this->findByPage1Stmt->fetchAll(), $this);
+	function findByKey( $values ) {	
+		$this->findByKeyStmt->execute( array($values) );
+        $array = $this->findByKeyStmt->fetch();
+        $this->findByKeyStmt->closeCursor();
+        if ( ! is_array( $array ) ) { return null; }
+        if ( ! isset( $array['id'] ) ) { return null; }
+        $object = $this->doCreateObject( $array );
+        return $object;		
     }
 }
 ?>
