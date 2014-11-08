@@ -46,14 +46,22 @@
 		<command name="AppNewsUpdExe"><view>AppNewsUpdExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>		
 		<command name="AppNewsDelLoad"><view>AppNewsDelLoad</view></command>
 		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
-		
 		<command name="AppNewsBookmarkExe"><view>AppNewsBookmarkExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>	
 		
+		<!-- ============================================================================== -->
+		<!-- APP.EVENT																		-->
+		<!-- ============================================================================== -->
+		<command name="AppEvent"><view>AppEvent</view></command>		
+		<command name="AppEventInsLoad"><view>AppEventInsLoad</view></command>
+		<command name="AppEventInsExe"><view>AppEventInsExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
+		<command name="AppEventUpdLoad"><view>AppEventUpdLoad</view></command>
+		<command name="AppEventUpdExe"><view>AppEventUpdExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
+						
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
-		<command name="AppPagoda"><view>AppPagoda</view></command>
-		<command name="AppPagodaEvent"><view>AppPagodaEvent</view></command>
+				
+		
 	</control>
 </options>

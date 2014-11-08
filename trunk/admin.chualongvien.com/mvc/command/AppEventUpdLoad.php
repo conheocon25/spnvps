@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPagoda extends Command{
+	class AppEventUpdLoad extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,29 +11,26 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-						
+			$IdEvent = $request->getProperty('IdEvent');
+			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPagoda = new \MVC\Mapper\Pagoda();
+			$mEvent = new \MVC\Mapper\Event();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$PagodaAll 	= $mPagoda->findAll();			
-			$Title 		= mb_strtoupper("DANH SÁCH CHÙA", 'UTF8');
+			$Event 		= $mEvent->find($IdEvent);
+			$Title 		= mb_strtoupper("CẬP NHẬT", 'UTF8');
 			
-			$Navigation = array(
-				//array("THƯ VIỆN"	, "/app/btype")
-			);
+			$Navigation = array(array("SỰ KIỆN", "/app/event"));
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------						
-			$request->setObject("PagodaAll"	, $PagodaAll);
-												
-			$request->setObject('Navigation', $Navigation);			
-			$request->setProperty("ActiveAdmin", 'Pagoda');
-			$request->setProperty("Title", $Title);
+			//-------------------------------------------------------------																					
+			$request->setObject('Navigation', 	$Navigation);
+			$request->setObject('Event', 		$Event);			
+			$request->setProperty("Title", 		$Title);
 			
 			return self::statuses('CMD_DEFAULT');
 		}

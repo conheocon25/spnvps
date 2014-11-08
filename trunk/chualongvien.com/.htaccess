@@ -126,6 +126,10 @@ RewriteRule ^danh-ba/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 					?cmd=PagodaVideo&Pa
 
 RewriteRule ^danh-ba/email$ 												?cmd=PagodaContactSend	[L]
 RewriteRule ^danh-ba/recaptcha/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ 			?cmd=PagodaReCaptcha&CodeChallenge=$1&CodeResponse=$2	[L]
+
+RewriteRule ^su-kien$ 														?cmd=Event [L]
+RewriteRule ^su-kien/([a-z0-9_-]+)$ 										?cmd=Event&EventKey=$1 [L]
+
 #---------------------------------------------------------------------------------------------------------------------------
 # APP
 #---------------------------------------------------------------------------------------------------------------------------

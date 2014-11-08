@@ -1,6 +1,6 @@
 <?php
 	namespace MVC\Command;	
-	class AppPagodaEvent extends Command{
+	class AppEvent extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
@@ -11,44 +11,26 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
-			$IdPagoda 	= $request->getProperty('IdPagoda');
-			$Page 		= $request->getProperty('Page');
-			
+						
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------
-			$mPagoda 	= new \MVC\Mapper\Pagoda();
-			$mEvent 	= new \MVC\Mapper\Event();
-			$mConfig 	= new \MVC\Mapper\Config();
+			$mEvent = new \MVC\Mapper\Event();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------			
-			$PagodaAll 	= $mPagoda->findAll();
-			$Pagoda 	= $mPagoda->find($IdPagoda);
+			$EventAll 	= $mEvent->findAll();			
+			$Title 		= mb_strtoupper("SỰ KIỆN", 'UTF8');
 			
-			$Title 		= mb_strtoupper($Pagoda->getName(), 'UTF8');
-			
-			$Navigation = array(
-				array("CHÙA"	, "/app/pagoda")
-			);
-			
-			if (!isset($Page)) $Page=1;			
-			$Config = $mConfig->findByName("ROW_PER_PAGE");
-			$EventAll1 	= $mEvent->findByPage(array($IdPagoda, $Page, $Config->getValue() ));
-			$EventAll	= $mEvent->findBy(array($IdPagoda));
-			$PN = new \MVC\Domain\PageNavigation($EventAll->count(), $Config->getValue(), $Pagoda->getURLSettingEvent() );
-			
+			$Navigation = array();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
-			$request->setObject("Pagoda"	, $Pagoda);
-			$request->setObject("PagodaAll"	, $PagodaAll);
-			$request->setObject("EventAll1"	, $EventAll1);
-			
-			$request->setObject('Navigation', $Navigation);
-			$request->setObject('PN', $PN);			
-			$request->setProperty("ActiveAdmin", 'Pagoda');
+			$request->setObject("EventAll"	, $EventAll);
+												
+			$request->setObject('Navigation', $Navigation);			
+			$request->setProperty("ActiveAdmin", 'Event');
 			$request->setProperty("Title", $Title);
 			
 			return self::statuses('CMD_DEFAULT');
