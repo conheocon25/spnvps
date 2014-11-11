@@ -24,6 +24,7 @@
 			
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
+			$mEvent 			= new \MVC\Mapper\Event();	
 						
 			$mConfig 			= new \MVC\Mapper\Config();		
 			$mVM 				= new \MVC\Mapper\VideoMonk();
@@ -40,6 +41,7 @@
 						
 			$Title = mb_strtoupper( $News->getTitle(), 'UTF8');
 			$CategoryDocumentAll= $mCategoryDocument->findAll();			
+			$EventAll 			= $mEvent->findAll();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -51,6 +53,8 @@
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);						
 			$request->setObject("News", $News);						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
+			
+			$request->setObject("Event", 				$EventAll->current());
 						
 			return self::statuses('CMD_DEFAULT');
 		}

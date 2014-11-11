@@ -24,6 +24,7 @@
 				
 			$mAlbum 			= new \MVC\Mapper\Album();				
 			$mNews 				= new \MVC\Mapper\News();
+			$mEvent 			= new \MVC\Mapper\Event();	
 						
 			$mConfig 			= new \MVC\Mapper\Config();		
 			$mVM 				= new \MVC\Mapper\VideoMonk();
@@ -46,7 +47,7 @@
 			
 			$NewsAll = $mNews->findByCategoryPage(array($IdCategory, $Page, 16));
 			$PN = new \MVC\Domain\PageNavigation($Category->getNews()->count(), 16, $Category->getURLRead());									
-						
+			$EventAll 			= $mEvent->findAll();			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
@@ -59,6 +60,7 @@
 			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);							
 			$request->setObject("PN", $PN);			
 			$request->setProperty("ActiveItem", 'ReadCategory');
+			$request->setObject("Event", 				$EventAll->current());
 			$request->setProperty("Page", $Page);	
 			
 			return self::statuses('CMD_DEFAULT');

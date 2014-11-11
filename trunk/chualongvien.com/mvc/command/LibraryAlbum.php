@@ -28,6 +28,7 @@
 			$mVM 				= new \MVC\Mapper\VideoMonk();
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
 			$mVideo				= new \MVC\Mapper\Video();		
+			$mEvent 			= new \MVC\Mapper\Event();	
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
@@ -42,6 +43,7 @@
 				$Album = $mAlbum->findByKey($KAlbum);
 			}
 			$CategoryDocumentAll= $mCategoryDocument->findAll();									
+			$EventAll 			= $mEvent->findAll();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
@@ -50,6 +52,8 @@
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
 			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);						
+			$request->setObject("Event", 				$EventAll->current());
+			
 			$request->setProperty("ActiveItem", 'LibraryAlbum');
 			
 			return self::statuses('CMD_DEFAULT');
