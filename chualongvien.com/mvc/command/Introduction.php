@@ -21,6 +21,7 @@
 			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
 				
 			$mAlbum 			= new \MVC\Mapper\Album();
+			$mEvent 			= new \MVC\Mapper\Event();	
 									
 			$mConfig 			= new \MVC\Mapper\Config();		
 			$mVM 				= new \MVC\Mapper\VideoMonk();
@@ -35,13 +36,14 @@
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
 			$CategoryNewsAll 	= $mCategoryNews->findAll();
 			$CategoryDocumentAll= $mCategoryDocument->findAll();						
+			$EventAll 			= $mEvent->findAll();
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------						
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);
 			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);
-									
+			$request->setObject("Event", 				$EventAll->current());
 			$request->setProperty("ActiveItem", 'Introduction');
 						
 			return self::statuses('CMD_DEFAULT');

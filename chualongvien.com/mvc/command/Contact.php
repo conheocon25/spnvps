@@ -22,19 +22,23 @@
 			
 			$mAlbum 			= new \MVC\Mapper\Album();	
 			$mNews 				= new \MVC\Mapper\News();
-			$CategoryDocumentAll= $mCategoryDocument->findAll();			
+			$mEvent 			= new \MVC\Mapper\Event();	
+						
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------																			
+			$CategoryDocumentAll= $mCategoryDocument->findAll();			
 			$CategoryBTypeAll = $mCategoryBType->findByPart1();
 			$CategoryNewsAll = $mCategoryNews->findAll();																		
-						
+			$EventAll 			= $mEvent->findAll();			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------			
 			$request->setObject("CategoryBTypeAll", $CategoryBTypeAll);
 			$request->setObject("CategoryNewsAll", $CategoryNewsAll);									
 			$request->setObject("CategoryDocumentAll", 	$CategoryDocumentAll);						
+			$request->setObject("Event", 				$EventAll->current());
+			
 			$request->setProperty("ActiveItem", 'Contact');
 						
 			return self::statuses('CMD_DEFAULT');

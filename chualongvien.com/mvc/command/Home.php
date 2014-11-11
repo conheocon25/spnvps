@@ -21,7 +21,8 @@
 			$mCategoryDocument 	= new \MVC\Mapper\CategoryDocument();
 			
 			$mAlbum 			= new \MVC\Mapper\Album();	
-									
+			$mEvent 			= new \MVC\Mapper\Event();	
+			
 			$mConfig 			= new \MVC\Mapper\Config();
 			$mVM 				= new \MVC\Mapper\VideoMonk();
 			$mVL 				= new \MVC\Mapper\VideoLibrary();		
@@ -54,6 +55,8 @@
 			
 			$PPostAll 			= $mPPost->findByTop6(array());
 			$PVideoAll 			= $mPVideo->findByTop8(array());
+			
+			$EventAll 			= $mEvent->findAll();
 																														
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
@@ -77,6 +80,8 @@
 			
 			$request->setObject("PPostAll", 			$PPostAll);
 			$request->setObject("PVideoAll", 			$PVideoAll);
+			
+			$request->setObject("Event", 				$EventAll->current());
 			
 			$request->setProperty("ActiveItem", 'Home');
 			
