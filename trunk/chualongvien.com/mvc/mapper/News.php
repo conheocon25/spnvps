@@ -27,6 +27,12 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 			where id_category=? AND date<=?
 			ORDER BY type DESC, date DESC LIMIT 10"
 		, $tblNews);
+		
+		$findByDateTimeStmt = sprintf(
+			"select *  
+			from %s 
+			where id_category = ? AND date >= ? AND date <= ?"
+		, $tblNews);
 			
 		$findByCategoryPageStmt = sprintf(
 			"SELECT 
@@ -51,6 +57,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByLimitStmt = self::$PDO->prepare($findByLimitStmt);
 		$this->findByLimit1Stmt = self::$PDO->prepare($findByLimit1Stmt);
 		$this->findByLimit2Stmt = self::$PDO->prepare($findByLimit2Stmt);
+		$this->findByDateTimeStmt = self::$PDO->prepare($findByDateTimeStmt);
 		
 		$this->findByCategoryDateStmt = self::$PDO->prepare($findByCategoryDateStmt);
 		$this->findByPageStmt = self::$PDO->prepare($findByPageStmt);
@@ -153,6 +160,12 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByPageStmt->execute();
         return new NewsCollection( $this->findByPageStmt->fetchAll(), $this );
     }
+	
+	function findByDateTime( $values ) {		
+		$this->findByDateTimeStmt->execute($values);
+        return new NewsCollection( $this->findByDateTimeStmt->fetchAll(), $this );
+    }
+	
 	function findByCategoryPage( $values ) {
 		$this->findByCategoryPageStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
 		$this->findByCategoryPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
@@ -160,6 +173,7 @@ class News extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByCategoryPageStmt->execute();
         return new NewsCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
     }
+	
 	function findByKey( $values ) {	
 		$this->findByKeyStmt->execute( array($values) );
         $array = $this->findByKeyStmt->fetch();
