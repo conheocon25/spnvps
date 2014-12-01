@@ -110,6 +110,8 @@ RewriteRule ^tin-tuc-auto-del/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=NewCategory
 
 RewriteRule ^send-mail/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
 
+RewriteRule ^tai-mp3$ 														?cmd=DownloadMP3 [L]
+
 RewriteRule ^van-ban$ 														?cmd=ReadCDocument [L]
 RewriteRule ^van-ban/([a-z0-9_-]+)$ 										?cmd=ReadCDocument&Key1=$1 [L]
 RewriteRule ^van-ban/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 					?cmd=ReadCDocument&Key1=$1&Page=$2 [L]
