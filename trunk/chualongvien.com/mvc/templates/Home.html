@@ -83,7 +83,7 @@
 						</div>
 					</div>
 					<div tal:repeat="Category CategoryNewsAll" class="accordion accordion-fix" tal:attributes="id Category/getIdPrint">
-						<div class="accordion-group box radius">
+						<div class="accordion-group box radius" tal:condition="Category/getNewsLimit1/count">
 							<div class="accordion-heading b-title clearfix">
 								<div tal:content="Category/getName" class="b-t-icon-content"/>
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" tal:attributes="data-parent Category/getIdPrint; href php: '#collapse' . Category->getIdPrint()"/>
