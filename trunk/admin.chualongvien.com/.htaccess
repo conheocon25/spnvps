@@ -47,6 +47,8 @@ RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
 RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
 
+RewriteRule ^app/news/rss$ 										?cmd=AppNewsRss [L]
+
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/page/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
