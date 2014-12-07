@@ -48,6 +48,7 @@
 		<command name="AppNewsDelExe"><view>AppNewsDelExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>
 		<command name="AppNewsBookmarkExe"><view>AppNewsBookmarkExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>	
 		
+		<command name="AppNewsRss"><view>AppNewsRss</view></command>
 		<!-- ============================================================================== -->
 		<!-- APP.EVENT																		-->
 		<!-- ============================================================================== -->
