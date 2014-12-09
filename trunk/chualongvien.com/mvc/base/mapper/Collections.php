@@ -15,6 +15,7 @@ class DocumentCollection 		extends Collection implements \MVC\Domain\DocumentCol
 
 class VideoCollection 			extends Collection implements \MVC\Domain\VideoCollection 			{function targetClass( ) {return "\MVC\Domain\Video";}}
 class VideoLibraryCollection 	extends Collection implements \MVC\Domain\VideoLibraryCollection 	{function targetClass( ) {return "\MVC\Domain\VideoLibrary";}}
+class VideoDisableCollection 	extends Collection implements \MVC\Domain\VideoDisableCollection 	{function targetClass( ) {return "\MVC\Domain\VideoDisable";}}
 class VideoMonkCollection 		extends Collection implements \MVC\Domain\VideoMonkCollection 		{function targetClass( ) {return "\MVC\Domain\VideoMonk";}}
 class VoiceBookCollection 		extends Collection implements \MVC\Domain\VoiceBookCollection 		{function targetClass( ) {return "\MVC\Domain\VoiceBook";}}
 

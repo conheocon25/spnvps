@@ -24,6 +24,7 @@ interface DocumentFinder		extends Finder {}
 
 interface VideoFinder 			extends Finder {}
 interface VideoLibraryFinder	extends Finder {}
+interface VideoDisableFinder	extends Finder {}
 interface VideoMonkFinder		extends Finder {}
 interface VoiceBookFinder		extends Finder {}
 

@@ -16,8 +16,9 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 		
 	require_once( "mvc/mapper/Video.php");
 	require_once( "mvc/mapper/VideoLibrary.php");
+	require_once( "mvc/mapper/VideoDisable.php");
 	require_once( "mvc/mapper/VideoMonk.php");
-	require_once( "mvc/mapper/VoiceBook.php");	
+	require_once( "mvc/mapper/VoiceBook.php");
 	
 	require_once( "mvc/mapper/Province.php");
 	require_once( "mvc/mapper/District.php");
