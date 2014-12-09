@@ -104,7 +104,7 @@
 						$("#VideoCount").html(data.Count);
 						$("#VideoNote").html(data.Note);
 						$("#VideoSource").attr('src', data.URL);
-						$("#frmflg").attr('data-url', data.URLDisable);
+						$("#frmflg").attr('data-id', data.Id);
 						
 					});
 															
@@ -113,7 +113,22 @@
 				$('#frmclsbtn').click(function(){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");});
 				
 				$("#frmflg").click(function(){
-					alert($(this).attr('data-url'));
+										
+					//-----------------------------------------------------------------------------------
+			
+					var Data = [];
+					Data[0] = 'null';
+					Data[1] = $(this).attr('data-id');
+								
+					var URL = "/object/ins/VideoDisable";
+					$.ajax({
+						type: "POST",
+						data: {Data:Data},
+						url: URL,
+						success: function(msg){
+							//location.reload();
+						}
+					});			
 				});
 				
 				$(document).keypress(function(e){if(e.keyCode==27){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");}});
