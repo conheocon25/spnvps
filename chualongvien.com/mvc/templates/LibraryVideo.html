@@ -56,12 +56,10 @@
 						<div class="b-title"><div class="b-t-icon-content">YOUTUBE (<span tal:content="YTAll/count"/>)</div></div>
 						<div class="b-content">							
 							<ul class="thumbnails grid-item reset-margin">
-								<li tal:repeat="VL YTAll" class="span2">
-									<div class="thumbnail">
-										<a tal:attributes="href VL/getURLRead">												
-											<img tal:attributes="src VL/getVideo/getURLImage"/>
-											<p tal:content="VL/getVideo/getName"/>
-										</a>
+								<li tal:repeat="VL YTAll" class="span2 scrfrmopn">
+									<div class="thumbnail">											
+										<img tal:attributes="src VL/getVideo/getURLImage; data-url VL/getVideo/getURLView"/>
+										<p tal:content="VL/getVideo/getName"/>
 									</div>
 								</li>
 							</ul>
@@ -73,6 +71,42 @@
 			<div metal:use-macro="base.xhtml/Footer"/>						
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
+			<!-- FRAME -->
+			<div class="scrfrm">
+				<div class="frm">
+					<div id="frmclsbtn" class="clsbtn" data-toggle="tooltip" data-placement="right" data-original-title="Nhấn ESC để đóng"></div>
+					<div class="clearfix">
+						<div class="lf">
+							<iframe src="//www.youtube.com/embed/TtLvxeKF0oc?modestbranding=1&amp;rel=0&amp;fs=0&amp;controls=0" frameborder="0" allowfullscreen="1"></iframe>
+						</div>
+						<div class="rg">
+							<div class="ctn">
+								<div class="title">
+									<h4>Con Đường Giác ngộ</h4>
+								</div>
+								<button id="frmflg" class="btn btn-danger btn-small" data-toggle="tooltip" data-placement="right" data-original-title="Báo cáo video không khả dụng"><i class="icon-flag icon-white"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script language="JavaScript">
+				$('#frmclsbtn').tooltip();
+				$('#frmflg').tooltip();
+				$('.scrfrmopn').click(function(){
+					$("body").addClass("dsbscrl");
+					/*----- CODE HERE -----*/
+					//
+					//
+					//
+					//
+					/*---------------------*/
+					$('.scrfrm').css("display", "block");
+				});
+				$('#frmclsbtn').click(function(){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");});
+				$(document).keypress(function(e){if(e.keyCode==27){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");}});
+			</script>
+			<!-- END FRAME -->
 		</div>		
 	</body>
 </html>
