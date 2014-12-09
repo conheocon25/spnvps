@@ -92,9 +92,7 @@
 	<div metal:define-macro="FixedFunction" class="fixed-function">		
 		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getCountPrint()"/>
 		<p class="bubble-item">Truy cập</p>
-		<div class="bubble">
-			<span tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/>
-		</div>
+		<div class="bubble" tal:content="php:@\MVC\Library\Statistic::getOnlinePrint()"/>
 		<p class="bubble-item"><img src="/data/images/logo/count_logo.gif"/> Online</p>
 		<a id="bookmark-tooltip" href="#" data-toggle="tooltip" data-placement="right" title="" data-original-title="Đặt làm trang chủ của trình duyệt">
 			<div class="bubble">
