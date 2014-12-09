@@ -79,6 +79,7 @@ class Video extends Object{
 			'Name' 			=> $this->getName(),
 			'Time' 			=> $this->getTime(),
 			'URL' 			=> $this->getURL(),
+			'URLDisable' 	=> $this->getURLDisable(),
 			'Note' 			=> $this->getNote(),
 			'Count' 		=> $this->getCount(),
 			'Key'			=> $this->getKey()
@@ -100,6 +101,7 @@ class Video extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------		
 	function getURLView(){return "/library/video/".$this->getId();}
+	function getURLDisable(){return "/report/disable/video/".$this->getId();}
 					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
