@@ -99,31 +99,29 @@
 				$('#frmclsbtn').tooltip();
 				$('#frmflg').tooltip();
 				$('.scrfrmopn').click(function(){
-					$("body").addClass("dsbscrl");
-					
 					var URL = "/object/load/Video/"+$(this).attr('data-id');
-					$.getJSON(URL, function(data){						
-						$("#VideoTitle").html(data.Name);
-						$("#VideoTime").html(data.Time);
-						$("#VideoCount").html(data.Count);
-						$("#VideoNote").html(data.Note);
-						$("#VideoSource").attr('src', data.URL);
-						$("#frmflg").attr('data-id', data.Id);
-						
+					$.when(
+						$.getJSON(URL, function(data){						
+							$("#VideoSource").attr('src', data.URL);
+							$("#VideoTitle").html(data.Name);
+							$("#VideoTime").html(data.Time);
+							$("#VideoCount").html(data.Count);
+							$("#VideoNote").html(data.Note);
+							$("#frmflg").attr('data-id', data.Id);
+						})
+					).done(function() {
+						$('.scrfrm').css("display", "block");
+						$("body").addClass("dsbscrl");
 					});
-
-					$('.scrfrm').css("display", "block");
 				});
 				$('#frmclsbtn').click(function(){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");});
 				$(document).keydown(function(e){if(e.keyCode==27){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");}});
 				
 				$("#frmflg").click(function(){
-					//-----------------------------------------------------------------------------------
-			
 					var Data = [];
 					Data[0] = 'null';
 					Data[1] = $(this).attr('data-id');
-								
+
 					var URL = "/object/ins/VideoDisable";
 					$.ajax({
 						type: "POST",
