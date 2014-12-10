@@ -15,7 +15,8 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$updateStmt = sprintf("update %s set id_video=?, id_category=? where id=?", $tblVideoLibrary);
 		$insertStmt = sprintf("insert into %s ( id_video, id_category)  values(?, ?)", $tblVideoLibrary);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblVideoLibrary);
-		$deleteByCategoryStmt = sprintf("delete from %s where id_category=?", $tblVideoLibrary);
+		$deleteByCategoryStmt 	= sprintf("delete from %s where id_category=?", $tblVideoLibrary);
+		$deleteByVideoStmt 		= sprintf("delete from %s where id_video=?", $tblVideoLibrary);
 		
 		$findByStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC", $tblVideoLibrary, $tblVideo);
 		$findByLimitStmt = sprintf("select *  from %s VM where id_category=? order by (select time from %s V where V.id=VM.id_video ) DESC LIMIT 12", $tblVideoLibrary, $tblVideo);
@@ -70,6 +71,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         $this->insertStmt 			= self::$PDO->prepare($insertStmt);
 		$this->deleteStmt 			= self::$PDO->prepare($deleteStmt);
 		$this->deleteByCategoryStmt = self::$PDO->prepare($deleteByCategoryStmt);
+		$this->deleteByVideoStmt 	= self::$PDO->prepare($deleteByVideoStmt);
 		
 		$this->findByStmt 			= self::$PDO->prepare($findByStmt);
 		$this->findByKeyStmt 		= self::$PDO->prepare($findByKeyStmt);
@@ -81,9 +83,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 		$this->findByTopHistoryStmt = self::$PDO->prepare($findByTopHistoryStmt);
 		$this->findByTopLibraryStmt = self::$PDO->prepare($findByTopLibraryStmt);
     } 
-    function getCollection( array $raw ) {
-        return new VideoLibraryCollection( $raw, $this );
-    }
+    function getCollection( array $raw ) {return new VideoLibraryCollection( $raw, $this );}
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\VideoLibrary(
@@ -94,9 +94,7 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
         return $obj;
     }
 
-    protected function targetClass() {        
-		return "VideoLibrary";
-    }
+    protected function targetClass() {return "VideoLibrary";}
 
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 			
@@ -120,7 +118,9 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 	protected function doDelete(array $values) {return $this->deleteStmt->execute( $values );}
     function selectStmt() {return $this->selectStmt;}
     function selectAllStmt(){return $this->selectAllStmt;}	
-	function deleteByCategory(array $values) {return $this->deleteByCategoryStmt->execute( $values );}
+
+	function deleteByCategory(array $values) 	{return $this->deleteByCategoryStmt->execute( $values );}
+	function deleteByVideo(array $values) 		{return $this->deleteByVideoStmt->execute( $values );}
 	
 	function findBy( $values ){
         $this->findByStmt->execute( $values );

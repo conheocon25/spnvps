@@ -9,11 +9,12 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	require_once( "mvc/mapper/Feed.php");
 	require_once( "mvc/mapper/CategoryNews.php");
 	require_once( "mvc/mapper/CategoryBType.php");
-	require_once( "mvc/mapper/CategoryVideo.php");		
+	require_once( "mvc/mapper/CategoryVideo.php");
 	require_once( "mvc/mapper/News.php");
 		
 	require_once( "mvc/mapper/Video.php");
 	require_once( "mvc/mapper/VideoLibrary.php");
+	require_once( "mvc/mapper/VideoDisable.php");
 	require_once( "mvc/mapper/VideoMonk.php");
 	require_once( "mvc/mapper/VoiceBook.php");	
 	
