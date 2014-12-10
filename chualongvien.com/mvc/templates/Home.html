@@ -4,6 +4,7 @@
 		<span metal:use-macro="base.xhtml/IncludeMETA"/>
 		<span metal:use-macro="base.xhtml/IncludeCSS"/>
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/cloud-carousel.1.0.5.min.js"/>
 		<script>
 			/*<![CDATA[*/
 			$(document).ready(function(){
@@ -29,13 +30,11 @@
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion3" href="#collapse3"/>
 							</div>
 							<div id="collapse3" class="accordion-body collapse in b-content">
-								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VL LocalVideoAll" class="span2">
-										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLRead">
-												<img tal:attributes="src VL/getVideo/getURLImage"/>
-												<p tal:content="VL/getVideo/getName"/>
-											</a>
+								<ul class="thumbnails grid-item reset-margin">																	
+									<li tal:repeat="VL LocalVideoAll" class="span2 scrfrmopn" tal:attributes="data-id VL/getIdVideo">
+										<div class="thumbnail">											
+											<img tal:attributes="src VL/getVideo/getURLImage"/>
+											<p tal:content="VL/getVideo/getName"/>
 										</div>
 									</li>
 								</ul>
@@ -123,71 +122,7 @@
 								</div>
 							</div>
 						</div>
-					</div>
-					<!-- TIN TỨC MẠNG CÁC CHỦA !-->
-					<div class="accordion accordion-fix" id="PagodaLocal">
-						<div class="accordion-group box radius">
-							<div class="accordion-heading b-title clearfix">
-								<div tal:content="string:TIN TỨC CHÙA ĐỊA PHƯƠNG" class="b-t-icon-content"/>
-								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" />
-							</div>
-							<div class="accordion-body collapse in b-content">
-								<div class="row reset-margin">
-									<div class="span4 reset-margin">
-										<div class="carousel slide carousel-fade img-polaroid news-slide">
-											<div class="carousel-inner">
-												<div class="active item">													
-													<a tal:attributes="href PPostAll/current/getURLRead">
-														<img tal:attributes="src PPostAll/current/getImage"/>
-														<div class="carousel-caption">
-															<p tal:content="PPostAll/current/getTitleReduce" />
-														</div>
-													</a>
-												</div>
-												<div tal:repeat="Post PPostAll" class="item">
-													<a tal:attributes="href Post/getURLRead">
-														<img tal:attributes="src Post/getImage"/>
-														<div class="carousel-caption">
-															<p tal:content="Post/getTitleReduce" />
-														</div>
-													</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="span4 reset-margin pull-right news-list">
-										<ul class="nav nav-tabs nav-stacked">
-											<li class="active news-list-title"><a>MỚI CẬP NHẬT</a></li>
-											<li class="news-list-item" tal:repeat="Post PPostAll">
-												<a tal:attributes="href Post/getURLRead" tal:content="Post/getTitleReduce"/>
-											</li>
-										</ul>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-					
-					<div class="accordion accordion-fix" id="accordion5">
-						<div class="accordion-group box radius">
-							<div class="accordion-heading b-title clearfix">
-								<div class="b-t-icon-content">Video Chùa Địa Phương</div>
-								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
-							</div>
-							<div id="collapse5" class="accordion-body collapse in b-content">
-								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="Video PVideoAll" class="span2">
-										<div class="thumbnail">
-											<a tal:attributes="href Video/getURLView">
-												<img tal:condition="Video/getURL" tal:attributes="src Video/getURLImage"/>
-												<p tal:content="Video/getName"/>
-											</a>
-										</div>
-									</li>
-								</ul>
-							</div>							
-						</div>
-					</div>
+					</div>					
 				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/SpringMsg"/>
@@ -195,18 +130,77 @@
 					<div metal:use-macro="base.xhtml/WarningMsg"/>										
 					<div metal:use-macro="base.xhtml/LibraryBox"/>
 					<div metal:use-macro="base.xhtml/HistoryBox"/>
-					<div metal:use-macro="base.xhtml/MonkBox"/>
-					<div metal:use-macro="base.xhtml/FilmBox"/>
+					<div metal:use-macro="base.xhtml/MonkBox"/>					
 					<div metal:use-macro="base.xhtml/MusicBox"/>
-					<div metal:use-macro="base.xhtml/GeneralBox"/>
-					<div metal:use-macro="base.xhtml/MecdBox"/>
-					<div metal:use-macro="base.xhtml/CookingBox"/>					
-					<div metal:use-macro="base.xhtml/CallendarBox"/>					
+					<div metal:use-macro="base.xhtml/MecdBox"/>					
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
 				</div>
 			</div>
 			<div metal:use-macro="base.xhtml/Footer"/>						
 			<div metal:use-macro="base.xhtml/FixedFunction"/>
 			<div metal:use-macro="base.xhtml/Backontop"/>
+			<!-- FRAME -->
+			<div class="scrfrm">
+				<div class="frm">
+					<div id="frmclsbtn" class="clsbtn" data-toggle="tooltip" data-placement="right" data-original-title="Nhấn ESC để đóng"></div>
+					<div class="clearfix">
+						<div class="lf">
+							<iframe id="VideoSource" src="//www.youtube.com/embed/TtLvxeKF0oc?modestbranding=1&amp;rel=0&amp;fs=0&amp;controls=0" frameborder="0" allowfullscreen="1"></iframe>
+						</div>
+						<div class="rg">
+							<div class="ctn">
+								<div class="title"><h4 id="VideoTitle"/></div>
+								Thời gian <div id="VideoTime" />
+								Ghi chú <div id="VideoNote" />
+								Lượt xem <div id="VideoCount" />
+								Click vào đây báo cáo Video không xem được <button id="frmflg" class="btn btn-danger btn-small" data-toggle="tooltip" data-placement="right" data-original-title="Báo cáo video không khả dụng"><i class="icon-flag icon-white"></i></button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<script language="JavaScript">
+				$('#frmclsbtn').tooltip();
+				$('#frmflg').tooltip();
+				$('.scrfrmopn').click(function(){
+					$("body").addClass("dsbscrl");
+					
+					var URL = "/object/load/Video/"+$(this).attr('data-id');
+					$.getJSON(URL, function(data){						
+						$("#VideoTitle").html(data.Name);
+						$("#VideoTime").html(data.Time);
+						$("#VideoCount").html(data.Count);
+						$("#VideoNote").html(data.Note);
+						$("#VideoSource").attr('src', data.URL);
+						$("#frmflg").attr('data-id', data.Id);
+						
+					});															
+					$('.scrfrm').css("display", "block");
+				});
+				$('#frmclsbtn').click(function(){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");});
+				
+				$("#frmflg").click(function(){
+										
+					//-----------------------------------------------------------------------------------
+			
+					var Data = [];
+					Data[0] = 'null';
+					Data[1] = $(this).attr('data-id');
+								
+					var URL = "/object/ins/VideoDisable";
+					$.ajax({
+						type: "POST",
+						data: {Data:Data},
+						url: URL,
+						success: function(msg){
+							alert("Đã báo cáo xong ! Chúng tôi sẽ tiến hành kiểm tra lại Video !");
+						}
+					});			
+				});
+				
+				$(document).keypress(function(e){if(e.keyCode==27){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");}});
+			</script>
+			<!-- END FRAME -->
 		</div>
 	</body>
 </html>

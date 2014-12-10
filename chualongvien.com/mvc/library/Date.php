@@ -7,18 +7,24 @@ class Date{
 		$this->Value = $Value;        
     }
 	
-	function getDateFormat(){
-		return date('d/m/Y',strtotime($this->Value));	
-	}
-	
-	function getDateTimeFormat(){
+	//them 11h lech mui gio tu 1=>+7 luc tao moi news
+
+        function getDateFormat(){
 		$interval = new \DateInterval('P0Y0DT11H0M');
 		$dateVN = new \DateTime($this->Value);	
 		$dateVN->add($interval);
-		return date('d/m/Y H:i:s',$dateVN);
+		return $dateVN->format('d/m/Y');
+		//return date('d/m/Y',strtotime($this->Value));
+	}
+
+        function getDateTimeFormat(){
+		$interval = new \DateInterval('P0Y0DT11H0M');
+		$dateVN = new \DateTime($this->Value);	
+		$dateVN->add($interval);
+		return $dateVN->format('d/m/Y H:i:s');
 		//return date('d/m/Y H:i:s',strtotime($this->Value));
 	}
-	
+
 	function getTimeFormat(){
 		return date('H:i:s',strtotime($this->Value));
 	}
