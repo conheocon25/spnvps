@@ -325,7 +325,7 @@
 		.scrfrm .frm .rg .ctn { padding: 20px; overflow: hidden; }
 		.scrfrm .frm .rg .ctn .title {
 			background: url("/mvc/templates/theme/bootstrap/img/video-camera-icon.png") no-repeat top left transparent;
-			height: 50px;
+			min-height: 50px;
 			padding-left: 60px;
 			overflow: hidden;
 			margin-bottom: 15px;
