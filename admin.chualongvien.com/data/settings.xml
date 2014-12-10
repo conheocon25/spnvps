@@ -24,10 +24,16 @@
 		<command name="ObjectUpd"><view>ObjectUpd</view></command>
 		
 		<command name="App"><view>App</view></command>
-		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>				
+		<command name="AppDisable"><view>AppDisable</view></command>
+		<command name="AppDisableDelAll">			
+			<view>AppDisableDelAll</view>
+			<status value="CMD_OK"><forward>AppDisable</forward></status>
+		</command>
+		
+		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>
 														
 		<!-- ============================================================================== -->
-		<!-- APP.BTYPE																-->
+		<!-- APP.BTYPE																		-->
 		<!-- ============================================================================== -->
 		<command name="AppBType">				<view>AppBType</view></command>
 		<command name="AppBTypeCategory">		<view>AppBTypeCategory</view></command>
@@ -62,7 +68,6 @@
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
 		<command name="AppConfig"><view>AppConfig</view></command>
-				
 		
 	</control>
 </options>

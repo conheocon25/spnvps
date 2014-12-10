@@ -11,6 +11,7 @@ interface NewsCollection 			extends \Iterator {function add( Object $object );}
 
 interface VideoCollection 			extends \Iterator {function add( Object $object );}
 interface VideoLibraryCollection 	extends \Iterator {function add( Object $object );}
+interface VideoDisableCollection 	extends \Iterator {function add( Object $object );}
 interface VideoMonkCollection 		extends \Iterator {function add( Object $object );}
 interface VoiceBookCollection 		extends \Iterator {function add( Object $object );}
 

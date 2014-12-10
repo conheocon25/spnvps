@@ -30,8 +30,6 @@ RewriteRule ^object/upd/([A-Za-z0-9]+)$ 							?cmd=ObjectUpd&ObjectName=$1 [L]
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^app$ 												?cmd=App [L]
 
-RewriteRule ^app$ 												?cmd=App [L]
-
 RewriteRule ^app/config$ 										?cmd=AppConfig [L]
 RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 
@@ -39,18 +37,22 @@ RewriteRule ^app/event$ 										?cmd=AppEvent [L]
 RewriteRule ^app/event/ins/load$ 								?cmd=AppEventInsLoad [L]
 RewriteRule ^app/event/ins/exe$ 								?cmd=AppEventInsExe [L]
 RewriteRule ^app/event/([0-9]+)/upd/load$ 						?cmd=AppEventUpdLoad&IdEvent=$1 [L]
-RewriteRule ^app/event/([0-9]+)/upd/exe$ 						?cmd=AppEventUpdExe&IdEvent=$1 [L]
+RewriteRule ^app/event/([0-9]+)/upd/exe$ 						?cmd=AppEventUpdExe&IdEvent=$1 	[L]
 
-RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum [L]
-RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 [L]
+RewriteRule ^app/disable$ 										?cmd=AppDisable 				[L]
+RewriteRule ^app/disable/del/all$ 								?cmd=AppDisableDelAll			[L]
 
-RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews [L]
-RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 [L]
+RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum 			[L]
+RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 	[L]
+
+RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews 			[L]
+RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 	[L]
 
 RewriteRule ^app/news/rss$ 										?cmd=AppNewsRss [L]
 
 RewriteRule ^app/news$ 											?cmd=AppNews [L]
 RewriteRule ^app/news/([0-9]+)$ 								?cmd=AppNews&IdCategory=$1 [L]
+
 RewriteRule ^app/news/([0-9]+)/page/([0-9]+)$ 					?cmd=AppNews&IdCategory=$1&Page=$2 [L]
 RewriteRule ^app/news/([0-9]+)/ins/load$ 						?cmd=AppNewsInsLoad&IdCategory=$1 [L]
 RewriteRule ^app/news/([0-9]+)/ins/exe$ 						?cmd=AppNewsInsExe&IdCategory=$1 [L]
