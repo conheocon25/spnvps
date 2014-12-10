@@ -328,13 +328,17 @@
 			height: 50px;
 			padding-left: 60px;
 			overflow: hidden;
+			margin-bottom: 15px;
 		}
 		.scrfrm .frm .rg .ctn .title h4 {
 			font-size: 13px;
 			color: #3b5998;
 			margin: 0;
 		}
+		.scrfrm .frm .rg .ctn p {
+			border-bottom: 1px solid #ddd;
+		}
 		.scrfrm .frm .rg .ctn .btn {
-			margin: 10px 0;
+			margin: 5px 0;
 		}
 	.dsbscrl { overflow: hidden; }
