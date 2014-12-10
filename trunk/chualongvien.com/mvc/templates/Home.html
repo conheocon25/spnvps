@@ -30,7 +30,7 @@
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion3" href="#collapse3"/>
 							</div>
 							<div id="collapse3" class="accordion-body collapse in b-content">
-								<ul class="thumbnails grid-item reset-margin">																	
+								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VL LocalVideoAll" class="span2 scrfrmopn" tal:attributes="data-id VL/getIdVideo">
 										<div class="thumbnail">											
 											<img tal:attributes="src VL/getVideo/getURLImage"/>
@@ -57,21 +57,19 @@
 								<div class="b-t-icon-content">Video thư viện Phật pháp</div>
 								<a class="accordion-toggle pull-right hidden-accordion icon-chevron-up icon-white hidden-control" data-toggle="collapse" data-parent="#accordion5" href="#collapse5"/>
 							</div>
-							<div id="collapse5" class="accordion-body collapse in b-content">
+							<div id="collapse5" class="accordion-body collapse in b-content">								
 								<ul class="thumbnails grid-item reset-margin">
-									<li tal:repeat="VL TopLibraryVideoAll" class="span2">
-										<div class="thumbnail">
-											<a tal:attributes="href VL/getURLRead">
-												<img tal:condition="VL/getVideo/getURL" tal:attributes="src VL/getVideo/getURLImage"/>
-												<p tal:content="VL/getVideo/getName"/>
-											</a>
+									<li tal:repeat="VL TopLibraryVideoAll" class="span2 scrfrmopn" tal:attributes="data-id VL/getIdVideo">
+										<div class="thumbnail">											
+											<img tal:attributes="src VL/getVideo/getURLImage"/>
+											<p tal:content="VL/getVideo/getName"/>
 										</div>
 									</li>
-								</ul>
+								</ul>								
 								<ul class="thumbnails grid-item reset-margin">
 									<li tal:repeat="VB TopLibraryBookAll" class="span2">
 										<div class="thumbnail">
-											<a tal:attributes="href VB/getURLRead">												
+											<a tal:attributes="href VB/getURLRead">
 												<img tal:attributes="src VB/getImage" />
 												<p tal:content="VB/getName"/>
 											</a>
@@ -145,15 +143,19 @@
 					<div id="frmclsbtn" class="clsbtn" data-toggle="tooltip" data-placement="right" data-original-title="Nhấn ESC để đóng"></div>
 					<div class="clearfix">
 						<div class="lf">
-							<iframe id="VideoSource" src="//www.youtube.com/embed/TtLvxeKF0oc?modestbranding=1&amp;rel=0&amp;fs=0&amp;controls=0" frameborder="0" allowfullscreen="1"></iframe>
+							<iframe id="VideoSource" src="" frameborder="0" allowfullscreen="1"></iframe>
 						</div>
 						<div class="rg">
 							<div class="ctn">
 								<div class="title"><h4 id="VideoTitle"/></div>
-								Thời gian <div id="VideoTime" />
-								Ghi chú <div id="VideoNote" />
-								Lượt xem <div id="VideoCount" />
-								Click vào đây báo cáo Video không xem được <button id="frmflg" class="btn btn-danger btn-small" data-toggle="tooltip" data-placement="right" data-original-title="Báo cáo video không khả dụng"><i class="icon-flag icon-white"></i></button>
+								<p><b>Xuất bản:</b> <span id="VideoTime"/></p>
+								<p><b>Lượt xem:</b> <span id="VideoCount"/></p>
+								<p><b>Ghi chú:</b> <span id="VideoNote"/></p>
+								<center>
+									<small>Click vào bên dưới nếu Video này không xem được</small>
+									<button id="frmflg" class="btn btn-danger btn-small" data-toggle="tooltip" data-placement="bottom" data-original-title="Video không khả dụng">
+										<i class="icon-flag icon-white"></i> Báo cáo</button>
+								</center>
 							</div>
 						</div>
 					</div>
