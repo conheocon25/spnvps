@@ -6,4 +6,6 @@
 	require_once("mvc/library/Logger.php");	
 	require_once("mvc/library/String.php");	
 	require_once("mvc/library/Statistic.php");
+	require_once("mvc/library/Encrypted.php");
+	require_once("mvc/library/ReadRss.php");
 ?>
