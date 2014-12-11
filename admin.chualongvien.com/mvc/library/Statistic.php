@@ -56,7 +56,7 @@ class Statistic{
 		
 		$Agent = $_SERVER['REMOTE_ADDR'];
 		$EntryTime = \time();
-		$ExitTime= \time()+(60*60*1);
+		$ExitTime= \time()+(60*60);
 		if (!isset($Agent))
 			$Agent = "";
 		
