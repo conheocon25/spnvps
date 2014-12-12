@@ -24,5 +24,7 @@ class GuestCollection 			extends Collection implements \MVC\Domain\GuestCollecti
 
 class PagodaCollection 			extends Collection implements \MVC\Domain\PagodaCollection			{function targetClass(){return "\MVC\Domain\Pagoda";			}}
 class EventCollection 			extends Collection implements \MVC\Domain\EventCollection			{function targetClass(){return "\MVC\Domain\Event";				}}
+class NewsRssCollection 			extends Collection implements \MVC\Domain\NewsRssCollection			{function targetClass(){return "\MVC\Domain\NewsRss";				}}
+class RssLinkCollection 			extends Collection implements \MVC\Domain\RssLinkCollection			{function targetClass(){return "\MVC\Domain\RssLink";				}}
 
 ?>

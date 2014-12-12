@@ -22,4 +22,6 @@ interface GuestCollection 			extends \Iterator {function add( Object $object );}
 
 interface PagodaCollection 			extends \Iterator {function add( Object $object );}
 interface EventCollection 			extends \Iterator {function add( Object $object );}
+interface NewsRssCollection 		extends \Iterator {function add( Object $object );}
+interface RssLinkCollection 		extends \Iterator {function add( Object $object );}
 ?>

@@ -20,6 +20,8 @@ if ( ! isset( $EG_DISABLE_INCLUDES ) ) {
 	
 	require_once( "mvc/mapper/Pagoda.php");	
 	require_once( "mvc/mapper/Event.php");	
+	require_once( "mvc/mapper/NewsRss.php");	
+	require_once( "mvc/mapper/RssLink.php");	
 }
 
 class HelperFactory {

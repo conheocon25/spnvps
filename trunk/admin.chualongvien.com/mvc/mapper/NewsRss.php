@@ -2,7 +2,7 @@
 namespace MVC\Mapper;
 
 require_once( "mvc/base/Mapper.php" );
-class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
+class NewsRss extends Mapper implements \MVC\Domain\NewsRssFinder {
 
     function __construct() {
         parent::__construct();
@@ -11,8 +11,8 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
 		
 		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, date DESC", $tblNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblNews);
-		$updateStmt = sprintf("update %s set id_category=?, id_rss=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
-		$insertStmt = sprintf("insert into %s ( id_category, id_rss, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?, ?)", $tblNews);
+		$updateStmt = sprintf("update %s set id_category=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
+		$insertStmt = sprintf("insert into %s ( id_category, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$deleteByCategoryStmt = sprintf("delete from %s where id_category=? AND (month(`date`))<=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
@@ -65,14 +65,13 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
 
     } 
     function getCollection( array $raw ) {
-        return new NewsCollection( $raw, $this );
+        return new NewsRssCollection( $raw, $this );
     }
 
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\NewsRss( 
 			$array['id'],
 			$array['id_category'],
-			$array['id_rss'],
 			$array['author'],
 			$array['date'],
 			$array['content'],
@@ -90,7 +89,6 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getIdCategory(),
-			$object->getIdRss(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),
@@ -106,7 +104,6 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getIdCategory(),
-			$object->getIdRss(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),
@@ -135,25 +132,25 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
 	
 	function findBy( $values ){
         $this->findByStmt->execute( $values );
-        return new NewsCollection( $this->findByStmt->fetchAll(), $this);
+        return new NewsRssCollection( $this->findByStmt->fetchAll(), $this);
     }
 		
 	function findByLimit( $values ){
         $this->findByLimitStmt->execute( $values );
-        return new NewsCollection( $this->findByLimitStmt->fetchAll(), $this);
+        return new NewsRssCollection( $this->findByLimitStmt->fetchAll(), $this);
     }
 	function findByLimit1( $values ){
         $this->findByLimit1Stmt->execute( $values );
-        return new NewsCollection( $this->findByLimit1Stmt->fetchAll(), $this);
+        return new NewsRssCollection( $this->findByLimit1Stmt->fetchAll(), $this);
     }
 	function findByLimit2( $values ){
         $this->findByLimit2Stmt->execute( $values );
-        return new NewsCollection( $this->findByLimit2Stmt->fetchAll(), $this);
+        return new NewsRssCollection( $this->findByLimit2Stmt->fetchAll(), $this);
     }
 	
 	function findByCategoryDate( $values ){
         $this->findByCategoryDateStmt->execute( $values );
-        return new NewsCollection( $this->findByCategoryDateStmt->fetchAll(), $this);
+        return new NewsRssCollection( $this->findByCategoryDateStmt->fetchAll(), $this);
     }
 	
 	
@@ -161,12 +158,12 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByPageStmt->bindValue(':start', ((int)($values[0])-1)*(int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->bindValue(':max', (int)($values[1]), \PDO::PARAM_INT);
 		$this->findByPageStmt->execute();
-        return new NewsCollection( $this->findByPageStmt->fetchAll(), $this );
+        return new NewsRssCollection( $this->findByPageStmt->fetchAll(), $this );
     }
 	
 	function findByDateTime( $values ) {		
 		$this->findByDateTimeStmt->execute($values);
-        return new NewsCollection( $this->findByDateTimeStmt->fetchAll(), $this );
+        return new NewsRssCollection( $this->findByDateTimeStmt->fetchAll(), $this );
     }
 	
 	function findByCategoryPage( $values ) {
@@ -174,7 +171,7 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsFinder {
 		$this->findByCategoryPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByCategoryPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByCategoryPageStmt->execute();
-        return new NewsCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
+        return new NewsRssCollection( $this->findByCategoryPageStmt->fetchAll(), $this );
     }
 	
 	function findByKey( $values ) {	
