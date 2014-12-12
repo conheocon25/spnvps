@@ -28,4 +28,6 @@ interface VoiceBookFinder		extends Finder {}
 
 interface PagodaFinder			extends Finder {}
 interface EventFinder			extends Finder {}
+interface NewsRssFinder			extends Finder {}
+interface RssLinkFinder			extends Finder {}
 ?>
