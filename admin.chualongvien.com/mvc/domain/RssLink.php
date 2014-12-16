@@ -39,8 +39,19 @@ class RssLink extends Object{
 	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}   
 	function getType( ) {return $this->Type;}
 	
+	function getCategoryVideo( ) {
+		$mCategoryNews = new \MVC\Mapper\CategoryNews();
+		$dCategoryVideo = $mCategoryNews->find($this->Type);
+		return $dCategoryVideo;
+	}
+	
 	function setEnable( $Enable ) {$this->Enable = $Enable;$this->markDirty();}   
 	function getEnable( ) {return $this->Enable;}
+	
+	function getEnablePrint( ) {
+		if ($this->Enable == 1)	return "Áp Dụng";
+		else return "Không áp dụng";
+	}
 	
 	
 	
@@ -73,6 +84,7 @@ class RssLink extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "/rss/".$this->getKey();}
+	function getURLPublishNews(){return "/app/news/publish/".$this->getId();}
 	function getURLUpdLoad(){return "/app/rss/".$this->getId()."/upd/load";}	
 	function getURLUpdExe()	{return "/app/rss/".$this->getId()."/upd/exe";}
 	//-------------------------------------------------------------------------------

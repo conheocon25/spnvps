@@ -57,12 +57,12 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array(			
-			$object->getId(),
 			$object->getName(),
 			$object->getWeburl(),
 			$object->getRssurl(),
 			$object->getType(),
-			$object->getEnable()			
+			$object->getEnable(),
+			$object->getId()			
 		);
         $this->updateStmt->execute( $values );
     }

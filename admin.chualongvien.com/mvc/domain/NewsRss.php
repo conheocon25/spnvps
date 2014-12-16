@@ -118,6 +118,8 @@ class NewsRss extends Object{
 	//-------------------------------------------------------------------------------
 	function getURLRead(){		return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
 	function getURLUpdLoad(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
+	
+	
 	function getURLUpdExe(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/exe";}
 	function getURLBookmark1(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark1";}
 	function getURLBookmark2(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/bookmark2";}
