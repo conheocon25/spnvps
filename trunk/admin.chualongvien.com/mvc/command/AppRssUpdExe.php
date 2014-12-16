@@ -12,13 +12,12 @@
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------												
 			$IdRss 	= $request->getProperty('IdRss');
-			$Name = $request->getProperty('Name');
+			$Name 	= $request->getProperty('Name');
 			$Weburl = $request->getProperty('Weburl');
 			$Rssurl = $request->getProperty('Rssurl');
-			$Type 	= $request->getProperty('Type');
-			$Enable = $request->getProperty('Enable');
+			$TypeRss 	= $request->getProperty('TypeRss');
+			$EnableRss = $request->getProperty('EnableRss');
 			
-									
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -31,8 +30,8 @@
 			$Rss->setName($Name);
 			$Rss->setWeburl($Weburl);
 			$Rss->setRssurl($Rssurl);
-			$Rss->setType($Type);
-			$Rss->setEnable($Enable);
+			$Rss->setType($TypeRss);
+			$Rss->setEnable($EnableRss);
 			
 						
 			$mRss->update($Rss);

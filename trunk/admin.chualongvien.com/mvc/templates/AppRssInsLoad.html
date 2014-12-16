@@ -39,13 +39,20 @@
 									<div class="control-group">
 										<label class="control-label" for="Type">Thể Loại</label>
 										<div class="controls">
-											<input type="text" id="Type" name="Type" />
+											<select name="Type" id="Type">
+												<option tal:repeat="CategoryNew AllCategoryNews" tal:attributes="value CategoryNew/getId;">
+													<span tal:content="CategoryNew/getName"/>
+												</option>
+											</select>
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="Enable">Khả dụng</label>
 										<div class="controls">
-											<input type="text" id="Enable" name="Enable" />
+											<select name="Enable" id="Enable">
+												<option value="1" ><span>Áp Dụng</span></option>
+												<option value="0" ><span>Không Áp Dụng</span></option>
+											</select>
 										</div>
 									</div>
 									<div class="form-actions">

@@ -1,40 +1,48 @@
 <?php
 	namespace MVC\Command;	
-	class AppRssUpdLoad extends Command{
+	class AppNewsRssPublish extends Command{
 		function doExecute( \MVC\Controller\Request $request ){
 			require_once("mvc/base/domain/HelperFactory.php");			
 			//-------------------------------------------------------------
 			//THAM SỐ TOÀN CỤC
 			//-------------------------------------------------------------						
 			$Session = \MVC\Base\SessionRegistry::instance();
-									
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
+			
 			$IdRss = $request->getProperty('IdRss');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
-			//-------------------------------------------------------------
-			$mRss = new \MVC\Mapper\RssLink();
-			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+			//-------------------------------------------------------------						
+			$mCategoryNews 	= new \MVC\Mapper\CategoryNews();
+			$mRssLink 		= new \MVC\Mapper\RssLink();
+			$mNewsRss 			= new \MVC\Mapper\NewsRss();
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------			
-			$Rss 		= $mRss->find($IdRss);
-			$AllCategoryNews 		= $mCategoryNews->findAll();
-			$Title 		= mb_strtoupper("CẬP NHẬT RSS Link", 'UTF8');
+			//-------------------------------------------------------------									
+			$dRssLink = $mRssLink->find($IdRss);
 			
-			$Navigation = array(array("RSS Lấy Tin", "/app/Rss"));
+			
+			
+			
+			$NewsRssAll = $mNewsRss->findAll();				
+			
+			$Title = mb_strtoupper("DUYỆT TIN TỨC TỪ RSS URL", 'UTF8');
+			$Navigation = array(				
+				array("TIN TỨC", "/app/news/rss")
+			);
+			
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
-			//-------------------------------------------------------------																					
-			$request->setObject('Navigation', 	$Navigation);
-			$request->setObject('Rss', 		$Rss);			
-			$request->setObject('AllCategoryNews', 		$AllCategoryNews);			
-			$request->setProperty("Title", 		$Title);
-			
+			//-------------------------------------------------------------						
+			$request->setObject("NewsRssAll", $NewsRssAll);
+			$request->setObject("Navigation", $Navigation);
+			$request->setProperty("Title", $Title);
+			$request->setProperty("ActiveAdmin", 'NewsRss');
 			return self::statuses('CMD_DEFAULT');
 		}
 	}

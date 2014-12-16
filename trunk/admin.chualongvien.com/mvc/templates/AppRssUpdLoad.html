@@ -27,25 +27,32 @@
 									<div class="control-group">
 										<label class="control-label" for="Weburl">Địa chỉ Web Lấy tin</label>
 										<div class="controls">											
-											<input type="text" id="Weburl" name="Weburl" tal:attributes="value  Rss/getWeburl" />
+											<input type="text" id="Weburl" name="Weburl" tal:attributes="value Rss/getWeburl" />
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="Rssurl">Địa chỉ Rss Lấy tin</label>
 										<div class="controls">
-											<input type="text" id="Rssurl" name="Rssurl" tal:attributes="value  Rss/getRssurl" />
+											<input type="text" id="Rssurl" name="Rssurl" tal:attributes="value Rss/getRssurl" />
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="Type">Thể Loại</label>
 										<div class="controls">
-											<textarea id="Type" name="Type" tal:content="Rss/getType"/>
+											<select name="TypeRss" id="TypeRss">
+												<option tal:repeat="CategoryNew AllCategoryNews" tal:attributes="value CategoryNew/getId;">
+													<span tal:content="CategoryNew/getName"/>
+												</option>
+											</select>											
 										</div>
 									</div>
 									<div class="control-group">
 										<label class="control-label" for="Enable">Khả dụng</label>
 										<div class="controls">
-											<textarea id="Enable" name="Enable" tal:content="Rss/getEnable"/>
+											<select name="EnableRss" id="EnableRss">
+												<option value="1" ><span>Áp Dụng</span></option>
+												<option value="0" ><span>Không Áp Dụng</span></option>
+											</select>											
 										</div>
 									</div>
 									<div class="form-actions">
