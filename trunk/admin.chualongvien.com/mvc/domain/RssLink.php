@@ -6,21 +6,21 @@ class RssLink extends Object{
 
     private $Id;	
 	private $Name;
-	private $Date;
-	private $Picture;
-	private $Content;
-	private $Key;
+	private $Weburl;
+	private $Rssurl;
+	private $Type;
+	private $Enable;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Date=null, $Picture=null, $Content=null, $Key=null){
+    function __construct( $Id=null, $Name=null, $Weburl=null, $Rssurl=null, $Type=null, $Enable=null){
 		$this->Id 			= $Id;		
 		$this->Name 		= $Name; 
-		$this->Date 		= $Date;
-		$this->Picture		= $Picture;
-		$this->Content 		= $Content;
-		$this->Key 			= $Key;
+		$this->Weburl 		= $Weburl;
+		$this->Rssurl		= $Rssurl;
+		$this->Type 		= $Type;
+		$this->Enable 			= $Enable;
 		
 		parent::__construct( $Id );
 	}
@@ -29,34 +29,29 @@ class RssLink extends Object{
     function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
 	
-	function setDate( $Date ) {$this->Date = $Date;$this->markDirty();}   
-	function getDate( ) {return $this->Date;}
-	function getDatePrint( ){$D = new \MVC\Library\Date($this->Date);return $D->getDateFormat();}
+	function setWeburl( $Weburl ) {$this->Weburl = $Weburl;$this->markDirty();}   
+	function getWeburl( ) {return $this->Weburl;}
 	
-	function setPicture( $Picture ) {$this->Picture = $Picture;$this->markDirty();}   
-	function getPicture( ) {return $this->Picture;}
 	
-	function setContent( $Content ) {$this->Content = $Content;$this->markDirty();}   
-	function getContent( ) {return $this->Content;}
+	function setRssurl( $Rssurl ) {$this->Rssurl = $Rssurl;$this->markDirty();}   
+	function getRssurl( ) {return $this->Rssurl;}
 	
-	function setKey( $Key ) {$this->Key = $Key;$this->markDirty();}   
-	function getKey( ) {return $this->Key;}
+	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}   
+	function getType( ) {return $this->Type;}
 	
-	function reKey( ){
-		$Id = $this->getId();
-		if (!isset($Id)||$Id==0) $Id = time();
-		$Str = new \MVC\Library\String($this->Name." ".$Id);
-		$this->Key = $Str->converturl();		
-	}
+	function setEnable( $Enable ) {$this->Enable = $Enable;$this->markDirty();}   
+	function getEnable( ) {return $this->Enable;}
+	
+	
 	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),			
 			'Name'			=> $this->getName(),
-			'Date'			=> $this->getDate(),
-			'Picture' 		=> $this->getPicture(),
-		 	'Content'		=> $this->getContent(),
-			'Key'			=> $this->getKey()			
+			'Weburl'		=> $this->getWeburl(),
+			'Rssurl' 		=> $this->getRssurl(),
+		 	'Type'			=> $this->getType(),
+			'Enable'		=> $this->getEnable()			
 		);
 		return json_encode($json);
 	}
@@ -64,10 +59,10 @@ class RssLink extends Object{
 	function setArray( $Data ){
         $this->Id 		= $Data[0];
 		$this->Name 	= $Data[1];
-		$this->Date 	= $Data[2];
-		$this->Picture	= $Data[3];
-		$this->Content 	= $Data[4];
-		$this->Key	 	= $Data[5];
+		$this->Weburl 	= $Data[2];
+		$this->Rssurl	= $Data[3];
+		$this->Type 	= $Data[4];
+		$this->Enable	 	= $Data[5];
     }
 			
 	//-------------------------------------------------------------------------------
@@ -77,9 +72,9 @@ class RssLink extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLView(){return "/su-kien/".$this->getKey();}
-	function getURLUpdLoad(){return "/app/event/".$this->getId()."/upd/load";}	
-	function getURLUpdExe()	{return "/app/event/".$this->getId()."/upd/exe";}
+	function getURLView(){return "/rss/".$this->getKey();}
+	function getURLUpdLoad(){return "/app/rss/".$this->getId()."/upd/load";}	
+	function getURLUpdExe()	{return "/app/rss/".$this->getId()."/upd/exe";}
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}
     static function find( $Id ) {$finder = self::getFinder( __CLASS__ ); return $finder->find( $Id );}	

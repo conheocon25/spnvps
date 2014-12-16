@@ -48,6 +48,12 @@ RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 	[L]
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews 			[L]
 RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 	[L]
 
+RewriteRule ^app/rss$ 											?cmd=AppRss [L]
+RewriteRule ^app/rss/ins/load$ 									?cmd=AppRssInsLoad [L]
+RewriteRule ^app/rss/ins/exe$ 									?cmd=AppRssInsExe [L]
+RewriteRule ^app/rss/([0-9]+)/upd/load$ 						?cmd=AppRssUpdLoad&IdRss=$1 [L]
+RewriteRule ^app/rss/([0-9]+)/upd/exe$ 							?cmd=AppRssUpdExe&IdRss=$1 	[L]
+
 RewriteRule ^app/news/rss$ 										?cmd=AppNewsRss [L]
 
 RewriteRule ^app/news$ 											?cmd=AppNews [L]

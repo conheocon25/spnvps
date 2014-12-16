@@ -9,14 +9,14 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 				
 		$tblRssLink = "chualongvien_rss_link";
 		
-		$selectAllStmt 		= sprintf("select * from %s ORDER BY `date` DESC", $tblRssLink);
+		$selectAllStmt 		= sprintf("select * from %s", $tblRssLink);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblRssLink);
-		$updateStmt 		= sprintf("update %s set name=?, `date`=?, picture=?, content=?, `key`=? where id=?", $tblRssLink);
-		$insertStmt 		= sprintf("insert into %s ( name, `date`, picture, content, `key`) values(?, ?, ?, ?, ?)", $tblRssLink);
+		$updateStmt 		= sprintf("update %s set name=?, `weburl`=?, rssurl=?, type=?, `enable`=? where id=?", $tblRssLink);
+		$insertStmt 		= sprintf("insert into %s ( name, `weburl`, rssurl, type, `enable`) values(?, ?, ?, ?, ?)", $tblRssLink);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblRssLink);
-		$findByStmt 		= sprintf("select *  from %s where id_pagoda=?", $tblRssLink);
-		$findByPageStmt 	= sprintf("SELECT * FROM  %s WHERE id_pagoda=:id_pagoda LIMIT :start,:max", $tblRssLink);
-		$findByKeyStmt 		= sprintf("select *  from %s where `key`=?", $tblRssLink);	
+		$findByStmt 		= sprintf("select *  from %s where type=?", $tblRssLink);
+		$findByTypeStmt 	= sprintf("SELECT * FROM  %s WHERE type=:type LIMIT :start,:max", $tblRssLink);
+		$findByEnableStmt 		= sprintf("select *  from %s where `enable`=?", $tblRssLink);	
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
         $this->selectStmt 		= self::$PDO->prepare($selectStmt);
@@ -24,8 +24,8 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
         $this->insertStmt 		= self::$PDO->prepare($insertStmt);
 		$this->deleteStmt 		= self::$PDO->prepare($deleteStmt);
 		$this->findByStmt 		= self::$PDO->prepare($findByStmt);
-		$this->findByKeyStmt 	= self::$PDO->prepare($findByKeyStmt);
-		$this->findByPageStmt 	= self::$PDO->prepare($findByPageStmt);
+		$this->findByEnableStmt = self::$PDO->prepare($findByEnableStmt);
+		$this->findByTypeStmt 	= self::$PDO->prepare($findByTypeStmt);
     }
 	
     function getCollection( array $raw ) {return new RssLinkCollection( $raw, $this );}
@@ -33,10 +33,10 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
         $obj = new \MVC\Domain\RssLink( 
 			$array['id'],			
 			$array['name'],
-			$array['date'],
-			$array['picture'],
-			$array['content'],
-			$array['key']
+			$array['weburl'],
+			$array['rssurl'],
+			$array['type'],
+			$array['enable']
 		);
         return $obj;
     }
@@ -45,10 +45,10 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 			
 			$object->getName(),
-			$object->getDate(),
-			$object->getPicture(),
-			$object->getContent(),
-			$object->getKey()
+			$object->getWeburl(),
+			$object->getRssurl(),
+			$object->getType(),
+			$object->getEnable()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -57,12 +57,12 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array(			
+			$object->getId(),
 			$object->getName(),
-			$object->getDate(),
-			$object->getPicture(),
-			$object->getContent(),
-			$object->getKey(),
-			$object->getId()
+			$object->getWeburl(),
+			$object->getRssurl(),
+			$object->getType(),
+			$object->getEnable()			
 		);
         $this->updateStmt->execute( $values );
     }
@@ -76,18 +76,18 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
         return new RssLinkCollection( $this->findByStmt->fetchAll(), $this);
     }
 	
-	function findByPage( $values ) {				
-		$this->findByPageStmt->bindValue(':id_pagoda', $values[0], \PDO::PARAM_INT);
-		$this->findByPageStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
-		$this->findByPageStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
-		$this->findByPageStmt->execute();
-        return new RssLinkCollection( $this->findByPageStmt->fetchAll(), $this );
+	function findByType( $values ) {				
+		$this->findByTypeStmt->bindValue(':type', $values[0], \PDO::PARAM_INT);
+		$this->findByTypeStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
+		$this->findByTypeStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
+		$this->findByTypeStmt->execute();
+        return new RssLinkCollection( $this->findByTypeStmt->fetchAll(), $this );
     }
 	
-	function findByKey( $values ) {	
-		$this->findByKeyStmt->execute( array($values) );
-        $array = $this->findByKeyStmt->fetch();
-        $this->findByKeyStmt->closeCursor();
+	function findByEnable( $values ) {	
+		$this->findByEnableStmt->execute( array($values) );
+        $array = $this->findByEnableStmt->fetch();
+        $this->findByEnableStmt->closeCursor();
         if ( ! is_array( $array ) ) { return null; }
         if ( ! isset( $array['id'] ) ) { return null; }
         $object = $this->doCreateObject( $array );
