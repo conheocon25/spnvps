@@ -6,6 +6,7 @@ class NewsRss extends Object{
 
     private $Id;
 	private $IdCategory;
+	private $IdRss;
 	private $Author;
 	private $Date;
 	private $Content;
@@ -16,9 +17,10 @@ class NewsRss extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdCategory=null , $Author=Null, $Date=Null, $Content=null, $Title=null, $Type=null, $Key=null){
+    function __construct( $Id=null, $IdCategory=null , $IdRss=null , $Author=Null, $Date=Null, $Content=null, $Title=null, $Type=null, $Key=null){
         $this->Id = $Id;
 		$this->IdCategory = $IdCategory;
+		$this->IdRss = $IdRss;
 		$this->Author = $Author;
 		$this->Date = $Date;
 		$this->Content = $Content;
@@ -33,6 +35,10 @@ class NewsRss extends Object{
 	
     function setIdCategory( $IdCategory ) {$this->IdCategory = $IdCategory;$this->markDirty();}   
 	function getIdCategory( ) {return $this->IdCategory;}
+	
+	function setIdRss( $IdRss ) {$this->IdRss = $IdRss;$this->markDirty();}   
+	function getIdRss( ) {return $this->IdRss;}
+	
 	function getCategory(){$mCategory = new \MVC\Mapper\CategoryNews();$Category = $mCategory->find($this->getIdCategory());return $Category;}
 	
 	function setAuthor( $Author ){$this->Author = $Author;$this->markDirty();}   
@@ -84,6 +90,7 @@ class NewsRss extends Object{
 		$json = array(
 			'Id' 			=> $this->getId(),
 			'IdCategory' 	=> $this->getIdCategory(),
+			'IdRss' 		=> $this->getIdRss(),
 			'Author' 		=> $this->getAuthor(),
 			'Date'			=> $this->getDate(),
 			'Content'		=> $this->getContent(),	
@@ -97,11 +104,12 @@ class NewsRss extends Object{
 	function setArray( $Data ){
         $this->Id 			= $Data[0];
 		$this->IdCategory 	= $Data[1];
-		$this->Author 		= $Data[2];
-		$this->Date 		= $Data[3];		
-		$this->Content 		= \stripslashes($Data[4]);
-		$this->Title		= $Data[5];
-		$this->Type			= $Data[6];
+		$this->IdRss 		= $Data[2];
+		$this->Author 		= $Data[3];
+		$this->Date 		= $Data[4];		
+		$this->Content 		= \stripslashes($Data[5]);
+		$this->Title		= $Data[6];
+		$this->Type			= $Data[7];
 		$this->reKey();
     }
 	

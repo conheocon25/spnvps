@@ -63,6 +63,15 @@
 		<command name="AppEventInsExe"><view>AppEventInsExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
 		<command name="AppEventUpdLoad"><view>AppEventUpdLoad</view></command>
 		<command name="AppEventUpdExe"><view>AppEventUpdExe</view><status value="CMD_OK"><forward>AppEvent</forward></status></command>
+		
+		<!-- ============================================================================== -->
+		<!-- APP.RSS																		-->
+		<!-- ============================================================================== -->
+		<command name="AppRss"><view>AppRss</view></command>		
+		<command name="AppRssInsLoad"><view>AppRssInsLoad</view></command>
+		<command name="AppRssInsExe"><view>AppRssInsExe</view><status value="CMD_OK"><forward>AppRss</forward></status></command>
+		<command name="AppRssUpdLoad"><view>AppRssUpdLoad</view></command>
+		<command name="AppRssUpdExe"><view>AppRssUpdExe</view><status value="CMD_OK"><forward>AppRss</forward></status></command>
 						
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->

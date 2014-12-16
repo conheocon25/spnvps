@@ -9,10 +9,10 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsRssFinder {
 				
 		$tblNews = "chualongvien_news_rss";
 		
-		$selectAllStmt = sprintf("select * from %s ORDER BY type DESC, date DESC", $tblNews);
+		$selectAllStmt = sprintf("select * from %s ORDER BY date DESC", $tblNews);
 		$selectStmt = sprintf("select *  from %s where id=?", $tblNews);
-		$updateStmt = sprintf("update %s set id_category=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
-		$insertStmt = sprintf("insert into %s ( id_category, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?)", $tblNews);
+		$updateStmt = sprintf("update %s set id_category=?, id_rss=?, author=?, `date`=?, content=?, title=?, type=?, `key`=? where id=?", $tblNews);
+		$insertStmt = sprintf("insert into %s ( id_category, id_rss, author, `date`, content, title, type, `key`) values(?, ?, ?, ?, ?, ?, ?, ?)", $tblNews);
 		$deleteStmt = sprintf("delete from %s where id=?", $tblNews);
 		$deleteByCategoryStmt = sprintf("delete from %s where id_category=? AND (month(`date`))<=?", $tblNews);
 		$findByStmt = sprintf("select *  from %s where id_category=? ORDER BY type DESC, date DESC", $tblNews);		
@@ -72,6 +72,7 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsRssFinder {
         $obj = new \MVC\Domain\NewsRss( 
 			$array['id'],
 			$array['id_category'],
+			$array['id_rss'],
 			$array['author'],
 			$array['date'],
 			$array['content'],
@@ -89,6 +90,7 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsRssFinder {
     protected function doInsert( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getIdCategory(),
+			$object->getIdRss(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),
@@ -104,6 +106,7 @@ class NewsRss extends Mapper implements \MVC\Domain\NewsRssFinder {
     protected function doUpdate( \MVC\Domain\Object $object ) {
         $values = array( 
 			$object->getIdCategory(),
+			$object->getIdRss(),
 			$object->getAuthor(),
 			$object->getDate(),
 			$object->getContent(),
