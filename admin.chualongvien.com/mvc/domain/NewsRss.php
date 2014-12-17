@@ -81,6 +81,11 @@ class NewsRss extends Object{
 		$this->Key = $Str->converturl();		
 	}
 	
+	function getRssLink( ) {
+		$mRssLink = new \MVC\Mapper\RssLink();
+		$dmRssLink = $mRssLink->find($this->IdRss);
+		return $dmRssLink;
+	}
 	
 	function getContentReduce(){$S = new \MVC\Library\String($this->Content);return $S->reduceHTML(320);}
 	//-------------------------------------------------------------------------------
