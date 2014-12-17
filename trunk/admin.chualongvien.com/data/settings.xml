@@ -55,7 +55,8 @@
 		<command name="AppNewsBookmarkExe"><view>AppNewsBookmarkExe</view><status value="CMD_OK"><forward>AppNews</forward></status></command>	
 		
 		<command name="AppNewsRss"><view>AppNewsRss</view></command>
-		<command name="AppNewsRssPublish"><view>AppNewsRssPublish</view></command>
+		<command name="AppNewsRssPublish"><view>AppNewsRssPublish</view><status value="CMD_OK"><forward>AppNewsRss</forward></status></command>	
+		<command name="AppNewsPublished"><view>AppNewsPublished</view></command>
 		<!-- ============================================================================== -->
 		<!-- APP.EVENT																		-->
 		<!-- ============================================================================== -->
