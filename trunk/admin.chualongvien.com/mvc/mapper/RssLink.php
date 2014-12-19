@@ -9,13 +9,13 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 				
 		$tblRssLink = "chualongvien_rss_link";
 		
-		$selectAllStmt 		= sprintf("select * from %s", $tblRssLink);
+		$selectAllStmt 		= sprintf("select * from %s where `enable`=1", $tblRssLink);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblRssLink);
-		$updateStmt 		= sprintf("update %s set name=?, `weburl`=?, rssurl=?, type=?, `enable`=? where id=?", $tblRssLink);
-		$insertStmt 		= sprintf("insert into %s ( name, `weburl`, rssurl, type, `enable`) values(?, ?, ?, ?, ?)", $tblRssLink);
+		$updateStmt 		= sprintf("update %s set id_category=?, name=?, `weburl`=?, rssurl=?, type=?, `enable`=? where id=?", $tblRssLink);
+		$insertStmt 		= sprintf("insert into %s ( id_category, name, `weburl`, rssurl, type, `enable`) values(?, ?, ?, ?, ?, ?)", $tblRssLink);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblRssLink);
-		$findByStmt 		= sprintf("select *  from %s where type=?", $tblRssLink);
-		$findByTypeStmt 	= sprintf("SELECT * FROM  %s WHERE type=:type LIMIT :start,:max", $tblRssLink);
+		$findByStmt 		= sprintf("select *  from %s where id_category=?", $tblRssLink);
+		$findByTypeStmt 	= sprintf("SELECT * FROM  %s WHERE id_category=:id_category LIMIT :start,:max", $tblRssLink);
 		$findByEnableStmt 		= sprintf("select *  from %s where `enable`=?", $tblRssLink);	
 						
         $this->selectAllStmt 	= self::$PDO->prepare($selectAllStmt);
@@ -32,6 +32,7 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
     protected function doCreateObject( array $array ) {
         $obj = new \MVC\Domain\RssLink( 
 			$array['id'],			
+			$array['id_category'],
 			$array['name'],
 			$array['weburl'],
 			$array['rssurl'],
@@ -43,8 +44,9 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 
     protected function targetClass() {return "RssLink";}
     protected function doInsert( \MVC\Domain\Object $object ) {
-        $values = array( 			
-			$object->getName(),
+        $values = array( 
+			$object->getIdCategory(),
+			$object->getName(),			
 			$object->getWeburl(),
 			$object->getRssurl(),
 			$object->getType(),
@@ -56,7 +58,8 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
     }
     
     protected function doUpdate( \MVC\Domain\Object $object ) {
-        $values = array(			
+        $values = array(
+			$object->getIdCategory(),
 			$object->getName(),
 			$object->getWeburl(),
 			$object->getRssurl(),
@@ -76,8 +79,8 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
         return new RssLinkCollection( $this->findByStmt->fetchAll(), $this);
     }
 	
-	function findByType( $values ) {				
-		$this->findByTypeStmt->bindValue(':type', $values[0], \PDO::PARAM_INT);
+	function findByIdCategory( $values ) {				
+		$this->findByTypeStmt->bindValue(':id_category', $values[0], \PDO::PARAM_INT);
 		$this->findByTypeStmt->bindValue(':start', ((int)($values[1])-1)*(int)($values[2]), \PDO::PARAM_INT);
 		$this->findByTypeStmt->bindValue(':max', (int)($values[2]), \PDO::PARAM_INT);
 		$this->findByTypeStmt->execute();

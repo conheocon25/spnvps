@@ -15,8 +15,9 @@
 			$Name 	= $request->getProperty('Name');
 			$Weburl = $request->getProperty('Weburl');
 			$Rssurl = $request->getProperty('Rssurl');
-			$TypeRss 	= $request->getProperty('TypeRss');
-			$EnableRss = $request->getProperty('EnableRss');
+			$Type 	= $request->getProperty('Type');
+			$Enable = $request->getProperty('Enable');
+			$IdCategory = $request->getProperty('IdCategory');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -28,10 +29,11 @@
 			//-------------------------------------------------------------							
 			$Rss = $mRss->find($IdRss);
 			$Rss->setName($Name);
+			$Rss->setIdCategory($IdCategory);
 			$Rss->setWeburl($Weburl);
 			$Rss->setRssurl($Rssurl);
-			$Rss->setType($TypeRss);
-			$Rss->setEnable($EnableRss);
+			$Rss->setType($Type);
+			$Rss->setEnable($Enable);
 			
 						
 			$mRss->update($Rss);
