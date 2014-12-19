@@ -23,7 +23,19 @@
 			
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
-			//-------------------------------------------------------------									
+			//-------------------------------------------------------------	
+			
+			/*	$curl_handle=curl_init();
+					curl_setopt($curl_handle, CURLOPT_URL,"http://admin.chualongvien.com/app/news/getall");
+					curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 298);
+					curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);				
+					curl_setopt($curl_handle, CURLOPT_BINARYTRANSFER, true);
+					curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);				
+					curl_setopt($curl_handle, CURLOPT_USERAGENT,"admin.chualongvien.com");
+					$data = curl_exec($curl_handle);
+					curl_close($curl_handle);
+			echo $data;					
+			*/
 			$NewsRssAll = $mNewsRss->findAll();	
 			$CategoryNewsAll = $mCategoryNews->findAll();						
 			

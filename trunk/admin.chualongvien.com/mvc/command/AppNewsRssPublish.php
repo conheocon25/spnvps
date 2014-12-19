@@ -14,7 +14,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			
-			
+			$IdRss = $request->getProperty('IdRss');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -32,13 +32,15 @@
 			
 			$AUTONEWS = $dConfig->getValue();
 			
-			$DRssLinkAll = $mRssLink->findAll();
+			if(isset($IdRss)) 
+			{
+				//$DRssLinkAll = $mRssLink->findAll();
 			
-			while ($DRssLinkAll->valid())
-			{			
-				$dRssLink 	= $DRssLinkAll->current();	
-				
-				$IdRss 		= $dRssLink->getId();
+			//while ($DRssLinkAll->valid())
+			//{			
+				//$dRssLink 	= $DRssLinkAll->current();	
+				$dRssLink 	= $mRssLink->find($IdRss);
+				//$IdRss 		= $dRssLink->getId();
 				$WebUrl 	= $dRssLink->getWeburl();
 				$Url 		= $dRssLink->getRssurl();
 				$IdCategory = $dRssLink->getIdCategory();
@@ -179,7 +181,7 @@
 					echo "<br />" . $WebUrl . " -thêm - $Url > Thanh Cong ". $i . " của Danh mục ID=" . $IdCategory;
 					
 				array_map('unlink', glob("data/*.html")); 
-				$DRssLinkAll->next();				
+				//$DRssLinkAll->next();				
 			}
 			
 			//-------------------------------------------------------------

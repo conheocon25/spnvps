@@ -122,6 +122,9 @@ class NewsRss extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLRead(){		return "/tin-tuc/".$this->getCategory()->getKey()."/".$this->getKey();}
+	
+	function getURLViewLoad(){	return "/app/news/rss/".$this->getIdCategory()."/".$this->getId()."/view";}
+	
 	function getURLUpdLoad(){	return "/app/news/".$this->getIdCategory()."/".$this->getId()."/upd/load";}
 	
 	
