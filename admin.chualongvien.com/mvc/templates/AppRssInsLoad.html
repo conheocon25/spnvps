@@ -37,9 +37,20 @@
 										</div>
 									</div>
 									<div class="control-group">
-										<label class="control-label" for="Type">Thể Loại</label>
+										<label class="control-label" for="Type">Loại Rss</label>
 										<div class="controls">
 											<select name="Type" id="Type">
+												<option value="1" ><span>Loại 1</span></option>
+												<option value="2" ><span>Loại 2</span></option>
+												<option value="3" ><span>Loại 3</span></option>
+												<option value="4" ><span>Loại 4</span></option>
+											</select>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="IdCategory">Thêm vào Danh mục tin tức</label>
+										<div class="controls">
+											<select name="IdCategory" id="IdCategory">
 												<option tal:repeat="CategoryNew AllCategoryNews" tal:attributes="value CategoryNew/getId;">
 													<span tal:content="CategoryNew/getName"/>
 												</option>

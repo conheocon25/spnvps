@@ -5,6 +5,7 @@ require_once( "mvc/base/domain/DomainObject.php" );
 class RssLink extends Object{
 
     private $Id;	
+	private $IdCategory;
 	private $Name;
 	private $Weburl;
 	private $Rssurl;
@@ -14,19 +15,23 @@ class RssLink extends Object{
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $Name=null, $Weburl=null, $Rssurl=null, $Type=null, $Enable=null){
+    function __construct( $Id=null, $IdCategory=null,$Name=null, $Weburl=null, $Rssurl=null, $Type=null, $Enable=null){
 		$this->Id 			= $Id;		
+		$this->IdCategory 	= $IdCategory; 
 		$this->Name 		= $Name; 
 		$this->Weburl 		= $Weburl;
 		$this->Rssurl		= $Rssurl;
 		$this->Type 		= $Type;
-		$this->Enable 			= $Enable;
+		$this->Enable 		= $Enable;
 		
 		parent::__construct( $Id );
 	}
     function getId() {return $this->Id;}	
 		
-    function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
+    function setIdCategory( $IdCategory ) {$this->IdCategory = $IdCategory;$this->markDirty();}   
+	function getIdCategory( ) {return $this->IdCategory;} 
+	
+	function setName( $Name ) {$this->Name = $Name;$this->markDirty();}   
 	function getName( ) {return $this->Name;}
 	
 	function setWeburl( $Weburl ) {$this->Weburl = $Weburl;$this->markDirty();}   
@@ -41,7 +46,7 @@ class RssLink extends Object{
 	
 	function getCategoryVideo( ) {
 		$mCategoryNews = new \MVC\Mapper\CategoryNews();
-		$dCategoryVideo = $mCategoryNews->find($this->Type);
+		$dCategoryVideo = $mCategoryNews->find($this->IdCategory);
 		return $dCategoryVideo;
 	}
 	
@@ -58,6 +63,7 @@ class RssLink extends Object{
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),			
+			'IdCategory'	=> $this->IdCategory(),
 			'Name'			=> $this->getName(),
 			'Weburl'		=> $this->getWeburl(),
 			'Rssurl' 		=> $this->getRssurl(),
@@ -68,12 +74,13 @@ class RssLink extends Object{
 	}
 	
 	function setArray( $Data ){
-        $this->Id 		= $Data[0];
-		$this->Name 	= $Data[1];
-		$this->Weburl 	= $Data[2];
-		$this->Rssurl	= $Data[3];
-		$this->Type 	= $Data[4];
-		$this->Enable	 	= $Data[5];
+        $this->Id 			= $Data[0];
+		$this->IdCategory 	= $Data[1];
+		$this->Name 		= $Data[2];
+		$this->Weburl 		= $Data[3];
+		$this->Rssurl		= $Data[4];
+		$this->Type 		= $Data[5];
+		$this->Enable	 	= $Data[6];
     }
 			
 	//-------------------------------------------------------------------------------

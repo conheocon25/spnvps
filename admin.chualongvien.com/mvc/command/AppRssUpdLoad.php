@@ -26,7 +26,7 @@
 			$AllCategoryNews 		= $mCategoryNews->findAll();
 			$Title 		= mb_strtoupper("CẬP NHẬT RSS Link", 'UTF8');
 			
-			$Navigation = array(array("RSS Lấy Tin", "/app/Rss"));
+			$Navigation = array(array("RSS Lấy Tin", "/app/rss"));
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------																					

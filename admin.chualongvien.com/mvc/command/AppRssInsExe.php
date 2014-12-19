@@ -16,6 +16,7 @@
 			$Rssurl 	= $request->getProperty('Rssurl');
 			$Type 		= $request->getProperty('Type');
 			$Enable 	= $request->getProperty('Enable');
+			$IdCategory = $request->getProperty('IdCategory');
 			
 									
 			//-------------------------------------------------------------
@@ -28,6 +29,7 @@
 			//-------------------------------------------------------------							
 			$dRssLink = new \MVC\Domain\RssLink(								
 				null,
+				$IdCategory,
 				$Name,
 				$Weburl,
 				$Rssurl,

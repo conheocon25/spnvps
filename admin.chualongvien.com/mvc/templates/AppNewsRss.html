@@ -66,17 +66,17 @@
 				var URL = "/object/del/NewsRss/0";
 				
 				$(".CheckedPublish").each(function( i, obj){
-					if ( $(this).is(':checked')==true ){
-						count += 1;
+					if ( $(this).is(':checked')==true ){						
 						Data[count] = $(this).attr('data-id');
+						count += 1;
 					}
 				});
-				
+				//alert(Data);
 				$.ajax({
 					type: "POST",
 					data: {ListId:Data},
 					url: URL,
-					success: function(msg){
+					success: function(msg){						
 						location.reload();
 					}
 				});
