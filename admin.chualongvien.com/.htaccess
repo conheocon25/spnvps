@@ -54,6 +54,8 @@ RewriteRule ^app/rss/ins/exe$ 									?cmd=AppRssInsExe [L]
 RewriteRule ^app/rss/([0-9]+)/upd/load$ 						?cmd=AppRssUpdLoad&IdRss=$1 [L]
 RewriteRule ^app/rss/([0-9]+)/upd/exe$ 							?cmd=AppRssUpdExe&IdRss=$1 	[L]
 
+RewriteRule ^app/rss/getall$ 									?cmd=AppGetListRss [L]
+
 RewriteRule ^app/news/rss$ 										?cmd=AppNewsRss [L]
 RewriteRule ^app/news/rss/([0-9]+)/([0-9]+)/view$ 				?cmd=AppNewsRssView&IdCategory=$1&IdNewsRss=$2 [L]
 
