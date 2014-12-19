@@ -140,7 +140,7 @@
 								$mNews->insert($News);
 								$i= $i + 1;
 								
-								echo "<br />" . $i . "Đã thêm tin moi: " . $CurTitle . "<br />";							
+								//echo "<br />" . $i . "Đã thêm tin moi: " . $CurTitle . "<br />";							
 							
 							
 							unset($dom);
@@ -155,8 +155,9 @@
 						}
 						$flagIns = false;
 					}
-						
+					
 				}
+				array_map('unlink', glob("data/*.html")); 	
 				echo "Them Thanh Cong ". $i . " cua Id New:" . $IdCategory;
 				unset($todaytime);
 				unset($interval);
