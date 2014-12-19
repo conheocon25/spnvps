@@ -24,7 +24,8 @@
 			$mNewsRss 		= new \MVC\Mapper\NewsRss();
 			$mNews 			= new \MVC\Mapper\News();
 			$mConfig 		= new \MVC\Mapper\Config();
-			
+			$mCategoryNews = new \MVC\Mapper\CategoryNews();
+		
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------	
@@ -44,6 +45,8 @@
 				$WebUrl 	= $dRssLink->getWeburl();
 				$Url 		= $dRssLink->getRssurl();
 				$IdCategory = $dRssLink->getIdCategory();
+				
+				$dCategoryVideo = $mCategoryNews->find($IdCategory);
 				
 					$todaytime = new \DateTime('NOW');
 					$interval = new \DateInterval('P0Y0DT11H0M');	
@@ -84,7 +87,7 @@
 					$flagIns = false;				
 					$i = 0;
 					$lengthOld = count($ListOldNews);
-					$length = count($chItems);
+					
 					if (is_array($chItems) and count($chItems)>0)
 					{					
 						foreach ($chItems as $key => $item)
@@ -92,14 +95,16 @@
 							$CurTitle = trim($item['title']);						
 							$CurTitle = mb_convert_case($CurTitle, MB_CASE_LOWER, "UTF-8"); 
 							
-							for($l=0; $l < $lengthOld; ++$l) {
-									$OldNew = $ListOldNews[$l];															
-									if (strcmp($OldNew, $CurTitle) == 0) {
-										$flagIns = true;									
-										break;
-									}								
+							if ($lengthOld > 0) 
+							{
+								for($l=0; $l < $lengthOld; ++$l) {
+										$OldNew = $ListOldNews[$l];															
+										if (strcmp($OldNew, $CurTitle) == 0) {
+											$flagIns = true;									
+											break;
+										}								
+								}
 							}
-							
 							if ($flagIns == false) {
 								
 								$curl_handle=curl_init();
@@ -178,7 +183,7 @@
 							
 					}
 					
-					echo "<br />" . $WebUrl . " -thêm - $Url > Thanh Cong ". $i . " của Danh mục ID=" . $IdCategory;
+					echo "Đã thêm ". $i . " của vào Danh mục: " . $dCategoryVideo->getName();
 					
 				array_map('unlink', glob("data/*.html")); 
 				//$DRssLinkAll->next();				

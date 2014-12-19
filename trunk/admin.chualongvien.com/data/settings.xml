@@ -56,8 +56,11 @@
 		
 		<command name="AppNewsRss"><view>AppNewsRss</view></command>
 		<command name="AppNewsRssView"><view>AppNewsRssView</view></command>
-		<command name="AppNewsRssPublish" type="public"><view>AppNewsRssPublish</view></command>	
 		<command name="AppNewsPublished"><view>AppNewsPublished</view></command>
+		<command name="AppNewsRssPublish" type="public"><view>AppNewsRssPublish</view></command>	
+		<command name="AppGetListRss" type="public"><view>AppGetListRss</view></command>	
+		
+		
 		<!-- ============================================================================== -->
 		<!-- APP.EVENT																		-->
 		<!-- ============================================================================== -->
