@@ -40,7 +40,7 @@
 											<td class="center"><input class="CheckedPublish" type="checkbox" tal:attributes="data-id News/getId"/></td>
 											<td><div tal:content="repeat/News/number" /></td>											
 											<td width="90px"><div tal:content="News/getDatePrint" /></td>
-											<td><div tal:content="News/getTitle" /></td>											
+											<td><a tal:attributes="href News/getURLViewLoad" tal:content="News/getTitle"/></td>											
 											<td><div tal:content="News/getRssLink/getName" /></td>											
 											<td><div tal:content="News/getRssLink/getCategoryVideo/getName" /></td>	
 										</tr>

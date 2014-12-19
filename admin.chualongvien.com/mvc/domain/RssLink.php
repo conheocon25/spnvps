@@ -91,7 +91,7 @@ class RssLink extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
 	function getURLView(){return "/rss/".$this->getKey();}
-	function getURLPublishNews(){return "/app/news/publish/".$this->getId();}
+	function getURLGetNewsRss(){return "app/news/getnewsrss/".$this->getId();}
 	function getURLUpdLoad(){return "/app/rss/".$this->getId()."/upd/load";}	
 	function getURLUpdExe()	{return "/app/rss/".$this->getId()."/upd/exe";}
 	//-------------------------------------------------------------------------------
