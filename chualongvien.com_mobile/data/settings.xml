@@ -1,0 +1,83 @@
+<options>    
+	<control>
+		<!-- ============================================================================== -->
+		<!-- Các lệnh xử lí SYSTEM 															-->
+		<!-- ============================================================================== -->		
+		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Gate</forward></status></command>
+		<command name="Gate" type="public"><view>Gate</view></command>
+		<command name="Home" type="public"><view>Home</view></command>		
+		<command name="Introduction" type="public"><view>Introduction</view></command>
+		<command name="Contact" type="public"><view>Contact</view></command>
+		<command name="Event" type="public"><view>Event</view></command>
+		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
+		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
+						
+		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
+		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
+		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>		
+		
+		<command name="DownloadMP3" type="public"><view>DownloadMP3</view></command>
+		
+		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
+		<command name="SigninExe" type="public">
+			<view>SigninExe</view>
+			<status value="CMD_OK"><forward>App</forward></status>
+			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
+		</command>
+		<command name="SignoutLoad"><view>SignoutLoad</view></command>
+		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
+		
+		<command name="SendMailShare" type="public"><view>SendMailShare</view></command>
+		
+		<command name="NewCategoryInsAuto" type="public"><view>NewCategoryInsAuto</view></command>
+		<command name="NewCategoryDelAuto" type="public"><view>NewCategoryDelAuto</view></command>
+		
+		<!-- ============================================================================== -->
+		<!-- JSON LOAD			 															-->
+		<!-- ============================================================================== -->		
+		<command name="ObjectLoad"><view>ObjectLoad</view></command>
+		<command name="ObjectDel"><view>ObjectDel</view></command>
+		<command name="ObjectIns"><view>ObjectIns</view></command>
+		<command name="ObjectUpd"><view>ObjectUpd</view></command>
+		
+		<command name="ModelLoadAll"><view>ModelLoadAll</view></command>
+		<command name="ModelLoadOne"><view>ModelLoadOne</view></command>
+		<command name="ModelFindBy"><view>ModelFindBy</view></command>
+		
+		<!-- ============================================================================== -->
+		<!-- GLOBAL			 																-->
+		<!-- ============================================================================== -->
+		<command name="Library" type="public"><view>Library</view></command>
+		<command name="LibraryVideo" type="public"><view>LibraryVideo</view></command>		
+		<command name="LibraryVideoYouTube" type="public"><view>LibraryVideoYouTube</view></command>
+		<command name="LibraryVideoVoice" type="public"><view>LibraryVideoVoice</view></command>
+		<command name="LibraryVideoVoiceLoad" type="public"><view>LibraryVideoVoiceLoad</view></command>
+		<command name="LibraryVideoLoadCategory" type="public"><view>LibraryVideoLoadCategory</view></command>
+		
+		<command name="LibraryVideoPlay" type="public"><view>LibraryVideoPlay</view></command>
+		<command name="LibraryVideoCategory" type="public"><view>LibraryVideoCategory</view></command>
+		<command name="LibraryVideoCategoryPlay" type="public"><view>LibraryVideoCategoryPlay</view></command>
+		<command name="LibraryVideoMonk" type="public"><view>LibraryVideoMonk</view></command>
+		<command name="LibraryVideoMonkPlay" type="public"><view>LibraryVideoMonkPlay</view></command>
+		
+		<command name="ReadCDocument" type="public"><view>ReadCDocument</view></command>
+		
+		<command name="PagodaContact" type="public"><view>PagodaContact</view></command>
+		<command name="PagodaContactProvinceLoad" type="public"><view>PagodaContactProvinceLoad</view></command>
+		<command name="PagodaContactDistrictLoad" type="public"><view>PagodaContactDistrictLoad</view></command>
+		<command name="PagodaContactPagodaLoad" type="public"><view>PagodaContactPagodaLoad</view></command>
+		
+		<command name="Pagoda" type="public"><view>Pagoda</view></command>
+		<command name="PagodaProvinceLoad" type="public"><view>PagodaProvinceLoad</view></command>
+		<command name="PagodaDistrictLoad" type="public"><view>PagodaDistrictLoad</view></command>
+		<command name="PagodaInfoLoad" type="public"><view>PagodaInfoLoad</view></command>
+
+		<command name="PagodaPost" type="public"><view>PagodaPost</view></command>
+		<command name="PagodaAlbum" type="public"><view>PagodaAlbum</view></command>
+		<command name="PagodaVideo" type="public"><view>PagodaVideo</view></command>
+		
+		<command name="PagodaContactSend" type="public"><view>PagodaContactSend</view></command>
+		<command name="PagodaReCaptcha" type="public"><view>PagodaReCaptcha</view></command>
+
+	</control>
+</options>
