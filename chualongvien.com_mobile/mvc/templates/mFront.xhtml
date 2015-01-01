@@ -42,7 +42,7 @@
 	<!-- HEADER																	  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Header" data-role="header" class="jqm-header">		
-		<h2><a href="/"><img src="/mvc/templates/mobile/img/logo.png" alt="Bất Động Sản Cà Mau"/></a></h2>
+		<h2><a href="/trang-chu"><img src="/mvc/templates/mobile/img/logo.png" alt="Chùa Long Viễn Vĩnh Long"/></a></h2>
 		<a href="#" class="jqm-navmenu-link ui-btn ui-btn-icon-notext ui-corner-all ui-icon-bars ui-nodisc-icon ui-alt-icon ui-btn-left">Menu</a>
 		<a href="/tim-kiem" rel="external" class="ui-btn ui-btn-icon-notext ui-corner-all ui-icon-search ui-nodisc-icon ui-alt-icon ui-btn-right">Tìm kiếm</a>
 	</div>
@@ -75,7 +75,7 @@
 				<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
 					<ul>
 						<li tal:repeat="Category CategoryNewsAll">												
-							<a tal:attributes="href Category/getURLView" tal:content="Category/getName" data-ajax="false"/>
+							<a tal:attributes="href Category/getURLRead" tal:content="Category/getName" data-ajax="false"/>
 						</li>
 					</ul>
 				</div>
@@ -100,10 +100,10 @@
 	<!-- ======================================================================== -->
 	<!-- MENU TAG																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuTag" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
-		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">			
-			<li tal:repeat="Tag TagAll" tal:attributes="data-theme php: Tag->getId()==TagCurrent->getId()?'b':'a'">			
-				<a tal:attributes="href Tag/getURLView" tal:content="Tag/getName" data-ajax="false"/>
+	<div metal:define-macro="MenuNews" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li tal:repeat="Category CategoryNewsAll" tal:attributes="data-theme php: Category->getId()==CategoryCurrent->getId()?'b':'a'">
+				<a tal:attributes="href Category/getURLRead" tal:content="Category/getName" data-ajax="false"/>
 			</li>
 		 </ul>
 	</div>
