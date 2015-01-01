@@ -5,19 +5,19 @@
 		<tal:block metal:use-macro="mFront.xhtml/IncludeCSS"/>
 		<tal:block metal:use-macro="mFront.xhtml/IncludeJS"/>
 	</head>	
-	<body>
-		<div data-role="page" class="jqm-demos jqm-home">
-			<tal:block metal:use-macro="mFront.xhtml/Header"/>	
+	<body class="ui-mobile-viewport ui-overlay-a">
+		<div data-role="page" class="jqm-demos ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active">
+			<tal:block metal:use-macro="mFront.xhtml/Header"/>
 			<div role="main" class="ui-content jqm-content">
-				<ul data-role="listview" data-inset="true" tal:repeat="Category CategoryNewsAll">
+				<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"  tal:repeat="Category CategoryNewsAll">
 					<li data-role="list-divider" tal:content="Category/getName" />					
-				    <li tal:repeat="News Category/getNewsLimit">
-						<a tal:attributes="href News/getURLRead" rel="external">
-					        <img tal:attributes="src News/getImage" />
-					    	<h2 tal:content="News/getTitle" />
-						    <p tal:content="structure News/getContentReduce"/>
+					<li class="ui-li-has-thumb" tal:repeat="News Category/getNewsLimit">
+						<a tal:attributes="href News/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+							<img tal:attributes="src News/getImage" />
+							<h2 tal:content="News/getTitle" />
+							<p tal:content="structure News/getContentReduce"/>
 						</a>
-				    </li>					
+					</li>					
 				</ul>				
 			</div>
 			<tal:block metal:use-macro="mFront.xhtml/Menu"/>
