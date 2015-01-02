@@ -1,77 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<span metal:use-macro="base.xhtml/IncludeMETA"/>
-		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>		
-	</head>
-
+		<tal:block metal:use-macro="mFront.xhtml/IncludeMETA"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeCSS"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeJS"/>
+	</head>	
 	<body>
-		<div class="container">
-			<div metal:use-macro="base.xhtml/Header"/>
-			<div class="row reset-margin main">
-				<div metal:use-macro="base.xhtml/CallendarBar"/>
-				<div class="span8 fix-width">
-					
-					<div class="box radius">
-						<div class="page-header pg-header pg-header-news reset-margin">
-							<h4 class="reset-margin" tal:content="Event/getName"/>
-							<i class="pull-right">Cập nhật: <span tal:content="Event/getDatePrint"/></i>
-						</div>
-						<div class="b-content news-content padding-content">
-							<div class="news-main" tal:content="structure Event/getContent" tal:attributes="alt Event/getId"/>							
-							<ul class="nav nav-tabs nav-stacked reset-margin">
-								<li class="active news-list-title"><a>Các sự kiện</a></li>
-								<li tal:repeat="Event EventAll" class="news-list-item">
-									<a tal:attributes="href Event/getURLView">
-										<span tal:content="Event/getName"/>
-										<span tal:content="Event/getDatePrint"/>
-										<i class="icon-chevron-right pull-right"/>
-									</a>
-								</li>
-							</ul>
-						</div>
-					</div>
-
+		<div data-role="page" class="jqm-demos jqm-home">
+			<tal:block metal:use-macro="mFront.xhtml/Header"/>
+			<div role="main" class="ui-content jqm-content">
+				<div class="panel-heading"><h3 class="panel-title" tal:content="EventCurrent/getName" /></div>
+				<div class="page-header clearfix">
+					<p class="pull-left">Ngày đăng: <i tal:content="EventCurrent/getDatePrint"/></p>
+					<div class="share-button-group pull-right"></div>
 				</div>
-				<div class="span4 fix-width">
-					<div metal:use-macro="base.xhtml/SpringMsg"/>
-					<div metal:use-macro="base.xhtml/MP3Download"/>
-					<div metal:use-macro="base.xhtml/WarningMsg"/>										
-					<div metal:use-macro="base.xhtml/LibraryBox"/>
-					<div metal:use-macro="base.xhtml/HistoryBox"/>
-					<div metal:use-macro="base.xhtml/MonkBox"/>					
-					<div metal:use-macro="base.xhtml/MusicBox"/>
-					<div metal:use-macro="base.xhtml/MecdBox"/>					
-					<div metal:use-macro="base.xhtml/CallendarBox"/>
-				</div>
+				<div tal:content="structure EventCurrent/getContent" class="article-content-container"/>
+				<b class="pull-right" tal:content="string:BBT"/>
 			</div>
-			<div metal:use-macro="base.xhtml/Footer"/>						
-			<div metal:use-macro="base.xhtml/FixedFunction"/>			
-			<div metal:use-macro="base.xhtml/Backontop"/>			
+			<tal:block metal:use-macro="mFront.xhtml/MenuEvent"/>
+			<tal:block metal:use-macro="mFront.xhtml/Footer"/>
 		</div>
-		 <script type="text/javascript">
-		/*<![CDATA[*/
-			$('#URLShareLink').click(function(e){						
-				$("#myModal").modal('hide');				
-				var URL = "http://chualongvien.com/?cmd=SendMailShare&ID_New=" + $('.news-main').attr('alt') + "&EmailShare=" + $('#EmailShare').val() +"&ContentShare=" + $('#ContentShare').val();
-				$.ajax({
-					type: "POST",					
-					url: URL,
-					dataType: 'json',
-					contentType:"application/json; charset=utf-8",	
-					success: function(data){						
-						$('#ContentShare').val('');
-						$('#EmailShare').val('');											
-					},
-					error: function(data){
-						$('#ContentShare').val('');	
-						$('#EmailShare').val('');							
-					}
-				});
-			});
-			
-		/*]]>*/
-		</script>
 	</body>
-</html>
+</html>						

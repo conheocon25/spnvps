@@ -52,20 +52,7 @@
 	<!-- ======================================================================== -->
 	<div metal:define-macro="Menu" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
 		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-			<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-collapsible-collapsed">
-				<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
-					<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">
-						Thông tin<span class="ui-collapsible-heading-status" />
-					</a>
-				</h3>
-				<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
-					<ul>
-						<li><a tal:attributes="href '/gioi-thieu'" data-ajax="false">Giới thiệu</a></li>
-						<li><a tal:attributes="href '/su-kien'" data-ajax="false">Sự kiện</a></li>
-						<li><a tal:attributes="href '/lien-he'" data-ajax="false">Liên hệ</a></li>
-					</ul>
-				</div>
-			</li>			
+			<li><a tal:attributes="href '/gioi-thieu'" data-ajax="false">Giới thiệu</a></li>
 			<li data-role="collapsible" data-enhanced="true" data-collapsed-icon="carat-d" data-expanded-icon="carat-u" data-iconpos="right" data-inset="false" class="ui-collapsible ui-collapsible-themed-content ui-collapsible-collapsed">
 				<h3 class="ui-collapsible-heading ui-collapsible-heading-collapsed">
 					<a href="#" class="ui-collapsible-heading-toggle ui-btn ui-btn-icon-right ui-btn-inherit ui-icon-carat-d">
@@ -87,23 +74,67 @@
 					</a>
 				</h3>
 				<div class="ui-collapsible-content ui-body-inherit ui-collapsible-content-collapsed" aria-hidden="true">
-					<ul>
-						<li tal:repeat="Category CategoryBTypeAll">
-							<a tal:attributes="href Category/getURLView" tal:content="Category/getName" data-ajax="false"/>
-						</li>
+					<ul>						
+						<li><a href="/thu-vien-phat-phap" tal:content="string:Thư viện Phật Pháp" data-ajax="false"/></li>
+						<li><a href="/lich-su-phat-giao" tal:content="string:Lịch sử Phật Giáo" data-ajax="false"/></li>
+						<li><a href="/giang-su-thuyet-phap" tal:content="string:Giảng sư thuyết pháp" data-ajax="false"/></li>
+						<li><a href="/phim-truyen-phat-giao" tal:content="string:Phim truyện Phật Giáo" data-ajax="false"/></li>
+						<li><a href="/nhac-phat-giao" tal:content="string:Nhạc Phật Giáo" data-ajax="false"/></li>
+						<li><a href="/kenh-tong-hop" tal:content="string:Kênh Tổng Hợp" data-ajax="false"/></li>
 					</ul>
 				</div>
 			</li>
+			<li><a href="/su-kien" tal:content="string:Sự kiện" data-ajax="false"/></li>
+			<li><a href="/van-ban" tal:content="string:Văn bản Phật Giáo" data-ajax="false"/></li>
+			<li><a href="/danh-ba" tal:content="string:Danh bạ chùa" data-ajax="false"/></li>
+			<li><a href="/hinh-anh-hoat-dong" tal:content="string:Ảnh hoạt động" data-ajax="false"/></li>
+			<li><a href="/lien-he" tal:content="string:Liên hệ" data-ajax="false"/></li>
 		 </ul>
 	</div>
 	
 	<!-- ======================================================================== -->
-	<!-- MENU TAG																	  -->
+	<!-- MENU TAG																  -->
 	<!-- ======================================================================== -->
 	<div metal:define-macro="MenuNews" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
 		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
 			<li tal:repeat="Category CategoryNewsAll" tal:attributes="data-theme php: Category->getId()==CategoryCurrent->getId()?'b':'a'">
 				<a tal:attributes="href Category/getURLRead" tal:content="Category/getName" data-ajax="false"/>
+			</li>
+		 </ul>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- MENU VIDEO															      -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MenuVideo" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li><a href="/thu-vien-phat-phap" 		tal:attributes="data-theme php: VideoType=='thu-vien-phat-phap'?'b':'a'" tal:content="string:Thư viện Phật Pháp" data-ajax="false"/></li>
+			<li><a href="/lich-su-phat-giao" 		tal:attributes="data-theme php: VideoType=='lich-su-phat-giao'?'b':'a'" tal:content="string:Lịch sử Phật Giáo" data-ajax="false"/></li>
+			<li><a href="/giang-su-thuyet-phap" 	tal:attributes="data-theme php: VideoType=='giang-su-thuyet-phap'?'b':'a'" tal:content="string:Giảng sư thuyết pháp" data-ajax="false"/></li>
+			<li><a href="/phim-truyen-phat-giao" 	tal:attributes="data-theme php: VideoType=='phim-truyen-phat-giao'?'b':'a'" tal:content="string:Phim truyện Phật Giáo" data-ajax="false"/></li>
+			<li><a href="/nhac-phat-giao" 			tal:attributes="data-theme php: VideoType=='nhac-phat-giao'?'b':'a'" tal:content="string:Nhạc Phật Giáo" data-ajax="false"/></li>
+			<li><a href="/kenh-tong-hop" 			tal:attributes="data-theme php: VideoType=='kenh-tong-hop'?'b':'a'" tal:content="string:Kênh Tổng Hợp" data-ajax="false"/></li>
+		 </ul>
+	</div>
+					
+	<!-- ======================================================================== -->
+	<!-- MENU EVENT 															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MenuEvent" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li tal:repeat="Event EventAll" tal:attributes="data-theme php: Event->getId()==EventCurrent->getId()?'b':'a'">
+				<a tal:attributes="href Event/getURLView" tal:content="Event/getName" data-ajax="false"/>
+			</li>
+		 </ul>
+	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- MENU ALBUM 															  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MenuAlbum" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li tal:repeat="Album AlbumAll" tal:attributes="data-theme php: Album->getId()==AlbumCurrent->getId()?'b':'a'">
+				<a tal:attributes="href Album/getURLView" tal:content="Album/getName" data-ajax="false"/>
 			</li>
 		 </ul>
 	</div>
@@ -118,32 +149,7 @@
 			</li>
 		 </ul>
 	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- MENU SUPPLIER															  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuSupplier" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
-		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">			
-			<li tal:repeat="Supplier SupplierAll" tal:attributes="data-theme php: Supplier->getId()==SupplierCurrent->getId()?'b':'a'">
-				<a tal:attributes="href Supplier/getURLView" tal:content="Supplier/getName" data-ajax="false"/>
-			</li>
-		 </ul>
-	</div>
-	
-	<!-- ======================================================================== -->
-	<!-- MENU CATEGORY SUPPLIER													  -->
-	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuCategorySupplier" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
-		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
-			<li tal:repeat="Category CategoryAll1" tal:attributes="data-theme php: Category->getId()==CategoryCurrent->getId()?'b':'a'">			
-				<a tal:attributes="href Category/getURLView" tal:content="Category/getName" data-ajax="false"/>
-			</li>
-			<li data-theme="a">
-				<a tal:attributes="href Supplier/getURLView" tal:content="Supplier/getName" data-ajax="false"/>
-			</li>
-		 </ul>
-	</div>
-	
+		
 	<!-- ======================================================================== -->
 	<!-- SEARCH																	  -->
 	<!-- ======================================================================== -->

@@ -31,8 +31,10 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------									
-			$request->setObject("Category", $Category);
-			$request->setObject("Video", 	$Video);
+			$request->setProperty("VideoType"	, '');
+			$request->setObject("Category"		, $Category);
+			$request->setObject("Video"			, $Video);
+			
 			return self::statuses('CMD_DEFAULT');
 		}
 	}
