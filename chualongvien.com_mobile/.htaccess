@@ -53,7 +53,6 @@ RewriteRule ^gate$ 																?cmd=Gate [L]
 RewriteRule ^gioi-thieu$ 														?cmd=Introduction [L]
 
 RewriteRule ^lien-he$ 															?cmd=Contact [L]
-RewriteRule ^lien-he/recaptcha/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ 				?cmd=FReCaptcha&CodeChallenge=$1&CodeResponse=$2	[L]
 
 RewriteRule ^thu-vien-phat-phap$											?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
 RewriteRule ^thu-vien-phat-phap/tim-kiem/exe$								?cmd=LibraryVideo&KBType=thu-vien-phat-phap [L]
@@ -105,11 +104,6 @@ RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 										?cmd=ReadCategory&Key1=$1 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/trang/([a-z0-9_-]+)$ 					?cmd=ReadCategory&Key1=$1&Page=$2 [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)/([a-z0-9_-]+)$ 							?cmd=ReadCategoryDetail&Key1=$1&Key2=$2 [L]
 
-RewriteRule ^tin-tuc-auto/([a-z0-9_-]+)$ 									?cmd=NewCategoryInsAuto&IdRss=$1 [L]
-RewriteRule ^tin-tuc-auto-del/([a-z0-9_-]+)/([a-z0-9_-]+)$ 					?cmd=NewCategoryDelAuto&IdCategory=$1&CountMonth=$2 [L]
-
-RewriteRule ^send-mail/([a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}+)/([a-z0-9_-]+)/([a-z0-9_-]+)$ 	?cmd=SendMailShare&Key1=$1&Key2=$2&Key3=$3 [L]
-
 RewriteRule ^tai-mp3$ 														?cmd=DownloadMP3 [L]
 
 RewriteRule ^van-ban$ 														?cmd=ReadCDocument [L]
@@ -126,21 +120,5 @@ RewriteRule ^danh-ba/([a-z0-9_-]+)/bai-viet/([a-z0-9_-]+)$ 					?cmd=PagodaPost&
 RewriteRule ^danh-ba/([a-z0-9_-]+)/hinh-anh/([a-z0-9_-]+)$ 					?cmd=PagodaAlbum&PagodaKey=$1&AlbumKey=$2 [L]
 RewriteRule ^danh-ba/([a-z0-9_-]+)/video/([a-z0-9_-]+)$ 					?cmd=PagodaVideo&PagodaKey=$1&VideoKey=$2 [L]
 
-RewriteRule ^danh-ba/email$ 												?cmd=PagodaContactSend	[L]
-RewriteRule ^danh-ba/recaptcha/([A-Za-z0-9_-]+)/([A-Za-z0-9_-]+)$ 			?cmd=PagodaReCaptcha&CodeChallenge=$1&CodeResponse=$2	[L]
-
 RewriteRule ^su-kien$ 														?cmd=Event [L]
 RewriteRule ^su-kien/([a-z0-9_-]+)$ 										?cmd=Event&EventKey=$1 [L]
-
-#---------------------------------------------------------------------------------------------------------------------------
-# APP
-#---------------------------------------------------------------------------------------------------------------------------
-RewriteRule ^object/load/([A-Za-z0-9]+)/([0-9]+)$ 				?cmd=ObjectLoad&ObjectName=$1&Id=$2 [L]
-RewriteRule ^object/del/([A-Za-z0-9]+)/([0-9]+)$ 				?cmd=ObjectDel&ObjectName=$1&Id=$2 [L]
-RewriteRule ^object/ins/([A-Za-z0-9]+)$ 						?cmd=ObjectIns&ObjectName=$1 [L]
-RewriteRule ^object/upd/([A-Za-z0-9]+)$ 						?cmd=ObjectUpd&ObjectName=$1 [L]
-
-RewriteRule ^model/select/all/([A-Za-z0-9]+)$ 					?cmd=ModelLoadAll&ObjectName=$1 [L]
-RewriteRule ^model/select/one/([A-Za-z0-9]+)/([0-9]+)$ 			?cmd=ModelLoadOne&ObjectName=$1&Id=$2 [L]
-RewriteRule ^model/select/byid/([A-Za-z0-9]+)/([0-9]+)$ 		?cmd=ModelFindBy&ObjectName=$1&IdObject=$2 [L]
-RewriteRule ^model/select/byid/([A-Za-z0-9]+)/([0-9]+)/([0-9]+)$ 	?cmd=ModelFindBy&ObjectName=$1&IdObject=$2&Page=$3 [L]

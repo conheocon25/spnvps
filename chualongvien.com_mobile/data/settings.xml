@@ -14,36 +14,9 @@
 						
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
 		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
-		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>		
-		
+		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>				
 		<command name="DownloadMP3" type="public"><view>DownloadMP3</view></command>
-		
-		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>
-		<command name="SigninExe" type="public">
-			<view>SigninExe</view>
-			<status value="CMD_OK"><forward>App</forward></status>
-			<status value="CMD_NO_AUTHOR"><forward>Home</forward></status>
-		</command>
-		<command name="SignoutLoad"><view>SignoutLoad</view></command>
-		<command name="SignoutExe"><view>SignoutExe</view><status value="CMD_OK"><forward>Home</forward></status></command>
-		
-		<command name="SendMailShare" type="public"><view>SendMailShare</view></command>
-		
-		<command name="NewCategoryInsAuto" type="public"><view>NewCategoryInsAuto</view></command>
-		<command name="NewCategoryDelAuto" type="public"><view>NewCategoryDelAuto</view></command>
-		
-		<!-- ============================================================================== -->
-		<!-- JSON LOAD			 															-->
-		<!-- ============================================================================== -->		
-		<command name="ObjectLoad"><view>ObjectLoad</view></command>
-		<command name="ObjectDel"><view>ObjectDel</view></command>
-		<command name="ObjectIns"><view>ObjectIns</view></command>
-		<command name="ObjectUpd"><view>ObjectUpd</view></command>
-		
-		<command name="ModelLoadAll"><view>ModelLoadAll</view></command>
-		<command name="ModelLoadOne"><view>ModelLoadOne</view></command>
-		<command name="ModelFindBy"><view>ModelFindBy</view></command>
-		
+						
 		<!-- ============================================================================== -->
 		<!-- GLOBAL			 																-->
 		<!-- ============================================================================== -->

@@ -1,31 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 	<head>
-		<span metal:use-macro="base.xhtml/IncludeMETA"/>
-		<span metal:use-macro="base.xhtml/IncludeCSS"/>
-		<span metal:use-macro="base.xhtml/IncludeJS"/>
-		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
-	</head>
-
+		<tal:block metal:use-macro="mFront.xhtml/IncludeMETA"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeCSS"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeJS"/>
+	</head>	
 	<body>
-		<div class="container">
-			<div metal:use-macro="base.xhtml/Header"/>
-			<div class="row reset-margin main">
-				<div metal:use-macro="base.xhtml/CallendarBar"/>
-				<div class="span8 fix-width">
-					
-					<div class="history-box">
-						<div class="history-top">
-							<h2>LỊCH SỬ CHÙA LONG VIỄN</h2>
-						</div>
-						<div class="history-mid">
-							<p align="center">________________</p><br/>
+		<div data-role="page" class="jqm-demos jqm-home">
+			<tal:block metal:use-macro="mFront.xhtml/Header"/>
+			<div role="main" class="ui-content jqm-content">									
+				<div class="panel-heading"><h3 class="panel-title" tal:content="string:LỊCH SỬ CHÙA LONG VIỄN" /></div>
+				<div class="panel-body">
+					<div class="page-header clearfix">						
+						<div class="share-button-group pull-right">							
 							<p align="justify"><b>I. TÊN GỌI:</b> Chùa Long Viễn</p>
 							<p align="justify"><b>II. ĐỊA ĐIỂM PHÂN BỐ CHÙA – ĐƯỜNG ĐI ĐẾN:</b></p>
 							<p align="justify">Chùa nằm mặt tiền đối diện đường Bạch Đàn thuộc phường 04, TP. Vĩnh Long.</p>
 							<p align="justify">Đường bộ: từ trung tâm thành phố Vĩnh Long, đi về hướng phường 04, qua cầu Phạm Thái Bường, thẳng theo đường Phạm Thái Bường khoảng 1000m, gặp giao lộ rẽ trái qua đường Bạch Đàn, đi khoảng 300m là gặp chùa nằm phía bên phải. Đường Bạch Đàn cắt  02 đường Phạm Thái Bường và Trần Phú song song, nên cũng có thể đi đến chùa theo từ trung tâm thành phố Vĩnh Long đi về hướng phường 04, qua cầu Lầu, thẳng theo đường Trần Phú khoảng 1000m, gặp giao lộ rẽ phải qua đường Bạch Đàn, đi khoảng 148m là gặp chùa nằm phía bên trái. </p>
 							<p align="center" style="text-indent:0;">
-								<img width="90%" src="data/images/history/path.gif" class="img-polaroid"/>
+								<img width="100%" src="data/images/history/path.gif" class="img-polaroid"/>
 							</p>
 							<p align="justify"><b>III. SƠ LƯỢC TIỂU SỬ:</b></p>
 							<p align="justify">Ngày xưa, nơi đây là một vùng đất hoang vu chưa có người sinh sống. Lúc bấy giờ Hòa Thượng Minh Trì đến cất một mái am tranh để tu tập.</p>
@@ -35,7 +28,7 @@
 							Kiến trúc đó vẫn còn được giữ nguyên cho đến ngày nay.
 							</p>
 							<p align="center" style="text-indent:0;">
-								<embed type="application/x-shockwave-flash" src="https://static.googleusercontent.com/external_content/picasaweb.googleusercontent.com/slideshow.swf" width="500" height="400" flashvars="host=picasaweb.google.com&hl=vi&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F114709359351020028634%2Falbumid%2F5939322774511473329%3Falt%3Drss%26kind%3Dphoto%26hl%3Dvi" pluginspage="http://www.macromedia.com/go/getflashplayer" class="img-polaroid"></embed>
+								<embed type="application/x-shockwave-flash" src="https://static.googleusercontent.com/external_content/picasaweb.googleusercontent.com/slideshow.swf" width="100%" height="400" flashvars="host=picasaweb.google.com&hl=vi&feat=flashalbum&RGB=0x000000&feed=https%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2F114709359351020028634%2Falbumid%2F5939322774511473329%3Falt%3Drss%26kind%3Dphoto%26hl%3Dvi" pluginspage="http://www.macromedia.com/go/getflashplayer" class="img-polaroid"></embed>
 							</p>
 							<p align="justify">
 								(Hình chùa và các khu thờ trong chánh điện cũng như hình khu đông lang và khu tây lang)
@@ -115,28 +108,16 @@
 							<p align="justify">- Đặc biệt, vào 17/11 ÂL cúng vía Phật A Di Đà, chùa có tổ chức cho phật tử đến tu tập một ngày tại chùa.</p>
 							<p align="justify">- Hằng tháng vào lúc 17 giờ ngày 14 và 30 ÂL (tháng thiếu là 29) chùa có khóa lễ sám hối cho hàng Phật tử.</p>
 							<br/>
+							<p align="justify">Trân trọng kính chào !</p>
 						</div>
-						<div class="history-bot">
-							<b><p align="right" style="margin-right:95px;">Trân trọng kính chào!</p>
-							<p align="right">Trụ trì Chùa Long Viễn Thượng tọa Thích Thiện Trí</p></b>
-						</div>
-					</div>
+					</div>					
+					<div class="article-content-container">
+						Trụ trì Chùa Long Viễn Thượng tọa Thích Thiện Trí
+					</div>					
 				</div>
-				<div class="span4 fix-width">
-					<div metal:use-macro="base.xhtml/SpringMsg"/>
-					<div metal:use-macro="base.xhtml/MP3Download"/>
-					<div metal:use-macro="base.xhtml/WarningMsg"/>										
-					<div metal:use-macro="base.xhtml/LibraryBox"/>
-					<div metal:use-macro="base.xhtml/HistoryBox"/>
-					<div metal:use-macro="base.xhtml/MonkBox"/>					
-					<div metal:use-macro="base.xhtml/MusicBox"/>
-					<div metal:use-macro="base.xhtml/MecdBox"/>					
-					<div metal:use-macro="base.xhtml/CallendarBox"/>
-				</div>
-			</div>
-			<div metal:use-macro="base.xhtml/Footer"/>						
-			<div metal:use-macro="base.xhtml/FixedFunction"/>
-			<div metal:use-macro="base.xhtml/Backontop"/>
+			</div>			
+			<tal:block metal:use-macro="mFront.xhtml/Menu"/>
+			<tal:block metal:use-macro="mFront.xhtml/Footer"/>
 		</div>
 	</body>
 </html>
