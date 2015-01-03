@@ -86,7 +86,9 @@
 			</li>
 			<li><a href="/su-kien" tal:content="string:Sự kiện" data-ajax="false"/></li>
 			<li><a href="/van-ban" tal:content="string:Văn bản Phật Giáo" data-ajax="false"/></li>
+			<!--
 			<li><a href="/danh-ba" tal:content="string:Danh bạ chùa" data-ajax="false"/></li>
+			!-->
 			<li><a href="/hinh-anh-hoat-dong" tal:content="string:Ảnh hoạt động" data-ajax="false"/></li>
 			<li><a href="/lien-he" tal:content="string:Liên hệ" data-ajax="false"/></li>
 		 </ul>
@@ -116,6 +118,17 @@
 			<li><a href="/kenh-tong-hop" 			tal:attributes="data-theme php: VideoType=='kenh-tong-hop'?'b':'a'" tal:content="string:Kênh Tổng Hợp" data-ajax="false"/></li>
 		 </ul>
 	</div>
+	
+	<!-- ======================================================================== -->
+	<!-- MENU VIDEO DETAIL																  -->
+	<!-- ======================================================================== -->
+	<div metal:define-macro="MenuVideoDetail" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">
+			<li tal:repeat="CategoryVideo CategoryVideoAll" tal:attributes="data-theme php: Category->getId()==CategoryVideo->getId()?'b':'a'">
+				<a tal:attributes="href CategoryVideo/getURLRead" tal:content="CategoryVideo/getName" data-ajax="false"/>
+			</li>
+		 </ul>
+	</div>
 					
 	<!-- ======================================================================== -->
 	<!-- MENU EVENT 															  -->
@@ -142,10 +155,10 @@
 	<!-- ======================================================================== -->
 	<!-- MENU CATEGORY																	  -->
 	<!-- ======================================================================== -->
-	<div metal:define-macro="MenuCategory" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
+	<div metal:define-macro="MenuDocument" data-role="panel" class="jqm-navmenu-panel" data-position="left" data-display="overlay" data-theme="a">
 		<ul class="jqm-list ui-alt-icon ui-nodisc-icon">			
-			<li tal:repeat="Category CategoryAll1" tal:attributes="data-theme php: Category->getId()==CategoryCurrent->getId()?'b':'a'">			
-				<a tal:attributes="href Category/getURLView" tal:content="Category/getName" data-ajax="false"/>
+			<li tal:repeat="Category CategoryDocumentAll" tal:attributes="data-theme php: Category->getId()==CategoryCurrent->getId()?'b':'a'">
+				<a tal:attributes="href Category/getURLRead" tal:content="Category/getName" data-ajax="false"/>
 			</li>
 		 </ul>
 	</div>

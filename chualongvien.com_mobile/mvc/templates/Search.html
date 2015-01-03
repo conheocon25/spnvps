@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeMETA"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeCSS"/>
+		<tal:block metal:use-macro="mFront.xhtml/IncludeJS"/>
+	</head>	
+	<body class="ui-mobile-viewport ui-overlay-a">
+		<div data-role="page" class="jqm-demos ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active">
+			<tal:block metal:use-macro="mFront.xhtml/Header"/>
+			<div role="main" class="ui-content jqm-content">
+				<ul data-role="listview" class="ui-listview ui-corner-all ui-shadow">
+					<li data-role="collapsible" data-iconpos="right" data-inset="false" tal:repeat="CategoryBType CategoryBTypeAll">
+					    <h2 tal:content="php: 'Tìm kiếm Video ' . CategoryBType->getName()" />
+					    <ul data-role="listview" class="ui-listview ui-corner-all ui-shadow">
+							<li>
+								<form tal:attributes="action CategoryBType/getURLSearchExe" method="POST" role="form" data-ajax="false">
+									<div class="form-group">
+										<select name="IdCategory" id="IdCategory" class="form-control">
+											<option value="0" tal:repeat="Category CategoryBType/getCategoryAll">
+												<span tal:content="Category/getName" />
+											</option>
+										</select>
+									</div>
+									<input type="submit" data-inline="true" value="Tìm kiếm" data-theme="a" />
+								</form>
+							</li>							
+					    </ul>
+				  	</li>
+				</ul>
+				
+			</div>
+			<tal:block metal:use-macro="mFront.xhtml/Menu"/>
+			<tal:block metal:use-macro="mFront.xhtml/Footer"/>
+		</div>
+	</body>
+</html>

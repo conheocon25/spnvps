@@ -44,12 +44,9 @@ ExpiresByType application/javascript "access plus 1 year"
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^trang-chu$ 														?cmd=Home [L]
 
-RewriteRule ^signin/load$ 														?cmd=SigninLoad [L]
-RewriteRule ^signin/exe$ 														?cmd=SigninExe [L]
-RewriteRule ^signout/load$ 														?cmd=SignoutLoad [L]
-RewriteRule ^signout/exe$ 														?cmd=SignoutExe [L]
+RewriteRule ^tim-kiem$ 															?cmd=Search [L]
+RewriteRule ^tim-kiem/([a-z0-9_-]+)/exe$ 										?cmd=SearchExe&IdBTypeCategory=$1 [L]
 
-RewriteRule ^gate$ 																?cmd=Gate [L]
 RewriteRule ^gioi-thieu$ 														?cmd=Introduction [L]
 
 RewriteRule ^lien-he$ 															?cmd=Contact [L]
