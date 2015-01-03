@@ -9,15 +9,26 @@
 		<div data-role="page" class="jqm-demos ui-page ui-page-theme-a ui-page-footer-fixed ui-page-active">
 			<tal:block metal:use-macro="mFront.xhtml/Header"/>
 			<div role="main" class="ui-content jqm-content">
-				<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow"  tal:repeat="Category CategoryNewsAll">
-					<li data-role="list-divider" tal:content="Category/getName" />					
-					<li class="ui-li-has-thumb" tal:repeat="News Category/getNewsLimit">
-						<a tal:attributes="href News/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-							<img tal:attributes="src News/getImage" />
-							<h2 tal:content="News/getTitle" />
-							<p tal:content="structure News/getContentReduce"/>
-						</a>
-					</li>					
+				<ul data-role="listview" class="ui-listview ui-corner-all ui-shadow" data-inset="true">
+					<li data-role="collapsible" data-iconpos="right" data-inset="false" tal:repeat="Category CategoryNewsAll">
+					    <h2 tal:content="Category/getName" />
+					    <ul data-role="listview" class="ui-listview ui-corner-all ui-shadow">
+							<li class="ui-li-has-thumb" tal:repeat="News Category/getNewsLimit">
+								<a tal:attributes="href News/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+									<img tal:attributes="src News/getImage" />
+									<h2 tal:content="News/getTitle" />
+									<p tal:content="structure News/getContentReduce"/>
+								</a>
+							</li>
+							<li class="ui-li-has-thumb">
+								<a tal:attributes="href Category/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+									<img tal:attributes="src '/data/images/news.jpg'" />
+									<h2>Xem tất cả tin</h2>
+									<p>Click vào xem tất cả tin trong danh mục này</p>
+								</a>
+							</li>
+					    </ul>
+				  </li>
 				</ul>				
 			</div>
 			<tal:block metal:use-macro="mFront.xhtml/Menu"/>

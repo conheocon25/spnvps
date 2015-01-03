@@ -63,6 +63,7 @@ class CategoryBType extends Object{
 	//DEFINE URL
 	//-------------------------------------------------------------------------------	
 	function getURLView(){return "/phat-am/".$this->getKey();}
+	function getURLSearchExe(){return "/tim-kiem/".$this->getId()."/exe";}
 	
 	function getURLSetting(){return "/app/btype/".$this->getId();}
 	

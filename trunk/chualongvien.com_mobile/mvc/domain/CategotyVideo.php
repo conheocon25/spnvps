@@ -126,7 +126,7 @@ class CategoryVideo extends Object{
 		}
 		return "/kenh-tong-hop/".$this->getKey();
 	}
-	
+			
 	function getURLView(){return 			"/app/category/video/".$this->getId();}
 	function getURLSetting(){return 		"/app/btype/".$this->getBType()."/".$this->getId();}
 	function getURLSettingVoice(){return 	"/app/btype/".$this->getBType()."/".$this->getId()."/voice";}

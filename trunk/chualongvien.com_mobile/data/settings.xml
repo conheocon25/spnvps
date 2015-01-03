@@ -3,14 +3,15 @@
 		<!-- ============================================================================== -->
 		<!-- Các lệnh xử lí SYSTEM 															-->
 		<!-- ============================================================================== -->		
-		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Gate</forward></status></command>
-		<command name="Gate" type="public"><view>Gate</view></command>
-		<command name="Home" type="public"><view>Home</view></command>		
+		<command name="DefaultCommand" type="public"><view>DefaultCommand</view><status value="CMD_OK"><forward>Home</forward></status></command>		
+		<command name="Home" type="public"><view>Home</view></command>
 		<command name="Introduction" type="public"><view>Introduction</view></command>
 		<command name="Contact" type="public"><view>Contact</view></command>
 		<command name="Event" type="public"><view>Event</view></command>
 		<command name="ReadCategory" type="public"><view>ReadCategory</view></command>
 		<command name="ReadCategoryDetail" type="public"><view>ReadCategoryDetail</view></command>
+		<command name="Search" type="public"><view>Search</view></command>
+		<command name="SearchExe" type="public"><view>SearchExe</view></command>
 						
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
 		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
