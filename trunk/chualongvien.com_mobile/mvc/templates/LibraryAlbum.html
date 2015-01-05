@@ -10,6 +10,7 @@
 		<div data-role="page" class="jqm-demos jqm-home">
 			<tal:block metal:use-macro="mFront.xhtml/Header"/>			
 			<div role="main" class="ui-content jqm-content">
+				<!--
 				<div class="panel-heading"><h3 class="panel-title" tal:content="AlbumCurrent/getName" /></div>
 				<embed 
 					type="application/x-shockwave-flash" 
@@ -20,6 +21,71 @@
 					pluginspage="http://www.macromedia.com/go/getflashplayer"
 					wmode="Opaque">
 				</embed>
+				!-->
+				<div class="row">
+					<div id="demo-test-gallery" class="demo-gallery" data-pswp-uid="1">
+						<a href="data/images/album/1.jpg" data-med="https://farm4.staticflickr.com/3894/15008518202_b016d7d289_b.jpg" data-med-size="1024x1024" data-author="ABC" class="demo-gallery__img--main">
+							<img src="data/images/album/1.jpg" />
+							<figure>Ảnh thứ 1</figure>
+						</a>
+						<a href="data/images/album/2.jpg" data-med="https://farm6.staticflickr.com/5591/15008867125_68a8ed88cc_b.jpg" data-med-size="1024x683" data-author="ABC">
+							<img src="data/images/album/2.jpg" />
+							<figure>Ảnh thứ 2</figure>
+						</a>
+						<a href="data/images/album/3.jpg" data-med="https://farm4.staticflickr.com/3902/14985871946_86abb8c56f_b.jpg" data-med-size="1024x683" data-author="ABC">
+							<img src="data/images/album/3.jpg" />
+							<figure>Ảnh thứ 3</figure>
+						</a>						
+					</div>
+				</div>
+				
+				<div id="gallery" class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+					<div class="pswp__bg" />
+					<div class="pswp__scroll-wrap">
+						<div class="pswp__container" style="transform: translate3d(1270px, 0px, 0px);">
+							<div class="pswp__item" style="display: block; transform: translate3d(-1270px, 0px, 0px);"><div class="pswp__zoom-wrap" style="transform: translate3d(198px, 124px, 0px) scale(0.075);"><img class="pswp__img pswp__img--placeholder" src="./PhotoSwipe  JavaScript Image Gallery_files/15008867125_68a8ed88cc_m.jpg" style="width: 1600px; height: 1068px;"/><img class="pswp__img" src="./PhotoSwipe  JavaScript Image Gallery_files/15008867125_b61960af01_h.jpg"/></div></div>
+							<div class="pswp__item" style="transform: translate3d(-635px, 0px, 0px);">
+								<div class="pswp__zoom-wrap" style="transform: translate3d(0px, 115px, 0px) scale(0.354375);">
+									<img class="pswp__img pswp__img--placeholder" src="./PhotoSwipe  JavaScript Image Gallery_files/14985871946_86abb8c56f_m.jpg" style="width: 1600px; height: 1067px;"/>
+									<img class="pswp__img" src="./PhotoSwipe  JavaScript Image Gallery_files/14985871946_24f47d4b53_h.jpg"/>
+								</div>
+							</div>
+							<div class="pswp__item" style="display: block; transform: translate3d(-1905px, 0px, 0px);">
+								<div class="pswp__zoom-wrap" style="transform: translate3d(24px, 44px, 0px) scale(0.325);">
+									<img class="pswp__img pswp__img--placeholder" src="./PhotoSwipe  JavaScript Image Gallery_files/15008518202_b016d7d289_m.jpg" style="width: 1600px; height: 1600px;" />
+									<img class="pswp__img" src="./PhotoSwipe  JavaScript Image Gallery_files/15008518202_c265dfa55f_h.jpg"/>
+								</div>
+							</div>
+						</div>
+						<div class="pswp__ui pswp__ui--fit pswp__ui--hidden" />
+						<div class="pswp__top-bar">
+							<div class="pswp__counter">2 / 5</div>
+							<button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+							<button class="pswp__button pswp__button--share" title="Share"></button>
+							<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+							<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+							<div class="pswp__preloader pswp__preloader--active">
+								<div class="pswp__preloader__icn">
+								  <div class="pswp__preloader__cut">
+									<div class="pswp__preloader__donut"></div>
+								  </div>
+								</div>
+							</div>
+						</div>
+						<div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+							<div class="pswp__share-tooltip">
+								
+							</div>
+						</div>
+
+						<button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+						<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+						<div class="pswp__caption">
+							<div class="pswp__caption__center">This is dummy caption. It has been placed here solely to demonstrate the look and feel of finished, typeset text.<br/><small>Photo: Samuel Rohl</small></div>
+						</div>
+					</div>
+				</div>
 			</div>
 			<tal:block metal:use-macro="mFront.xhtml/MenuAlbum"/>
 			<tal:block metal:use-macro="mFront.xhtml/Footer"/>
