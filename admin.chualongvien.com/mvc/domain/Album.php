@@ -38,6 +38,12 @@ class Album extends Object{
 		$this->Key = $Str->converturl();
 	}
 	
+	function getImageAll(){
+		$mImage 	= new \MVC\Mapper\Image();
+		$ImageAll 	= $mImage->findBy(array($this->getId()));
+		return $ImageAll;
+	}
+	
 	function toJSON(){
 		$json = array(
 			'Id' 			=> $this->getId(),
@@ -62,7 +68,9 @@ class Album extends Object{
 	//-------------------------------------------------------------------------------
 	//DEFINE URL
 	//-------------------------------------------------------------------------------
-	function getURLView(){return "hinh-anh-hoat-dong/".$this->getKey();}
+	function getURLView(){return "/hinh-anh-hoat-dong/".$this->getKey();}
+	function getURLJSON(){return "/hinh-anh-hoat-dong/".$this->getKey()."/json";}
+	function getURLSetting(){return "/app/album/".$this->getId();}
 					
 	//-------------------------------------------------------------------------------
     static function findAll() {$finder = self::getFinder( __CLASS__ ); return $finder->findAll();}

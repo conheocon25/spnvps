@@ -14,8 +14,8 @@
 		<command name="SearchExe" type="public"><view>SearchExe</view></command>
 						
 		<command name="LibraryAlbum" type="public"><view>LibraryAlbum</view></command>
-		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
-		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>				
+		<command name="LibraryAlbumJSON" type="public"><view>LibraryAlbumJSON</view></command>
+				
 		<command name="DownloadMP3" type="public"><view>DownloadMP3</view></command>
 						
 		<!-- ============================================================================== -->

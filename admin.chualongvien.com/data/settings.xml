@@ -31,6 +31,7 @@
 		</command>
 		
 		<command name="AppLibraryAlbum"><view>AppLibraryAlbum</view></command>
+		<command name="AppAlbumImage"><view>AppAlbumImage</view></command>
 														
 		<!-- ============================================================================== -->
 		<!-- APP.BTYPE																		-->

@@ -95,6 +95,7 @@ RewriteRule ^kenh-tong-hop/([a-z0-9_-]+)/YouTube/([a-z0-9_-]+)$				?cmd=LibraryV
 
 RewriteRule ^hinh-anh-hoat-dong$											?cmd=LibraryAlbum [L]
 RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)$								?cmd=LibraryAlbum&KAlbum=$1 [L]
+RewriteRule ^hinh-anh-hoat-dong/([a-z0-9_-]+)/json$							?cmd=LibraryAlbumJSON&KAlbum=$1 [L]
 
 RewriteRule ^tin-tuc$ 														?cmd=ReadCategory [L]
 RewriteRule ^tin-tuc/([a-z0-9_-]+)$ 										?cmd=ReadCategory&Key1=$1 [L]

@@ -2,6 +2,7 @@
 namespace MVC\Domain;
 
 interface AlbumCollection 			extends \Iterator {function add( Object $object );}
+interface ImageCollection 			extends \Iterator {function add( Object $object );}
 interface AnimeCollection 			extends \Iterator {function add( Object $object );}
 interface FeedCollection 			extends \Iterator {function add( Object $object );}
 interface CategoryNewsCollection 	extends \Iterator {function add( Object $object );}
