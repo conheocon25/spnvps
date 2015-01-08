@@ -10,6 +10,7 @@ interface Finder {
     //function delete();
 }
 interface AlbumFinder  			extends Finder {}
+interface ImageFinder  			extends Finder {}
 interface AnimeFinder  			extends Finder {}
 interface UserFinder  			extends Finder {}
 interface ConfigFinder 			extends Finder {}

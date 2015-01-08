@@ -7,6 +7,9 @@
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/jquery.jplayer.min.js"/>
 		<script>
 		/*<![CDATA[*/
+		if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)){
+				window.location ="http://m.chualongvien.com";
+		}
 		$(document).ready(function(){
 			$('body').css('opacity', '0').fadeTo(1500, 1,'swing');
 			$(".top-poe").animate({ top: "+=100%" }, { duration: 1500 });

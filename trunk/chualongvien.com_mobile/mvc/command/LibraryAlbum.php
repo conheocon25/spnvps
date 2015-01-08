@@ -33,7 +33,8 @@
 			//-------------------------------------------------------------
 			//THAM SỐ GỬI ĐI
 			//-------------------------------------------------------------
-			$request->setObject("AlbumCurrent"		, $Album);						
+			$request->setProperty("URLJSON"			, $Album->getURLJSON());
+			$request->setObject("AlbumCurrent"		, $Album);
 			$request->setObject("AlbumAll"			, $AlbumAll);			
 									
 			return self::statuses('CMD_DEFAULT');

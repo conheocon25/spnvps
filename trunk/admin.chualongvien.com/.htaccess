@@ -44,6 +44,7 @@ RewriteRule ^app/disable/del/all$ 								?cmd=AppDisableDelAll			[L]
 
 RewriteRule ^app/album$ 										?cmd=AppLibraryAlbum 			[L]
 RewriteRule ^app/album/page/([0-9]+)$ 							?cmd=AppLibraryAlbum&Page=$1 	[L]
+RewriteRule ^app/album/([0-9]+)$ 								?cmd=AppAlbumImage&IdAlbum=$1 	[L]
 
 RewriteRule ^app/category/news$ 								?cmd=AppCategoryNews 			[L]
 RewriteRule ^app/category/news/page/([0-9]+)$ 					?cmd=AppCategoryNews&Page=$1 	[L]

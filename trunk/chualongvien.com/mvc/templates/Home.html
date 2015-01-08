@@ -6,7 +6,10 @@
 		<span metal:use-macro="base.xhtml/IncludeJS"/>
 		<script type="text/javascript" language="javascript" src="/mvc/templates/script/library/cloud-carousel.1.0.5.min.js"/>
 		<script>
-			/*<![CDATA[*/
+			/*<![CDATA[*/			
+			if(/Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)){
+				window.location ="http://m.chualongvien.com";
+			}
 			$(document).ready(function(){
 				$('.news-slide').carousel({interval: 5000});
 				$(".hidden-control").click(function(){

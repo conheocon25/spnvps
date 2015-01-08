@@ -11,23 +11,20 @@
 		<script>
 		/*<![CDATA[*/
 			$(document).ready(function() {
-				$(".img-thumbnail").click(function(){
+				$(".img-thumbnail").click(function(){					
 					$("#dynamic-style").attr("href", "");
 					var pswpElement = document.querySelectorAll('.pswp')[0];
-					//Khởi tạo các ảnh trong album
-					var items = [
-						{
-							src: 'https://farm2.staticflickr.com/1043/5186867718_06b2e9e551_b.jpg',
-							w: 964,
-							h: 1024
-						},
-						{
-							src: 'https://farm7.staticflickr.com/6175/6176698785_7dee72237e_b.jpg',
-							w: 1024,
-							h: 683
+					var images;					
+					$.ajax({
+						type: "POST",
+						async:false,
+						dataType: "json",
+						url: $(this).attr('data-url'),
+						success: function(data){							
+							images = data;
 						}
-					];
-					
+					});
+										
 					var options = {       
 						history: false,
 						focus: false,
@@ -35,7 +32,7 @@
 						hideAnimationDuration: 1
 					};
 					
-					var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, items, options);
+					var gallery = new PhotoSwipe( pswpElement, PhotoSwipeUI_Default, images, options);
 					gallery.init();
 					gallery.listen('close', function(){
 						$("#dynamic-style").attr("href", "/mvc/templates/mobile/css/jquery.mobile-1.4.5.min.css");
@@ -49,10 +46,8 @@
 	<body>
 		<div data-role="page" class="jqm-demos jqm-home">
 			<tal:block metal:use-macro="mFront.xhtml/Header"/>			
-			<div role="main" class="ui-content jqm-content">
-				
-				<img class="img-thumbnail" src="data/images/album/1.jpg"/>
-				
+			<div role="main" class="ui-content jqm-content">								
+				<img id="Album" class="img-thumbnail" tal:attributes="src AlbumCurrent/getImageAll/current/getURL; data-url AlbumCurrent/getURLJSON" />
 				<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 					<div class="pswp__bg"></div>
 					<div class="pswp__scroll-wrap">
