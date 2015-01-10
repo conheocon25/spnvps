@@ -47,7 +47,7 @@
 		<div data-role="page" class="jqm-demos jqm-home">
 			<tal:block metal:use-macro="mFront.xhtml/Header"/>			
 			<div role="main" class="ui-content jqm-content">								
-				<img id="Album" class="img-thumbnail" tal:attributes="src AlbumCurrent/getImageAll/current/getURL; data-url AlbumCurrent/getURLJSON" />
+				<img tal:condition="AlbumCurrent/getImageAll/count" id="Album" class="img-thumbnail" tal:attributes="src AlbumCurrent/getImageAll/current/getURL; data-url AlbumCurrent/getURLJSON" />
 				<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 					<div class="pswp__bg"></div>
 					<div class="pswp__scroll-wrap">

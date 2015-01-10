@@ -9,15 +9,32 @@
 	<body>
 		<div data-role="page" class="jqm-demos jqm-home">
 			<tal:block metal:use-macro="mFront.xhtml/Header"/>			
-			<div role="main" class="ui-content jqm-content">				
-				<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
-					<li class="ui-li-has-thumb" tal:repeat="VL YTAll">
-						<a tal:attributes="href VL/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
-							<img tal:attributes="src VL/getVideo/getURLImage" />
-							<h2 tal:content="VL/getVideo/getName"/>
-							<p tal:content="VL/getVideo/getNote"/>
-						</a>												
-					</li>					
+			<div role="main" class="ui-content jqm-content">
+				<ul data-role="listview" class="ui-listview ui-corner-all ui-shadow" data-inset="true">
+					<li data-role="collapsible" data-iconpos="right" data-inset="false">
+					    <h2 tal:content="php:'YouTube (' . YTAll->count() . ')'" />
+						<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+							<li class="ui-li-has-thumb" tal:repeat="VL YTAll">
+								<a tal:attributes="href VL/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+									<img tal:attributes="src VL/getVideo/getURLImage" />
+									<h2 tal:content="VL/getVideo/getName"/>
+									<p tal:content="VL/getVideo/getNote"/>
+								</a>												
+							</li>					
+						</ul>
+					</li>
+					<li data-role="collapsible" data-iconpos="right" data-inset="false">
+					    <h2 tal:content="php:'SÁCH NÓI (' . VBAll->count() . ')'" />
+						<ul data-role="listview" class="ui-listview ui-listview-inset ui-corner-all ui-shadow">
+							<li class="ui-li-has-thumb" tal:repeat="VB VBAll">								
+								<a tal:attributes="href VB/getURLRead" rel="external" class="ui-btn ui-btn-icon-right ui-icon-carat-r">
+									<img tal:attributes="src VB/getImage" />
+									<h2 tal:content="VB/getName"/>
+									<p tal:content="VB/getNote"/>
+								</a>												
+							</li>
+						</ul>	
+					</li>
 				</ul>				
 			</div>			
 			<tal:block metal:use-macro="mFront.xhtml/MenuVideoDetail"/>
