@@ -16,6 +16,7 @@
 		<command name="LibraryMonk" type="public"><view>LibraryMonk</view></command>		
 		<command name="LibraryMonkLoad" type="public"><view>LibraryMonkLoad</view></command>		
 		
+		<command name="Warning" type="public"><view>Warning</view></command>
 		<command name="DownloadMP3" type="public"><view>DownloadMP3</view></command>
 		
 		<command name="SigninLoad" type="public"><view>SigninLoad</view></command>

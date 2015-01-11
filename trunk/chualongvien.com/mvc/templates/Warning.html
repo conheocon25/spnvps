@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<span metal:use-macro="base.xhtml/IncludeMETA"/>
+		<span metal:use-macro="base.xhtml/IncludeCSS"/>
+		<span metal:use-macro="base.xhtml/IncludeJS"/>
+		<script>/*<![CDATA[*/$(document).ready(function(){ $(".hidden-control").click(function(){ ($(this).hasClass("icon-chevron-down")==false) ? $(this).addClass("icon-chevron-down") : $(this).removeClass("icon-chevron-down") }); });/*]]>*/</script>
+	</head>
+
+	<body>
+		<div class="container">
+			<div metal:use-macro="base.xhtml/Header"/>
+			<div class="row reset-margin main">
+				<div metal:use-macro="base.xhtml/CallendarBar"/>
+				<div class="span8 fix-width">					
+					<div class="history-box">
+						<div class="history-top"><h2>THÔNG BÁO</h2></div>
+						<div class="history-mid">
+							<p align="center">________________</p><br/>
+							<p align="center"><b>Về việc: </b>Sử dụng phiên bản Website Chùa Long Viễn (điện thoại thông minh)</p>
+							<p align="justify"><b></b></p>							
+							<p align="justify">(1) Như chúng ta đã biết chiếc điện thoại ngày càng phổ biến trong các hoạt động hàng ngày. Từ chiếc điện thoại ta có thể đọc báo, giải trí, nhắn tin, gọi điện và liên lạc với nhau.</p>
+							<p align="justify">(2) Nhu cầu sử dụng thông tin từ Website Chùa Long Viễn ngày càng tăng.</p>
+							<p align="justify">(3) Tạo sự thuận lợi cho quí Phật Tử không có điều kiện truy cập hệ thống Website từ máy tính để bàn hay Laptop.</p>
+							<img src="/data/images/smartphone-collection.jpg"/>
+							<p align="justify">Chính vì những lí do và nhu cầu thiết yếu đã nêu trên. Nay BTT Website Chùa Long Viễn thông báo đến quí Phật Tử gần xa phát hành phiên bản điện thoại Website Chùa Long Viễn.</p>
+							<p align="justify">Khi truy cập vào Website Chùa Long Viễn bằng điện thoại thông minh quí vị sẽ thấy màn hình được thiết kế có khác với phiên bản gốc.</p>
+							<p align="justify">Qua thực tế kiểm tra Website tương thích với các dòng điện thoại thông minh sử dụng hệ điều hành Android, IOS, Window Phone.</p>
+							<p align="justify">Sự tiện lợi của phiên bản này nằm ở điểm chỉ dùng điện thoại có kết nối 3G hoặc Wifi Internet là quí vị cho thể theo dõi được tin tức, Phật Sự, các bài pháp, video cũng như nghe MP3 trực tiếp từ trang Web mà không cần cài đặt thêm bất cứ phần mềm nào.</p>
+							<p align="justify">Mọi ý kiến đóng góp tích cực về xây dựng giao diện cũng như chức năng cho Website sẽ được BTT Website ghi nhận và cân nhắc thực hiện.</p>
+							<p align="justify"></p>
+							<br/>
+						</div>
+						<div class="history-bot">
+							<b><p align="right" style="margin-right:95px;">Trân trọng kính chào,</p>
+							<p align="right">Trụ trì Chùa Long Viễn Thượng tọa Thích Thiện Trí</p></b>
+						</div>
+					</div>
+				</div>
+				<div class="span4 fix-width">
+					<div metal:use-macro="base.xhtml/SpringMsg"/>
+					<div metal:use-macro="base.xhtml/Warning"/>
+					<div metal:use-macro="base.xhtml/MP3Download"/>
+					<div metal:use-macro="base.xhtml/WarningMsg"/>										
+					<div metal:use-macro="base.xhtml/LibraryBox"/>
+					<div metal:use-macro="base.xhtml/HistoryBox"/>
+					<div metal:use-macro="base.xhtml/MonkBox"/>					
+					<div metal:use-macro="base.xhtml/MusicBox"/>
+					<div metal:use-macro="base.xhtml/MecdBox"/>					
+					<div metal:use-macro="base.xhtml/CallendarBox"/>
+				</div>
+			</div>
+			<div metal:use-macro="base.xhtml/Footer"/>						
+			<div metal:use-macro="base.xhtml/FixedFunction"/>
+			<div metal:use-macro="base.xhtml/Backontop"/>
+		</div>
+	</body>
+</html>

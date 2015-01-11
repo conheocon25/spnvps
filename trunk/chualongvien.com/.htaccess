@@ -43,6 +43,7 @@ ExpiresByType application/javascript "access plus 1 year"
 # APP
 #---------------------------------------------------------------------------------------------------------------------------
 RewriteRule ^trang-chu$ 														?cmd=Home [L]
+RewriteRule ^thong-bao$ 														?cmd=Warning [L]
 
 RewriteRule ^signin/load$ 														?cmd=SigninLoad [L]
 RewriteRule ^signin/exe$ 														?cmd=SigninExe [L]
