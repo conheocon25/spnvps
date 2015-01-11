@@ -18,7 +18,7 @@
 							<h4 class="reset-margin" tal:content="Album/getName"/>
 							<i class="pull-right">Cập nhật: <span tal:content="Album/getTimePrint"/></i>
 						</div>
-						<div class="b-content news-content padding-content">
+						<div class="b-content news-content padding-content">							
 							<div class="news-main">
 								<embed 
 									type="application/x-shockwave-flash" 
@@ -43,11 +43,11 @@
 								</li>
 							</ul>
 						</div>
-					</div>
-					
-				</d	iv>
+					</div>					
+				</div>
 				<div class="span4 fix-width">
 					<div metal:use-macro="base.xhtml/SpringMsg"/>
+					<div metal:use-macro="base.xhtml/Warning"/>
 					<div metal:use-macro="base.xhtml/MP3Download"/>
 					<div metal:use-macro="base.xhtml/WarningMsg"/>										
 					<div metal:use-macro="base.xhtml/LibraryBox"/>
