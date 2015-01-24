@@ -95,8 +95,10 @@
 							$CurTitle = trim($item['title']);						
 							$CurTitle = mb_convert_case($CurTitle, MB_CASE_LOWER, "UTF-8"); 
 							
-							if ($lengthOld > 0) 
+							if ($lengthOld < 0) 
 							{
+								$lengthOld =0;
+							}
 								for($l=0; $l < $lengthOld; ++$l) {
 										$OldNew = $ListOldNews[$l];															
 										if (strcmp($OldNew, $CurTitle) == 0) {
@@ -104,7 +106,7 @@
 											break;
 										}								
 								}
-							}
+							
 							if ($flagIns == false) {
 								
 								$curl_handle=curl_init();
