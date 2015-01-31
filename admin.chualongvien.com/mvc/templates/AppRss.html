@@ -28,7 +28,10 @@
 											<th><div class="text-left">Web Gốc</div></th>
 											<th><div class="text-left">Địa chỉ Web</div></th>
 											<th><div class="text-left">Địa chỉ Rss lấy tin</div></th>
-											<th><div class="text-left">Thêm vào Danh Mục</div></th>
+											<th><div class="text-left">Thêm vào Danh Mục</div></th>																					
+											<th><div class="text-left">Lớp Lấy Nội dung</div></th>
+											<th><div class="text-left">Lớp Lấy Tgiả</div></th>
+											<th><div class="text-left">Đường dẫn hình đủ</div></th>
 											<th><div class="text-left">Loại Rss</div></th>
 											<th><div class="text-left">Khả dụng</div></th>											
 											<th><div class="text-left">Lấy tin</div></th>											
@@ -44,6 +47,9 @@
 											<td align="left"><div tal:content="Rss/getWeburl" /></td>
 											<td align="left"><div tal:content="Rss/getRssurl" /></td>
 											<td align="left"><div tal:content="Rss/getCategoryVideo/getName" /></td>
+											<td align="left"><div tal:content="Rss/getClassContentName" /></td>
+											<td align="left"><div tal:content="Rss/getClassAuthor" /></td>
+											<td align="left"><div tal:content="Rss/getImgPath" /></td>
 											<td align="left"><div tal:content="Rss/getType" /></td>
 											<td align="left"><div tal:content="Rss/getEnablePrint" /></td>											
 											<td align="left"><div style="cursor:pointer; color:red;" class="get-newsrss" tal:attributes="data-id Rss/getURLGetNewsRss">Lấy tin</div></td>											

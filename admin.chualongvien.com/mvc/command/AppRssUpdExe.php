@@ -19,6 +19,9 @@
 			$Enable = $request->getProperty('Enable');
 			$IdCategory = $request->getProperty('IdCategory');
 			
+			$ClassContentName = $request->getProperty('ClassContentName');
+			$ClassAuthor = $request->getProperty('ClassAuthor');
+			$ImgPath = $request->getProperty('ImgPath');
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
 			//-------------------------------------------------------------			
@@ -34,7 +37,9 @@
 			$Rss->setRssurl($Rssurl);
 			$Rss->setType($Type);
 			$Rss->setEnable($Enable);
-			
+			$Rss->setClassContentName($ClassContentName);
+			$Rss->setClassAuthor($ClassAuthor);
+			$Rss->setImgPath($ImgPath);
 						
 			$mRss->update($Rss);
 			
