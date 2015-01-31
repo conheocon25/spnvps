@@ -11,8 +11,8 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 		
 		$selectAllStmt 		= sprintf("select * from %s where `enable`=1", $tblRssLink);
 		$selectStmt 		= sprintf("select *  from %s where id=?", $tblRssLink);
-		$updateStmt 		= sprintf("update %s set id_category=?, name=?, `weburl`=?, rssurl=?, type=?, `enable`=? where id=?", $tblRssLink);
-		$insertStmt 		= sprintf("insert into %s ( id_category, name, `weburl`, rssurl, type, `enable`) values(?, ?, ?, ?, ?, ?)", $tblRssLink);
+		$updateStmt 		= sprintf("update %s set id_category=?, name=?, `weburl`=?, rssurl=?, type=?, `enable`=?, classcontentname=?, classauthor=?, imgpath=? where id=?", $tblRssLink);
+		$insertStmt 		= sprintf("insert into %s ( id_category, name, `weburl`, rssurl, type, `enable`, classcontentname, classauthor, imgpath) values(?, ?, ?, ?, ?, ?, ?, ?, ?)", $tblRssLink);
 		$deleteStmt 		= sprintf("delete from %s where id=?", $tblRssLink);
 		$findByStmt 		= sprintf("select *  from %s where id_category=?", $tblRssLink);
 		$findByTypeStmt 	= sprintf("SELECT * FROM  %s WHERE id_category=:id_category LIMIT :start,:max", $tblRssLink);
@@ -37,7 +37,10 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 			$array['weburl'],
 			$array['rssurl'],
 			$array['type'],
-			$array['enable']
+			$array['enable'],
+			$array['classcontentname'],
+			$array['classauthor'],
+			$array['imgpath']
 		);
         return $obj;
     }
@@ -50,7 +53,10 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 			$object->getWeburl(),
 			$object->getRssurl(),
 			$object->getType(),
-			$object->getEnable()
+			$object->getEnable(),
+			$object->getClassContentName(),
+			$object->getClassauthor(),
+			$object->getImgPath()
 		);
         $this->insertStmt->execute( $values );
         $id = self::$PDO->lastInsertId();
@@ -65,6 +71,9 @@ class RssLink extends Mapper implements \MVC\Domain\RssLinkFinder{
 			$object->getRssurl(),
 			$object->getType(),
 			$object->getEnable(),
+			$object->getClassContentName(),
+			$object->getClassauthor(),
+			$object->getImgPath(),
 			$object->getId()			
 		);
         $this->updateStmt->execute( $values );

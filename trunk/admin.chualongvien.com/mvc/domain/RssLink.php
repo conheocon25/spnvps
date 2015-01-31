@@ -11,11 +11,14 @@ class RssLink extends Object{
 	private $Rssurl;
 	private $Type;
 	private $Enable;
+	private $ClassContentName;
+	private $ClassAuthor;
+	private $ImgPath;
 	
 	//-------------------------------------------------------------------------------
 	//ACCESSING MEMBER PROPERTY
 	//-------------------------------------------------------------------------------
-    function __construct( $Id=null, $IdCategory=null,$Name=null, $Weburl=null, $Rssurl=null, $Type=null, $Enable=null){
+    function __construct( $Id=null, $IdCategory=null,$Name=null, $Weburl=null, $Rssurl=null, $Type=null, $Enable=null, $ClassContentName=null, $ClassAuthor=null, $ImgPath=null){
 		$this->Id 			= $Id;		
 		$this->IdCategory 	= $IdCategory; 
 		$this->Name 		= $Name; 
@@ -23,7 +26,9 @@ class RssLink extends Object{
 		$this->Rssurl		= $Rssurl;
 		$this->Type 		= $Type;
 		$this->Enable 		= $Enable;
-		
+		$this->ClassContentName		= $ClassContentName;
+		$this->ClassAuthor 			= $ClassAuthor;
+		$this->ImgPath 				= $ImgPath;
 		parent::__construct( $Id );
 	}
     function getId() {return $this->Id;}	
@@ -43,6 +48,15 @@ class RssLink extends Object{
 	
 	function setType( $Type ) {$this->Type = $Type;$this->markDirty();}   
 	function getType( ) {return $this->Type;}
+	
+	function setClassContentName( $ClassContentName ) {$this->ClassContentName = $ClassContentName;$this->markDirty();}   
+	function getClassContentName( ) {return $this->ClassContentName;}
+	
+	function setClassAuthor( $ClassAuthor ) {$this->ClassAuthor = $ClassAuthor;$this->markDirty();}   
+	function getClassAuthor( ) {return $this->ClassAuthor;}
+	
+	function setImgPath( $ImgPath ) {$this->ImgPath = $ImgPath;$this->markDirty();}   
+	function getImgPath( ) {return $this->ImgPath;}
 	
 	function getCategoryVideo( ) {
 		$mCategoryNews = new \MVC\Mapper\CategoryNews();
@@ -68,7 +82,10 @@ class RssLink extends Object{
 			'Weburl'		=> $this->getWeburl(),
 			'Rssurl' 		=> $this->getRssurl(),
 		 	'Type'			=> $this->getType(),
-			'Enable'		=> $this->getEnable()			
+			'Enable'		=> $this->getEnable(),
+			'ClassContentName'		=> $this->getClassContentName(),			
+			'ClassAuthor'			=> $this->getClassAuthor(),		
+			'ImgPath'				=> $this->getImgPath()					
 		);
 		return json_encode($json);
 	}
@@ -81,6 +98,9 @@ class RssLink extends Object{
 		$this->Rssurl		= $Data[4];
 		$this->Type 		= $Data[5];
 		$this->Enable	 	= $Data[6];
+		$this->ClassContentName	 	= $Data[7];
+		$this->ClassAuthor	 		= $Data[8];
+		$this->ImgPath		 		= $Data[9];
     }
 			
 	//-------------------------------------------------------------------------------

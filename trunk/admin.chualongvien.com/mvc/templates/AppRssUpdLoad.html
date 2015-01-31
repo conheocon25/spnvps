@@ -37,6 +37,27 @@
 										</div>
 									</div>
 									<div class="control-group">
+										<label class="control-label" for="Rssurl">Lớp Lấy Nội dung tin</label>
+										<div class="controls">
+											<input type="text" id="ClassContentName" name="ClassContentName" tal:attributes="value Rss/getClassContentName" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="Rssurl">Lớp Lấy Tên Tác giả</label>
+										<div class="controls">
+											<input type="text" id="ClassAuthor" name="ClassAuthor" tal:attributes="value Rss/getClassAuthor" />
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="Rssurl">Đường dẫn Hình đầy đủ</label>
+										<div class="controls">
+											<select name="ImgPath" id="ImgPath">
+												<option value="1" ><span>Đầy đủ</span></option>
+												<option value="0" ><span>Không đầy đủ</span></option>
+											</select>											
+										</div>
+									</div>
+									<div class="control-group">
 										<label class="control-label" for="Type">Loại Rss</label>
 										<div class="controls">
 											<select name="Type" id="Type">
