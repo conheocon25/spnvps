@@ -14,7 +14,7 @@
 			//THAM SỐ GỬI ĐẾN
 			//-------------------------------------------------------------
 			
-			$IdRss = $request->getProperty('IdRss');
+			//$IdRss = $request->getProperty('IdRss');
 			
 			//-------------------------------------------------------------
 			//MAPPER DỮ LIỆU
@@ -29,21 +29,29 @@
 			//-------------------------------------------------------------
 			//XỬ LÝ CHÍNH
 			//-------------------------------------------------------------	
+			
+			\ini_set('max_execution_time', 300); //300 seconds = 5 minutes
+			
 			$dConfig = $mConfig->findByName("AUTO_NEWS");
 			
 			$AUTONEWS = $dConfig->getValue();
 			
-			if(isset($IdRss)) 
-			{
-				//$DRssLinkAll = $mRssLink->findAll();
+			//if(isset($IdRss)) 
+			//{
+				$DRssLinkAll = $mRssLink->findAll();
 			
-			//while ($DRssLinkAll->valid())
-			//{			
-				//$dRssLink 	= $DRssLinkAll->current();	
-				$dRssLink 	= $mRssLink->find($IdRss);
-				//$IdRss 		= $dRssLink->getId();
+			while ($DRssLinkAll->valid())
+			{			
+				$dRssLink 	= $DRssLinkAll->current();	
+				//$dRssLink 	= $mRssLink->find($IdRss);
+				$IdRss 		= $dRssLink->getId();
 				$WebUrl 	= $dRssLink->getWeburl();
 				$Url 		= $dRssLink->getRssurl();
+				
+				$ClassAuthor 		= $dRssLink->getClassAuthor();
+				$ClassContent 		= $dRssLink->getClassContentName();
+				$ImgPath 			= $dRssLink->getImgPath();
+				
 				$IdCategory = $dRssLink->getIdCategory();
 				
 				$dCategoryVideo = $mCategoryNews->find($IdCategory);
@@ -125,12 +133,17 @@
 								$dom->saveHTMLFile("data/giacngo_". $IdCategory . "_" . $strDatatime . "_" . $i . ".html");
 								$HTML = file_get_html("data/giacngo_". $IdCategory . "_" . $strDatatime . "_" . $i . ".html");					
 									
-								$NewsAuthor = $HTML->find('.ctcSource', 0);										
-								$NewsContent = $HTML->find('.ctcBody', 0);					
-								foreach( $NewsContent->find('img') as $img){
-									if (substr($img->src,0,1) == "/")
-										$img->src =  $WebUrl .$img->src; 
+								$NewsAuthor = $HTML->find('.' . $ClassAuthor, 0);										
+								$NewsContent = $HTML->find('.' . $ClassContent, 0);					
+								
+								if ( $ImgPath == 0) {
+									foreach( $NewsContent->find('img') as $img){
+										if (substr($img->src,0,1) == "/")
+											$img->src =  $WebUrl .$img->src; 
+									}
 								}
+								
+								$NewsContent 	= \stripslashes($NewsContent);
 								
 								if (!isset($NewsAuthor)) {
 									$NewsAuthor = "BBT";
@@ -170,7 +183,7 @@
 								}
 									$i= $i + 1;
 									
-									//echo "<br />" . $i . "Đã thêm tin moi: " . $CurTitle . "<br />";							
+									echo "<br />" . $i . "Đã thêm tin moi: " . $CurTitle . "<br />";							
 								
 								
 								unset($dom);
@@ -188,7 +201,7 @@
 					echo "Đã thêm ". $i . " của vào Danh mục: " . $dCategoryVideo->getName();
 					
 				array_map('unlink', glob("data/*.html")); 
-				//$DRssLinkAll->next();				
+				$DRssLinkAll->next();				
 			}
 			
 			//-------------------------------------------------------------
