@@ -29,9 +29,17 @@ class VideoLibrary extends Mapper implements \MVC\Domain\VideoLibraryFinder {
 			ORDER BY (select time FROM %s V WHERE V.id=VM.id_video ) DESC 
 			LIMIT :start,:max", $tblVideoLibrary, $tblVideo
 		);
+		/*
 		$findByTopLibraryStmt = sprintf("
 			SELECT * FROM %s VL 
 			WHERE VL.id_category IN (select id FROM chualongvien_category_video WHERE btype=4) 
+			ORDER BY (select time from %s V where V.id=VL.id_video ) 
+			DESC limit 8", $tblVideoLibrary, $tblVideo
+		);
+		*/
+		$findByTopLibraryStmt = sprintf("
+			SELECT * FROM %s VL 
+			WHERE VL.id_category IN (select id FROM chualongvien_category_video WHERE btype=3 or btype=4) 
 			ORDER BY (select time from %s V where V.id=VL.id_video ) 
 			DESC limit 8", $tblVideoLibrary, $tblVideo
 		);

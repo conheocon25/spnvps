@@ -173,15 +173,35 @@
 					$("body").addClass("dsbscrl");
 					
 					var URL = "/object/load/Video/"+$(this).attr('data-id');
-					$.getJSON(URL, function(data){						
+					$.getJSON(URL, function(data){
+					
+						var URLUpdate = "/object/upd/Video";
+						var Data = [];
+						Data[0] = data.Id;
+						Data[1] = data.Name;
+						Data[2] = data.Time;
+						Data[3] = data.URL;
+						Data[4] = data.Note;
+						Data[5] = parseInt(data.Count) + 1;
+				
+						$.ajax({
+							type: "POST",
+							data: {Data:Data},
+							url: URLUpdate,
+							success: function(msg){
+								
+							}
+						});
+				
 						$("#VideoTitle").html(data.Name);
 						$("#VideoTime").html(data.Time);
-						$("#VideoCount").html(data.Count);
+						$("#VideoCount").html(parseInt(data.Count) + 1);
 						$("#VideoNote").html(data.Note);
 						$("#VideoSource").attr('src', data.URL);
 						$("#frmflg").attr('data-id', data.Id);
+												
 						
-					});															
+					});
 					$('.scrfrm').css("display", "block");
 				});
 				$('#frmclsbtn').click(function(){$('.scrfrm').css("display", "none"); $("body").removeClass("dsbscrl");});
