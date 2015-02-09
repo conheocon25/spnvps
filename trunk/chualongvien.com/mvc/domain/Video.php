@@ -93,7 +93,7 @@ class Video extends Object{
 		$this->Time 		= $Data[2];
 		$this->URL 			= $Data[3];		
 		$this->Note 		= $Data[4];
-		$this->Count		= $Data[5];		
+		$this->Count		= $Data[5];
 		$this->reKey();
     }	
 	
