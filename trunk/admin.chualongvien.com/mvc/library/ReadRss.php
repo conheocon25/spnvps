@@ -18,7 +18,7 @@ class ReadRss {
 	{
 		$curl_handle=curl_init();
 		curl_setopt($curl_handle, CURLOPT_URL,self::$_rssUrl);
-		curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+		curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 30);
 		curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
 		curl_setopt($curl_handle, CURLOPT_HEADER, 0);		
 		curl_setopt($curl_handle, CURLOPT_USERAGENT, 'Your application name');
