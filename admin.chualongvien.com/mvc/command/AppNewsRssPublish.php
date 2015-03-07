@@ -183,7 +183,7 @@
 								}
 									$i= $i + 1;
 									
-									echo "<br />" . $i . "Đã thêm tin moi: " . $CurTitle . "<br />";							
+									echo "<br /> ==>" . $i . "Đã thêm tin: " . $CurTitle . " <br />";							
 								
 								
 								unset($dom);
@@ -194,13 +194,10 @@
 								$NewsContent = "";														
 							}
 							$flagIns = false;
-						}
-							
+						}						
 					}
-					
-					echo "Đã thêm ". $i . " của vào Danh mục: " . $dCategoryVideo->getName();
-					
-				array_map('unlink', glob("data/*.html")); 
+					echo "<br /> - Đã thêm tin: ". $i . " vào Danh mục: " . $dCategoryVideo->getName() . " <br />";						
+					array_map('unlink', glob("data/*.html")); 
 				$DRssLinkAll->next();				
 			}
 			

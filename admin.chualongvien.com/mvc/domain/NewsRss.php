@@ -65,6 +65,11 @@ class NewsRss extends Object{
 		\ob_end_clean();
 		if(preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $this->Content, $matches)){
 			$first_img = $matches[1][0];
+			$tailImg = substr($matches[1][0] , -3);
+			$tailImg = strtolower($tailImg);
+			if($tailImg != "jpg" && $tailImg != "gif") {
+				$first_img = "/data/images/news.jpg";
+			}
 		}
 		else {
 			$first_img = "/data/images/news.jpg";
