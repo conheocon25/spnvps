@@ -61,9 +61,7 @@
 					$strDatatime = "_" . $todaytime->format('Y-m-d_H_i_s');
 					
 					$ReadRssXml = new ReadRss($Url);				
-					$ReadRssXml->ReadRssXMLByCurl();				
-					$chItems = $ReadRssXml->GetItems();
-					
+					$chItems = $ReadRssXml->ReadRssXMLByCurl();				
 					
 					//Công thêm 11 tiếng do lệch múi giờ Mỹ - Việt Nam
 					$DateNews = $todaytime->add($interval);

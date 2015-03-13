@@ -39,6 +39,11 @@ RewriteRule ^app/event/ins/exe$ 								?cmd=AppEventInsExe [L]
 RewriteRule ^app/event/([0-9]+)/upd/load$ 						?cmd=AppEventUpdLoad&IdEvent=$1 [L]
 RewriteRule ^app/event/([0-9]+)/upd/exe$ 						?cmd=AppEventUpdExe&IdEvent=$1 	[L]
 
+RewriteRule ^app/YoutubeList$ 											?cmd=AppYoutubeList [L]
+RewriteRule ^service/youtube/add/video/from/playlist$ 					?cmd=ServiceYouTubeAddVideoFromPlayList [L]
+RewriteRule ^service/youtube/update/statistic/video						?cmd=ServiceYouTubeUpdateStatisticVideo [L]
+
+
 RewriteRule ^app/disable$ 										?cmd=AppDisable 				[L]
 RewriteRule ^app/disable/del/all$ 								?cmd=AppDisableDelAll			[L]
 
