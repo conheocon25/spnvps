@@ -79,7 +79,12 @@
 		<command name="AppRssInsExe"><view>AppRssInsExe</view><status value="CMD_OK"><forward>AppRss</forward></status></command>
 		<command name="AppRssUpdLoad"><view>AppRssUpdLoad</view></command>
 		<command name="AppRssUpdExe"><view>AppRssUpdExe</view><status value="CMD_OK"><forward>AppRss</forward></status></command>
-						
+		<!-- ============================================================================== -->
+		<!-- APP.YOUTUBE																		-->
+		<!-- ============================================================================== -->
+		<command name="AppYoutubeList"><view>AppYoutubeList</view></command>
+		<command name="ServiceYouTubeAddVideoFromPlayList" type="public"><view>ServiceYouTubeAddVideoFromPlayList</view></command>
+		<command name="ServiceYouTubeUpdateStatisticVideo" type="public"><view>ServiceYouTubeUpdateStatisticVideo</view></command>		
 		<!-- ============================================================================== -->
 		<!-- APP.CONFIG																		-->
 		<!-- ============================================================================== -->
