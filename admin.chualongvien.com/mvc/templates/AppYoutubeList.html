@@ -22,7 +22,7 @@
 									<div class="controls">
 										<select name="IdCategory" id="IdCategory" style="width:80%;">
 											<option tal:repeat="Category CategoryVideoAll" tal:attributes="value Category/getId">
-												<span tal:content="Category/getCategory/getName"/> / <span tal:content="Category/getName"/>
+												<span tal:content="Category/getBTypeName"/> / <span tal:content="Category/getName"/>
 											</option>
 										</select>
 									</div>
@@ -100,7 +100,7 @@
 							data: {IdCategory:IdCategory, DTitle:DTitle, DURL:DURL, DViewed:DViewed, DLiked:DLiked},
 							url: URL1,
 							success: function(msg){
-								
+								//alert(msg);
 							}
 						});						
 					}

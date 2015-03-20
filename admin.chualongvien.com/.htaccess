@@ -33,6 +33,8 @@ RewriteRule ^app$ 												?cmd=App [L]
 RewriteRule ^app/config$ 										?cmd=AppConfig [L]
 RewriteRule ^app/config/page/([0-9]+)$ 							?cmd=AppConfig&Page=$1 [L]
 
+RewriteRule ^app/youtubelist$ 									?cmd=AppYoutubeList [L]
+
 RewriteRule ^app/event$ 										?cmd=AppEvent [L]
 RewriteRule ^app/event/ins/load$ 								?cmd=AppEventInsLoad [L]
 RewriteRule ^app/event/ins/exe$ 								?cmd=AppEventInsExe [L]
