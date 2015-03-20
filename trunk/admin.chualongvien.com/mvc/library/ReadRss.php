@@ -1,5 +1,6 @@
 <?php
 Namespace MVC\Library;
+require_once('mvc/library/SimpleHtmlDom.php');
 class ReadRss {
 	protected static $_doc;
 	protected static $_loaded;
@@ -52,6 +53,42 @@ class ReadRss {
 					}
 				}
 			}
+		return $result;
+	}
+	
+	function ReadRssHTMLByCurl()
+	{
+		$curl_handle=curl_init();
+		curl_setopt($curl_handle, CURLOPT_URL,self::$_rssUrl);
+		curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 5);
+		curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($curl_handle, CURLOPT_HEADER, 0);	
+		curl_setopt($curl_handle, CURLOPT_BINARYTRANSFER, true);
+		curl_setopt($curl_handle, CURLOPT_SSL_VERIFYPEER, FALSE);			
+		curl_setopt($curl_handle, CURLOPT_USERAGENT, 'user');
+		$xmlcontent = curl_exec($curl_handle);
+		curl_close($curl_handle);
+		
+		
+		self::$_doc = new \DOMDocument();	
+		@self::$_doc->loadHTML($xmlcontent);		
+		self::$_doc->saveHTMLFile("data/tinhdotong.html");
+		$HTML = file_get_html("data/tinhdotong.html");					
+										
+		$result = array();	
+		$i = 0; 
+		foreach( $HTML->find('.sumctsSummaryCell') as $SummaryCell){
+			//echo $SummaryCell;
+			foreach ($SummaryCell->find('.sumctsHeadline') as $item) {
+				$result['item_'.$i] = array();
+				foreach( $item->find('a') as $eatag){
+					$result['item_'.$i]["title"] = html_entity_decode($eatag->plaintext, ENT_QUOTES, 'UTF-8') ;				
+					$result['item_'.$i]["link"] = "http://giacngo.vn" . $eatag->href;
+					$i++;
+				}			
+			}
+		}
+		array_map('unlink', glob("data/*.html"));
 		return $result;
 	}
 	/**

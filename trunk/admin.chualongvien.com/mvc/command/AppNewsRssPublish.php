@@ -51,6 +51,7 @@
 				$ClassAuthor 		= $dRssLink->getClassAuthor();
 				$ClassContent 		= $dRssLink->getClassContentName();
 				$ImgPath 			= $dRssLink->getImgPath();
+				$RssType 			= $dRssLink->getType();
 				
 				$IdCategory = $dRssLink->getIdCategory();
 				
@@ -59,9 +60,11 @@
 					$todaytime = new \DateTime('NOW');
 					$interval = new \DateInterval('P0Y0DT11H0M');	
 					$strDatatime = "_" . $todaytime->format('Y-m-d_H_i_s');
-					
-					$ReadRssXml = new ReadRss($Url);				
-					$chItems = $ReadRssXml->ReadRssXMLByCurl();				
+										
+					$ReadRssXml = new ReadRss($Url);
+					if($RssType == 2) {
+						$chItems = $ReadRssXml->ReadRssHTMLByCurl();
+					}else {	$chItems = $ReadRssXml->ReadRssXMLByCurl();	}
 					
 					//Công thêm 11 tiếng do lệch múi giờ Mỹ - Việt Nam
 					$DateNews = $todaytime->add($interval);
